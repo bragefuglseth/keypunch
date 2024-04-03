@@ -245,11 +245,17 @@ mod imp {
                 .enumerate()
                 .filter(|(_, &correctly_typed)| !correctly_typed)
                 .map(|(n, _)| {
-                    let mut mistake_attr = pango::AttrColor::new_foreground(50000, 10000, 10000);
-                    mistake_attr.set_start_index(n as u32);
-                    mistake_attr.set_end_index(n as u32 + 1);
-                    mistake_attr
+                    let mut mistake_fg_attr = pango::AttrColor::new_foreground(50000, 10000, 10000);
+                    mistake_fg_attr.set_start_index(n as u32);
+                    mistake_fg_attr.set_end_index(n as u32 + 1);
+
+                    let mut mistake_bg_attr = pango::AttrColor::new_background(u16::MAX, 60000, 60000);
+                    mistake_bg_attr.set_start_index(n as u32);
+                    mistake_bg_attr.set_end_index(n as u32 + 1);
+
+                    [mistake_fg_attr, mistake_bg_attr]
                 })
+                .flatten()
                 .for_each(|attr| attr_list.insert(attr));
 
             self.label.set_attributes(Some(&attr_list));
