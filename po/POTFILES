@@ -1,0 +1,4 @@
+data/dev.bragefuglseth.Raceway.desktop.in
+data/dev.bragefuglseth.Raceway.metainfo.xml.in
+data/dev.bragefuglseth.Raceway.gschema.xml
+src/window.ui
