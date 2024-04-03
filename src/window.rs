@@ -19,10 +19,10 @@
  */
 
 use crate::text_view::RcwTextView;
+use crate::typing_session::TypingSession;
 use adw::prelude::*;
 use adw::subclass::prelude::*;
 use gtk::{gio, glib};
-use crate::typing_session::TypingSession;
 
 mod imp {
     use super::*;
@@ -57,10 +57,10 @@ mod imp {
             self.parent_constructed();
 
             let text_view = self.text_view.get();
-            
+
             adw::StyleManager::default().set_color_scheme(adw::ColorScheme::ForceLight);
 
-            text_view.set_typing_session(TypingSession::new("Welcome to Raceway! Just start typing. This is an early demo of what practicing will be like. If you use dark mode, sorry for blinding you. That's still being worked on!\n\nIn the future, Raceway will let you test and improve your typing speed with sessions based on a timeframe, a word count or a custom string. Even further into the future, Raceway will also let you see your typing speed improve over time.\n\nCheck in on the repository once in a while to follow the progress!".to_string()));
+            text_view.set_typing_session(TypingSession::new("Welcome to Raceway! Just start typing. This is an early demo of what practicing will be like. If you use dark mode, sorry for blinding you. I'm working on making the colors work out!\n\nIn the future, Raceway will let you test and improve your typing speed with sessions based on a timeframe, a word count or a custom string. Even further into the future, Raceway will also let you see statistics about your typing over time.\n\nCheck in on the repository once in a while to follow the progress!".to_string()));
         }
     }
     impl WidgetImpl for RcwWindow {}

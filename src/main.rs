@@ -18,12 +18,12 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-mod typing_session;
 mod application;
 mod config;
 mod text_view;
-mod window;
+mod typing_session;
 mod util;
+mod window;
 
 use self::application::RcwApplication;
 use self::window::RcwWindow;

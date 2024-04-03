@@ -1,10 +1,10 @@
+use crate::typing_session::TypingSession;
+use crate::util::{insert_whsp_markers, pop_grapheme};
 use adw::prelude::*;
 use adw::subclass::prelude::*;
 use gtk::glib;
-use gtk::{graphene, gsk, gdk, pango};
+use gtk::{gdk, graphene, gsk, pango};
 use std::cell::{Cell, OnceCell, RefCell};
-use crate::typing_session::TypingSession;
-use crate::util::pop_grapheme;
 
 const LINE_HEIGHT: i32 = 45;
 
@@ -85,7 +85,7 @@ mod imp {
                 gtk::Orientation::Vertical => (LINE_HEIGHT * 3, LINE_HEIGHT * 3, -1, -1),
                 gtk::Orientation::Horizontal => self.label.measure(orientation, for_size),
 
-                _ => self.label.measure(orientation, for_size),     // because we have to…
+                _ => self.label.measure(orientation, for_size), // because we have to…
             }
         }
 
@@ -104,7 +104,7 @@ mod imp {
 
         fn snapshot(&self, snapshot: &gtk::Snapshot) {
             let obj = self.obj();
-        
+
             obj.snapshot_child(&self.label.get(), snapshot);
 
             let caret_x = obj.caret_x() as f32;
@@ -112,7 +112,10 @@ mod imp {
 
             let caret_path = gsk::PathBuilder::new();
             caret_path.move_to(caret_x, caret_y);
-            caret_path.line_to(caret_x, caret_y + (self.label.layout().baseline() / pango::SCALE) as f32 + 2.);
+            caret_path.line_to(
+                caret_x,
+                caret_y + (self.label.layout().baseline() / pango::SCALE) as f32 + 2.,
+            );
             let caret_path = caret_path.to_path();
 
             let caret_stroke = gsk::Stroke::new(2.);
@@ -151,7 +154,7 @@ mod imp {
                 })
                 .clone()
         }
-        
+
         fn caret_x_animation(&self) -> adw::TimedAnimation {
             self.caret_x_animation
                 .get_or_init(|| {
@@ -165,7 +168,7 @@ mod imp {
                 })
                 .clone()
         }
-        
+
         fn caret_y_animation(&self) -> adw::TimedAnimation {
             self.caret_y_animation
                 .get_or_init(|| {
@@ -211,7 +214,7 @@ mod imp {
         }
 
         pub(super) fn set_typing_session(&self, session: TypingSession) {
-            let display_text = session.original_text.clone().replace("\n", "↲\n");
+            let display_text = insert_whsp_markers(&session.original_text);
 
             self.label.set_label(&display_text);
             self.typing_session.replace(session);
@@ -237,7 +240,9 @@ mod imp {
             typed_attr.set_end_index(comparison.len() as u32);
             attr_list.insert(typed_attr);
 
-            comparison.iter().enumerate()
+            comparison
+                .iter()
+                .enumerate()
                 .filter(|(_, &correctly_typed)| !correctly_typed)
                 .map(|(n, _)| {
                     let mut mistake_attr = pango::AttrColor::new_foreground(50000, 10000, 10000);
@@ -253,7 +258,10 @@ mod imp {
         fn update_scroll_position(&self) {
             let session = self.typing_session.borrow();
 
-            let (line, _) = self.label.layout().index_to_line_x(session.typed_text_len_whsp_markers() as i32, false);
+            let (line, _) = self
+                .label
+                .layout()
+                .index_to_line_x(session.validate_with_whsp_markers().len() as i32, false);
 
             if line != self.line.get() {
                 self.line.set(line);
@@ -266,24 +274,31 @@ mod imp {
 
         fn update_caret_position(&self) {
             let session = self.typing_session.borrow();
-            let current_index = session.typed_text_len_whsp_markers();
-            
+            let current_index = session.validate_with_whsp_markers().len();
+
             let layout = self.label.get().layout();
-            
+
             let (line, x) = layout.index_to_line_x(current_index as i32, false);
-            let x = if line == 0 && x == 0 { -2 } else { x / pango::SCALE };
-            
+            let x = if line == 0 && x == 0 {
+                -2
+            } else {
+                x / pango::SCALE
+            };
+
             let reference_line = if line == 0 { 0 } else { 1 };
-            let start_index = layout.line(reference_line).map(|l| l.start_index()).unwrap_or(0);
+            let start_index = layout
+                .line(reference_line)
+                .map(|l| l.start_index())
+                .unwrap_or(0);
             let y = layout.index_to_pos(start_index).y() / pango::SCALE;
-            
+
             let obj = self.obj();
-            
+
             let caret_x_animation = self.caret_x_animation();
             caret_x_animation.set_value_from(obj.caret_x());
             caret_x_animation.set_value_to(x as f64);
             caret_x_animation.play();
-            
+
             let caret_y_animation = self.caret_y_animation();
             caret_y_animation.set_value_from(obj.caret_y());
             caret_y_animation.set_value_to(y as f64);

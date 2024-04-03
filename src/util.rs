@@ -6,6 +6,12 @@ pub fn pop_grapheme(string: &mut String) {
     *string = v.into_iter().collect()
 }
 
+pub const WHSP_MARKERS: [(&'static str, &'static str); 1] = [("\n", "↲\n")];
+
 pub fn insert_whsp_markers(string: &str) -> String {
-    string.to_string().replace("\n", "⏎\n")
+    let mut s = string.to_string();
+    for entry in WHSP_MARKERS {
+        s = s.replace(entry.0, entry.1);
+    }
+    s
 }
