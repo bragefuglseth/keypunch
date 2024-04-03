@@ -192,10 +192,16 @@ mod imp {
             event_controller.set_im_context(Some(&input_method));
 
             let obj = self.obj();
-            event_controller.connect_key_pressed(glib::clone!(@strong obj => move |_, key, _, _| {
-                if key == gdk::Key::BackSpace {
-                    pop_grapheme(&mut obj.imp().typing_session.borrow().typed_text().borrow_mut());
-                    obj.imp().typed_text_changed();
+            event_controller.connect_key_pressed(glib::clone!(@strong obj => move |controller, key, _, _| {
+                match key {
+                    gdk::Key::BackSpace => {
+                        pop_grapheme(&mut obj.imp().typing_session.borrow().typed_text().borrow_mut());
+                        obj.imp().typed_text_changed();
+                    },
+                    gdk::Key::Return => {
+                        controller.im_context().expect("input controller has im context").emit_by_name_with_values("commit", &["\n".into()]);
+                    }
+                    _ => ()
                 }
 
                 glib::signal::Propagation::Stop
@@ -205,7 +211,9 @@ mod imp {
         }
 
         pub(super) fn set_typing_session(&self, session: TypingSession) {
-            self.label.set_label(&session.original_text);
+            let display_text = session.original_text.clone().replace("\n", "↲\n");
+
+            self.label.set_label(&display_text);
             self.typing_session.replace(session);
             self.typed_text_changed();
         }
@@ -216,8 +224,8 @@ mod imp {
             self.update_caret_position();
         }
 
-        fn update_visuals(&self) { // hva faen skjer her?
-            let comparison = self.typing_session.borrow().validate();
+        fn update_visuals(&self) {
+            let comparison = self.typing_session.borrow().validate_with_whsp_markers();
 
             let attr_list = pango::AttrList::new();
 
@@ -245,7 +253,7 @@ mod imp {
         fn update_scroll_position(&self) {
             let session = self.typing_session.borrow();
 
-            let (line, _) = self.label.layout().index_to_line_x(session.typed_text_len() as i32, false);
+            let (line, _) = self.label.layout().index_to_line_x(session.typed_text_len_whsp_markers() as i32, false);
 
             if line != self.line.get() {
                 self.line.set(line);
@@ -258,7 +266,7 @@ mod imp {
 
         fn update_caret_position(&self) {
             let session = self.typing_session.borrow();
-            let current_index = session.typed_text_len();
+            let current_index = session.typed_text_len_whsp_markers();
             
             let layout = self.label.get().layout();
             
