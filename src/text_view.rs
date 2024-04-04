@@ -8,6 +8,31 @@ use std::cell::{Cell, OnceCell, RefCell};
 
 const LINE_HEIGHT: i32 = 45;
 
+#[derive(Default, Clone, Copy)]
+struct TextViewColorScheme {
+    pub untyped: (u16, u16, u16),
+    pub typed: (u16, u16, u16),
+    pub mistake: (u16, u16, u16),
+    pub mistake_bg: (u16, u16, u16),
+    pub caret: (f32, f32, f32),
+}
+
+const COLOR_SCHEME_LIGHT: TextViewColorScheme = TextViewColorScheme {
+    untyped: (41472, 41472, 41472),
+    typed: (12800, 12800, 12800),
+    mistake: (49152, 7168, 10240),
+    mistake_bg: (62464, 58368, 58624),
+    caret: (0.2, 0.2, 0.2),
+};
+
+const COLOR_SCHEME_DARK: TextViewColorScheme = TextViewColorScheme {
+    untyped: (33792, 33792, 33792),
+    typed: (65280, 65280, 65280),
+    mistake: (65280, 31488, 25344),
+    mistake_bg: (14848, 11520, 10752),
+    caret: (1., 1., 1.),
+};
+
 mod imp {
     use super::*;
 
@@ -28,6 +53,7 @@ mod imp {
         line: Cell<i32>,
 
         pub(super) typing_session: RefCell<TypingSession>,
+        color_scheme: Cell<TextViewColorScheme>,
 
         scroll_animation: OnceCell<adw::TimedAnimation>,
         caret_x_animation: OnceCell<adw::TimedAnimation>,
@@ -56,6 +82,7 @@ mod imp {
             self.parent_constructed();
 
             self.setup_input_handling();
+            self.setup_color_scheme();
         }
 
         fn dispose(&self) {
@@ -116,10 +143,12 @@ mod imp {
                 caret_x,
                 caret_y + (self.label.layout().baseline() / pango::SCALE) as f32 + 2.,
             );
-            let caret_path = caret_path.to_path();
 
-            let caret_stroke = gsk::Stroke::new(2.);
-            let caret_color = gdk::RGBA::new(0.5, 0.5, 0.5, 1.);
+            let clr = self.color_scheme.get();
+
+            let caret_color = gdk::RGBA::new(clr.caret.0, clr.caret.1, clr.caret.2, 1.);
+            let caret_stroke = gsk::Stroke::new(1.);
+            let caret_path = caret_path.to_path();
 
             snapshot.append_stroke(&caret_path, &caret_stroke, &caret_color);
         }
@@ -161,7 +190,7 @@ mod imp {
                     let obj = self.obj().to_owned();
 
                     adw::TimedAnimation::builder()
-                        .duration(100)
+                        .duration(150)
                         .widget(&obj)
                         .target(&adw::PropertyAnimationTarget::new(&obj, "caret-x"))
                         .build()
@@ -175,7 +204,7 @@ mod imp {
                     let obj = self.obj().to_owned();
 
                     adw::TimedAnimation::builder()
-                        .duration(100)
+                        .duration(150)
                         .widget(&obj)
                         .target(&adw::PropertyAnimationTarget::new(&obj, "caret-y"))
                         .build()
@@ -200,17 +229,39 @@ mod imp {
                     gdk::Key::BackSpace => {
                         pop_grapheme(&mut obj.imp().typing_session.borrow().typed_text().borrow_mut());
                         obj.imp().typed_text_changed();
+                        glib::signal::Propagation::Stop
                     },
                     gdk::Key::Return => {
                         controller.im_context().expect("input controller has im context").emit_by_name_with_values("commit", &["\n".into()]);
+                        glib::signal::Propagation::Stop
                     }
-                    _ => ()
+                    _ => glib::signal::Propagation::Proceed
                 }
-
-                glib::signal::Propagation::Stop
             }));
 
             self.obj().add_controller(event_controller);
+        }
+
+        fn setup_color_scheme(&self) {
+            let obj = self.obj();
+            let style = adw::StyleManager::default();
+            style.connect_dark_notify(glib::clone!(@weak obj => move |_| {
+                obj.imp().update_color_scheme();
+            }));
+
+            self.update_color_scheme();
+        }
+
+        fn update_color_scheme(&self) {
+            let style = adw::StyleManager::default();
+
+            self.color_scheme.set(if style.is_dark() {
+                COLOR_SCHEME_DARK
+            } else {
+                COLOR_SCHEME_LIGHT
+            });
+
+            self.update_visuals();
         }
 
         pub(super) fn set_typing_session(&self, session: TypingSession) {
@@ -228,14 +279,18 @@ mod imp {
         }
 
         fn update_visuals(&self) {
+            let clr = self.color_scheme.get();
+
             let comparison = self.typing_session.borrow().validate_with_whsp_markers();
 
             let attr_list = pango::AttrList::new();
 
-            let untyped_attr = pango::AttrColor::new_foreground(40000, 40000, 40000);
+            let untyped_attr =
+                pango::AttrColor::new_foreground(clr.untyped.0, clr.untyped.1, clr.untyped.2);
             attr_list.insert(untyped_attr);
 
-            let mut typed_attr = pango::AttrColor::new_foreground(10000, 10000, 10000);
+            let mut typed_attr =
+                pango::AttrColor::new_foreground(clr.typed.0, clr.typed.1, clr.typed.2);
             typed_attr.set_start_index(0);
             typed_attr.set_end_index(comparison.len() as u32);
             attr_list.insert(typed_attr);
@@ -245,11 +300,19 @@ mod imp {
                 .enumerate()
                 .filter(|(_, &correctly_typed)| !correctly_typed)
                 .map(|(n, _)| {
-                    let mut mistake_fg_attr = pango::AttrColor::new_foreground(50000, 10000, 10000);
+                    let mut mistake_fg_attr = pango::AttrColor::new_foreground(
+                        clr.mistake.0,
+                        clr.mistake.1,
+                        clr.mistake.2,
+                    );
                     mistake_fg_attr.set_start_index(n as u32);
                     mistake_fg_attr.set_end_index(n as u32 + 1);
 
-                    let mut mistake_bg_attr = pango::AttrColor::new_background(u16::MAX, 60000, 60000);
+                    let mut mistake_bg_attr = pango::AttrColor::new_background(
+                        clr.mistake_bg.0,
+                        clr.mistake_bg.1,
+                        clr.mistake_bg.2,
+                    );
                     mistake_bg_attr.set_start_index(n as u32);
                     mistake_bg_attr.set_end_index(n as u32 + 1);
 

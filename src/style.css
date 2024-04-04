@@ -1,4 +1,5 @@
-RcwTextView {
-  font-size: 1.8rem;
+RcwTextView label {
+  font-size: 1.6rem;
   line-height: 45px;
+  font-variant-ligatures: none;
 }

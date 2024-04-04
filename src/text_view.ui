@@ -6,6 +6,7 @@
     <property name="overflow">hidden</property>
     <property name="valign">center</property>
     <property name="focusable">true</property>
+    <property name="focus-on-click">true</property>
     <child>
       <object class="GtkLabel" id="label">
         <property name="xalign">0</property>
