@@ -13,7 +13,6 @@ struct TextViewColorScheme {
     pub untyped: (u16, u16, u16),
     pub typed: (u16, u16, u16),
     pub mistake: (u16, u16, u16),
-    pub mistake_bg: (u16, u16, u16),
     pub caret: (f32, f32, f32),
 }
 
@@ -21,7 +20,6 @@ const COLOR_SCHEME_LIGHT: TextViewColorScheme = TextViewColorScheme {
     untyped: (41472, 41472, 41472),
     typed: (12800, 12800, 12800),
     mistake: (49152, 7168, 10240),
-    mistake_bg: (62464, 58368, 58624),
     caret: (0.2, 0.2, 0.2),
 };
 
@@ -29,7 +27,6 @@ const COLOR_SCHEME_DARK: TextViewColorScheme = TextViewColorScheme {
     untyped: (33792, 33792, 33792),
     typed: (65280, 65280, 65280),
     mistake: (65280, 31488, 25344),
-    mistake_bg: (14848, 11520, 10752),
     caret: (1., 1., 1.),
 };
 
@@ -146,7 +143,9 @@ mod imp {
 
             let clr = self.color_scheme.get();
 
-            let caret_color = gdk::RGBA::new(clr.caret.0, clr.caret.1, clr.caret.2, 1.);
+            let caret_alpha = if self.typing_session.borrow().typed_text_len() == 0 { 0. } else { 1. };
+
+            let caret_color = gdk::RGBA::new(clr.caret.0, clr.caret.1, clr.caret.2, caret_alpha);
             let caret_stroke = gsk::Stroke::new(1.);
             let caret_path = caret_path.to_path();
 
@@ -308,17 +307,8 @@ mod imp {
                     mistake_fg_attr.set_start_index(n as u32);
                     mistake_fg_attr.set_end_index(n as u32 + 1);
 
-                    let mut mistake_bg_attr = pango::AttrColor::new_background(
-                        clr.mistake_bg.0,
-                        clr.mistake_bg.1,
-                        clr.mistake_bg.2,
-                    );
-                    mistake_bg_attr.set_start_index(n as u32);
-                    mistake_bg_attr.set_end_index(n as u32 + 1);
-
-                    [mistake_fg_attr, mistake_bg_attr]
+                    mistake_fg_attr
                 })
-                .flatten()
                 .for_each(|attr| attr_list.insert(attr));
 
             self.label.set_attributes(Some(&attr_list));
@@ -346,20 +336,29 @@ mod imp {
             let current_index = session.validate_with_whsp_markers().len();
 
             let layout = self.label.get().layout();
+            let layout_width = layout.width() / pango::SCALE;
 
-            let (line, x) = layout.index_to_line_x(current_index as i32, false);
-            let x = if line == 0 && x == 0 {
-                -2
+            let (line_index, ltr_x) = layout.index_to_line_x(current_index as i32, false);
+            let ltr_x = ltr_x / pango::SCALE;
+
+            let line_width = layout.line(line_index).expect("line exists at index").extents().1.width() / pango::SCALE;
+
+            let line_direction = layout.line(line_index).expect("line exists at index").resolved_direction();
+
+            let x = if line_direction == pango::Direction::Rtl {
+                layout_width - line_width + ltr_x
             } else {
-                x / pango::SCALE
+                ltr_x
             };
 
-            let reference_line = if line == 0 { 0 } else { 1 };
-            let start_index = layout
+            let x = if x == 0 { 1 } else if x == layout_width { layout_width - 1} else { x };
+
+            let reference_line = if line_index == 0 { 0 } else { 1 };
+            let line_start_index = layout
                 .line(reference_line)
                 .map(|l| l.start_index())
                 .unwrap_or(0);
-            let y = layout.index_to_pos(start_index).y() / pango::SCALE;
+            let y = layout.index_to_pos(line_start_index).y() / pango::SCALE;
 
             let obj = self.obj();
 

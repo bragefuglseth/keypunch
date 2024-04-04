@@ -60,19 +60,14 @@ impl TypingSession {
             .graphemes(true)
             .zip(typed.graphemes(true))
             .map(|(og, tg)| {
-                if og == tg {
-                    // check if the typed grapheme exists in the whitespace char database
-                    // used by the text view. if that's the case, match the length of the
-                    // indicator used.
-                    if let Some((_, val)) = WHSP_MARKERS.iter().find(|(key, _)| *key == tg) {
-                        vec![true; val.len()]
-                    } else {
-                        vec![true; og.len()]
-                    }
+                let matches = og == tg;
+                // check if the typed grapheme exists in the whitespace char database
+                // used by the text view. if that's the case, match the length of the
+                // indicator used.
+                if let Some((_, val)) = WHSP_MARKERS.iter().find(|(key, _)| *key == og) {
+                    vec![matches; val.len()]
                 } else {
-                    // match the length of the grapheme that was supposed to be typed,
-                    // so the error coloring works
-                    vec![false; og.len()]
+                    vec![matches; og.len()]
                 }
             })
             .flatten()
