@@ -58,7 +58,7 @@ mod imp {
 
             let text_view = self.text_view.get();
 
-            text_view.set_typing_session(TypingSession::new("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim aeque doleamus animo, cum corpore dolemus, fieri tamen permagna accessio potest, si aliquod aeternum et infinitum impendere malum nobis opinemur. Quod idem licet transferre in voluptatem, ut.".to_string()));
+            text_view.set_typing_session(TypingSession::new("我爱中国".to_string()));
         }
     }
     impl WidgetImpl for RcwWindow {}

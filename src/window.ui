@@ -25,7 +25,7 @@
           <object class="AdwClamp">
             <property name="unit">px</property>
             <property name="maximum-size">800</property>
-            <property name="tightening-threshold">600</property>
+            <property name="tightening-threshold">400</property>
             <child>
               <object class="RcwTextView" id="text_view">
                 <property name="margin-start">12</property>
