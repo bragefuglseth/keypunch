@@ -72,9 +72,16 @@ impl imp::RcwTextView {
                 mistake_fg_attr.set_start_index(n as u32);
                 mistake_fg_attr.set_end_index(n as u32 + 1);
 
-                mistake_fg_attr
+                let mut mistake_underline_attr = pango::AttrInt::new_underline(pango::Underline::SingleLine);
+                mistake_underline_attr.set_start_index(n as u32);
+                mistake_underline_attr.set_end_index(n as u32 + 1);
+
+                (mistake_fg_attr, mistake_underline_attr)
             })
-            .for_each(|attr| attr_list.insert(attr));
+            .for_each(|(attr_1, attr_2)| {
+                attr_list.insert(attr_1);
+                attr_list.insert(attr_2);
+            });
 
         self.label.set_attributes(Some(&attr_list));
     }
