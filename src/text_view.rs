@@ -161,12 +161,12 @@ mod imp {
 
         fn set_caret_x(&self, caret_x: f64) {
             self.caret_x.set(caret_x);
-            self.obj().queue_allocate();
+            self.obj().queue_draw();
         }
 
         fn set_caret_y(&self, caret_y: f64) {
             self.caret_y.set(caret_y);
-            self.obj().queue_allocate();
+            self.obj().queue_draw();
         }
 
         fn scroll_animation(&self) -> adw::TimedAnimation {
@@ -175,7 +175,7 @@ mod imp {
                     let obj = self.obj().to_owned();
 
                     adw::TimedAnimation::builder()
-                        .duration(200)
+                        .duration(300)
                         .widget(&obj)
                         .target(&adw::PropertyAnimationTarget::new(&obj, "scroll-position"))
                         .build()
@@ -189,7 +189,7 @@ mod imp {
                     let obj = self.obj().to_owned();
 
                     adw::TimedAnimation::builder()
-                        .duration(150)
+                        .duration(200)
                         .widget(&obj)
                         .target(&adw::PropertyAnimationTarget::new(&obj, "caret-x"))
                         .build()
@@ -203,7 +203,7 @@ mod imp {
                     let obj = self.obj().to_owned();
 
                     adw::TimedAnimation::builder()
-                        .duration(150)
+                        .duration(200)
                         .widget(&obj)
                         .target(&adw::PropertyAnimationTarget::new(&obj, "caret-y"))
                         .build()
