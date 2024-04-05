@@ -5,7 +5,7 @@ mod input;
 
 use crate::text_view::color::TextViewColorScheme;
 use crate::typing_session::TypingSession;
-use crate::util::{insert_whsp_markers, pop_grapheme};
+use crate::util::insert_whsp_markers;
 use adw::prelude::*;
 use adw::subclass::prelude::*;
 use gtk::glib;
@@ -159,7 +159,7 @@ mod imp {
         }
 
         pub(super) fn set_typing_session(&self, session: TypingSession) {
-            let display_text = insert_whsp_markers(&session.original_text);
+            let display_text = insert_whsp_markers(&session.original_text());
 
             self.label.set_label(&display_text);
             self.typing_session.replace(session);

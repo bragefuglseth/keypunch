@@ -10,7 +10,7 @@ impl imp::RcwTextView {
 
         input_context
             .connect_commit(glib::clone!(@weak self as imp => move |_, text| {
-                imp.typing_session.borrow().typed_text().borrow_mut().push_str(text);
+                imp.typing_session.borrow().push_to_typed_text(text);
                 imp.typed_text_changed();
             }));
 
@@ -22,7 +22,7 @@ impl imp::RcwTextView {
         event_controller.connect_key_pressed(glib::clone!(@strong obj => move |controller, key, _, _| {
                 match key {
                     gdk::Key::BackSpace => {
-                        pop_grapheme(&mut obj.imp().typing_session.borrow().typed_text().borrow_mut());
+                        obj.imp().typing_session.borrow().pop_typed_text();
                         obj.imp().typed_text_changed();
                         glib::signal::Propagation::Stop
                     },
