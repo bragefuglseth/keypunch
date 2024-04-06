@@ -42,10 +42,10 @@ impl imp::RcwTextView {
             COLOR_SCHEME_LIGHT
         });
 
-        self.update_visuals();
+        self.update_text_styling();
     }
 
-    pub(super) fn update_visuals(&self) {
+    pub(super) fn update_text_styling(&self) {
         let clr = self.color_scheme.get();
 
         let comparison = self.typing_session.borrow().validate_with_whsp_markers();
@@ -72,7 +72,8 @@ impl imp::RcwTextView {
                 mistake_fg_attr.set_start_index(n as u32);
                 mistake_fg_attr.set_end_index(n as u32 + 1);
 
-                let mut mistake_underline_attr = pango::AttrInt::new_underline(pango::Underline::SingleLine);
+                let mut mistake_underline_attr =
+                    pango::AttrInt::new_underline(pango::Underline::SingleLine);
                 mistake_underline_attr.set_start_index(n as u32);
                 mistake_underline_attr.set_end_index(n as u32 + 1);
 

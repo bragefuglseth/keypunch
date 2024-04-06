@@ -1,7 +1,7 @@
 use crate::util::WHSP_MARKERS;
 use std::cell::RefCell;
-use unicode_segmentation::UnicodeSegmentation;
 use std::time::Duration;
+use unicode_segmentation::UnicodeSegmentation;
 
 #[derive(Default)]
 enum SessionType {

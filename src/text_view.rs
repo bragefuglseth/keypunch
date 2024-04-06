@@ -1,9 +1,9 @@
-mod animation;
 mod caret;
-mod color;
 mod input;
+mod scrolling;
+mod styling;
 
-use crate::text_view::color::TextViewColorScheme;
+use crate::text_view::styling::TextViewColorScheme;
 use crate::typing_session::TypingSession;
 use crate::util::insert_whsp_markers;
 use adw::prelude::*;
@@ -25,16 +25,15 @@ mod imp {
         pub(super) label: TemplateChild<gtk::Label>,
 
         #[property(get, set=Self::set_scroll_position)]
-        scroll_position: Cell<f64>,
+        pub(super) scroll_position: Cell<f64>,
         #[property(get, set=Self::set_caret_x)]
-        caret_x: Cell<f64>,
+        pub(super) caret_x: Cell<f64>,
         #[property(get, set=Self::set_caret_y)]
-        caret_y: Cell<f64>,
+        pub(super) caret_y: Cell<f64>,
 
-        line: Cell<i32>,
-
-        pub(super) typing_session: RefCell<TypingSession>,
         pub(super) color_scheme: Cell<TextViewColorScheme>,
+        pub(super) typing_session: RefCell<TypingSession>,
+        pub(super) line: Cell<i32>,
         pub(super) input_context: RefCell<Option<gtk::IMMulticontext>>,
 
         pub(super) scroll_animation: OnceCell<adw::TimedAnimation>,
@@ -116,77 +115,20 @@ mod imp {
 
             obj.snapshot_child(&self.label.get(), snapshot);
 
-            let caret_x = obj.caret_x() as f32;
-            let caret_y = obj.caret_y() as f32;
-
-            let caret_path = gsk::PathBuilder::new();
-            caret_path.move_to(caret_x, caret_y);
-            caret_path.line_to(
-                caret_x,
-                caret_y + (self.label.layout().baseline() / pango::SCALE) as f32 + 2.,
-            );
-
-            let clr = self.color_scheme.get();
-
-            let caret_alpha = if self.typing_session.borrow().typed_text_len() == 0 {
-                0.
-            } else {
-                1.
-            };
-
-            let caret_color = gdk::RGBA::new(clr.caret.0, clr.caret.1, clr.caret.2, caret_alpha);
-            let caret_stroke = gsk::Stroke::new(1.);
-            let caret_path = caret_path.to_path();
-
+            // Draw caret
+            let (caret_path, caret_stroke, caret_color) = self.caret_stroke_data();
             snapshot.append_stroke(&caret_path, &caret_stroke, &caret_color);
         }
     }
 
     impl RcwTextView {
-        fn set_scroll_position(&self, line_number: f64) {
-            self.scroll_position.set(line_number);
-            self.obj().queue_allocate();
-        }
-
-        fn set_caret_x(&self, caret_x: f64) {
-            self.caret_x.set(caret_x);
-            self.obj().queue_draw();
-        }
-
-        fn set_caret_y(&self, caret_y: f64) {
-            self.caret_y.set(caret_y);
-            self.obj().queue_draw();
-        }
-
         pub(super) fn set_typing_session(&self, session: TypingSession) {
             let display_text = insert_whsp_markers(&session.original_text());
 
             self.label.set_label(&display_text);
             self.typing_session.replace(session);
-            self.typed_text_changed();
-        }
-
-        pub(super) fn typed_text_changed(&self) {
-            self.update_visuals();
+            self.update_text_styling();
             self.update_scroll_position();
-            self.update_caret_position();
-        }
-
-        fn update_scroll_position(&self) {
-            let session = self.typing_session.borrow();
-
-            let (line, _) = self
-                .label
-                .layout()
-                .index_to_line_x(session.validate_with_whsp_markers().len() as i32, false);
-
-            if line != self.line.get() {
-                self.line.set(line);
-                self.animate_to_line(match line {
-                    0 | 1 => 0,
-                    num => num - 1,
-                });
-            }
         }
     }
 }
