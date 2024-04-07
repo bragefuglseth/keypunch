@@ -1,53 +1,197 @@
 use crate::util::WHSP_MARKERS;
-use std::cell::RefCell;
-use std::time::Duration;
+use adw::prelude::*;
+use adw::subclass::prelude::*;
+use gtk::glib;
+use std::cell::{Cell, RefCell};
+use std::time::{Instant, Duration};
 use unicode_segmentation::UnicodeSegmentation;
+use glib::{subclass::Signal, ControlFlow};
+use std::sync::OnceLock;
 
-#[derive(Default)]
-enum SessionType {
+#[derive(Default, PartialEq, Clone, Copy)]
+pub enum SessionType {
     #[default]
     LengthBased,
     TimeBased(Duration),
 }
 
-#[derive(Default)]
-pub struct TypingSession {
-    session_type: SessionType,
-    original_text: String,
-    typed_text: RefCell<String>,
+#[derive(Debug, Default, PartialEq, Clone, Copy)]
+enum SessionState {
+    #[default]
+    Ready,
+    Running,
+    Finished(Instant),
 }
 
-impl TypingSession {
-    pub fn new(original_text: String) -> Self {
-        TypingSession {
-            original_text,
+mod imp {
+    use super::*;
 
-            ..Default::default()
+    #[derive(Default, glib::Properties)]
+    #[properties(wrapper_type=super::RcwTypingSession)]
+    pub struct RcwTypingSession {
+        pub(super) session_type: Cell<SessionType>,
+        pub(super) state: Cell<SessionState>,
+        pub(super) start_time: Cell<Option<Instant>>,
+        #[property(get, set)]
+        pub(super) original_text: RefCell<String>,
+        #[property(get)]
+        pub(super) typed_text: RefCell<String>,
+        #[property(get, set)]
+        pub(super) progress_text: RefCell<String>,
+    }
+
+    #[glib::object_subclass]
+    impl ObjectSubclass for RcwTypingSession {
+        const NAME: &'static str = "RcwTypingSession";
+        type Type = super::RcwTypingSession;
+        type ParentType = glib::Object;
+    }
+
+    impl ObjectImpl for RcwTypingSession {
+        fn properties() -> &'static [glib::ParamSpec] {
+            Self::derived_properties()
+        }
+
+        fn set_property(&self, id: usize, value: &glib::Value, pspec: &glib::ParamSpec) {
+            self.derived_set_property(id, value, pspec)
+        }
+
+        fn property(&self, id: usize, pspec: &glib::ParamSpec) -> glib::Value {
+            self.derived_property(id, pspec)
+        }
+
+        fn signals() -> &'static [Signal] {
+            static SIGNALS: OnceLock<Vec<Signal>> = OnceLock::new();
+            SIGNALS.get_or_init(|| {
+                vec![Signal::builder("started").build(), Signal::builder("finished").build()]
+            })
+        }
+    }
+}
+
+glib::wrapper! {
+    pub struct RcwTypingSession(ObjectSubclass<imp::RcwTypingSession>);
+}
+
+impl Default for RcwTypingSession {
+    fn default() -> Self {
+        glib::Object::new()
+    }
+}
+
+impl RcwTypingSession {
+    pub fn new(session_type: SessionType, original_text: &str) -> Self {
+        let obj: Self = glib::Object::builder()
+            .property("original-text", original_text)
+            .build();
+
+        obj.imp().session_type.set(session_type);
+
+        obj
+    }
+
+    fn start(&self) {
+        let imp = self.imp();
+        let state = &imp.state;
+
+        if state.get() != SessionState::Ready { return; }
+
+        imp.start_time.set(Some(Instant::now()));
+        state.set(SessionState::Running);
+        self.emit_by_name::<()>("started", &[]);
+
+        if let SessionType::TimeBased(duration) = imp.session_type.get() {
+            glib::timeout_add_local(
+                Duration::from_millis(100),
+                glib::clone!(@weak self as session, @strong duration => @default-return ControlFlow::Break, move || {
+                    let imp = session.imp();
+                    let start_time = imp.start_time.get().expect("start time is set when session is running");
+
+                    if imp.state.get() != SessionState::Running { return ControlFlow::Break; };
+
+                    if let Some(diff) = duration.checked_sub(start_time.elapsed()) {
+                        session.set_progress_text((diff.as_secs() + 1).to_string());
+                        ControlFlow::Continue
+                    } else {
+                        session.finish();
+                        ControlFlow::Break
+                    }
+                }),
+            );
         }
     }
 
-    pub fn original_text(&self) -> &str {
-        &self.original_text
+    fn update_word_count(&self) {
+        let imp = self.imp();
+
+        if imp.session_type.get() != SessionType::LengthBased { return; };
+
+        let total_words = imp.original_text.borrow().unicode_words().count();
+
+        let typed_words_len = imp.typed_text.borrow().graphemes(true).count();
+        let current_word = imp.original_text.borrow()
+            .unicode_word_indices()
+            .filter(|&(i,_)| i <= typed_words_len)
+            .count();
+
+        self.set_progress_text(format!("{current_word} ⁄ {total_words}"));
     }
 
-    pub fn typed_text_len(&self) -> usize {
-        self.typed_text.borrow().len()
+    fn finish(&self) {
+        let state = &self.imp().state;
+
+        if state.get() != SessionState::Running { return; }
+
+        state.set(SessionState::Finished(Instant::now()));
+        self.emit_by_name::<()>("finished", &[]);
     }
 
     pub fn push_to_typed_text(&self, s: &str) {
-        self.typed_text.borrow_mut().push_str(s);
+        let imp = self.imp();
+
+        match (imp.state.get(), self.text_left()) {
+            (SessionState::Ready, true) => {
+                self.start();
+                self.imp().typed_text.borrow_mut().push_str(s);
+                self.update_word_count();
+            }
+            (SessionState::Running, true) => {
+                self.imp().typed_text.borrow_mut().push_str(s);
+                self.update_word_count();
+                if !self.text_left() {
+                    self.finish();
+                }
+            }
+            (SessionState::Running, false) => {
+                self.finish();
+            }
+            _ => (),
+        }
+    }
+
+    fn text_left(&self) -> bool {
+        self.imp().typed_text.borrow().graphemes(true).count() < self.original_text().graphemes(true).count()
     }
 
     pub fn pop_typed_text(&self) {
-        let mut typed_text = self.typed_text.borrow_mut();
-        let mut v = typed_text.graphemes(true).collect::<Vec<_>>();
-        v.pop();
-        *typed_text = v.into_iter().collect();
+        let imp = self.imp();
+        let state = imp.state.get();
+
+        if state == SessionState::Running {
+            {
+                let mut typed_text = imp.typed_text.borrow_mut();
+                let mut v = typed_text.graphemes(true).collect::<Vec<_>>();
+                v.pop();
+                *typed_text = v.into_iter().collect();
+            }
+
+            self.update_word_count();
+        }
     }
 
     pub fn validate_with_whsp_markers(&self) -> Vec<bool> {
-        let original = &self.original_text;
-        let typed = self.typed_text.borrow();
+        let original = &self.original_text();
+        let typed = self.imp().typed_text.borrow();
 
         original
             .graphemes(true)

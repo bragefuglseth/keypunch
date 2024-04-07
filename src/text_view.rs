@@ -4,7 +4,7 @@ mod scrolling;
 mod styling;
 
 use crate::text_view::styling::TextViewColorScheme;
-use crate::typing_session::TypingSession;
+use crate::typing_session::RcwTypingSession;
 use crate::util::insert_whsp_markers;
 use adw::prelude::*;
 use adw::subclass::prelude::*;
@@ -30,9 +30,10 @@ mod imp {
         pub(super) caret_x: Cell<f64>,
         #[property(get, set=Self::set_caret_y)]
         pub(super) caret_y: Cell<f64>,
+        #[property(get, set=Self::set_typing_session)]
+        pub(super) typing_session: RefCell<RcwTypingSession>,
 
         pub(super) color_scheme: Cell<TextViewColorScheme>,
-        pub(super) typing_session: RefCell<TypingSession>,
         pub(super) line: Cell<i32>,
         pub(super) input_context: RefCell<Option<gtk::IMMulticontext>>,
 
@@ -122,11 +123,17 @@ mod imp {
     }
 
     impl RcwTextView {
-        pub(super) fn set_typing_session(&self, session: TypingSession) {
-            let display_text = insert_whsp_markers(&session.original_text());
-
-            self.label.set_label(&display_text);
+        pub(super) fn set_typing_session(&self, session: RcwTypingSession) {
             self.typing_session.replace(session);
+
+            let obj = self.obj();
+
+            obj.typing_session()
+                .bind_property("original-text", &self.label.get(), "label")
+                .transform_to(|_, text| Some(insert_whsp_markers(text)))
+                .sync_create()
+                .build();
+
             self.update_text_styling();
             self.update_scroll_position();
         }
@@ -136,10 +143,4 @@ mod imp {
 glib::wrapper! {
     pub struct RcwTextView(ObjectSubclass<imp::RcwTextView>)
         @extends gtk::Widget;
-}
-
-impl RcwTextView {
-    pub fn set_typing_session(&self, session: TypingSession) {
-        self.imp().set_typing_session(session);
-    }
 }

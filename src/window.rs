@@ -19,7 +19,7 @@
  */
 
 use crate::text_view::RcwTextView;
-use crate::typing_session::TypingSession;
+use crate::typing_session::{SessionType, RcwTypingSession};
 use adw::prelude::*;
 use adw::subclass::prelude::*;
 use gtk::{gio, glib};
@@ -58,7 +58,9 @@ mod imp {
 
             let text_view = self.text_view.get();
 
-            text_view.set_typing_session(TypingSession::new("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim aeque doleamus animo, cum corpore dolemus, fieri tamen permagna accessio potest, si aliquod aeternum et infinitum impendere malum nobis opinemur. Quod idem licet transferre in voluptatem, ut.".to_string()));
+            text_view.set_typing_session(RcwTypingSession::new(SessionType::LengthBased, "lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magnam aliquam quaerat voluptatem ut enim aeque doleamus animo cum corpore dolemus fieri tamen permagna accessio potest si aliquod aeternum et infinitum impendere malum nobis opinemur quod idem licet transferre in voluptatem ut"));
+
+            self.text_view.get().typing_session().bind_property("progress-text", &*self.obj(), "title").sync_create().build();
         }
     }
     impl WidgetImpl for RcwWindow {}
