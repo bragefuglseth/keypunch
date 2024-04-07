@@ -13,6 +13,14 @@ impl imp::RcwTextView {
             imp.update_scroll_position();
         }));
 
+        obj.connect_has_focus_notify(glib::clone!(@weak input_context =>  move |obj| {
+            if obj.has_focus() {
+                input_context.focus_in();
+            } else {
+                input_context.focus_out();
+            }
+        }));
+
         let event_controller = gtk::EventControllerKey::new();
         event_controller.set_im_context(Some(&input_context));
 

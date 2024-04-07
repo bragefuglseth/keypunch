@@ -19,10 +19,17 @@
  */
 
 use crate::text_view::RcwTextView;
-use crate::typing_session::{SessionType, RcwTypingSession};
+use crate::typing_session::SessionType;
 use adw::prelude::*;
 use adw::subclass::prelude::*;
 use gtk::{gio, glib};
+use std::time::Duration;
+
+enum SessionMode {
+    Simple,
+    Advanced,
+    Custom,
+}
 
 mod imp {
     use super::*;
@@ -30,11 +37,26 @@ mod imp {
     #[derive(Debug, Default, gtk::CompositeTemplate)]
     #[template(resource = "/dev/bragefuglseth/Raceway/window.ui")]
     pub struct RcwWindow {
-        // Template widgets
         #[template_child]
-        pub header_bar: TemplateChild<adw::HeaderBar>,
+        pub main_stack: TemplateChild<gtk::Stack>,
+        #[template_child]
+        pub header_stack: TemplateChild<gtk::Stack>,
+        #[template_child]
+        pub header_bar_ready: TemplateChild<adw::HeaderBar>,
+        #[template_child]
+        pub mode_dropdown: TemplateChild<gtk::DropDown>,
+        #[template_child]
+        pub time_dropdown: TemplateChild<gtk::DropDown>,
+        #[template_child]
+        pub header_bar_running: TemplateChild<adw::HeaderBar>,
+        #[template_child]
+        pub stop_button: TemplateChild<gtk::Button>,
+        #[template_child]
+        pub running_title: TemplateChild<adw::WindowTitle>,
         #[template_child]
         pub text_view: TemplateChild<RcwTextView>,
+        #[template_child]
+        pub ready_message: TemplateChild<gtk::Revealer>,
     }
 
     #[glib::object_subclass]
@@ -56,17 +78,99 @@ mod imp {
         fn constructed(&self) {
             self.parent_constructed();
 
+            self.setup_dropdowns();
+
             let text_view = self.text_view.get();
 
-            text_view.set_typing_session(RcwTypingSession::new(SessionType::LengthBased, "lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magnam aliquam quaerat voluptatem ut enim aeque doleamus animo cum corpore dolemus fieri tamen permagna accessio potest si aliquod aeternum et infinitum impendere malum nobis opinemur quod idem licet transferre in voluptatem ut"));
+            text_view.typing_session().bind_property("progress-text", &self.running_title.get(), "title").sync_create().build();
 
-            self.text_view.get().typing_session().bind_property("progress-text", &*self.obj(), "title").sync_create().build();
+            text_view.typing_session().connect_local("started", true, glib::clone!(@weak self as imp => @default-return None, move |_| {
+                imp.header_stack.get().set_visible_child_name("running");
+                imp.ready_message.set_reveal_child(false);
+                None
+            }));
+
+            self.stop_button.connect_clicked(glib::clone!(@weak self as imp => move |_| {
+                imp.header_stack.get().set_visible_child_name("ready");
+                imp.ready_message.set_reveal_child(true);
+                imp.text_view.get().typing_session().stop();
+                imp.update_session_config();
+                imp.focus_text_view();
+            }));
+
+            text_view.typing_session().connect_local("finished", true, glib::clone!(@weak self as imp => @default-return None, move |_| {
+                imp.main_stack.set_visible_child_name("results");
+                None
+            }));
+
+            self.update_session_config();
         }
     }
     impl WidgetImpl for RcwWindow {}
     impl WindowImpl for RcwWindow {}
     impl ApplicationWindowImpl for RcwWindow {}
     impl AdwApplicationWindowImpl for RcwWindow {}
+
+    impl RcwWindow {
+        fn setup_dropdowns(&self) {
+            let mode_dropdown = self.mode_dropdown.get();
+            let mode_model = gtk::StringList::new(&["Simple", "Advanced", "Custom"]);
+            mode_dropdown.set_model(Some(&mode_model));
+            mode_dropdown.connect_selected_item_notify(glib::clone!(@weak self as imp => move |_| {
+                imp.update_session_config();
+                imp.focus_text_view();
+            }));
+
+            let time_dropdown = self.time_dropdown.get();
+            let time_model = gtk::StringList::new(&["15 seconds", "30 seconds", "1 minute", "5 minutes", "10 minutes"]);
+            time_dropdown.set_model(Some(&time_model));
+            time_dropdown.connect_selected_item_notify(glib::clone!(@weak self as imp => move |_| {
+                imp.update_session_config();
+                imp.focus_text_view();
+            }));
+        }
+
+        fn update_session_config(&self) {
+            let session = self.text_view.get().typing_session();
+
+            let mode_string = self.mode_dropdown.selected_item().unwrap().downcast_ref::<gtk::StringObject>().unwrap().string();
+
+            let mode = match mode_string.as_str() {
+                "Simple" => SessionMode::Simple,
+                "Advanced" => SessionMode::Advanced,
+                "Custom" => SessionMode::Custom,
+                _ => panic!("non-existent session mode set"),
+            };
+
+            let text = match mode {
+                SessionMode::Simple => "lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magnam aliquam quaerat voluptatem Ut enim aeque doleamus animo cum corpore dolemus fieri tamen permagna accessio potest si aliquod aeternum et infinitum impendere malum nobis opinemur Quod idem licet transferre in voluptatem ut",
+                SessionMode::Advanced => "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim aeque doleamus animo, cum corpore dolemus, fieri tamen permagna accessio potest, si aliquod aeternum et infinitum impendere malum nobis opinemur. Quod idem licet transferre in voluptatem, ut.",
+                SessionMode::Custom => "The quick, brown fox jumped over the lazy dog.",
+            };
+
+            session.set_original_text(text);
+
+            session.set_type(match mode {
+                SessionMode::Simple | SessionMode::Advanced => {
+                    let time_string = self.time_dropdown.selected_item().unwrap().downcast_ref::<gtk::StringObject>().unwrap().string();
+                    let duration = match time_string.as_str() {
+                        "15 seconds" => Duration::from_secs(15),
+                        "30 seconds" => Duration::from_secs(30),
+                        "1 minute" => Duration::from_secs(60),
+                        "5 minutes" => Duration::from_secs(5 * 60),
+                        "10 minutes" => Duration::from_secs(10 * 60),
+                        _ => panic!("non-existent duration set"),
+                    };
+                    SessionType::TimeBased(duration)
+                }
+                SessionMode::Custom => SessionType::LengthBased,
+            })
+        }
+
+        fn focus_text_view(&self) {
+            self.obj().set_focus_widget(Some(&self.text_view.get()));
+        }
+    }
 }
 
 glib::wrapper! {

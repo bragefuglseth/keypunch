@@ -30,7 +30,7 @@ mod imp {
         pub(super) caret_x: Cell<f64>,
         #[property(get, set=Self::set_caret_y)]
         pub(super) caret_y: Cell<f64>,
-        #[property(get, set=Self::set_typing_session)]
+        #[property(get)]
         pub(super) typing_session: RefCell<RcwTypingSession>,
 
         pub(super) color_scheme: Cell<TextViewColorScheme>,
@@ -61,10 +61,25 @@ mod imp {
 
     impl ObjectImpl for RcwTextView {
         fn constructed(&self) {
+            let obj = self.obj();
             self.parent_constructed();
+
+            obj.typing_session()
+                .bind_property("original-text", &self.label.get(), "label")
+                .transform_to(|_, text| Some(insert_whsp_markers(text) ))
+                .sync_create()
+                .build();
+
+            obj.typing_session()
+                .connect_local("stopped", true, glib::clone!(@weak self as imp => @default-return None, move |_| {
+                    imp.update_text_styling();
+                    None
+                }));
 
             self.setup_input_handling();
             self.setup_color_scheme();
+            self.update_text_styling();
+            self.update_scroll_position();
         }
 
         fn dispose(&self) {
@@ -119,23 +134,6 @@ mod imp {
             // Draw caret
             let (caret_path, caret_stroke, caret_color) = self.caret_stroke_data();
             snapshot.append_stroke(&caret_path, &caret_stroke, &caret_color);
-        }
-    }
-
-    impl RcwTextView {
-        pub(super) fn set_typing_session(&self, session: RcwTypingSession) {
-            self.typing_session.replace(session);
-
-            let obj = self.obj();
-
-            obj.typing_session()
-                .bind_property("original-text", &self.label.get(), "label")
-                .transform_to(|_, text| Some(insert_whsp_markers(text)))
-                .sync_create()
-                .build();
-
-            self.update_text_styling();
-            self.update_scroll_position();
         }
     }
 }

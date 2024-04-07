@@ -63,7 +63,7 @@ mod imp {
         fn signals() -> &'static [Signal] {
             static SIGNALS: OnceLock<Vec<Signal>> = OnceLock::new();
             SIGNALS.get_or_init(|| {
-                vec![Signal::builder("started").build(), Signal::builder("finished").build()]
+                vec![Signal::builder("started").build(), Signal::builder("finished").build(), Signal::builder("stopped").build()]
             })
         }
     }
@@ -80,14 +80,8 @@ impl Default for RcwTypingSession {
 }
 
 impl RcwTypingSession {
-    pub fn new(session_type: SessionType, original_text: &str) -> Self {
-        let obj: Self = glib::Object::builder()
-            .property("original-text", original_text)
-            .build();
-
-        obj.imp().session_type.set(session_type);
-
-        obj
+    pub fn set_type(&self, session_type: SessionType) {
+        self.imp().session_type.set(session_type);
     }
 
     fn start(&self) {
@@ -110,7 +104,19 @@ impl RcwTypingSession {
                     if imp.state.get() != SessionState::Running { return ControlFlow::Break; };
 
                     if let Some(diff) = duration.checked_sub(start_time.elapsed()) {
-                        session.set_progress_text((diff.as_secs() + 1).to_string());
+                        let seconds = diff.as_secs() + 1;
+
+                        // add trailing zero for second values below 10
+                        let text = if seconds >= 60 && seconds % 60 < 10 {
+                            let with_trailing_zero = format!("0{}", seconds % 60);
+                            format!("{}∶{}", seconds / 60, with_trailing_zero)
+                        } else if seconds >= 60 {
+                            format!("{}∶{}", seconds / 60, seconds % 60)
+                        }else {
+                            seconds.to_string()
+                        };
+
+                        session.set_progress_text(text);
                         ControlFlow::Continue
                     } else {
                         session.finish();
@@ -135,6 +141,17 @@ impl RcwTypingSession {
             .count();
 
         self.set_progress_text(format!("{current_word} ⁄ {total_words}"));
+    }
+
+    pub fn stop(&self) {
+        let imp = self.imp();
+        let state = &imp.state;
+
+        if state.get() != SessionState::Running { return; }
+
+        state.set(SessionState::Ready);
+        *imp.typed_text.borrow_mut() = String::new();
+        self.emit_by_name::<()>("stopped", &[]);
     }
 
     fn finish(&self) {

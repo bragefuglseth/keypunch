@@ -6,4 +6,8 @@
     <file preprocess="xml-stripblanks">gtk/help-overlay.ui</file>
     <file>style.css</file>
   </gresource>
+
+  <gresource prefix="/dev/bragefuglseth/Raceway/icons/scalable/actions/">
+    <file alias="stop-symbolic.svg" preprocess="xml-stripblanks">ui/icons/stop-symbolic.svg</file>
+  </gresource>
 </gresources>

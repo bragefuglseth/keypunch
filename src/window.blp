@@ -1,0 +1,134 @@
+using Gtk 4.0;
+using Adw 1;
+
+template $RcwWindow: Adw.ApplicationWindow {
+  title: 'Raceway';
+  default-width: 800;
+  default-height: 400;
+  width-request: 360;
+
+  content: Stack main_stack {
+    transition-type: crossfade;
+    transition-duration: 200;
+
+    StackPage {
+      name: "session";
+      child: Adw.ToolbarView {
+        [top]
+        Stack header_stack {
+          transition-type: crossfade;
+          transition-duration: 200;
+
+          StackPage {
+            name: "ready";
+            child: Adw.HeaderBar header_bar_ready {
+              [title]
+              Box {
+                spacing: 6;
+                DropDown mode_dropdown {
+                  styles ["flat-dropdown"]
+                }
+                DropDown time_dropdown {
+                  styles ["flat-dropdown"]
+                }
+              }
+
+              [end]
+              MenuButton {
+                primary: true;
+                icon-name: 'open-menu-symbolic';
+                tooltip-text: _('Menu');
+                menu-model: primary_menu;
+              }
+            };
+          }
+
+          StackPage {
+            name: "running";
+            child: Adw.HeaderBar header_bar_running {
+              [title]
+              Adw.WindowTitle running_title {}
+
+              [start]
+              Button stop_button {
+                icon-name: "stop-symbolic";
+              }
+
+              styles ["header-bar-running"]
+            };
+          }
+        }
+
+        content: Adw.Clamp {
+          unit: px;
+          maximum-size: 800;
+          tightening-threshold: 400;
+
+          $RcwTextView text_view {
+            margin-start: '12';
+            margin-end: '12';
+          }
+        };
+
+        [bottom]
+        Revealer ready_message {
+          reveal-child: true;
+          transition-type: crossfade;
+          transition-duration: 200;
+
+           Box {
+            halign: center;
+            height-request: 46;
+            Label {
+              label: "Just start typing";
+
+              styles ["dim-label"]
+            }
+            styles ["toolbar"]
+          }
+        }
+      };
+    }
+
+    StackPage {
+      name: "results";
+        child: Adw.ToolbarView {
+        [top]
+        Adw.HeaderBar {
+          [title]
+          Adw.WindowTitle {
+            title: "Results";
+          }
+        }
+        content: Label {
+          label: "Results";
+          halign: center;
+          valign: center;
+          hexpand: true;
+          vexpand: true;
+
+          styles ["title-1"]
+        };
+      };
+    }
+  };
+}
+
+menu primary_menu {
+  section {
+    item {
+      label: _('_Preferences');
+      action: 'app.preferences';
+    }
+
+    item {
+      label: _('_Keyboard Shortcuts');
+      action: 'win.show-help-overlay';
+    }
+
+    item {
+      label: _('_About Raceway');
+      action: 'app.about';
+    }
+  }
+}

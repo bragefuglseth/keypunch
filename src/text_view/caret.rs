@@ -123,6 +123,7 @@ impl imp::RcwTextView {
         let caret_rect = gdk::Rectangle::new(x, y, 1, layout.baseline() / pango::SCALE + 2);
         if let Some(input_context) = &*self.input_context.borrow() {
             input_context.set_cursor_location(&caret_rect);
+            input_context.reset();
         }
     }
 }
