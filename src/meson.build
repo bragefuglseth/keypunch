@@ -11,8 +11,8 @@ blueprints = custom_target('blueprints',
   command: [find_program('blueprint-compiler'), 'batch-compile', '@OUTPUT@', '@CURRENT_SOURCE_DIR@', '@INPUT@'],
 )
 
-gnome.compile_resources('raceway',
-  'raceway.gresource.xml',
+gnome.compile_resources('keypunch',
+  'keypunch.gresource.xml',
   dependencies: blueprints,
   gresource_bundle: true,
   install: true,
@@ -21,7 +21,7 @@ gnome.compile_resources('raceway',
 
 conf = configuration_data()
 conf.set_quoted('VERSION', meson.project_version())
-conf.set_quoted('GETTEXT_PACKAGE', 'raceway')
+conf.set_quoted('GETTEXT_PACKAGE', 'keypunch')
 conf.set_quoted('LOCALEDIR', get_option('prefix') / get_option('localedir'))
 conf.set_quoted('PKGDATADIR', pkgdatadir)
 

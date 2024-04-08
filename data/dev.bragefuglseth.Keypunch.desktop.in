@@ -1,7 +1,7 @@
 [Desktop Entry]
-Name=raceway
-Exec=raceway
-Icon=dev.bragefuglseth.Raceway
+Name=keypunch
+Exec=keypunch
+Icon=dev.bragefuglseth.Keypunch
 Terminal=false
 Type=Application
 Categories=GTK;

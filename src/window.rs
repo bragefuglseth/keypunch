@@ -21,7 +21,7 @@
 mod dropdowns;
 mod session;
 
-use crate::text_view::RcwTextView;
+use crate::text_view::KpTextView;
 use adw::prelude::*;
 use adw::subclass::prelude::*;
 use gtk::{gio, glib};
@@ -40,8 +40,8 @@ mod imp {
     use super::*;
 
     #[derive(Default, gtk::CompositeTemplate)]
-    #[template(resource = "/dev/bragefuglseth/Raceway/window.ui")]
-    pub struct RcwWindow {
+    #[template(resource = "/dev/bragefuglseth/Keypunch/window.ui")]
+    pub struct KpWindow {
         #[template_child]
         pub main_stack: TemplateChild<gtk::Stack>,
         #[template_child]
@@ -59,7 +59,7 @@ mod imp {
         #[template_child]
         pub running_title: TemplateChild<adw::WindowTitle>,
         #[template_child]
-        pub text_view: TemplateChild<RcwTextView>,
+        pub text_view: TemplateChild<KpTextView>,
         #[template_child]
         pub ready_message: TemplateChild<gtk::Revealer>,
 
@@ -70,9 +70,9 @@ mod imp {
     }
 
     #[glib::object_subclass]
-    impl ObjectSubclass for RcwWindow {
-        const NAME: &'static str = "RcwWindow";
-        type Type = super::RcwWindow;
+    impl ObjectSubclass for KpWindow {
+        const NAME: &'static str = "KpWindow";
+        type Type = super::KpWindow;
         type ParentType = adw::ApplicationWindow;
 
         fn class_init(klass: &mut Self::Class) {
@@ -84,7 +84,7 @@ mod imp {
         }
     }
 
-    impl ObjectImpl for RcwWindow {
+    impl ObjectImpl for KpWindow {
         fn constructed(&self) {
             self.parent_constructed();
 
@@ -95,18 +95,18 @@ mod imp {
             self.ready(false);
         }
     }
-    impl WidgetImpl for RcwWindow {}
-    impl WindowImpl for RcwWindow {}
-    impl ApplicationWindowImpl for RcwWindow {}
-    impl AdwApplicationWindowImpl for RcwWindow {}
+    impl WidgetImpl for KpWindow {}
+    impl WindowImpl for KpWindow {}
+    impl ApplicationWindowImpl for KpWindow {}
+    impl AdwApplicationWindowImpl for KpWindow {}
 }
 
 glib::wrapper! {
-    pub struct RcwWindow(ObjectSubclass<imp::RcwWindow>)
+    pub struct KpWindow(ObjectSubclass<imp::KpWindow>)
         @extends gtk::Widget, gtk::Window, gtk::ApplicationWindow, adw::ApplicationWindow,        @implements gio::ActionGroup, gio::ActionMap;
 }
 
-impl RcwWindow {
+impl KpWindow {
     pub fn new<P: IsA<gtk::Application>>(application: &P) -> Self {
         glib::Object::builder()
             .property("application", application)

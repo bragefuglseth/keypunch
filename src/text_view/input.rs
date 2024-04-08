@@ -1,7 +1,7 @@
 use super::*;
 use crate::util::pop_grapheme;
 
-impl imp::RcwTextView {
+impl imp::KpTextView {
     pub(super) fn setup_input_handling(&self) {
         let obj = self.obj();
         let input_context = gtk::IMMulticontext::new();

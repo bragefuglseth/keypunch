@@ -23,22 +23,22 @@ use gtk::prelude::*;
 use gtk::{gio, glib};
 
 use crate::config::VERSION;
-use crate::RcwWindow;
+use crate::window::KpWindow;
 
 mod imp {
     use super::*;
 
     #[derive(Debug, Default)]
-    pub struct RcwApplication {}
+    pub struct KpApplication {}
 
     #[glib::object_subclass]
-    impl ObjectSubclass for RcwApplication {
-        const NAME: &'static str = "RcwApplication";
-        type Type = super::RcwApplication;
+    impl ObjectSubclass for KpApplication {
+        const NAME: &'static str = "KpApplication";
+        type Type = super::KpApplication;
         type ParentType = adw::Application;
     }
 
-    impl ObjectImpl for RcwApplication {
+    impl ObjectImpl for KpApplication {
         fn constructed(&self) {
             self.parent_constructed();
             let obj = self.obj();
@@ -47,7 +47,7 @@ mod imp {
         }
     }
 
-    impl ApplicationImpl for RcwApplication {
+    impl ApplicationImpl for KpApplication {
         // We connect to the activate callback to create a window when the application
         // has been launched. Additionally, this callback notifies us when the user
         // tries to launch a "second instance" of the application. When they try
@@ -58,7 +58,7 @@ mod imp {
             let window = if let Some(window) = application.active_window() {
                 window
             } else {
-                let window = RcwWindow::new(&*application);
+                let window = KpWindow::new(&*application);
                 window.upcast()
             };
 
@@ -67,17 +67,17 @@ mod imp {
         }
     }
 
-    impl GtkApplicationImpl for RcwApplication {}
-    impl AdwApplicationImpl for RcwApplication {}
+    impl GtkApplicationImpl for KpApplication {}
+    impl AdwApplicationImpl for KpApplication {}
 }
 
 glib::wrapper! {
-    pub struct RcwApplication(ObjectSubclass<imp::RcwApplication>)
+    pub struct KpApplication(ObjectSubclass<imp::KpApplication>)
         @extends gio::Application, gtk::Application, adw::Application,
         @implements gio::ActionGroup, gio::ActionMap;
 }
 
-impl RcwApplication {
+impl KpApplication {
     pub fn new(application_id: &str, flags: &gio::ApplicationFlags) -> Self {
         glib::Object::builder()
             .property("application-id", application_id)
@@ -99,8 +99,8 @@ impl RcwApplication {
         let window = self.active_window().unwrap();
         let about = adw::AboutWindow::builder()
             .transient_for(&window)
-            .application_name("Raceway")
-            .application_icon("dev.bragefuglseth.Raceway")
+            .application_name("Keypunch")
+            .application_icon("dev.bragefuglseth.Keypunch")
             .developer_name("Brage Fuglseth")
             .version(VERSION)
             .developers(vec!["Brage Fuglseth"])

@@ -24,8 +24,7 @@ mod text_view;
 mod util;
 mod window;
 
-use self::application::RcwApplication;
-use self::window::RcwWindow;
+use self::application::KpApplication;
 
 use config::{GETTEXT_PACKAGE, LOCALEDIR, PKGDATADIR};
 use gettextrs::{bind_textdomain_codeset, bindtextdomain, textdomain};
@@ -40,14 +39,14 @@ fn main() -> glib::ExitCode {
     textdomain(GETTEXT_PACKAGE).expect("Unable to switch to the text domain");
 
     // Load resources
-    let resources = gio::Resource::load(PKGDATADIR.to_owned() + "/raceway.gresource")
+    let resources = gio::Resource::load(PKGDATADIR.to_owned() + "/keypunch.gresource")
         .expect("Could not load resources");
     gio::resources_register(&resources);
 
     // Create a new GtkApplication. The application manages our main loop,
     // application windows, integration with the window manager/compositor, and
     // desktop features such as file opening and single-instance applications.
-    let app = RcwApplication::new("dev.bragefuglseth.Raceway", &gio::ApplicationFlags::empty());
+    let app = KpApplication::new("dev.bragefuglseth.Keypunch", &gio::ApplicationFlags::empty());
 
     // Run the application. This function will block until the application
     // exits. Upon return, we have our exit code to return to the shell. (This

@@ -1,4 +1,4 @@
-application_id = 'dev.bragefuglseth.Raceway'
+application_id = 'dev.bragefuglseth.Keypunch'
 
 scalable_dir = 'hicolor' / 'scalable' / 'apps'
 install_data(

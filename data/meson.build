@@ -1,6 +1,6 @@
 desktop_file = i18n.merge_file(
-        input: 'dev.bragefuglseth.Raceway.desktop.in',
-       output: 'dev.bragefuglseth.Raceway.desktop',
+        input: 'dev.bragefuglseth.Keypunch.desktop.in',
+       output: 'dev.bragefuglseth.Keypunch.desktop',
          type: 'desktop',
        po_dir: '../po',
       install: true,
@@ -13,8 +13,8 @@ if desktop_utils.found()
 endif
 
 appstream_file = i18n.merge_file(
-        input: 'dev.bragefuglseth.Raceway.metainfo.xml.in',
-       output: 'dev.bragefuglseth.Raceway.metainfo.xml',
+        input: 'dev.bragefuglseth.Keypunch.metainfo.xml.in',
+       output: 'dev.bragefuglseth.Keypunch.metainfo.xml',
        po_dir: '../po',
       install: true,
   install_dir: get_option('datadir') / 'metainfo'
@@ -24,7 +24,7 @@ appstreamcli = find_program('appstreamcli', required: false, disabler: true)
 test('Validate appstream file', appstreamcli,
      args: ['validate', '--no-net', '--explain', appstream_file])
 
-install_data('dev.bragefuglseth.Raceway.gschema.xml',
+install_data('dev.bragefuglseth.Keypunch.gschema.xml',
   install_dir: get_option('datadir') / 'glib-2.0' / 'schemas'
 )
 

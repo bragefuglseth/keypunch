@@ -17,9 +17,9 @@ mod imp {
     use super::*;
 
     #[derive(Default, gtk::CompositeTemplate, glib::Properties)]
-    #[template(resource = "/dev/bragefuglseth/Raceway/text_view.ui")]
-    #[properties(wrapper_type = super::RcwTextView)]
-    pub struct RcwTextView {
+    #[template(resource = "/dev/bragefuglseth/Keypunch/text_view.ui")]
+    #[properties(wrapper_type = super::KpTextView)]
+    pub struct KpTextView {
         #[template_child]
         pub(super) label: TemplateChild<gtk::Label>,
 
@@ -49,13 +49,13 @@ mod imp {
     }
 
     #[glib::object_subclass]
-    impl ObjectSubclass for RcwTextView {
-        const NAME: &'static str = "RcwTextView";
-        type Type = super::RcwTextView;
+    impl ObjectSubclass for KpTextView {
+        const NAME: &'static str = "KpTextView";
+        type Type = super::KpTextView;
         type ParentType = gtk::Widget;
 
         fn class_init(klass: &mut Self::Class) {
-            klass.set_css_name("RcwTextView");
+            klass.set_css_name("KpTextView");
 
             klass.bind_template();
         }
@@ -65,7 +65,7 @@ mod imp {
         }
     }
 
-    impl ObjectImpl for RcwTextView {
+    impl ObjectImpl for KpTextView {
         fn properties() -> &'static [glib::ParamSpec] {
             Self::derived_properties()
         }
@@ -108,7 +108,7 @@ mod imp {
         }
     }
 
-    impl WidgetImpl for RcwTextView {
+    impl WidgetImpl for KpTextView {
         fn measure(&self, orientation: gtk::Orientation, for_size: i32) -> (i32, i32, i32, i32) {
             match orientation {
                 gtk::Orientation::Vertical => (LINE_HEIGHT * 3, LINE_HEIGHT * 3, -1, -1),
@@ -144,11 +144,11 @@ mod imp {
 }
 
 glib::wrapper! {
-    pub struct RcwTextView(ObjectSubclass<imp::RcwTextView>)
+    pub struct KpTextView(ObjectSubclass<imp::KpTextView>)
         @extends gtk::Widget;
 }
 
-impl RcwTextView {
+impl KpTextView {
     pub fn reset(&self, animate: bool) {
         self.set_original_text("");
         self.set_typed_text("");

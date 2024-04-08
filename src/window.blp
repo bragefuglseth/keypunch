@@ -1,8 +1,8 @@
 using Gtk 4.0;
 using Adw 1;
 
-template $RcwWindow: Adw.ApplicationWindow {
-  title: 'Raceway';
+template $KpWindow: Adw.ApplicationWindow {
+  title: 'Keypunch';
   default-width: 800;
   default-height: 400;
   width-request: 360;
@@ -64,7 +64,7 @@ template $RcwWindow: Adw.ApplicationWindow {
           maximum-size: 800;
           tightening-threshold: 400;
 
-          $RcwTextView text_view {
+          $KpTextView text_view {
             margin-start: '12';
             margin-end: '12';
           }
@@ -127,7 +127,7 @@ menu primary_menu {
     }
 
     item {
-      label: _('_About Raceway');
+      label: _('_About Keypunch');
       action: 'app.about';
     }
   }

@@ -1,6 +1,6 @@
 use super::*;
 
-impl imp::RcwTextView {
+impl imp::KpTextView {
     pub(super) fn set_scroll_position(&self, line_number: f64) {
         self.scroll_position.set(line_number);
         self.obj().queue_allocate();

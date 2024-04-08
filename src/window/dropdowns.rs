@@ -1,6 +1,6 @@
 use super::*;
 
-impl imp::RcwWindow {
+impl imp::KpWindow {
     pub(super) fn setup_dropdowns(&self) {
         let mode_model = gtk::StringList::new(&["Simple", "Advanced", "Custom"]);
         let mode_dropdown = self.mode_dropdown.get();

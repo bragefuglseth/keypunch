@@ -2,7 +2,7 @@ use super::*;
 use glib::ControlFlow;
 use unicode_segmentation::UnicodeSegmentation;
 
-impl imp::RcwWindow {
+impl imp::KpWindow {
     pub(super) fn setup_text_view(&self) {
         let text_view = self.text_view.get();
 

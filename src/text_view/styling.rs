@@ -22,7 +22,7 @@ const COLOR_SCHEME_DARK: TextViewColorScheme = TextViewColorScheme {
     caret: (1., 1., 1.),
 };
 
-impl imp::RcwTextView {
+impl imp::KpTextView {
     pub(super) fn setup_color_scheme(&self) {
         let obj = self.obj();
         let style = adw::StyleManager::default();

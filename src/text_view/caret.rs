@@ -1,6 +1,6 @@
 use super::*;
 
-impl imp::RcwTextView {
+impl imp::KpTextView {
     pub(super) fn set_caret_x(&self, caret_x: f64) {
         self.caret_x.set(caret_x);
         self.obj().queue_draw();

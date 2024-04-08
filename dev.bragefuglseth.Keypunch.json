@@ -1,12 +1,12 @@
 {
-    "id" : "dev.bragefuglseth.Raceway",
+    "id" : "dev.bragefuglseth.Keypunch",
     "runtime" : "org.gnome.Platform",
     "runtime-version" : "master",
     "sdk" : "org.gnome.Sdk",
     "sdk-extensions" : [
         "org.freedesktop.Sdk.Extension.rust-stable"
     ],
-    "command" : "raceway",
+    "command" : "keypunch",
     "finish-args" : [
         "--share=network",
         "--share=ipc",
@@ -22,7 +22,7 @@
         ],
         "env" : {
             "RUST_BACKTRACE" : "1",
-            "RUST_LOG" : "raceway=debug"
+            "RUST_LOG" : "keypunch=debug"
         }
     },
     "cleanup" : [
@@ -38,7 +38,7 @@
     ],
     "modules" : [
         {
-            "name" : "raceway",
+            "name" : "keypunch",
             "builddir" : true,
             "buildsystem" : "meson",
             "sources" : [
