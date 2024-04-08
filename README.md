@@ -1,6 +1,6 @@
 # Keypunch
 
-How fast can you type? This is where I'm building Keypunch a typing trainer for GNOME.
+How fast can you type? This is where I'm building Keypunch, a modern typing trainer for the free desktop.
 
 It's not quite ready yet. The project file structure is a mess, and the text to type is always the same, but it's coming along nicely. Give it a spin if you'd like to.
 
