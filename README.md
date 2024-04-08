@@ -6,6 +6,10 @@ It's not quite ready yet. The project file structure is a mess, and the text to 
 
 ![screenshot](/data/screenshots/screenshot-1.png)
 
+## Where does "Keypunch" come from?
+
+In addition to sounding super cool, it's the name of an [actual keyboard device](https://en.wikipedia.org/wiki/Keypunch) that was used for creating punched cards!
+
 ## What's missing?
 
 A rough checklist with what has to be in place before the app is ready for its initial release:
