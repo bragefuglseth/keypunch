@@ -16,7 +16,7 @@ RcwTextView label {
 
 window:hover .header-bar-running .start,
 window:hover .header-bar-running .end,
-.header-bar-running focus-within .start,
-.header-bar-running focus-within .end {
+.header-bar-running:focus-within .start,
+.header-bar-running:focus-within .end {
   opacity: 1;
 }
