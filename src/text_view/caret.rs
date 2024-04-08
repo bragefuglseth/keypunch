@@ -60,8 +60,9 @@ impl imp::RcwTextView {
     }
 
     pub(super) fn update_caret_position(&self) {
-        let session = self.typing_session.borrow();
-        let current_index = session.validate_with_whsp_markers().len();
+        let original = self.obj().original_text();
+        let typed = self.obj().typed_text();
+        let current_index = validate_with_whsp_markers(&original, &typed).len();
 
         let layout = self.label.get().layout();
         let layout_width = layout.width() / pango::SCALE;

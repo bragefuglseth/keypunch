@@ -4,8 +4,7 @@ mod scrolling;
 mod styling;
 
 use crate::text_view::styling::TextViewColorScheme;
-use crate::typing_session::RcwTypingSession;
-use crate::util::insert_whsp_markers;
+use crate::util::{insert_whsp_markers, validate_with_whsp_markers};
 use adw::prelude::*;
 use adw::subclass::prelude::*;
 use gtk::glib;
@@ -30,8 +29,15 @@ mod imp {
         pub(super) caret_x: Cell<f64>,
         #[property(get, set=Self::set_caret_y)]
         pub(super) caret_y: Cell<f64>,
-        #[property(get)]
-        pub(super) typing_session: RefCell<RcwTypingSession>,
+
+        #[property(get, set)]
+        pub(super) original_text: RefCell<String>,
+        #[property(get, set)]
+        pub(super) typed_text: RefCell<String>,
+        #[property(get, set)]
+        pub(super) running: Cell<bool>,
+        #[property(get, set)]
+        pub(super) accepts_input: Cell<bool>,
 
         pub(super) color_scheme: Cell<TextViewColorScheme>,
         pub(super) line: Cell<i32>,
@@ -60,21 +66,32 @@ mod imp {
     }
 
     impl ObjectImpl for RcwTextView {
+        fn properties() -> &'static [glib::ParamSpec] {
+            Self::derived_properties()
+        }
+
+        fn set_property(&self, id: usize, value: &glib::Value, pspec: &glib::ParamSpec) {
+            self.derived_set_property(id, value, pspec)
+        }
+
+        fn property(&self, id: usize, pspec: &glib::ParamSpec) -> glib::Value {
+            self.derived_property(id, pspec)
+        }
+
         fn constructed(&self) {
             let obj = self.obj();
             self.parent_constructed();
 
-            obj.typing_session()
-                .bind_property("original-text", &self.label.get(), "label")
-                .transform_to(|_, text| Some(insert_whsp_markers(text) ))
+            obj.bind_property("original-text", &self.label.get(), "label")
+                .transform_to(|_, text| Some(insert_whsp_markers(text)))
                 .sync_create()
                 .build();
-
-            obj.typing_session()
-                .connect_local("stopped", true, glib::clone!(@weak self as imp => @default-return None, move |_| {
-                    imp.update_text_styling();
-                    None
-                }));
+            obj.connect_typed_text_notify(|obj| {
+                let imp = obj.imp();
+                imp.update_text_styling();
+                imp.update_caret_position();
+                imp.update_scroll_position();
+            });
 
             self.setup_input_handling();
             self.setup_color_scheme();
@@ -88,18 +105,6 @@ mod imp {
             while let Some(child) = obj.first_child() {
                 child.unparent();
             }
-        }
-
-        fn properties() -> &'static [glib::ParamSpec] {
-            Self::derived_properties()
-        }
-
-        fn set_property(&self, id: usize, value: &glib::Value, pspec: &glib::ParamSpec) {
-            self.derived_set_property(id, value, pspec)
-        }
-
-        fn property(&self, id: usize, pspec: &glib::ParamSpec) -> glib::Value {
-            self.derived_property(id, pspec)
         }
     }
 
@@ -141,4 +146,19 @@ mod imp {
 glib::wrapper! {
     pub struct RcwTextView(ObjectSubclass<imp::RcwTextView>)
         @extends gtk::Widget;
+}
+
+impl RcwTextView {
+    pub fn reset(&self, animate: bool) {
+        self.set_original_text("");
+        self.set_typed_text("");
+        self.set_running(false);
+
+        if !animate {
+            let imp = self.imp();
+            imp.scroll_animation().skip();
+            imp.caret_x_animation().skip();
+            imp.caret_y_animation().skip();
+        }
+    }
 }

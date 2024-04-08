@@ -48,7 +48,10 @@ impl imp::RcwTextView {
     pub(super) fn update_text_styling(&self) {
         let clr = self.color_scheme.get();
 
-        let comparison = self.typing_session.borrow().validate_with_whsp_markers();
+        let original = self.obj().original_text();
+        let typed = self.obj().typed_text();
+
+        let comparison = validate_with_whsp_markers(&original, &typed);
 
         let attr_list = pango::AttrList::new();
 

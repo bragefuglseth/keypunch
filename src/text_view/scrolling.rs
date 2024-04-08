@@ -21,12 +21,13 @@ impl imp::RcwTextView {
     }
 
     pub(super) fn update_scroll_position(&self) {
-        let session = self.typing_session.borrow();
+        let original = self.obj().original_text();
+        let typed = self.obj().typed_text();
 
-        let (line, _) = self
-            .label
-            .layout()
-            .index_to_line_x(session.validate_with_whsp_markers().len() as i32, false);
+        let (line, _) = self.label.layout().index_to_line_x(
+            validate_with_whsp_markers(&original, &typed).len() as i32,
+            false,
+        );
 
         if line != self.line.get() {
             self.line.set(line);

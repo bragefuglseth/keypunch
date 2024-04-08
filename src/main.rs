@@ -21,7 +21,6 @@
 mod application;
 mod config;
 mod text_view;
-mod typing_session;
 mod util;
 mod window;
 
