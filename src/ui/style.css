@@ -14,8 +14,8 @@ KpTextView label {
   transition: opacity 200ms;
 }
 
-window:hover .header-bar-running .start,
-window:hover .header-bar-running .end,
+.header-bar-running:hover .start,
+.header-bar-running:hover .end,
 .header-bar-running:focus-within .start,
 .header-bar-running:focus-within .end {
   opacity: 1;

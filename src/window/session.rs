@@ -1,6 +1,7 @@
 use super::*;
 use glib::ControlFlow;
 use unicode_segmentation::UnicodeSegmentation;
+use gtk::gdk;
 
 impl imp::KpWindow {
     pub(super) fn setup_text_view(&self) {
