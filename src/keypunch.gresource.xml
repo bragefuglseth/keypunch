@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <gresources>
   <gresource prefix="/dev/bragefuglseth/Keypunch">
-    <file preprocess="xml-stripblanks">window.ui</file>
-    <file preprocess="xml-stripblanks">text_view.ui</file>
-    <file preprocess="xml-stripblanks">gtk/help-overlay.ui</file>
-    <file>style.css</file>
+    <file alias="window.ui" preprocess="xml-stripblanks">ui/window.ui</file>
+    <file alias="text_view.ui" preprocess="xml-stripblanks">ui/text_view.ui</file>
+    <file alias="gtk/help-overlay.ui" preprocess="xml-stripblanks">ui/help_overlay.ui</file>
+    <file alias="style.css">ui/style.css</file>
   </gresource>
 
   <gresource prefix="/dev/bragefuglseth/Keypunch/icons/scalable/actions/">
