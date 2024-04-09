@@ -2,7 +2,7 @@
 
 How fast can you type? This is where I'm building Keypunch, a modern typing trainer for GNOME.
 
-It's not quite ready yet. The project file structure is a mess, and the text to type is always the same, but it's coming along nicely. Give it a spin if you'd like to.
+It's not quite ready yet, but it's coming along nicely. Give it a spin if you'd like to.
 
 ![screenshot](/data/screenshots/screenshot-1.png)
 
