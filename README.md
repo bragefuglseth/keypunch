@@ -33,6 +33,7 @@ A rough checklist with what has to be in place before the app is ready for its i
 - [ ] Logging of typing speed/accuracy over time, and a nice statistics dialog to view / export these statistics
 - [ ] Break reminders (displayed after sessions if the app has been continuously in use for a long time, to avoid finger strain)
 - [ ] Frustration relief (stop the session and suggest taking a break when people are obviously mashing keys randomly in frustration)
+- [ ] Local-first p2p multiplayer mode (?)
 
 Feel free to check in once in a while and see the progress on this. The app will be available on Flathub when it's ready.
 
