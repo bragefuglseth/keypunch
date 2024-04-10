@@ -18,14 +18,15 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-mod dropdowns;
+mod session_config;
 mod session;
+mod ui_state;
 
 use crate::text_view::KpTextView;
 use adw::prelude::*;
 use adw::subclass::prelude::*;
 use gtk::{gio, glib};
-use std::cell::Cell;
+use std::cell::{Cell, RefCell};
 use std::time::{Duration, Instant};
 
 #[derive(Clone, Copy, Default)]
@@ -39,7 +40,8 @@ pub enum TextType {
 mod imp {
     use super::*;
 
-    #[derive(Default, gtk::CompositeTemplate)]
+    #[derive(Default, gtk::CompositeTemplate, glib::Properties)]
+    #[properties(wrapper_type = super::KpWindow)]
     #[template(resource = "/dev/bragefuglseth/Keypunch/window.ui")]
     pub struct KpWindow {
         #[template_child]
@@ -51,7 +53,11 @@ mod imp {
         #[template_child]
         pub mode_dropdown: TemplateChild<gtk::DropDown>,
         #[template_child]
+        pub secondary_config_stack: TemplateChild<gtk::Stack>,
+        #[template_child]
         pub time_dropdown: TemplateChild<gtk::DropDown>,
+        #[template_child]
+        pub custom_button: TemplateChild<gtk::Button>,
         #[template_child]
         pub header_bar_running: TemplateChild<adw::HeaderBar>,
         #[template_child]
@@ -63,11 +69,13 @@ mod imp {
         #[template_child]
         pub ready_message: TemplateChild<gtk::Revealer>,
 
+        #[property(get, set)]
+        pub custom_text: RefCell<String>,
+
         pub text_type: Cell<TextType>,
         pub duration: Cell<Duration>,
         pub start_time: Cell<Option<Instant>>,
         pub running: Cell<bool>,
-
         pub show_cursor: Cell<bool>,
         pub cursor_hidden_timestamp: Cell<u32>,
     }
@@ -88,10 +96,22 @@ mod imp {
     }
 
     impl ObjectImpl for KpWindow {
+        fn properties() -> &'static [glib::ParamSpec] {
+            Self::derived_properties()
+        }
+
+        fn set_property(&self, id: usize, value: &glib::Value, pspec: &glib::ParamSpec) {
+            self.derived_set_property(id, value, pspec)
+        }
+
+        fn property(&self, id: usize, pspec: &glib::ParamSpec) -> glib::Value {
+            self.derived_property(id, pspec)
+        }
+
         fn constructed(&self) {
             self.parent_constructed();
 
-            self.setup_dropdowns();
+            self.setup_session_config();
             self.setup_text_view();
             self.setup_stop_button();
             self.setup_ui_hiding();

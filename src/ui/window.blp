@@ -6,6 +6,7 @@ template $KpWindow: Adw.ApplicationWindow {
   default-width: 800;
   default-height: 400;
   width-request: 360;
+  height-request: 296;
 
   content: Stack main_stack {
     transition-type: crossfade;
@@ -28,8 +29,17 @@ template $KpWindow: Adw.ApplicationWindow {
                 DropDown mode_dropdown {
                   styles ["flat-dropdown"]
                 }
-                DropDown time_dropdown {
-                  styles ["flat-dropdown"]
+
+                Stack secondary_config_stack {
+                  DropDown time_dropdown {
+                    styles ["flat-dropdown"]
+                  }
+                  Button custom_button {
+                    Adw.ButtonContent {
+                      icon-name: "edit-symbolic";
+                      label: "Edit Text";
+                    }
+                  }
                 }
               }
 

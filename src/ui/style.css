@@ -20,3 +20,7 @@ KpTextView label {
 .header-bar-running.hide-controls .end {
   opacity: 0;
 }
+
+.padding-12 {
+  padding: 12px;
+}

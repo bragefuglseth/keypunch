@@ -23,6 +23,7 @@ mod config;
 mod text_view;
 mod util;
 mod window;
+mod custom_text_dialog;
 
 use self::application::KpApplication;
 

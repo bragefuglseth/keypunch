@@ -3,11 +3,13 @@
   <gresource prefix="/dev/bragefuglseth/Keypunch">
     <file alias="window.ui" preprocess="xml-stripblanks">ui/window.ui</file>
     <file alias="text_view.ui" preprocess="xml-stripblanks">ui/text_view.ui</file>
+    <file alias="custom_text_dialog.ui" preprocess="xml-stripblanks">ui/custom_text_dialog.ui</file>
     <file alias="gtk/help-overlay.ui" preprocess="xml-stripblanks">ui/help_overlay.ui</file>
     <file alias="style.css">ui/style.css</file>
   </gresource>
 
   <gresource prefix="/dev/bragefuglseth/Keypunch/icons/scalable/actions/">
     <file alias="stop-symbolic.svg" preprocess="xml-stripblanks">ui/icons/stop-symbolic.svg</file>
+    <file alias="edit-symbolic.svg" preprocess="xml-stripblanks">ui/icons/edit-symbolic.svg</file>
   </gresource>
 </gresources>

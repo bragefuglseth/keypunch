@@ -1,7 +1,8 @@
 use super::*;
+use crate::custom_text_dialog::KpCustomTextDialog;
 
 impl imp::KpWindow {
-    pub(super) fn setup_dropdowns(&self) {
+    pub(super) fn setup_session_config(&self) {
         let mode_model = gtk::StringList::new(&["Simple", "Advanced", "Custom"]);
         let mode_dropdown = self.mode_dropdown.get();
         mode_dropdown.set_model(Some(&mode_model));
@@ -23,6 +24,12 @@ impl imp::KpWindow {
             imp.update_time();
             imp.focus_text_view();
         }));
+
+        self.custom_button.connect_clicked(glib::clone!(@weak self as imp => move |_| {
+            let dialog = KpCustomTextDialog::new();
+
+            dialog.present(imp.obj().upcast_ref::<gtk::Widget>());
+        }));
     }
 
     pub(super) fn update_original_text(&self) {
@@ -41,14 +48,22 @@ impl imp::KpWindow {
             _ => panic!("invalid mode selected in dropdown"),
         };
 
+        let custom = self.obj().custom_text();
+
         let text = match text_type {
             TextType::Simple => "lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magnam aliquam quaerat voluptatem ut enim aeque doleamus animo cum corpore dolemus fieri tamen permagna accessio potest si aliquod aeternum et infinitum impendere malum nobis opinemur quod idem licet transferre in voluptatem ut",
             TextType::Advanced => "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim aeque doleamus animo, cum corpore dolemus, fieri tamen permagna accessio potest, si aliquod aeternum et infinitum impendere malum nobis opinemur. Quod idem licet transferre in voluptatem, ut.",
-            TextType::Custom => "The quick, brown fox jumped over the lazy dog.",
+            TextType::Custom => custom.as_str(),
+        };
+
+        let config_widget = match text_type {
+            TextType::Simple | TextType::Advanced => self.time_dropdown.get().upcast::<gtk::Widget>(),
+            TextType::Custom => self.custom_button.get().upcast::<gtk::Widget>(),
         };
 
         self.text_type.set(text_type);
         self.text_view.set_original_text(text);
+        self.secondary_config_stack.set_visible_child(&config_widget);
     }
 
     pub(super) fn update_time(&self) {

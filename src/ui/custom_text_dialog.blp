@@ -1,0 +1,57 @@
+using Gtk 4.0;
+using Adw 1;
+
+template $KpCustomTextDialog: Adw.Dialog {
+  title: "Custom Text";
+  content-width: 360;
+  content-height: 400;
+
+  Adw.ToolbarView {
+    [top]
+    Adw.HeaderBar {
+      show-title: false;
+    }
+
+    Box {
+      orientation: vertical;
+      margin-start: 12;
+      margin-end: 12;
+      margin-bottom: 12;
+
+      Label {
+        label: "Custom Text";
+        margin-bottom: 30;
+        styles [ "title-1" ]
+      }
+
+      Adw.Bin {
+        valign: fill;
+
+        ScrolledWindow {
+          hscrollbar-policy: never;
+
+          TextView {
+            height-request: 150;
+            wrap-mode: word_char;
+          }
+        }
+
+        styles [ "card", "padding-12" ]
+      }
+    }
+
+    [bottom]
+    Box {
+      halign: center;
+      valign: center;
+
+      Button {
+        label: "Save";
+
+        styles [ "pill", "suggested-action" ]
+      }
+
+      styles [ "toolbar" ]
+    }
+  }
+}
