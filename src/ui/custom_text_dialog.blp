@@ -4,7 +4,7 @@ using Adw 1;
 template $KpCustomTextDialog: Adw.Dialog {
   title: "Custom Text";
   content-width: 360;
-  content-height: 400;
+  content-height: 350;
 
   Adw.ToolbarView {
     [top]
@@ -12,31 +12,28 @@ template $KpCustomTextDialog: Adw.Dialog {
       show-title: false;
     }
 
-    Box {
-      orientation: vertical;
-      margin-start: 12;
-      margin-end: 12;
-      margin-bottom: 12;
+    ScrolledWindow {
+        hscrollbar-policy: never;
 
-      Label {
-        label: "Custom Text";
-        margin-bottom: 30;
-        styles [ "title-1" ]
-      }
+        Box {
+          orientation: vertical;
+          margin-start: 12;
+          margin-end: 12;
+          margin-bottom: 12;
 
-      Adw.Bin {
-        valign: fill;
-
-        ScrolledWindow {
-          hscrollbar-policy: never;
+          Label {
+            label: "Custom Text";
+            margin-bottom: 24;
+            styles [ "title-1" ]
+          }
 
           TextView {
+            valign: fill;
             height-request: 150;
             wrap-mode: word_char;
-          }
-        }
 
-        styles [ "card", "padding-12" ]
+            styles [ "card", "padding-12" ]
+          }
       }
     }
 
