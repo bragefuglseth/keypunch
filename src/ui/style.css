@@ -9,14 +9,14 @@ KpTextView label {
 }
 
 .header-bar-running .start,
-.header-bar-running .end {
-  opacity: 0;
+.header-bar-running .end,
+.header-bar-running.hide-controls:focus-within .start,
+.header-bar-running.hide-controls:focus-within .end {
+  opacity: 1;
   transition: opacity 200ms;
 }
 
-.header-bar-running:hover .start,
-.header-bar-running:hover .end,
-.header-bar-running:focus-within .start,
-.header-bar-running:focus-within .end {
-  opacity: 1;
+.header-bar-running.hide-controls .start,
+.header-bar-running.hide-controls .end {
+  opacity: 0;
 }

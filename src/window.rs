@@ -25,8 +25,8 @@ use crate::text_view::KpTextView;
 use adw::prelude::*;
 use adw::subclass::prelude::*;
 use gtk::{gio, glib};
-use std::time::{Duration, Instant};
 use std::cell::Cell;
+use std::time::{Duration, Instant};
 
 #[derive(Clone, Copy, Default)]
 pub enum TextType {
@@ -67,6 +67,9 @@ mod imp {
         pub duration: Cell<Duration>,
         pub start_time: Cell<Option<Instant>>,
         pub running: Cell<bool>,
+
+        pub show_cursor: Cell<bool>,
+        pub cursor_hidden_timestamp: Cell<u32>,
     }
 
     #[glib::object_subclass]
@@ -91,6 +94,7 @@ mod imp {
             self.setup_dropdowns();
             self.setup_text_view();
             self.setup_stop_button();
+            self.setup_ui_hiding();
 
             self.ready(false);
         }
