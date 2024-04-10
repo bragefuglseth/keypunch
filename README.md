@@ -23,10 +23,10 @@ A rough checklist with what has to be in place before the app is ready for its i
 - [ ] High score tracking
 - [ ] Adequate a11y for visually impaired people
 - [ ] UI translation support
-- [ ] Cursor disappearance upon typing
+- [x] Cursor disappearance upon typing
 - [ ] Appropriate handling of situations where the text view loses keyboard focus
 - [ ] Metadata (icon, links, description, etc.)
-- [ ] A tidier internal file structure! 🙂
+- [x] A tidier internal file structure! 🙂
 
 ## Post-release roadmap
 
