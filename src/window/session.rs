@@ -128,6 +128,8 @@ impl imp::KpWindow {
         self.main_stack.set_visible_child_name("session");
         self.header_stack.set_visible_child_name("running");
         self.ready_message.set_reveal_child(false);
+        self.hide_cursor();
+        self.header_bar_running.add_css_class("hide-controls");
 
         match self.text_type.get() {
             TextType::Simple | TextType::Advanced => self.start_timer(),
