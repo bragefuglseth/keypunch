@@ -21,6 +21,8 @@ KpTextView label {
   opacity: 0;
 }
 
-.padding-12 {
+.custom-text-view {
   padding: 12px;
+  color: @card_fg_color;
+  background: @card_bg_color;
 }
