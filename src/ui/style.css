@@ -6,6 +6,7 @@ KpTextView label {
 
 .flat-dropdown button:not(:checked):not(:hover) {
   background: transparent;
+  box-shadow: none;
 }
 
 .header-bar-running .start,
