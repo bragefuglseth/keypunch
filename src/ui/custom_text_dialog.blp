@@ -3,17 +3,18 @@ using Adw 1;
 
 template $KpCustomTextDialog: Adw.Dialog {
   title: "Custom Text";
-  content-width: 360;
-  content-height: 350;
+  content-width: 400;
+  content-height:400;
 
   Adw.ToolbarView {
     [top]
-    Adw.HeaderBar {
+    Adw.HeaderBar header_bar {
       show-title: false;
     }
 
-    ScrolledWindow {
+    ScrolledWindow scrolled_window {
         hscrollbar-policy: never;
+        propagate-natural-height: true;
 
         Box {
           orientation: vertical;
@@ -27,10 +28,10 @@ template $KpCustomTextDialog: Adw.Dialog {
             styles [ "title-1" ]
           }
 
-          TextView {
-            valign: fill;
-            height-request: 150;
+          TextView text_view {
+            vexpand: true;
             wrap-mode: word_char;
+            accepts-tab: false;
 
             styles [ "card", "custom-text-view" ]
           }
@@ -42,13 +43,13 @@ template $KpCustomTextDialog: Adw.Dialog {
       halign: center;
       valign: center;
 
-      Button {
+      Button save_button {
         label: "Save";
 
         styles [ "pill", "suggested-action" ]
       }
 
-      styles [ "toolbar" ]
+      styles [ "toolbar-thick" ]
     }
   }
 }

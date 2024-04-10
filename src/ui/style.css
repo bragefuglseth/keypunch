@@ -26,3 +26,7 @@ KpTextView label {
   color: @card_fg_color;
   background: @card_bg_color;
 }
+
+.toolbar-thick {
+  padding: 12px;
+}
