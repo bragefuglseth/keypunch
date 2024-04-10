@@ -21,6 +21,7 @@
 mod session_config;
 mod session;
 mod ui_state;
+mod settings;
 
 use crate::text_view::KpTextView;
 use adw::prelude::*;
@@ -28,6 +29,7 @@ use adw::subclass::prelude::*;
 use gtk::{gio, glib};
 use std::cell::{Cell, RefCell};
 use std::time::{Duration, Instant};
+use std::cell::OnceCell;
 
 #[derive(Clone, Copy, Default)]
 pub enum TextType {
@@ -40,8 +42,7 @@ pub enum TextType {
 mod imp {
     use super::*;
 
-    #[derive(Default, gtk::CompositeTemplate, glib::Properties)]
-    #[properties(wrapper_type = super::KpWindow)]
+    #[derive(Default, gtk::CompositeTemplate)]
     #[template(resource = "/dev/bragefuglseth/Keypunch/window.ui")]
     pub struct KpWindow {
         #[template_child]
@@ -69,8 +70,7 @@ mod imp {
         #[template_child]
         pub ready_message: TemplateChild<gtk::Revealer>,
 
-        #[property(get, set)]
-        pub custom_text: RefCell<String>,
+        pub settings: OnceCell<gio::Settings>,
 
         pub text_type: Cell<TextType>,
         pub duration: Cell<Duration>,
@@ -96,18 +96,6 @@ mod imp {
     }
 
     impl ObjectImpl for KpWindow {
-        fn properties() -> &'static [glib::ParamSpec] {
-            Self::derived_properties()
-        }
-
-        fn set_property(&self, id: usize, value: &glib::Value, pspec: &glib::ParamSpec) {
-            self.derived_set_property(id, value, pspec)
-        }
-
-        fn property(&self, id: usize, pspec: &glib::ParamSpec) -> glib::Value {
-            self.derived_property(id, pspec)
-        }
-
         fn constructed(&self) {
             self.parent_constructed();
 
@@ -115,12 +103,22 @@ mod imp {
             self.setup_text_view();
             self.setup_stop_button();
             self.setup_ui_hiding();
+            self.setup_settings();
 
             self.ready(false);
         }
     }
     impl WidgetImpl for KpWindow {}
-    impl WindowImpl for KpWindow {}
+    impl WindowImpl for KpWindow {
+        fn close_request(&self) -> glib::Propagation {
+            // Save settings
+            self.save_settings()
+                .expect("able to save settings");
+
+            // Don't inhibit the default handler
+            glib::Propagation::Proceed
+        }
+    }
     impl ApplicationWindowImpl for KpWindow {}
     impl AdwApplicationWindowImpl for KpWindow {}
 }

@@ -1,5 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<schemalist gettext-domain="raceway">
+<schemalist gettext-domain="keypunch">
 	<schema id="dev.bragefuglseth.Keypunch" path="/dev/bragefuglseth/Keypunch/">
+	  <key name="window-width" type="i">
+	    <default>800</default>
+	    <summary>Window width</summary>
+	  </key>
+	  <key name="window-height" type="i">
+	    <default>400</default>
+	    <summary>Window height</summary>
+	  </key>
+	  <key name="window-maximized" type="b">
+	    <default>false</default>
+	    <summary>Window maximization</summary>
+	  </key>
 	</schema>
 </schemalist>

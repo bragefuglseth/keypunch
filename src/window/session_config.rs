@@ -48,7 +48,7 @@ impl imp::KpWindow {
             _ => panic!("invalid mode selected in dropdown"),
         };
 
-        let custom = self.obj().custom_text();
+        let custom = String::from("bingo bongo");
 
         let text = match text_type {
             TextType::Simple => "lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magnam aliquam quaerat voluptatem ut enim aeque doleamus animo cum corpore dolemus fieri tamen permagna accessio potest si aliquod aeternum et infinitum impendere malum nobis opinemur quod idem licet transferre in voluptatem ut",
