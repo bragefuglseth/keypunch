@@ -1,6 +1,9 @@
-use adw::subclass::prelude::*;
-use gtk::glib;
 use adw::prelude::*;
+use adw::subclass::prelude::*;
+use glib::subclass::Signal;
+use gtk::glib;
+use std::cell::{Cell, RefCell};
+use std::sync::OnceLock;
 
 mod imp {
     use super::*;
@@ -9,13 +12,17 @@ mod imp {
     #[template(resource = "/dev/bragefuglseth/Keypunch/custom_text_dialog.ui")]
     pub struct KpCustomTextDialog {
         #[template_child]
-        header_bar: TemplateChild<adw::HeaderBar>,
+        pub header_bar: TemplateChild<adw::HeaderBar>,
         #[template_child]
-        scrolled_window: TemplateChild<gtk::ScrolledWindow>,
+        pub scrolled_window: TemplateChild<gtk::ScrolledWindow>,
         #[template_child]
-        text_view: TemplateChild<gtk::TextView>,
+        pub text_view: TemplateChild<gtk::TextView>,
         #[template_child]
-        save_button: TemplateChild<gtk::Button>,
+        pub save_button: TemplateChild<gtk::Button>,
+
+        pub initial_text: RefCell<String>,
+
+        pub apply_changes: Cell<bool>,
     }
 
     #[glib::object_subclass]
@@ -34,14 +41,26 @@ mod imp {
     }
 
     impl ObjectImpl for KpCustomTextDialog {
+        fn signals() -> &'static [Signal] {
+            static SIGNALS: OnceLock<Vec<Signal>> = OnceLock::new();
+            SIGNALS.get_or_init(|| {
+                vec![
+                    Signal::builder("save")
+                        .param_types([str::static_type()])
+                        .build(),
+                    Signal::builder("discard").build(),
+                ]
+            })
+        }
+
         fn constructed(&self) {
             self.parent_constructed();
 
             let header_bar = self.header_bar.get();
-            self.scrolled_window.vadjustment().bind_property("value", &header_bar, "show-title")
-                .transform_to(|_, scroll_position: f64| {
-                    Some(scroll_position > 0.)
-                })
+            self.scrolled_window
+                .vadjustment()
+                .bind_property("value", &header_bar, "show-title")
+                .transform_to(|_, scroll_position: f64| Some(scroll_position > 0.))
                 .sync_create()
                 .build();
 
@@ -50,25 +69,54 @@ mod imp {
                 .css_classes(["dim-label"])
                 .build();
             self.text_view.add_overlay(&placeholder, 0, 0);
-            self.text_view.buffer().bind_property("text", &placeholder, "visible")
-                .transform_to(|_, text: String| {
-                    Some(text.is_empty())
-                })
+            self.text_view
+                .buffer()
+                .bind_property("text", &placeholder, "visible")
+                .transform_to(|_, text: String| Some(text.is_empty()))
                 .sync_create()
                 .build();
 
             let save_button = self.save_button.get();
-            self.text_view.buffer().bind_property("text", &save_button, "sensitive")
+            self.text_view
+                .buffer()
+                .bind_property("text", &save_button, "sensitive")
                 .transform_to(|_, text: String| {
                     let has_content = text.chars().any(|c| !c.is_whitespace());
                     Some(has_content)
                 })
                 .sync_create()
                 .build();
+
+            save_button.connect_clicked(glib::clone!(@weak self as imp => move |_| {
+                let buf = imp.text_view.buffer();
+                let text = buf.text(&buf.start_iter(), &buf.end_iter(), false);
+
+                imp.apply_changes.set(true);
+                imp.obj().emit_by_name_with_values("save", &[text.into()]);
+                imp.obj().close();
+            }));
         }
     }
     impl WidgetImpl for KpCustomTextDialog {}
-    impl AdwDialogImpl for KpCustomTextDialog {}
+    impl AdwDialogImpl for KpCustomTextDialog {
+        fn closed(&self) {
+            if self.changed() && !self.apply_changes.get() {
+                self.obj().emit_by_name::<()>("discard", &[]);
+            }
+        }
+    }
+
+    impl KpCustomTextDialog {
+        fn changed(&self) -> bool {
+            self.initial_text.borrow().as_str() != self.text()
+        }
+
+        fn text(&self) -> String {
+            let buf = self.text_view.buffer();
+            buf.text(&buf.start_iter(), &buf.end_iter(), false)
+                .to_string()
+        }
+    }
 }
 
 glib::wrapper! {
@@ -79,5 +127,11 @@ glib::wrapper! {
 impl KpCustomTextDialog {
     pub fn new() -> Self {
         glib::Object::new()
+    }
+
+    pub fn set_text(&self, s: &str) {
+        let imp = self.imp();
+        *imp.initial_text.borrow_mut() = s.to_string();
+        imp.text_view.buffer().set_text(s);
     }
 }

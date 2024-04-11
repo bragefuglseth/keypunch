@@ -25,11 +25,25 @@ impl imp::KpWindow {
             imp.focus_text_view();
         }));
 
-        self.custom_button.connect_clicked(glib::clone!(@weak self as imp => move |_| {
-            let dialog = KpCustomTextDialog::new();
+        self.custom_button
+            .connect_clicked(glib::clone!(@weak self as imp => move |_| {
+                let dialog = KpCustomTextDialog::new();
 
-            dialog.present(imp.obj().upcast_ref::<gtk::Widget>());
-        }));
+                dialog.set_text("hello, world!");
+
+                dialog.connect_local("save", true, |values| {
+                    let text: &str = values.get(1).expect("save signal contains text to be saved").get().expect("value from save signal is string");
+                    println!("saved: {}", text);
+                    None
+                });
+
+                dialog.connect_local("discard", true, |_| {
+                    println!("discarded");
+                    None
+                });
+
+                dialog.present(imp.obj().upcast_ref::<gtk::Widget>());
+            }));
     }
 
     pub(super) fn update_original_text(&self) {
@@ -57,13 +71,16 @@ impl imp::KpWindow {
         };
 
         let config_widget = match text_type {
-            TextType::Simple | TextType::Advanced => self.time_dropdown.get().upcast::<gtk::Widget>(),
+            TextType::Simple | TextType::Advanced => {
+                self.time_dropdown.get().upcast::<gtk::Widget>()
+            }
             TextType::Custom => self.custom_button.get().upcast::<gtk::Widget>(),
         };
 
         self.text_type.set(text_type);
         self.text_view.set_original_text(text);
-        self.secondary_config_stack.set_visible_child(&config_widget);
+        self.secondary_config_stack
+            .set_visible_child(&config_widget);
     }
 
     pub(super) fn update_time(&self) {

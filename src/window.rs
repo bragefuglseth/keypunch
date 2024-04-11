@@ -18,18 +18,18 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-mod session_config;
 mod session;
-mod ui_state;
+mod session_config;
 mod settings;
+mod ui_state;
 
 use crate::text_view::KpTextView;
 use adw::prelude::*;
 use adw::subclass::prelude::*;
 use gtk::{gio, glib};
+use std::cell::OnceCell;
 use std::cell::{Cell, RefCell};
 use std::time::{Duration, Instant};
-use std::cell::OnceCell;
 
 #[derive(Clone, Copy, Default)]
 pub enum TextType {
@@ -112,8 +112,7 @@ mod imp {
     impl WindowImpl for KpWindow {
         fn close_request(&self) -> glib::Propagation {
             // Save settings
-            self.save_settings()
-                .expect("able to save settings");
+            self.save_settings().expect("able to save settings");
 
             // Don't inhibit the default handler
             glib::Propagation::Proceed

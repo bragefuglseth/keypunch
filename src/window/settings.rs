@@ -2,9 +2,8 @@ use super::*;
 
 impl imp::KpWindow {
     pub(super) fn settings(&self) -> &gio::Settings {
-        self.settings.get_or_init(|| {
-            gio::Settings::new("dev.bragefuglseth.Keypunch")
-        })
+        self.settings
+            .get_or_init(|| gio::Settings::new("dev.bragefuglseth.Keypunch"))
     }
 
     pub(super) fn setup_settings(&self) {
