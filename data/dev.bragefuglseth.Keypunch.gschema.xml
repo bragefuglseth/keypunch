@@ -1,5 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schemalist gettext-domain="keypunch">
+  <enum id="dev.bragefuglseth.Keypunch.SessionType">
+    <value nick="Simple" value="0" />
+    <value nick="Advanced" value="1" />
+    <value nick="Custom" value="2" />
+  </enum>
+
+  <enum id="dev.bragefuglseth.Keypunch.SessionDuration">
+    <value nick="15sec" value="0" />
+    <value nick="30sec" value="1" />
+    <value nick="1min" value="2" />
+    <value nick="5min" value="3" />
+    <value nick="10min" value="4" />
+  </enum>
+
 	<schema id="dev.bragefuglseth.Keypunch" path="/dev/bragefuglseth/Keypunch/">
 	  <key name="window-width" type="i">
 	    <default>800</default>
@@ -12,6 +26,21 @@
 	  <key name="window-maximized" type="b">
 	    <default>false</default>
 	    <summary>Window maximization</summary>
+	  </key>
+	  <key name="session-type" enum = "dev.bragefuglseth.Keypunch.SessionType">
+	    <default>"Simple"</default>
+	    <summary>Session type</summary>
+	  </key>
+	  <key name="session-duration" enum="dev.bragefuglseth.Keypunch.SessionDuration">
+	    <default>"30sec"</default>
+	    <summary>Session duration</summary>
+	    <description>The duration of time-based sessions in seconds</description>
+	  </key>
+	  <key name="custom-text" type="s">
+	    <!-- Translators: This is the default text for custom typing sessions. Do not translate it literally. Replace it with an appropriate "sample sentence" from your language instead. The original text is an English pangram, so you can e.g. find a pangram in your language: https://clagnut.com/blog/2380 -->
+	    <default l10n="messages" >"The quick brown fox jumps over the lazy dog."</default>
+	    <summary>Custom text</summary>
+	    <description>What text to display when “Custom” is chosen from the session menu.</description>
 	  </key>
 	</schema>
 </schemalist>

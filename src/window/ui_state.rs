@@ -66,9 +66,9 @@ impl imp::KpWindow {
         self.hide_cursor();
         self.header_bar_running.add_css_class("hide-controls");
 
-        match self.text_type.get() {
-            TextType::Simple | TextType::Advanced => self.start_timer(),
-            TextType::Custom => (),
+        match self.session_type.get() {
+            SessionType::Simple | SessionType::Advanced => self.start_timer(),
+            SessionType::Custom => (),
         }
     }
 
@@ -77,7 +77,6 @@ impl imp::KpWindow {
         self.text_view.set_running(false);
         self.text_view.set_accepts_input(false);
         self.main_stack.set_visible_child_name("results");
-        self.show_cursor();
     }
 
     pub(super) fn hide_cursor(&self) {

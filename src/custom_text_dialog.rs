@@ -20,7 +20,7 @@ mod imp {
         #[template_child]
         pub save_button: TemplateChild<gtk::Button>,
 
-        pub initial_text: RefCell<String>,
+        pub current_text: RefCell<String>,
 
         pub apply_changes: Cell<bool>,
     }
@@ -48,7 +48,9 @@ mod imp {
                     Signal::builder("save")
                         .param_types([str::static_type()])
                         .build(),
-                    Signal::builder("discard").build(),
+                    Signal::builder("discard")
+                        .param_types([str::static_type()])
+                        .build(),
                 ]
             })
         }
@@ -88,11 +90,8 @@ mod imp {
                 .build();
 
             save_button.connect_clicked(glib::clone!(@weak self as imp => move |_| {
-                let buf = imp.text_view.buffer();
-                let text = buf.text(&buf.start_iter(), &buf.end_iter(), false);
-
                 imp.apply_changes.set(true);
-                imp.obj().emit_by_name_with_values("save", &[text.into()]);
+                imp.obj().emit_by_name_with_values("save", &[imp.text().into()]);
                 imp.obj().close();
             }));
         }
@@ -101,20 +100,19 @@ mod imp {
     impl AdwDialogImpl for KpCustomTextDialog {
         fn closed(&self) {
             if self.changed() && !self.apply_changes.get() {
-                self.obj().emit_by_name::<()>("discard", &[]);
+                self.obj().emit_by_name_with_values("discard", &[self.text().into()]);
             }
         }
     }
 
     impl KpCustomTextDialog {
         fn changed(&self) -> bool {
-            self.initial_text.borrow().as_str() != self.text()
+            self.current_text.borrow().as_str() != self.text()
         }
 
         fn text(&self) -> String {
             let buf = self.text_view.buffer();
-            buf.text(&buf.start_iter(), &buf.end_iter(), false)
-                .to_string()
+            buf.text(&buf.start_iter(), &buf.end_iter(), false).to_string()
         }
     }
 }
@@ -125,13 +123,11 @@ glib::wrapper! {
 }
 
 impl KpCustomTextDialog {
-    pub fn new() -> Self {
-        glib::Object::new()
-    }
-
-    pub fn set_text(&self, s: &str) {
-        let imp = self.imp();
-        *imp.initial_text.borrow_mut() = s.to_string();
-        imp.text_view.buffer().set_text(s);
+    pub fn new(current_text: &str, initial_text: &str) -> Self {
+        let obj = glib::Object::new::<Self>();
+        let imp = obj.imp();
+        *imp.current_text.borrow_mut() = current_text.to_string();
+        imp.text_view.buffer().set_text(initial_text);
+        obj
     }
 }

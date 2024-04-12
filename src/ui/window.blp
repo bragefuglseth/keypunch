@@ -6,118 +6,120 @@ template $KpWindow: Adw.ApplicationWindow {
   width-request: 360;
   height-request: 296;
 
-  content: Stack main_stack {
-    transition-type: crossfade;
-    transition-duration: 200;
+  content: Adw.ToastOverlay toast_overlay {
+    Stack main_stack {
+      transition-type: crossfade;
+      transition-duration: 200;
 
-    StackPage {
-      name: "session";
-      child: Adw.ToolbarView {
-        [top]
-        Stack header_stack {
-          transition-type: crossfade;
-          transition-duration: 200;
+      StackPage {
+        name: "session";
+        child: Adw.ToolbarView {
+          [top]
+          Stack header_stack {
+            transition-type: crossfade;
+            transition-duration: 200;
 
-          StackPage {
-            name: "ready";
-            child: Adw.HeaderBar header_bar_ready {
-              [title]
-              Box {
-                spacing: 6;
-                DropDown mode_dropdown {
-                  styles ["flat-dropdown"]
-                }
-
-                Stack secondary_config_stack {
-                  DropDown time_dropdown {
+            StackPage {
+              name: "ready";
+              child: Adw.HeaderBar header_bar_ready {
+                [title]
+                Box {
+                  spacing: 6;
+                  DropDown session_type_dropdown {
                     styles ["flat-dropdown"]
                   }
-                  Button custom_button {
-                    Adw.ButtonContent {
-                      icon-name: "edit-symbolic";
-                      label: "Edit Text";
+
+                  Stack secondary_config_stack {
+                    DropDown duration_dropdown {
+                      styles ["flat-dropdown"]
+                    }
+                    Button custom_button {
+                      Adw.ButtonContent {
+                        icon-name: "edit-symbolic";
+                        label: "Edit Text";
+                      }
                     }
                   }
                 }
-              }
 
-              [end]
-              MenuButton {
-                primary: true;
-                icon-name: 'open-menu-symbolic';
-                tooltip-text: _('Menu');
-                menu-model: primary_menu;
-              }
-            };
-          }
-
-          StackPage {
-            name: "running";
-            child: Adw.HeaderBar header_bar_running {
-              [title]
-              Adw.WindowTitle running_title {}
-
-              [start]
-              Button stop_button {
-                icon-name: "stop-symbolic";
-              }
-
-              styles ["header-bar-running"]
-            };
-          }
-        }
-
-        content: Adw.Clamp {
-          unit: px;
-          maximum-size: 800;
-          tightening-threshold: 400;
-
-          $KpTextView text_view {
-            margin-start: '12';
-            margin-end: '12';
-          }
-        };
-
-        [bottom]
-        Revealer ready_message {
-          reveal-child: true;
-          transition-type: crossfade;
-          transition-duration: 200;
-
-           Box {
-            halign: center;
-            height-request: 46;
-            Label {
-              label: "Just start typing";
-
-              styles ["dim-label"]
+                [end]
+                MenuButton {
+                  primary: true;
+                  icon-name: 'open-menu-symbolic';
+                  tooltip-text: _('Menu');
+                  menu-model: primary_menu;
+                }
+              };
             }
-            styles ["toolbar"]
-          }
-        }
-      };
-    }
 
-    StackPage {
-      name: "results";
-        child: Adw.ToolbarView {
-        [top]
-        Adw.HeaderBar {
-          [title]
-          Adw.WindowTitle {
-            title: "Results";
-          }
-        }
-        content: Label {
-          label: "Results";
-          halign: center;
-          valign: center;
-          hexpand: true;
-          vexpand: true;
+            StackPage {
+              name: "running";
+              child: Adw.HeaderBar header_bar_running {
+                [title]
+                Adw.WindowTitle running_title {}
 
-          styles ["title-1"]
+                [start]
+                Button stop_button {
+                  icon-name: "stop-symbolic";
+                }
+
+                styles ["header-bar-running"]
+              };
+            }
+          }
+
+          content: Adw.Clamp {
+            unit: px;
+            maximum-size: 800;
+            tightening-threshold: 400;
+
+            $KpTextView text_view {
+              margin-start: '12';
+              margin-end: '12';
+            }
+          };
+
+          [bottom]
+          Revealer ready_message {
+            reveal-child: true;
+            transition-type: crossfade;
+            transition-duration: 200;
+
+             Box {
+              halign: center;
+              height-request: 46;
+              Label {
+                label: "Just start typing";
+
+                styles ["dim-label"]
+              }
+              styles ["toolbar"]
+            }
+          }
         };
-      };
+      }
+
+      StackPage {
+        name: "results";
+          child: Adw.ToolbarView {
+          [top]
+          Adw.HeaderBar {
+            [title]
+            Adw.WindowTitle {
+              title: "Results";
+            }
+          }
+          content: Label {
+            label: "Results";
+            halign: center;
+            valign: center;
+            hexpand: true;
+            vexpand: true;
+
+            styles ["title-1"]
+          };
+        };
+      }
     }
   };
 }

@@ -32,11 +32,21 @@ use std::cell::{Cell, RefCell};
 use std::time::{Duration, Instant};
 
 #[derive(Clone, Copy, Default)]
-pub enum TextType {
+pub enum SessionType {
     #[default]
     Simple,
     Advanced,
     Custom,
+}
+
+#[derive(Clone, Copy, Default)]
+pub enum SessionDuration {
+    #[default]
+    Sec15,
+    Sec30,
+    Min1,
+    Min5,
+    Min10,
 }
 
 mod imp {
@@ -46,17 +56,19 @@ mod imp {
     #[template(resource = "/dev/bragefuglseth/Keypunch/window.ui")]
     pub struct KpWindow {
         #[template_child]
+        pub toast_overlay: TemplateChild<adw::ToastOverlay>,
+        #[template_child]
         pub main_stack: TemplateChild<gtk::Stack>,
         #[template_child]
         pub header_stack: TemplateChild<gtk::Stack>,
         #[template_child]
         pub header_bar_ready: TemplateChild<adw::HeaderBar>,
         #[template_child]
-        pub mode_dropdown: TemplateChild<gtk::DropDown>,
+        pub session_type_dropdown: TemplateChild<gtk::DropDown>,
         #[template_child]
         pub secondary_config_stack: TemplateChild<gtk::Stack>,
         #[template_child]
-        pub time_dropdown: TemplateChild<gtk::DropDown>,
+        pub duration_dropdown: TemplateChild<gtk::DropDown>,
         #[template_child]
         pub custom_button: TemplateChild<gtk::Button>,
         #[template_child]
@@ -72,8 +84,9 @@ mod imp {
 
         pub settings: OnceCell<gio::Settings>,
 
-        pub text_type: Cell<TextType>,
-        pub duration: Cell<Duration>,
+        pub session_type: Cell<SessionType>,
+        pub custom_text: RefCell<String>,
+        pub duration: Cell<SessionDuration>,
         pub start_time: Cell<Option<Instant>>,
         pub running: Cell<bool>,
         pub show_cursor: Cell<bool>,
@@ -98,12 +111,12 @@ mod imp {
     impl ObjectImpl for KpWindow {
         fn constructed(&self) {
             self.parent_constructed();
-
+            self.setup_settings();
             self.setup_session_config();
+
             self.setup_text_view();
             self.setup_stop_button();
             self.setup_ui_hiding();
-            self.setup_settings();
 
             self.ready(false);
         }
