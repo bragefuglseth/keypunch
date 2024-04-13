@@ -18,15 +18,19 @@ impl imp::KpWindow {
         let obj = self.obj();
         obj.set_default_size(width, height);
 
-        self.session_type.set(deserialize_session_type(&session_type).expect("session type string form settings is part of the enum defined there"));
+        self.session_type.set(
+            deserialize_session_type(&session_type)
+                .expect("session type string form settings is part of the enum defined there"),
+        );
 
-        self.duration.set(deserialize_duration(&duration).expect("duration string from settings is part of the enum defined there"));
+        self.duration.set(
+            deserialize_duration(&duration)
+                .expect("duration string from settings is part of the enum defined there"),
+        );
 
         if maximized {
             obj.maximize();
         }
-
-
 
         *self.custom_text.borrow_mut() = custom_text.into();
     }

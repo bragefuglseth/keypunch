@@ -22,6 +22,7 @@ mod session;
 mod session_config;
 mod settings;
 mod ui_state;
+mod focus;
 
 use crate::text_view::KpTextView;
 use adw::prelude::*;
@@ -80,7 +81,13 @@ mod imp {
         #[template_child]
         pub text_view: TemplateChild<KpTextView>,
         #[template_child]
-        pub ready_message: TemplateChild<gtk::Revealer>,
+        pub bottom_stack: TemplateChild<gtk::Stack>,
+        #[template_child]
+        pub bottom_stack_empty: TemplateChild<gtk::Box>,
+        #[template_child]
+        pub just_start_typing: TemplateChild<gtk::Label>,
+        #[template_child]
+        pub focus_button: TemplateChild<gtk::Button>,
 
         pub settings: OnceCell<gio::Settings>,
 
@@ -91,6 +98,8 @@ mod imp {
         pub running: Cell<bool>,
         pub show_cursor: Cell<bool>,
         pub cursor_hidden_timestamp: Cell<u32>,
+        pub last_unfocus_timestamp: Cell<Option<Instant>>,
+        pub last_unfocus_event: RefCell<Option<glib::SourceId>>,
     }
 
     #[glib::object_subclass]
@@ -115,6 +124,7 @@ mod imp {
             self.setup_session_config();
 
             self.setup_text_view();
+            self.setup_focus();
             self.setup_stop_button();
             self.setup_ui_hiding();
 

@@ -48,7 +48,6 @@ impl imp::KpWindow {
         self.text_view.set_accepts_input(true);
         self.main_stack.set_visible_child_name("session");
         self.header_stack.set_visible_child_name("ready");
-        self.ready_message.set_reveal_child(true);
         self.text_view.reset(animate);
         self.show_cursor();
         self.focus_text_view();
@@ -62,8 +61,9 @@ impl imp::KpWindow {
         self.start_time.set(Some(Instant::now()));
         self.main_stack.set_visible_child_name("session");
         self.header_stack.set_visible_child_name("running");
-        self.ready_message.set_reveal_child(false);
         self.hide_cursor();
+        self.bottom_stack
+            .set_visible_child(&self.bottom_stack_empty.get());
         self.header_bar_running.add_css_class("hide-controls");
 
         match self.session_type.get() {
@@ -96,9 +96,5 @@ impl imp::KpWindow {
     pub(super) fn show_cursor(&self) {
         self.show_cursor.set(true);
         self.obj().set_cursor_from_name(Some("default"));
-    }
-
-    pub(super) fn focus_text_view(&self) {
-        self.obj().set_focus_widget(Some(&self.text_view.get()));
     }
 }

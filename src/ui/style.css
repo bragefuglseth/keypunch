@@ -1,3 +1,11 @@
+KpTextView {
+  transition: opacity 200ms;
+}
+
+KpTextView.unfocused {
+  opacity: 0.5;
+}
+
 KpTextView label {
   font-size: 1.6rem;
   line-height: 45px;

@@ -14,6 +14,9 @@ template $KpWindow: Adw.ApplicationWindow {
       StackPage {
         name: "session";
         child: Adw.ToolbarView {
+          extend-content-to-top-edge: true;
+          extend-content-to-bottom-edge: true;
+
           [top]
           Stack header_stack {
             transition-type: crossfade;
@@ -69,32 +72,35 @@ template $KpWindow: Adw.ApplicationWindow {
           }
 
           content: Adw.Clamp {
-            unit: px;
             maximum-size: 800;
             tightening-threshold: 400;
+            margin-top: 48;
+            margin-bottom: 48;
+            margin-start: 12;
+            margin-end: 12;
 
-            $KpTextView text_view {
-              margin-start: '12';
-              margin-end: '12';
-            }
+            $KpTextView text_view {}
           };
 
           [bottom]
-          Revealer ready_message {
-            reveal-child: true;
+          Stack bottom_stack {
             transition-type: crossfade;
             transition-duration: 200;
+            halign: center;
 
-             Box {
-              halign: center;
-              height-request: 46;
-              Label {
-                label: "Just start typing";
+            Label just_start_typing {
+              label: "Just Start Typing";
 
-                styles ["dim-label"]
-              }
-              styles ["toolbar"]
+              styles [ "dim-label" ]
             }
+            Button focus_button {
+              label: "Focus Entry";
+
+              styles [ "pill" ]
+            }
+            Box bottom_stack_empty{}
+
+            styles [ "toolbar-thick" ]
           }
         };
       }

@@ -100,7 +100,8 @@ mod imp {
     impl AdwDialogImpl for KpCustomTextDialog {
         fn closed(&self) {
             if self.changed() && !self.apply_changes.get() {
-                self.obj().emit_by_name_with_values("discard", &[self.text().into()]);
+                self.obj()
+                    .emit_by_name_with_values("discard", &[self.text().into()]);
             }
         }
     }
@@ -112,7 +113,8 @@ mod imp {
 
         fn text(&self) -> String {
             let buf = self.text_view.buffer();
-            buf.text(&buf.start_iter(), &buf.end_iter(), false).to_string()
+            buf.text(&buf.start_iter(), &buf.end_iter(), false)
+                .to_string()
         }
     }
 }

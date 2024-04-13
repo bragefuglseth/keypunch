@@ -7,10 +7,12 @@ impl imp::KpWindow {
         let session_type_dropdown = self.session_type_dropdown.get();
         session_type_dropdown.set_model(Some(&session_type_model));
         session_type_dropdown.set_selected(self.session_type.get() as u32);
-        session_type_dropdown.connect_selected_item_notify(glib::clone!(@weak self as imp => move |_| {
-            imp.update_original_text();
-            imp.focus_text_view();
-        }));
+        session_type_dropdown.connect_selected_item_notify(
+            glib::clone!(@weak self as imp => move |_| {
+                imp.update_original_text();
+                imp.focus_text_view();
+            }),
+        );
 
         let duration_model = gtk::StringList::new(&[
             "15 seconds",
@@ -25,10 +27,12 @@ impl imp::KpWindow {
 
         duration_dropdown.set_selected(self.duration.get() as u32);
 
-        duration_dropdown.connect_selected_item_notify(glib::clone!(@weak self as imp => move |_| {
-            imp.update_time();
-            imp.focus_text_view();
-        }));
+        duration_dropdown.connect_selected_item_notify(
+            glib::clone!(@weak self as imp => move |_| {
+                imp.update_time();
+                imp.focus_text_view();
+            }),
+        );
 
         self.custom_button
             .connect_clicked(glib::clone!(@weak self as imp => move |_| {
@@ -75,9 +79,7 @@ impl imp::KpWindow {
     }
 
     pub(super) fn update_time(&self) {
-        let selected_idx = self
-            .duration_dropdown
-            .selected();
+        let selected_idx = self.duration_dropdown.selected();
 
         let duration = match selected_idx {
             0 => SessionDuration::Sec15,
@@ -100,6 +102,8 @@ impl imp::KpWindow {
             let text: &str = values.get(1).expect("save signal contains text to be saved").get().expect("value from save signal is string");
             *imp.custom_text.borrow_mut() = text.to_string();
             imp.update_original_text();
+
+            imp.focus_text_view();
             None
         }));
 
@@ -115,6 +119,8 @@ impl imp::KpWindow {
             }));
 
             imp.toast_overlay.add_toast(toast);
+
+            imp.focus_text_view();
 
             None
         }));
