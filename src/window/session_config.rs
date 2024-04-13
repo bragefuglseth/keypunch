@@ -111,7 +111,7 @@ impl imp::KpWindow {
 
             let toast = adw::Toast::builder()
                 .title("Changes discarded")
-                .button_label("Recover")
+                .button_label("Restore")
                 .build();
             toast.connect_button_clicked(glib::clone!(@weak imp => move |_| {
                 imp.show_custom_text_dialog(&discarded_text);
