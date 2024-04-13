@@ -5,6 +5,7 @@ pub(super) struct TextViewColorScheme {
     pub untyped: (u16, u16, u16),
     pub typed: (u16, u16, u16),
     pub mistake: (u16, u16, u16),
+    pub mistake_bg: (u16, u16, u16),
     pub caret: (f32, f32, f32),
 }
 
@@ -12,6 +13,7 @@ const COLOR_SCHEME_LIGHT: TextViewColorScheme = TextViewColorScheme {
     untyped: (41472, 41472, 41472),
     typed: (12800, 12800, 12800),
     mistake: (49152, 7168, 10240),
+    mistake_bg: (63232, 58368, 58624),
     caret: (0.2, 0.2, 0.2),
 };
 
@@ -19,6 +21,7 @@ const COLOR_SCHEME_DARK: TextViewColorScheme = TextViewColorScheme {
     untyped: (33792, 33792, 33792),
     typed: (65280, 65280, 65280),
     mistake: (65280, 31488, 25344),
+    mistake_bg: (14592, 10752, 10240),
     caret: (1., 1., 1.),
 };
 
@@ -75,12 +78,12 @@ impl imp::KpTextView {
                 mistake_fg_attr.set_start_index(n as u32);
                 mistake_fg_attr.set_end_index(n as u32 + 1);
 
-                let mut mistake_underline_attr =
-                    pango::AttrInt::new_underline(pango::Underline::SingleLine);
-                mistake_underline_attr.set_start_index(n as u32);
-                mistake_underline_attr.set_end_index(n as u32 + 1);
+                let mut mistake_bg_attr =
+                    pango::AttrColor::new_background(clr.mistake_bg.0, clr.mistake_bg.1, clr.mistake_bg.2);
+                mistake_bg_attr.set_start_index(n as u32);
+                mistake_bg_attr.set_end_index(n as u32 + 1);
 
-                (mistake_fg_attr, mistake_underline_attr)
+                (mistake_fg_attr, mistake_bg_attr)
             })
             .for_each(|(attr_1, attr_2)| {
                 attr_list.insert(attr_1);
