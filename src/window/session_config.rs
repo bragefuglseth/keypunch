@@ -103,10 +103,6 @@ impl imp::KpWindow {
             *imp.custom_text.borrow_mut() = text.to_string();
             imp.update_original_text();
 
-            // slightly hacky, but the dialog closes in between here
-            glib::timeout_add_local_once(Duration::from_millis(10), glib::clone!(@weak imp => move || {
-                imp.focus_text_view();
-            }));
             None
         }));
 
@@ -123,9 +119,11 @@ impl imp::KpWindow {
 
             imp.toast_overlay.add_toast(toast);
 
-            imp.focus_text_view();
-
             None
+        }));
+
+        dialog.connect_closed(glib::clone!(@weak self as imp => move |_| {
+            imp.focus_text_view();
         }));
 
         dialog.present(self.obj().upcast_ref::<gtk::Widget>());
