@@ -33,18 +33,27 @@ impl imp::KpTextView {
             self.line.set(line);
             self.animate_to_line(match line {
                 0 | 1 => 0,
-                num => num - 1,
+                num => num.try_into().unwrap(),
             });
         }
     }
 
-    pub(super) fn animate_to_line(&self, line: i32) {
+    pub(super) fn animate_to_line(&self, line: usize) {
+        let y: i32 = self
+            .label
+            .layout()
+            .lines()
+            .iter()
+            .take(line.checked_sub(1).unwrap_or(0))
+            .map(|l| l.extents().1.height() / pango::SCALE)
+            .sum();
+
         let scroll_animation = self.scroll_animation();
 
         let current_position = self.obj().scroll_position();
 
         scroll_animation.set_value_from(current_position);
-        scroll_animation.set_value_to((line * LINE_HEIGHT) as f64);
+        scroll_animation.set_value_to(y as f64);
 
         scroll_animation.play();
     }

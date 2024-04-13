@@ -18,11 +18,11 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
+mod focus;
 mod session;
 mod session_config;
 mod settings;
 mod ui_state;
-mod focus;
 
 use crate::text_view::KpTextView;
 use adw::prelude::*;
