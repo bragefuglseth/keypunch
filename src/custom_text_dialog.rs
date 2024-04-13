@@ -130,6 +130,7 @@ impl KpCustomTextDialog {
         let imp = obj.imp();
         *imp.current_text.borrow_mut() = current_text.to_string();
         imp.text_view.buffer().set_text(initial_text);
+        imp.text_view.emit_by_name_with_values("select-all", &[true.into()]);
         obj
     }
 }

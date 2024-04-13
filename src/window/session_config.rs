@@ -103,7 +103,10 @@ impl imp::KpWindow {
             *imp.custom_text.borrow_mut() = text.to_string();
             imp.update_original_text();
 
-            imp.focus_text_view();
+            // slightly hacky, but the dialog closes in between here
+            glib::timeout_add_local_once(Duration::from_millis(10), glib::clone!(@weak imp => move || {
+                imp.focus_text_view();
+            }));
             None
         }));
 

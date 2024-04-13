@@ -17,14 +17,14 @@ A rough checklist with what has to be in place before the app is ready for its i
 - [x] Text view displaying the text as you type it, in addition to highlighting mistakes
 - [x] Basic session configuration (simple/advanced, duration)
 - [ ] Results view showing WPM, accuracy and the session configuration used
-- [ ] Custom text mode
+- [x] Custom text mode
 - [ ] Extensible multi-language text generation for sessions
-- [ ] Restore previous configuration (window size, session settings, etc.) on open
+- [x] Restore previous configuration (window size, session settings, etc.) on open
 - [ ] High score tracking
 - [ ] Adequate a11y for visually impaired people
 - [ ] UI translation support
 - [x] Cursor disappearance upon typing
-- [ ] Appropriate handling of situations where the text view loses keyboard focus
+- [x] Appropriate handling of situations where the text view loses keyboard focus
 - [ ] Metadata (icon, links, description, etc.)
 - [x] A tidier internal file structure! 🙂
 

@@ -26,18 +26,16 @@ impl imp::KpWindow {
                         text_view.remove_css_class("unfocused");
                     }
                     (false, _) => {
-                        let timeout = glib::timeout_add_local(
+                        let timeout = glib::timeout_add_local_once(
                             Duration::from_millis(UNFOCUSED_TIMEOUT_MILLIS),
                             glib::clone!(@weak text_view,
                                 @weak bottom_stack,
                                 @weak focus_button
-                                => @default-return glib::ControlFlow::Break, move || {
+                                => move || {
                                     if !text_view.has_focus() {
                                         bottom_stack.set_visible_child(&focus_button);
                                         text_view.add_css_class("unfocused");
                                     }
-
-                                    glib::ControlFlow::Break
                             }
                         ));
 

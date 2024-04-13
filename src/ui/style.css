@@ -1,9 +1,9 @@
 KpTextView {
-  transition: opacity 200ms;
+  transition: filter 200ms;
 }
 
 KpTextView.unfocused {
-  opacity: 0.5;
+  filter: blur(3px);
 }
 
 KpTextView label {
