@@ -30,9 +30,10 @@ impl imp::KpWindow {
                             Duration::from_millis(UNFOCUSED_TIMEOUT_MILLIS),
                             glib::clone!(@weak text_view,
                                 @weak bottom_stack,
-                                @weak focus_button
+                                @weak focus_button,
+                                @weak imp
                                 => move || {
-                                    if !text_view.has_focus() {
+                                    if !text_view.has_focus() && !imp.open_dialog.get() {
                                         bottom_stack.set_visible_child(&focus_button);
                                         text_view.add_css_class("unfocused");
                                     }

@@ -123,9 +123,11 @@ impl imp::KpWindow {
         }));
 
         dialog.connect_closed(glib::clone!(@weak self as imp => move |_| {
+            imp.open_dialog.set(false);
             imp.focus_text_view();
         }));
 
+        self.open_dialog.set(true);
         dialog.present(self.obj().upcast_ref::<gtk::Widget>());
     }
 }

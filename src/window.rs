@@ -100,6 +100,7 @@ mod imp {
         pub cursor_hidden_timestamp: Cell<u32>,
         pub last_unfocus_timestamp: Cell<Option<Instant>>,
         pub last_unfocus_event: RefCell<Option<glib::SourceId>>,
+        pub open_dialog: Cell<bool>,
     }
 
     #[glib::object_subclass]
