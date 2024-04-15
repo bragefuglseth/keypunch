@@ -1,5 +1,6 @@
 use super::*;
 use crate::custom_text_dialog::KpCustomTextDialog;
+use glib::GString;
 
 impl imp::KpWindow {
     pub(super) fn setup_session_config(&self) {
@@ -42,15 +43,7 @@ impl imp::KpWindow {
     }
 
     pub(super) fn update_original_text(&self) {
-        let session_type_string = self
-            .session_type_dropdown
-            .selected_item()
-            .expect("dropdowns have been set up")
-            .downcast_ref::<gtk::StringObject>()
-            .expect("dropdown contains string items")
-            .string();
-
-        let session_type = match session_type_string.as_str() {
+        let session_type = match self.session_type().as_str() {
             "Simple" => SessionType::Simple,
             "Advanced" => SessionType::Advanced,
             "Custom" => SessionType::Custom,
@@ -76,6 +69,15 @@ impl imp::KpWindow {
         self.text_view.set_original_text(text);
         self.secondary_config_stack
             .set_visible_child(&config_widget);
+    }
+
+    pub(super) fn session_type(&self) -> GString {
+        self.session_type_dropdown
+            .selected_item()
+            .expect("dropdowns have been set up")
+            .downcast_ref::<gtk::StringObject>()
+            .expect("dropdown contains string items")
+            .string()
     }
 
     pub(super) fn update_time(&self) {

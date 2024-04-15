@@ -21,6 +21,7 @@
 mod application;
 mod config;
 mod custom_text_dialog;
+mod results_view;
 mod text_view;
 mod util;
 mod window;

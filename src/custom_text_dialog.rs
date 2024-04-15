@@ -9,7 +9,7 @@ mod imp {
     use super::*;
 
     #[derive(Default, gtk::CompositeTemplate)]
-    #[template(resource = "/dev/bragefuglseth/Keypunch/custom_text_dialog.ui")]
+    #[template(resource = "/dev/bragefuglseth/Keypunch/ui/custom_text_dialog.ui")]
     pub struct KpCustomTextDialog {
         #[template_child]
         pub header_bar: TemplateChild<adw::HeaderBar>,
@@ -130,7 +130,8 @@ impl KpCustomTextDialog {
         let imp = obj.imp();
         *imp.current_text.borrow_mut() = current_text.to_string();
         imp.text_view.buffer().set_text(initial_text);
-        imp.text_view.emit_by_name_with_values("select-all", &[true.into()]);
+        imp.text_view
+            .emit_by_name_with_values("select-all", &[true.into()]);
         obj
     }
 }

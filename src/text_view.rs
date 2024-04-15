@@ -17,7 +17,7 @@ mod imp {
     use super::*;
 
     #[derive(Default, gtk::CompositeTemplate, glib::Properties)]
-    #[template(resource = "/dev/bragefuglseth/Keypunch/text_view.ui")]
+    #[template(resource = "/dev/bragefuglseth/Keypunch/ui/text_view.ui")]
     #[properties(wrapper_type = super::KpTextView)]
     pub struct KpTextView {
         #[template_child]
@@ -100,9 +100,7 @@ mod imp {
         }
 
         fn dispose(&self) {
-            let obj = self.obj();
-
-            while let Some(child) = obj.first_child() {
+            while let Some(child) = self.obj().first_child() {
                 child.unparent();
             }
         }

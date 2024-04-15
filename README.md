@@ -16,11 +16,10 @@ A rough checklist with what has to be in place before the app is ready for its i
 
 - [x] Text view displaying the text as you type it, in addition to highlighting mistakes
 - [x] Basic session configuration (simple/advanced, duration)
-- [ ] Results view showing WPM, accuracy and the session configuration used
+- [x] Results view showing WPM, accuracy and the session configuration used
 - [x] Custom text mode
 - [ ] Extensible multi-language text generation for sessions
 - [x] Restore previous configuration (window size, session settings, etc.) on open
-- [ ] High score tracking
 - [ ] Adequate a11y for visually impaired people
 - [ ] UI translation support
 - [x] Cursor disappearance upon typing
@@ -30,6 +29,8 @@ A rough checklist with what has to be in place before the app is ready for its i
 
 ## Post-release roadmap
 
+- [ ] High score tracking
+- [ ] Caps Lock indication
 - [ ] Logging of typing speed/accuracy over time, and a nice statistics dialog to view / export these statistics
 - [ ] Break reminders (displayed after sessions if the app has been continuously in use for a long time, to avoid finger strain)
 - [ ] Frustration relief (stop the session and suggest taking a break when people are obviously mashing keys randomly in frustration)

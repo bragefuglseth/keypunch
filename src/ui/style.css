@@ -12,6 +12,11 @@ KpTextView label {
   font-variant-ligatures: none;
 }
 
+KpResultsView .key-number {
+  font-size: 3.5rem;
+  font-weight: 700;
+}
+
 .flat-dropdown button:not(:checked):not(:hover) {
   background: transparent;
   box-shadow: none;

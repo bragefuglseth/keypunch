@@ -1,0 +1,79 @@
+using Gtk 4.0;
+using Adw 1;
+
+template $KpResultsView: Widget {
+  Box {
+    orientation: vertical;
+    spacing: 36;
+    halign: center;
+
+    Box wpm_accuracy_box {
+      orientation: horizontal;
+      spacing: 12;
+
+      Box {
+        orientation: vertical;
+        width-request: 200;
+
+        Label wpm_label {
+          styles [ "key-number" ]
+        }
+
+        Label {
+          label: "Words per Minute";
+          styles [ "dim-label" ]
+        }
+      }
+
+      Separator separator {}
+
+      Box {
+        orientation: vertical;
+        width-request: 200;
+
+        Label accuracy_label {
+          styles [ "key-number" ]
+        }
+
+        Label {
+          label: "Correctness";
+          styles [ "dim-label" ]
+        }
+      }
+    }
+
+    Box session_info_box {
+      halign: center;
+
+      Box {
+        halign: center;
+        spacing: 6;
+        Image {
+          icon-name: "quotation-symbolic";
+        }
+        Label session_type_label {}
+      }
+
+      Box {
+        halign: center;
+        spacing: 6;
+        Image {
+          icon-name: "timer-symbolic";
+        }
+        Label duration_label {}
+      }
+
+      Box {
+        visible: false; /* TODO: Show language support */
+        halign: center;
+        spacing: 6;
+        Image {
+          icon-name: "language-symbolic";
+        }
+        Label {
+          label: "English (US)";
+        }
+      }
+    }
+  }
+}

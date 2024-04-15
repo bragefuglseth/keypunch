@@ -4,12 +4,11 @@ template $KpTextView: Widget {
   overflow: hidden;
   valign: center;
   focusable: true;
-  focus-on-click: true;
 
   Label label {
     xalign: 0;
     yalign: 0;
     wrap: true;
-    natural-wrap-mode: word;
+    wrap-mode: word_char;
   }
 }

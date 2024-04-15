@@ -24,6 +24,7 @@ mod session_config;
 mod settings;
 mod ui_state;
 
+use crate::results_view::KpResultsView;
 use crate::text_view::KpTextView;
 use adw::prelude::*;
 use adw::subclass::prelude::*;
@@ -54,7 +55,7 @@ mod imp {
     use super::*;
 
     #[derive(Default, gtk::CompositeTemplate)]
-    #[template(resource = "/dev/bragefuglseth/Keypunch/window.ui")]
+    #[template(resource = "/dev/bragefuglseth/Keypunch/ui/window.ui")]
     pub struct KpWindow {
         #[template_child]
         pub toast_overlay: TemplateChild<adw::ToastOverlay>,
@@ -88,6 +89,10 @@ mod imp {
         pub just_start_typing: TemplateChild<gtk::Label>,
         #[template_child]
         pub focus_button: TemplateChild<gtk::Button>,
+        #[template_child]
+        pub results_view: TemplateChild<KpResultsView>,
+        #[template_child]
+        pub continue_button: TemplateChild<gtk::Button>,
 
         pub settings: OnceCell<gio::Settings>,
 
@@ -95,6 +100,7 @@ mod imp {
         pub custom_text: RefCell<String>,
         pub duration: Cell<SessionDuration>,
         pub start_time: Cell<Option<Instant>>,
+        pub finish_time: Cell<Option<Instant>>,
         pub running: Cell<bool>,
         pub show_cursor: Cell<bool>,
         pub cursor_hidden_timestamp: Cell<u32>,
@@ -127,7 +133,9 @@ mod imp {
             self.setup_text_view();
             self.setup_focus();
             self.setup_stop_button();
+            self.setup_continue_button();
             self.setup_ui_hiding();
+            self.show_cursor();
 
             self.ready(false);
         }

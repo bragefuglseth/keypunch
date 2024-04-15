@@ -78,8 +78,11 @@ impl imp::KpTextView {
                 mistake_fg_attr.set_start_index(n as u32);
                 mistake_fg_attr.set_end_index(n as u32 + 1);
 
-                let mut mistake_bg_attr =
-                    pango::AttrColor::new_background(clr.mistake_bg.0, clr.mistake_bg.1, clr.mistake_bg.2);
+                let mut mistake_bg_attr = pango::AttrColor::new_background(
+                    clr.mistake_bg.0,
+                    clr.mistake_bg.1,
+                    clr.mistake_bg.2,
+                );
                 mistake_bg_attr.set_start_index(n as u32);
                 mistake_bg_attr.set_end_index(n as u32 + 1);
 

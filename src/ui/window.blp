@@ -63,7 +63,7 @@ template $KpWindow: Adw.ApplicationWindow {
 
                 [start]
                 Button stop_button {
-                  icon-name: "stop-symbolic";
+                  icon-name: "go-previous-symbolic";
                 }
 
                 styles ["header-bar-running"]
@@ -96,7 +96,7 @@ template $KpWindow: Adw.ApplicationWindow {
             Button focus_button {
               label: "Focus Entry";
 
-              styles [ "pill" ]
+              styles [ "pill", "suggested-action" ]
             }
             Box bottom_stack_empty{}
 
@@ -114,20 +114,54 @@ template $KpWindow: Adw.ApplicationWindow {
             Adw.WindowTitle {
               title: "Results";
             }
-          }
-          content: Label {
-            label: "Results";
-            halign: center;
-            valign: center;
-            hexpand: true;
-            vexpand: true;
 
-            styles ["title-1"]
+            [end]
+            MenuButton {
+              primary: true;
+              icon-name: 'open-menu-symbolic';
+              tooltip-text: _('Menu');
+              menu-model: primary_menu;
+            }
+          }
+          content: ScrolledWindow {
+            hscrollbar-policy: never;
+
+            Box {
+              orientation: vertical;
+              valign: center;
+              spacing: 12;
+
+              $KpResultsView results_view {
+                orientation: horizontal;
+                margin-top: 12;
+                margin-bottom: 12;
+              }
+            }
           };
+
+          [bottom]
+          Box {
+            halign: center;
+
+            Button continue_button {
+              label: "Continue";
+
+              styles [ "pill", "suggested-action" ]
+            }
+
+            styles [ "toolbar-thick" ]
+          }
         };
       }
     }
   };
+
+  Adw.Breakpoint {
+    condition ("max-width: 500sp")
+    setters {
+      results_view.orientation: vertical;
+    }
+  }
 }
 
 menu primary_menu {

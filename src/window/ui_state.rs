@@ -1,10 +1,18 @@
 use super::*;
+use crate::util::{calculate_accuracy, calculate_wpm};
 
 impl imp::KpWindow {
     pub(super) fn setup_stop_button(&self) {
         self.stop_button
             .connect_clicked(glib::clone!(@weak self as imp => move |_| {
                 imp.ready(true);
+            }));
+    }
+
+    pub(super) fn setup_continue_button(&self) {
+        self.continue_button
+            .connect_clicked(glib::clone!(@weak self as imp => move |_| {
+                imp.ready(false);
             }));
     }
 
@@ -32,9 +40,11 @@ impl imp::KpWindow {
         let motion_ctrl = gtk::EventControllerMotion::new();
         motion_ctrl.connect_motion(glib::clone!(@weak self as imp, @strong device => move |_,_,_| {
             if !imp.show_cursor.get() && device.timestamp() > imp.cursor_hidden_timestamp.get() {
-                imp.header_bar_running.remove_css_class("hide-controls");
-
                 imp.show_cursor();
+
+                if imp.running.get() {
+                    imp.header_bar_running.remove_css_class("hide-controls");
+                }
             }
         }));
 
@@ -49,7 +59,6 @@ impl imp::KpWindow {
         self.main_stack.set_visible_child_name("session");
         self.header_stack.set_visible_child_name("ready");
         self.text_view.reset(animate);
-        self.show_cursor();
         self.focus_text_view();
 
         self.update_original_text();
@@ -76,7 +85,43 @@ impl imp::KpWindow {
         self.running.set(false);
         self.text_view.set_running(false);
         self.text_view.set_accepts_input(false);
+        self.finish_time.set(Some(Instant::now()));
+        self.show_results_view();
+    }
+
+    fn show_results_view(&self) {
+        let continue_button = self.continue_button.get();
+        let original_text = self.text_view.original_text();
+        let typed_text = self.text_view.typed_text();
+        let Some(start_time) = self.start_time.get() else {
+            return;
+        };
+        let Some(finish_time) = self.finish_time.get() else {
+            return;
+        };
+
+        let duration = finish_time.duration_since(start_time);
+        self.results_view.set_duration(duration.as_secs());
+
+        let wpm = calculate_wpm(duration, &typed_text);
+        self.results_view.set_wpm(wpm);
+
+        let accuracy = calculate_accuracy(&original_text, &typed_text);
+        self.results_view.set_accuracy(accuracy);
+
+        let session_type = self.session_type();
+        self.results_view.set_session_type(session_type);
+
         self.main_stack.set_visible_child_name("results");
+
+        self.obj().set_focus_widget(None::<&gtk::Widget>);
+        glib::timeout_add_local_once(
+            Duration::from_millis(500),
+            glib::clone!(@weak continue_button => move || {
+                    continue_button.grab_focus();
+                }
+            ),
+        );
     }
 
     pub(super) fn hide_cursor(&self) {

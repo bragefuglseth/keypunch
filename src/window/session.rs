@@ -48,6 +48,8 @@ impl imp::KpWindow {
             SessionDuration::Min10 => Duration::from_secs(10 * 60),
         };
 
+        self.update_timer(duration.as_secs() + 1);
+
         glib::timeout_add_local(
             Duration::from_millis(100),
             glib::clone!(@weak self as imp, @strong duration => @default-return ControlFlow::Break, move || {
@@ -59,16 +61,7 @@ impl imp::KpWindow {
                     let seconds = diff.as_secs() + 1;
 
                     // add trailing zero for second values below 10
-                    let text = if seconds >= 60 && seconds % 60 < 10 {
-                        let with_trailing_zero = format!("0{}", seconds % 60);
-                        format!("{}∶{}", seconds / 60, with_trailing_zero)
-                    } else if seconds >= 60 {
-                        format!("{}∶{}", seconds / 60, seconds % 60)
-                    }else {
-                        seconds.to_string()
-                    };
-
-                    imp.running_title.set_title(&text);
+                    imp.update_timer(seconds);
                     ControlFlow::Continue
                 } else {
                     imp.finish();
@@ -76,5 +69,18 @@ impl imp::KpWindow {
                 }
             }),
         );
+    }
+
+    fn update_timer(&self, seconds: u64) {
+        // add trailing zero for second values below 10
+        let text = if seconds >= 60 && seconds % 60 < 10 {
+            format!("{}∶0{}", seconds / 60, seconds % 60) // trailing zero
+        } else if seconds >= 60 {
+            format!("{}∶{}", seconds / 60, seconds % 60)
+        } else {
+            seconds.to_string()
+        };
+
+        self.running_title.set_title(&text);
     }
 }

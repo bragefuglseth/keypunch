@@ -1,6 +1,6 @@
 use super::*;
 
-const UNFOCUSED_TIMEOUT_MILLIS: u64 = 1500;
+const UNFOCUSED_TIMEOUT_MILLIS: u64 = 1800;
 
 impl imp::KpWindow {
     pub(super) fn setup_focus(&self) {
