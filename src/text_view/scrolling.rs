@@ -1,60 +1,80 @@
 use super::*;
 
 impl imp::KpTextView {
-    pub(super) fn set_scroll_position(&self, line_number: f64) {
-        self.scroll_position.set(line_number);
-        self.obj().queue_allocate();
-    }
-
     pub(super) fn scroll_animation(&self) -> adw::TimedAnimation {
         self.scroll_animation
             .get_or_init(|| {
-                let obj = self.obj().to_owned();
+                let text_view = self.text_view.get();
+                let vadjustment = self
+                    .text_view
+                    .vadjustment()
+                    .expect("text view has vadjustment");
 
                 adw::TimedAnimation::builder()
                     .duration(300)
-                    .widget(&obj)
-                    .target(&adw::PropertyAnimationTarget::new(&obj, "scroll-position"))
+                    .widget(&text_view)
+                    .target(&adw::PropertyAnimationTarget::new(&vadjustment, "value"))
                     .build()
             })
             .clone()
     }
 
     pub(super) fn update_scroll_position(&self) {
-        let original = self.obj().original_text();
-        let typed = self.obj().typed_text();
+        let obj = self.obj();
 
-        let (line, _) = self.label.layout().index_to_line_x(
-            validate_with_whsp_markers(&original, &typed).len() as i32,
-            false,
-        );
+        let original = obj.original_text();
+        let typed = obj.typed_text();
+        let current_offset = validate_with_whsp_markers(&original, &typed).len();
+
+        let text_view = self.text_view.get();
+
+        let buffer = text_view.buffer();
+        let mut iter = buffer.iter_at_offset(current_offset as i32);
+
+        let mut line = 0;
+
+        while text_view.backward_display_line(&mut iter) {
+            line += 1;
+        }
 
         if line != self.line.get() {
             self.line.set(line);
             self.animate_to_line(match line {
                 0 | 1 => 0,
-                num => num.try_into().unwrap(),
+                num => (num - 1).try_into().unwrap(),
             });
         }
     }
 
     pub(super) fn animate_to_line(&self, line: usize) {
-        let y: i32 = self
-            .label
-            .layout()
-            .lines()
-            .iter()
-            .take(line.checked_sub(1).unwrap_or(0))
-            .map(|l| l.extents().1.height() / pango::SCALE)
-            .sum();
+        let obj = self.obj();
+
+        let text_view = self.text_view.get();
+        let buffer = text_view.buffer();
+
+        let mut iter = buffer.start_iter();
+        for _ in 0..line + 1 {
+            text_view.forward_display_line(&mut iter);
+        }
+
+        // To get the alignment to be proper, we have to calculate the y position
+        // of the *vertical center* of the next line, and then subtract half of the
+        // widget display height.
+
+        let location = text_view.iter_location(&iter);
+        let y = (location.y() + location.height() / 2)
+            .checked_sub(obj.height() / 2)
+            .unwrap_or(0);
+
+        let current_position = self
+            .text_view
+            .vadjustment()
+            .expect("text view always has vadjustment")
+            .value();
 
         let scroll_animation = self.scroll_animation();
-
-        let current_position = self.obj().scroll_position();
-
         scroll_animation.set_value_from(current_position);
         scroll_animation.set_value_to(y as f64);
-
         scroll_animation.play();
     }
 }

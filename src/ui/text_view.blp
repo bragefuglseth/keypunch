@@ -1,14 +1,14 @@
 using Gtk 4.0;
+using Adw 1;
 
-template $KpTextView: Widget {
-  overflow: hidden;
-  valign: center;
+template $KpTextView : Widget {
   focusable: true;
+  valign: center;
+  overflow: hidden;
 
-  Label label {
-    xalign: 0;
-    yalign: 0;
-    wrap: true;
+  TextView text_view {
+    editable: false;
+    focusable: false;
     wrap-mode: word_char;
   }
 }

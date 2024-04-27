@@ -18,23 +18,27 @@ impl imp::KpWindow {
             let original_text = tw.original_text();
             let typed_text = tw.typed_text();
 
+            let original_grapheme_count = original_text.graphemes(true).count();
+            let typed_grapheme_count = typed_text.graphemes(true).count();
+
+            if typed_grapheme_count >= original_grapheme_count {
+                imp.finish();
+            }
+
             match imp.session_type.get() {
                 SessionType::Simple | SessionType::Advanced => (),
                 SessionType::Custom => {
-                    let total_words = original_text.unicode_words().count();
-
-                    let typed_words_len = typed_text.graphemes(true).count();
                     let current_word = original_text
-                        .unicode_word_indices()
-                        .filter(|&(i, _)| i <= typed_words_len)
+                        .graphemes(true)
+                        .take(typed_grapheme_count)
+                        .collect::<String>()
+                        .unicode_words()
                         .count();
+
+                    let total_words = original_text.unicode_words().count();
 
                     imp.running_title.set_title(&format!("{current_word} ⁄ {total_words}"));
                 }
-            }
-
-            if typed_text.len() >= original_text.len() {
-                imp.finish();
             }
         }));
     }

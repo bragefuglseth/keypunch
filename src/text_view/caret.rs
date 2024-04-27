@@ -41,74 +41,71 @@ impl imp::KpTextView {
 
     pub(super) fn caret_stroke_data(&self) -> (gsk::Path, gsk::Stroke, gdk::RGBA) {
         let obj = self.obj();
+        let (r, g, b) = self.caret_rgb.get();
         let caret_x = obj.caret_x() as f32;
         let caret_y = obj.caret_y() as f32;
+        let caret_height = obj.caret_height() as f32;
         let path_builder = gsk::PathBuilder::new();
-        path_builder.move_to(caret_x, caret_y);
-        path_builder.line_to(
-            caret_x,
-            caret_y + (self.label.layout().baseline() / pango::SCALE) as f32 + 2.,
-        );
+
+        path_builder.move_to(caret_x, caret_y + caret_height);
+        path_builder.line_to(caret_x, caret_y);
+
         let path = path_builder.to_path();
 
         let stroke = gsk::Stroke::new(1.);
 
-        let clr = self.color_scheme.get();
-        let color = gdk::RGBA::new(clr.caret.0, clr.caret.1, clr.caret.2, 1.);
+        let color = gdk::RGBA::new(r, g, b, 1.);
 
         (path, stroke, color)
     }
 
     pub(super) fn update_caret_position(&self) {
-        let original = self.obj().original_text();
-        let typed = self.obj().typed_text();
-        let current_index = validate_with_whsp_markers(&original, &typed).len();
-
-        let layout = self.label.get().layout();
-        let layout_width = layout.width() / pango::SCALE;
-
-        // Find `x`
-        let (line_index, ltr_x) = layout.index_to_line_x(current_index as i32, false);
-        let ltr_x = ltr_x / pango::SCALE; // X value measured from the left edge of the line's area
-
-        let line = layout.line(line_index).expect("line exists at index");
-
-        let line_width = line.extents().1.width() / pango::SCALE;
-
-        let line_direction = line.resolved_direction();
-
-        let x = if line_direction == pango::Direction::Rtl {
-            layout_width - line_width + ltr_x
-        } else {
-            ltr_x
-        };
-
-        // Some x overrides
-        let x = if x == layout_width
-            && current_index as i32 > line.start_index()
-            && line_direction == pango::Direction::Rtl
-        {
-            layout_width - line_width // fix RTL quirk where cursor jumps back to the right edge of the view after last grapheme
-        } else if current_index == 0 && line_direction == pango::Direction::Rtl {
-            layout_width + 1 // hide caret when no text has been entered (RTL)
-        } else if current_index == 0 {
-            -1 // hide caret when no text has been entered
-        } else if x == 0 {
-            1 // avoid clipping the caret at the view edge
-        } else if x == layout_width {
-            layout_width - 1 // avoid cliping the caret at the view edge
-        } else {
-            x
-        };
-
-        // Find `y`
-        // First, check which of the visible lines the caret is being drawn on
-        let reference_line = layout
-            .line(if line_index == 0 { 0 } else { 1 })
-            .expect("requested line exists");
-        let y = layout.index_to_pos(reference_line.start_index()).y() / pango::SCALE;
+        // Calculates where the caret currently should be,
+        // and runs an animation to get it there
 
         let obj = self.obj();
+
+        let original = obj.original_text();
+        let typed = obj.typed_text();
+        let current_offset = validate_with_whsp_markers(&original, &typed).len();
+
+        let text_view = self.text_view.get();
+        let buffer = text_view.buffer();
+
+        // Calculate x position
+        let caret_iter = buffer.iter_at_offset(current_offset as i32);
+        let (pos, _) = text_view.cursor_locations(Some(&caret_iter));
+        let (mut x, _) =
+            text_view.buffer_to_window_coords(gtk::TextWindowType::Widget, pos.x(), pos.y());
+
+        let width = obj.width();
+        if x == 0 || x == width {
+            let start_iter = buffer.start_iter();
+            let start_is_rtl = text_view.iter_location(&start_iter).x() > 0;
+
+            x = match (self.running.get(), start_is_rtl) {
+                (false, false) => -10,
+                (false, true) => width + 10,
+                (true, false) => 1,
+                (true, true) => width - 1,
+            };
+        }
+
+        // Calculate y position
+
+        // If we can't move the iter backwards one display line, that must mean
+        // we're at the first one
+        let is_first_line = !text_view.backward_display_line(&mut caret_iter.clone());
+
+        let y = if is_first_line {
+            text_view.cursor_locations(Some(&buffer.start_iter())).1.y()
+        } else {
+            let mut line_1_iter = buffer.start_iter();
+            text_view.forward_display_line(&mut line_1_iter);
+            text_view.cursor_locations(Some(&line_1_iter)).1.y()
+        };
+
+        self.caret_height.set(pos.height() as f64);
 
         let caret_x_animation = self.caret_x_animation();
         caret_x_animation.set_value_from(obj.caret_x());
@@ -121,8 +118,8 @@ impl imp::KpTextView {
         caret_y_animation.play();
 
         // Update virtual caret to accomodate software input methods (e.g. Pinyin)
-        let caret_rect = gdk::Rectangle::new(x, y, 1, layout.baseline() / pango::SCALE + 2);
         if let Some(input_context) = &*self.input_context.borrow() {
+            let caret_rect = gdk::Rectangle::new(x, y, 1, pos.height());
             input_context.set_cursor_location(&caret_rect);
             input_context.reset();
         }

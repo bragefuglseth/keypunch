@@ -2,6 +2,7 @@ use std::iter::zip;
 use std::time::Duration;
 use unicode_segmentation::UnicodeSegmentation;
 
+// Whitespace markers
 pub const WHSP_MARKERS: [(&'static str, &'static str); 1] = [("\n", "↲\n")];
 
 pub fn insert_whsp_markers(string: &str) -> String {
@@ -12,17 +13,22 @@ pub fn insert_whsp_markers(string: &str) -> String {
     s
 }
 
+// Get the corresponding whitespace marker
+pub fn whsp_marker(s: &str) -> Option<&'static str> {
+    WHSP_MARKERS
+        .iter()
+        .find(|(whitespace, _)| *whitespace == s)
+        .map(|(_, marker)| *marker)
+}
+
 pub fn validate_with_whsp_markers(original: &str, typed: &str) -> Vec<bool> {
     zip(original.graphemes(true), typed.graphemes(true))
         .map(|(og, tg)| {
             let matches = og == tg;
-            // check if the typed grapheme exists in the whitespace char database
-            // used by the text view. if that's the case, match the length of the
-            // indicator used.
-            if let Some((_, val)) = WHSP_MARKERS.iter().find(|(key, _)| *key == og) {
-                vec![matches; val.len()]
+            if let Some(marker) = whsp_marker(og) {
+                vec![matches; marker.graphemes(true).count()]
             } else {
-                vec![matches; og.len()]
+                vec![matches]
             }
         })
         .flatten()

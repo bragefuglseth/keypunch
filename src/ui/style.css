@@ -6,10 +6,10 @@ KpTextView.unfocused {
   filter: blur(3px);
 }
 
-KpTextView label {
+KpTextView > textview {
   font-size: 1.6rem;
   line-height: 45px;
-  font-variant-ligatures: none;
+  background: none;
 }
 
 KpResultsView .key-number {
@@ -17,7 +17,7 @@ KpResultsView .key-number {
   font-weight: 700;
 }
 
-.flat-dropdown button:not(:checked):not(:hover) {
+.flat-dropdown > button:not(:checked):not(:hover) {
   background: transparent;
   box-shadow: none;
 }

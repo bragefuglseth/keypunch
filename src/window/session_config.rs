@@ -1,5 +1,6 @@
 use super::*;
 use crate::custom_text_dialog::KpCustomTextDialog;
+use crate::text_generation;
 use glib::GString;
 
 impl imp::KpWindow {
@@ -50,12 +51,10 @@ impl imp::KpWindow {
             _ => panic!("invalid mode selected in dropdown"),
         };
 
-        let custom = self.custom_text.borrow();
-
         let text = match session_type {
-            SessionType::Simple => "lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magnam aliquam quaerat voluptatem ut enim aeque doleamus animo cum corpore dolemus fieri tamen permagna accessio potest si aliquod aeternum et infinitum impendere malum nobis opinemur quod idem licet transferre in voluptatem ut",
-            SessionType::Advanced => "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim aeque doleamus animo, cum corpore dolemus, fieri tamen permagna accessio potest, si aliquod aeternum et infinitum impendere malum nobis opinemur. Quod idem licet transferre in voluptatem, ut.",
-            SessionType::Custom => custom.as_str(),
+            SessionType::Simple => text_generation::basic_latin::simple("en_US"),
+            SessionType::Advanced => text_generation::basic_latin::simple("en_US"),
+            SessionType::Custom => self.custom_text.borrow().to_string(),
         };
 
         let config_widget = match session_type {
