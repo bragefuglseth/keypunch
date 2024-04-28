@@ -20,19 +20,21 @@
 
 mod application;
 mod config;
-mod custom_text_dialog;
-mod results_view;
+mod widgets;
 mod text_generation;
-mod text_view;
 mod util;
 mod window;
 
 use self::application::KpApplication;
 
-use config::{GETTEXT_PACKAGE, LOCALEDIR, PKGDATADIR};
+use config::{GETTEXT_PACKAGE, LOCALEDIR};
 use gettextrs::{bind_textdomain_codeset, bindtextdomain, textdomain};
 use gtk::prelude::*;
 use gtk::{gio, glib};
+
+
+static GRESOURCE_BYTES: &[u8] =
+    gvdb_macros::include_gresource_from_dir!("/dev/bragefuglseth/Keypunch", "data/resources");
 
 fn main() -> glib::ExitCode {
     // Set up gettext translations
@@ -42,9 +44,9 @@ fn main() -> glib::ExitCode {
     textdomain(GETTEXT_PACKAGE).expect("Unable to switch to the text domain");
 
     // Load resources
-    let resources = gio::Resource::load(PKGDATADIR.to_owned() + "/keypunch.gresource")
-        .expect("Could not load resources");
-    gio::resources_register(&resources);
+    gio::resources_register(
+        &gio::Resource::from_data(&glib::Bytes::from_static(GRESOURCE_BYTES)).unwrap(),
+    );
 
     // Create a new GtkApplication. The application manages our main loop,
     // application windows, integration with the window manager/compositor, and

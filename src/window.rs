@@ -24,8 +24,8 @@ mod session_config;
 mod settings;
 mod ui_state;
 
-use crate::results_view::KpResultsView;
-use crate::text_view::KpTextView;
+use crate::config::VERSION;
+use crate::widgets::{KpTextView, KpResultsView};
 use adw::prelude::*;
 use adw::subclass::prelude::*;
 use gtk::{gio, glib};
@@ -55,7 +55,7 @@ mod imp {
     use super::*;
 
     #[derive(Default, gtk::CompositeTemplate)]
-    #[template(resource = "/dev/bragefuglseth/Keypunch/ui/window.ui")]
+    #[template(file = "src/window.blp")]
     pub struct KpWindow {
         #[template_child]
         pub toast_overlay: TemplateChild<adw::ToastOverlay>,
@@ -117,6 +117,10 @@ mod imp {
 
         fn class_init(klass: &mut Self::Class) {
             klass.bind_template();
+
+            klass.install_action("win.about", None, move |window, _, _| {
+                window.show_about_dialog();
+            });
         }
 
         fn instance_init(obj: &glib::subclass::InitializingObject<Self>) {
@@ -156,7 +160,8 @@ mod imp {
 
 glib::wrapper! {
     pub struct KpWindow(ObjectSubclass<imp::KpWindow>)
-        @extends gtk::Widget, gtk::Window, gtk::ApplicationWindow, adw::ApplicationWindow,        @implements gio::ActionGroup, gio::ActionMap;
+        @extends gtk::Widget, gtk::Window, gtk::ApplicationWindow, adw::ApplicationWindow,
+        @implements gio::ActionGroup, gio::ActionMap;
 }
 
 impl KpWindow {
@@ -164,5 +169,19 @@ impl KpWindow {
         glib::Object::builder()
             .property("application", application)
             .build()
+    }
+
+    fn show_about_dialog(&self) {
+        let about = adw::AboutWindow::builder()
+            .transient_for(self)
+            .application_name("Keypunch")
+            .application_icon("dev.bragefuglseth.Keypunch")
+            .developer_name("Brage Fuglseth")
+            .version(VERSION)
+            .developers(vec!["Brage Fuglseth"])
+            .copyright("© 2024 Brage Fuglseth")
+            .build();
+
+        about.present();
     }
 }

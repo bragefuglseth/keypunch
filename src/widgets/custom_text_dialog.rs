@@ -9,7 +9,7 @@ mod imp {
     use super::*;
 
     #[derive(Default, gtk::CompositeTemplate)]
-    #[template(resource = "/dev/bragefuglseth/Keypunch/ui/custom_text_dialog.ui")]
+    #[template(file = "src/widgets/custom_text_dialog.blp")]
     pub struct KpCustomTextDialog {
         #[template_child]
         pub header_bar: TemplateChild<adw::HeaderBar>,

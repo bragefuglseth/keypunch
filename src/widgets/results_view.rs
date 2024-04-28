@@ -8,7 +8,7 @@ mod imp {
 
     #[derive(gtk::CompositeTemplate, glib::Properties)]
     #[properties(wrapper_type=super::KpResultsView)]
-    #[template(resource = "/dev/bragefuglseth/Keypunch/ui/results_view.ui")]
+    #[template(file = "src/widgets/results_view.blp")]
     pub struct KpResultsView {
         #[template_child]
         wpm_accuracy_box: TemplateChild<gtk::Box>,

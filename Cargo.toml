@@ -5,7 +5,8 @@ edition = "2021"
 
 [dependencies]
 gettext-rs = { version = "0.7", features = ["gettext-system"] }
-gtk = { version = "0.8", package = "gtk4", features=[ "v4_14" ] }
+gtk = { version = "0.8", package = "gtk4", features=[ "v4_14", "blueprint" ] }
+gvdb-macros = "0.1.12"
 rand = "0.8.5"
 unicode-segmentation = "1.11.0"
 

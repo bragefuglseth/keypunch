@@ -16,7 +16,7 @@ mod imp {
     use super::*;
 
     #[derive(Default, gtk::CompositeTemplate, glib::Properties)]
-    #[template(resource = "/dev/bragefuglseth/Keypunch/ui/text_view.ui")]
+    #[template(file = "src/widgets/text_view.blp")]
     #[properties(wrapper_type = super::KpTextView)]
     pub struct KpTextView {
         #[template_child]

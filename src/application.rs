@@ -22,7 +22,6 @@ use adw::subclass::prelude::*;
 use gtk::prelude::*;
 use gtk::{gio, glib};
 
-use crate::config::VERSION;
 use crate::window::KpWindow;
 
 mod imp {
@@ -86,27 +85,10 @@ impl KpApplication {
     }
 
     fn setup_gactions(&self) {
-        let quit_action = gio::ActionEntry::builder("quit")
+        let actions = [gio::ActionEntry::builder("quit")
             .activate(move |app: &Self, _, _| app.quit())
-            .build();
-        let about_action = gio::ActionEntry::builder("about")
-            .activate(move |app: &Self, _, _| app.show_about())
-            .build();
-        self.add_action_entries([quit_action, about_action]);
-    }
+            .build()];
 
-    fn show_about(&self) {
-        let window = self.active_window().unwrap();
-        let about = adw::AboutWindow::builder()
-            .transient_for(&window)
-            .application_name("Keypunch")
-            .application_icon("dev.bragefuglseth.Keypunch")
-            .developer_name("Brage Fuglseth")
-            .version(VERSION)
-            .developers(vec!["Brage Fuglseth"])
-            .copyright("© 2024 Brage Fuglseth")
-            .build();
-
-        about.present();
+        self.add_action_entries(actions);
     }
 }

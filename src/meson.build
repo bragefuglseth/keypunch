@@ -1,25 +1,4 @@
 pkgdatadir = get_option('prefix') / get_option('datadir') / meson.project_name()
-gnome = import('gnome')
-
-blueprints = custom_target('blueprints',
-  input: files(
-    'ui/help_overlay.blp',
-    'ui/window.blp',
-    'ui/text_view.blp',
-    'ui/custom_text_dialog.blp',
-    'ui/results_view.blp',
-  ),
-  output: '.',
-  command: [find_program('blueprint-compiler'), 'batch-compile', '@OUTPUT@', '@CURRENT_SOURCE_DIR@', '@INPUT@'],
-)
-
-gnome.compile_resources('keypunch',
-  'keypunch.gresource.xml',
-  dependencies: blueprints,
-  gresource_bundle: true,
-  install: true,
-  install_dir: pkgdatadir,
-)
 
 conf = configuration_data()
 conf.set_quoted('VERSION', meson.project_version())

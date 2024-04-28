@@ -1,5 +1,5 @@
 use super::*;
-use crate::custom_text_dialog::KpCustomTextDialog;
+use crate::widgets::KpCustomTextDialog;
 use crate::text_generation;
 use glib::GString;
 
