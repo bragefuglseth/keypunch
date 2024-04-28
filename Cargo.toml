@@ -5,10 +5,16 @@ edition = "2021"
 
 [dependencies]
 gettext-rs = { version = "0.7", features = ["gettext-system"] }
-gtk = { version = "0.8", package = "gtk4", features=[ "v4_14", "blueprint" ] }
 gvdb-macros = "0.1.12"
+include_dir = "0.7.3"
 rand = "0.8.5"
+rayon = "1.10.0"
 unicode-segmentation = "1.11.0"
+
+[dependencies.gtk]
+package = "gtk4"
+version = "0.8"
+features = ["v4_14", "blueprint"]
 
 [dependencies.adw]
 package = "libadwaita"

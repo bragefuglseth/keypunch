@@ -1,6 +1,8 @@
 use super::*;
 use glib::ControlFlow;
 use unicode_segmentation::UnicodeSegmentation;
+use crate::text_generation;
+use text_generation::CHUNK_GRAPHEME_COUNT;
 
 impl imp::KpWindow {
     pub(super) fn setup_text_view(&self) {
@@ -23,6 +25,24 @@ impl imp::KpWindow {
 
             if typed_grapheme_count >= original_grapheme_count {
                 imp.finish();
+            }
+
+            // TODO: improve code below
+            if typed_grapheme_count > original_grapheme_count - CHUNK_GRAPHEME_COUNT / 2 {
+                let session_type = match imp.session_type().as_str() {
+                    "Simple" => SessionType::Simple,
+                    "Advanced" => SessionType::Advanced,
+                    "Custom" => SessionType::Custom,
+                    _ => panic!("invalid mode selected in dropdown"),
+                };
+
+                let new_chunk = match session_type {
+                    SessionType::Simple => text_generation::basic_latin::simple("en_US"),
+                    SessionType::Advanced => text_generation::basic_latin::simple("en_US"),
+                    SessionType::Custom => String::new(),
+                };
+
+                tw.set_original_text(format!("{original_text}{new_chunk}"));
             }
 
             match imp.session_type.get() {
