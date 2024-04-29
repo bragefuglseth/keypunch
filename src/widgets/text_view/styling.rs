@@ -1,4 +1,5 @@
 use super::*;
+use crate::text_generation::CHUNK_GRAPHEME_COUNT;
 
 impl imp::KpTextView {
     pub(super) fn setup_color_scheme(&self) {
@@ -72,6 +73,7 @@ impl imp::KpTextView {
         comparison
             .iter()
             .enumerate()
+            .skip(comparison.len().checked_sub(CHUNK_GRAPHEME_COUNT).unwrap_or(0))
             .filter(|(_, &correctly_typed)| !correctly_typed)
             .map(|(n, _)| n)
             .for_each(|n| {
