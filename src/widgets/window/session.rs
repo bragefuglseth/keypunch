@@ -28,7 +28,7 @@ impl imp::KpWindow {
             }
 
             // TODO: improve code below
-            if typed_grapheme_count > original_grapheme_count - CHUNK_GRAPHEME_COUNT / 2 {
+            if typed_grapheme_count > original_grapheme_count.checked_sub(CHUNK_GRAPHEME_COUNT / 2).unwrap_or(CHUNK_GRAPHEME_COUNT) {
                 let session_type = match imp.session_type().as_str() {
                     "Simple" => SessionType::Simple,
                     "Advanced" => SessionType::Advanced,

@@ -55,7 +55,7 @@ mod imp {
     use super::*;
 
     #[derive(Default, gtk::CompositeTemplate)]
-    #[template(file = "src/window.blp")]
+    #[template(file = "src/widgets/window.blp")]
     pub struct KpWindow {
         #[template_child]
         pub toast_overlay: TemplateChild<adw::ToastOverlay>,

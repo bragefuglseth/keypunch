@@ -22,7 +22,7 @@ use adw::subclass::prelude::*;
 use gtk::prelude::*;
 use gtk::{gio, glib};
 
-use crate::window::KpWindow;
+use crate::widgets::KpWindow;
 
 mod imp {
     use super::*;

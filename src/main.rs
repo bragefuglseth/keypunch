@@ -23,7 +23,6 @@ mod config;
 mod widgets;
 mod text_generation;
 mod util;
-mod window;
 
 use self::application::KpApplication;
 
