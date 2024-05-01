@@ -65,7 +65,7 @@ impl imp::KpWindow {
         };
 
         self.session_type.set(session_type);
-        self.text_view.set_original_text(text);
+        self.text_view.set_original_text(&text);
         self.secondary_config_stack
             .set_visible_child(&config_widget);
     }

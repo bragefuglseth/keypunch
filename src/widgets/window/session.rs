@@ -42,7 +42,7 @@ impl imp::KpWindow {
                     SessionType::Custom => String::new(),
                 };
 
-                tw.set_original_text(format!("{original_text}{new_chunk}"));
+                tw.push_original_text(&new_chunk);
             }
 
             match imp.session_type.get() {

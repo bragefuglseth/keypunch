@@ -29,7 +29,6 @@ mod imp {
         #[property(get, set)]
         pub(super) caret_height: Cell<f64>,
 
-        #[property(get, set=Self::set_original_text)]
         pub(super) original_text: RefCell<String>,
         #[property(get, set)]
         pub(super) typed_text: RefCell<String>,
@@ -39,7 +38,6 @@ mod imp {
         pub(super) accepts_input: Cell<bool>,
 
         pub(super) input_context: RefCell<Option<gtk::IMMulticontext>>,
-        pub(super) line: Cell<i32>,
         pub(super) scroll_animation: OnceCell<adw::TimedAnimation>,
         pub(super) caret_x_animation: OnceCell<adw::TimedAnimation>,
         pub(super) caret_y_animation: OnceCell<adw::TimedAnimation>,
@@ -128,7 +126,7 @@ mod imp {
     }
 
     impl KpTextView {
-        fn set_original_text(&self, text: &str) {
+        pub fn set_original_text(&self, text: &str) {
             *self.original_text.borrow_mut() = text.to_string();
             self.text_view
                 .buffer()
@@ -136,6 +134,13 @@ mod imp {
             self.update_text_styling();
             self.update_caret_position();
             self.update_scroll_position();
+        }
+
+        pub fn push_original_text(&self, text: &str) {
+            self.original_text.borrow_mut().push_str(text);
+
+            let buffer = self.text_view.buffer();
+            buffer.insert(&mut buffer.end_iter(), &insert_whsp_markers(&text));
         }
     }
 }
@@ -146,6 +151,18 @@ glib::wrapper! {
 }
 
 impl KpTextView {
+    pub fn original_text(&self) -> String {
+        self.imp().original_text.borrow().to_string()
+    }
+
+    pub fn set_original_text(&self, text: &str) {
+        self.imp().set_original_text(text);
+    }
+
+    pub fn push_original_text(&self, text: &str) {
+        self.imp().push_original_text(text);
+    }
+
     pub fn reset(&self, animate: bool) {
         self.set_original_text("");
         self.set_typed_text("");

@@ -37,13 +37,10 @@ impl imp::KpTextView {
             line += 1;
         }
 
-        if line != self.line.get() {
-            self.line.set(line);
-            self.animate_to_line(match line {
-                0 | 1 => 0,
-                num => (num - 1).try_into().unwrap(),
-            });
-        }
+        self.animate_to_line(match line {
+            0 | 1 => 0,
+            num => (num - 1).try_into().unwrap(),
+        });
     }
 
     pub(super) fn animate_to_line(&self, line: usize) {
@@ -64,7 +61,8 @@ impl imp::KpTextView {
         let location = text_view.iter_location(&iter);
         let y = (location.y() + location.height() / 2)
             .checked_sub(obj.height() / 2)
-            .unwrap_or(0);
+            .unwrap_or(0)
+            as f64;
 
         let current_position = self
             .text_view
@@ -73,8 +71,11 @@ impl imp::KpTextView {
             .value();
 
         let scroll_animation = self.scroll_animation();
-        scroll_animation.set_value_from(current_position);
-        scroll_animation.set_value_to(y as f64);
-        scroll_animation.play();
+        if y != scroll_animation.value_to() {
+            println!("{line}");
+            scroll_animation.set_value_from(current_position);
+            scroll_animation.set_value_to(y);
+            scroll_animation.play();
+        }
     }
 }
