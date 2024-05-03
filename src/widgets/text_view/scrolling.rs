@@ -31,7 +31,14 @@ impl imp::KpTextView {
         let text_view = self.text_view.get();
 
         let buffer = text_view.buffer();
-        let  iter = buffer.iter_at_offset(current_offset as i32);
+        let mut iter = buffer.iter_at_offset(current_offset as i32);
+
+        // If we're at the first line, act as if we're going to line 2 for
+        // the sake of vertical centering
+        let mut line_check_iter = iter.clone();
+        if !text_view.backward_display_line(&mut line_check_iter) {
+            text_view.forward_display_line(&mut iter);
+        }
 
         let location = text_view.iter_location(&iter);
         let y = (location.y() + location.height() / 2)
