@@ -1,7 +1,7 @@
 mod caret;
 mod input;
 mod scrolling;
-mod styling;
+mod colors;
 
 use crate::util::{insert_whsp_markers, validate_with_whsp_markers};
 use adw::prelude::*;
@@ -85,14 +85,14 @@ mod imp {
 
             obj.connect_typed_text_notify(|obj| {
                 let imp = obj.imp();
-                imp.update_text_styling();
+                imp.update_colors();
                 imp.update_caret_position(false);
                 imp.update_scroll_position(false);
             });
 
             self.setup_input_handling();
             self.setup_color_scheme();
-            self.update_text_styling();
+            self.update_colors();
             self.update_scroll_position(true);
         }
 
@@ -132,7 +132,7 @@ mod imp {
             self.text_view
                 .buffer()
                 .set_text(&insert_whsp_markers(&text));
-            self.update_text_styling();
+            self.update_colors();
             self.update_caret_position(true);
             self.update_scroll_position(true);
         }

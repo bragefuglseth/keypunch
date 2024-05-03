@@ -19,6 +19,8 @@ impl imp::KpTextView {
             .clone()
     }
 
+    // Updates the scroll position according to the text view and the length of the typed text so far.
+    // If `force` is true, the change will be made unconditionally and without an animation.
     pub(super) fn update_scroll_position(&self, force: bool) {
         let obj = self.obj();
 

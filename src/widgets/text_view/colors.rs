@@ -39,13 +39,13 @@ impl imp::KpTextView {
 
         let style = adw::StyleManager::default();
         style.connect_dark_notify(glib::clone!(@weak obj => move |_| {
-            obj.imp().update_text_styling();
+            obj.imp().update_colors();
         }));
 
-        self.update_text_styling();
+        self.update_colors();
     }
 
-    pub(super) fn update_text_styling(&self) {
+    pub(super) fn update_colors(&self) {
         let obj = self.obj();
         let original = obj.original_text();
         let typed = obj.typed_text();

@@ -59,10 +59,9 @@ impl imp::KpTextView {
         (path, stroke, color)
     }
 
+    // Calculates where the caret currently should be, and runs an animation to get it there.
+    // If `force` is true, the change will happen unconditionally and without an animation.
     pub(super) fn update_caret_position(&self, force: bool) {
-        // Calculates where the caret currently should be,
-        // and runs an animation to get it there
-
         let obj = self.obj();
 
         let original = obj.original_text();
