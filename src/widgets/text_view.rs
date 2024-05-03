@@ -81,18 +81,19 @@ mod imp {
 
             let text_view = self.text_view.get();
             text_view.set_bottom_margin(LINE_HEIGHT);
+            text_view.set_can_target(false);
 
             obj.connect_typed_text_notify(|obj| {
                 let imp = obj.imp();
                 imp.update_text_styling();
-                imp.update_caret_position();
-                imp.update_scroll_position();
+                imp.update_caret_position(false);
+                imp.update_scroll_position(false);
             });
 
             self.setup_input_handling();
             self.setup_color_scheme();
             self.update_text_styling();
-            self.update_scroll_position();
+            self.update_scroll_position(true);
         }
 
         fn dispose(&self) {
@@ -112,9 +113,9 @@ mod imp {
         }
 
         fn size_allocate(&self, width: i32, height: i32, baseline: i32) {
-            self.update_scroll_position();
-            self.update_caret_position();
             self.text_view.allocate(width, height, baseline, None);
+            self.update_scroll_position(true);
+            self.update_caret_position(true);
         }
 
         fn snapshot(&self, snapshot: &gtk::Snapshot) {
@@ -132,8 +133,8 @@ mod imp {
                 .buffer()
                 .set_text(&insert_whsp_markers(&text));
             self.update_text_styling();
-            self.update_caret_position();
-            self.update_scroll_position();
+            self.update_caret_position(true);
+            self.update_scroll_position(true);
         }
 
         pub fn push_original_text(&self, text: &str) {

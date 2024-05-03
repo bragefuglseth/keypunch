@@ -59,7 +59,7 @@ impl imp::KpTextView {
         (path, stroke, color)
     }
 
-    pub(super) fn update_caret_position(&self) {
+    pub(super) fn update_caret_position(&self, force: bool) {
         // Calculates where the caret currently should be,
         // and runs an animation to get it there
 
@@ -107,21 +107,27 @@ impl imp::KpTextView {
 
         self.caret_height.set(pos.height() as f64);
 
-        let caret_x_animation = self.caret_x_animation();
-        caret_x_animation.set_value_from(obj.caret_x());
-        caret_x_animation.set_value_to(x as f64);
-        caret_x_animation.play();
+        if force {
+            self.caret_x.set(x as f64);
+            self.caret_y.set(y as f64);
+            obj.queue_draw();
+        } else {
+            let caret_x_animation = self.caret_x_animation();
+            caret_x_animation.set_value_from(obj.caret_x());
+            caret_x_animation.set_value_to(x as f64);
+            caret_x_animation.play();
 
-        let caret_y_animation = self.caret_y_animation();
-        caret_y_animation.set_value_from(obj.caret_y());
-        caret_y_animation.set_value_to(y as f64);
-        caret_y_animation.play();
+            let caret_y_animation = self.caret_y_animation();
+            caret_y_animation.set_value_from(obj.caret_y());
+            caret_y_animation.set_value_to(y as f64);
+            caret_y_animation.play();
 
-        // Update virtual caret to accomodate software input methods (e.g. Pinyin)
-        if let Some(input_context) = &*self.input_context.borrow() {
-            let caret_rect = gdk::Rectangle::new(x, y, 1, pos.height());
-            input_context.set_cursor_location(&caret_rect);
-            input_context.reset();
+            // Update virtual caret to accomodate software input methods (e.g. Pinyin)
+            if let Some(input_context) = &*self.input_context.borrow() {
+                let caret_rect = gdk::Rectangle::new(x, y, 1, pos.height());
+                input_context.set_cursor_location(&caret_rect);
+                input_context.reset();
+            }
         }
     }
 }

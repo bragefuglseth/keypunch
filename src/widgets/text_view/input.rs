@@ -3,12 +3,6 @@ use crate::util::pop_grapheme;
 
 impl imp::KpTextView {
     pub(super) fn setup_input_handling(&self) {
-        let buffer = self.text_view.buffer();
-        buffer.connect_has_selection_notify(glib::clone!(@weak self as imp => move |buffer| {
-            buffer.select_range(&buffer.start_iter(), &buffer.start_iter());
-            imp.update_scroll_position();
-        }));
-
         let obj = self.obj();
         let input_context = gtk::IMMulticontext::new();
 
