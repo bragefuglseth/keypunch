@@ -26,30 +26,13 @@ mod ui_state;
 
 use crate::config::VERSION;
 use crate::widgets::{KpTextView, KpResultsView};
+use crate::enums::{SessionDuration, SessionType};
 use adw::prelude::*;
 use adw::subclass::prelude::*;
 use gtk::{gio, glib};
 use std::cell::OnceCell;
 use std::cell::{Cell, RefCell};
 use std::time::{Duration, Instant};
-
-#[derive(Clone, Copy, Default)]
-pub enum SessionType {
-    #[default]
-    Simple,
-    Advanced,
-    Custom,
-}
-
-#[derive(Clone, Copy, Default)]
-pub enum SessionDuration {
-    #[default]
-    Sec15,
-    Sec30,
-    Min1,
-    Min5,
-    Min10,
-}
 
 mod imp {
     use super::*;
@@ -97,6 +80,7 @@ mod imp {
         pub settings: OnceCell<gio::Settings>,
 
         pub session_type: Cell<SessionType>,
+        pub language: Cell<&'static str>,
         pub custom_text: RefCell<String>,
         pub duration: Cell<SessionDuration>,
         pub start_time: Cell<Option<Instant>>,
@@ -131,7 +115,7 @@ mod imp {
     impl ObjectImpl for KpWindow {
         fn constructed(&self) {
             self.parent_constructed();
-            self.setup_settings();
+            self.load_settings();
             self.setup_session_config();
 
             self.setup_text_view();

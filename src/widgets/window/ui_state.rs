@@ -1,5 +1,5 @@
 use super::*;
-use crate::util::{calculate_accuracy, calculate_wpm};
+use crate::text_utils::{calculate_accuracy, calculate_wpm};
 
 impl imp::KpWindow {
     pub(super) fn setup_stop_button(&self) {
@@ -109,8 +109,8 @@ impl imp::KpWindow {
         let accuracy = calculate_accuracy(&original_text, &typed_text);
         self.results_view.set_accuracy(accuracy);
 
-        let session_type = self.session_type();
-        self.results_view.set_session_type(session_type);
+        let session_type = self.session_type.get();
+        self.results_view.set_session_type(session_type.as_string());
 
         self.main_stack.set_visible_child_name("results");
 

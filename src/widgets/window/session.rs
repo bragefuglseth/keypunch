@@ -27,14 +27,8 @@ impl imp::KpWindow {
                 imp.finish();
             }
 
-            // TODO: improve code below
             if typed_grapheme_count > original_grapheme_count.checked_sub(CHUNK_GRAPHEME_COUNT / 2).unwrap_or(CHUNK_GRAPHEME_COUNT) {
-                let session_type = match imp.session_type().as_str() {
-                    "Simple" => SessionType::Simple,
-                    "Advanced" => SessionType::Advanced,
-                    "Custom" => SessionType::Custom,
-                    _ => panic!("invalid mode selected in dropdown"),
-                };
+                let session_type = imp.session_type.get();
 
                 let new_chunk = match session_type {
                     SessionType::Simple => text_generation::basic_latin::simple("en_US"),

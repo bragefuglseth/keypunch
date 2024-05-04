@@ -1,5 +1,5 @@
 use super::*;
-use crate::util::pop_grapheme;
+use crate::text_utils::pop_grapheme;
 
 impl imp::KpTextView {
     pub(super) fn setup_input_handling(&self) {

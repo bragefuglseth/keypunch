@@ -3,7 +3,7 @@ mod input;
 mod scrolling;
 mod colors;
 
-use crate::util::{insert_whsp_markers, validate_with_whsp_markers};
+use crate::text_utils::{insert_whsp_markers, validate_with_whsp_markers};
 use adw::prelude::*;
 use adw::subclass::prelude::*;
 use gtk::glib;

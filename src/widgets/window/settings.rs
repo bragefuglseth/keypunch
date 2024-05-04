@@ -6,27 +6,21 @@ impl imp::KpWindow {
             .get_or_init(|| gio::Settings::new("dev.bragefuglseth.Keypunch"))
     }
 
-    pub(super) fn setup_settings(&self) {
+    pub(super) fn load_settings(&self) {
         let settings = self.settings();
         let width = settings.int("window-width");
         let height = settings.int("window-height");
         let maximized = settings.boolean("window-maximized");
-        let session_type = settings.string("session-type");
-        let duration = settings.string("session-duration");
+        let session_type = settings.enum_("session-type");
+        let duration = settings.enum_("session-duration");
         let custom_text = settings.string("custom-text");
 
         let obj = self.obj();
         obj.set_default_size(width, height);
 
-        self.session_type.set(
-            deserialize_session_type(&session_type)
-                .expect("session type string form settings is part of the enum defined there"),
-        );
+        self.session_type.set(SessionType::from_i32(session_type).expect("settings contain valid SessionType value"));
 
-        self.duration.set(
-            deserialize_duration(&duration)
-                .expect("duration string from settings is part of the enum defined there"),
-        );
+        self.duration.set(SessionDuration::from_i32(duration).expect("settings contain valid SessionDuration value"));
 
         if maximized {
             obj.maximize();
@@ -52,25 +46,5 @@ impl imp::KpWindow {
         settings.set_enum("session-duration", duration as i32)?;
         settings.set_string("custom-text", &custom_text)?;
         Ok(())
-    }
-}
-
-fn deserialize_duration(s: &str) -> Option<SessionDuration> {
-    match s {
-        "15sec" => Some(SessionDuration::Sec15),
-        "30sec" => Some(SessionDuration::Sec30),
-        "1min" => Some(SessionDuration::Min1),
-        "5min" => Some(SessionDuration::Min5),
-        "10min" => Some(SessionDuration::Min10),
-        _ => None,
-    }
-}
-
-fn deserialize_session_type(s: &str) -> Option<SessionType> {
-    match s {
-        "Simple" => Some(SessionType::Simple),
-        "Advanced" => Some(SessionType::Advanced),
-        "Custom" => Some(SessionType::Custom),
-        _ => None,
     }
 }

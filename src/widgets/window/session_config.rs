@@ -1,13 +1,11 @@
 use super::*;
 use crate::widgets::KpCustomTextDialog;
 use crate::text_generation;
-use glib::GString;
 
 impl imp::KpWindow {
     pub(super) fn setup_session_config(&self) {
-        let session_type_model = gtk::StringList::new(&["Simple", "Advanced", "Custom"]);
         let session_type_dropdown = self.session_type_dropdown.get();
-        session_type_dropdown.set_model(Some(&session_type_model));
+        session_type_dropdown.set_model(Some(&SessionType::string_list()));
         session_type_dropdown.set_selected(self.session_type.get() as u32);
         session_type_dropdown.connect_selected_item_notify(
             glib::clone!(@weak self as imp => move |_| {
@@ -16,19 +14,9 @@ impl imp::KpWindow {
             }),
         );
 
-        let duration_model = gtk::StringList::new(&[
-            "15 seconds",
-            "30 seconds",
-            "1 minute",
-            "5 minutes",
-            "10 minutes",
-        ]);
         let duration_dropdown = self.duration_dropdown.get();
-
-        duration_dropdown.set_model(Some(&duration_model));
-
+        duration_dropdown.set_model(Some(&SessionDuration::string_list()));
         duration_dropdown.set_selected(self.duration.get() as u32);
-
         duration_dropdown.connect_selected_item_notify(
             glib::clone!(@weak self as imp => move |_| {
                 imp.update_time();
@@ -44,12 +32,8 @@ impl imp::KpWindow {
     }
 
     pub(super) fn update_original_text(&self) {
-        let session_type = match self.session_type().as_str() {
-            "Simple" => SessionType::Simple,
-            "Advanced" => SessionType::Advanced,
-            "Custom" => SessionType::Custom,
-            _ => panic!("invalid mode selected in dropdown"),
-        };
+        let session_type = SessionType::from_i32(self.session_type_dropdown.selected() as i32)
+            .expect("dropdown only contains valid `SessionType` values");
 
         let text = match session_type {
             SessionType::Simple => text_generation::basic_latin::simple("en_US"),
@@ -70,28 +54,11 @@ impl imp::KpWindow {
             .set_visible_child(&config_widget);
     }
 
-    pub(super) fn session_type(&self) -> GString {
-        self.session_type_dropdown
-            .selected_item()
-            .expect("dropdowns have been set up")
-            .downcast_ref::<gtk::StringObject>()
-            .expect("dropdown contains string items")
-            .string()
-    }
-
     pub(super) fn update_time(&self) {
-        let selected_idx = self.duration_dropdown.selected();
+        let selected = SessionDuration::from_i32(self.duration_dropdown.selected() as i32)
+            .expect("dropdown only contains valid `SessionDuration` values");
 
-        let duration = match selected_idx {
-            0 => SessionDuration::Sec15,
-            1 => SessionDuration::Sec30,
-            2 => SessionDuration::Min1,
-            3 => SessionDuration::Min5,
-            4 => SessionDuration::Min10,
-            _ => panic!("not all dropdown options covered"),
-        };
-
-        self.duration.set(duration);
+        self.duration.set(selected);
     }
 
     pub fn show_custom_text_dialog(&self, initial_text: &str) {

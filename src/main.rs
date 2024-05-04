@@ -22,7 +22,8 @@ mod application;
 mod config;
 mod widgets;
 mod text_generation;
-mod util;
+mod text_utils;
+mod enums;
 
 use self::application::KpApplication;
 

@@ -7,11 +7,11 @@
   </enum>
 
   <enum id="dev.bragefuglseth.Keypunch.SessionDuration">
-    <value nick="15sec" value="0" />
-    <value nick="30sec" value="1" />
-    <value nick="1min" value="2" />
-    <value nick="5min" value="3" />
-    <value nick="10min" value="4" />
+    <value nick="Sec15" value="0" />
+    <value nick="Sec30" value="1" />
+    <value nick="Min1" value="2" />
+    <value nick="Min5" value="3" />
+    <value nick="Min10" value="4" />
   </enum>
 
 	<schema id="dev.bragefuglseth.Keypunch" path="/dev/bragefuglseth/Keypunch/">
@@ -32,7 +32,7 @@
 	    <summary>Session type</summary>
 	  </key>
 	  <key name="session-duration" enum="dev.bragefuglseth.Keypunch.SessionDuration">
-	    <default>"30sec"</default>
+	    <default>"Sec30"</default>
 	    <summary>Session duration</summary>
 	    <description>The duration of time-based sessions in seconds</description>
 	  </key>
