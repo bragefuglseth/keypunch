@@ -28,14 +28,20 @@ pub mod basic_latin {
         let word_list = words_from_lang_code(lang_code);
 
         let mut rng = thread_rng();
-
         let mut s = String::new();
-
         while s.graphemes(true).count() < CHUNK_GRAPHEME_COUNT {
             s.push_str(word_list.choose(&mut rng).expect("word list contains at least 1 word"));
             s.push(' ');
         }
 
         s
+    }
+
+    pub fn advanced(lang_code: &str, punctuation: &[&'static str], wrapping: &[(&'static str, &'static str)]) -> String {
+        let word_list = words_from_lang_code(lang_code);
+
+        let mut rng = thread_rng();
+
+        todo!()
     }
 }
