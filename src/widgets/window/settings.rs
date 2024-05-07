@@ -18,9 +18,14 @@ impl imp::KpWindow {
         let obj = self.obj();
         obj.set_default_size(width, height);
 
-        self.session_type.set(SessionType::from_i32(session_type).expect("settings contain valid SessionType value"));
+        self.session_type.set(
+            SessionType::from_i32(session_type).expect("settings contain valid SessionType value"),
+        );
 
-        self.duration.set(SessionDuration::from_i32(duration).expect("settings contain valid SessionDuration value"));
+        self.duration.set(
+            SessionDuration::from_i32(duration)
+                .expect("settings contain valid SessionDuration value"),
+        );
 
         if maximized {
             obj.maximize();

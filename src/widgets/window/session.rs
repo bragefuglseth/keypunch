@@ -1,8 +1,8 @@
 use super::*;
-use glib::ControlFlow;
-use unicode_segmentation::UnicodeSegmentation;
 use crate::text_generation;
+use glib::ControlFlow;
 use text_generation::CHUNK_GRAPHEME_COUNT;
+use unicode_segmentation::UnicodeSegmentation;
 
 impl imp::KpWindow {
     pub(super) fn setup_text_view(&self) {
@@ -31,8 +31,8 @@ impl imp::KpWindow {
                 let session_type = imp.session_type.get();
 
                 let new_chunk = match session_type {
-                    SessionType::Simple => text_generation::basic_latin::simple("en_US"),
-                    SessionType::Advanced => text_generation::basic_latin::simple("en_US"),
+                    SessionType::Simple => text_generation::simple("en_US").unwrap(),
+                    SessionType::Advanced => text_generation::advanced("en_US").unwrap(),
                     SessionType::Custom => String::new(),
                 };
 

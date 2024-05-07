@@ -25,8 +25,8 @@ mod settings;
 mod ui_state;
 
 use crate::config::VERSION;
-use crate::widgets::{KpTextView, KpResultsView};
 use crate::enums::{SessionDuration, SessionType};
+use crate::widgets::{KpResultsView, KpTextView};
 use adw::prelude::*;
 use adw::subclass::prelude::*;
 use gtk::{gio, glib};

@@ -73,7 +73,12 @@ impl imp::KpTextView {
         comparison
             .iter()
             .enumerate()
-            .skip(comparison.len().checked_sub(CHUNK_GRAPHEME_COUNT).unwrap_or(0))
+            .skip(
+                comparison
+                    .len()
+                    .checked_sub(CHUNK_GRAPHEME_COUNT)
+                    .unwrap_or(0),
+            )
             .filter(|(_, &correctly_typed)| !correctly_typed)
             .map(|(n, _)| n)
             .for_each(|n| {

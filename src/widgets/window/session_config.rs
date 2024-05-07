@@ -1,6 +1,6 @@
 use super::*;
-use crate::widgets::KpCustomTextDialog;
 use crate::text_generation;
+use crate::widgets::KpCustomTextDialog;
 
 impl imp::KpWindow {
     pub(super) fn setup_session_config(&self) {
@@ -36,8 +36,8 @@ impl imp::KpWindow {
             .expect("dropdown only contains valid `SessionType` values");
 
         let text = match session_type {
-            SessionType::Simple => text_generation::basic_latin::simple("en_US"),
-            SessionType::Advanced => text_generation::basic_latin::simple("en_US"),
+            SessionType::Simple => text_generation::simple("en_US").unwrap(),
+            SessionType::Advanced => text_generation::advanced("en_US").unwrap(),
             SessionType::Custom => self.custom_text.borrow().to_string(),
         };
 

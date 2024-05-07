@@ -43,8 +43,7 @@ impl imp::KpTextView {
         let location = text_view.iter_location(&iter);
         let y = (location.y() + location.height() / 2)
             .checked_sub(obj.height() / 2)
-            .unwrap_or(0)
-            as f64;
+            .unwrap_or(0) as f64;
 
         let current_position = self
             .text_view
@@ -54,7 +53,10 @@ impl imp::KpTextView {
 
         let scroll_animation = self.scroll_animation();
         if force {
-            self.text_view.vadjustment().expect("text view has vadjustment").set_value(y);
+            self.text_view
+                .vadjustment()
+                .expect("text view has vadjustment")
+                .set_value(y);
         } else if y != scroll_animation.value_to() {
             scroll_animation.set_value_from(current_position);
             scroll_animation.set_value_to(y);

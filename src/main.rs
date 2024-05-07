@@ -20,10 +20,10 @@
 
 mod application;
 mod config;
-mod widgets;
+mod enums;
 mod text_generation;
 mod text_utils;
-mod enums;
+mod widgets;
 
 use self::application::KpApplication;
 
@@ -31,7 +31,6 @@ use config::{GETTEXT_PACKAGE, LOCALEDIR};
 use gettextrs::{bind_textdomain_codeset, bindtextdomain, textdomain};
 use gtk::prelude::*;
 use gtk::{gio, glib};
-
 
 static GRESOURCE_BYTES: &[u8] =
     gvdb_macros::include_gresource_from_dir!("/dev/bragefuglseth/Keypunch", "data/resources");

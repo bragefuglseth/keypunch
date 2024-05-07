@@ -1,7 +1,7 @@
 mod caret;
+mod colors;
 mod input;
 mod scrolling;
-mod colors;
 
 use crate::text_utils::{insert_whsp_markers, validate_with_whsp_markers};
 use adw::prelude::*;
