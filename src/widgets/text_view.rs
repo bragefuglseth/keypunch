@@ -142,6 +142,7 @@ mod imp {
 
             let buffer = self.text_view.buffer();
             buffer.insert(&mut buffer.end_iter(), &insert_whsp_markers(&text));
+            self.update_colors();
         }
     }
 }

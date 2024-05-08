@@ -20,12 +20,11 @@
 
 mod focus;
 mod session;
-mod session_config;
 mod settings;
 mod ui_state;
 
 use crate::config::VERSION;
-use crate::enums::{SessionDuration, SessionType};
+use crate::enums::{SessionDuration, SessionType, Language};
 use crate::widgets::{KpResultsView, KpTextView};
 use adw::prelude::*;
 use adw::subclass::prelude::*;
@@ -80,7 +79,7 @@ mod imp {
         pub settings: OnceCell<gio::Settings>,
 
         pub session_type: Cell<SessionType>,
-        pub language: Cell<&'static str>,
+        pub language: Cell<Language>,
         pub custom_text: RefCell<String>,
         pub duration: Cell<SessionDuration>,
         pub start_time: Cell<Option<Instant>>,
@@ -115,6 +114,8 @@ mod imp {
     impl ObjectImpl for KpWindow {
         fn constructed(&self) {
             self.parent_constructed();
+            self.language.set(Language::EnglishUS);
+
             self.load_settings();
             self.setup_session_config();
 

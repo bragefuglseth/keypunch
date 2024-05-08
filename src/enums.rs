@@ -75,3 +75,13 @@ impl SessionDuration {
         ])
     }
 }
+
+#[derive(Clone, Copy, Default)]
+pub enum Language {
+    #[default]
+    EnglishUS,
+    NorwegianBokmaal,
+    NorwegianNynorsk,
+    Spanish,
+    Swedish,
+}
