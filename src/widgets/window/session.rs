@@ -91,9 +91,12 @@ impl imp::KpWindow {
 
         self.session_type.set(session_type);
 
-        self.text_view.set_original_text("");
-        self.extend_original_text();
-
+        let new_original = match session_type {
+            SessionType::Simple => text_generation::simple(self.language.get()),
+            SessionType::Advanced => text_generation::advanced(self.language.get()),
+            SessionType::Custom => self.custom_text.borrow().to_string(),
+        };
+        self.text_view.set_original_text(&new_original);
         self.secondary_config_stack
             .set_visible_child(&config_widget);
     }
