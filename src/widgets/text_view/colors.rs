@@ -78,7 +78,7 @@ impl imp::KpTextView {
                 let start_iter = buf.iter_at_offset(n as i32);
                 let end_iter = buf.iter_at_offset(n as i32 + 1);
 
-                // Avoid applying the tag line breaks, which leads to some weird side effects
+                // Avoid applying the tag to line breaks, which leads to some weird side effects
                 // in the text view. Might be a GTK bug.
                 if !start_iter.ends_line() {
                     let tag = if correct { tag_typed } else { tag_mistake };
