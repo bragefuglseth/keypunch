@@ -18,9 +18,9 @@ A rough checklist with what has to be in place before the app is ready for its i
 - [x] Basic session configuration (simple/advanced, duration)
 - [x] Results view showing WPM, accuracy and the session configuration used
 - [x] Custom text mode
-- [ ] Extensible multi-language text generation for sessions
+- [x] Extensible multi-language text generation for sessions
 - [x] Restore previous configuration (window size, session settings, etc.) on open
-- [ ] Adequate a11y for visually impaired people
+- [ ] Adequate a11y for visually impaired people, possibly with an integrated TTS solution reading text to be typed
 - [ ] UI translation support
 - [x] Cursor disappearance upon typing
 - [x] Appropriate handling of situations where the text view loses keyboard focus
