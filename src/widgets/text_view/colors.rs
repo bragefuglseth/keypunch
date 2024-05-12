@@ -53,11 +53,9 @@ impl imp::KpTextView {
         let comparison = validate_with_whsp_markers(&original, &typed);
 
         let text_view = self.text_view.get();
-        let buffer = text_view.buffer();
-        let start_iter = buffer.start_iter();
-        let typed_iter = buffer.iter_at_offset(comparison.len() as i32);
-        let end_iter = buffer.end_iter();
-        buffer.remove_all_tags(&start_iter, &end_iter);
+        let buf = text_view.buffer();
+        let typed_iter = buf.iter_at_offset(comparison.len() as i32);
+        buf.remove_all_tags(&buf.start_iter(), &buf.end_iter());
 
         let style = adw::StyleManager::default();
 
@@ -67,25 +65,43 @@ impl imp::KpTextView {
             ("untyped", "typed", "mistake", (0.180, 0.180, 0.180))
         };
 
-        buffer.apply_tag_by_name(tag_untyped, &start_iter, &end_iter);
-        buffer.apply_tag_by_name(tag_typed, &start_iter, &typed_iter);
+        let mut color_start_iter = typed_iter.clone();
+        text_view.backward_display_line(&mut color_start_iter);
+        text_view.backward_display_line(&mut color_start_iter);
+        text_view.backward_display_line_start(&mut color_start_iter);
+        let color_start_offset = color_start_iter.offset();
 
         comparison
             .iter()
             .enumerate()
             .skip(
-                comparison
-                    .len()
-                    .checked_sub(CHUNK_GRAPHEME_COUNT)
-                    .unwrap_or(0),
+                color_start_offset as usize
             )
-            .filter(|(_, &correctly_typed)| !correctly_typed)
-            .map(|(n, _)| n)
-            .for_each(|n| {
-                let mistake_start = buffer.iter_at_offset(n as i32);
-                let mistake_end = buffer.iter_at_offset(n as i32 + 1);
-                buffer.apply_tag_by_name(tag_mistake, &mistake_start, &mistake_end);
+            .for_each(|(n, &correct)| {
+                let val_start_iter = buf.iter_at_offset(n as i32);
+                let val_end_iter = buf.iter_at_offset(n as i32 + 1);
+
+                if !val_start_iter.ends_line() {
+                    let tag = if correct { tag_typed } else { tag_mistake };
+
+                    buf.apply_tag_by_name(tag, &val_start_iter, &val_end_iter);
+                }
             });
+
+        let mut color_end_iter = typed_iter.clone();
+        text_view.forward_display_line(&mut color_end_iter);
+        text_view.forward_display_line(&mut color_end_iter);
+        text_view.forward_display_line_end(&mut color_end_iter);
+        let color_end_offset = color_end_iter.offset();
+
+        for n in comparison.len()..color_end_offset as usize {
+            let start_iter = buf.iter_at_offset(n as i32);
+            let end_iter = buf.iter_at_offset(n as i32 + 1);
+
+            if !start_iter.ends_line() {
+                buf.apply_tag_by_name(tag_untyped, &start_iter, &end_iter);
+            }
+        }
 
         self.caret_rgb.set(caret_color);
     }

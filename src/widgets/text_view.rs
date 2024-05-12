@@ -116,6 +116,7 @@ mod imp {
             self.text_view.allocate(width, height, baseline, None);
             self.update_scroll_position(true);
             self.update_caret_position(true);
+            self.update_colors();
         }
 
         fn snapshot(&self, snapshot: &gtk::Snapshot) {
