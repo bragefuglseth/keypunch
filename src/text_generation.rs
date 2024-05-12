@@ -1,8 +1,8 @@
+use crate::enums::Language;
 use include_dir::{include_dir, Dir};
 use rand::prelude::*;
 use rand::seq::index::sample;
 use unicode_segmentation::UnicodeSegmentation;
-use crate::enums::Language;
 
 static EMBEDDED_WORD_LIST_DIR: Dir = include_dir!("$CARGO_MANIFEST_DIR/data/word_lists");
 const EMBEDDED_WORD_LIST_LEN: usize = 200;
@@ -12,8 +12,8 @@ pub const CHUNK_GRAPHEME_COUNT: usize = 400;
 struct Punctuation<'a> {
     prefix: Option<&'a str>,
     suffix: Option<&'a str>,
-    ends_sentence: bool,    // Whether the next word should start with a capitalized letter or not
-    weight: f64,            // How much the type of punctuation should be used compared to other ones
+    ends_sentence: bool, // Whether the next word should start with a capitalized letter or not
+    weight: f64,         // How much the type of punctuation should be used compared to other ones
 }
 
 impl<'a> Punctuation<'a> {
@@ -133,7 +133,6 @@ pub fn advanced(language: Language) -> String {
         ),
     }
 }
-
 
 // Should work for most languages
 fn simple_generic(lang_code: &str) -> String {

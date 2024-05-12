@@ -151,7 +151,9 @@ impl imp::KpWindow {
         let new_chunk = match self.session_type.get() {
             SessionType::Simple => text_generation::simple(language),
             SessionType::Advanced => text_generation::advanced(language),
-            SessionType::Custom => { return; },
+            SessionType::Custom => {
+                return;
+            }
         };
         self.text_view.push_original_text(&new_chunk);
     }

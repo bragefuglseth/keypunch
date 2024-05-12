@@ -24,7 +24,7 @@ mod settings;
 mod ui_state;
 
 use crate::config::VERSION;
-use crate::enums::{SessionDuration, SessionType, Language};
+use crate::enums::{Language, SessionDuration, SessionType};
 use crate::widgets::{KpResultsView, KpTextView};
 use adw::prelude::*;
 use adw::subclass::prelude::*;
