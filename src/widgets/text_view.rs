@@ -86,8 +86,8 @@ mod imp {
             obj.connect_typed_text_notify(|obj| {
                 let imp = obj.imp();
                 imp.update_colors();
-                imp.update_caret_position(false);
-                imp.update_scroll_position(false);
+                imp.update_caret_position(!imp.running.get());
+                imp.update_scroll_position(!imp.running.get());
             });
 
             obj.connect_has_focus_notify(|obj| {
