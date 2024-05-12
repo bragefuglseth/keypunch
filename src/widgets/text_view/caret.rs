@@ -78,7 +78,7 @@ impl imp::KpTextView {
             text_view.buffer_to_window_coords(gtk::TextWindowType::Widget, pos.x(), pos.y());
 
         let width = obj.width();
-        if x == 0 || x == width {
+        if text_view.starts_display_line(&caret_iter) {
             let start_iter = buffer.start_iter();
             let start_is_rtl = text_view.iter_location(&start_iter).x() > 0;
 
