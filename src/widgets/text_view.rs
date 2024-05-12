@@ -90,6 +90,11 @@ mod imp {
                 imp.update_scroll_position(false);
             });
 
+            obj.connect_has_focus_notify(|obj| {
+                let imp = obj.imp();
+                imp.update_scroll_position(true);
+            });
+
             self.setup_input_handling();
             self.setup_color_scheme();
             self.update_colors();
