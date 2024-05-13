@@ -27,7 +27,7 @@ impl imp::KpTextView {
         let original = obj.original_text();
         let typed = obj.typed_text();
         // Validation is performed on typed text with one added character, to get the start index
-        // of the next character. TODO: Make dedicated get_line_idx() function
+        // of the next character.
         let (_, caret_line, caret_idx, _) =
             validate_with_whsp_markers(&original, &format!("{typed}a"))
                 .last()

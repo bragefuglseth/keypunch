@@ -67,7 +67,7 @@ impl imp::KpTextView {
         let original = obj.original_text();
         let typed = obj.typed_text();
         // Validation is performed on typed text with one added character, to get the start index
-        // of the next character. TODO: Make dedicated get_line_idx() function
+        // of the next character.
         let (_, caret_line, caret_idx, _) =
             validate_with_whsp_markers(&original, &format!("{typed}a"))
                 .last()
@@ -75,10 +75,10 @@ impl imp::KpTextView {
                 .unwrap_or((true, 0, 0, 0));
 
         let text_view = self.text_view.get();
-        let buffer = text_view.buffer();
+        let buf = text_view.buffer();
 
         // Calculate x position
-        let caret_iter = buffer
+        let caret_iter = buf
             .iter_at_line_index(caret_line as i32, caret_idx as i32)
             .expect("comparison is generated from original text");
         let (pos, _) = text_view.cursor_locations(Some(&caret_iter));
@@ -87,12 +87,13 @@ impl imp::KpTextView {
 
         let width = obj.width();
         if text_view.starts_display_line(&caret_iter) {
-            let start_iter = buffer.start_iter();
-            let start_is_rtl = text_view.iter_location(&start_iter).x() > 0;
+            let mut rtl_check_iter = caret_iter.clone();
+            rtl_check_iter.set_line_index(0);
+            let line_is_rtl = text_view.iter_location(&rtl_check_iter).x() > 0;
 
-            x = match (self.running.get(), start_is_rtl) {
-                (false, false) => -10,
-                (false, true) => width + 10,
+            x = match (self.running.get(), line_is_rtl) {
+                (false, false) => -2,
+                (false, true) => width + 2,
                 (true, false) => 1,
                 (true, true) => width - 1,
             };
@@ -105,9 +106,9 @@ impl imp::KpTextView {
         let is_first_line = !text_view.backward_display_line(&mut caret_iter.clone());
 
         let y = if is_first_line {
-            text_view.cursor_locations(Some(&buffer.start_iter())).1.y()
+            text_view.cursor_locations(Some(&buf.start_iter())).1.y()
         } else {
-            let mut line_1_iter = buffer.start_iter();
+            let mut line_1_iter = buf.start_iter();
             text_view.forward_display_line(&mut line_1_iter);
             text_view.cursor_locations(Some(&line_1_iter)).1.y()
         };
