@@ -21,7 +21,7 @@ pub fn whsp_marker(s: &str) -> Option<&'static str> {
         .map(|(_, marker)| *marker)
 }
 
-// The returned tuples contain a "correct" boool, as well as the line number + start/end indices
+// The returned tuples contain a "correct" bool, as well as the line number + start/end indices
 // the bool applies to. We have to use the exact byte indices because GtkTextBuffer's `iter_at_offset()`
 // function doesn't align perfectly with `graphemes()` from the unicode_segmentation crate.
 // The function accounts for whitespace markers.

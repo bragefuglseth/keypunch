@@ -91,7 +91,7 @@ impl imp::KpTextView {
                 }
             });
 
-        // To color as little text as possible, we end the coloring 3 lines below
+        // To color as little text as possible, we end the coloring 2 lines below
         // the currently active one (just enough to account for the scrolling animation)
         let mut color_end_iter = typed_iter.clone();
         text_view.forward_display_line(&mut color_end_iter);
