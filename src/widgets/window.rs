@@ -114,7 +114,7 @@ mod imp {
     impl ObjectImpl for KpWindow {
         fn constructed(&self) {
             self.parent_constructed();
-            self.language.set(Language::EnglishUS);
+            self.language.set(Language::Spanish);
 
             self.load_settings();
             self.setup_session_config();

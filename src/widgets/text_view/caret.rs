@@ -102,7 +102,7 @@ impl imp::KpTextView {
 
         // If we can't move the iter backwards one display line, that must mean
         // we're at the first one
-        let is_first_line = caret_line == 0;
+        let is_first_line = !text_view.backward_display_line(&mut caret_iter.clone());
 
         let y = if is_first_line {
             text_view.cursor_locations(Some(&buffer.start_iter())).1.y()
