@@ -21,17 +21,30 @@ pub fn whsp_marker(s: &str) -> Option<&'static str> {
         .map(|(_, marker)| *marker)
 }
 
-pub fn validate_with_whsp_markers(original: &str, typed: &str) -> Vec<bool> {
-    zip(original.graphemes(true), typed.graphemes(true))
-        .map(|(og, tg)| {
-            let matches = og == tg;
-            if let Some(marker) = whsp_marker(og) {
-                vec![matches; marker.graphemes(true).count()]
-            } else {
-                vec![matches]
-            }
+// The returned tuples contain a "correct" boool, as well as the line number + start/end indices
+// the bool applies to. We have to use the exact byte indices because GtkTextBuffer's `iter_at_offset()`
+// function doesn't align perfectly with the `graphemes()` from the unicode_segmentation crate.
+pub fn validate_with_whsp_markers(original: &str, typed: &str) -> Vec<(bool, usize, usize, usize)> {
+    original
+        .split_inclusive("\n")
+        .enumerate()
+        .flat_map(|(line_num, line)| {
+            line.grapheme_indices(true)
+                .map(move |grapheme| (line_num, grapheme))
         })
-        .flatten()
+        .zip(typed.graphemes(true))
+        .map(
+            |((line_num, (original_grapheme_idx, original_grapheme)), typed_grapheme)| {
+                let correct = original_grapheme == typed_grapheme;
+                let end_idx = if let Some(whsp_marker) = whsp_marker(original_grapheme) {
+                    original_grapheme_idx + whsp_marker.trim().len()
+                } else {
+                    original_grapheme_idx + original_grapheme.len()
+                };
+
+                (correct, line_num, original_grapheme_idx, end_idx)
+            },
+        )
         .collect()
 }
 

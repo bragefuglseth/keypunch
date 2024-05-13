@@ -72,16 +72,19 @@ impl imp::KpTextView {
 
         comparison
             .iter()
-            .enumerate()
             .skip(color_start_offset as usize)
-            .for_each(|(n, &correct)| {
-                let start_iter = buf.iter_at_offset(n as i32);
-                let end_iter = buf.iter_at_offset(n as i32 + 1);
+            .for_each(|(correct, line, start_idx, end_idx)| {
+                let start_iter = buf
+                    .iter_at_line_index(*line as i32, *start_idx as i32)
+                    .expect("comparison doesn't contain indices exceeding any lines");
+                let end_iter = buf
+                    .iter_at_line_index(*line as i32, *end_idx as i32)
+                    .expect("comparison doesn't contain indices exceeding any lines");
 
                 // Avoid applying the tag to line breaks, which leads to some weird side effects
                 // in the text view. Might be a GTK bug.
                 if !start_iter.ends_line() {
-                    let tag = if correct { tag_typed } else { tag_mistake };
+                    let tag = if *correct { tag_typed } else { tag_mistake };
 
                     buf.apply_tag_by_name(tag, &start_iter, &end_iter);
                 }

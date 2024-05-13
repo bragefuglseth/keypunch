@@ -26,12 +26,20 @@ impl imp::KpTextView {
 
         let original = obj.original_text();
         let typed = obj.typed_text();
-        let current_offset = validate_with_whsp_markers(&original, &typed).len();
+        // Validation is performed on typed text with one added character, to get the start index
+        // of the next character. TODO: Make dedicated get_line_idx() function
+        let (_, caret_line, caret_idx, _) =
+            validate_with_whsp_markers(&original, &format!("{typed}a"))
+                .last()
+                .map(|tuple| tuple.to_owned())
+                .unwrap_or((true, 0, 0, 0));
 
         let text_view = self.text_view.get();
 
         let buffer = text_view.buffer();
-        let mut iter = buffer.iter_at_offset(current_offset as i32);
+        let mut iter = buffer
+            .iter_at_line_index(caret_line as i32, caret_idx as i32)
+            .expect("comparison doesn't contain indices exceeding any lines");
 
         // If we're at the first line, act as if we're going to line 2 for
         // the sake of vertical centering

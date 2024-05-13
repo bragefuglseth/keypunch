@@ -66,13 +66,21 @@ impl imp::KpTextView {
 
         let original = obj.original_text();
         let typed = obj.typed_text();
-        let current_offset = validate_with_whsp_markers(&original, &typed).len();
+        // Validation is performed on typed text with one added character, to get the start index
+        // of the next character. TODO: Make dedicated get_line_idx() function
+        let (_, caret_line, caret_idx, _) =
+            validate_with_whsp_markers(&original, &format!("{typed}a"))
+                .last()
+                .map(|tuple| tuple.to_owned())
+                .unwrap_or((true, 0, 0, 0));
 
         let text_view = self.text_view.get();
         let buffer = text_view.buffer();
 
         // Calculate x position
-        let caret_iter = buffer.iter_at_offset(current_offset as i32);
+        let caret_iter = buffer
+            .iter_at_line_index(caret_line as i32, caret_idx as i32)
+            .expect("comparison is generated from original text");
         let (pos, _) = text_view.cursor_locations(Some(&caret_iter));
         let (mut x, _) =
             text_view.buffer_to_window_coords(gtk::TextWindowType::Widget, pos.x(), pos.y());
@@ -94,7 +102,7 @@ impl imp::KpTextView {
 
         // If we can't move the iter backwards one display line, that must mean
         // we're at the first one
-        let is_first_line = !text_view.backward_display_line(&mut caret_iter.clone());
+        let is_first_line = caret_line == 0;
 
         let y = if is_first_line {
             text_view.cursor_locations(Some(&buffer.start_iter())).1.y()
