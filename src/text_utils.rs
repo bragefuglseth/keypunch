@@ -13,7 +13,7 @@ pub fn insert_whsp_markers(string: &str) -> String {
     s
 }
 
-// Get the corresponding whitespace marker
+// Gets the corresponding whitespace marker of a str, if any
 pub fn whsp_marker(s: &str) -> Option<&'static str> {
     WHSP_MARKERS
         .iter()
@@ -24,6 +24,7 @@ pub fn whsp_marker(s: &str) -> Option<&'static str> {
 // The returned tuples contain a "correct" boool, as well as the line number + start/end indices
 // the bool applies to. We have to use the exact byte indices because GtkTextBuffer's `iter_at_offset()`
 // function doesn't align perfectly with the `graphemes()` from the unicode_segmentation crate.
+// The function accounts for whitespace markers.
 pub fn validate_with_whsp_markers(original: &str, typed: &str) -> Vec<(bool, usize, usize, usize)> {
     original
         .split_inclusive("\n")
