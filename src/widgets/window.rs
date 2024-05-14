@@ -102,8 +102,12 @@ mod imp {
             klass.bind_template();
 
             klass.install_action("win.about", None, move |window, _, _| {
-                window.show_about_dialog();
+                window.imp().show_about_dialog();
             });
+
+            klass.install_action("win.text-language-dialog", None, move |window, _, _| {
+                window.imp().show_text_language_dialog();
+            })
         }
 
         fn instance_init(obj: &glib::subclass::InitializingObject<Self>) {
@@ -141,6 +145,22 @@ mod imp {
     }
     impl ApplicationWindowImpl for KpWindow {}
     impl AdwApplicationWindowImpl for KpWindow {}
+
+    impl KpWindow {
+        fn show_about_dialog(&self) {
+            let about = adw::AboutWindow::builder()
+                .transient_for(self.obj().upcast_ref::<adw::ApplicationWindow>())
+                .application_name("Keypunch")
+                .application_icon("dev.bragefuglseth.Keypunch")
+                .developer_name("Brage Fuglseth")
+                .version(VERSION)
+                .developers(vec!["Brage Fuglseth"])
+                .copyright("© 2024 Brage Fuglseth")
+                .build();
+
+            about.present();
+        }
+    }
 }
 
 glib::wrapper! {
@@ -154,19 +174,5 @@ impl KpWindow {
         glib::Object::builder()
             .property("application", application)
             .build()
-    }
-
-    fn show_about_dialog(&self) {
-        let about = adw::AboutWindow::builder()
-            .transient_for(self)
-            .application_name("Keypunch")
-            .application_icon("dev.bragefuglseth.Keypunch")
-            .developer_name("Brage Fuglseth")
-            .version(VERSION)
-            .developers(vec!["Brage Fuglseth"])
-            .copyright("© 2024 Brage Fuglseth")
-            .build();
-
-        about.present();
     }
 }
