@@ -37,14 +37,18 @@ template $KpTextLanguageDialog: Adw.Dialog {
             }
           }
 
-          Adw.PreferencesGroup group_recent {
-            title: "Recent";
-            margin-bottom: 24;
-          }
+          Box {
+            spacing: 24;
+            orientation: vertical;
 
-          Adw.PreferencesGroup group_other {
-            title: "Other";
-          }
+            Adw.PreferencesGroup group_recent {
+              title: "Recent";
+            }
+
+            Adw.PreferencesGroup group_other {
+              title: "Other";
+            }
+        }
       }
     }
   }
