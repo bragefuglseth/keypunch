@@ -150,6 +150,12 @@ impl imp::KpWindow {
         let dialog =
             KpTextLanguageDialog::new(self.language.get(), &self.recent_languages.borrow());
 
+        dialog.connect_closed(glib::clone!(@weak self as imp => move |_| {
+            imp.open_dialog.set(false);
+            imp.focus_text_view();
+        }));
+
+        self.open_dialog.set(true);
         dialog.present(self.obj().upcast_ref::<gtk::Widget>());
     }
 
