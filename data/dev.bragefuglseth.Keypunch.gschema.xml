@@ -36,11 +36,21 @@
 	    <summary>Session duration</summary>
 	    <description>The duration of time-based sessions in seconds</description>
 	  </key>
+	  <key name="text-language" type="s">
+	    <default l10n="messages">"en_US"</default>
+	    <summary>Text language</summary>
+	    <description>The code of the language used for automatically generated text</description>
+	  </key>
+	  <key name="recent-languages" type="as">
+	    <default>[]</default>
+	    <summary>Recent languages</summary>
+	    <description>Languages shown in the list of recent ones in the text language dialog</description>
+	  </key>
 	  <key name="custom-text" type="s">
 	    <!-- Translators: This is the default text for custom typing sessions. Do not translate it literally. Replace it with an appropriate "sample sentence" from your language instead. The original text is an English pangram, so you can e.g. find a pangram in your language: https://clagnut.com/blog/2380 -->
 	    <default l10n="messages" >"The quick brown fox jumps over the lazy dog."</default>
 	    <summary>Custom text</summary>
-	    <description>What text to display when “Custom” is chosen from the session menu.</description>
+	    <description>Text displayed when “Custom” is chosen from the session menu</description>
 	  </key>
 	</schema>
 </schemalist>

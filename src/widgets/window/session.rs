@@ -1,6 +1,6 @@
 use super::*;
 use crate::text_generation;
-use crate::widgets::{KpTextLanguageDialog, KpCustomTextDialog};
+use crate::widgets::{KpCustomTextDialog, KpTextLanguageDialog};
 use glib::ControlFlow;
 use text_generation::CHUNK_GRAPHEME_COUNT;
 use unicode_segmentation::UnicodeSegmentation;
@@ -147,7 +147,8 @@ impl imp::KpWindow {
     }
 
     pub(super) fn show_text_language_dialog(&self) {
-        let dialog = KpTextLanguageDialog::new();
+        let dialog =
+            KpTextLanguageDialog::new(self.language.get(), &self.recent_languages.borrow());
 
         dialog.present(self.obj().upcast_ref::<gtk::Widget>());
     }

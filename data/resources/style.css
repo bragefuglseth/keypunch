@@ -35,7 +35,7 @@ KpResultsView .key-number {
   opacity: 0;
 }
 
-.custom-text-view {
+.card-text-view {
   padding: 12px;
   color: @card_fg_color;
   background: @card_bg_color;
@@ -43,4 +43,8 @@ KpResultsView .key-number {
 
 .toolbar-thick {
   padding: 12px;
+}
+
+.pill-entry {
+  border-radius: 9999px;
 }

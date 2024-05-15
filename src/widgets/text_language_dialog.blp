@@ -2,9 +2,9 @@ using Gtk 4.0;
 using Adw 1;
 
 template $KpTextLanguageDialog: Adw.Dialog {
-  title: "Custom Text";
+  title: "Text Language";
   content-width: 450;
-  content-height:450;
+  content-height:600;
 
   Adw.ToolbarView {
     [top]
@@ -28,17 +28,24 @@ template $KpTextLanguageDialog: Adw.Dialog {
             styles [ "title-1" ]
           }
 
-          SearchEntry search_entry {
-            placeholder-text: "Search languages…";
-            margin-bottom: 18;
+          Adw.Clamp {
+            maximum-size: 360;
+
+            SearchEntry search_entry {
+              placeholder-text: "Search languages…";
+              margin-bottom: 18;
+
+              styles [ "pill-entry" ]
+            }
           }
 
-          Adw.PreferencesGroup {
+          Adw.PreferencesGroup group_recent {
             title: "Recent";
+            margin-bottom: 24;
+          }
 
-            Adw.ActionRow {
-              title: "Norsk bokmål";
-            }
+          Adw.PreferencesGroup group_other {
+            title: "Other";
           }
       }
     }

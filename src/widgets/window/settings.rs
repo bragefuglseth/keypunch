@@ -1,4 +1,5 @@
 use super::*;
+use std::str::FromStr;
 
 impl imp::KpWindow {
     pub(super) fn settings(&self) -> &gio::Settings {
@@ -13,6 +14,8 @@ impl imp::KpWindow {
         let maximized = settings.boolean("window-maximized");
         let session_type = settings.enum_("session-type");
         let duration = settings.enum_("session-duration");
+        let language = settings.string("text-language");
+        let recent_languages = settings.value("recent-languages");
         let custom_text = settings.string("custom-text");
 
         let obj = self.obj();
@@ -26,6 +29,19 @@ impl imp::KpWindow {
             SessionDuration::from_i32(duration)
                 .expect("settings contain valid SessionDuration value"),
         );
+
+        self.language
+            .set(Language::from_str(language.as_str()).unwrap_or(Language::EnglishUS));
+
+        let recent_languages_vec: Vec<Language> = recent_languages
+            .get::<Vec<String>>()
+            .expect("recent languages is a list of type `String`")
+            .iter()
+            .filter_map(|s| Language::from_str(&s).ok())
+            .collect();
+        self.recent_languages
+            .borrow_mut()
+            .extend(&recent_languages_vec);
 
         if maximized {
             obj.maximize();
@@ -41,6 +57,8 @@ impl imp::KpWindow {
         let maximized = obj.is_maximized();
         let session_type = self.session_type.get();
         let duration = self.duration.get();
+        let language = self.language.get();
+        let recent_languages = self.recent_languages.borrow();
         let custom_text = self.custom_text.borrow();
 
         let settings = self.settings();
@@ -49,6 +67,15 @@ impl imp::KpWindow {
         settings.set_boolean("window-maximized", maximized)?;
         settings.set_enum("session-type", session_type as i32)?;
         settings.set_enum("session-duration", duration as i32)?;
+        settings.set_string("text-language", &language.to_string())?;
+        settings.set_value(
+            "recent-languages",
+            &recent_languages
+                .iter()
+                .map(Language::to_string)
+                .collect::<Vec<String>>()
+                .to_variant(),
+        )?;
         settings.set_string("custom-text", &custom_text)?;
         Ok(())
     }

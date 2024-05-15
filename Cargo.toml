@@ -9,6 +9,8 @@ gvdb-macros = "0.1.12"
 include_dir = "0.7.3"
 rand = "0.8.5"
 rayon = "1.10.0"
+strum = "0.26.2"
+strum_macros = "0.26.2"
 unicode-segmentation = "1.11.0"
 
 [dependencies.gtk]

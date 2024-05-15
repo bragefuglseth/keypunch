@@ -63,8 +63,13 @@ impl imp::KpTextView {
 
         // To color as little text as possible, we start 2 lines above
         // the currently active one (just enough to account for the scrolling animation)
-        let (_, typed_line, typed_offset, _) = comparison.last().map(|tuple| tuple.to_owned()).unwrap_or((true, 0, 0, 0));
-        let typed_iter = buf.iter_at_line_index(typed_line as i32, typed_offset as i32).expect("comparison doesn't contain indices that are out of bounds");
+        let (_, typed_line, typed_offset, _) = comparison
+            .last()
+            .map(|tuple| tuple.to_owned())
+            .unwrap_or((true, 0, 0, 0));
+        let typed_iter = buf
+            .iter_at_line_index(typed_line as i32, typed_offset as i32)
+            .expect("comparison doesn't contain indices that are out of bounds");
         let mut color_start_iter = typed_iter.clone();
         text_view.backward_display_line(&mut color_start_iter);
         text_view.backward_display_line(&mut color_start_iter);

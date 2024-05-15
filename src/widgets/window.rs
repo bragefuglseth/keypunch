@@ -80,6 +80,7 @@ mod imp {
 
         pub session_type: Cell<SessionType>,
         pub language: Cell<Language>,
+        pub recent_languages: RefCell<Vec<Language>>,
         pub custom_text: RefCell<String>,
         pub duration: Cell<SessionDuration>,
         pub start_time: Cell<Option<Instant>>,
