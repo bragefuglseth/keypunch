@@ -100,17 +100,25 @@ impl imp::KpWindow {
             return;
         };
 
+        let results_view = self.results_view.get();
+
         let duration = finish_time.duration_since(start_time);
-        self.results_view.set_duration(duration.as_secs());
+        results_view.set_duration(duration.as_secs());
 
         let wpm = calculate_wpm(duration, &typed_text);
-        self.results_view.set_wpm(wpm);
+        results_view.set_wpm(wpm);
 
         let accuracy = calculate_accuracy(&original_text, &typed_text);
-        self.results_view.set_accuracy(accuracy);
+        results_view.set_accuracy(accuracy);
 
         let session_type = self.session_type.get();
-        self.results_view.set_session_type(session_type.as_string());
+        results_view.set_session_type(session_type.as_string());
+
+        let language = self.language.get().pretty_name();
+        results_view.set_language(language);
+
+        let show_language = matches!(session_type, SessionType::Simple | SessionType::Advanced);
+        results_view.set_show_language(show_language);
 
         self.main_stack.set_visible_child_name("results");
 

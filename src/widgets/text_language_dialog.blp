@@ -35,6 +35,8 @@ template $KpTextLanguageDialog: Adw.Dialog {
             SearchEntry search_entry {
               placeholder-text: "Search languages…";
               margin-bottom: 18;
+
+              styles [ "pill-entry" ]
             }
           }
 
@@ -101,13 +103,11 @@ template $KpTextLanguageDialog: Adw.Dialog {
                   Label {
                     label: "No Matches";
 
-                    styles [ "title-2", "dim-label" ]
+                    styles [ "title-2" ]
                   }
 
                   Label {
                     label: "Try a different search";
-
-                    styles [ "dim-label" ]
                   }
 
                   styles [ "non-scrollable-status-page" ]

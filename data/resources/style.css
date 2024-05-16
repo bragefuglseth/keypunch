@@ -48,3 +48,7 @@ KpResultsView .key-number {
 .status-icon {
   -gtk-icon-size: 96px;
 }
+
+.pill-entry {
+  border-radius: 9999px;
+}

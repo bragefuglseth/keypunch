@@ -63,16 +63,13 @@ template $KpResultsView: Widget {
         Label duration_label {}
       }
 
-      Box {
-        visible: false; /* TODO: Show language support */
+      Box language_box {
         halign: center;
         spacing: 6;
         Image {
           icon-name: "language-symbolic";
         }
-        Label {
-          label: "English (US)";
-        }
+        Label language_label {}
       }
     }
   }

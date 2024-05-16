@@ -13,15 +13,19 @@ mod imp {
         #[template_child]
         wpm_accuracy_box: TemplateChild<gtk::Box>,
         #[template_child]
-        pub wpm_label: TemplateChild<gtk::Label>,
+        wpm_label: TemplateChild<gtk::Label>,
         #[template_child]
-        pub accuracy_label: TemplateChild<gtk::Label>,
-        #[template_child]
-        pub session_type_label: TemplateChild<gtk::Label>,
-        #[template_child]
-        pub duration_label: TemplateChild<gtk::Label>,
+        accuracy_label: TemplateChild<gtk::Label>,
         #[template_child]
         session_info_box: TemplateChild<gtk::Box>,
+        #[template_child]
+        session_type_label: TemplateChild<gtk::Label>,
+        #[template_child]
+        duration_label: TemplateChild<gtk::Label>,
+        #[template_child]
+        language_box: TemplateChild<gtk::Box>,
+        #[template_child]
+        language_label: TemplateChild<gtk::Label>,
 
         #[property(get, set)]
         wpm: Cell<f64>,
@@ -31,6 +35,10 @@ mod imp {
         session_type: RefCell<String>,
         #[property(get, set)]
         duration: Cell<u64>,
+        #[property(get, set)]
+        language: RefCell<String>,
+        #[property(get, set)]
+        show_language: Cell<bool>,
         #[property(get, set, builder(gtk::Orientation::Vertical))]
         orientation: RefCell<gtk::Orientation>,
     }
@@ -58,14 +66,18 @@ mod imp {
                 wpm_accuracy_box: Default::default(),
                 wpm_label: Default::default(),
                 accuracy_label: Default::default(),
+                session_info_box: Default::default(),
                 session_type_label: Default::default(),
                 duration_label: Default::default(),
-                session_info_box: Default::default(),
+                language_box: Default::default(),
+                language_label: Default::default(),
 
                 wpm: Default::default(),
                 accuracy: Default::default(),
                 session_type: Default::default(),
                 duration: Default::default(),
+                language: Default::default(),
+                show_language: Default::default(),
                 orientation: RefCell::new(gtk::Orientation::Horizontal),
             }
         }
@@ -92,6 +104,8 @@ mod imp {
             let accuracy_label = self.accuracy_label.get();
             let session_type_label = self.session_type_label.get();
             let duration_label = self.duration_label.get();
+            let language_box = self.language_box.get();
+            let language_label = self.language_label.get();
             let session_info_box = self.session_info_box.get();
 
             let obj = self.obj();
@@ -120,10 +134,18 @@ mod imp {
                 })
                 .build();
 
+            obj.bind_property("show-language", &language_box, "visible")
+                .build();
+
+            obj.bind_property("language", &language_label, "label")
+                .build();
+
             obj.bind_property("orientation", &wpm_accuracy_box, "orientation")
                 .build();
+
             obj.bind_property("orientation", &session_info_box, "orientation")
                 .build();
+
             obj.bind_property("orientation", &session_info_box, "spacing")
                 .transform_to(|_, orientation| match orientation {
                     gtk::Orientation::Horizontal => Some(36),
