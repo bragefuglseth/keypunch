@@ -5,6 +5,7 @@ use glib::ControlFlow;
 use std::str::FromStr;
 use text_generation::CHUNK_GRAPHEME_COUNT;
 use unicode_segmentation::UnicodeSegmentation;
+use std::iter::once;
 
 impl imp::KpWindow {
     pub(super) fn setup_session_config(&self) {
@@ -109,6 +110,28 @@ impl imp::KpWindow {
         self.duration.set(selected);
     }
 
+    pub(super) fn show_text_language_dialog(&self) {
+        let dialog =
+            KpTextLanguageDialog::new(self.language.get(), &self.recent_languages.borrow_mut());
+
+        dialog.connect_selected_language_notify(glib::clone!(@weak self as imp => move |dialog| {
+            imp.language.set(Language::from_str(&dialog.selected_language()).expect("language string was generated from enum"));
+            imp.update_original_text();
+        }));
+
+        dialog.connect_closed(glib::clone!(@weak self as imp => move |dialog| {
+            if let Ok(selected_language) = Language::from_str(&dialog.selected_language()) {
+                imp.add_recent_language(selected_language);
+            }
+
+            imp.open_dialog.set(false);
+            imp.focus_text_view();
+        }));
+
+        self.open_dialog.set(true);
+        dialog.present(self.obj().upcast_ref::<gtk::Widget>());
+    }
+
     pub fn show_custom_text_dialog(&self, initial_text: &str) {
         let current_text = self.custom_text.borrow();
 
@@ -136,24 +159,6 @@ impl imp::KpWindow {
             imp.toast_overlay.add_toast(toast);
 
             None
-        }));
-
-        dialog.connect_closed(glib::clone!(@weak self as imp => move |_| {
-            imp.open_dialog.set(false);
-            imp.focus_text_view();
-        }));
-
-        self.open_dialog.set(true);
-        dialog.present(self.obj().upcast_ref::<gtk::Widget>());
-    }
-
-    pub(super) fn show_text_language_dialog(&self) {
-        let dialog =
-            KpTextLanguageDialog::new(self.language.get(), &self.recent_languages.borrow());
-
-        dialog.connect_selected_language_notify(glib::clone!(@weak self as imp => move |dialog| {
-            imp.language.set(Language::from_str(&dialog.selected_language()).expect("language string was generated from enum"));
-            imp.update_original_text();
         }));
 
         dialog.connect_closed(glib::clone!(@weak self as imp => move |_| {
@@ -220,5 +225,18 @@ impl imp::KpWindow {
         };
 
         self.running_title.set_title(&text);
+    }
+
+    fn add_recent_language(&self, language: Language) {
+        let mut recent_languages = self.recent_languages.borrow_mut();
+
+        *recent_languages = once(language)
+            .chain(
+                recent_languages.iter()
+                .filter(|&recent_language| *recent_language != language)
+                .map(|p| *p)
+            )
+            .take(3)
+            .collect();
     }
 }

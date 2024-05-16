@@ -70,7 +70,7 @@ mod imp {
     impl AdwDialogImpl for KpTextLanguageDialog {}
 
     impl KpTextLanguageDialog {
-        pub(super) fn populate_list(&self, current: Language, recent: &Vec<Language>) {
+        pub(super) fn populate_list(&self, current: Language, recent: &[Language]) {
             let current_language_row = KpLanguageRow::new(current);
             let check_button_group = current_language_row.check_button();
             current_language_row.set_checked(true);
@@ -125,7 +125,7 @@ glib::wrapper! {
 }
 
 impl KpTextLanguageDialog {
-    pub fn new(current: Language, recent: &Vec<Language>) -> Self {
+    pub fn new(current: Language, recent: &[Language]) -> Self {
         let obj: Self = glib::Object::new();
 
         obj.imp().populate_list(current, recent);

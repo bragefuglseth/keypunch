@@ -29,8 +29,7 @@ use crate::widgets::{KpResultsView, KpTextView};
 use adw::prelude::*;
 use adw::subclass::prelude::*;
 use gtk::{gio, glib};
-use std::cell::OnceCell;
-use std::cell::{Cell, RefCell};
+use std::cell::{Cell, RefCell, OnceCell};
 use std::time::{Duration, Instant};
 
 mod imp {
