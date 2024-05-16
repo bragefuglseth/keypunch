@@ -2,10 +2,9 @@ use super::*;
 use crate::text_generation;
 use crate::widgets::{KpCustomTextDialog, KpTextLanguageDialog};
 use glib::ControlFlow;
-use std::str::FromStr;
+use std::iter::once;
 use text_generation::CHUNK_GRAPHEME_COUNT;
 use unicode_segmentation::UnicodeSegmentation;
-use std::iter::once;
 
 impl imp::KpWindow {
     pub(super) fn setup_session_config(&self) {
@@ -34,6 +33,8 @@ impl imp::KpWindow {
                 let current_text = imp.custom_text.borrow();
                 imp.show_custom_text_dialog(&current_text);
             }));
+
+        self.add_recent_language(self.language.get());
     }
 
     pub(super) fn setup_text_view(&self) {
@@ -114,16 +115,25 @@ impl imp::KpWindow {
         let dialog =
             KpTextLanguageDialog::new(self.language.get(), &self.recent_languages.borrow_mut());
 
-        dialog.connect_selected_language_notify(glib::clone!(@weak self as imp => move |dialog| {
-            imp.language.set(Language::from_str(&dialog.selected_language()).expect("language string was generated from enum"));
-            imp.update_original_text();
-        }));
+        dialog.connect_local(
+            "language-changed",
+            true,
+            glib::clone!(@weak self as imp => @default-return None, move |values| {
+                let dialog: KpTextLanguageDialog = values
+                    .get(0)
+                    .expect("signal contains value at index 0")
+                    .get()
+                    .expect("value sent with signal is dialog");
+
+                imp.language.set(dialog.selected_language());
+                imp.update_original_text();
+
+                None
+            }),
+        );
 
         dialog.connect_closed(glib::clone!(@weak self as imp => move |dialog| {
-            if let Ok(selected_language) = Language::from_str(&dialog.selected_language()) {
-                imp.add_recent_language(selected_language);
-            }
-
+            imp.add_recent_language(dialog.selected_language());
             imp.open_dialog.set(false);
             imp.focus_text_view();
         }));
@@ -137,29 +147,46 @@ impl imp::KpWindow {
 
         let dialog = KpCustomTextDialog::new(&current_text, &initial_text);
 
-        dialog.connect_local("save", true, glib::clone!(@weak self as imp => @default-return None, move |values| {
-            let text: &str = values.get(1).expect("save signal contains text to be saved").get().expect("value from save signal is string");
-            *imp.custom_text.borrow_mut() = text.to_string();
-            imp.update_original_text();
+        dialog.connect_local(
+            "save",
+            true,
+            glib::clone!(@weak self as imp => @default-return None, move |values| {
+                let text: &str = values
+                    .get(1)
+                    .expect("save signal contains text to be saved")
+                    .get().expect("value from save signal is string");
 
-            None
-        }));
+                *imp.custom_text.borrow_mut() = text.to_string();
+                imp.update_original_text();
 
-        dialog.connect_local("discard", true, glib::clone!(@weak self as imp => @default-return None, move |values| {
-            let discarded_text: String = values.get(1).expect("save signal contains text to be saved").get::<&str>().expect("value from save signal is string").into();
+                None
+            }),
+        );
 
-            let toast = adw::Toast::builder()
-                .title("Changes discarded")
-                .button_label("Restore")
-                .build();
-            toast.connect_button_clicked(glib::clone!(@weak imp => move |_| {
-                imp.show_custom_text_dialog(&discarded_text);
-            }));
+        dialog.connect_local(
+            "discard",
+            true,
+            glib::clone!(@weak self as imp => @default-return None, move |values| {
+                let discarded_text: String = values
+                    .get(1)
+                    .expect("save signal contains text to be saved")
+                    .get::<&str>().expect("value from save signal is string")
+                    .into();
 
-            imp.toast_overlay.add_toast(toast);
+                let toast = adw::Toast::builder()
+                    .title("Changes discarded")
+                    .button_label("Restore")
+                    .build();
 
-            None
-        }));
+                toast.connect_button_clicked(glib::clone!(@weak imp => move |_| {
+                    imp.show_custom_text_dialog(&discarded_text);
+                }));
+
+                imp.toast_overlay.add_toast(toast);
+
+                None
+            }),
+        );
 
         dialog.connect_closed(glib::clone!(@weak self as imp => move |_| {
             imp.open_dialog.set(false);
@@ -232,9 +259,10 @@ impl imp::KpWindow {
 
         *recent_languages = once(language)
             .chain(
-                recent_languages.iter()
-                .filter(|&recent_language| *recent_language != language)
-                .map(|p| *p)
+                recent_languages
+                    .iter()
+                    .filter(|&recent_language| *recent_language != language)
+                    .map(|p| *p),
             )
             .take(3)
             .collect();

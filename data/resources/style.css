@@ -44,3 +44,7 @@ KpResultsView .key-number {
 .toolbar-thick {
   padding: 12px;
 }
+
+.status-icon {
+  -gtk-icon-size: 96px;
+}

@@ -15,6 +15,7 @@ template $KpTextLanguageDialog: Adw.Dialog {
     ScrolledWindow scrolled_window {
         hscrollbar-policy: never;
         propagate-natural-height: true;
+        vexpand: true;
 
         Box {
           orientation: vertical;
@@ -37,18 +38,83 @@ template $KpTextLanguageDialog: Adw.Dialog {
             }
           }
 
-          Box {
-            spacing: 24;
-            orientation: vertical;
+          Stack stack {
+            vhomogeneous: false;
+            transition-type: crossfade;
+            transition-duration: 100;
+            vexpand: true;
 
-            Adw.PreferencesGroup group_recent {
-              title: "Recent";
+            StackPage {
+              name: "list";
+
+              child: Box {
+                spacing: 24;
+                orientation: vertical;
+
+                Adw.PreferencesGroup group_recent {
+                  title: "Recent";
+                }
+
+                Adw.PreferencesGroup group_other {
+                  title: "Other";
+                }
+
+                styles [ "background" ]
+              };
             }
 
-            Adw.PreferencesGroup group_other {
-              title: "Other";
+            StackPage {
+              name: "search-results";
+
+              child: Box {
+                orientation: vertical;
+                vexpand: true;
+
+                ListBox search_list {
+                  selection-mode: none;
+
+                  styles ["boxed-list" ]
+                }
+              };
             }
-        }
+
+            StackPage {
+              name: "no-results";
+
+              child: Box no_results_box {
+                orientation: vertical;
+                vexpand: false;
+
+                Box {
+                  orientation: vertical;
+                  halign: center;
+                  valign: center;
+                  spacing: 12;
+                  vexpand: true;
+
+                  Image {
+                    icon-name: "language-symbolic";
+                    vexpand: false;
+                    styles [ "status-icon", "dim-label" ]
+                  }
+
+                  Label {
+                    label: "No Matches";
+
+                    styles [ "title-2", "dim-label" ]
+                  }
+
+                  Label {
+                    label: "Try a different search";
+
+                    styles [ "dim-label" ]
+                  }
+
+                  styles [ "non-scrollable-status-page" ]
+                }
+              };
+            }
+          }
       }
     }
   }

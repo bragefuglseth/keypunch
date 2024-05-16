@@ -12,6 +12,7 @@ rayon = "1.10.0"
 strum = "0.26.2"
 strum_macros = "0.26.2"
 unicode-segmentation = "1.11.0"
+unidecode = "0.3.0"
 
 [dependencies.gtk]
 package = "gtk4"
