@@ -2,6 +2,7 @@ use super::*;
 use crate::text_generation;
 use crate::widgets::{KpCustomTextDialog, KpTextLanguageDialog};
 use glib::ControlFlow;
+use std::str::FromStr;
 use text_generation::CHUNK_GRAPHEME_COUNT;
 use unicode_segmentation::UnicodeSegmentation;
 
@@ -149,6 +150,11 @@ impl imp::KpWindow {
     pub(super) fn show_text_language_dialog(&self) {
         let dialog =
             KpTextLanguageDialog::new(self.language.get(), &self.recent_languages.borrow());
+
+        dialog.connect_selected_language_notify(glib::clone!(@weak self as imp => move |dialog| {
+            imp.language.set(Language::from_str(&dialog.selected_language()).expect("language string was generated from enum"));
+            imp.update_original_text();
+        }));
 
         dialog.connect_closed(glib::clone!(@weak self as imp => move |_| {
             imp.open_dialog.set(false);

@@ -7,10 +7,14 @@ use std::cell::{Cell, OnceCell};
 mod imp {
     use super::*;
 
-    #[derive(Default)]
+    #[derive(Default, glib::Properties)]
+    #[properties(wrapper_type = super::KpLanguageRow)]
     pub struct KpLanguageRow {
         pub check_button: OnceCell<gtk::CheckButton>,
         pub language: Cell<Language>,
+
+        #[property(get, set)]
+        pub checked: Cell<bool>,
     }
 
     #[glib::object_subclass]
@@ -21,6 +25,18 @@ mod imp {
     }
 
     impl ObjectImpl for KpLanguageRow {
+        fn properties() -> &'static [glib::ParamSpec] {
+            Self::derived_properties()
+        }
+
+        fn set_property(&self, id: usize, value: &glib::Value, pspec: &glib::ParamSpec) {
+            self.derived_set_property(id, value, pspec)
+        }
+
+        fn property(&self, id: usize, pspec: &glib::ParamSpec) -> glib::Value {
+            self.derived_property(id, pspec)
+        }
+
         fn constructed(&self) {
             self.parent_constructed();
 
@@ -29,6 +45,12 @@ mod imp {
             let check_button = self.check_button();
             obj.add_prefix(&check_button);
             obj.set_activatable_widget(Some(&check_button));
+
+            check_button
+                .bind_property("active", obj.upcast_ref::<glib::Object>(), "checked")
+                .bidirectional()
+                .sync_create()
+                .build();
         }
     }
     impl WidgetImpl for KpLanguageRow {}

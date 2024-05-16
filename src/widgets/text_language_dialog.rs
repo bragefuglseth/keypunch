@@ -2,16 +2,16 @@ use crate::enums::Language;
 use crate::widgets::KpLanguageRow;
 use adw::prelude::*;
 use adw::subclass::prelude::*;
-use glib::subclass::Signal;
 use gtk::glib;
-use std::sync::OnceLock;
+use std::cell::RefCell;
 use strum::IntoEnumIterator;
 
 mod imp {
     use super::*;
 
-    #[derive(Default, gtk::CompositeTemplate)]
+    #[derive(Default, gtk::CompositeTemplate, glib::Properties)]
     #[template(file = "src/widgets/text_language_dialog.blp")]
+    #[properties(wrapper_type = super::KpTextLanguageDialog)]
     pub struct KpTextLanguageDialog {
         #[template_child]
         pub header_bar: TemplateChild<adw::HeaderBar>,
@@ -21,6 +21,9 @@ mod imp {
         pub group_recent: TemplateChild<adw::PreferencesGroup>,
         #[template_child]
         pub group_other: TemplateChild<adw::PreferencesGroup>,
+
+        #[property(get, set)]
+        pub selected_language: RefCell<String>,
     }
 
     #[glib::object_subclass]
@@ -39,13 +42,16 @@ mod imp {
     }
 
     impl ObjectImpl for KpTextLanguageDialog {
-        fn signals() -> &'static [Signal] {
-            static SIGNALS: OnceLock<Vec<Signal>> = OnceLock::new();
-            SIGNALS.get_or_init(|| {
-                vec![Signal::builder("change-language")
-                    .param_types([str::static_type()])
-                    .build()]
-            })
+        fn properties() -> &'static [glib::ParamSpec] {
+            Self::derived_properties()
+        }
+
+        fn set_property(&self, id: usize, value: &glib::Value, pspec: &glib::ParamSpec) {
+            self.derived_set_property(id, value, pspec)
+        }
+
+        fn property(&self, id: usize, pspec: &glib::ParamSpec) -> glib::Value {
+            self.derived_property(id, pspec)
         }
 
         fn constructed(&self) {
@@ -67,7 +73,8 @@ mod imp {
         pub(super) fn populate_list(&self, current: Language, recent: &Vec<Language>) {
             let current_language_row = KpLanguageRow::new(current);
             let check_button_group = current_language_row.check_button();
-            current_language_row.check_button().set_active(true);
+            current_language_row.set_checked(true);
+            self.connect_row_clicked(&current_language_row);
 
             self.group_recent.add(&current_language_row);
 
@@ -78,19 +85,36 @@ mod imp {
                 let row = KpLanguageRow::new(*language);
                 row.check_button().set_group(Some(&check_button_group));
                 self.group_recent.add(&row);
+                self.connect_row_clicked(&row);
             }
 
-            let languages_without_recent_or_current = Language::iter().filter(|language| {
-                !recent
-                    .iter()
-                    .chain([&current])
-                    .any(|recent_language| recent_language == language)
-            });
+            let mut languages_without_recent_or_current: Vec<Language> = Language::iter()
+                .filter(|language| {
+                    !recent
+                        .iter()
+                        .chain([&current])
+                        .any(|recent_language| recent_language == language)
+                })
+                .collect();
+
+            // Sort alphabetically
+            languages_without_recent_or_current.sort_by_key(|language| language.pretty_name());
+
             for language in languages_without_recent_or_current {
                 let row = KpLanguageRow::new(language);
                 row.check_button().set_group(Some(&check_button_group));
                 self.group_other.add(&row);
+                self.connect_row_clicked(&row);
             }
+        }
+
+        pub(super) fn connect_row_clicked(&self, row: &KpLanguageRow) {
+            let obj = self.obj();
+            row.connect_checked_notify(glib::clone!(@weak obj => move |row| {
+                if row.checked() {
+                    obj.set_selected_language(row.language().to_string());
+                }
+            }));
         }
     }
 }
