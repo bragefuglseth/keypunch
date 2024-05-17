@@ -5,11 +5,14 @@ use glib::ControlFlow;
 use std::iter::once;
 use text_generation::CHUNK_GRAPHEME_COUNT;
 use unicode_segmentation::UnicodeSegmentation;
+use strum::IntoEnumIterator;
 
 impl imp::KpWindow {
     pub(super) fn setup_session_config(&self) {
+        let session_type_model: gtk::StringList = SessionType::iter().map(|session_type| session_type.ui_string()).collect();
+
         let session_type_dropdown = self.session_type_dropdown.get();
-        session_type_dropdown.set_model(Some(&SessionType::string_list()));
+        session_type_dropdown.set_model(Some(&session_type_model));
         session_type_dropdown.set_selected(self.session_type.get() as u32);
         session_type_dropdown.connect_selected_item_notify(
             glib::clone!(@weak self as imp => move |_| {
@@ -18,8 +21,10 @@ impl imp::KpWindow {
             }),
         );
 
+        let duration_model: gtk::StringList = SessionDuration::iter().map(|session_type| session_type.ui_string()).collect();
+
         let duration_dropdown = self.duration_dropdown.get();
-        duration_dropdown.set_model(Some(&SessionDuration::string_list()));
+        duration_dropdown.set_model(Some(&duration_model));
         duration_dropdown.set_selected(self.duration.get() as u32);
         duration_dropdown.connect_selected_item_notify(
             glib::clone!(@weak self as imp => move |_| {
@@ -82,8 +87,8 @@ impl imp::KpWindow {
     }
 
     pub(super) fn update_original_text(&self) {
-        let session_type = SessionType::from_i32(self.session_type_dropdown.selected() as i32)
-            .expect("dropdown only contains valid `SessionType` values");
+        let session_type = SessionType::iter().nth(self.session_type_dropdown.selected() as usize)
+            .expect("dropdown contains valid `SessionType` values");
 
         let config_widget = match session_type {
             SessionType::Simple | SessionType::Advanced => {
@@ -105,7 +110,7 @@ impl imp::KpWindow {
     }
 
     pub(super) fn update_time(&self) {
-        let selected = SessionDuration::from_i32(self.duration_dropdown.selected() as i32)
+        let selected = SessionDuration::iter().nth(self.duration_dropdown.selected() as usize)
             .expect("dropdown only contains valid `SessionDuration` values");
 
         self.duration.set(selected);

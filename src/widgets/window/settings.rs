@@ -12,8 +12,8 @@ impl imp::KpWindow {
         let width = settings.int("window-width");
         let height = settings.int("window-height");
         let maximized = settings.boolean("window-maximized");
-        let session_type = settings.enum_("session-type");
-        let duration = settings.enum_("session-duration");
+        let session_type = settings.string("session-type");
+        let duration = settings.string("session-duration");
         let language = settings.string("text-language");
         let recent_languages = settings.value("recent-languages");
         let custom_text = settings.string("custom-text");
@@ -22,12 +22,11 @@ impl imp::KpWindow {
         obj.set_default_size(width, height);
 
         self.session_type.set(
-            SessionType::from_i32(session_type).expect("settings contain valid SessionType value"),
+            SessionType::from_str(&session_type).unwrap_or(SessionType::Simple)
         );
 
         self.duration.set(
-            SessionDuration::from_i32(duration)
-                .expect("settings contain valid SessionDuration value"),
+            SessionDuration::from_str(&duration).unwrap_or(SessionDuration::Sec30)
         );
 
         self.language
@@ -65,8 +64,8 @@ impl imp::KpWindow {
         settings.set_int("window-width", width)?;
         settings.set_int("window-height", height)?;
         settings.set_boolean("window-maximized", maximized)?;
-        settings.set_enum("session-type", session_type as i32)?;
-        settings.set_enum("session-duration", duration as i32)?;
+        settings.set_string("session-type", &session_type.to_string())?;
+        settings.set_string("session-duration", &duration.to_string())?;
         settings.set_string("text-language", &language.to_string())?;
         settings.set_value(
             "recent-languages",

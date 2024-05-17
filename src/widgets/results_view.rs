@@ -186,3 +186,4 @@ pub fn human_readable_duration(total_secs: u64) -> String {
         format!("{secs} seconds")
     }
 }
+

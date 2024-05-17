@@ -3,6 +3,7 @@ use adw::prelude::*;
 use adw::subclass::prelude::*;
 use gtk::glib;
 use std::cell::{Cell, OnceCell};
+use strum::EnumMessage;
 
 mod imp {
     use super::*;
@@ -67,7 +68,7 @@ mod imp {
 
         pub(super) fn set_language(&self, language: Language) {
             self.language.set(language);
-            self.obj().set_title(language.pretty_name());
+            self.obj().set_title(language.get_message().expect("all languages have names set"));
         }
     }
 }
