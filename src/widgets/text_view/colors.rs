@@ -12,6 +12,11 @@ impl imp::KpTextView {
         // screen color picker to extract the needed colors. Each RGB value
         // has been divided by 256 to work as a floating point value.
 
+
+        /////////////
+        // Default //
+        /////////////
+
         let tag_untyped = buf.create_tag(Some("untyped"), &[]).unwrap();
         tag_untyped.set_foreground_rgba(Some(&gdk::RGBA::new(0.547, 0.547, 0.547, 1.)));
 
@@ -21,6 +26,26 @@ impl imp::KpTextView {
         let tag_mistake = buf.create_tag(Some("mistake"), &[]).unwrap();
         tag_mistake.set_foreground_rgba(Some(&gdk::RGBA::new(0.875, 0.105, 0.141, 1.)));
         tag_mistake.set_background_rgba(Some(&gdk::RGBA::new(0.965, 0.891, 0.895, 1.)));
+
+
+        ///////////////////////////
+        // Default high contrast //
+        ///////////////////////////
+
+        let tag_untyped_hc = buf.create_tag(Some("untyped-hc"), &[]).unwrap();
+        tag_untyped_hc.set_foreground_rgba(Some(&gdk::RGBA::new(0.380, 0.380, 0.380, 1.)));
+
+        let tag_typed_hc = buf.create_tag(Some("typed-hc"), &[]).unwrap();
+        tag_typed_hc.set_foreground_rgba(Some(&gdk::RGBA::new(0., 0., 0., 1.)));
+
+        let tag_mistake_hc = buf.create_tag(Some("mistake-hc"), &[]).unwrap();
+        tag_mistake_hc.set_foreground_rgba(Some(&gdk::RGBA::new(0.976, 0.976, 0.976, 0.976)));
+        tag_mistake_hc.set_background_rgba(Some(&gdk::RGBA::new(0.875, 0.105, 0.141, 1.)));
+
+
+        //////////
+        // Dark //
+        //////////
 
         let tag_untyped_dark = buf.create_tag(Some("untyped-dark"), &[]).unwrap();
         tag_untyped_dark.set_foreground_rgba(Some(&gdk::RGBA::new(0.484, 0.484, 0.484, 1.)));
@@ -32,8 +57,28 @@ impl imp::KpTextView {
         tag_mistake_dark.set_foreground_rgba(Some(&gdk::RGBA::new(0.961, 0.379, 0.316, 1.)));
         tag_mistake_dark.set_background_rgba(Some(&gdk::RGBA::new(0.223, 0.164, 0.156, 1.)));
 
+
+        ////////////////////////
+        // Dark high contrast //
+        ////////////////////////
+
+        let tag_untyped_dark_hc = buf.create_tag(Some("untyped-dark-hc"), &[]).unwrap();
+        tag_untyped_dark_hc.set_foreground_rgba(Some(&gdk::RGBA::new(0.600, 0.600, 0.600, 1.)));
+
+        let tag_typed_dark_hc = buf.create_tag(Some("typed-dark-hc"), &[]).unwrap();
+        tag_typed_dark_hc.set_foreground_rgba(Some(&gdk::RGBA::new(1., 1., 1., 1.)));
+
+        let tag_mistake_dark_hc = buf.create_tag(Some("mistake-dark-hc"), &[]).unwrap();
+        tag_mistake_dark_hc.set_foreground_rgba(Some(&gdk::RGBA::new(0.140, 0.140, 0.140, 1.)));
+        tag_mistake_dark_hc.set_background_rgba(Some(&gdk::RGBA::new(0.961, 0.379, 0.316, 1.)));
+
+
+
         let style = adw::StyleManager::default();
         style.connect_dark_notify(glib::clone!(@weak obj => move |_| {
+            obj.imp().update_colors();
+        }));
+        style.connect_high_contrast_notify(glib::clone!(@weak obj => move |_| {
             obj.imp().update_colors();
         }));
 
@@ -51,10 +96,11 @@ impl imp::KpTextView {
         let buf = text_view.buffer();
 
         let style = adw::StyleManager::default();
-        let (tag_untyped, tag_typed, tag_mistake, caret_color) = if style.is_dark() {
-            ("untyped-dark", "typed-dark", "mistake-dark", (1., 1., 1.))
-        } else {
-            ("untyped", "typed", "mistake", (0.180, 0.180, 0.180))
+        let (tag_untyped, tag_typed, tag_mistake, caret_color) = match (style.is_dark(), style.is_high_contrast()) {
+            (false, false) => ("untyped", "typed", "mistake", (0.180, 0.180, 0.180)),
+            (false, true) => ("untyped-hc", "typed-hc", "mistake-hc", (0.180, 0.180, 0.180)),
+            (true, false) => ("untyped-dark", "typed-dark", "mistake-dark", (1., 1., 1.)),
+            (true, true) => ("untyped-dark-hc", "typed-dark-hc", "mistake-dark-hc", (1., 1., 1.,)),
         };
 
         // All tags are removed and reapplied on each recoloring
