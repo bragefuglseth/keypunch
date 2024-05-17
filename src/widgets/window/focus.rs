@@ -9,14 +9,15 @@ impl imp::KpWindow {
                 imp.focus_text_view();
             }));
 
-        self.text_view.connect_has_focus_notify(
-            glib::clone!(@weak self as imp => move |text_view| {
+        self.obj().connect_focus_widget_notify(
+            glib::clone!(@weak self as imp => move |_| {
+                let text_view = imp.text_view.get();
                 let bottom_stack_empty = imp.bottom_stack_empty.get();
                 let just_start_typing = imp.just_start_typing.get();
                 let focus_button = imp.focus_button.get();
                 let bottom_stack = imp.bottom_stack.get();
 
-                match (text_view.has_focus(), imp.running.get()) {
+                match (imp.text_view_focused(), imp.running.get()) {
                     (true, true) => {
                         bottom_stack.set_visible_child(&bottom_stack_empty);
                         text_view.remove_css_class("unfocused");
@@ -28,12 +29,11 @@ impl imp::KpWindow {
                     (false, _) => {
                         let timeout = glib::timeout_add_local_once(
                             Duration::from_millis(UNFOCUSED_TIMEOUT_MILLIS),
-                            glib::clone!(@weak text_view,
-                                @weak bottom_stack,
+                            glib::clone!(@weak bottom_stack,
                                 @weak focus_button,
                                 @weak imp
                                 => move || {
-                                    if !text_view.has_focus() && !imp.open_dialog.get() {
+                                    if !imp.text_view_focused() && !imp.open_dialog.get() {
                                         bottom_stack.set_visible_child(&focus_button);
                                         text_view.add_css_class("unfocused");
                                     }
@@ -53,6 +53,14 @@ impl imp::KpWindow {
                 };
             }),
         );
+    }
+
+    pub(super) fn text_view_focused(&self) -> bool {
+        if let Some(focus) = self.obj().focus_widget() {
+            focus == self.text_view.get()
+        } else {
+            false
+        }
     }
 
     pub(super) fn focus_text_view(&self) {
