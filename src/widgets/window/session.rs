@@ -3,11 +3,11 @@ use crate::text_generation;
 use crate::widgets::{KpCustomTextDialog, KpTextLanguageDialog};
 use gettextrs::gettext;
 use glib::ControlFlow;
+use i18n_format::i18n_fmt;
 use std::iter::once;
 use strum::IntoEnumIterator;
 use text_generation::CHUNK_GRAPHEME_COUNT;
 use unicode_segmentation::UnicodeSegmentation;
-use i18n_format::i18n_fmt;
 
 impl imp::KpWindow {
     pub(super) fn setup_session_config(&self) {
@@ -92,7 +92,7 @@ impl imp::KpWindow {
 
                     let total_words = original_text.unicode_words().count();
 
-                    // Translators: The `{}` blocks will be replaced witht the current word count and the total word count.
+                    // Translators: The `{}` blocks will be replaced with the current word count and the total word count.
                     // Do not translate them! The slash sign is a special unicode character, if your language doesn't
                     // use a completely different sign, you should probably copy and paste it from the original string.
                     imp.running_title.set_title(&i18n_fmt! { i18n_fmt("{} ⁄ {}", current_word, total_words) });
@@ -154,14 +154,29 @@ impl imp::KpWindow {
             }),
         );
 
+        self.block_text_view_unfocus.set(true);
+
         dialog.connect_closed(glib::clone!(@weak self as imp => move |dialog| {
             imp.add_recent_language(dialog.selected_language());
-            imp.open_dialog.set(false);
+            imp.block_text_view_unfocus.set(false);
             imp.focus_text_view();
         }));
 
-        self.open_dialog.set(true);
         dialog.present(self.obj().upcast_ref::<gtk::Widget>());
+    }
+
+    fn add_recent_language(&self, language: Language) {
+        let mut recent_languages = self.recent_languages.borrow_mut();
+
+        *recent_languages = once(language)
+            .chain(
+                recent_languages
+                    .iter()
+                    .filter(|&recent_language| *recent_language != language)
+                    .map(|p| *p),
+            )
+            .take(3)
+            .collect();
     }
 
     pub fn show_custom_text_dialog(&self, initial_text: &str) {
@@ -210,12 +225,13 @@ impl imp::KpWindow {
             }),
         );
 
+        self.block_text_view_unfocus.set(true);
+
         dialog.connect_closed(glib::clone!(@weak self as imp => move |_| {
-            imp.open_dialog.set(false);
+            imp.block_text_view_unfocus.set(false);
             imp.focus_text_view();
         }));
 
-        self.open_dialog.set(true);
         dialog.present(self.obj().upcast_ref::<gtk::Widget>());
     }
 
@@ -279,19 +295,5 @@ impl imp::KpWindow {
         };
 
         self.running_title.set_title(&text);
-    }
-
-    fn add_recent_language(&self, language: Language) {
-        let mut recent_languages = self.recent_languages.borrow_mut();
-
-        *recent_languages = once(language)
-            .chain(
-                recent_languages
-                    .iter()
-                    .filter(|&recent_language| *recent_language != language)
-                    .map(|p| *p),
-            )
-            .take(3)
-            .collect();
     }
 }

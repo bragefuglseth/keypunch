@@ -30,9 +30,9 @@ template $KpWindow: Adw.ApplicationWindow {
                 [title]
                 Box {
                   spacing: 6;
-                  tooltip-text: _("Session Type");
 
                   DropDown session_type_dropdown {
+                    tooltip-text: _("Session Type");
                     styles [
                       "flat-dropdown"
                     ]
@@ -140,14 +140,6 @@ template $KpWindow: Adw.ApplicationWindow {
             [title]
             Adw.WindowTitle {
               title: _("Results");
-            }
-
-            [end]
-            MenuButton {
-              primary: true;
-              icon-name: "open-menu-symbolic";
-              tooltip-text: _("Main Menu");
-              menu-model: primary_menu;
             }
           }
 

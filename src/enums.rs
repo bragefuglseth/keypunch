@@ -1,5 +1,5 @@
-use strum_macros::{Display as EnumDisplay, EnumIter, EnumMessage, EnumString};
 use gettextrs::gettext;
+use strum_macros::{Display as EnumDisplay, EnumIter, EnumMessage, EnumString};
 
 #[derive(Clone, Copy, Default, PartialEq, EnumString, EnumDisplay, EnumIter)]
 pub enum SessionType {

@@ -54,6 +54,7 @@ impl imp::KpWindow {
 
     pub(super) fn ready(&self, animate: bool) {
         self.running.set(false);
+        self.block_text_view_unfocus.set(false);
         self.header_bar_running.add_css_class("hide-controls");
         self.text_view.set_running(false);
         self.text_view.set_accepts_input(true);
@@ -126,6 +127,8 @@ impl imp::KpWindow {
         results_view.set_show_language(show_language);
 
         self.main_stack.set_visible_child_name("results");
+
+        self.block_text_view_unfocus.set(true);
 
         self.obj().set_focus_widget(None::<&gtk::Widget>);
         glib::timeout_add_local_once(

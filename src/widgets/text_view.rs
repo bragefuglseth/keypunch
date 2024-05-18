@@ -1,3 +1,4 @@
+mod accessibility;
 mod caret;
 mod colors;
 mod input;
@@ -88,6 +89,7 @@ mod imp {
                 imp.update_colors();
                 imp.update_caret_position(!imp.running.get());
                 imp.update_scroll_position(!imp.running.get());
+                imp.update_accessible_state();
             });
 
             obj.connect_has_focus_notify(|obj| {
@@ -141,6 +143,7 @@ mod imp {
             self.update_colors();
             self.update_caret_position(true);
             self.update_scroll_position(true);
+            self.update_accessible_state();
         }
 
         pub fn push_original_text(&self, text: &str) {
@@ -155,7 +158,7 @@ mod imp {
 
 glib::wrapper! {
     pub struct KpTextView(ObjectSubclass<imp::KpTextView>)
-        @extends gtk::Widget;
+        @extends gtk::Widget, @implements gtk::Accessible;
 }
 
 impl KpTextView {

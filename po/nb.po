@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: keypunch\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-05-18 03:30+0200\n"
-"PO-Revision-Date: 2024-05-18 03:31+0200\n"
+"PO-Revision-Date: 2024-05-18 04:05+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: nb\n"
@@ -75,11 +75,11 @@ msgstr "\"Høvdingens kjære squaw får litt pizza i Mexico by.\""
 
 #: data/dev.bragefuglseth.Keypunch.gschema.xml:53
 msgid "Custom text"
-msgstr "Selvvalgt tekst"
+msgstr "Egendefinert tekst"
 
 #: data/dev.bragefuglseth.Keypunch.gschema.xml:54
 msgid "Text displayed when “Custom” is chosen from the session menu"
-msgstr "Tekst som vises når «Selvvalgt» er valgt fra modusmenyen"
+msgstr "Tekst som vises når «Egendefinert» er valgt fra modusmenyen"
 
 #: src/enums.rs:15
 msgid "Simple"
@@ -91,7 +91,7 @@ msgstr "Avansert"
 
 #: src/enums.rs:17
 msgid "Custom"
-msgstr "Selvvalgt"
+msgstr "Egendefinert"
 
 #: src/enums.rs:35
 msgid "15 seconds"
@@ -115,7 +115,7 @@ msgstr "10 minutter"
 
 #: src/widgets/custom_text_dialog.blp:5 src/widgets/custom_text_dialog.blp:26
 msgid "Custom Text"
-msgstr "Selvvalgt tekst"
+msgstr "Egendefinert tekst"
 
 #: src/widgets/custom_text_dialog.blp:53
 msgid "Save"
@@ -123,7 +123,7 @@ msgstr "Lagre"
 
 #: src/widgets/custom_text_dialog.rs:71
 msgid "Insert custom text…"
-msgstr "Sett inn selvvalgt tekst…"
+msgstr "Sett inn egendefinert tekst…"
 
 #: src/widgets/results_view.blp:25
 msgid "Words per Minute"
@@ -204,7 +204,7 @@ msgstr "Prøv et annet søk"
 
 #: src/widgets/text_view.blp:11
 msgid "Text View"
-msgstr "Tekstfelt"
+msgstr "Skrivefelt"
 
 #: src/widgets/window.blp:53
 msgid "Edit Text"

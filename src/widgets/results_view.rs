@@ -1,9 +1,9 @@
 use adw::prelude::*;
 use adw::subclass::prelude::*;
-use gtk::glib;
-use std::cell::{Cell, RefCell};
-use i18n_format::i18n_fmt;
 use gettextrs::ngettext;
+use gtk::glib;
+use i18n_format::i18n_fmt;
+use std::cell::{Cell, RefCell};
 
 mod imp {
     use super::*;
@@ -124,7 +124,7 @@ mod imp {
                     // Translators: The percentage label format of the results page.
                     // The `{}` block will be replaced with the percentage number,
                     // do not translate it!
-                    let formatted = i18n_fmt!{ i18n_fmt("{}%", display_accuracy) };
+                    let formatted = i18n_fmt! { i18n_fmt("{}%", display_accuracy) };
                     Some(formatted)
                 })
                 .build();
