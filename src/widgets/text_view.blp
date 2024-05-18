@@ -1,14 +1,20 @@
 using Gtk 4.0;
 using Adw 1;
 
-template $KpTextView : Widget {
+template $KpTextView: Widget {
   focusable: true;
   valign: center;
   overflow: hidden;
+  accessible-role: text_box;
+
+  accessibility {
+    label: _("Text View");
+  }
 
   TextView text_view {
-    editable: false;
     focusable: false;
+    editable: false;
     wrap-mode: word_char;
+    accessible-role: presentation;
   }
 }

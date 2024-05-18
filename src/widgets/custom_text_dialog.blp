@@ -2,9 +2,9 @@ using Gtk 4.0;
 using Adw 1;
 
 template $KpCustomTextDialog: Adw.Dialog {
-  title: "Custom Text";
+  title: _("Custom Text");
   content-width: 450;
-  content-height:450;
+  content-height: 450;
 
   Adw.ToolbarView {
     [top]
@@ -13,28 +13,34 @@ template $KpCustomTextDialog: Adw.Dialog {
     }
 
     ScrolledWindow scrolled_window {
-        hscrollbar-policy: never;
-        propagate-natural-height: true;
+      hscrollbar-policy: never;
+      propagate-natural-height: true;
 
-        Box {
-          orientation: vertical;
-          margin-start: 12;
-          margin-end: 12;
-          margin-bottom: 12;
+      Box {
+        orientation: vertical;
+        margin-start: 12;
+        margin-end: 12;
+        margin-bottom: 12;
 
-          Label {
-            label: "Custom Text";
-            margin-bottom: 24;
-            styles [ "title-1" ]
-          }
+        Label {
+          label: _("Custom Text");
+          margin-bottom: 24;
 
-          TextView text_view {
-            vexpand: true;
-            wrap-mode: word_char;
-            accepts-tab: false;
+          styles [
+            "title-1"
+          ]
+        }
 
-            styles [ "card", "card-text-view" ]
-          }
+        TextView text_view {
+          vexpand: true;
+          wrap-mode: word_char;
+          accepts-tab: false;
+
+          styles [
+            "card",
+            "card-text-view"
+          ]
+        }
       }
     }
 
@@ -44,12 +50,17 @@ template $KpCustomTextDialog: Adw.Dialog {
       valign: center;
 
       Button save_button {
-        label: "Save";
+        label: _("Save");
 
-        styles [ "pill", "suggested-action" ]
+        styles [
+          "pill",
+          "suggested-action"
+        ]
       }
 
-      styles [ "toolbar-thick" ]
+      styles [
+        "toolbar-thick"
+      ]
     }
   }
 }

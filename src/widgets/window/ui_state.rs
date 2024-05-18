@@ -115,7 +115,11 @@ impl imp::KpWindow {
         let session_type = self.session_type.get();
         results_view.set_session_type(session_type.ui_string());
 
-        let language = self.language.get().get_message().expect("all languages have names set");
+        let language = self
+            .language
+            .get()
+            .get_message()
+            .expect("all languages have names set");
         results_view.set_language(language);
 
         let show_language = matches!(session_type, SessionType::Simple | SessionType::Advanced);

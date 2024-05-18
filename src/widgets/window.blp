@@ -2,7 +2,7 @@ using Gtk 4.0;
 using Adw 1;
 
 template $KpWindow: Adw.ApplicationWindow {
-  title: 'Keypunch';
+  title: _("Keypunch");
   width-request: 360;
   height-request: 296;
 
@@ -13,6 +13,7 @@ template $KpWindow: Adw.ApplicationWindow {
 
       StackPage {
         name: "session";
+
         child: Adw.ToolbarView {
           extend-content-to-top-edge: true;
           extend-content-to-bottom-edge: true;
@@ -24,22 +25,32 @@ template $KpWindow: Adw.ApplicationWindow {
 
             StackPage {
               name: "ready";
+
               child: Adw.HeaderBar header_bar_ready {
                 [title]
                 Box {
                   spacing: 6;
+                  tooltip-text: _("Session Type");
+
                   DropDown session_type_dropdown {
-                    styles ["flat-dropdown"]
+                    styles [
+                      "flat-dropdown"
+                    ]
                   }
 
                   Stack secondary_config_stack {
                     DropDown duration_dropdown {
-                      styles ["flat-dropdown"]
+                      tooltip-text: _("Session Duration");
+
+                      styles [
+                        "flat-dropdown"
+                      ]
                     }
+
                     Button custom_button {
                       Adw.ButtonContent {
                         icon-name: "edit-symbolic";
-                        label: "Edit Text";
+                        label: _("Edit Text");
                       }
                     }
                   }
@@ -48,8 +59,8 @@ template $KpWindow: Adw.ApplicationWindow {
                 [end]
                 MenuButton {
                   primary: true;
-                  icon-name: 'open-menu-symbolic';
-                  tooltip-text: _('Menu');
+                  icon-name: "open-menu-symbolic";
+                  tooltip-text: _("Main Menu");
                   menu-model: primary_menu;
                 }
               };
@@ -57,6 +68,7 @@ template $KpWindow: Adw.ApplicationWindow {
 
             StackPage {
               name: "running";
+
               child: Adw.HeaderBar header_bar_running {
                 [title]
                 Adw.WindowTitle running_title {}
@@ -64,9 +76,12 @@ template $KpWindow: Adw.ApplicationWindow {
                 [start]
                 Button stop_button {
                   icon-name: "go-previous-symbolic";
+                  tooltip-text: _("Stop Session");
                 }
 
-                styles ["header-bar-running"]
+                styles [
+                  "header-bar-running"
+                ]
               };
             }
           }
@@ -89,40 +104,53 @@ template $KpWindow: Adw.ApplicationWindow {
             halign: center;
 
             Label just_start_typing {
-              label: "Just Start Typing";
+              label: _("Just Start Typing");
 
-              styles [ "dim-label" ]
+              styles [
+                "dim-label"
+              ]
             }
+
             Button focus_button {
-              label: "Focus Entry";
+              // Translators: "Activate" here means to
+              // focus the input widget
+              label: _("Activate Entry");
 
-              styles [ "pill", "suggested-action" ]
+              styles [
+                "pill",
+                "suggested-action"
+              ]
             }
-            Box bottom_stack_empty{}
 
-            styles [ "toolbar-thick" ]
+            Box bottom_stack_empty {}
+
+            styles [
+              "toolbar-thick"
+            ]
           }
         };
       }
 
       StackPage {
         name: "results";
-          child: Adw.ToolbarView {
+
+        child: Adw.ToolbarView {
           [top]
           Adw.HeaderBar {
             [title]
             Adw.WindowTitle {
-              title: "Results";
+              title: _("Results");
             }
 
             [end]
             MenuButton {
               primary: true;
-              icon-name: 'open-menu-symbolic';
-              tooltip-text: _('Menu');
+              icon-name: "open-menu-symbolic";
+              tooltip-text: _("Main Menu");
               menu-model: primary_menu;
             }
           }
+
           content: ScrolledWindow {
             hscrollbar-policy: never;
 
@@ -144,12 +172,17 @@ template $KpWindow: Adw.ApplicationWindow {
             halign: center;
 
             Button continue_button {
-              label: "Continue";
+              label: _("Continue");
 
-              styles [ "pill", "suggested-action" ]
+              styles [
+                "pill",
+                "suggested-action"
+              ]
             }
 
-            styles [ "toolbar-thick" ]
+            styles [
+              "toolbar-thick"
+            ]
           }
         };
       }
@@ -158,6 +191,7 @@ template $KpWindow: Adw.ApplicationWindow {
 
   Adw.Breakpoint {
     condition ("max-width: 500sp")
+
     setters {
       results_view.orientation: vertical;
     }
@@ -167,17 +201,17 @@ template $KpWindow: Adw.ApplicationWindow {
 menu primary_menu {
   section {
     item {
-      label: _('Text _Language');
+      label: _("Text _Language");
       action: 'win.text-language-dialog';
     }
 
     item {
-      label: _('_Keyboard Shortcuts');
+      label: _("_Keyboard Shortcuts");
       action: 'win.show-help-overlay';
     }
 
     item {
-      label: _('_About Keypunch');
+      label: _("_About Keypunch");
       action: 'win.about';
     }
   }

@@ -1,6 +1,7 @@
-use strum_macros::{Display as EnumDisplay, EnumIter, EnumString, EnumMessage};
+use strum_macros::{Display as EnumDisplay, EnumIter, EnumMessage, EnumString};
+use gettextrs::gettext;
 
-#[derive(Clone, Copy, Default, EnumString, EnumDisplay, EnumIter)]
+#[derive(Clone, Copy, Default, PartialEq, EnumString, EnumDisplay, EnumIter)]
 pub enum SessionType {
     #[default]
     Simple,
@@ -11,9 +12,9 @@ pub enum SessionType {
 impl SessionType {
     pub fn ui_string(&self) -> String {
         match self {
-            SessionType::Simple => String::from("Simple"),
-            SessionType::Advanced => String::from("Advanced"),
-            SessionType::Custom => String::from("Custom"),
+            SessionType::Simple => gettext("Simple"),
+            SessionType::Advanced => gettext("Advanced"),
+            SessionType::Custom => gettext("Custom"),
         }
     }
 }
@@ -31,11 +32,11 @@ pub enum SessionDuration {
 impl SessionDuration {
     pub fn ui_string(&self) -> String {
         match self {
-            SessionDuration::Sec15 => String::from("15 seconds"),
-            SessionDuration::Sec30 => String::from("30 seconds"),
-            SessionDuration::Min1 => String::from("1 minute"),
-            SessionDuration::Min5 => String::from("5 minutes"),
-            SessionDuration::Min10 => String::from("10 minutes"),
+            SessionDuration::Sec15 => gettext("15 seconds"),
+            SessionDuration::Sec30 => gettext("30 seconds"),
+            SessionDuration::Min1 => gettext("1 minute"),
+            SessionDuration::Min5 => gettext("5 minutes"),
+            SessionDuration::Min10 => gettext("10 minutes"),
         }
     }
 }

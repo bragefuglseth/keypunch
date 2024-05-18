@@ -16,12 +16,17 @@ template $KpResultsView: Widget {
         width-request: 200;
 
         Label wpm_label {
-          styles [ "key-number" ]
+          styles [
+            "key-number"
+          ]
         }
 
         Label {
-          label: "Words per Minute";
-          styles [ "dim-label" ]
+          label: _("Words per Minute");
+
+          styles [
+            "dim-label"
+          ]
         }
       }
 
@@ -32,12 +37,17 @@ template $KpResultsView: Widget {
         width-request: 200;
 
         Label accuracy_label {
-          styles [ "key-number" ]
+          styles [
+            "key-number"
+          ]
         }
 
         Label {
-          label: "Correctness";
-          styles [ "dim-label" ]
+          label: _("Correctness");
+
+          styles [
+            "dim-label"
+          ]
         }
       }
     }
@@ -49,27 +59,39 @@ template $KpResultsView: Widget {
       Box {
         halign: center;
         spacing: 6;
+        tooltip-text: _("Session Type");
+
         Image {
           icon-name: "quotation-symbolic";
+          accessible-role: presentation;
         }
+
         Label session_type_label {}
       }
 
       Box {
         halign: center;
         spacing: 6;
+        tooltip-text: _("Session Duration");
+
         Image {
           icon-name: "timer-symbolic";
+          accessible-role: presentation;
         }
+
         Label duration_label {}
       }
 
       Box language_box {
         halign: center;
         spacing: 6;
+        tooltip-text: _("Text Language");
+
         Image {
           icon-name: "language-symbolic";
+          accessible-role: presentation;
         }
+
         Label language_label {}
       }
     }

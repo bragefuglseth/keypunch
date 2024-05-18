@@ -1,5 +1,6 @@
 use adw::prelude::*;
 use adw::subclass::prelude::*;
+use gettextrs::gettext;
 use glib::subclass::Signal;
 use gtk::glib;
 use std::cell::{Cell, RefCell};
@@ -67,7 +68,7 @@ mod imp {
                 .build();
 
             let placeholder = gtk::Label::builder()
-                .label("Insert custom text…")
+                .label(&gettext("Insert custom text…"))
                 .css_classes(["dim-label"])
                 .build();
             self.text_view.add_overlay(&placeholder, 0, 0);
@@ -77,6 +78,11 @@ mod imp {
                 .transform_to(|_, text: String| Some(text.is_empty()))
                 .sync_create()
                 .build();
+
+            self.text_view
+                .update_relation(&[gtk::accessible::Relation::LabelledBy(&[&placeholder
+                    .upcast_ref::<gtk::Accessible>(
+                )])]);
 
             let save_button = self.save_button.get();
             self.text_view

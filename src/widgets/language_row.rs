@@ -40,7 +40,6 @@ mod imp {
 
         fn constructed(&self) {
             self.parent_constructed();
-
             let obj = self.obj();
 
             let check_button = self.check_button();
@@ -68,7 +67,11 @@ mod imp {
 
         pub(super) fn set_language(&self, language: Language) {
             self.language.set(language);
-            self.obj().set_title(language.get_message().expect("all languages have names set"));
+            self.obj().set_title(
+                language
+                    .get_message()
+                    .expect("all languages have names set"),
+            );
         }
     }
 }

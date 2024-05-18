@@ -6,6 +6,7 @@ edition = "2021"
 [dependencies]
 gettext-rs = { version = "0.7", features = ["gettext-system"] }
 gvdb-macros = "0.1.12"
+i18n-format = "0.2.0"
 include_dir = "0.7.3"
 rand = "0.8.5"
 rayon = "1.10.0"

@@ -21,13 +21,11 @@ impl imp::KpWindow {
         let obj = self.obj();
         obj.set_default_size(width, height);
 
-        self.session_type.set(
-            SessionType::from_str(&session_type).unwrap_or(SessionType::Simple)
-        );
+        self.session_type
+            .set(SessionType::from_str(&session_type).unwrap_or(SessionType::Simple));
 
-        self.duration.set(
-            SessionDuration::from_str(&duration).unwrap_or(SessionDuration::Sec30)
-        );
+        self.duration
+            .set(SessionDuration::from_str(&duration).unwrap_or(SessionDuration::Sec30));
 
         self.language
             .set(Language::from_str(language.as_str()).unwrap_or(Language::EnglishUS));

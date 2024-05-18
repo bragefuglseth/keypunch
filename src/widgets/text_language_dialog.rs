@@ -113,7 +113,11 @@ mod imp {
                 .collect();
 
             // Sort alphabetically
-            languages_without_recent_or_current.sort_by_key(|language| language.get_message().expect("all languages have names set"));
+            languages_without_recent_or_current.sort_by_key(|language| {
+                language
+                    .get_message()
+                    .expect("all languages have names set")
+            });
 
             for language in languages_without_recent_or_current {
                 let row = KpLanguageRow::new(language);
@@ -134,8 +138,13 @@ mod imp {
                 let normalized_query = unidecode(&query.to_lowercase());
                 let results: Vec<Language> = Language::iter()
                     .filter(|language| {
-                        unidecode(&language.get_message().expect("all languages have names set").to_lowercase())
-                            .contains(&normalized_query)
+                        unidecode(
+                            &language
+                                .get_message()
+                                .expect("all languages have names set")
+                                .to_lowercase(),
+                        )
+                        .contains(&normalized_query)
                     })
                     .collect();
 

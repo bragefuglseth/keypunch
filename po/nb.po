@@ -1,0 +1,273 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the keypunch package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: keypunch\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-05-18 03:30+0200\n"
+"PO-Revision-Date: 2024-05-18 03:31+0200\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: nb\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.4.2\n"
+
+#: data/dev.bragefuglseth.Keypunch.desktop.in:3 src/widgets/window.blp:5
+msgid "Keypunch"
+msgstr "Keypunch"
+
+#: data/dev.bragefuglseth.Keypunch.gschema.xml:20
+msgid "Window width"
+msgstr "Vindusbredde"
+
+#: data/dev.bragefuglseth.Keypunch.gschema.xml:24
+msgid "Window height"
+msgstr "Vindushøyde"
+
+#: data/dev.bragefuglseth.Keypunch.gschema.xml:28
+msgid "Window maximization"
+msgstr "Vindusmaksimering"
+
+#: data/dev.bragefuglseth.Keypunch.gschema.xml:32
+msgid "Session type"
+msgstr "Modus"
+
+#: data/dev.bragefuglseth.Keypunch.gschema.xml:36
+msgid "Session duration"
+msgstr "Varighet"
+
+#: data/dev.bragefuglseth.Keypunch.gschema.xml:37
+msgid "The duration of time-based sessions"
+msgstr "Varigheten på tidsbaserte økter"
+
+#. Translators: Insert the language code of your language here. Do not remove the quotation marks.
+#: data/dev.bragefuglseth.Keypunch.gschema.xml:41
+msgid "\"en_US\""
+msgstr "\"nb_NO\""
+
+#: data/dev.bragefuglseth.Keypunch.gschema.xml:42
+msgid "Text language"
+msgstr "Tekstspråk"
+
+#: data/dev.bragefuglseth.Keypunch.gschema.xml:43
+msgid "The code of the language used for automatically generated text"
+msgstr "Koden til språket som brukes til automatisk generert tekst"
+
+#: data/dev.bragefuglseth.Keypunch.gschema.xml:47
+msgid "Recent languages"
+msgstr "Nylige språk"
+
+#: data/dev.bragefuglseth.Keypunch.gschema.xml:48
+msgid "Languages shown in the list of recent ones in the text language dialog"
+msgstr "Språk vist i listen over nylige språk i tekstspråkvinduet"
+
+#. Translators: This is the default text for custom typing sessions. Do not translate it literally, and do not remove the quotation marks. Replace it with an appropriate "sample sentence" from your language instead. The original text is an English pangram, so you can e.g. find a pangram in your language: https://clagnut.com/blog/2380
+#: data/dev.bragefuglseth.Keypunch.gschema.xml:52
+msgid "\"The quick brown fox jumps over the lazy dog.\""
+msgstr "\"Høvdingens kjære squaw får litt pizza i Mexico by.\""
+
+#: data/dev.bragefuglseth.Keypunch.gschema.xml:53
+msgid "Custom text"
+msgstr "Selvvalgt tekst"
+
+#: data/dev.bragefuglseth.Keypunch.gschema.xml:54
+msgid "Text displayed when “Custom” is chosen from the session menu"
+msgstr "Tekst som vises når «Selvvalgt» er valgt fra modusmenyen"
+
+#: src/enums.rs:15
+msgid "Simple"
+msgstr "Enkel"
+
+#: src/enums.rs:16
+msgid "Advanced"
+msgstr "Avansert"
+
+#: src/enums.rs:17
+msgid "Custom"
+msgstr "Selvvalgt"
+
+#: src/enums.rs:35
+msgid "15 seconds"
+msgstr "15 sekunder"
+
+#: src/enums.rs:36
+msgid "30 seconds"
+msgstr "30 sekunder"
+
+#: src/enums.rs:37
+msgid "1 minute"
+msgstr "1 minutt"
+
+#: src/enums.rs:38
+msgid "5 minutes"
+msgstr "5 minutter"
+
+#: src/enums.rs:39
+msgid "10 minutes"
+msgstr "10 minutter"
+
+#: src/widgets/custom_text_dialog.blp:5 src/widgets/custom_text_dialog.blp:26
+msgid "Custom Text"
+msgstr "Selvvalgt tekst"
+
+#: src/widgets/custom_text_dialog.blp:53
+msgid "Save"
+msgstr "Lagre"
+
+#: src/widgets/custom_text_dialog.rs:71
+msgid "Insert custom text…"
+msgstr "Sett inn selvvalgt tekst…"
+
+#: src/widgets/results_view.blp:25
+msgid "Words per Minute"
+msgstr "Ord i minuttet"
+
+#: src/widgets/results_view.blp:46
+msgid "Correctness"
+msgstr "Korrekthet"
+
+#: src/widgets/results_view.blp:62 src/widgets/window.blp:33
+msgid "Session Type"
+msgstr "Modus"
+
+#: src/widgets/results_view.blp:75 src/widgets/window.blp:43
+msgid "Session Duration"
+msgstr "Varighet"
+
+#: src/widgets/results_view.blp:88 src/widgets/text_language_dialog.blp:5
+#: src/widgets/text_language_dialog.blp:27
+msgid "Text Language"
+msgstr "Tekstspråk"
+
+#. Translators: The percentage label format of the results page.
+#. The `{}` block will be replaced with the percentage number,
+#. do not translate it!
+#: src/widgets/results_view.rs:127
+msgid "{}%"
+msgstr "{}%"
+
+#. Translators: The `{}` blocks will be replaced with the number of minutes
+#. and seconds. Do not translate them!
+#: src/widgets/results_view.rs:185
+msgid "{}m {}s"
+msgstr "{}m {}s"
+
+#. Translators: The `{}` block will be replaced with the number of minutes.
+#. Do not translate it!
+#: src/widgets/results_view.rs:189
+msgid "{} minute"
+msgid_plural "{} minutes"
+msgstr[0] "{} minutt"
+msgstr[1] "{} minutter"
+
+#. Translators: The `{}` block will be replaced with the number of seconds.
+#. Do not translate it!
+#: src/widgets/results_view.rs:193
+msgid "{} second"
+msgid_plural "{} seconds"
+msgstr[0] "{} sekund"
+msgstr[1] "{} sekunder"
+
+#: src/widgets/text_language_dialog.blp:39
+#: src/widgets/text_language_dialog.blp:43
+msgid "Search languages…"
+msgstr "Søk etter språk…"
+
+#. Translators: Recent languages in text languages list
+#: src/widgets/text_language_dialog.blp:67
+msgid "Recent"
+msgstr "Nylige"
+
+#. Translators: Other languages in text languages list
+#: src/widgets/text_language_dialog.blp:72
+msgid "Other"
+msgstr "Andre"
+
+#: src/widgets/text_language_dialog.blp:92
+msgid "Search Results"
+msgstr "Søketreff"
+
+#: src/widgets/text_language_dialog.blp:128
+msgid "No Matches"
+msgstr "Ingen treff"
+
+#: src/widgets/text_language_dialog.blp:136
+msgid "Try a different search"
+msgstr "Prøv et annet søk"
+
+#: src/widgets/text_view.blp:11
+msgid "Text View"
+msgstr "Tekstfelt"
+
+#: src/widgets/window.blp:53
+msgid "Edit Text"
+msgstr "Rediger tekst"
+
+#: src/widgets/window.blp:63 src/widgets/window.blp:149
+msgid "Main Menu"
+msgstr "Hovedmeny"
+
+#: src/widgets/window.blp:79
+msgid "Stop Session"
+msgstr "Stopp økt"
+
+#: src/widgets/window.blp:107
+msgid "Just Start Typing"
+msgstr "Begynn å skrive"
+
+#. Translators: "Activate" here means to
+#. focus the input widget
+#: src/widgets/window.blp:117
+msgid "Activate Entry"
+msgstr "Aktiver skrivefelt"
+
+#: src/widgets/window.blp:142
+msgid "Results"
+msgstr "Resultater"
+
+#: src/widgets/window.blp:175
+msgid "Continue"
+msgstr "Fortsett"
+
+#: src/widgets/window.blp:204
+msgid "Text _Language"
+msgstr "Tekst_språk"
+
+#: src/widgets/window.blp:209
+msgid "_Keyboard Shortcuts"
+msgstr "_Tastatursnarveier"
+
+#: src/widgets/window.blp:214
+msgid "_About Keypunch"
+msgstr "_Om Keypunch"
+
+#. Translators: The `{}` blocks will be replaced witht the current word count and the total word count.
+#. Do not translate them! The slash sign is a special unicode character, if your language doesn't
+#. use a completely different sign, you should probably copy and paste it from the original string.
+#: src/widgets/window/session.rs:98
+msgid "{} ⁄ {}"
+msgstr "{} ⁄ {}"
+
+#: src/widgets/window/session.rs:199
+msgid "Changes discarded"
+msgstr "Endringer forkastet"
+
+#: src/widgets/window/session.rs:200
+msgid "Restore"
+msgstr "Gjenopprett"
+
+#. Translators: The format of the timer. The first `{}` block will be replaced
+#. with the minutes passed, and the second one will be replaced with the seconds
+#. passed. Do not translate the `{}` blocks. Note that the `∶` sign is a special
+#. Unicode character; if your language doesn't use something completely different,
+#. you should probably copy and paste it from the original string.
+#: src/widgets/window/session.rs:274 src/widgets/window/session.rs:276
+msgid "{}∶{}"
+msgstr "{}∶{}"

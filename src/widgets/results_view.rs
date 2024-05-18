@@ -2,6 +2,8 @@ use adw::prelude::*;
 use adw::subclass::prelude::*;
 use gtk::glib;
 use std::cell::{Cell, RefCell};
+use i18n_format::i18n_fmt;
+use gettextrs::ngettext;
 
 mod imp {
     use super::*;
@@ -118,8 +120,11 @@ mod imp {
 
             obj.bind_property("accuracy", &accuracy_label, "label")
                 .transform_to(|_, accuracy: f64| {
-                    let display_accuracy = (accuracy * 100.).floor();
-                    let formatted = format!("{:.0}%", display_accuracy);
+                    let display_accuracy = (accuracy * 100.).floor() as usize;
+                    // Translators: The percentage label format of the results page.
+                    // The `{}` block will be replaced with the percentage number,
+                    // do not translate it!
+                    let formatted = i18n_fmt!{ i18n_fmt("{}%", display_accuracy) };
                     Some(formatted)
                 })
                 .build();
@@ -175,15 +180,16 @@ pub fn human_readable_duration(total_secs: u64) -> String {
     let secs = total_secs % 60;
 
     if minutes > 0 && secs > 0 {
-        format!("{minutes}m {secs}s")
-    } else if minutes == 1 {
-        format!("{minutes} minute")
+        // Translators: The `{}` blocks will be replaced with the number of minutes
+        // and seconds. Do not translate them!
+        i18n_fmt! { i18n_fmt("{}m {}s", minutes, secs) }
     } else if minutes > 0 {
-        format!("{minutes} minutes")
-    } else if secs == 1 {
-        format!("{secs} second")
+        // Translators: The `{}` block will be replaced with the number of minutes.
+        // Do not translate it!
+        i18n_fmt! { i18n_nfmt("{} minute", "{} minutes", minutes as u32, minutes) }
     } else {
-        format!("{secs} seconds")
+        // Translators: The `{}` block will be replaced with the number of seconds.
+        // Do not translate it!
+        i18n_fmt! { i18n_nfmt("{} second", "{} seconds", secs as u32, secs) }
     }
 }
-

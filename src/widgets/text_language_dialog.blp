@@ -2,9 +2,9 @@ using Gtk 4.0;
 using Adw 1;
 
 template $KpTextLanguageDialog: Adw.Dialog {
-  title: "Text Language";
+  title: _("Text Language");
   content-width: 450;
-  content-height:500;
+  content-height: 500;
 
   Adw.ToolbarView {
     [top]
@@ -13,108 +13,132 @@ template $KpTextLanguageDialog: Adw.Dialog {
     }
 
     ScrolledWindow scrolled_window {
-        hscrollbar-policy: never;
-        propagate-natural-height: true;
-        vexpand: true;
+      hscrollbar-policy: never;
+      propagate-natural-height: true;
+      vexpand: true;
 
-        Box {
-          orientation: vertical;
-          margin-start: 12;
-          margin-end: 12;
-          margin-bottom: 12;
+      Box {
+        orientation: vertical;
+        margin-start: 12;
+        margin-end: 12;
+        margin-bottom: 12;
 
-          Label {
-            label: "Text Language";
-            margin-bottom: 24;
-            styles [ "title-1" ]
-          }
+        Label {
+          label: _("Text Language");
+          margin-bottom: 24;
 
-          Adw.Clamp {
-            maximum-size: 360;
+          styles [
+            "title-1"
+          ]
+        }
 
-            SearchEntry search_entry {
-              placeholder-text: "Search languages…";
-              margin-bottom: 18;
+        Adw.Clamp {
+          maximum-size: 360;
 
-              styles [ "pill-entry" ]
-            }
-          }
+          SearchEntry search_entry {
+            placeholder-text: _("Search languages…");
+            margin-bottom: 18;
 
-          Stack stack {
-            vhomogeneous: false;
-            transition-type: crossfade;
-            transition-duration: 100;
-            vexpand: true;
-
-            StackPage {
-              name: "list";
-
-              child: Box {
-                spacing: 24;
-                orientation: vertical;
-
-                Adw.PreferencesGroup group_recent {
-                  title: "Recent";
-                }
-
-                Adw.PreferencesGroup group_other {
-                  title: "Other";
-                }
-
-                styles [ "background" ]
-              };
+            accessibility {
+              label: _("Search languages…");
             }
 
-            StackPage {
-              name: "search-results";
+            styles [
+              "pill-entry"
+            ]
+          }
+        }
 
-              child: Box {
+        Stack stack {
+          vhomogeneous: false;
+          transition-type: crossfade;
+          transition-duration: 100;
+          vexpand: true;
+
+          StackPage {
+            name: "list";
+
+            child: Box {
+              spacing: 24;
+              orientation: vertical;
+
+              Adw.PreferencesGroup group_recent {
+                // Translators: Recent languages in text languages list
+                title: _("Recent");
+              }
+
+              Adw.PreferencesGroup group_other {
+                // Translators: Other languages in text languages list
+                title: _("Other");
+              }
+
+              styles [
+                "background"
+              ]
+            };
+          }
+
+          StackPage {
+            name: "search-results";
+
+            child: Box {
+              orientation: vertical;
+              vexpand: true;
+
+              ListBox search_list {
+                selection-mode: none;
+
+                accessibility {
+                  label: _("Search Results");
+                }
+
+                styles [
+                  "boxed-list"
+                ]
+              }
+            };
+          }
+
+          StackPage {
+            name: "no-results";
+
+            child: Box no_results_box {
+              orientation: vertical;
+              vexpand: false;
+
+              Box {
                 orientation: vertical;
+                halign: center;
+                valign: center;
+                spacing: 12;
                 vexpand: true;
 
-                ListBox search_list {
-                  selection-mode: none;
+                Image {
+                  icon-name: "language-symbolic";
+                  vexpand: false;
+                  accessible-role: presentation;
 
-                  styles ["boxed-list" ]
+                  styles [
+                    "status-icon",
+                    "dim-label"
+                  ]
                 }
-              };
-            }
 
-            StackPage {
-              name: "no-results";
+                Label {
+                  label: _("No Matches");
 
-              child: Box no_results_box {
-                orientation: vertical;
-                vexpand: false;
-
-                Box {
-                  orientation: vertical;
-                  halign: center;
-                  valign: center;
-                  spacing: 12;
-                  vexpand: true;
-
-                  Image {
-                    icon-name: "language-symbolic";
-                    vexpand: false;
-                    styles [ "status-icon", "dim-label" ]
-                  }
-
-                  Label {
-                    label: "No Matches";
-
-                    styles [ "title-2" ]
-                  }
-
-                  Label {
-                    label: "Try a different search";
-                  }
-
-                  styles [ "non-scrollable-status-page" ]
+                  styles [
+                    "title-2"
+                  ]
                 }
-              };
-            }
+
+                Label {
+                  label: _("Try a different search");
+                }
+              }
+            };
           }
+        }
       }
     }
   }

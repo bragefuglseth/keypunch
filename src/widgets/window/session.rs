@@ -1,19 +1,26 @@
 use super::*;
 use crate::text_generation;
 use crate::widgets::{KpCustomTextDialog, KpTextLanguageDialog};
+use gettextrs::gettext;
 use glib::ControlFlow;
 use std::iter::once;
+use strum::IntoEnumIterator;
 use text_generation::CHUNK_GRAPHEME_COUNT;
 use unicode_segmentation::UnicodeSegmentation;
-use strum::IntoEnumIterator;
+use i18n_format::i18n_fmt;
 
 impl imp::KpWindow {
     pub(super) fn setup_session_config(&self) {
-        let session_type_model: gtk::StringList = SessionType::iter().map(|session_type| session_type.ui_string()).collect();
+        let session_type_model: gtk::StringList = SessionType::iter()
+            .map(|session_type| session_type.ui_string())
+            .collect();
 
         let session_type_dropdown = self.session_type_dropdown.get();
         session_type_dropdown.set_model(Some(&session_type_model));
-        session_type_dropdown.set_selected(self.session_type.get() as u32);
+        let selected_type_index = SessionType::iter()
+            .position(|session_type| session_type == self.session_type.get())
+            .unwrap();
+        session_type_dropdown.set_selected(selected_type_index as u32);
         session_type_dropdown.connect_selected_item_notify(
             glib::clone!(@weak self as imp => move |_| {
                 imp.update_original_text();
@@ -21,11 +28,16 @@ impl imp::KpWindow {
             }),
         );
 
-        let duration_model: gtk::StringList = SessionDuration::iter().map(|session_type| session_type.ui_string()).collect();
+        let duration_model: gtk::StringList = SessionDuration::iter()
+            .map(|session_type| session_type.ui_string())
+            .collect();
 
         let duration_dropdown = self.duration_dropdown.get();
         duration_dropdown.set_model(Some(&duration_model));
-        duration_dropdown.set_selected(self.duration.get() as u32);
+        let selected_duration_index = SessionDuration::iter()
+            .position(|duration| duration == self.duration.get())
+            .unwrap();
+        duration_dropdown.set_selected(selected_duration_index as u32);
         duration_dropdown.connect_selected_item_notify(
             glib::clone!(@weak self as imp => move |_| {
                 imp.update_time();
@@ -80,14 +92,18 @@ impl imp::KpWindow {
 
                     let total_words = original_text.unicode_words().count();
 
-                    imp.running_title.set_title(&format!("{current_word} ⁄ {total_words}"));
+                    // Translators: The `{}` blocks will be replaced witht the current word count and the total word count.
+                    // Do not translate them! The slash sign is a special unicode character, if your language doesn't
+                    // use a completely different sign, you should probably copy and paste it from the original string.
+                    imp.running_title.set_title(&i18n_fmt! { i18n_fmt("{} ⁄ {}", current_word, total_words) });
                 }
             }
         }));
     }
 
     pub(super) fn update_original_text(&self) {
-        let session_type = SessionType::iter().nth(self.session_type_dropdown.selected() as usize)
+        let session_type = SessionType::iter()
+            .nth(self.session_type_dropdown.selected() as usize)
             .expect("dropdown contains valid `SessionType` values");
 
         let config_widget = match session_type {
@@ -110,7 +126,8 @@ impl imp::KpWindow {
     }
 
     pub(super) fn update_time(&self) {
-        let selected = SessionDuration::iter().nth(self.duration_dropdown.selected() as usize)
+        let selected = SessionDuration::iter()
+            .nth(self.duration_dropdown.selected() as usize)
             .expect("dropdown only contains valid `SessionDuration` values");
 
         self.duration.set(selected);
@@ -179,8 +196,8 @@ impl imp::KpWindow {
                     .into();
 
                 let toast = adw::Toast::builder()
-                    .title("Changes discarded")
-                    .button_label("Restore")
+                    .title(&gettext("Changes discarded"))
+                    .button_label(&gettext("Restore"))
                     .build();
 
                 toast.connect_button_clicked(glib::clone!(@weak imp => move |_| {
@@ -249,9 +266,14 @@ impl imp::KpWindow {
     fn update_timer(&self, seconds: u64) {
         // add trailing zero for second values below 10
         let text = if seconds >= 60 && seconds % 60 < 10 {
-            format!("{}∶0{}", seconds / 60, seconds % 60) // trailing zero
+            // Translators: The format of the timer. The first `{}` block will be replaced
+            // with the minutes passed, and the second one will be replaced with the seconds
+            // passed. Do not translate the `{}` blocks. Note that the `∶` sign is a special
+            // Unicode character; if your language doesn't use something completely different,
+            // you should probably copy and paste it from the original string.
+            i18n_fmt! { i18n_fmt("{}∶{}", seconds / 60, format!("0{}", seconds % 60)) }
         } else if seconds >= 60 {
-            format!("{}∶{}", seconds / 60, seconds % 60)
+            i18n_fmt! { i18n_fmt("{}∶{}", seconds / 60, seconds % 60) }
         } else {
             seconds.to_string()
         };

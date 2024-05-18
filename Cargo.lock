@@ -550,6 +550,16 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "2304e00983f87ffb38b55b444b5e3b60a884b5d30c0fca7d82fe33449bbe55ea"
 
 [[package]]
+name = "i18n-format"
+version = "0.2.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "f249c6dcfe2e8403f0e309da6f6b552dcfb607b094b5038db0709f8010fa4ea0"
+dependencies = [
+ "gettext-rs",
+ "quote",
+]
+
+[[package]]
 name = "include_dir"
 version = "0.7.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -591,6 +601,7 @@ dependencies = [
  "gettext-rs",
  "gtk4",
  "gvdb-macros",
+ "i18n-format",
  "include_dir",
  "libadwaita",
  "rand",
