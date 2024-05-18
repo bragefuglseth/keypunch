@@ -153,7 +153,7 @@ mod imp {
 
             obj.bind_property("orientation", &session_info_box, "spacing")
                 .transform_to(|_, orientation| match orientation {
-                    gtk::Orientation::Horizontal => Some(36),
+                    gtk::Orientation::Horizontal => Some(30),
                     gtk::Orientation::Vertical => Some(18),
                     _ => None,
                 })
