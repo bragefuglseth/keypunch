@@ -8,6 +8,7 @@ use std::iter::once;
 use strum::IntoEnumIterator;
 use text_generation::CHUNK_GRAPHEME_COUNT;
 use unicode_segmentation::UnicodeSegmentation;
+use gtk::pango;
 
 impl imp::KpWindow {
     pub(super) fn setup_session_config(&self) {
@@ -28,6 +29,8 @@ impl imp::KpWindow {
             }),
         );
 
+        setup_custom_dropdown_factories(&session_type_dropdown);
+
         let duration_model: gtk::StringList = SessionDuration::iter()
             .map(|session_type| session_type.ui_string())
             .collect();
@@ -44,6 +47,8 @@ impl imp::KpWindow {
                 imp.focus_text_view();
             }),
         );
+
+        setup_custom_dropdown_factories(&duration_dropdown);
 
         self.custom_button
             .connect_clicked(glib::clone!(@weak self as imp => move |_| {
@@ -296,4 +301,59 @@ impl imp::KpWindow {
 
         self.running_title.set_title(&text);
     }
+}
+
+fn setup_custom_dropdown_factories(dropdown: &gtk::DropDown) {
+    let factory = gtk::SignalListItemFactory::new();
+    factory.connect_setup(|_, obj| {
+        let label = gtk::Label::builder().xalign(0.).build();
+
+        obj.downcast_ref::<gtk::ListItem>().unwrap().set_child(Some(&label));
+    });
+
+    factory.connect_bind(glib::clone!(@weak dropdown => move |_, obj| {
+        let list_item = obj.downcast_ref::<gtk::ListItem>().unwrap();
+        let child = list_item.child().unwrap();
+        let label = child.downcast_ref::<gtk::Label>().unwrap();
+
+        // Setting this on the label is the reason this entire function exists.
+        label.set_ellipsize(pango::EllipsizeMode::End);
+
+        let string_object = list_item.item().unwrap().downcast::<gtk::StringObject>().unwrap();
+        label.set_label(string_object.string().as_str());
+    }));
+
+    dropdown.set_factory(Some(&factory));
+
+
+    let list_factory = gtk::SignalListItemFactory::new();
+
+    list_factory.connect_setup(|_, obj| {
+        let label = gtk::Label::builder().xalign(0.).build();
+        let checkmark = gtk::Image::from_icon_name("check-plain-symbolic");
+        let box_ = gtk::Box::builder().build();
+
+        box_.append(&label);
+        box_.append(&checkmark);
+        obj.downcast_ref::<gtk::ListItem>().unwrap().set_child(Some(&box_));
+    });
+
+    list_factory.connect_bind(glib::clone!(@weak dropdown => move |_, obj| {
+        let list_item = obj.downcast_ref::<gtk::ListItem>().unwrap();
+        let child = list_item.child().unwrap();
+        let box_ = child.downcast_ref::<gtk::Box>().unwrap();
+        let first_child = box_.first_child().unwrap();
+        let last_child = box_.last_child().unwrap();
+        let string_object = list_item.item().unwrap().downcast::<gtk::StringObject>().unwrap();
+
+        let label = first_child.downcast_ref::<gtk::Label>().unwrap();
+        label.set_label(string_object.string().as_str());
+
+        dropdown.connect_selected_item_notify(glib::clone!(@weak last_child, @weak string_object => move |dropdown| {
+            last_child.set_visible(dropdown.selected_item().unwrap() == string_object);
+        }));
+    }));
+
+    dropdown.set_list_factory(Some(&list_factory));
+    dropdown.notify("selected-item");
 }
