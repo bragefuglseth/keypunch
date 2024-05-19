@@ -29,7 +29,7 @@ impl imp::KpWindow {
             }),
         );
 
-        setup_custom_dropdown_factories(&session_type_dropdown);
+        setup_ellipsizing_dropdown_factory(&session_type_dropdown);
 
         let duration_model: gtk::StringList = SessionDuration::iter()
             .map(|session_type| session_type.ui_string())
@@ -48,7 +48,7 @@ impl imp::KpWindow {
             }),
         );
 
-        setup_custom_dropdown_factories(&duration_dropdown);
+        setup_ellipsizing_dropdown_factory(&duration_dropdown);
 
         self.custom_button
             .connect_clicked(glib::clone!(@weak self as imp => move |_| {
@@ -303,42 +303,26 @@ impl imp::KpWindow {
     }
 }
 
-fn setup_custom_dropdown_factories(dropdown: &gtk::DropDown) {
+// Creates a custom factory for a dropdown that ellipsizes the label of the top button.
+// The factory also applies a checkmark to the selected item if it's in the popover.
+// This is essentially a clone of the default factory, but with ellipsizing.
+// Ideally we'd do this by setting the factory of just the button part of `GtkDropDown`, but
+// this isn't currently possible, and there are no plans to make it so upstream.
+// See <https://gitlab.gnome.org/GNOME/gtk/-/issues/6720>
+fn setup_ellipsizing_dropdown_factory(dropdown: &gtk::DropDown) {
     let factory = gtk::SignalListItemFactory::new();
+
     factory.connect_setup(|_, obj| {
         let label = gtk::Label::builder().xalign(0.).build();
-
-        obj.downcast_ref::<gtk::ListItem>().unwrap().set_child(Some(&label));
-    });
-
-    factory.connect_bind(glib::clone!(@weak dropdown => move |_, obj| {
-        let list_item = obj.downcast_ref::<gtk::ListItem>().unwrap();
-        let child = list_item.child().unwrap();
-        let label = child.downcast_ref::<gtk::Label>().unwrap();
-
-        // Setting this on the label is the reason this entire function exists.
-        label.set_ellipsize(pango::EllipsizeMode::End);
-
-        let string_object = list_item.item().unwrap().downcast::<gtk::StringObject>().unwrap();
-        label.set_label(string_object.string().as_str());
-    }));
-
-    dropdown.set_factory(Some(&factory));
-
-
-    let list_factory = gtk::SignalListItemFactory::new();
-
-    list_factory.connect_setup(|_, obj| {
-        let label = gtk::Label::builder().xalign(0.).build();
         let checkmark = gtk::Image::from_icon_name("check-plain-symbolic");
-        let box_ = gtk::Box::builder().build();
 
+        let box_ = gtk::Box::builder().build();
         box_.append(&label);
         box_.append(&checkmark);
         obj.downcast_ref::<gtk::ListItem>().unwrap().set_child(Some(&box_));
     });
 
-    list_factory.connect_bind(glib::clone!(@weak dropdown => move |_, obj| {
+    factory.connect_bind(glib::clone!(@weak dropdown => move |_, obj| {
         let list_item = obj.downcast_ref::<gtk::ListItem>().unwrap();
         let child = list_item.child().unwrap();
         let box_ = child.downcast_ref::<gtk::Box>().unwrap();
@@ -349,11 +333,19 @@ fn setup_custom_dropdown_factories(dropdown: &gtk::DropDown) {
         let label = first_child.downcast_ref::<gtk::Label>().unwrap();
         label.set_label(string_object.string().as_str());
 
-        dropdown.connect_selected_item_notify(glib::clone!(@weak last_child, @weak string_object => move |dropdown| {
-            last_child.set_visible(dropdown.selected_item().unwrap() == string_object);
-        }));
+        let is_in_popover = child.parent().unwrap().parent().unwrap().type_() == gtk::ListView::static_type();
+
+        if is_in_popover {
+            label.set_ellipsize(pango::EllipsizeMode::None);
+            dropdown.connect_selected_item_notify(glib::clone!(@weak last_child, @weak string_object => move |dropdown| {
+                last_child.set_visible(dropdown.selected_item().unwrap() == string_object);
+            }));
+        } else {
+            label.set_ellipsize(pango::EllipsizeMode::End);
+            last_child.set_visible(false);
+        }
     }));
 
-    dropdown.set_list_factory(Some(&list_factory));
+    dropdown.set_factory(Some(&factory));
     dropdown.notify("selected-item");
 }
