@@ -340,7 +340,7 @@ fn setup_ellipsizing_dropdown_factory(dropdown: &gtk::DropDown) {
         if is_in_popover {
             label.set_ellipsize(pango::EllipsizeMode::None);
             dropdown.connect_selected_item_notify(glib::clone!(@weak last_child, @weak string_object => move |dropdown| {
-                last_child.set_visible(dropdown.selected_item().unwrap() == string_object);
+                last_child.set_opacity(if dropdown.selected_item().unwrap() == string_object { 1. } else { 0. });
             }));
         } else {
             label.set_ellipsize(pango::EllipsizeMode::End);
