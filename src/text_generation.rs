@@ -5,8 +5,19 @@ use rand::seq::index::sample;
 use unicode_segmentation::UnicodeSegmentation;
 
 static EMBEDDED_WORD_LIST_DIR: Dir = include_dir!("$CARGO_MANIFEST_DIR/data/word_lists");
-const EMBEDDED_WORD_LIST_LEN: usize = 200;
 pub const CHUNK_GRAPHEME_COUNT: usize = 400;
+
+// A set of punctuation that works fine for most western languages
+const GENERIC_PUNCTUATION: &'static [Punctuation] = &[
+    Punctuation::suffix(".", true, 0.6),
+    Punctuation::suffix(",", false, 1.0),
+    Punctuation::suffix(";", false, 0.1),
+    Punctuation::suffix(":", false, 0.2),
+    Punctuation::suffix("!", true, 0.3),
+    Punctuation::suffix("?", true, 0.3),
+    Punctuation::wrapping("\"", "\"", false, 0.2),
+    Punctuation::wrapping("(", ")", false, 0.1),
+];
 
 #[derive(Clone, Copy)]
 struct Punctuation<'a> {
@@ -18,7 +29,7 @@ struct Punctuation<'a> {
 
 impl<'a> Punctuation<'a> {
     // Convenience function for punctuation that only has a suffix part (like periods or commas)
-    fn suffix(suffix: &'a str, ends_sentence: bool, weight: f64) -> Self {
+    const fn suffix(suffix: &'a str, ends_sentence: bool, weight: f64) -> Self {
         Punctuation {
             prefix: None,
             suffix: Some(suffix),
@@ -28,7 +39,7 @@ impl<'a> Punctuation<'a> {
     }
 
     // Convenience function for punctuation that "wraps" a word (like quotation marks or brackets)
-    fn wrapping(prefix: &'a str, suffix: &'a str, ends_sentence: bool, weight: f64) -> Self {
+    const fn wrapping(prefix: &'a str, suffix: &'a str, ends_sentence: bool, weight: f64) -> Self {
         Punctuation {
             prefix: Some(prefix),
             suffix: Some(suffix),
@@ -38,75 +49,38 @@ impl<'a> Punctuation<'a> {
     }
 }
 
-fn words_from_lang_code(lang_code: &str) -> [&'static str; EMBEDDED_WORD_LIST_LEN] {
+fn words_from_lang_code(lang_code: &str) -> Vec<&'static str> {
     let s = EMBEDDED_WORD_LIST_DIR
         .get_file(&format!("{lang_code}.txt"))
         .expect(&format!("word list for \"{}\" exists", lang_code))
         .contents_utf8()
         .expect("file has valid utf8 contents");
 
-    s.lines()
-        .filter(|line| !line.is_empty())
-        .collect::<Vec<_>>()
-        .try_into()
-        .expect("word list vec can be parsed into [&str; 200]")
+    s.lines().filter(|line| !line.is_empty()).collect()
 }
 
 // Only lowercase letters, no punctuation or numbers
 pub fn simple(language: Language) -> String {
     match language {
-        Language::EnglishUS => simple_generic("en_US"),
-        Language::NorwegianBokmaal => simple_generic("nb_NO"),
-        Language::NorwegianNynorsk => simple_generic("nn_NO"),
-        Language::Spanish => simple_generic("es_ES"),
-        Language::Swedish => simple_generic("sv_SE"),
+        Language::English
+        | Language::Danish
+        | Language::NorwegianBokmaal
+        | Language::NorwegianNynorsk
+        | Language::Spanish
+        | Language::Swedish => simple_generic(&language.to_string()),
     }
 }
 
 // Some capitalized letters, punctuation and numbers
 pub fn advanced(language: Language) -> String {
     match language {
-        Language::EnglishUS => advanced_generic(
-            "en_US",
-            &[
-                Punctuation::suffix(".", true, 0.6),
-                Punctuation::suffix(",", false, 1.0),
-                Punctuation::suffix(";", false, 0.1),
-                Punctuation::suffix(":", false, 0.2),
-                Punctuation::suffix("!", true, 0.3),
-                Punctuation::suffix("?", true, 0.3),
-                Punctuation::wrapping("\"", "\"", false, 0.2),
-                Punctuation::wrapping("(", ")", false, 0.1),
-            ],
-        ),
-        Language::NorwegianBokmaal => advanced_generic(
-            "nb_NO",
-            &[
-                Punctuation::suffix(".", true, 0.6),
-                Punctuation::suffix(",", false, 1.0),
-                Punctuation::suffix(";", false, 0.1),
-                Punctuation::suffix(":", false, 0.2),
-                Punctuation::suffix("!", true, 0.3),
-                Punctuation::suffix("?", true, 0.3),
-                Punctuation::wrapping("\"", "\"", false, 0.2),
-                Punctuation::wrapping("(", ")", false, 0.1),
-            ],
-        ),
-        Language::NorwegianNynorsk => advanced_generic(
-            "nn_NO",
-            &[
-                Punctuation::suffix(".", true, 0.6),
-                Punctuation::suffix(",", false, 1.0),
-                Punctuation::suffix(";", false, 0.1),
-                Punctuation::suffix(":", false, 0.2),
-                Punctuation::suffix("!", true, 0.3),
-                Punctuation::suffix("?", true, 0.3),
-                Punctuation::wrapping("\"", "\"", false, 0.2),
-                Punctuation::wrapping("(", ")", false, 0.1),
-            ],
-        ),
+        Language::Danish
+        | Language::English
+        | Language::NorwegianBokmaal
+        | Language::NorwegianNynorsk
+        | Language::Swedish => advanced_generic(&language.to_string(), GENERIC_PUNCTUATION),
         Language::Spanish => advanced_generic(
-            "es_ES",
+            &language.to_string(),
             &[
                 Punctuation::suffix(".", true, 0.6),
                 Punctuation::suffix(",", false, 1.0),
@@ -114,19 +88,6 @@ pub fn advanced(language: Language) -> String {
                 Punctuation::suffix(":", false, 0.2),
                 Punctuation::wrapping("¡", "!", true, 0.3),
                 Punctuation::wrapping("¿", "?", true, 0.3),
-                Punctuation::wrapping("\"", "\"", false, 0.2),
-                Punctuation::wrapping("(", ")", false, 0.1),
-            ],
-        ),
-        Language::Swedish => advanced_generic(
-            "sv_SE",
-            &[
-                Punctuation::suffix(".", true, 0.6),
-                Punctuation::suffix(",", false, 1.0),
-                Punctuation::suffix(";", false, 0.1),
-                Punctuation::suffix(":", false, 0.2),
-                Punctuation::suffix("!", true, 0.3),
-                Punctuation::suffix("?", true, 0.3),
                 Punctuation::wrapping("\"", "\"", false, 0.2),
                 Punctuation::wrapping("(", ")", false, 0.1),
             ],

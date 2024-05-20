@@ -3,12 +3,12 @@ use crate::text_generation;
 use crate::widgets::{KpCustomTextDialog, KpTextLanguageDialog};
 use gettextrs::gettext;
 use glib::ControlFlow;
+use gtk::pango;
 use i18n_format::i18n_fmt;
 use std::iter::once;
 use strum::IntoEnumIterator;
 use text_generation::CHUNK_GRAPHEME_COUNT;
 use unicode_segmentation::UnicodeSegmentation;
-use gtk::pango;
 
 impl imp::KpWindow {
     pub(super) fn setup_session_config(&self) {
@@ -319,7 +319,9 @@ fn setup_ellipsizing_dropdown_factory(dropdown: &gtk::DropDown) {
         let box_ = gtk::Box::builder().build();
         box_.append(&label);
         box_.append(&checkmark);
-        obj.downcast_ref::<gtk::ListItem>().unwrap().set_child(Some(&box_));
+        obj.downcast_ref::<gtk::ListItem>()
+            .unwrap()
+            .set_child(Some(&box_));
     });
 
     factory.connect_bind(glib::clone!(@weak dropdown => move |_, obj| {

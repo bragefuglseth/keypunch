@@ -28,7 +28,7 @@ impl imp::KpWindow {
             .set(SessionDuration::from_str(&duration).unwrap_or(SessionDuration::Sec30));
 
         self.language
-            .set(Language::from_str(language.as_str()).unwrap_or(Language::EnglishUS));
+            .set(Language::from_str(language.as_str()).unwrap_or(Language::English));
 
         let recent_languages_vec: Vec<Language> = recent_languages
             .get::<Vec<String>>()

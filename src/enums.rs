@@ -41,17 +41,20 @@ impl SessionDuration {
     }
 }
 
+// All of the languages here MUST have a corresponding file in data/word_lists/{lang_code}.txt
 #[derive(Clone, Copy, Default, EnumDisplay, EnumString, EnumIter, EnumMessage, PartialEq)]
 pub enum Language {
+    #[strum(message = "Dansk", to_string = "da_DK")]
+    Danish,
     #[default]
-    #[strum(message = "English (US)", to_string = "en_US")]
-    EnglishUS,
+    #[strum(message = "English", to_string = "en_US")]
+    English,
     #[strum(message = "Norsk bokmål", to_string = "nb_NO")]
     NorwegianBokmaal,
     #[strum(message = "Norsk nynorsk", to_string = "nn_NO")]
     NorwegianNynorsk,
     #[strum(message = "Español", to_string = "es_ES")]
     Spanish,
-    #[strum(message = "Svenska", to_string = "se_SE")]
+    #[strum(message = "Svenska", to_string = "sv_SE")]
     Swedish,
 }
