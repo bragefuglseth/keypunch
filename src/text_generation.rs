@@ -64,6 +64,8 @@ pub fn simple(language: Language) -> String {
     match language {
         Language::English
         | Language::Danish
+        | Language::French
+        | Language::German
         | Language::NorwegianBokmaal
         | Language::NorwegianNynorsk
         | Language::Spanish
@@ -76,9 +78,26 @@ pub fn advanced(language: Language) -> String {
     match language {
         Language::Danish
         | Language::English
+        | Language::German
         | Language::NorwegianBokmaal
         | Language::NorwegianNynorsk
         | Language::Swedish => advanced_generic(&language.to_string(), GENERIC_PUNCTUATION),
+        // The French language has a space before certain punctuation marks.
+        // See <https://www.frenchtoday.com/blog/french-grammar/french-punctuation/>
+        Language::French => advanced_generic(
+            &language.to_string(),
+            &[
+                Punctuation::suffix(".", true, 0.6),
+                Punctuation::suffix(",", false, 1.0),
+                Punctuation::suffix(" ;", false, 0.1),
+                Punctuation::suffix(" :", false, 0.2),
+                Punctuation::suffix(" !", true, 0.3),
+                Punctuation::suffix(" ?", true, 0.3),
+                Punctuation::wrapping("\"", "\"", false, 0.2),
+                Punctuation::wrapping("(", ")", false, 0.1),
+            ],
+        ),
+        // Spanish has "wrapping" exclamation points and question marks
         Language::Spanish => advanced_generic(
             &language.to_string(),
             &[
