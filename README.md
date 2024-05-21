@@ -11,8 +11,8 @@ more time for what matters to you, and a sense of self-accomplishment.
 Keypunch lets you practice typing. Thanks to fast-paced
 sessions with instant feedback afterwards and a plethora of available languages,
 you might even have a little fun doing so. With determination, proper technique
-and some time, you will observe a noticeable increase in both the speed
-and accuracy of which your thoughts and ideas are brought to life on the screen.
+and some time, you will experience a noticeable increase in both the speed
+and the accuracy of which your thoughts and ideas are put into words on the screen.
 
 If you are already a racer at typing, Keypunch still has something for you.
 Try practicing with numbers and punctuation, or choose your own text to type
