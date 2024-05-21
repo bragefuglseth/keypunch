@@ -1,0 +1,69 @@
+name: Language Request
+description: Request for a new text language to be added to Keypunch
+title: '[Language Request]: '
+labels:
+  - new language
+body:
+  - type: input
+    id: english-name
+    attributes:
+      label: English Name
+      description: The name of the language as spelled in English
+      placeholder: Norwegian Bokmaal
+    validations:
+      required: true
+  - type: input
+    id: native-name
+    attributes:
+      label: Native Name
+      description: The name of the language as spelled natively
+      placeholder: Norsk bokmål
+    validations:
+      required: true
+  - type: textarea
+    id: punctuation
+    attributes:
+      label: Syntax
+      description: >-
+        Briefly explain the letter usage, word splitting, and punctuation
+        conventions of the language, in the context of typing on a keyboard. If
+        it's hard to put into words initially, try comparing it to English.
+      placeholder: >-
+        Norwegian Bookmal is pretty similar to other Western languages. Its
+        alphabet is almost identical to the English one, except that it has
+        three extra letters: Æ, Ø and Å. Sentences and proper nouns begin with a
+        capitalized letter. The punctuation marks used are , ; : to break up
+        sentences, and . ! ? to end them. Punctuation marks come directly after
+        their corresponding words, and are followed by a space before the next
+        word. Expressions can be wrapped in parentheses ( ) or typewriter
+        quotation marks " ".
+    validations:
+      required: true
+  - type: checkboxes
+    id: assistance
+    attributes:
+      label: Implementation Assistance
+      description: >-
+        To get the best possible implementation of the language, we'll need some
+        help from you! This does not require any significant technical
+        experience, but you will have to follow a few simple instructions to run
+        a development version of the app and perform testing. Please read and
+        check the checkboxes below. If you can't confidently check all of them,
+        consider finding someone else who can assist with the implementation
+        instead.
+      options:
+        - label: >-
+            I am proficient enough in this language to spot mistakes and
+            unnatural words
+          required: false
+        - label: I can assist with testing and reviewing the language implementation
+          required: false
+  - type: textarea
+    id: additional-info
+    attributes:
+      label: Additional Information
+      description: Is there anything else that would be good to know?
+      placeholder: >-
+        Norwegian has two written variants; Norwegian Bokmaal and Norwegian
+        Nynorsk. These are pretty similar, and given a word list for Norwegian
+        Nynorsk, I can assist with testing that as well.
