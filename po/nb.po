@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: keypunch\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-18 03:30+0200\n"
+"POT-Creation-Date: 2024-05-22 00:31+0200\n"
 "PO-Revision-Date: 2024-05-18 04:05+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -19,9 +19,71 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 3.4.2\n"
 
-#: data/dev.bragefuglseth.Keypunch.desktop.in:3 src/widgets/window.blp:5
+#: data/dev.bragefuglseth.Keypunch.desktop.in:3
+#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in:6 src/widgets/window.blp:5
 msgid "Keypunch"
 msgstr "Keypunch"
+
+#: data/dev.bragefuglseth.Keypunch.desktop.in:4
+#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in:7
+msgid "Practice your typing skills"
+msgstr ""
+
+#: data/dev.bragefuglseth.Keypunch.desktop.in:10
+msgid ""
+"typing;trainer;touch typing;keyboard;speed;wpm;words per minute;accuracy;"
+"test;"
+msgstr ""
+
+#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in:12
+msgid ""
+"There is no doubt that typing on a keyboard is an essential skill in the "
+"digital age. Typing fast and accurately gives you more opportunities, more "
+"time for what matters to you, and a sense of self-accomplishment."
+msgstr ""
+
+#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in:17
+msgid ""
+"Keypunch lets you practice typing. Thanks to fast-paced sessions with "
+"instant feedback afterwards and a plethora of available languages, you might "
+"even have a little fun doing so. With determination, proper technique and "
+"some time, you will observe a noticeable increase in both the speed and the "
+"accuracy of which your thoughts and ideas are put into words on the screen."
+msgstr ""
+
+#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in:24
+msgid ""
+"If you are already a racer at typing, Keypunch still has something for you. "
+"Try practicing with numbers and punctuation, or choose your own text to type "
+"out as fast as you can."
+msgstr ""
+
+#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in:29
+msgid "Get ready to accelerate your typing!"
+msgstr ""
+
+#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in:35
+msgid "Ready for typing"
+msgstr ""
+
+#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in:39
+msgid "In the middle of a session"
+msgstr ""
+
+#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in:43
+#, fuzzy
+msgid "Session results"
+msgstr "Modus"
+
+#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in:47
+msgid "Language selection"
+msgstr ""
+
+#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in:78
+msgid ""
+"This is the initial release of Keypunch! Give it a spin and say what you "
+"think."
+msgstr ""
 
 #: data/dev.bragefuglseth.Keypunch.gschema.xml:20
 msgid "Window width"
@@ -47,7 +109,7 @@ msgstr "Varighet"
 msgid "The duration of time-based sessions"
 msgstr "Varigheten på tidsbaserte økter"
 
-#. Translators: Insert the language code of your language here. Do not remove the quotation marks.
+#. Translators: Insert the language code of your language here (or one of an equal implemented language, for example, the en_US word list shouldn't have any words differing from UK English). Do not remove the quotation marks.
 #: data/dev.bragefuglseth.Keypunch.gschema.xml:41
 msgid "\"en_US\""
 msgstr "\"nb_NO\""
@@ -133,7 +195,7 @@ msgstr "Ord i minuttet"
 msgid "Correctness"
 msgstr "Korrekthet"
 
-#: src/widgets/results_view.blp:62 src/widgets/window.blp:33
+#: src/widgets/results_view.blp:62 src/widgets/window.blp:35
 msgid "Session Type"
 msgstr "Modus"
 
@@ -142,7 +204,8 @@ msgid "Session Duration"
 msgstr "Varighet"
 
 #: src/widgets/results_view.blp:88 src/widgets/text_language_dialog.blp:5
-#: src/widgets/text_language_dialog.blp:27
+#: src/widgets/text_language_dialog.blp:13
+#: src/widgets/text_language_dialog.blp:39
 msgid "Text Language"
 msgstr "Tekstspråk"
 
@@ -175,32 +238,49 @@ msgid_plural "{} seconds"
 msgstr[0] "{} sekund"
 msgstr[1] "{} sekunder"
 
-#: src/widgets/text_language_dialog.blp:39
-#: src/widgets/text_language_dialog.blp:43
+#: src/widgets/text_language_dialog.blp:21
+#: src/widgets/text_language_dialog.blp:161
+#: src/widgets/text_language_dialog.blp:191
+#, fuzzy
+msgid "Add Language"
+msgstr "Tekstspråk"
+
+#: src/widgets/text_language_dialog.blp:51
+#: src/widgets/text_language_dialog.blp:55
 msgid "Search languages…"
 msgstr "Søk etter språk…"
 
 #. Translators: Recent languages in text languages list
-#: src/widgets/text_language_dialog.blp:67
+#: src/widgets/text_language_dialog.blp:79
 msgid "Recent"
 msgstr "Nylige"
 
 #. Translators: Other languages in text languages list
-#: src/widgets/text_language_dialog.blp:72
+#: src/widgets/text_language_dialog.blp:84
 msgid "Other"
 msgstr "Andre"
 
-#: src/widgets/text_language_dialog.blp:92
+#: src/widgets/text_language_dialog.blp:104
 msgid "Search Results"
 msgstr "Søketreff"
 
-#: src/widgets/text_language_dialog.blp:128
+#: src/widgets/text_language_dialog.blp:140
 msgid "No Matches"
 msgstr "Ingen treff"
 
-#: src/widgets/text_language_dialog.blp:136
+#: src/widgets/text_language_dialog.blp:148
 msgid "Try a different search"
 msgstr "Prøv et annet søk"
+
+#: src/widgets/text_language_dialog.blp:201
+msgid ""
+"You can help add a new text language to Keypunch by submitting a language "
+"request on GitHub. A GitHub account and some language knowledge is required."
+msgstr ""
+
+#: src/widgets/text_language_dialog.blp:212
+msgid "Create Request"
+msgstr ""
 
 #: src/widgets/text_view.blp:11
 msgid "Text View"
@@ -210,7 +290,7 @@ msgstr "Skrivefelt"
 msgid "Edit Text"
 msgstr "Rediger tekst"
 
-#: src/widgets/window.blp:63 src/widgets/window.blp:149
+#: src/widgets/window.blp:63
 msgid "Main Menu"
 msgstr "Hovedmeny"
 
@@ -232,34 +312,34 @@ msgstr "Aktiver skrivefelt"
 msgid "Results"
 msgstr "Resultater"
 
-#: src/widgets/window.blp:175
+#: src/widgets/window.blp:167
 msgid "Continue"
 msgstr "Fortsett"
 
-#: src/widgets/window.blp:204
+#: src/widgets/window.blp:196
 msgid "Text _Language"
 msgstr "Tekst_språk"
 
-#: src/widgets/window.blp:209
+#: src/widgets/window.blp:201
 msgid "_Keyboard Shortcuts"
 msgstr "_Tastatursnarveier"
 
-#: src/widgets/window.blp:214
+#: src/widgets/window.blp:206
 msgid "_About Keypunch"
 msgstr "_Om Keypunch"
 
-#. Translators: The `{}` blocks will be replaced witht the current word count and the total word count.
+#. Translators: The `{}` blocks will be replaced with the current word count and the total word count.
 #. Do not translate them! The slash sign is a special unicode character, if your language doesn't
 #. use a completely different sign, you should probably copy and paste it from the original string.
-#: src/widgets/window/session.rs:98
+#: src/widgets/window/session.rs:103
 msgid "{} ⁄ {}"
 msgstr "{} ⁄ {}"
 
-#: src/widgets/window/session.rs:199
+#: src/widgets/window/session.rs:219
 msgid "Changes discarded"
 msgstr "Endringer forkastet"
 
-#: src/widgets/window/session.rs:200
+#: src/widgets/window/session.rs:220
 msgid "Restore"
 msgstr "Gjenopprett"
 
@@ -268,6 +348,6 @@ msgstr "Gjenopprett"
 #. passed. Do not translate the `{}` blocks. Note that the `∶` sign is a special
 #. Unicode character; if your language doesn't use something completely different,
 #. you should probably copy and paste it from the original string.
-#: src/widgets/window/session.rs:274 src/widgets/window/session.rs:276
+#: src/widgets/window/session.rs:295 src/widgets/window/session.rs:297
 msgid "{}∶{}"
 msgstr "{}∶{}"
