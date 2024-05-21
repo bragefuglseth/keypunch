@@ -28,7 +28,7 @@ The app will be released on Flathub when it's ready.
 
 ## Name
 
-In addition to sounding super cool, "Keypunch" is the name of an 
+In addition to sounding neat, "Keypunch" is the name of an 
 [actual keyboard device](https://en.wikipedia.org/wiki/Keypunch) that was used 
 for creating punched cards.
 
