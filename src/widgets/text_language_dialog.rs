@@ -3,11 +3,13 @@ use crate::widgets::KpLanguageRow;
 use adw::prelude::*;
 use adw::subclass::prelude::*;
 use glib::subclass::Signal;
-use gtk::glib;
+use gtk::{gio, glib};
 use std::cell::{Cell, OnceCell};
 use std::sync::OnceLock;
 use strum::{EnumMessage, IntoEnumIterator};
 use unidecode::unidecode;
+
+const LANGUAGE_REQUEST_URL: &'static str = "https://github.com/bragefuglseth/keypunch/issues";
 
 mod imp {
     use super::*;
@@ -45,6 +47,7 @@ mod imp {
 
         fn class_init(klass: &mut Self::Class) {
             klass.bind_template();
+            klass.bind_template_callbacks();
         }
 
         fn instance_init(obj: &glib::subclass::InitializingObject<Self>) {
@@ -78,6 +81,7 @@ mod imp {
     impl WidgetImpl for KpTextLanguageDialog {}
     impl AdwDialogImpl for KpTextLanguageDialog {}
 
+    #[gtk::template_callbacks]
     impl KpTextLanguageDialog {
         pub(super) fn populate_list(&self, current: Language, recent: &[Language]) {
             let current_language_row = KpLanguageRow::new(current);
@@ -212,6 +216,19 @@ mod imp {
                 no_results.set_height_request(height);
                 no_results.set_valign(gtk::Align::Start);
             }
+        }
+
+        #[template_callback]
+        pub(super) fn language_request_button_clicked(button: &gtk::Button) {
+            let root = button.root().map(|root| root.downcast::<gtk::Window>().unwrap());
+            let launcher = gtk::UriLauncher::new(LANGUAGE_REQUEST_URL);
+
+            launcher.launch(root.as_ref(), None::<gio::Cancellable>.as_ref(), |_| ());
+        }
+
+        #[template_callback]
+        pub(super) fn load_language_illustration(picture: &gtk::Picture) {
+            picture.set_resource(Some("/dev/bragefuglseth/Keypunch/assets/multilingual.svg"));
         }
     }
 }

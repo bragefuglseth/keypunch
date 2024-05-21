@@ -5,140 +5,226 @@ template $KpTextLanguageDialog: Adw.Dialog {
   title: _("Text Language");
   content-width: 450;
   content-height: 500;
+  focus-widget: search_entry;
 
-  Adw.ToolbarView {
-    [top]
-    Adw.HeaderBar header_bar {
-      show-title: false;
-    }
+  Adw.NavigationView {
+    Adw.NavigationPage {
+      tag: "choose-language";
+      title: _("Text Language");
 
-    ScrolledWindow scrolled_window {
-      hscrollbar-policy: never;
-      propagate-natural-height: true;
-      vexpand: true;
-
-      Box {
-        orientation: vertical;
-        margin-start: 12;
-        margin-end: 12;
-        margin-bottom: 12;
-
-        Label {
-          label: _("Text Language");
-          margin-bottom: 24;
-
-          styles [
-            "title-1"
-          ]
-        }
-
-        Adw.Clamp {
-          maximum-size: 360;
-
-          SearchEntry search_entry {
-            placeholder-text: _("Search languages…");
-            margin-bottom: 18;
-
-            accessibility {
-              label: _("Search languages…");
-            }
-
-            styles [
-              "pill-entry"
-            ]
+      Adw.ToolbarView {
+        [top]
+        Adw.HeaderBar header_bar {
+          [start]
+          Button {
+            icon-name: "plus-large-symbolic";
+            tooltip-text: _("Add Language");
+            action-name: "navigation.push";
+            action-target: "'add-language'";
           }
         }
 
-        Stack stack {
-          vhomogeneous: false;
-          transition-type: crossfade;
-          transition-duration: 100;
+        ScrolledWindow scrolled_window {
+          hscrollbar-policy: never;
+          propagate-natural-height: true;
           vexpand: true;
 
-          StackPage {
-            name: "list";
+          Box {
+            orientation: vertical;
+            margin-start: 12;
+            margin-end: 12;
+            margin-bottom: 12;
 
-            child: Box {
-              spacing: 24;
-              orientation: vertical;
-
-              Adw.PreferencesGroup group_recent {
-                // Translators: Recent languages in text languages list
-                title: _("Recent");
-              }
-
-              Adw.PreferencesGroup group_other {
-                // Translators: Other languages in text languages list
-                title: _("Other");
-              }
+            Label {
+              label: _("Text Language");
+              margin-bottom: 24;
 
               styles [
-                "background"
+                "title-1"
               ]
-            };
-          }
+            }
 
-          StackPage {
-            name: "search-results";
+            Adw.Clamp {
+              maximum-size: 360;
 
-            child: Box {
-              orientation: vertical;
-              vexpand: true;
-
-              ListBox search_list {
-                selection-mode: none;
+              SearchEntry search_entry {
+                placeholder-text: _("Search languages…");
+                margin-bottom: 18;
 
                 accessibility {
-                  label: _("Search Results");
+                  label: _("Search languages…");
                 }
 
                 styles [
-                  "boxed-list"
+                  "pill-entry"
                 ]
               }
-            };
-          }
+            }
 
-          StackPage {
-            name: "no-results";
+            Stack stack {
+              vhomogeneous: false;
+              transition-type: crossfade;
+              transition-duration: 100;
+              vexpand: true;
 
-            child: Box no_results_box {
-              orientation: vertical;
-              vexpand: false;
+              StackPage {
+                name: "list";
 
-              Box {
-                orientation: vertical;
-                halign: center;
-                valign: center;
-                spacing: 12;
-                vexpand: true;
+                child: Box {
+                  spacing: 24;
+                  orientation: vertical;
 
-                Image {
-                  icon-name: "language-symbolic";
-                  vexpand: false;
-                  accessible-role: presentation;
+                  Adw.PreferencesGroup group_recent {
+                    // Translators: Recent languages in text languages list
+                    title: _("Recent");
+                  }
 
-                  styles [
-                    "status-icon",
-                    "dim-label"
-                  ]
-                }
-
-                Label {
-                  label: _("No Matches");
+                  Adw.PreferencesGroup group_other {
+                    // Translators: Other languages in text languages list
+                    title: _("Other");
+                  }
 
                   styles [
-                    "title-2"
+                    "background"
                   ]
-                }
-
-                Label {
-                  label: _("Try a different search");
-                }
+                };
               }
-            };
+
+              StackPage {
+                name: "search-results";
+
+                child: Box {
+                  orientation: vertical;
+                  vexpand: true;
+
+                  ListBox search_list {
+                    selection-mode: none;
+
+                    accessibility {
+                      label: _("Search Results");
+                    }
+
+                    styles [
+                      "boxed-list"
+                    ]
+                  }
+                };
+              }
+
+              StackPage {
+                name: "no-results";
+
+                child: Box no_results_box {
+                  orientation: vertical;
+                  vexpand: false;
+
+                  Box {
+                    orientation: vertical;
+                    halign: center;
+                    valign: center;
+                    spacing: 12;
+                    vexpand: true;
+
+                    Image {
+                      icon-name: "language-symbolic";
+                      vexpand: false;
+                      accessible-role: presentation;
+
+                      styles [
+                        "status-icon",
+                        "dim-label"
+                      ]
+                    }
+
+                    Label {
+                      label: _("No Matches");
+
+                      styles [
+                        "title-2"
+                      ]
+                    }
+
+                    Label {
+                      label: _("Try a different search");
+                    }
+                  }
+                };
+              }
+            }
           }
         }
+      }
+    }
+
+    Adw.NavigationPage {
+      tag: "add-language";
+      title: _("Add Language");
+
+      Adw.ToolbarView {
+        [top]
+        Adw.HeaderBar {
+          show-title: false;
+        }
+
+        content: ScrolledWindow {
+          hscrollbar-policy: never;
+
+          Box {
+            orientation: vertical;
+            valign: center;
+            spacing: 24;
+            margin-start: 12;
+            margin-end: 12;
+            margin-top: 12;
+            margin-bottom: 12;
+
+            Box {
+              halign: center;
+
+              Picture {
+                can-shrink: false;
+                realize => $load_language_illustration();
+              }
+            }
+
+            Label {
+              label: _("Add Language");
+
+              styles [
+                "title-1",
+              ]
+            }
+
+            Label {
+              justify: center;
+              wrap: true;
+              label: _("You can help add a new text language to Keypunch by submitting a language request on GitHub. A GitHub account and some language knowledge is required.");
+            }
+
+            Button {
+              halign: center;
+              clicked => $language_request_button_clicked();
+
+              Box {
+                spacing: 6;
+                halign: center;
+                Label {
+                  label: _("Create Request");
+                }
+
+                Image {
+                  icon-name: "external-link-symbolic";
+                  accessible-role: presentation;
+                }
+              }
+
+              styles [
+                "suggested-action",
+                "pill",
+              ]
+            }
+          }
+        };
       }
     }
   }
