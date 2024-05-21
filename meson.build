@@ -7,9 +7,9 @@ project('keypunch', 'rust',
 i18n = import('i18n')
 gnome = import('gnome')
 
+subdir('po')
 subdir('data')
 subdir('src')
-subdir('po')
 
 gnome.post_install(
      glib_compile_schemas: true,
