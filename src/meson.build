@@ -20,6 +20,13 @@ run_command(
   check: true
 )
 
+# Copy the metainfo file to the resources dir so the about dialog can use it at runtime
+run_command(
+  'cp',
+  meson.project_build_root() / 'data' / 'dev.bragefuglseth.Keypunch.metainfo.xml',
+  meson.project_source_root() / 'data' / 'resources' / 'dev.bragefuglseth.Keypunch.metainfo.xml',
+)
+
 cargo_bin  = find_program('cargo')
 cargo_opt  = [ '--manifest-path', meson.project_source_root() / 'Cargo.toml' ]
 cargo_opt += [ '--target-dir', meson.project_build_root()  / 'src' ]

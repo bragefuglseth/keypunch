@@ -37,7 +37,7 @@
 	    <description>The duration of time-based sessions</description>
 	  </key>
 	  <key name="text-language" type="s">
-	    <!-- Translators: Insert the language code of your language here. Do not remove the quotation marks. -->
+	    <!-- Translators: Insert the language code of your language here (or one of an equal implemented language, for example, the en_US word list shouldn't have any words differing from UK English). Do not remove the quotation marks. -->
 	    <default l10n="messages">"en_US"</default>
 	    <summary>Text language</summary>
 	    <description>The code of the language used for automatically generated text</description>

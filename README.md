@@ -1,46 +1,55 @@
+![icon](/data/icons/dev.bragefuglseth.Keypunch.svg)
+
 # Keypunch
 
-How fast can you type? This is where I'm building Keypunch, a modern typing trainer for GNOME.
+[![Please do not theme this app](https://stopthemingmy.app/badge.svg)](https://stopthemingmy.app)
 
-It's not quite ready yet, but it's coming along nicely. Give it a spin if you'd like to.
+There is no doubt that typing on a keyboard is an essential skill in the
+digital age. Typing fast and accurately gives you more job opportunities,
+more time for what matters to you, and a sense of self-accomplishment.
 
-![screenshot](/data/screenshots/screenshot-1.png)
+Keypunch lets you practice typing. Thanks to fast-paced
+sessions with instant feedback afterwards and a plethora of available languages,
+you might even have a little fun doing so. With determination, proper technique
+and some time, you will observe a noticeable increase in both the speed
+and accuracy of which your thoughts and ideas are brought to life on the screen.
 
-## Where does "Keypunch" come from?
+If you are already a racer at typing, Keypunch still has something for you.
+Try practicing with numbers and punctuation, or choose your own text to type
+out as fast as you can.
 
-In addition to sounding super cool, it's the name of an [actual keyboard device](https://en.wikipedia.org/wiki/Keypunch) that was used for creating punched cards!
+Get ready to accelerate your typing!
 
-## What's missing?
+![screenshot](/data/screenshots/1-ready.png)
 
-A rough checklist with what has to be in place before the app is ready for its initial release:
+## Installation
 
-- [x] Text view displaying the text as you type it, in addition to highlighting mistakes
-- [x] Basic session configuration (simple/advanced, duration)
-- [x] Results view showing WPM, accuracy and the session configuration used
-- [x] Custom text mode
-- [x] Extensible multi-language text generation for sessions
-- [x] Restore previous configuration (window size, session settings, etc.) on open
-- [x] Screen reader support for the text view
-- [x] UI translation support
-- [x] Cursor disappearance upon typing
-- [x] Appropriate handling of situations where the text view loses keyboard focus
-- [ ] Metadata (icon, links, description, etc.)
-- [x] A tidier internal file structure! 🙂
+The app will be released on Flathub when it's ready.
 
-## Post-release roadmap
+## Name
 
-- [ ] High score tracking
-- [ ] Caps Lock indication
-- [ ] Logging of typing speed/accuracy over time, and a nice statistics dialog to view / export these statistics
-- [ ] Break reminders (displayed after sessions if the app has been continuously in use for a long time, to avoid finger strain)
-- [ ] Frustration relief (stop the session and suggest taking a break when people are obviously mashing keys randomly in frustration)
-- [ ] Practice mode / typing guide (?)
-- [ ] Local-first p2p multiplayer mode (?)
+In addition to sounding super cool, "Keypunch" is the name of an 
+[actual keyboard device](https://en.wikipedia.org/wiki/Keypunch) that was used 
+for creating punched cards.
 
-Feel free to check in once in a while and see the progress on this. The app will be available on Flathub when it's ready.
+## Roadmap
 
-Any questions about this project? I'd love to have a chat. Just reach out to me in one of the places listed below!
+- High score tracking
+- Caps Lock indication
+- Logging of typing speed/accuracy over time, and a nice statistics dialog 
+  to view / export these statistics
+- Break reminders (displayed after sessions if the app has been continuously 
+  in use for a long time, to avoid finger strain)
+- Frustration relief (stop the session and suggest taking a break when people 
+  are obviously mashing keys randomly in frustration)
+- Practice mode / typing guide (?)
+- Local-first p2p multiplayer mode (?)
+
+## Contact
+
+Any questions about this project? I'd love to have a chat. Just reach out in 
+one of the places listed below!
 
 - Mastodon: [@bragefuglseth@fosstodon.org](https://fosstodon.org/@bragefuglseth)
 
-- Matrix: [@bragefuglseth:gnome.org](https://matrix.to/#/@bragefuglseth:gnome.org)
+- Matrix: [#keypunch:gnome.org](https://matrix.to/#/#keypunch:gnome.org)

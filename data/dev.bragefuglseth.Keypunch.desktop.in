@@ -1,8 +1,10 @@
 [Desktop Entry]
 Name=Keypunch
+Comment=Practice your typing skills
 Exec=keypunch
 Icon=dev.bragefuglseth.Keypunch
 Terminal=false
 Type=Application
-Categories=GTK;
+Categories=Education;GTK;GNOME;
+Keywords=typing;trainer;touch typing;keyboard;speed;wpm;words per minute;accuracy;test;
 StartupNotify=true

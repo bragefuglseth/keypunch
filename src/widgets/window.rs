@@ -23,7 +23,6 @@ mod session;
 mod settings;
 mod ui_state;
 
-use crate::config::VERSION;
 use crate::enums::{Language, SessionDuration, SessionType};
 use crate::widgets::{KpResultsView, KpTextView};
 use adw::prelude::*;
@@ -31,6 +30,7 @@ use adw::subclass::prelude::*;
 use gtk::{gio, glib};
 use std::cell::{Cell, OnceCell, RefCell};
 use std::time::{Duration, Instant};
+use gettextrs::gettext;
 
 mod imp {
     use super::*;
@@ -147,17 +147,19 @@ mod imp {
 
     impl KpWindow {
         fn show_about_dialog(&self) {
-            let about = adw::AboutWindow::builder()
-                .transient_for(self.obj().upcast_ref::<adw::ApplicationWindow>())
-                .application_name("Keypunch")
-                .application_icon("dev.bragefuglseth.Keypunch")
-                .developer_name("Brage Fuglseth")
-                .version(VERSION)
-                .developers(vec!["Brage Fuglseth"])
-                .copyright("© 2024 Brage Fuglseth")
-                .build();
+            let about = adw::AboutDialog::from_appdata("/dev/bragefuglseth/Keypunch/dev.bragefuglseth.Keypunch.metainfo.xml", Some("1.0"));
 
-            about.present();
+            about.set_developers(&["Brage Fuglseth https://bragefuglseth.dev"]);
+            about.set_copyright("© 2024 Brage Fuglseth");
+            // Translators: Replace "translator-credits" with your names, one name per line
+            about.set_translator_credits(&gettext("translator-credits"));
+
+            self.block_text_view_unfocus.set(true);
+            about.connect_closed(glib::clone!(@weak self as imp => move |_| {
+                imp.block_text_view_unfocus.set(false);
+            }));
+
+            about.present(self.obj().upcast_ref::<gtk::Widget>());
         }
     }
 }
