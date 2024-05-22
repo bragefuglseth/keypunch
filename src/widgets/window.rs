@@ -23,14 +23,55 @@ mod session;
 mod settings;
 mod ui_state;
 
-use crate::enums::{Language, SessionDuration, SessionType};
+use crate::text_generation::Language;
 use crate::widgets::{KpResultsView, KpTextView};
 use adw::prelude::*;
 use adw::subclass::prelude::*;
+use gettextrs::gettext;
 use gtk::{gio, glib};
 use std::cell::{Cell, OnceCell, RefCell};
 use std::time::{Duration, Instant};
-use gettextrs::gettext;
+use strum_macros::{Display as EnumDisplay, EnumIter, EnumString};
+
+#[derive(Clone, Copy, Default, PartialEq, EnumString, EnumDisplay, EnumIter)]
+pub enum SessionType {
+    #[default]
+    Simple,
+    Advanced,
+    Custom,
+}
+
+impl SessionType {
+    pub fn ui_string(&self) -> String {
+        match self {
+            SessionType::Simple => gettext("Simple"),
+            SessionType::Advanced => gettext("Advanced"),
+            SessionType::Custom => gettext("Custom"),
+        }
+    }
+}
+
+#[derive(Copy, Clone, Default, PartialEq, EnumString, EnumDisplay, EnumIter)]
+pub enum SessionDuration {
+    #[default]
+    Sec15,
+    Sec30,
+    Min1,
+    Min5,
+    Min10,
+}
+
+impl SessionDuration {
+    pub fn ui_string(&self) -> String {
+        match self {
+            SessionDuration::Sec15 => gettext("15 seconds"),
+            SessionDuration::Sec30 => gettext("30 seconds"),
+            SessionDuration::Min1 => gettext("1 minute"),
+            SessionDuration::Min5 => gettext("5 minutes"),
+            SessionDuration::Min10 => gettext("10 minutes"),
+        }
+    }
+}
 
 mod imp {
     use super::*;
@@ -147,14 +188,20 @@ mod imp {
 
     impl KpWindow {
         fn show_about_dialog(&self) {
-            let about = adw::AboutDialog::from_appdata("/dev/bragefuglseth/Keypunch/dev.bragefuglseth.Keypunch.metainfo.xml", Some("1.0"));
+            let about = adw::AboutDialog::from_appdata(
+                "/dev/bragefuglseth/Keypunch/dev.bragefuglseth.Keypunch.metainfo.xml",
+                Some("1.0"),
+            );
 
             about.set_developers(&["Brage Fuglseth https://bragefuglseth.dev"]);
             about.set_copyright("© 2024 Brage Fuglseth");
             // Translators: Replace "translator-credits" with your names, one name per line
             about.set_translator_credits(&gettext("translator-credits"));
 
-            about.add_acknowledgement_section(Some(&gettext("Word lists from")), &["Monkeytype https://github.com/monkeytypegame/monkeytype"]);
+            about.add_acknowledgement_section(
+                Some(&gettext("Word lists from")),
+                &["Monkeytype https://github.com/monkeytypegame/monkeytype"],
+            );
 
             self.block_text_view_unfocus.set(true);
             about.connect_closed(glib::clone!(@weak self as imp => move |_| {

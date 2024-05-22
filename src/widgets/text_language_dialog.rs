@@ -1,4 +1,4 @@
-use crate::enums::Language;
+use crate::text_generation::Language;
 use crate::widgets::KpLanguageRow;
 use adw::prelude::*;
 use adw::subclass::prelude::*;
@@ -220,7 +220,9 @@ mod imp {
 
         #[template_callback]
         pub(super) fn language_request_button_clicked(button: &gtk::Button) {
-            let root = button.root().map(|root| root.downcast::<gtk::Window>().unwrap());
+            let root = button
+                .root()
+                .map(|root| root.downcast::<gtk::Window>().unwrap());
             let launcher = gtk::UriLauncher::new(LANGUAGE_REQUEST_URL);
 
             launcher.launch(root.as_ref(), None::<gio::Cancellable>.as_ref(), |_| ());

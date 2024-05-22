@@ -20,7 +20,6 @@
 
 mod application;
 mod config;
-mod enums;
 mod text_generation;
 mod text_utils;
 mod widgets;

@@ -32,6 +32,7 @@ run_command(msgfmt,
     '-d' + meson.project_source_root() / 'po',
     '--template=dev.bragefuglseth.Keypunch.metainfo.xml.in',
     '--output-file=' + 'resources' / 'dev.bragefuglseth.Keypunch.metainfo.xml',
+    check: true,
 )
 
 install_data('dev.bragefuglseth.Keypunch.gschema.xml',

@@ -1,11 +1,33 @@
-use crate::enums::Language;
 use include_dir::{include_dir, Dir};
 use rand::prelude::*;
 use rand::seq::index::sample;
+use strum_macros::{Display as EnumDisplay, EnumIter, EnumMessage, EnumString};
 use unicode_segmentation::UnicodeSegmentation;
 
 static EMBEDDED_WORD_LIST_DIR: Dir = include_dir!("$CARGO_MANIFEST_DIR/data/word_lists");
 pub const CHUNK_GRAPHEME_COUNT: usize = 400;
+
+// All of the languages here MUST have a corresponding file in data/word_lists/{lang_code}.txt
+#[derive(Clone, Copy, Default, EnumDisplay, EnumString, EnumIter, EnumMessage, PartialEq)]
+pub enum Language {
+    #[strum(message = "Dansk", to_string = "da_DK")]
+    Danish,
+    #[default]
+    #[strum(message = "English", to_string = "en_US")]
+    English,
+    #[strum(message = "Français", to_string = "fr_FR")]
+    French,
+    #[strum(message = "Deutsch", to_string = "de_DE")]
+    German,
+    #[strum(message = "Norsk bokmål", to_string = "nb_NO")]
+    NorwegianBokmaal,
+    #[strum(message = "Norsk nynorsk", to_string = "nn_NO")]
+    NorwegianNynorsk,
+    #[strum(message = "Español", to_string = "es_ES")]
+    Spanish,
+    #[strum(message = "Svenska", to_string = "sv_SE")]
+    Swedish,
+}
 
 // A set of punctuation that works fine for most western languages
 const GENERIC_PUNCTUATION: &'static [Punctuation] = &[
@@ -47,16 +69,6 @@ impl<'a> Punctuation<'a> {
             weight,
         }
     }
-}
-
-fn words_from_lang_code(lang_code: &str) -> Vec<&'static str> {
-    let s = EMBEDDED_WORD_LIST_DIR
-        .get_file(&format!("{lang_code}.txt"))
-        .expect(&format!("word list for \"{}\" exists", lang_code))
-        .contents_utf8()
-        .expect("file has valid utf8 contents");
-
-    s.lines().filter(|line| !line.is_empty()).collect()
 }
 
 // Only lowercase letters, no punctuation or numbers
@@ -208,6 +220,16 @@ fn uppercase_first_letter(s: &str) -> String {
             }
         })
         .collect()
+}
+
+fn words_from_lang_code(lang_code: &str) -> Vec<&'static str> {
+    let s = EMBEDDED_WORD_LIST_DIR
+        .get_file(&format!("{lang_code}.txt"))
+        .expect(&format!("word list for \"{}\" exists", lang_code))
+        .contents_utf8()
+        .expect("file has valid utf8 contents");
+
+    s.lines().filter(|line| !line.is_empty()).collect()
 }
 
 fn insert_punctuation(word: &str, punctuation: Punctuation) -> String {

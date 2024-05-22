@@ -1,4 +1,4 @@
-use crate::enums::Language;
+use crate::text_generation::Language;
 use adw::prelude::*;
 use adw::subclass::prelude::*;
 use gtk::glib;
