@@ -154,6 +154,8 @@ mod imp {
             // Translators: Replace "translator-credits" with your names, one name per line
             about.set_translator_credits(&gettext("translator-credits"));
 
+            about.add_acknowledgement_section(Some(&gettext("Word lists from")), &["Monkeytype https://github.com/monkeytypegame/monkeytype"]);
+
             self.block_text_view_unfocus.set(true);
             about.connect_closed(glib::clone!(@weak self as imp => move |_| {
                 imp.block_text_view_unfocus.set(false);

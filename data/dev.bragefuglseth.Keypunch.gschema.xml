@@ -16,11 +16,11 @@
 
 	<schema id="dev.bragefuglseth.Keypunch" path="/dev/bragefuglseth/Keypunch/">
 	  <key name="window-width" type="i">
-	    <default>850</default>
+	    <default>900</default>
 	    <summary>Window width</summary>
 	  </key>
 	  <key name="window-height" type="i">
-	    <default>400</default>
+	    <default>450</default>
 	    <summary>Window height</summary>
 	  </key>
 	  <key name="window-maximized" type="b">

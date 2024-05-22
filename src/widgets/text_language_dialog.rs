@@ -9,7 +9,7 @@ use std::sync::OnceLock;
 use strum::{EnumMessage, IntoEnumIterator};
 use unidecode::unidecode;
 
-const LANGUAGE_REQUEST_URL: &'static str = "https://github.com/bragefuglseth/keypunch/issues";
+const LANGUAGE_REQUEST_URL: &'static str = "https://github.com/bragefuglseth/keypunch/issues/new?assignees=&labels=new+language&projects=&template=language_request.yaml&title=%5BLanguage+Request%5D%3A+";
 
 mod imp {
     use super::*;

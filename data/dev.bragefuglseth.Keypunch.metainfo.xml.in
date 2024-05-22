@@ -47,6 +47,10 @@
       <caption>Language selection</caption>
       <image>https://raw.githubusercontent.com/bragefuglseth/keypunch/main/data/screenshots/4-languages.png</image>
     </screenshot>
+    <screenshot>
+      <caption>Custom text entry</caption>
+      <image>https://raw.githubusercontent.com/bragefuglseth/keypunch/main/data/screenshots/5-custom-text.png</image>
+    </screenshot>
   </screenshots>
   <branding>
     <color type="primary" scheme_preference="light">#dba3e1</color>
