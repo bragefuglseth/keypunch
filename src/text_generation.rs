@@ -128,43 +128,17 @@ pub fn advanced(language: Language) -> String {
 
 // Should work for most languages
 fn simple_generic(lang_code: &str) -> String {
-    let word_list = words_from_lang_code(lang_code);
-
     let mut rng = thread_rng();
-    let mut s = String::new();
-    while s.graphemes(true).count() < CHUNK_GRAPHEME_COUNT {
-        s.push_str(
-            word_list
-                .choose(&mut rng)
-                .expect("word list contains at least 1 word"),
-        );
-        s.push(' ');
-    }
+    let generated = random_words_from_lang_code(lang_code, &mut rng);
 
-    s
+    generated.into_iter().map(|s| s + " ").collect()
 }
 
 // Should work for most languages
 fn advanced_generic(lang_code: &str, punctuations: &[Punctuation]) -> String {
-    let word_list = words_from_lang_code(lang_code);
-
     let mut rng = thread_rng();
 
-    let mut generated: Vec<String> = Vec::new();
-    while generated
-        .iter()
-        .map(|s| s.graphemes(true))
-        .flatten()
-        .count()
-        < CHUNK_GRAPHEME_COUNT
-    {
-        generated.push(
-            word_list
-                .choose(&mut rng)
-                .expect("word list contains at least 1 word")
-                .to_string(),
-        );
-    }
+    let mut generated = random_words_from_lang_code(lang_code, &mut rng);
 
     // The very first letter in the chunk should always be capitalized
     if let Some(word) = generated.get_mut(0) {
@@ -230,6 +204,34 @@ fn words_from_lang_code(lang_code: &str) -> Vec<&'static str> {
         .expect("file has valid utf8 contents");
 
     s.lines().filter(|line| !line.is_empty()).collect()
+}
+
+fn random_words_from_lang_code(lang_code: &str, rng: &mut ThreadRng) -> Vec<String> {
+    let word_list = words_from_lang_code(lang_code);
+
+    let mut generated: Vec<String> = Vec::new();
+    while generated
+        .iter()
+        .flat_map(|s| s.graphemes(true))
+        .count()
+        < CHUNK_GRAPHEME_COUNT
+    {
+        let new_word = word_list
+            .choose(rng)
+            .expect("word list contains at least 1 word");
+
+        let unique = if let Some(previous_words) = generated.last_chunk::<2>() {
+            previous_words.iter().all(|word| word != new_word)
+        } else {
+            true
+        };
+
+        if unique {
+            generated.push(new_word.to_string());
+        }
+    }
+
+    generated
 }
 
 fn insert_punctuation(word: &str, punctuation: Punctuation) -> String {
