@@ -19,12 +19,16 @@ pub enum Language {
     French,
     #[strum(message = "Deutsch", to_string = "de_DE")]
     German,
+    #[strum(message = "Kinyarwanda", to_string = "rw_RW")]
+    Kinyarwanda,
     #[strum(message = "Norsk bokmål", to_string = "nb_NO")]
     NorwegianBokmaal,
     #[strum(message = "Norsk nynorsk", to_string = "nn_NO")]
     NorwegianNynorsk,
     #[strum(message = "Español", to_string = "es_ES")]
     Spanish,
+    #[strum(message = "Swahili", to_string = "sw_KE")]
+    Swahili,
     #[strum(message = "Svenska", to_string = "sv_SE")]
     Swedish,
 }
@@ -78,9 +82,11 @@ pub fn simple(language: Language) -> String {
         | Language::Danish
         | Language::French
         | Language::German
+        | Language::Kinyarwanda
         | Language::NorwegianBokmaal
         | Language::NorwegianNynorsk
         | Language::Spanish
+        | Language::Swahili
         | Language::Swedish => simple_generic(&language.to_string()),
     }
 }
@@ -91,8 +97,10 @@ pub fn advanced(language: Language) -> String {
         Language::Danish
         | Language::English
         | Language::German
+        | Language::Kinyarwanda
         | Language::NorwegianBokmaal
         | Language::NorwegianNynorsk
+        | Language::Swahili
         | Language::Swedish => advanced_generic(&language.to_string(), GENERIC_PUNCTUATION),
         // The French language has a space before certain punctuation marks.
         // See <https://www.frenchtoday.com/blog/french-grammar/french-punctuation/>
@@ -210,12 +218,7 @@ fn random_words_from_lang_code(lang_code: &str, rng: &mut ThreadRng) -> Vec<Stri
     let word_list = words_from_lang_code(lang_code);
 
     let mut generated: Vec<String> = Vec::new();
-    while generated
-        .iter()
-        .flat_map(|s| s.graphemes(true))
-        .count()
-        < CHUNK_GRAPHEME_COUNT
-    {
+    while generated.iter().flat_map(|s| s.graphemes(true)).count() < CHUNK_GRAPHEME_COUNT {
         let new_word = word_list
             .choose(rng)
             .expect("word list contains at least 1 word");
