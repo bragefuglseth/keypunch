@@ -34,7 +34,6 @@ for creating punched cards.
 
 ## Roadmap
 
-- High score tracking
 - Caps Lock indication
 - Logging of typing speed/accuracy over time, and a nice statistics dialog 
   to view / export these statistics
