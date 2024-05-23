@@ -17,41 +17,46 @@
 	<schema id="dev.bragefuglseth.Keypunch" path="/dev/bragefuglseth/Keypunch/">
 	  <key name="window-width" type="i">
 	    <default>900</default>
-	    <summary>Window width</summary>
+	    <summary>Window Width</summary>
 	  </key>
 	  <key name="window-height" type="i">
 	    <default>450</default>
-	    <summary>Window height</summary>
+	    <summary>Window Height</summary>
 	  </key>
 	  <key name="window-maximized" type="b">
 	    <default>false</default>
-	    <summary>Window maximization</summary>
+	    <summary>Window Maximization</summary>
 	  </key>
 	  <key name="session-type" enum = "dev.bragefuglseth.Keypunch.SessionType">
 	    <default>"Simple"</default>
-	    <summary>Session type</summary>
+	    <summary>Session Type</summary>
 	  </key>
 	  <key name="session-duration" enum="dev.bragefuglseth.Keypunch.SessionDuration">
 	    <default>"Sec30"</default>
-	    <summary>Session duration</summary>
+	    <summary>Session Duration</summary>
 	    <description>The duration of time-based sessions</description>
 	  </key>
 	  <key name="text-language" type="s">
 	    <!-- Translators: Insert the language code of your language here (or one of an equal implemented language, for example, the en_US word list shouldn't have any words differing from UK English). Do not remove the quotation marks. -->
 	    <default l10n="messages">"en_US"</default>
-	    <summary>Text language</summary>
+	    <summary>Text Language</summary>
 	    <description>The code of the language used for automatically generated text</description>
 	  </key>
 	  <key name="recent-languages" type="as">
 	    <default>[]</default>
-	    <summary>Recent languages</summary>
+	    <summary>Recent Languages</summary>
 	    <description>Languages shown in the list of recent ones in the text language dialog</description>
 	  </key>
 	  <key name="custom-text" type="s">
 	    <!-- Translators: This is the default text for custom typing sessions. Do not translate it literally, and do not remove the quotation marks. Replace it with an appropriate "sample sentence" from your language instead. The original text is an English pangram, so you can e.g. find a pangram in your language: https://clagnut.com/blog/2380 -->
 	    <default l10n="messages" >"The quick brown fox jumps over the lazy dog."</default>
-	    <summary>Custom text</summary>
+	    <summary>Custom Text</summary>
 	    <description>Text displayed when “Custom” is chosen from the session menu</description>
+	  </key>
+	  <key name="personal-best" type="a(sssu)">
+	    <default>[]</default>
+	    <summary>Personal Best</summary>
+	    <description>The current highest amount of WPM received for each session type / duration and language</description>
 	  </key>
 	</schema>
 </schemalist>

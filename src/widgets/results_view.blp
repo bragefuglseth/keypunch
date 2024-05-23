@@ -1,7 +1,7 @@
 using Gtk 4.0;
 using Adw 1;
 
-template $KpResultsView: Widget {
+template $KpResultsView: Widget{
   Box {
     orientation: vertical;
     spacing: 36;
@@ -15,10 +15,31 @@ template $KpResultsView: Widget {
         orientation: vertical;
         width-request: 200;
 
-        Label wpm_label {
-          styles [
-            "key-number"
-          ]
+        Box {
+          spacing: 6;
+          halign: center;
+
+          // For the sake of alignment
+          Image personal_best_balancer {
+            accessible-role: presentation;
+            visible: bind template.show-personal-best;
+          }
+
+          Label wpm_label {
+            styles [
+              "key-number"
+            ]
+          }
+
+          Image personal_best {
+            tooltip-text: _("New Personal Best for Configuration");
+            icon-name: "arrow3-up-symbolic";
+            visible: bind template.show-personal-best;
+
+            styles [
+              "accent"
+            ]
+          }
         }
 
         Label {

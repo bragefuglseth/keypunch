@@ -41,6 +41,8 @@ mod imp {
         language: RefCell<String>,
         #[property(get, set)]
         show_language: Cell<bool>,
+        #[property(get, set)]
+        show_personal_best: Cell<bool>,
         #[property(get, set, builder(gtk::Orientation::Vertical))]
         orientation: RefCell<gtk::Orientation>,
     }
@@ -80,6 +82,7 @@ mod imp {
                 duration: Default::default(),
                 language: Default::default(),
                 show_language: Default::default(),
+                show_personal_best: Default::default(),
                 orientation: RefCell::new(gtk::Orientation::Horizontal),
             }
         }

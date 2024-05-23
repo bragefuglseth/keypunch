@@ -194,13 +194,14 @@ mod imp {
             );
 
             about.set_developers(&["Brage Fuglseth https://bragefuglseth.dev"]);
+
             about.set_copyright("© 2024 Brage Fuglseth");
             // Translators: Replace "translator-credits" with your names, one name per line
             about.set_translator_credits(&gettext("translator-credits"));
 
             about.add_acknowledgement_section(
-                Some(&gettext("Word lists from")),
-                &["Monkeytype https://github.com/monkeytypegame/monkeytype"],
+                Some(&gettext("Special thanks to")),
+                &["Sophie Herold https://www.patreon.com/sophieh"],
             );
 
             self.block_text_view_unfocus.set(true);

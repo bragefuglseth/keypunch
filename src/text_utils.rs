@@ -76,5 +76,9 @@ pub fn calculate_accuracy(original: &str, typed: &str) -> f64 {
 
     let total = correct + wrong;
 
-    correct as f64 / total as f64
+    if total == 0 {
+        0.
+    } else {
+        correct as f64 / total as f64
+    }
 }
