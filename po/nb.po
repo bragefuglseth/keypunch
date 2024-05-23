@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: keypunch\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-23 20:23+0200\n"
+"POT-Creation-Date: 2024-05-23 20:29+0200\n"
 "PO-Revision-Date: 2024-05-18 04:05+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -169,7 +169,8 @@ msgid ""
 msgstr ""
 
 #: src/widgets/custom_text_dialog.blp:53
-msgid "Save"
+#, fuzzy
+msgid "_Save"
 msgstr "Lagre"
 
 #: src/widgets/custom_text_dialog.rs:71
@@ -258,52 +259,55 @@ msgid ""
 msgstr ""
 
 #: src/widgets/text_language_dialog.blp:214
-msgid "Create Request"
+msgid "_Create Request"
 msgstr ""
 
 #: src/widgets/text_view.blp:11
 msgid "Text View"
 msgstr "Skrivefelt"
 
-#: src/widgets/window.blp:53
-msgid "Edit Text"
+#: src/widgets/window.blp:54
+#, fuzzy
+msgid "_Edit Text"
 msgstr "Rediger tekst"
 
-#: src/widgets/window.blp:63
+#: src/widgets/window.blp:64
 msgid "Main Menu"
 msgstr "Hovedmeny"
 
-#: src/widgets/window.blp:79
+#: src/widgets/window.blp:80
 msgid "Stop Session"
 msgstr "Stopp økt"
 
-#: src/widgets/window.blp:107
+#: src/widgets/window.blp:108
 msgid "Just Start Typing"
 msgstr "Begynn å skrive"
 
 #. Translators: "Activate" here means to
 #. focus the input widget
-#: src/widgets/window.blp:117
-msgid "Activate Entry"
+#: src/widgets/window.blp:118
+#, fuzzy
+msgid "_Activate Entry"
 msgstr "Aktiver skrivefelt"
 
-#: src/widgets/window.blp:142
+#: src/widgets/window.blp:144
 msgid "Results"
 msgstr "Resultater"
 
-#: src/widgets/window.blp:167
-msgid "Continue"
+#: src/widgets/window.blp:169
+#, fuzzy
+msgid "_Continue"
 msgstr "Fortsett"
 
-#: src/widgets/window.blp:196
+#: src/widgets/window.blp:199
 msgid "Text _Language"
 msgstr "Tekst_språk"
 
-#: src/widgets/window.blp:201
+#: src/widgets/window.blp:204
 msgid "_Keyboard Shortcuts"
 msgstr "_Tastatursnarveier"
 
-#: src/widgets/window.blp:206
+#: src/widgets/window.blp:209
 msgid "_About Keypunch"
 msgstr "_Om Keypunch"
 

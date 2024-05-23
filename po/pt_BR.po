@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: keypunch\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-23 20:23+0200\n"
+"POT-Creation-Date: 2024-05-23 20:29+0200\n"
 "PO-Revision-Date: 2024-05-22 15:14-0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -182,7 +182,8 @@ msgid ""
 msgstr ""
 
 #: src/widgets/custom_text_dialog.blp:53
-msgid "Save"
+#, fuzzy
+msgid "_Save"
 msgstr "Salvar"
 
 #: src/widgets/custom_text_dialog.rs:71
@@ -273,52 +274,56 @@ msgstr ""
 "necessário."
 
 #: src/widgets/text_language_dialog.blp:214
-msgid "Create Request"
+#, fuzzy
+msgid "_Create Request"
 msgstr "Criar Pedido"
 
 #: src/widgets/text_view.blp:11
 msgid "Text View"
 msgstr "Janela de Texto"
 
-#: src/widgets/window.blp:53
-msgid "Edit Text"
+#: src/widgets/window.blp:54
+#, fuzzy
+msgid "_Edit Text"
 msgstr "Editar Texto"
 
-#: src/widgets/window.blp:63
+#: src/widgets/window.blp:64
 msgid "Main Menu"
 msgstr "Menu Principal"
 
-#: src/widgets/window.blp:79
+#: src/widgets/window.blp:80
 msgid "Stop Session"
 msgstr "Parar Sessão"
 
-#: src/widgets/window.blp:107
+#: src/widgets/window.blp:108
 msgid "Just Start Typing"
 msgstr "Apenas Comece a Digitar"
 
 #. Translators: "Activate" here means to
 #. focus the input widget
-#: src/widgets/window.blp:117
-msgid "Activate Entry"
+#: src/widgets/window.blp:118
+#, fuzzy
+msgid "_Activate Entry"
 msgstr "Ativar Entrada"
 
-#: src/widgets/window.blp:142
+#: src/widgets/window.blp:144
 msgid "Results"
 msgstr "Resultados"
 
-#: src/widgets/window.blp:167
-msgid "Continue"
+#: src/widgets/window.blp:169
+#, fuzzy
+msgid "_Continue"
 msgstr "Continue"
 
-#: src/widgets/window.blp:196
+#: src/widgets/window.blp:199
 msgid "Text _Language"
 msgstr "_Idioma do Texto"
 
-#: src/widgets/window.blp:201
+#: src/widgets/window.blp:204
 msgid "_Keyboard Shortcuts"
 msgstr "_Atalhos de teclado"
 
-#: src/widgets/window.blp:206
+#: src/widgets/window.blp:209
 msgid "_About Keypunch"
 msgstr "_Sobre o Keypunch"
 

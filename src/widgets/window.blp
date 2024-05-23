@@ -49,8 +49,9 @@ template $KpWindow: Adw.ApplicationWindow {
 
                     Button custom_button {
                       Adw.ButtonContent {
+                        use-underline: true;
                         icon-name: "edit-symbolic";
-                        label: _("Edit Text");
+                        label: _("_Edit Text");
                       }
                     }
                   }
@@ -114,7 +115,8 @@ template $KpWindow: Adw.ApplicationWindow {
             Button focus_button {
               // Translators: "Activate" here means to
               // focus the input widget
-              label: _("Activate Entry");
+              label: _("_Activate Entry");
+              use-underline: true;
 
               styles [
                 "pill",
@@ -164,7 +166,8 @@ template $KpWindow: Adw.ApplicationWindow {
             halign: center;
 
             Button continue_button {
-              label: _("Continue");
+              label: _("_Continue");
+              use-underline: true;
 
               styles [
                 "pill",
