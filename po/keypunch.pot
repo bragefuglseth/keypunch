@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: keypunch\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-22 02:30+0200\n"
+"POT-Creation-Date: 2024-05-23 18:53+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -88,23 +88,25 @@ msgid ""
 msgstr ""
 
 #: data/dev.bragefuglseth.Keypunch.gschema.xml:20
-msgid "Window width"
+msgid "Window Width"
 msgstr ""
 
 #: data/dev.bragefuglseth.Keypunch.gschema.xml:24
-msgid "Window height"
+msgid "Window Height"
 msgstr ""
 
 #: data/dev.bragefuglseth.Keypunch.gschema.xml:28
-msgid "Window maximization"
+msgid "Window Maximization"
 msgstr ""
 
 #: data/dev.bragefuglseth.Keypunch.gschema.xml:32
-msgid "Session type"
+#: src/widgets/results_view.blp:83 src/widgets/window.blp:35
+msgid "Session Type"
 msgstr ""
 
 #: data/dev.bragefuglseth.Keypunch.gschema.xml:36
-msgid "Session duration"
+#: src/widgets/results_view.blp:96 src/widgets/window.blp:43
+msgid "Session Duration"
 msgstr ""
 
 #: data/dev.bragefuglseth.Keypunch.gschema.xml:37
@@ -117,7 +119,10 @@ msgid "\"en_US\""
 msgstr ""
 
 #: data/dev.bragefuglseth.Keypunch.gschema.xml:42
-msgid "Text language"
+#: src/widgets/results_view.blp:109 src/widgets/text_language_dialog.blp:5
+#: src/widgets/text_language_dialog.blp:13
+#: src/widgets/text_language_dialog.blp:39
+msgid "Text Language"
 msgstr ""
 
 #: data/dev.bragefuglseth.Keypunch.gschema.xml:43
@@ -125,7 +130,7 @@ msgid "The code of the language used for automatically generated text"
 msgstr ""
 
 #: data/dev.bragefuglseth.Keypunch.gschema.xml:47
-msgid "Recent languages"
+msgid "Recent Languages"
 msgstr ""
 
 #: data/dev.bragefuglseth.Keypunch.gschema.xml:48
@@ -138,47 +143,22 @@ msgid "\"The quick brown fox jumps over the lazy dog.\""
 msgstr ""
 
 #: data/dev.bragefuglseth.Keypunch.gschema.xml:53
-msgid "Custom text"
+#: src/widgets/custom_text_dialog.blp:5 src/widgets/custom_text_dialog.blp:26
+msgid "Custom Text"
 msgstr ""
 
 #: data/dev.bragefuglseth.Keypunch.gschema.xml:54
 msgid "Text displayed when “Custom” is chosen from the session menu"
 msgstr ""
 
-#: src/enums.rs:15
-msgid "Simple"
+#: data/dev.bragefuglseth.Keypunch.gschema.xml:58
+msgid "Personal Best"
 msgstr ""
 
-#: src/enums.rs:16
-msgid "Advanced"
-msgstr ""
-
-#: src/enums.rs:17
-msgid "Custom"
-msgstr ""
-
-#: src/enums.rs:35
-msgid "15 seconds"
-msgstr ""
-
-#: src/enums.rs:36
-msgid "30 seconds"
-msgstr ""
-
-#: src/enums.rs:37
-msgid "1 minute"
-msgstr ""
-
-#: src/enums.rs:38
-msgid "5 minutes"
-msgstr ""
-
-#: src/enums.rs:39
-msgid "10 minutes"
-msgstr ""
-
-#: src/widgets/custom_text_dialog.blp:5 src/widgets/custom_text_dialog.blp:26
-msgid "Custom Text"
+#: data/dev.bragefuglseth.Keypunch.gschema.xml:59
+msgid ""
+"The current highest amount of WPM received for each session type / duration "
+"and language"
 msgstr ""
 
 #: src/widgets/custom_text_dialog.blp:53
@@ -189,44 +169,34 @@ msgstr ""
 msgid "Insert custom text…"
 msgstr ""
 
-#: src/widgets/results_view.blp:25
-msgid "Words per Minute"
+#: src/widgets/results_view.blp:35
+msgid "New Personal Best for Configuration"
 msgstr ""
 
 #: src/widgets/results_view.blp:46
+msgid "Words per Minute"
+msgstr ""
+
+#: src/widgets/results_view.blp:67
 msgid "Correctness"
-msgstr ""
-
-#: src/widgets/results_view.blp:62 src/widgets/window.blp:35
-msgid "Session Type"
-msgstr ""
-
-#: src/widgets/results_view.blp:75 src/widgets/window.blp:43
-msgid "Session Duration"
-msgstr ""
-
-#: src/widgets/results_view.blp:88 src/widgets/text_language_dialog.blp:5
-#: src/widgets/text_language_dialog.blp:13
-#: src/widgets/text_language_dialog.blp:39
-msgid "Text Language"
 msgstr ""
 
 #. Translators: The percentage label format of the results page.
 #. The `{}` block will be replaced with the percentage number,
 #. do not translate it!
-#: src/widgets/results_view.rs:127
+#: src/widgets/results_view.rs:130
 msgid "{}%"
 msgstr ""
 
 #. Translators: The `{}` blocks will be replaced with the number of minutes
 #. and seconds. Do not translate them!
-#: src/widgets/results_view.rs:185
+#: src/widgets/results_view.rs:188
 msgid "{}m {}s"
 msgstr ""
 
 #. Translators: The `{}` block will be replaced with the number of minutes.
 #. Do not translate it!
-#: src/widgets/results_view.rs:189
+#: src/widgets/results_view.rs:192
 msgid "{} minute"
 msgid_plural "{} minutes"
 msgstr[0] ""
@@ -234,7 +204,7 @@ msgstr[1] ""
 
 #. Translators: The `{}` block will be replaced with the number of seconds.
 #. Do not translate it!
-#: src/widgets/results_view.rs:193
+#: src/widgets/results_view.rs:196
 msgid "{} second"
 msgid_plural "{} seconds"
 msgstr[0] ""
@@ -327,6 +297,47 @@ msgstr ""
 
 #: src/widgets/window.blp:206
 msgid "_About Keypunch"
+msgstr ""
+
+#: src/widgets/window.rs:47
+msgid "Simple"
+msgstr ""
+
+#: src/widgets/window.rs:48
+msgid "Advanced"
+msgstr ""
+
+#: src/widgets/window.rs:49
+msgid "Custom"
+msgstr ""
+
+#: src/widgets/window.rs:67
+msgid "15 seconds"
+msgstr ""
+
+#: src/widgets/window.rs:68
+msgid "30 seconds"
+msgstr ""
+
+#: src/widgets/window.rs:69
+msgid "1 minute"
+msgstr ""
+
+#: src/widgets/window.rs:70
+msgid "5 minutes"
+msgstr ""
+
+#: src/widgets/window.rs:71
+msgid "10 minutes"
+msgstr ""
+
+#. Translators: Replace "translator-credits" with your names, one name per line
+#: src/widgets/window.rs:200
+msgid "translator-credits"
+msgstr ""
+
+#: src/widgets/window.rs:203
+msgid "Special thanks to"
 msgstr ""
 
 #. Translators: The `{}` blocks will be replaced with the current word count and the total word count.
