@@ -140,7 +140,7 @@ mod imp {
                 self.stack.set_visible_child_name("list");
             } else {
                 let normalized_query = unidecode(&query.to_lowercase());
-                let results: Vec<Language> = Language::iter()
+                let mut results: Vec<Language> = Language::iter()
                     .filter(|language| {
                         unidecode(
                             &language
@@ -151,6 +151,13 @@ mod imp {
                         .contains(&normalized_query)
                     })
                     .collect();
+
+                results.sort_by_key(|language| {
+                    language
+                        .get_message()
+                        .expect("all languages have names set")
+                        .to_lowercase()
+                });
 
                 if results.is_empty() {
                     self.no_results_lock_height(false);
