@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: keypunch\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-23 18:53+0200\n"
+"POT-Creation-Date: 2024-05-23 19:36+0200\n"
 "PO-Revision-Date: 2024-05-22 15:14-0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -232,7 +232,7 @@ msgstr[1] "{} segundos"
 
 #: src/widgets/text_language_dialog.blp:21
 #: src/widgets/text_language_dialog.blp:161
-#: src/widgets/text_language_dialog.blp:191
+#: src/widgets/text_language_dialog.blp:190
 msgid "Add Language"
 msgstr "Adicionar Idioma"
 
@@ -263,7 +263,7 @@ msgstr "Sem Resultados"
 msgid "Try a different search"
 msgstr "Tente buscar algo diferente"
 
-#: src/widgets/text_language_dialog.blp:201
+#: src/widgets/text_language_dialog.blp:199
 msgid ""
 "You can help add a new text language to Keypunch by submitting a language "
 "request on GitHub. A GitHub account and some language knowledge is required."
@@ -272,7 +272,7 @@ msgstr ""
 "de idioma no Github. Uma conta no Github e algum conhecimento do idioma é "
 "necessário."
 
-#: src/widgets/text_language_dialog.blp:212
+#: src/widgets/text_language_dialog.blp:214
 msgid "Create Request"
 msgstr "Criar Pedido"
 
@@ -366,15 +366,15 @@ msgstr ""
 #. Translators: The `{}` blocks will be replaced with the current word count and the total word count.
 #. Do not translate them! The slash sign is a special unicode character, if your language doesn't
 #. use a completely different sign, you should probably copy and paste it from the original string.
-#: src/widgets/window/session.rs:103
+#: src/widgets/window/session.rs:104
 msgid "{} ⁄ {}"
 msgstr "{} ⁄ {}"
 
-#: src/widgets/window/session.rs:219
+#: src/widgets/window/session.rs:220
 msgid "Changes discarded"
 msgstr "Mudanças descartadas"
 
-#: src/widgets/window/session.rs:220
+#: src/widgets/window/session.rs:221
 msgid "Restore"
 msgstr "Restaurar"
 
@@ -383,7 +383,7 @@ msgstr "Restaurar"
 #. passed. Do not translate the `{}` blocks. Note that the `∶` sign is a special
 #. Unicode character; if your language doesn't use something completely different,
 #. you should probably copy and paste it from the original string.
-#: src/widgets/window/session.rs:295 src/widgets/window/session.rs:297
+#: src/widgets/window/session.rs:296 src/widgets/window/session.rs:298
 msgid "{}∶{}"
 msgstr "{}∶{}"
 

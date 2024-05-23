@@ -6,9 +6,10 @@ use glib::ControlFlow;
 use gtk::pango;
 use i18n_format::i18n_fmt;
 use std::iter::once;
-use strum::IntoEnumIterator;
+use strum::{EnumMessage, IntoEnumIterator};
 use text_generation::CHUNK_GRAPHEME_COUNT;
 use unicode_segmentation::UnicodeSegmentation;
+use crate::text_utils::{calculate_accuracy, calculate_wpm};
 
 impl imp::KpWindow {
     pub(super) fn setup_session_config(&self) {
@@ -301,6 +302,91 @@ impl imp::KpWindow {
 
         self.running_title.set_title(&text);
     }
+
+    pub(super) fn show_results_view(&self) {
+        let continue_button = self.continue_button.get();
+        let original_text = self.text_view.original_text();
+        let typed_text = self.text_view.typed_text();
+        let Some(start_time) = self.start_time.get() else {
+            return;
+        };
+        let Some(finish_time) = self.finish_time.get() else {
+            return;
+        };
+
+        let results_view = self.results_view.get();
+
+        let duration = finish_time.duration_since(start_time);
+        results_view.set_duration(duration.as_secs());
+
+        let wpm = calculate_wpm(duration, &typed_text);
+        results_view.set_wpm(wpm);
+
+        let accuracy = calculate_accuracy(&original_text, &typed_text);
+        results_view.set_accuracy(accuracy);
+
+        let session_type = self.session_type.get();
+        results_view.set_session_type(session_type.ui_string());
+
+        let language = self.language.get();
+        results_view.set_language(
+            language
+                .get_message()
+                .expect("all languages have names set"),
+        );
+
+        let personal_best_vec: Vec<(String, String, String, u32)> = self
+            .settings()
+            .value("personal-best")
+            .get()
+            .unwrap_or_else(|| Vec::new());
+
+        let is_personal_best = accuracy > 0.9
+            && personal_best_vec
+                .iter()
+                .find(|(stored_session_type, duration, lang_code, _)| {
+                    *stored_session_type == session_type.to_string()
+                        && *duration == self.duration.get().to_string()
+                        && *lang_code == self.language.get().to_string()
+                })
+                .map(|(_, _, _, best_wpm)| wpm.floor() as u32 > *best_wpm)
+                .unwrap_or(true);
+
+        let session_is_generated =
+            matches!(session_type, SessionType::Simple | SessionType::Advanced);
+        results_view.set_show_personal_best(is_personal_best && session_is_generated);
+
+        if session_is_generated && is_personal_best {
+            let new_personal_best_vec = add_personal_best(
+                personal_best_vec,
+                (
+                    &session_type.to_string(),
+                    &self.duration.get().to_string(),
+                    &language.to_string(),
+                    wpm.floor() as u32,
+                ),
+            );
+
+            self.settings()
+                .set_value("personal-best", &new_personal_best_vec.to_variant())
+                .expect("can update stored personal best values");
+        }
+
+        results_view.set_show_language(session_is_generated);
+
+        self.main_stack.set_visible_child_name("results");
+
+        self.block_text_view_unfocus.set(true);
+
+        self.obj().set_focus_widget(None::<&gtk::Widget>);
+        glib::timeout_add_local_once(
+            Duration::from_millis(500),
+            glib::clone!(@weak continue_button => move || {
+                    continue_button.grab_focus();
+                }
+            ),
+        );
+    }
 }
 
 // Creates a custom factory for a dropdown that ellipsizes the label of the top button.
@@ -350,4 +436,27 @@ fn setup_ellipsizing_dropdown_factory(dropdown: &gtk::DropDown) {
 
     dropdown.set_factory(Some(&factory));
     dropdown.notify("selected-item");
+}
+
+pub(super) fn add_personal_best(
+    old: Vec<(String, String, String, u32)>,
+    new: (&str, &str, &str, u32),
+) -> Vec<(String, String, String, u32)> {
+    let (new_session_type, new_duration, new_language, new_wpm) = new;
+
+    old.into_iter()
+        .filter(
+            |(stored_session_type, stored_duration, stored_lang_code, _)| {
+                *stored_session_type != new_session_type
+                    || *stored_duration != new_duration
+                    || *stored_lang_code != new_language
+            },
+        )
+        .chain(once((
+            new_session_type.to_string(),
+            new_duration.to_string(),
+            new_language.to_string(),
+            new_wpm,
+        )))
+        .collect()
 }

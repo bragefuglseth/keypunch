@@ -172,7 +172,6 @@ template $KpTextLanguageDialog: Adw.Dialog {
           Box {
             orientation: vertical;
             valign: center;
-            spacing: 24;
             margin-start: 12;
             margin-end: 12;
             margin-top: 12;
@@ -189,6 +188,7 @@ template $KpTextLanguageDialog: Adw.Dialog {
 
             Label {
               label: _("Add Language");
+              margin-top: 24;
 
               styles [
                 "title-1",
@@ -196,13 +196,15 @@ template $KpTextLanguageDialog: Adw.Dialog {
             }
 
             Label {
+              label: _("You can help add a new text language to Keypunch by submitting a language request on GitHub. A GitHub account and some language knowledge is required.");
               justify: center;
               wrap: true;
-              label: _("You can help add a new text language to Keypunch by submitting a language request on GitHub. A GitHub account and some language knowledge is required.");
+              margin-top: 12;
             }
 
             Button {
               halign: center;
+              margin-top: 24;
               clicked => $language_request_button_clicked();
 
               Box {
