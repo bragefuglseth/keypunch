@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: keypunch\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-23 19:36+0200\n"
+"POT-Creation-Date: 2024-05-23 20:23+0200\n"
 "PO-Revision-Date: 2024-05-18 04:05+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -340,11 +340,11 @@ msgid "10 minutes"
 msgstr "10 minutter"
 
 #. Translators: Replace "translator-credits" with your names, one name per line
-#: src/widgets/window.rs:200
+#: src/widgets/window.rs:204
 msgid "translator-credits"
 msgstr ""
 
-#: src/widgets/window.rs:203
+#: src/widgets/window.rs:207
 msgid "Special thanks to"
 msgstr ""
 
@@ -355,11 +355,11 @@ msgstr ""
 msgid "{} ⁄ {}"
 msgstr "{} ⁄ {}"
 
-#: src/widgets/window/session.rs:220
+#: src/widgets/window/session.rs:224
 msgid "Changes discarded"
 msgstr "Endringer forkastet"
 
-#: src/widgets/window/session.rs:221
+#: src/widgets/window/session.rs:225
 msgid "Restore"
 msgstr "Gjenopprett"
 
@@ -368,7 +368,7 @@ msgstr "Gjenopprett"
 #. passed. Do not translate the `{}` blocks. Note that the `∶` sign is a special
 #. Unicode character; if your language doesn't use something completely different,
 #. you should probably copy and paste it from the original string.
-#: src/widgets/window/session.rs:296 src/widgets/window/session.rs:298
+#: src/widgets/window/session.rs:300 src/widgets/window/session.rs:302
 msgid "{}∶{}"
 msgstr "{}∶{}"
 
