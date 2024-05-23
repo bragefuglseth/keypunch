@@ -140,6 +140,8 @@ impl imp::KpWindow {
     }
 
     pub(super) fn show_text_language_dialog(&self) {
+        if self.running.get() { return; }
+
         let dialog =
             KpTextLanguageDialog::new(self.language.get(), &self.recent_languages.borrow_mut());
 
@@ -165,9 +167,11 @@ impl imp::KpWindow {
         dialog.connect_closed(glib::clone!(@weak self as imp => move |dialog| {
             imp.add_recent_language(dialog.selected_language());
             imp.block_text_view_unfocus.set(false);
+            imp.obj().action_set_enabled("win.text-language-dialog", true);
             imp.focus_text_view();
         }));
 
+        self.obj().action_set_enabled("win.text-language-dialog", false);
         dialog.present(self.obj().upcast_ref::<gtk::Widget>());
     }
 

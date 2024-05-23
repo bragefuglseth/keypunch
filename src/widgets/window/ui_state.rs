@@ -63,6 +63,9 @@ impl imp::KpWindow {
 
         self.update_original_text();
         self.update_time();
+
+        self.obj().action_set_enabled("win.text-language-dialog", true);
+        self.obj().action_set_enabled("win.cancel-session", false);
     }
 
     pub(super) fn start(&self) {
@@ -79,14 +82,22 @@ impl imp::KpWindow {
             SessionType::Simple | SessionType::Advanced => self.start_timer(),
             SessionType::Custom => (),
         }
+
+        self.obj().action_set_enabled("win.text-language-dialog", false);
+        self.obj().action_set_enabled("win.cancel-session", true);
     }
 
     pub(super) fn finish(&self) {
+        if !self.running.get() { return; }
+
         self.running.set(false);
         self.text_view.set_running(false);
         self.text_view.set_accepts_input(false);
         self.finish_time.set(Some(Instant::now()));
         self.show_results_view();
+
+        self.obj().action_set_enabled("win.text-language-dialog", false);
+        self.obj().action_set_enabled("win.cancel-session", false);
     }
 
     pub(super) fn hide_cursor(&self) {

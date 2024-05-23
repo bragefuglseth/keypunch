@@ -11,8 +11,26 @@
             <property name="title" translatable="yes" context="shortcut window">General</property>
             <child>
               <object class="GtkShortcutsShortcut">
-                <property name="title" translatable="yes" context="shortcut window">Show Shortcuts</property>
+                <property name="title" translatable="yes" context="shortcut window">Text Language</property>
+                <property name="action-name">win.text-language-dialog</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkShortcutsShortcut">
+                <property name="title" translatable="yes" context="shortcut window">Cancel Session</property>
+                <property name="action-name">win.cancel-session</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkShortcutsShortcut">
+                <property name="title" translatable="yes" context="shortcut window">Keyboard Shortcuts</property>
                 <property name="action-name">win.show-help-overlay</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkShortcutsShortcut">
+                <property name="title" translatable="yes" context="shortcut window">Close Window</property>
+                <property name="action-name">win.close</property>
               </object>
             </child>
             <child>

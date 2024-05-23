@@ -148,7 +148,11 @@ mod imp {
 
             klass.install_action("win.text-language-dialog", None, move |window, _, _| {
                 window.imp().show_text_language_dialog();
-            })
+            });
+
+            klass.install_action("win.cancel-session", None, move |window, _, _| {
+                window.imp().ready(false);
+            });
         }
 
         fn instance_init(obj: &glib::subclass::InitializingObject<Self>) {
