@@ -3,7 +3,7 @@ use std::time::Duration;
 use unicode_segmentation::UnicodeSegmentation;
 
 // Whitespace markers
-pub const WHSP_MARKERS: [(&'static str, &'static str); 1] = [("\n", "↲\n")];
+pub const WHSP_MARKERS: &'static [(&'static str, &'static str)] = &[("\n", "↲\n")];
 
 pub fn insert_whsp_markers(string: &str) -> String {
     let mut s = string.to_string();

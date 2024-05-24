@@ -65,10 +65,14 @@ impl imp::KpTextView {
                 .vadjustment()
                 .expect("text view has vadjustment")
                 .set_value(y);
-        } else if y != scroll_animation.value_to() {
-            scroll_animation.set_value_from(current_position);
-            scroll_animation.set_value_to(y);
-            scroll_animation.play();
+        } else {
+            let line_has_changed = (scroll_animation.value_to() - y).abs() > 5.;
+
+            if line_has_changed {
+                scroll_animation.set_value_from(current_position);
+                scroll_animation.set_value_to(y);
+                scroll_animation.play();
+            }
         }
     }
 }
