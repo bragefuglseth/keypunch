@@ -199,9 +199,12 @@ mod imp {
 
             about.set_developers(&["Brage Fuglseth https://bragefuglseth.dev"]);
 
-            about.set_copyright("© 2024 Brage Fuglseth");
+            about.add_credit_section(Some(&gettext("Ortography by")), &["Gregor Niehl"]);
+
             // Translators: Replace "translator-credits" with your names, one name per line
             about.set_translator_credits(&gettext("translator-credits"));
+
+            about.set_copyright("© 2024 Brage Fuglseth");
 
             about.add_acknowledgement_section(
                 Some(&gettext("Special thanks to")),
