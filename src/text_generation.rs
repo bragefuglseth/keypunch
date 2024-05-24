@@ -10,6 +10,8 @@ pub const CHUNK_GRAPHEME_COUNT: usize = 400;
 // All of the languages here MUST have a corresponding file in data/word_lists/{lang_code}.txt
 #[derive(Clone, Copy, Default, EnumDisplay, EnumString, EnumIter, EnumMessage, PartialEq)]
 pub enum Language {
+    #[strum(message = "العربية", to_string = "ar_SA")]
+    Arabic,
     #[strum(message = "Dansk", to_string = "da_DK")]
     Danish,
     #[default]
@@ -78,7 +80,8 @@ impl<'a> Punctuation<'a> {
 // Only lowercase letters, no punctuation or numbers
 pub fn simple(language: Language) -> String {
     match language {
-        Language::English
+        | Language::Arabic
+        | Language::English
         | Language::Danish
         | Language::French
         | Language::German
@@ -87,7 +90,7 @@ pub fn simple(language: Language) -> String {
         | Language::NorwegianNynorsk
         | Language::Spanish
         | Language::Swahili
-        | Language::Swedish => simple_generic(&language.to_string()),
+        | Language::Swedish => simple_generic(&language.to_string(), " "),
     }
 }
 
@@ -101,11 +104,29 @@ pub fn advanced(language: Language) -> String {
         | Language::NorwegianBokmaal
         | Language::NorwegianNynorsk
         | Language::Swahili
-        | Language::Swedish => advanced_generic(&language.to_string(), GENERIC_PUNCTUATION),
+        | Language::Swedish => advanced_generic(&language.to_string(), " ", GENERIC_PUNCTUATION),
+
+        // ، ؛ :
+        //  . ! ؟
+        Language::Arabic => advanced_generic(
+            &language.to_string(),
+            " ",
+            &[
+                Punctuation::suffix(". ", false, 0.6),
+                Punctuation::suffix("، ", false, 1.0),
+                Punctuation::suffix("؛ ", false, 0.1),
+                Punctuation::suffix(": ", false, 0.2),
+                Punctuation::suffix("! ", false, 0.3),
+                Punctuation::suffix("؟ ", false, 0.3),
+                Punctuation::wrapping("\"", "\"", false, 0.2),
+                Punctuation::wrapping("(", ")", false, 0.1),
+            ],
+        ),
         // The French language has a space before certain punctuation marks.
         // See <https://www.frenchtoday.com/blog/french-grammar/french-punctuation/>
         Language::French => advanced_generic(
             &language.to_string(),
+            " ",
             &[
                 Punctuation::suffix(".", true, 0.6),
                 Punctuation::suffix(",", false, 1.0),
@@ -120,6 +141,7 @@ pub fn advanced(language: Language) -> String {
         // Spanish has "wrapping" exclamation points and question marks
         Language::Spanish => advanced_generic(
             &language.to_string(),
+            " ",
             &[
                 Punctuation::suffix(".", true, 0.6),
                 Punctuation::suffix(",", false, 1.0),
@@ -135,15 +157,15 @@ pub fn advanced(language: Language) -> String {
 }
 
 // Should work for most languages
-fn simple_generic(lang_code: &str) -> String {
+fn simple_generic(lang_code: &str, spacing: &str) -> String {
     let mut rng = thread_rng();
     let generated = random_words_from_lang_code(lang_code, &mut rng);
 
-    generated.into_iter().map(|s| s + " ").collect()
+    generated.into_iter().map(|s| s + spacing).collect()
 }
 
 // Should work for most languages
-fn advanced_generic(lang_code: &str, punctuations: &[Punctuation]) -> String {
+fn advanced_generic(lang_code: &str, spacing: &str, punctuations: &[Punctuation]) -> String {
     let mut rng = thread_rng();
 
     let mut generated = random_words_from_lang_code(lang_code, &mut rng);
@@ -188,7 +210,7 @@ fn advanced_generic(lang_code: &str, punctuations: &[Punctuation]) -> String {
         }
     }
 
-    generated.into_iter().map(|s| format!("{s} ")).collect()
+    generated.into_iter().map(|s| s + spacing).collect()
 }
 
 fn uppercase_first_letter(s: &str) -> String {
