@@ -10,6 +10,7 @@ KpTextView > textview {
   font-size: 1.6rem;
   line-height: 45px;
   background: none;
+  font-variant-ligatures: none;
 }
 
 KpResultsView .key-number {

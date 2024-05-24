@@ -106,18 +106,16 @@ pub fn advanced(language: Language) -> String {
         | Language::Swahili
         | Language::Swedish => advanced_generic(&language.to_string(), " ", GENERIC_PUNCTUATION),
 
-        // ، ؛ :
-        //  . ! ؟
         Language::Arabic => advanced_generic(
             &language.to_string(),
             " ",
             &[
-                Punctuation::suffix(". ", false, 0.6),
-                Punctuation::suffix("، ", false, 1.0),
-                Punctuation::suffix("؛ ", false, 0.1),
-                Punctuation::suffix(": ", false, 0.2),
-                Punctuation::suffix("! ", false, 0.3),
-                Punctuation::suffix("؟ ", false, 0.3),
+                Punctuation::suffix(".", false, 0.6),
+                Punctuation::suffix("،", false, 1.0),
+                Punctuation::suffix("؛", false, 0.1),
+                Punctuation::suffix(":", false, 0.2),
+                Punctuation::suffix("!", false, 0.3),
+                Punctuation::suffix("؟", false, 0.3),
                 Punctuation::wrapping("\"", "\"", false, 0.2),
                 Punctuation::wrapping("(", ")", false, 0.1),
             ],
