@@ -4,7 +4,7 @@ mod colors;
 mod input;
 mod scrolling;
 
-use crate::text_utils::{insert_whsp_markers, validate_with_whsp_markers};
+use crate::text_utils::{insert_replacements, validate_with_replacements};
 use adw::prelude::*;
 use adw::subclass::prelude::*;
 use gtk::glib;
@@ -139,7 +139,7 @@ mod imp {
             *self.original_text.borrow_mut() = text.to_string();
             self.text_view
                 .buffer()
-                .set_text(&insert_whsp_markers(&text));
+                .set_text(&insert_replacements(&text));
             self.update_colors();
             self.update_caret_position(true);
             self.update_scroll_position(true);
@@ -150,7 +150,7 @@ mod imp {
             self.original_text.borrow_mut().push_str(text);
 
             let buffer = self.text_view.buffer();
-            buffer.insert(&mut buffer.end_iter(), &insert_whsp_markers(&text));
+            buffer.insert(&mut buffer.end_iter(), &insert_replacements(&text));
             self.update_colors();
         }
     }

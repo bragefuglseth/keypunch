@@ -1,4 +1,6 @@
 use super::*;
+use unicode_segmentation::UnicodeSegmentation;
+use crate::text_utils::line_offset_with_replacements;
 
 impl imp::KpTextView {
     pub(super) fn setup_color_scheme(&self) {
@@ -84,7 +86,6 @@ impl imp::KpTextView {
 
         let original = obj.original_text();
         let typed = obj.typed_text();
-        let comparison = validate_with_whsp_markers(&original, &typed);
 
         let text_view = self.text_view.get();
         let buf = text_view.buffer();
@@ -112,15 +113,13 @@ impl imp::KpTextView {
         // for the sake of keeping things simple
         buf.remove_all_tags(&buf.start_iter(), &buf.end_iter());
 
-        // To color as little text as possible, we start 2 lines above
-        // the currently active one (just enough to account for the scrolling animation in all cases)
-        let (_, typed_line, typed_offset, _) = comparison
-            .last()
-            .map(|tuple| tuple.to_owned())
-            .unwrap_or((true, 0, 0, 0));
+        let (typed_line, typed_offset) = line_offset_with_replacements(&original, typed.graphemes(true).count());
         let typed_iter = buf
             .iter_at_line_index(typed_line as i32, typed_offset as i32)
             .expect("comparison doesn't contain indices that are out of bounds");
+
+        // To color as little text as possible, we start 2 lines above
+        // the currently active one (just enough to account for the scrolling animation in all cases)
         let mut color_start_iter = typed_iter.clone();
         text_view.backward_display_line(&mut color_start_iter);
         text_view.backward_display_line(&mut color_start_iter);
@@ -128,23 +127,23 @@ impl imp::KpTextView {
         text_view.backward_display_line_start(&mut color_start_iter);
         let color_start_offset = color_start_iter.offset();
 
+        let comparison = validate_with_replacements(&original, &typed);
+
         comparison
             .iter()
             .skip(color_start_offset as usize)
             .for_each(|(correct, line, start_idx, end_idx)| {
-                let start_iter = buf
-                    .iter_at_line_index(*line as i32, *start_idx as i32)
-                    .expect("comparison doesn't contain indices exceeding any lines");
-                let end_iter = buf
-                    .iter_at_line_index(*line as i32, *end_idx as i32)
-                    .expect("comparison doesn't contain indices exceeding any lines");
+                let start_iter_option = buf.iter_at_line_index(*line as i32, *start_idx as i32);
+                let end_iter_option = buf.iter_at_line_index(*line as i32, *end_idx as i32);
 
-                // Avoid applying the tag to line breaks, which leads to some weird side effects
-                // in the text view. Might be a GTK bug.
-                if !start_iter.ends_line() {
-                    let tag = if *correct { tag_typed } else { tag_mistake };
+                if let (Some(start_iter), Some(end_iter)) = (start_iter_option, end_iter_option) {
+                    // Avoid applying the tag to line breaks, which leads to some weird side effects
+                    // in the text view. Might be a GTK bug.
+                    if !start_iter.ends_line() {
+                        let tag = if *correct { tag_typed } else { tag_mistake };
 
-                    buf.apply_tag_by_name(tag, &start_iter, &end_iter);
+                        buf.apply_tag_by_name(tag, &start_iter, &end_iter);
+                    }
                 }
             });
 

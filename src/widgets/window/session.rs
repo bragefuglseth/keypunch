@@ -1,5 +1,6 @@
 use super::*;
 use crate::text_generation;
+use crate::text_utils::{calculate_accuracy, calculate_wpm};
 use crate::widgets::{KpCustomTextDialog, KpTextLanguageDialog};
 use gettextrs::gettext;
 use glib::ControlFlow;
@@ -9,7 +10,6 @@ use std::iter::once;
 use strum::{EnumMessage, IntoEnumIterator};
 use text_generation::CHUNK_GRAPHEME_COUNT;
 use unicode_segmentation::UnicodeSegmentation;
-use crate::text_utils::{calculate_accuracy, calculate_wpm};
 
 impl imp::KpWindow {
     pub(super) fn setup_session_config(&self) {
@@ -140,7 +140,9 @@ impl imp::KpWindow {
     }
 
     pub(super) fn show_text_language_dialog(&self) {
-        if self.running.get() { return; }
+        if self.running.get() {
+            return;
+        }
 
         let dialog =
             KpTextLanguageDialog::new(self.language.get(), &self.recent_languages.borrow_mut());
@@ -171,7 +173,8 @@ impl imp::KpWindow {
             imp.focus_text_view();
         }));
 
-        self.obj().action_set_enabled("win.text-language-dialog", false);
+        self.obj()
+            .action_set_enabled("win.text-language-dialog", false);
         dialog.present(self.obj().upcast_ref::<gtk::Widget>());
     }
 

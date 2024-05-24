@@ -80,7 +80,7 @@ impl<'a> Punctuation<'a> {
 // Only lowercase letters, no punctuation or numbers
 pub fn simple(language: Language) -> String {
     match language {
-        | Language::Arabic
+        Language::Arabic
         | Language::English
         | Language::Danish
         | Language::French
@@ -105,17 +105,16 @@ pub fn advanced(language: Language) -> String {
         | Language::NorwegianNynorsk
         | Language::Swahili
         | Language::Swedish => advanced_generic(&language.to_string(), " ", GENERIC_PUNCTUATION),
-
         Language::Arabic => advanced_generic(
             &language.to_string(),
             " ",
             &[
-                Punctuation::suffix(".", false, 0.6),
+                Punctuation::suffix(".", true, 0.6),
                 Punctuation::suffix("،", false, 1.0),
                 Punctuation::suffix("؛", false, 0.1),
                 Punctuation::suffix(":", false, 0.2),
-                Punctuation::suffix("!", false, 0.3),
-                Punctuation::suffix("؟", false, 0.3),
+                Punctuation::suffix("!", true, 0.3),
+                Punctuation::suffix("؟", true, 0.3),
                 Punctuation::wrapping("\"", "\"", false, 0.2),
                 Punctuation::wrapping("(", ")", false, 0.1),
             ],

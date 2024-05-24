@@ -1,4 +1,6 @@
 use super::*;
+use crate::text_utils::line_offset_with_replacements;
+use unicode_segmentation::UnicodeSegmentation;
 
 impl imp::KpTextView {
     pub(super) fn scroll_animation(&self) -> adw::TimedAnimation {
@@ -28,11 +30,8 @@ impl imp::KpTextView {
         let typed = obj.typed_text();
         // Validation is performed on typed text with one added character, to get the start index
         // of the next character.
-        let (_, caret_line, caret_idx, _) =
-            validate_with_whsp_markers(&original, &format!("{typed}a"))
-                .last()
-                .map(|tuple| tuple.to_owned())
-                .unwrap_or((true, 0, 0, 0));
+        let (caret_line, caret_idx) =
+            line_offset_with_replacements(&original, typed.graphemes(true).count());
 
         let text_view = self.text_view.get();
 
@@ -66,7 +65,7 @@ impl imp::KpTextView {
                 .expect("text view has vadjustment")
                 .set_value(y);
         } else {
-            let line_has_changed = (scroll_animation.value_to() - y).abs() > 5.;
+            let line_has_changed = (scroll_animation.value_to() - y).abs() > 10.;
 
             if line_has_changed {
                 scroll_animation.set_value_from(current_position);
