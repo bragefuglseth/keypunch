@@ -17,6 +17,8 @@ mod imp {
         #[template_child]
         pub scrolled_window: TemplateChild<gtk::ScrolledWindow>,
         #[template_child]
+        pub placeholder: TemplateChild<gtk::Label>,
+        #[template_child]
         pub text_view: TemplateChild<gtk::TextView>,
         #[template_child]
         pub save_button: TemplateChild<gtk::Button>,
@@ -67,22 +69,12 @@ mod imp {
                 .sync_create()
                 .build();
 
-            let placeholder = gtk::Label::builder()
-                .label(&gettext("Insert custom text…"))
-                .css_classes(["dim-label"])
-                .build();
-            self.text_view.add_overlay(&placeholder, 0, 0);
             self.text_view
                 .buffer()
-                .bind_property("text", &placeholder, "visible")
+                .bind_property("text", &self.placeholder.get(), "visible")
                 .transform_to(|_, text: String| Some(text.is_empty()))
                 .sync_create()
                 .build();
-
-            self.text_view
-                .update_relation(&[gtk::accessible::Relation::LabelledBy(&[&placeholder
-                    .upcast_ref::<gtk::Accessible>(
-                )])]);
 
             let save_button = self.save_button.get();
             self.text_view

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: keypunch\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-24 22:10+0200\n"
+"POT-Creation-Date: 2024-05-25 22:10+0200\n"
 "PO-Revision-Date: 2024-05-18 04:05+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -19,30 +19,31 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 3.4.2\n"
 
-#: data/dev.bragefuglseth.Keypunch.desktop.in:3
-#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in:6 src/widgets/window.blp:5
+#: data/dev.bragefuglseth.Keypunch.desktop.in.in:3
+#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:6
+#: src/widgets/window.blp:5
 msgid "Keypunch"
 msgstr "Keypunch"
 
-#: data/dev.bragefuglseth.Keypunch.desktop.in:4
-#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in:7
+#: data/dev.bragefuglseth.Keypunch.desktop.in.in:4
+#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:7
 msgid "Practice your typing skills"
 msgstr ""
 
-#: data/dev.bragefuglseth.Keypunch.desktop.in:10
+#: data/dev.bragefuglseth.Keypunch.desktop.in.in:10
 msgid ""
 "typing;trainer;touch typing;keyboard;speed;wpm;words per minute;accuracy;"
 "test;"
 msgstr ""
 
-#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in:12
+#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:12
 msgid ""
 "There is no doubt that typing on a keyboard is an essential skill in the "
 "digital age. Typing fast and accurately gives you more opportunities, more "
 "time for what matters to you, and a sense of self-accomplishment."
 msgstr ""
 
-#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in:17
+#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:17
 msgid ""
 "Keypunch lets you practice typing. Thanks to fast-paced sessions with "
 "instant feedback afterwards and a plethora of available languages, you might "
@@ -51,40 +52,40 @@ msgid ""
 "accuracy of which your thoughts and ideas are put into words on the screen."
 msgstr ""
 
-#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in:24
+#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:24
 msgid ""
 "If you are already a racer at typing, Keypunch still has something for you. "
 "Try practicing with numbers and punctuation, or choose your own text to type "
 "out as fast as you can."
 msgstr ""
 
-#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in:29
+#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:29
 msgid "Get ready to accelerate your typing!"
 msgstr ""
 
-#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in:35
+#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:35
 msgid "Ready for typing"
 msgstr ""
 
-#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in:39
+#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:39
 msgid "In the middle of a session"
 msgstr ""
 
-#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in:43
+#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:43
 #, fuzzy
 msgid "Session results"
 msgstr "Modus"
 
-#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in:47
+#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:47
 msgid "Language selection"
 msgstr ""
 
-#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in:51
+#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:51
 #, fuzzy
 msgid "Custom text entry"
 msgstr "Egendefinert tekst"
 
-#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in:82
+#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:82
 msgid ""
 "This is the initial release of Keypunch! Give it a spin and say what you "
 "think."
@@ -168,14 +169,14 @@ msgid ""
 "and language"
 msgstr ""
 
-#: src/widgets/custom_text_dialog.blp:53
+#: src/widgets/custom_text_dialog.blp:37
+msgid "Insert custom text…"
+msgstr "Sett inn egendefinert tekst…"
+
+#: src/widgets/custom_text_dialog.blp:73
 #, fuzzy
 msgid "_Save"
 msgstr "Lagre"
-
-#: src/widgets/custom_text_dialog.rs:71
-msgid "Insert custom text…"
-msgstr "Sett inn egendefinert tekst…"
 
 #: src/widgets/results_view.blp:35
 msgid "New Personal Best for Configuration"
@@ -311,48 +312,48 @@ msgstr "_Tastatursnarveier"
 msgid "_About Keypunch"
 msgstr "_Om Keypunch"
 
-#: src/widgets/window.rs:47
+#: src/widgets/window.rs:48
 msgid "Simple"
 msgstr "Enkel"
 
-#: src/widgets/window.rs:48
+#: src/widgets/window.rs:49
 msgid "Advanced"
 msgstr "Avansert"
 
-#: src/widgets/window.rs:49
+#: src/widgets/window.rs:50
 msgid "Custom"
 msgstr "Egendefinert"
 
-#: src/widgets/window.rs:67
+#: src/widgets/window.rs:68
 msgid "15 seconds"
 msgstr "15 sekunder"
 
-#: src/widgets/window.rs:68
+#: src/widgets/window.rs:69
 msgid "30 seconds"
 msgstr "30 sekunder"
 
-#: src/widgets/window.rs:69
+#: src/widgets/window.rs:70
 msgid "1 minute"
 msgstr "1 minutt"
 
-#: src/widgets/window.rs:70
+#: src/widgets/window.rs:71
 msgid "5 minutes"
 msgstr "5 minutter"
 
-#: src/widgets/window.rs:71
+#: src/widgets/window.rs:72
 msgid "10 minutes"
 msgstr "10 minutter"
 
-#: src/widgets/window.rs:202
+#: src/widgets/window.rs:206
 msgid "Ortography by"
 msgstr ""
 
 #. Translators: Replace "translator-credits" with your names, one name per line
-#: src/widgets/window.rs:205
+#: src/widgets/window.rs:212
 msgid "translator-credits"
 msgstr ""
 
-#: src/widgets/window.rs:210
+#: src/widgets/window.rs:217
 msgid "Special thanks to"
 msgstr ""
 
@@ -363,11 +364,11 @@ msgstr ""
 msgid "{} ⁄ {}"
 msgstr "{} ⁄ {}"
 
-#: src/widgets/window/session.rs:227
+#: src/widgets/window/session.rs:221
 msgid "Changes discarded"
 msgstr "Endringer forkastet"
 
-#: src/widgets/window/session.rs:228
+#: src/widgets/window/session.rs:222
 msgid "Restore"
 msgstr "Gjenopprett"
 
@@ -376,7 +377,7 @@ msgstr "Gjenopprett"
 #. passed. Do not translate the `{}` blocks. Note that the `∶` sign is a special
 #. Unicode character; if your language doesn't use something completely different,
 #. you should probably copy and paste it from the original string.
-#: src/widgets/window/session.rs:303 src/widgets/window/session.rs:305
+#: src/widgets/window/session.rs:295 src/widgets/window/session.rs:297
 msgid "{}∶{}"
 msgstr "{}∶{}"
 

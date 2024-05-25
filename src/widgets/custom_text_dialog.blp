@@ -31,15 +31,35 @@ template $KpCustomTextDialog: Adw.Dialog {
           ]
         }
 
-        TextView text_view {
-          vexpand: true;
-          wrap-mode: word_char;
-          accepts-tab: false;
+        Overlay {
+          [overlay]
+          Label placeholder {
+            label: _("Insert custom text…");
+            valign: start;
+            halign: 0;
+            margin-top: 12;
+            margin-start: 12;
+            margin-end: 12;
 
-          styles [
-            "card",
-            "card-text-view"
-          ]
+            styles [
+              "dim-label"
+            ]
+          }
+
+          TextView text_view {
+            vexpand: true;
+            wrap-mode: word_char;
+            accepts-tab: false;
+
+            accessibility {
+              labelled-by: placeholder;
+            }
+
+            styles [
+              "card",
+              "card-text-view"
+            ]
+          }
         }
       }
     }
