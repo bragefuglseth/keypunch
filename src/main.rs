@@ -26,7 +26,7 @@ mod widgets;
 
 use self::application::KpApplication;
 
-use config::{GETTEXT_PACKAGE, LOCALEDIR};
+use config::{APP_ID, GETTEXT_PACKAGE, LOCALEDIR};
 use gettextrs::{bind_textdomain_codeset, bindtextdomain, textdomain};
 use gtk::prelude::*;
 use gtk::{gio, glib};
@@ -50,7 +50,7 @@ fn main() -> glib::ExitCode {
     // application windows, integration with the window manager/compositor, and
     // desktop features such as file opening and single-instance applications.
     let app = KpApplication::new(
-        "dev.bragefuglseth.Keypunch",
+        APP_ID,
         &gio::ApplicationFlags::empty(),
     );
 

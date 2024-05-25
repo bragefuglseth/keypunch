@@ -41,6 +41,8 @@ mod imp {
         fn constructed(&self) {
             self.parent_constructed();
             let obj = self.obj();
+            obj.set_resource_base_path(Some("/dev/bragefuglseth/Keypunch/"));
+
             obj.setup_gactions();
 
             obj.set_accels_for_action("win.text-language-dialog", &["<primary>comma"]);

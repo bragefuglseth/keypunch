@@ -1,5 +1,5 @@
 {
-    "id" : "dev.bragefuglseth.Keypunch",
+    "id" : "dev.bragefuglseth.Keypunch.Devel",
     "runtime" : "org.gnome.Platform",
     "runtime-version" : "46",
     "sdk" : "org.gnome.Sdk",

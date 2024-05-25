@@ -7,6 +7,12 @@ project('keypunch', 'rust',
 i18n = import('i18n')
 gnome = import('gnome')
 
+app_id = 'dev.bragefuglseth.Keypunch'
+
+if get_option('buildtype') != 'release'
+  app_id += '.Devel'
+endif
+
 subdir('po')
 subdir('data')
 subdir('src')

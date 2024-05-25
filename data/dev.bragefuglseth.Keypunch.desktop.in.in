@@ -2,7 +2,7 @@
 Name=Keypunch
 Comment=Practice your typing skills
 Exec=keypunch
-Icon=dev.bragefuglseth.Keypunch
+Icon=@icon@
 Terminal=false
 Type=Application
 Categories=Education;GTK;GNOME;

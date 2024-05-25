@@ -1,6 +1,7 @@
 pkgdatadir = get_option('prefix') / get_option('datadir') / meson.project_name()
 
 conf = configuration_data()
+conf.set_quoted('APP_ID', app_id)
 conf.set_quoted('VERSION', meson.project_version())
 conf.set_quoted('GETTEXT_PACKAGE', 'keypunch')
 conf.set_quoted('LOCALEDIR', get_option('prefix') / get_option('localedir'))

@@ -1,6 +1,13 @@
+desktop_conf = configuration_data()
+desktop_conf.set('icon', app_id)
+
 desktop_file = i18n.merge_file(
-        input: 'dev.bragefuglseth.Keypunch.desktop.in',
-       output: 'dev.bragefuglseth.Keypunch.desktop',
+        input: configure_file(
+	    input: 'dev.bragefuglseth.Keypunch.desktop.in.in',
+	    output: '@BASENAME@',
+	    configuration: desktop_conf
+	  ),
+       output: '@0@.desktop'.format(app_id),
          type: 'desktop',
        po_dir: '../po',
       install: true,
@@ -11,6 +18,12 @@ desktop_utils = find_program('desktop-file-validate', required: false)
 if desktop_utils.found()
   test('Validate desktop file', desktop_utils, args: [desktop_file])
 endif
+
+run_command('cp', 'dev.bragefuglseth.Keypunch.metainfo.xml.in.in', 'dev.bragefuglseth.Keypunch.metainfo.xml.in', check: true)
+
+# Sed is used as a poor man's `configure_file` here because we need access to it in the src dir
+sed = find_program('sed', required: true)
+run_command(sed, '-i', 's/@app-id@/' + app_id + '/g', 'dev.bragefuglseth.Keypunch.metainfo.xml.in', check: true)
 
 appstream_file = i18n.merge_file(
         input: 'dev.bragefuglseth.Keypunch.metainfo.xml.in',
@@ -36,6 +49,7 @@ run_command(msgfmt,
 )
 
 install_data('dev.bragefuglseth.Keypunch.gschema.xml',
+  rename: '@0@.gschema.xml'.format(app_id),
   install_dir: get_option('datadir') / 'glib-2.0' / 'schemas'
 )
 

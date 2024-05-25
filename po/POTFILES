@@ -1,5 +1,5 @@
-data/dev.bragefuglseth.Keypunch.desktop.in
-data/dev.bragefuglseth.Keypunch.metainfo.xml.in
+data/dev.bragefuglseth.Keypunch.desktop.in.in
+data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in
 data/dev.bragefuglseth.Keypunch.gschema.xml
 src/widgets/custom_text_dialog.blp
 src/widgets/custom_text_dialog.rs

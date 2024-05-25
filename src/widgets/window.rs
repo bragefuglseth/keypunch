@@ -25,6 +25,7 @@ mod ui_state;
 
 use crate::text_generation::Language;
 use crate::widgets::{KpResultsView, KpTextView};
+use crate::config::APP_ID;
 use adw::prelude::*;
 use adw::subclass::prelude::*;
 use gettextrs::gettext;
@@ -163,6 +164,10 @@ mod imp {
     impl ObjectImpl for KpWindow {
         fn constructed(&self) {
             self.parent_constructed();
+
+            if APP_ID.ends_with(".Devel") {
+                self.obj().add_css_class("devel");
+            }
 
             self.load_settings();
             self.setup_session_config();

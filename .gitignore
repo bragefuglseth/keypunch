@@ -9,6 +9,7 @@ _build/
 builddir/
 build-dir/
 src/config.rs
+data/dev.bragefuglseth.Keypunch.metainfo.xml.in
 data/resources/dev.bragefuglseth.Keypunch.metainfo.xml
 .flatpak/
 vendor
