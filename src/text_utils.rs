@@ -38,10 +38,15 @@ pub fn validate_with_replacements(original: &str, typed: &str) -> Vec<(bool, usi
         })
         .zip(typed.graphemes(true))
         .scan(
-            0,
-            |accumulated_offset,
+            (0, 0),
+            |(accumulator_line, accumulated_offset),
              ((line_num, (original_grapheme_idx, original_grapheme)), typed_grapheme)| {
                 let correct = original_grapheme == typed_grapheme;
+
+                if *accumulator_line != line_num {
+                    *accumulator_line = line_num;
+                    *accumulated_offset = 0;
+                }
 
                 if let Some(replacement) = replacement(original_grapheme) {
                     let vec = Some(

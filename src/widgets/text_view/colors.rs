@@ -118,6 +118,8 @@ impl imp::KpTextView {
             .iter_at_line_index(typed_line as i32, typed_offset as i32)
             .expect("comparison doesn't contain indices that are out of bounds");
 
+        println!("line {typed_line}, offset {typed_offset}");
+
         // To color as little text as possible, we start 2 lines above
         // the currently active one (just enough to account for the scrolling animation in all cases)
         let mut color_start_iter = typed_iter.clone();
@@ -125,7 +127,8 @@ impl imp::KpTextView {
         text_view.backward_display_line(&mut color_start_iter);
         text_view.backward_display_line(&mut color_start_iter);
         text_view.backward_display_line_start(&mut color_start_iter);
-        let color_start_offset = color_start_iter.offset();
+
+        let color_start_offset = buf.text(&buf.start_iter(), &color_start_iter, true).graphemes(true).count();
 
         let comparison = validate_with_replacements(&original, &typed);
 
@@ -156,7 +159,7 @@ impl imp::KpTextView {
         text_view.forward_display_line_end(&mut color_end_iter);
         let color_end_offset = color_end_iter.offset();
 
-        for n in comparison.len()..color_end_offset as usize {
+        for n in typed_iter.offset()..color_end_offset {
             let start_iter = buf.iter_at_offset(n as i32);
             let end_iter = buf.iter_at_offset(n as i32 + 1);
 

@@ -8,7 +8,7 @@ KpTextView.unfocused {
 
 KpTextView > textview {
   font-size: 1.6rem;
-  line-height: 45px;
+  line-height: 50px; /* This needs to mirror the value in `src/widgets/text_view.rs` */
   background: none;
   font-variant-ligatures: none;
 }

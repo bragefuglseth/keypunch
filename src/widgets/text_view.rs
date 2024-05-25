@@ -11,7 +11,7 @@ use gtk::glib;
 use gtk::{gdk, gsk};
 use std::cell::{Cell, OnceCell, RefCell};
 
-const LINE_HEIGHT: i32 = 45;
+const LINE_HEIGHT: i32 = 50;
 
 mod imp {
     use super::*;
