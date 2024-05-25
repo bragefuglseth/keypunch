@@ -164,17 +164,11 @@ impl imp::KpWindow {
             }),
         );
 
-        self.block_text_view_unfocus.set(true);
-
         dialog.connect_closed(glib::clone!(@weak self as imp => move |dialog| {
             imp.add_recent_language(dialog.selected_language());
-            imp.block_text_view_unfocus.set(false);
-            imp.obj().action_set_enabled("win.text-language-dialog", true);
             imp.focus_text_view();
         }));
 
-        self.obj()
-            .action_set_enabled("win.text-language-dialog", false);
         dialog.present(self.obj().upcast_ref::<gtk::Widget>());
     }
 
@@ -238,10 +232,8 @@ impl imp::KpWindow {
             }),
         );
 
-        self.block_text_view_unfocus.set(true);
 
         dialog.connect_closed(glib::clone!(@weak self as imp => move |_| {
-            imp.block_text_view_unfocus.set(false);
             imp.focus_text_view();
         }));
 
@@ -382,8 +374,6 @@ impl imp::KpWindow {
         results_view.set_show_language(session_is_generated);
 
         self.main_stack.set_visible_child_name("results");
-
-        self.block_text_view_unfocus.set(true);
 
         self.obj().set_focus_widget(None::<&gtk::Widget>);
         glib::timeout_add_local_once(

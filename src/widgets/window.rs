@@ -131,7 +131,6 @@ mod imp {
         pub cursor_hidden_timestamp: Cell<u32>,
         pub last_unfocus_timestamp: Cell<Option<Instant>>,
         pub last_unfocus_event: RefCell<Option<glib::SourceId>>,
-        pub block_text_view_unfocus: Cell<bool>,
     }
 
     #[glib::object_subclass]
@@ -215,11 +214,6 @@ mod imp {
                 Some(&gettext("Special thanks to")),
                 &["Sophie Herold https://www.patreon.com/sophieh"],
             );
-
-            self.block_text_view_unfocus.set(true);
-            about.connect_closed(glib::clone!(@weak self as imp => move |_| {
-                imp.block_text_view_unfocus.set(false);
-            }));
 
             about.present(self.obj().upcast_ref::<gtk::Widget>());
         }

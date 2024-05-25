@@ -52,7 +52,6 @@ impl imp::KpWindow {
 
     pub(super) fn ready(&self, animate: bool) {
         self.running.set(false);
-        self.block_text_view_unfocus.set(false);
         self.header_bar_running.add_css_class("hide-controls");
         self.text_view.set_running(false);
         self.text_view.set_accepts_input(true);
