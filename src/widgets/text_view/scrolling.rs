@@ -35,22 +35,20 @@ impl imp::KpTextView {
 
         let text_view = self.text_view.get();
 
-        let buffer = text_view.buffer();
-        let mut iter = buffer
+        let buf = text_view.buffer();
+        let iter = buf
             .iter_at_line_index(caret_line as i32, caret_idx as i32)
-            .expect("comparison doesn't contain indices exceeding any lines");
-
-        // If we're at the first line, act as if we're going to line 2 for
-        // the sake of vertical centering
-        let mut line_check_iter = iter.clone();
-        if !text_view.backward_display_line(&mut line_check_iter) {
-            text_view.forward_display_line(&mut iter);
-        }
+            .unwrap_or(buf.end_iter());
 
         let location = text_view.iter_location(&iter);
-        let y = (location.y() + location.height() / 2)
-            .checked_sub(obj.height() / 2)
-            .unwrap_or(0) as f64;
+
+        let y = if typed.is_empty() {
+            0.
+        } else {
+            (location.y() + location.height() / 2)
+                .checked_sub(obj.height() / 2)
+                .unwrap_or(0) as f64
+        };
 
         let current_position = self
             .text_view
@@ -62,7 +60,7 @@ impl imp::KpTextView {
         if force {
             self.text_view
                 .vadjustment()
-                .expect("text view has vadjustment")
+                .expect("text view should have vadjustment")
                 .set_value(y);
         } else {
             let line_has_changed = (scroll_animation.value_to() - y).abs() > 10.;
@@ -75,3 +73,4 @@ impl imp::KpTextView {
         }
     }
 }
+

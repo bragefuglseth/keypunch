@@ -174,16 +174,14 @@ impl KpTextView {
         self.imp().push_original_text(text);
     }
 
-    pub fn reset(&self, animate: bool) {
+    pub fn reset(&self) {
         self.set_original_text("");
         self.set_typed_text("");
         self.set_running(false);
 
-        if !animate {
-            let imp = self.imp();
-            imp.scroll_animation().skip();
-            imp.caret_x_animation().skip();
-            imp.caret_y_animation().skip();
-        }
+        let imp = self.imp();
+        imp.scroll_animation().skip();
+        imp.caret_x_animation().skip();
+        imp.caret_y_animation().skip();
     }
 }

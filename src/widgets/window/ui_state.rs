@@ -4,14 +4,14 @@ impl imp::KpWindow {
     pub(super) fn setup_stop_button(&self) {
         self.stop_button
             .connect_clicked(glib::clone!(@weak self as imp => move |_| {
-                imp.ready(true);
+                imp.ready();
             }));
     }
 
     pub(super) fn setup_continue_button(&self) {
         self.continue_button
             .connect_clicked(glib::clone!(@weak self as imp => move |_| {
-                imp.ready(false);
+                imp.ready();
             }));
     }
 
@@ -50,14 +50,14 @@ impl imp::KpWindow {
         self.obj().add_controller(motion_ctrl);
     }
 
-    pub(super) fn ready(&self, animate: bool) {
+    pub(super) fn ready(&self) {
         self.running.set(false);
         self.header_bar_running.add_css_class("hide-controls");
         self.text_view.set_running(false);
         self.text_view.set_accepts_input(true);
         self.main_stack.set_visible_child_name("session");
         self.header_stack.set_visible_child_name("ready");
-        self.text_view.reset(animate);
+        self.text_view.reset();
         self.focus_text_view();
 
         self.update_original_text();

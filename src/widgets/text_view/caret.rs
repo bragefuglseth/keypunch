@@ -79,7 +79,7 @@ impl imp::KpTextView {
         // Calculate x position
         let caret_iter = buf
             .iter_at_line_index(caret_line as i32, caret_idx as i32)
-            .expect("comparison is generated from original text");
+            .unwrap_or(buf.end_iter());
         let (pos, _) = text_view.cursor_locations(Some(&caret_iter));
         let (mut x, _) =
             text_view.buffer_to_window_coords(gtk::TextWindowType::Widget, pos.x(), pos.y());

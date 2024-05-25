@@ -116,9 +116,7 @@ impl imp::KpTextView {
         let (typed_line, typed_offset) = line_offset_with_replacements(&original, typed.graphemes(true).count());
         let typed_iter = buf
             .iter_at_line_index(typed_line as i32, typed_offset as i32)
-            .expect("comparison doesn't contain indices that are out of bounds");
-
-        println!("line {typed_line}, offset {typed_offset}");
+            .unwrap_or(buf.end_iter());
 
         // To color as little text as possible, we start 2 lines above
         // the currently active one (just enough to account for the scrolling animation in all cases)

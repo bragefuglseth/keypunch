@@ -151,7 +151,7 @@ mod imp {
             });
 
             klass.install_action("win.cancel-session", None, move |window, _, _| {
-                window.imp().ready(false);
+                window.imp().ready();
             });
         }
 
@@ -178,7 +178,7 @@ mod imp {
             self.setup_ui_hiding();
             self.show_cursor();
 
-            self.ready(false);
+            self.ready();
         }
     }
     impl WidgetImpl for KpWindow {}
