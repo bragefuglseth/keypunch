@@ -43,7 +43,7 @@ jobs:
         uses: andyholmes/flatter@main
         with:
           files: |
-            build-aux/flatpak/dev.bragefuglseth.Keypunch.devel.json
+            build-aux/flatpak/dev.bragefuglseth.Keypunch.Devel.json
           arch: ${{ matrix.arch }}
           upload-bundles: true
           upload-pages-artifact: ${{ matrix.arch == 'aarch64' }}
