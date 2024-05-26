@@ -1,0 +1,23 @@
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+name: CI
+
+jobs:
+
+  flatpak:
+    name: Flatpak
+    runs-on: ubuntu-latest
+    container:
+      image: bilelmoussaoui/flatpak-github-actions:gnome-nightly
+      options: --privileged
+    steps:
+    - uses: actions/checkout@v3
+    - uses: bilelmoussaoui/flatpak-github-actions/flatpak-builder@v6
+      with:
+        bundle: fretboard.flatpak
+        manifest-path: build-aux/dev.bragefuglseth.Keypunch.Devel.json
+        run-tests: true
+        cache-key: flatpak-builder-${{ github.sha }}
