@@ -33,7 +33,7 @@ impl imp::KpWindow {
                                 @weak focus_button,
                                 @weak imp
                                 => move || {
-                                    if !imp.text_view_focused() && imp.obj().visible_dialog().is_none() {
+                                    if !imp.text_view_focused() && imp.obj().visible_dialog().is_none() && imp.main_stack.visible_child_name().unwrap() == "session" {
                                         bottom_stack.set_visible_child(&focus_button);
                                         text_view.add_css_class("unfocused");
                                     }
