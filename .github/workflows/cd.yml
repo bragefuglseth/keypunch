@@ -34,14 +34,6 @@ jobs:
         with:
           platforms: arm64
 
-      # See "GPG Signing" below
-      - name: Setup GPG
-        id: gpg
-        uses: crazy-max/ghaction-import-gpg@v5
-        with:
-          gpg_private_key: ${{ secrets.GPG_PRIVATE_KEY }}
-          passphrase: ${{ secrets.GPG_PASSPHRASE }}
-
       # Generate a CNAME file on-the-fly for a configured host
       - name: Generate CNAME
         run: |
@@ -53,7 +45,6 @@ jobs:
           files: |
             build-aux/flatpak/dev.bragefuglseth.Keypunch.devel.json
           arch: ${{ matrix.arch }}
-          gpg-sign: ${{ steps.gpg.outputs.fingerprint }}
           upload-bundles: true
           upload-pages-artifact: ${{ matrix.arch == 'aarch64' }}
           upload-pages-includes: |
