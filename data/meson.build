@@ -49,7 +49,6 @@ run_command(msgfmt,
 )
 
 install_data('dev.bragefuglseth.Keypunch.gschema.xml',
-  rename: '@0@.gschema.xml'.format(app_id),
   install_dir: get_option('datadir') / 'glib-2.0' / 'schemas'
 )
 

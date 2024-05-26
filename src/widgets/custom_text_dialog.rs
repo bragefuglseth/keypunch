@@ -1,6 +1,5 @@
 use adw::prelude::*;
 use adw::subclass::prelude::*;
-use gettextrs::gettext;
 use glib::subclass::Signal;
 use gtk::glib;
 use std::cell::{Cell, RefCell};

@@ -58,8 +58,8 @@
   </branding>
   <url type="homepage">https://github.com/bragefuglseth/keypunch</url>
   <url type="bugtracker">https://github.com/bragefuglseth/keypunch/issues</url>
-  <url type="contribute">https://github.com/bragefuglseth/keypunch</url>
-  <url type="translate">https://github.com/bragefuglseth/keypunch</url>
+  <url type="contribute">https://github.com/bragefuglseth/keypunch/blob/main/CONTRIBUTING.md</url>
+  <url type="translate">https://github.com/bragefuglseth/keypunch/blob/main/CONTRIBUTING.md#translating</url>
   <url type="vcs-browser">https://github.com/bragefuglseth/keypunch</url>
   <url type="help">https://matrix.to/#/#keypunch:gnome.org</url>
   <url type="contact">https://matrix.to/#/#keypunch:gnome.org</url>
@@ -84,3 +84,4 @@
     </release>
   </releases>
 </component>
+
