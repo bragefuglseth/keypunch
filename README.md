@@ -3,7 +3,7 @@
 # Keypunch
 
 [![Chat on Matrix](https://img.shields.io/badge/chat-%23keypunch%3Agnome.org-mediumorchid?style=flat&logo=matrix
-)](https://matrix.to/#/#keypunch.gnome.org)
+)](https://matrix.to/#/#keypunch:gnome.org)
 [![Please do not theme this app](https://stopthemingmy.app/badge.svg)](https://stopthemingmy.app)
 
 ![screenshot](/data/screenshots/1-ready.png)
