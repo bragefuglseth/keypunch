@@ -23,9 +23,9 @@ mod session;
 mod settings;
 mod ui_state;
 
+use crate::config::APP_ID;
 use crate::text_generation::Language;
 use crate::widgets::{KpResultsView, KpTextView};
-use crate::config::APP_ID;
 use adw::prelude::*;
 use adw::subclass::prelude::*;
 use gettextrs::gettext;
@@ -203,10 +203,13 @@ mod imp {
 
             about.set_developers(&["Brage Fuglseth https://bragefuglseth.dev"]);
 
-            about.add_credit_section(Some(&gettext("Ortography by")), &[
-                "Gregor Niehl https://gregorni.gitlab.io/",
-                "Ibrahim Muhammad",
-            ]);
+            about.add_credit_section(
+                Some(&gettext("Ortography by")),
+                &[
+                    "Gregor Niehl https://gregorni.gitlab.io/",
+                    "Ibrahim Muhammad",
+                ],
+            );
 
             // Translators: Replace "translator-credits" with your names, one name per line
             about.set_translator_credits(&gettext("translator-credits"));

@@ -1,6 +1,7 @@
 use super::*;
+use crate::text_utils::{line_offset_with_replacements, GraphemeState};
+use gtk::pango;
 use unicode_segmentation::UnicodeSegmentation;
-use crate::text_utils::line_offset_with_replacements;
 
 impl imp::KpTextView {
     pub(super) fn setup_color_scheme(&self) {
@@ -21,6 +22,10 @@ impl imp::KpTextView {
         let tag_untyped = buf.create_tag(Some("untyped"), &[]).unwrap();
         tag_untyped.set_foreground_rgba(Some(&gdk::RGBA::new(0.547, 0.547, 0.547, 1.)));
 
+        let tag_unfinished = buf.create_tag(Some("unfinished"), &[]).unwrap();
+        tag_unfinished.set_foreground_rgba(Some(&gdk::RGBA::new(0.547, 0.547, 0.547, 1.)));
+        tag_unfinished.set_underline(pango::Underline::Low);
+
         let tag_typed = buf.create_tag(Some("typed"), &[]).unwrap();
         tag_typed.set_foreground_rgba(Some(&gdk::RGBA::new(0.180, 0.180, 0.180, 1.)));
 
@@ -35,11 +40,15 @@ impl imp::KpTextView {
         let tag_untyped_hc = buf.create_tag(Some("untyped-hc"), &[]).unwrap();
         tag_untyped_hc.set_foreground_rgba(Some(&gdk::RGBA::new(0.380, 0.380, 0.380, 1.)));
 
+        let tag_unfinished_hc = buf.create_tag(Some("unfinished-hc"), &[]).unwrap();
+        tag_unfinished_hc.set_foreground_rgba(Some(&gdk::RGBA::new(0.380, 0.380, 0.380, 1.)));
+        tag_unfinished_hc.set_underline(pango::Underline::Low);
+
         let tag_typed_hc = buf.create_tag(Some("typed-hc"), &[]).unwrap();
         tag_typed_hc.set_foreground_rgba(Some(&gdk::RGBA::new(0., 0., 0., 1.)));
 
         let tag_mistake_hc = buf.create_tag(Some("mistake-hc"), &[]).unwrap();
-        tag_mistake_hc.set_foreground_rgba(Some(&gdk::RGBA::new(0.976, 0.976, 0.976, 0.976)));
+        tag_mistake_hc.set_foreground_rgba(Some(&gdk::RGBA::new(0.976, 0.976, 0.976, 1.)));
         tag_mistake_hc.set_background_rgba(Some(&gdk::RGBA::new(0.875, 0.105, 0.141, 1.)));
 
         //////////
@@ -48,6 +57,10 @@ impl imp::KpTextView {
 
         let tag_untyped_dark = buf.create_tag(Some("untyped-dark"), &[]).unwrap();
         tag_untyped_dark.set_foreground_rgba(Some(&gdk::RGBA::new(0.484, 0.484, 0.484, 1.)));
+
+        let tag_unfinished_dark = buf.create_tag(Some("unfinished-dark"), &[]).unwrap();
+        tag_unfinished_dark.set_foreground_rgba(Some(&gdk::RGBA::new(0.484, 0.484, 0.484, 1.)));
+        tag_unfinished_dark.set_underline(pango::Underline::Low);
 
         let tag_typed_dark = buf.create_tag(Some("typed-dark"), &[]).unwrap();
         tag_typed_dark.set_foreground_rgba(Some(&gdk::RGBA::new(1., 1., 1., 1.)));
@@ -62,6 +75,10 @@ impl imp::KpTextView {
 
         let tag_untyped_dark_hc = buf.create_tag(Some("untyped-dark-hc"), &[]).unwrap();
         tag_untyped_dark_hc.set_foreground_rgba(Some(&gdk::RGBA::new(0.600, 0.600, 0.600, 1.)));
+
+        let tag_unfinished_dark_hc = buf.create_tag(Some("unfinished-dark-hc"), &[]).unwrap();
+        tag_unfinished_dark_hc.set_foreground_rgba(Some(&gdk::RGBA::new(0.600, 0.600, 0.600, 1.)));
+        tag_unfinished_dark_hc.set_underline(pango::Underline::Low);
 
         let tag_typed_dark_hc = buf.create_tag(Some("typed-dark-hc"), &[]).unwrap();
         tag_typed_dark_hc.set_foreground_rgba(Some(&gdk::RGBA::new(1., 1., 1., 1.)));
@@ -91,18 +108,32 @@ impl imp::KpTextView {
         let buf = text_view.buffer();
 
         let style = adw::StyleManager::default();
-        let (tag_untyped, tag_typed, tag_mistake, caret_color) =
+        let (tag_untyped, tag_unfinished, tag_typed, tag_mistake, caret_color) =
             match (style.is_dark(), style.is_high_contrast()) {
-                (false, false) => ("untyped", "typed", "mistake", (0.180, 0.180, 0.180)),
+                (false, false) => (
+                    "untyped",
+                    "unfinished",
+                    "typed",
+                    "mistake",
+                    (0.180, 0.180, 0.180),
+                ),
                 (false, true) => (
                     "untyped-hc",
+                    "unfinished-hc",
                     "typed-hc",
                     "mistake-hc",
                     (0.180, 0.180, 0.180),
                 ),
-                (true, false) => ("untyped-dark", "typed-dark", "mistake-dark", (1., 1., 1.)),
+                (true, false) => (
+                    "untyped-dark",
+                    "unfinished-dark",
+                    "typed-dark",
+                    "mistake-dark",
+                    (1., 1., 1.),
+                ),
                 (true, true) => (
                     "untyped-dark-hc",
+                    "unfinished-dark-hc",
                     "typed-dark-hc",
                     "mistake-dark-hc",
                     (1., 1., 1.),
@@ -113,7 +144,8 @@ impl imp::KpTextView {
         // for the sake of keeping things simple
         buf.remove_all_tags(&buf.start_iter(), &buf.end_iter());
 
-        let (typed_line, typed_offset) = line_offset_with_replacements(&original, typed.graphemes(true).count());
+        let (typed_line, typed_offset) =
+            line_offset_with_replacements(&original, typed.graphemes(true).count());
         let typed_iter = buf
             .iter_at_line_index(typed_line as i32, typed_offset as i32)
             .unwrap_or(buf.end_iter());
@@ -126,14 +158,17 @@ impl imp::KpTextView {
         text_view.backward_display_line(&mut color_start_iter);
         text_view.backward_display_line_start(&mut color_start_iter);
 
-        let color_start_offset = buf.text(&buf.start_iter(), &color_start_iter, true).graphemes(true).count();
+        let color_start_offset = buf
+            .text(&buf.start_iter(), &color_start_iter, true)
+            .graphemes(true)
+            .count();
 
         let comparison = validate_with_replacements(&original, &typed);
 
         comparison
             .iter()
             .skip(color_start_offset as usize)
-            .for_each(|(correct, line, start_idx, end_idx)| {
+            .for_each(|(state, line, start_idx, end_idx)| {
                 let start_iter_option = buf.iter_at_line_index(*line as i32, *start_idx as i32);
                 let end_iter_option = buf.iter_at_line_index(*line as i32, *end_idx as i32);
 
@@ -141,7 +176,11 @@ impl imp::KpTextView {
                     // Avoid applying the tag to line breaks, which leads to some weird side effects
                     // in the text view. Might be a GTK bug.
                     if !start_iter.ends_line() {
-                        let tag = if *correct { tag_typed } else { tag_mistake };
+                        let tag = match *state {
+                            GraphemeState::Correct => tag_typed,
+                            GraphemeState::Unfinished => tag_unfinished,
+                            GraphemeState::Mistake => tag_mistake,
+                        };
 
                         buf.apply_tag_by_name(tag, &start_iter, &end_iter);
                     }

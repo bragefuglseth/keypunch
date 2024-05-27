@@ -1,6 +1,8 @@
 use super::*;
 use crate::text_generation;
-use crate::text_utils::{calculate_accuracy, calculate_wpm};
+use crate::text_utils::{
+    calculate_accuracy, calculate_wpm, validate_with_replacements, GraphemeState,
+};
 use crate::widgets::{KpCustomTextDialog, KpTextLanguageDialog};
 use gettextrs::gettext;
 use glib::ControlFlow;
@@ -79,7 +81,12 @@ impl imp::KpWindow {
             let typed_grapheme_count = typed_text.graphemes(true).count();
 
             if typed_grapheme_count >= original_grapheme_count {
-                imp.finish();
+                let (last_grapheme_state, _, _, _) = validate_with_replacements(&original_text, &typed_text).pop()
+                    .expect("text view should have content at all times");
+
+                if last_grapheme_state != GraphemeState::Unfinished {
+                    imp.finish();
+                }
             }
 
             if typed_grapheme_count > original_grapheme_count.checked_sub(CHUNK_GRAPHEME_COUNT / 2).unwrap_or(CHUNK_GRAPHEME_COUNT) {
@@ -231,7 +238,6 @@ impl imp::KpWindow {
                 None
             }),
         );
-
 
         dialog.connect_closed(glib::clone!(@weak self as imp => move |_| {
             imp.focus_text_view();

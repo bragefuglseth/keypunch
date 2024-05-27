@@ -1,6 +1,6 @@
 use super::*;
-use unicode_segmentation::UnicodeSegmentation;
 use crate::text_utils::line_offset_with_replacements;
+use unicode_segmentation::UnicodeSegmentation;
 
 impl imp::KpTextView {
     pub(super) fn set_caret_x(&self, caret_x: f64) {
