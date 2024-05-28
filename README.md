@@ -6,7 +6,7 @@
 )](https://matrix.to/#/#keypunch:gnome.org)
 [![Please do not theme this app](https://stopthemingmy.app/badge.svg)](https://stopthemingmy.app)
 
-![screenshot](/data/screenshots/1-ready.png)
+![screenshot](/data/screenshots/2-ready.png)
 
 There is no doubt that typing on a keyboard is an essential skill in the digital age. Typing fast and accurately gives you more opportunities, more time for what matters to you, and a sense of self-accomplishment.
 
