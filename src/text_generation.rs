@@ -106,7 +106,7 @@ pub fn advanced(language: Language) -> String {
         | Language::Swahili
         | Language::Swedish => advanced_generic(&language.to_string(), " ", GENERIC_PUNCTUATION),
         Language::Arabic => advanced_generic(
-            &language.to_string(),
+            "ar_SA_advanced",
             " ",
             &[
                 Punctuation::suffix(".", true, 0.6),
