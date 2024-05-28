@@ -53,8 +53,8 @@
     </screenshot>
   </screenshots>
   <branding>
-    <color type="primary" scheme_preference="light">#dba3e1</color>
-    <color type="primary" scheme_preference="dark">#7e46b4</color>
+    <color type="primary" scheme_preference="light">#c879ff</color>
+    <color type="primary" scheme_preference="dark">#9a00d3</color>
   </branding>
   <url type="homepage">https://github.com/bragefuglseth/keypunch</url>
   <url type="bugtracker">https://github.com/bragefuglseth/keypunch/issues</url>
