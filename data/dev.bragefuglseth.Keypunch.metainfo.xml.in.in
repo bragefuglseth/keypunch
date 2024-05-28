@@ -32,12 +32,12 @@
   </description>
   <screenshots>
     <screenshot type="default">
-      <caption>Ready for typing</caption>
-      <image>https://raw.githubusercontent.com/bragefuglseth/keypunch/main/data/screenshots/1-ready.png</image>
+      <caption>In the middle of a session</caption>
+      <image>https://raw.githubusercontent.com/bragefuglseth/keypunch/main/data/screenshots/1-session.png</image>
     </screenshot>
     <screenshot>
-      <caption>In the middle of a session</caption>
-      <image>https://raw.githubusercontent.com/bragefuglseth/keypunch/main/data/screenshots/2-session.png</image>
+      <caption>Ready for typing</caption>
+      <image>https://raw.githubusercontent.com/bragefuglseth/keypunch/main/data/screenshots/2-ready.png</image>
     </screenshot>
     <screenshot>
       <caption>Session results</caption>
