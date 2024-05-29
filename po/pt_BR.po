@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: keypunch\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-29 09:01+0200\n"
+"POT-Creation-Date: 2024-05-29 09:16+0200\n"
 "PO-Revision-Date: 2024-05-22 15:14-0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -301,31 +301,29 @@ msgstr "Restaurar"
 msgid "Just Start Typing"
 msgstr "Apenas Comece a Digitar"
 
-#. Translators: "Activate" here means to
-#. focus the input widget
-#: src/widgets/window.blp:118
-#, fuzzy
-msgid "_Activate Entry"
-msgstr "Ativar Entrada"
+#. Translators: "Entry" here is the act of entering text
+#: src/widgets/window.blp:117
+msgid "Enable Entry"
+msgstr ""
 
-#: src/widgets/window.blp:144
+#: src/widgets/window.blp:143
 msgid "Results"
 msgstr "Resultados"
 
-#: src/widgets/window.blp:169
+#: src/widgets/window.blp:168
 #, fuzzy
 msgid "_Continue"
 msgstr "Continue"
 
-#: src/widgets/window.blp:199
+#: src/widgets/window.blp:198
 msgid "Text _Language"
 msgstr "_Idioma do Texto"
 
-#: src/widgets/window.blp:204
+#: src/widgets/window.blp:203
 msgid "_Keyboard Shortcuts"
 msgstr "_Atalhos de teclado"
 
-#: src/widgets/window.blp:209
+#: src/widgets/window.blp:208
 msgid "_About Keypunch"
 msgstr "_Sobre o Keypunch"
 
@@ -366,11 +364,11 @@ msgid "Ortography by"
 msgstr ""
 
 #. Translators: Replace "translator-credits" with your names, one name per line
-#: src/widgets/window.rs:215
+#: src/widgets/window.rs:216
 msgid "translator-credits"
 msgstr ""
 
-#: src/widgets/window.rs:220
+#: src/widgets/window.rs:221
 msgid "Special thanks to"
 msgstr ""
 
@@ -397,6 +395,10 @@ msgstr "Restaurar"
 #: src/widgets/window/session.rs:301 src/widgets/window/session.rs:303
 msgid "{}∶{}"
 msgstr "{}∶{}"
+
+#, fuzzy
+#~ msgid "_Activate Entry"
+#~ msgstr "Ativar Entrada"
 
 #~ msgid "Stop Session"
 #~ msgstr "Parar Sessão"

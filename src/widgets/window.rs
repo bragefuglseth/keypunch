@@ -206,6 +206,7 @@ mod imp {
             about.add_credit_section(
                 Some(&gettext("Ortography by")),
                 &[
+                    "Angelo Verlain Shema https://www.vixalien.com/",
                     "Gregor Niehl https://gregorni.gitlab.io/",
                     "Ibrahim Muhammad",
                 ],

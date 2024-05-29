@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: keypunch\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-29 09:01+0200\n"
+"POT-Creation-Date: 2024-05-29 09:16+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -274,29 +274,28 @@ msgstr ""
 msgid "Just Start Typing"
 msgstr ""
 
-#. Translators: "Activate" here means to
-#. focus the input widget
-#: src/widgets/window.blp:118
-msgid "_Activate Entry"
+#. Translators: "Entry" here is the act of entering text
+#: src/widgets/window.blp:117
+msgid "Enable Entry"
 msgstr ""
 
-#: src/widgets/window.blp:144
+#: src/widgets/window.blp:143
 msgid "Results"
 msgstr ""
 
-#: src/widgets/window.blp:169
+#: src/widgets/window.blp:168
 msgid "_Continue"
 msgstr ""
 
-#: src/widgets/window.blp:199
+#: src/widgets/window.blp:198
 msgid "Text _Language"
 msgstr ""
 
-#: src/widgets/window.blp:204
+#: src/widgets/window.blp:203
 msgid "_Keyboard Shortcuts"
 msgstr ""
 
-#: src/widgets/window.blp:209
+#: src/widgets/window.blp:208
 msgid "_About Keypunch"
 msgstr ""
 
@@ -337,11 +336,11 @@ msgid "Ortography by"
 msgstr ""
 
 #. Translators: Replace "translator-credits" with your names, one name per line
-#: src/widgets/window.rs:215
+#: src/widgets/window.rs:216
 msgid "translator-credits"
 msgstr ""
 
-#: src/widgets/window.rs:220
+#: src/widgets/window.rs:221
 msgid "Special thanks to"
 msgstr ""
 
