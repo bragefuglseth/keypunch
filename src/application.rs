@@ -60,12 +60,10 @@ mod imp {
         fn activate(&self) {
             let application = self.obj();
             // Get the current window or create one if necessary
-            let window = if let Some(window) = application.active_window() {
-                window
-            } else {
+            let window = application.active_window().unwrap_or_else(|| {
                 let window = KpWindow::new(&*application);
                 window.upcast()
-            };
+            });
 
             // Ask the window manager/compositor to present the window
             window.present();
