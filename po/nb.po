@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: keypunch\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-25 22:10+0200\n"
+"POT-Creation-Date: 2024-05-29 09:01+0200\n"
 "PO-Revision-Date: 2024-05-18 04:05+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -64,11 +64,11 @@ msgid "Get ready to accelerate your typing!"
 msgstr ""
 
 #: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:35
-msgid "Ready for typing"
+msgid "In the middle of a session"
 msgstr ""
 
 #: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:39
-msgid "In the middle of a session"
+msgid "Ready for typing"
 msgstr ""
 
 #: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:43
@@ -277,8 +277,9 @@ msgid "Main Menu"
 msgstr "Hovedmeny"
 
 #: src/widgets/window.blp:80
-msgid "Stop Session"
-msgstr "Stopp økt"
+#, fuzzy
+msgid "Restart"
+msgstr "Gjenopprett"
 
 #: src/widgets/window.blp:108
 msgid "Just Start Typing"
@@ -344,31 +345,31 @@ msgstr "5 minutter"
 msgid "10 minutes"
 msgstr "10 minutter"
 
-#: src/widgets/window.rs:206
+#: src/widgets/window.rs:207
 msgid "Ortography by"
 msgstr ""
 
 #. Translators: Replace "translator-credits" with your names, one name per line
-#: src/widgets/window.rs:212
+#: src/widgets/window.rs:215
 msgid "translator-credits"
 msgstr ""
 
-#: src/widgets/window.rs:217
+#: src/widgets/window.rs:220
 msgid "Special thanks to"
 msgstr ""
 
 #. Translators: The `{}` blocks will be replaced with the current word count and the total word count.
 #. Do not translate them! The slash sign is a special unicode character, if your language doesn't
 #. use a completely different sign, you should probably copy and paste it from the original string.
-#: src/widgets/window/session.rs:104
+#: src/widgets/window/session.rs:111
 msgid "{} ⁄ {}"
 msgstr "{} ⁄ {}"
 
-#: src/widgets/window/session.rs:221
+#: src/widgets/window/session.rs:228
 msgid "Changes discarded"
 msgstr "Endringer forkastet"
 
-#: src/widgets/window/session.rs:222
+#: src/widgets/window/session.rs:229
 msgid "Restore"
 msgstr "Gjenopprett"
 
@@ -377,9 +378,12 @@ msgstr "Gjenopprett"
 #. passed. Do not translate the `{}` blocks. Note that the `∶` sign is a special
 #. Unicode character; if your language doesn't use something completely different,
 #. you should probably copy and paste it from the original string.
-#: src/widgets/window/session.rs:295 src/widgets/window/session.rs:297
+#: src/widgets/window/session.rs:301 src/widgets/window/session.rs:303
 msgid "{}∶{}"
 msgstr "{}∶{}"
+
+#~ msgid "Stop Session"
+#~ msgstr "Stopp økt"
 
 #~ msgid "Session type"
 #~ msgstr "Modus"
