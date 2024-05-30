@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: keypunch\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-29 09:16+0200\n"
+"POT-Creation-Date: 2024-05-30 07:57+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -332,7 +332,7 @@ msgid "10 minutes"
 msgstr ""
 
 #: src/widgets/window.rs:207
-msgid "Ortography by"
+msgid "Orthography by"
 msgstr ""
 
 #. Translators: Replace "translator-credits" with your names, one name per line

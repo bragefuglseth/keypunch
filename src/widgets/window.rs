@@ -204,7 +204,7 @@ mod imp {
             about.set_developers(&["Brage Fuglseth https://bragefuglseth.dev"]);
 
             about.add_credit_section(
-                Some(&gettext("Ortography by")),
+                Some(&gettext("Orthography by")),
                 &[
                     "Angelo Verlain Shema https://www.vixalien.com/",
                     "Gregor Niehl https://gregorni.gitlab.io/",
