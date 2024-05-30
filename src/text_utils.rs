@@ -141,7 +141,7 @@ pub fn pop_grapheme(s: &str) -> String {
 
 pub fn calculate_wpm(duration: Duration, typed: &str) -> f64 {
     let minutes: f64 = duration.as_secs_f64() / 60.;
-    let words = typed.graphemes(true).count() / 5;
+    let words = typed.chars().count() / 5;
 
     words as f64 / minutes
 }
