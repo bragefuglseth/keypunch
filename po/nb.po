@@ -8,42 +8,47 @@ msgid ""
 msgstr ""
 "Project-Id-Version: keypunch\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-30 07:57+0200\n"
-"PO-Revision-Date: 2024-05-18 04:05+0200\n"
-"Last-Translator: \n"
+"POT-Creation-Date: 2024-05-30 16:55+0200\n"
+"PO-Revision-Date: 2024-05-30 16:37+0200\n"
+"Last-Translator: Brage <bragefuglseth@gnome.org>\n"
 "Language-Team: \n"
 "Language: nb\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.4.2\n"
+"X-Generator: Poedit 3.4.4\n"
 
 #: data/dev.bragefuglseth.Keypunch.desktop.in.in:3
-#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:6
+#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:7
 #: src/widgets/window.blp:5
 msgid "Keypunch"
 msgstr "Keypunch"
 
 #: data/dev.bragefuglseth.Keypunch.desktop.in.in:4
-#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:7
+#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:8
 msgid "Practice your typing skills"
-msgstr ""
+msgstr "Tren opp skriveferdighetene dine"
 
 #: data/dev.bragefuglseth.Keypunch.desktop.in.in:10
 msgid ""
 "typing;trainer;touch typing;keyboard;speed;wpm;words per minute;accuracy;"
 "test;"
 msgstr ""
+"skrive;trener;øving;touch;skriving;tastatur;fart;wpm;ord i minuttet;"
+"nøyaktighet;test;skrivetest;tasting;"
 
-#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:12
+#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:13
 msgid ""
 "There is no doubt that typing on a keyboard is an essential skill in the "
 "digital age. Typing fast and accurately gives you more opportunities, more "
 "time for what matters to you, and a sense of self-accomplishment."
 msgstr ""
+"Det er ingen tvil om at å skrive på tastatur er en essensiell evne i den "
+"digitale tidsalderen. Å skrive raskt og presist gir deg flere muligheter, "
+"mer tid til det som betyr noe for deg, og mestringsfølelse."
 
-#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:17
+#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:18
 msgid ""
 "Keypunch lets you practice typing. Thanks to fast-paced sessions with "
 "instant feedback afterwards and a plethora of available languages, you might "
@@ -51,41 +56,47 @@ msgid ""
 "some time, you will observe a noticeable increase in both the speed and the "
 "accuracy of which your thoughts and ideas are put into words on the screen."
 msgstr ""
+"Keypunch lar deg øve på å skrive. Takket være raske økter med umiddelbar "
+"tilbakemelding etterpå, og et stort utvalg av språk, kan det til og med "
+"hende at du har det litt gøy underveis. Med motivasjon, god teknikk og litt "
+"tålmodighet, vil du oppleve en synlig økning i både farten og nøyaktigheten "
+"du uttrykker tankene og idéene dine med."
 
-#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:24
+#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:25
 msgid ""
 "If you are already a racer at typing, Keypunch still has something for you. "
 "Try practicing with numbers and punctuation, or choose your own text to type "
 "out as fast as you can."
 msgstr ""
+"Hvis du allerede er en mester i å skrive, har Keypunch fortsatt noe du kan "
+"bryne deg på. Prøv å skrive så raskt som mulig med tall og tegnsetting, "
+"eller øv med egendefinert tekst."
 
-#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:29
+#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:30
 msgid "Get ready to accelerate your typing!"
-msgstr ""
+msgstr "Gjør deg klar til å akselerere skrivingen din!"
 
-#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:35
+#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:36
 msgid "In the middle of a session"
-msgstr ""
+msgstr "Midt i en økt"
 
-#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:39
+#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:40
 msgid "Ready for typing"
-msgstr ""
+msgstr "Klart for skriving"
 
-#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:43
-#, fuzzy
+#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:44
 msgid "Session results"
-msgstr "Modus"
+msgstr "Resultater for økten"
 
-#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:47
+#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:48
 msgid "Language selection"
-msgstr ""
+msgstr "Valg av språk"
 
-#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:51
-#, fuzzy
+#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:52
 msgid "Custom text entry"
 msgstr "Egendefinert tekst"
 
-#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:82
+#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:83
 msgid ""
 "This is the initial release of Keypunch! Give it a spin and say what you "
 "think."

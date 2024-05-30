@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<component type="desktop">
+<!-- Copyright 2024 Brage Fuglseth -->
+<component type="desktop-application">
   <id>@app-id@</id>
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>GPL-3.0-or-later</project_license>
@@ -77,7 +78,7 @@
   </supports>
   <launchable type="desktop-id">dev.bragefuglseth.Keypunch.desktop</launchable>
   <releases>
-    <release date="2024-05-19" version="1.0">
+    <release date="2024-05-30" version="1.0">
       <description translate="no">
         <p>This is the initial release of Keypunch! Give it a spin and say what you think.</p>
       </description>

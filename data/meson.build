@@ -29,6 +29,7 @@ appstream_file = i18n.merge_file(
         input: 'dev.bragefuglseth.Keypunch.metainfo.xml.in',
        output: 'dev.bragefuglseth.Keypunch.metainfo.xml',
        po_dir: '../po',
+         type: 'xml',
       install: true,
   install_dir: get_option('datadir') / 'metainfo'
 )

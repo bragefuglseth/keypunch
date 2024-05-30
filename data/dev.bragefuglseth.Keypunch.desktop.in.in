@@ -5,6 +5,6 @@ Exec=keypunch
 Icon=@icon@
 Terminal=false
 Type=Application
-Categories=Education;GTK;GNOME;
+Categories=Education;
 Keywords=typing;trainer;touch typing;keyboard;speed;wpm;words per minute;accuracy;test;
 StartupNotify=true
