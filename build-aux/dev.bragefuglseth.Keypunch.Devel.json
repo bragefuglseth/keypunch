@@ -13,7 +13,8 @@
         "--socket=fallback-x11",
         "--device=dri",
         "--socket=wayland",
-        "--env=RUST_BACKTRACE=1"
+        "--env=RUST_BACKTRACE=1",
+        "--env=LC_ALL=nb_NO.utf-8"
     ],
     "build-options" : {
         "append-path" : "/usr/lib/sdk/rust-stable/bin",

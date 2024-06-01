@@ -80,6 +80,7 @@
   <releases>
     <release date="2024-05-30" version="1.0">
       <description translate="no">
+        <!-- This is part of the changelog, and doesn't need to be translated. I've tried to mark it as untranslatable, and I have no idea why it doesn't work. -->
         <p>This is the initial release of Keypunch! Give it a spin and say what you think.</p>
       </description>
     </release>

@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: keypunch\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-30 16:55+0200\n"
-"PO-Revision-Date: 2024-05-30 16:37+0200\n"
+"POT-Creation-Date: 2024-06-01 21:16+0200\n"
+"PO-Revision-Date: 2024-06-01 21:27+0200\n"
 "Last-Translator: Brage <bragefuglseth@gnome.org>\n"
 "Language-Team: \n"
 "Language: nb\n"
@@ -44,7 +44,7 @@ msgid ""
 "digital age. Typing fast and accurately gives you more opportunities, more "
 "time for what matters to you, and a sense of self-accomplishment."
 msgstr ""
-"Det er ingen tvil om at å skrive på tastatur er en essensiell evne i den "
+"Det er ingen tvil om at å skrive på tastatur er en grunnleggende evne i den "
 "digitale tidsalderen. Å skrive raskt og presist gir deg flere muligheter, "
 "mer tid til det som betyr noe for deg, og mestringsfølelse."
 
@@ -96,24 +96,22 @@ msgstr "Valg av språk"
 msgid "Custom text entry"
 msgstr "Egendefinert tekst"
 
-#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:83
+#. This is part of the changelog, and doesn't need to be translated. I've tried to mark it as untranslatable, and I have no idea why it doesn't work.
+#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:84
 msgid ""
 "This is the initial release of Keypunch! Give it a spin and say what you "
 "think."
 msgstr ""
 
 #: data/dev.bragefuglseth.Keypunch.gschema.xml:20
-#, fuzzy
 msgid "Window Width"
 msgstr "Vindusbredde"
 
 #: data/dev.bragefuglseth.Keypunch.gschema.xml:24
-#, fuzzy
 msgid "Window Height"
 msgstr "Vindushøyde"
 
 #: data/dev.bragefuglseth.Keypunch.gschema.xml:28
-#, fuzzy
 msgid "Window Maximization"
 msgstr "Vindusmaksimering"
 
@@ -148,7 +146,6 @@ msgid "The code of the language used for automatically generated text"
 msgstr "Koden til språket som brukes til automatisk generert tekst"
 
 #: data/dev.bragefuglseth.Keypunch.gschema.xml:47
-#, fuzzy
 msgid "Recent Languages"
 msgstr "Nylige språk"
 
@@ -172,26 +169,27 @@ msgstr "Tekst som vises når «Egendefinert» er valgt fra modusmenyen"
 
 #: data/dev.bragefuglseth.Keypunch.gschema.xml:58
 msgid "Personal Best"
-msgstr ""
+msgstr "Personlig rekord"
 
 #: data/dev.bragefuglseth.Keypunch.gschema.xml:59
 msgid ""
 "The current highest amount of WPM received for each session type / duration "
 "and language"
 msgstr ""
+"De foreløpig raskeste fartsmålingene fra hver utprøvde kombinasjon av "
+"økttype, varighet og språk"
 
 #: src/widgets/custom_text_dialog.blp:37
 msgid "Insert custom text…"
 msgstr "Sett inn egendefinert tekst…"
 
 #: src/widgets/custom_text_dialog.blp:73
-#, fuzzy
 msgid "_Save"
-msgstr "Lagre"
+msgstr "_Lagre"
 
 #: src/widgets/results_view.blp:35
 msgid "New Personal Best for Configuration"
-msgstr ""
+msgstr "Ny personlig rekord for dette oppsettet"
 
 #: src/widgets/results_view.blp:46
 msgid "Words per Minute"
@@ -233,9 +231,8 @@ msgstr[1] "{} sekunder"
 #: src/widgets/text_language_dialog.blp:21
 #: src/widgets/text_language_dialog.blp:161
 #: src/widgets/text_language_dialog.blp:190
-#, fuzzy
 msgid "Add Language"
-msgstr "Tekstspråk"
+msgstr "Legg til språk"
 
 #: src/widgets/text_language_dialog.blp:51
 #: src/widgets/text_language_dialog.blp:55
@@ -269,28 +266,29 @@ msgid ""
 "You can help add a new text language to Keypunch by submitting a language "
 "request on GitHub. A GitHub account and some language knowledge is required."
 msgstr ""
+"Du kan hjelpe til med å få et nytt tekstspråk lagt til i Keypunch ved å "
+"sende inn en språkforespørsel på GitHub. Det vil være nødvendig med en "
+"GitHub-konto og litt språkkunnskap."
 
 #: src/widgets/text_language_dialog.blp:214
 msgid "_Create Request"
-msgstr ""
+msgstr "_Opprett forespørsel"
 
 #: src/widgets/text_view.blp:11
 msgid "Text View"
 msgstr "Skrivefelt"
 
 #: src/widgets/window.blp:54
-#, fuzzy
 msgid "_Edit Text"
-msgstr "Rediger tekst"
+msgstr "_Rediger tekst"
 
 #: src/widgets/window.blp:64
 msgid "Main Menu"
 msgstr "Hovedmeny"
 
 #: src/widgets/window.blp:80
-#, fuzzy
 msgid "Restart"
-msgstr "Gjenopprett"
+msgstr "Start på nytt"
 
 #: src/widgets/window.blp:108
 msgid "Just Start Typing"
@@ -299,16 +297,15 @@ msgstr "Begynn å skrive"
 #. Translators: "Entry" here is the act of entering text
 #: src/widgets/window.blp:117
 msgid "Enable Entry"
-msgstr ""
+msgstr "Aktiver inntasting"
 
 #: src/widgets/window.blp:143
 msgid "Results"
 msgstr "Resultater"
 
 #: src/widgets/window.blp:168
-#, fuzzy
 msgid "_Continue"
-msgstr "Fortsett"
+msgstr "_Fortsett"
 
 #: src/widgets/window.blp:198
 msgid "Text _Language"
@@ -356,16 +353,16 @@ msgstr "10 minutter"
 
 #: src/widgets/window.rs:207
 msgid "Orthography by"
-msgstr ""
+msgstr "Korrekturlest av"
 
 #. Translators: Replace "translator-credits" with your names, one name per line
 #: src/widgets/window.rs:216
 msgid "translator-credits"
-msgstr ""
+msgstr "Brage Fuglseth https://bragefuglseth.dev"
 
 #: src/widgets/window.rs:221
 msgid "Special thanks to"
-msgstr ""
+msgstr "Takk til"
 
 #. Translators: The `{}` blocks will be replaced with the current word count and the total word count.
 #. Do not translate them! The slash sign is a special unicode character, if your language doesn't
