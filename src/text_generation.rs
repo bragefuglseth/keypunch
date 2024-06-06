@@ -27,7 +27,7 @@ pub enum Language {
     NorwegianBokmaal,
     #[strum(message = "Norsk nynorsk", to_string = "nn_NO")]
     NorwegianNynorsk,
-    #[strum(message = "Español", to_string = "es_ES")]
+    #[strum(message = "Español", to_string = "es")]
     Spanish,
     #[strum(message = "Swahili", to_string = "sw_KE")]
     Swahili,
