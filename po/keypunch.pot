@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: keypunch\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-06-01 21:16+0200\n"
+"POT-Creation-Date: 2024-06-06 18:31+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -80,13 +80,6 @@ msgstr ""
 
 #: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:52
 msgid "Custom text entry"
-msgstr ""
-
-#. This is part of the changelog, and doesn't need to be translated. I've tried to mark it as untranslatable, and I have no idea why it doesn't work.
-#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:84
-msgid ""
-"This is the initial release of Keypunch! Give it a spin and say what you "
-"think."
 msgstr ""
 
 #: data/dev.bragefuglseth.Keypunch.gschema.xml:20
@@ -161,6 +154,36 @@ msgstr ""
 msgid ""
 "The current highest amount of WPM received for each session type / duration "
 "and language"
+msgstr ""
+
+#: data/resources/gtk/help-overlay.ui:11
+msgctxt "shortcut window"
+msgid "General"
+msgstr ""
+
+#: data/resources/gtk/help-overlay.ui:14
+msgctxt "shortcut window"
+msgid "Text Language"
+msgstr ""
+
+#: data/resources/gtk/help-overlay.ui:20
+msgctxt "shortcut window"
+msgid "Cancel Session"
+msgstr ""
+
+#: data/resources/gtk/help-overlay.ui:26
+msgctxt "shortcut window"
+msgid "Keyboard Shortcuts"
+msgstr ""
+
+#: data/resources/gtk/help-overlay.ui:32
+msgctxt "shortcut window"
+msgid "Close Window"
+msgstr ""
+
+#: data/resources/gtk/help-overlay.ui:38
+msgctxt "shortcut window"
+msgid "Quit"
 msgstr ""
 
 #: src/widgets/custom_text_dialog.blp:37
