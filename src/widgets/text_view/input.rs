@@ -1,5 +1,5 @@
 use super::*;
-use crate::text_utils::pop_grapheme;
+use crate::text_utils::{pop_word, pop_grapheme};
 
 impl imp::KpTextView {
     pub(super) fn setup_input_handling(&self) {
@@ -31,8 +31,14 @@ impl imp::KpTextView {
         let event_controller = gtk::EventControllerKey::new();
         event_controller.set_im_context(Some(&input_context));
 
-        event_controller.connect_key_pressed(glib::clone!(@strong obj => move |controller, key, _, _| {
+        event_controller.connect_key_pressed(glib::clone!(@strong obj => move |controller, key, _, modifier| {
                 match (obj.accepts_input(), key) {
+                   (true, gdk::Key::BackSpace) if modifier.contains(gdk::ModifierType::CONTROL_MASK) => {
+                        let original = obj.original_text();
+                        let current_typed = obj.typed_text();
+                        obj.set_typed_text(pop_word(&original, &current_typed));
+                        glib::signal::Propagation::Stop
+                    },
                     (true, gdk::Key::BackSpace) => {
                         let current_typed = obj.typed_text();
                         obj.set_typed_text(pop_grapheme(&current_typed));

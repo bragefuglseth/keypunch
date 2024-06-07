@@ -139,6 +139,31 @@ pub fn pop_grapheme(s: &str) -> String {
     v.into_iter().collect()
 }
 
+// Adjusts the typed text length so the caret is moved to the beginning of the current word
+// in the original text
+pub fn pop_word(original: &str, typed: &str) -> String {
+    let typed_graphemes_count = typed.graphemes(true).count();
+
+    let original_cutoff: String = original
+        .graphemes(true)
+        .take(typed_graphemes_count)
+        .collect();
+
+    let mut original_words_cutoff: Vec<_> = original_cutoff
+        .split_word_bounds()
+        .collect();
+
+    original_words_cutoff.pop();
+
+    let current_word_start = original_words_cutoff
+        .into_iter()
+        .collect::<String>()
+        .graphemes(true)
+        .count();
+
+    typed.graphemes(true).take(current_word_start).collect()
+}
+
 pub fn calculate_wpm(duration: Duration, typed: &str) -> f64 {
     let minutes: f64 = duration.as_secs_f64() / 60.;
     let words = typed.chars().count() / 5;
