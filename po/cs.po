@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: keypunch\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-06-01 21:16+0200\n"
+"POT-Creation-Date: 2024-06-07 08:45+0200\n"
 "PO-Revision-Date: 2024-06-06 17:27+0200\n"
 "Last-Translator: Amerey <info@amerey.eu>\n"
 "Language-Team: \n"
@@ -180,6 +180,38 @@ msgid ""
 msgstr ""
 "Aktuální nejvyšší počet slov za minutu obdržený pro každý typ relace / "
 "trvání a jazyk"
+
+#: data/resources/gtk/help-overlay.ui:11
+msgctxt "shortcut window"
+msgid "General"
+msgstr ""
+
+#: data/resources/gtk/help-overlay.ui:14
+#, fuzzy
+msgctxt "shortcut window"
+msgid "Text Language"
+msgstr "Jazyk textu"
+
+#: data/resources/gtk/help-overlay.ui:20
+msgctxt "shortcut window"
+msgid "Cancel Session"
+msgstr ""
+
+#: data/resources/gtk/help-overlay.ui:26
+#, fuzzy
+msgctxt "shortcut window"
+msgid "Keyboard Shortcuts"
+msgstr "_Klávesové zkratky"
+
+#: data/resources/gtk/help-overlay.ui:32
+msgctxt "shortcut window"
+msgid "Close Window"
+msgstr ""
+
+#: data/resources/gtk/help-overlay.ui:38
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr ""
 
 #: src/widgets/custom_text_dialog.blp:37
 msgid "Insert custom text…"

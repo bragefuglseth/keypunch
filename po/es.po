@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: keypunch\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-06-06 18:31+0200\n"
+"POT-Creation-Date: 2024-06-07 08:45+0200\n"
 "PO-Revision-Date: 2024-06-06 18:32+0200\n"
 "Last-Translator: Óscar Fernández Díaz <oscfdezdz@tuta.io>\n"
 "Language-Team: Spanish; Castilian\n"
@@ -97,6 +97,13 @@ msgstr "Selección de idioma"
 #: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:52
 msgid "Custom text entry"
 msgstr "Introducción de texto personalizada"
+
+#. This is part of the changelog, and doesn't need to be translated. I've tried to mark it as untranslatable, and I have no idea why it doesn't work.
+#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:84
+msgid ""
+"This is the initial release of Keypunch! Give it a spin and say what you "
+"think."
+msgstr ""
 
 #: data/dev.bragefuglseth.Keypunch.gschema.xml:20
 msgid "Window Width"

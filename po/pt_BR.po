@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: keypunch\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-06-01 21:16+0200\n"
+"POT-Creation-Date: 2024-06-07 08:45+0200\n"
 "PO-Revision-Date: 2024-06-06 22:43-0300\n"
 "Last-Translator: Rafael Fontenelle <rafaelff@gnome.org>\n"
 "Language-Team: Brazilian Portuguese\n"
@@ -180,6 +180,39 @@ msgid ""
 msgstr ""
 "A maior quantidade atual de PPM recebida para cada tipo / duração de sessão "
 "e idioma"
+
+#: data/resources/gtk/help-overlay.ui:11
+msgctxt "shortcut window"
+msgid "General"
+msgstr ""
+
+#: data/resources/gtk/help-overlay.ui:14
+#, fuzzy
+msgctxt "shortcut window"
+msgid "Text Language"
+msgstr "Idioma do texto"
+
+#: data/resources/gtk/help-overlay.ui:20
+#, fuzzy
+msgctxt "shortcut window"
+msgid "Cancel Session"
+msgstr "Parar Sessão"
+
+#: data/resources/gtk/help-overlay.ui:26
+#, fuzzy
+msgctxt "shortcut window"
+msgid "Keyboard Shortcuts"
+msgstr "_Atalhos de teclado"
+
+#: data/resources/gtk/help-overlay.ui:32
+msgctxt "shortcut window"
+msgid "Close Window"
+msgstr ""
+
+#: data/resources/gtk/help-overlay.ui:38
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr ""
 
 #: src/widgets/custom_text_dialog.blp:37
 msgid "Insert custom text…"
@@ -395,9 +428,6 @@ msgstr "{}∶{}"
 #, fuzzy
 #~ msgid "_Activate Entry"
 #~ msgstr "Ativar Entrada"
-
-#~ msgid "Stop Session"
-#~ msgstr "Parar Sessão"
 
 #~ msgid "Session type"
 #~ msgstr "Tipo da sessão"
