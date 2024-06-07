@@ -34,15 +34,26 @@ impl imp::KpTextView {
             line_offset_with_replacements(&original, typed.graphemes(true).count());
 
         let text_view = self.text_view.get();
-
         let buf = text_view.buffer();
+
         let iter = buf
             .iter_at_line_index(caret_line as i32, caret_idx as i32)
             .unwrap_or(buf.end_iter());
-
         let location = text_view.iter_location(&iter);
 
-        let y = if typed.is_empty() {
+        let snap_to_top = {
+            let mut control_iter = iter;
+
+            // If we can't move the iter backwards two lines, that must mean that we're
+            // at line 1 or 2. To prevent any form of slight scrolling when moving from line 1 to 2,
+            // we snap the text view to the top in that case. This is necessary because some scripts
+            // can have very tall letters.
+            text_view.backward_display_line(&mut control_iter);
+
+            !text_view.backward_display_line(&mut control_iter) || typed.is_empty()
+        };
+
+        let y = if snap_to_top {
             0.
         } else {
             (location.y() + location.height() / 2)
