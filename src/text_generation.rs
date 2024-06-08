@@ -21,6 +21,8 @@ pub enum Language {
     French,
     #[strum(message = "Deutsch", to_string = "de_DE")]
     German,
+    #[strum(message = "हिन्दी",  to_string = "hi_IN")]
+    Hindi,
     #[strum(message = "Kinyarwanda", to_string = "rw_RW")]
     Kinyarwanda,
     #[strum(message = "नेपाली",  to_string = "ne_NP")]
@@ -98,6 +100,7 @@ pub fn simple(language: Language) -> String {
         | Language::Danish
         | Language::French
         | Language::German
+        | Language::Hindi
         | Language::Kinyarwanda
         | Language::Nepali
         | Language::NorwegianBokmaal
@@ -149,8 +152,8 @@ pub fn advanced(language: Language) -> String {
                 Punctuation::wrapping("(", ")", false, 0.1),
             ],
         ),
-        // Nepali uses Devanagari punctuation
-        Language::Nepali => advanced_generic(
+        // Hindi & Nepali use Devanagari punctuation
+        Language::Hindi | Language::Nepali => advanced_generic(
             &language.to_string(),
             " ",
             DEVANAGARI_PUNCTUATION,
