@@ -1,0 +1,415 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the keypunch package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# Scrambled777 <weblate.scrambled777@simplelogin.com>, 2024.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: keypunch\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-06-07 08:45+0200\n"
+"PO-Revision-Date: 2024-06-08 13:33+0530\n"
+"Last-Translator: Scrambled777 <weblate.scrambled777@simplelogin.com>\n"
+"Language-Team: Hindi <indlinux-hindi@lists.sourceforge.net>\n"
+"Language: hi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Gtranslator 46.1\n"
+
+#: data/dev.bragefuglseth.Keypunch.desktop.in.in:3
+#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:7
+#: src/widgets/window.blp:5
+msgid "Keypunch"
+msgstr "Keypunch"
+
+#: data/dev.bragefuglseth.Keypunch.desktop.in.in:4
+#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:8
+msgid "Practice your typing skills"
+msgstr "अपने टाइपिंग कौशल का अभ्यास करें"
+
+#: data/dev.bragefuglseth.Keypunch.desktop.in.in:10
+msgid ""
+"typing;trainer;touch typing;keyboard;speed;wpm;words per minute;accuracy;"
+"test;"
+msgstr "टाइपिंग;प्रशिक्षक;स्पर्श टाइपिंग;कीबोर्ड;गति;wpm;शब्द प्रति मिनट;सटीकता;परीक्षण;"
+
+#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:13
+msgid ""
+"There is no doubt that typing on a keyboard is an essential skill in the "
+"digital age. Typing fast and accurately gives you more opportunities, more "
+"time for what matters to you, and a sense of self-accomplishment."
+msgstr ""
+"इसमें कोई संदेह नहीं है कि डिजिटल युग में कीबोर्ड पर टाइप करना एक आवश्यक कौशल है। तेजी से "
+"और सटीक टाइपिंग करने से आपको अधिक अवसर मिलते हैं, आपके लिए महत्वपूर्ण कामों के लिए अधिक "
+"समय मिलता है और आत्म-उपलब्धि की भावना होती है।"
+
+#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:18
+msgid ""
+"Keypunch lets you practice typing. Thanks to fast-paced sessions with "
+"instant feedback afterwards and a plethora of available languages, you might "
+"even have a little fun doing so. With determination, proper technique and "
+"some time, you will observe a noticeable increase in both the speed and the "
+"accuracy of which your thoughts and ideas are put into words on the screen."
+msgstr ""
+"Keypunch आपको टाइपिंग का अभ्यास करने देता है। इसके बाद तुरंत फीडबैक के साथ तेज़ गति वाले "
+"सत्रों और उपलब्ध भाषाओं की अधिकता के कारण, आपको ऐसा करने में थोड़ा मज़ा भी आ सकता है। "
+"दृढ़ संकल्प, उचित तकनीक और कुछ समय के साथ, आप स्क्रीन पर अपने विचारों और विचारों को "
+"शब्दों में व्यक्त करने की गति और सटीकता दोनों में उल्लेखनीय वृद्धि देखेंगे।"
+
+#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:25
+msgid ""
+"If you are already a racer at typing, Keypunch still has something for you. "
+"Try practicing with numbers and punctuation, or choose your own text to type "
+"out as fast as you can."
+msgstr ""
+"अगर आप पहले से ही टाइपिंग में माहिर हैं, तो Keypunch में आपके लिए भी कुछ है। संख्याओं और "
+"विराम चिह्नों के साथ अभ्यास करने की कोशिश करें, या जितनी जल्दी हो सके टाइप करने के लिए "
+"अपना खुद का पाठ चुनें।"
+
+#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:30
+msgid "Get ready to accelerate your typing!"
+msgstr "अपनी टाइपिंग में तेजी लाने के लिए तैयार हो जाइए!"
+
+#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:36
+msgid "In the middle of a session"
+msgstr "सत्र के मध्य में"
+
+#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:40
+msgid "Ready for typing"
+msgstr "टाइप करने के लिए तैयार"
+
+#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:44
+msgid "Session results"
+msgstr "सत्र परिणाम"
+
+#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:48
+msgid "Language selection"
+msgstr "भाषा चयन"
+
+#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:52
+msgid "Custom text entry"
+msgstr "तदनुकूल पाठ प्रविष्टि"
+
+#. This is part of the changelog, and doesn't need to be translated. I've tried to mark it as untranslatable, and I have no idea why it doesn't work.
+#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:84
+msgid ""
+"This is the initial release of Keypunch! Give it a spin and say what you "
+"think."
+msgstr "यह Keypunch का आरंभिक संस्करण है! इसे चलाएँ और बताएँ कि आपको क्या लगता है।"
+
+#: data/dev.bragefuglseth.Keypunch.gschema.xml:20
+msgid "Window Width"
+msgstr "खिड़की की चौड़ाई"
+
+#: data/dev.bragefuglseth.Keypunch.gschema.xml:24
+msgid "Window Height"
+msgstr "खिड़की की ऊंचाई"
+
+#: data/dev.bragefuglseth.Keypunch.gschema.xml:28
+msgid "Window Maximization"
+msgstr "खिड़की अधिकतमीकृत"
+
+#: data/dev.bragefuglseth.Keypunch.gschema.xml:32
+#: src/widgets/results_view.blp:83 src/widgets/window.blp:35
+msgid "Session Type"
+msgstr "सत्र प्रकार"
+
+#: data/dev.bragefuglseth.Keypunch.gschema.xml:36
+#: src/widgets/results_view.blp:96 src/widgets/window.blp:43
+msgid "Session Duration"
+msgstr "सत्र अवधि"
+
+#: data/dev.bragefuglseth.Keypunch.gschema.xml:37
+msgid "The duration of time-based sessions"
+msgstr "समय-आधारित सत्रों की अवधि"
+
+#. Translators: Insert the language code of your language here (or one of an equal implemented language, for example, the en_US word list shouldn't have any words differing from UK English). Do not remove the quotation marks.
+#: data/dev.bragefuglseth.Keypunch.gschema.xml:41
+msgid "\"en_US\""
+msgstr "\"hi\""
+
+#: data/dev.bragefuglseth.Keypunch.gschema.xml:42
+#: src/widgets/results_view.blp:109 src/widgets/text_language_dialog.blp:5
+#: src/widgets/text_language_dialog.blp:13
+#: src/widgets/text_language_dialog.blp:39
+msgid "Text Language"
+msgstr "पाठ भाषा"
+
+#: data/dev.bragefuglseth.Keypunch.gschema.xml:43
+msgid "The code of the language used for automatically generated text"
+msgstr "स्वचालित रूप से उत्पन्न पाठ के लिए प्रयुक्त भाषा का कोड"
+
+#: data/dev.bragefuglseth.Keypunch.gschema.xml:47
+msgid "Recent Languages"
+msgstr "हालिया भाषाएँ"
+
+#: data/dev.bragefuglseth.Keypunch.gschema.xml:48
+msgid "Languages shown in the list of recent ones in the text language dialog"
+msgstr "पाठ भाषा संवाद में हाल की भाषाओं की सूची में दिखाई गई भाषाएँ"
+
+#. Translators: This is the default text for custom typing sessions. Do not translate it literally, and do not remove the quotation marks. Replace it with an appropriate "sample sentence" from your language instead. The original text is an English pangram, so you can e.g. find a pangram in your language: https://clagnut.com/blog/2380
+#: data/dev.bragefuglseth.Keypunch.gschema.xml:52
+msgid "\"The quick brown fox jumps over the lazy dog.\""
+msgstr ""
+"\"ऋषियों को सताने वाले दुष्ट राक्षसों के राजा रावण का सर्वनाश करने वाले विष्णुवतार भगवान "
+"श्रीराम, अयोध्या के महाराज दशरथ के बड़े सपुत्र थे।\""
+
+#: data/dev.bragefuglseth.Keypunch.gschema.xml:53
+#: src/widgets/custom_text_dialog.blp:5 src/widgets/custom_text_dialog.blp:26
+msgid "Custom Text"
+msgstr "तदनुकूल पाठ"
+
+#: data/dev.bragefuglseth.Keypunch.gschema.xml:54
+msgid "Text displayed when “Custom” is chosen from the session menu"
+msgstr "सत्र मेनू से “तदनुकूल” चुनने पर प्रदर्शित पाठ"
+
+#: data/dev.bragefuglseth.Keypunch.gschema.xml:58
+msgid "Personal Best"
+msgstr "व्यक्तिगत सर्वश्रेष्ठ"
+
+#: data/dev.bragefuglseth.Keypunch.gschema.xml:59
+msgid ""
+"The current highest amount of WPM received for each session type / duration "
+"and language"
+msgstr "प्रत्येक सत्र प्रकार / अवधि और भाषा के लिए प्राप्त WPM की वर्तमान उच्चतम मात्रा"
+
+#: data/resources/gtk/help-overlay.ui:11
+msgctxt "shortcut window"
+msgid "General"
+msgstr "सामान्य"
+
+#: data/resources/gtk/help-overlay.ui:14
+msgctxt "shortcut window"
+msgid "Text Language"
+msgstr "पाठ भाषा"
+
+#: data/resources/gtk/help-overlay.ui:20
+msgctxt "shortcut window"
+msgid "Cancel Session"
+msgstr "सत्र रद्द करें"
+
+#: data/resources/gtk/help-overlay.ui:26
+msgctxt "shortcut window"
+msgid "Keyboard Shortcuts"
+msgstr "कीबोर्ड शॉर्टकट"
+
+#: data/resources/gtk/help-overlay.ui:32
+msgctxt "shortcut window"
+msgid "Close Window"
+msgstr "खिड़की बंद करें"
+
+#: data/resources/gtk/help-overlay.ui:38
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr "बंद करें"
+
+#: src/widgets/custom_text_dialog.blp:37
+msgid "Insert custom text…"
+msgstr "तदनुकूल पाठ सम्मिलित करें…"
+
+#: src/widgets/custom_text_dialog.blp:73
+msgid "_Save"
+msgstr "सहेजें (_S)"
+
+#: src/widgets/results_view.blp:35
+msgid "New Personal Best for Configuration"
+msgstr "विन्यास के लिए नया व्यक्तिगत सर्वश्रेष्ठ"
+
+#: src/widgets/results_view.blp:46
+msgid "Words per Minute"
+msgstr "शब्द प्रति मिनट"
+
+#: src/widgets/results_view.blp:67
+msgid "Correctness"
+msgstr "यथार्थता"
+
+#. Translators: The percentage label format of the results page.
+#. The `{}` block will be replaced with the percentage number,
+#. do not translate it!
+#: src/widgets/results_view.rs:130
+msgid "{}%"
+msgstr "{}%"
+
+#. Translators: The `{}` blocks will be replaced with the number of minutes
+#. and seconds. Do not translate them!
+#: src/widgets/results_view.rs:188
+msgid "{}m {}s"
+msgstr "{}m {}s"
+
+#. Translators: The `{}` block will be replaced with the number of minutes.
+#. Do not translate it!
+#: src/widgets/results_view.rs:192
+msgid "{} minute"
+msgid_plural "{} minutes"
+msgstr[0] "{} मिनट"
+msgstr[1] "{} मिनट"
+
+#. Translators: The `{}` block will be replaced with the number of seconds.
+#. Do not translate it!
+#: src/widgets/results_view.rs:196
+msgid "{} second"
+msgid_plural "{} seconds"
+msgstr[0] "{} सेकंड"
+msgstr[1] "{} सेकंड"
+
+#: src/widgets/text_language_dialog.blp:21
+#: src/widgets/text_language_dialog.blp:161
+#: src/widgets/text_language_dialog.blp:190
+msgid "Add Language"
+msgstr "भाषा जोड़ें"
+
+#: src/widgets/text_language_dialog.blp:51
+#: src/widgets/text_language_dialog.blp:55
+msgid "Search languages…"
+msgstr "भाषाएं खोजें…"
+
+#. Translators: Recent languages in text languages list
+#: src/widgets/text_language_dialog.blp:79
+msgid "Recent"
+msgstr "हालिया"
+
+#. Translators: Other languages in text languages list
+#: src/widgets/text_language_dialog.blp:84
+msgid "Other"
+msgstr "अन्य"
+
+#: src/widgets/text_language_dialog.blp:104
+msgid "Search Results"
+msgstr "खोज परिणाम"
+
+#: src/widgets/text_language_dialog.blp:140
+msgid "No Matches"
+msgstr "कोई मेल नहीं"
+
+#: src/widgets/text_language_dialog.blp:148
+msgid "Try a different search"
+msgstr "भिन्न खोज का प्रयास करें"
+
+#: src/widgets/text_language_dialog.blp:199
+msgid ""
+"You can help add a new text language to Keypunch by submitting a language "
+"request on GitHub. A GitHub account and some language knowledge is required."
+msgstr ""
+"आप GitHub पर भाषा अनुरोध जमा करके Keypunch में एक नई पाठ भाषा जोड़ने में मदद कर सकते "
+"हैं। GitHub खाता और कुछ भाषा ज्ञान की आवश्यकता है।"
+
+#: src/widgets/text_language_dialog.blp:214
+msgid "_Create Request"
+msgstr "अनुरोध बनाएं (_C)"
+
+#: src/widgets/text_view.blp:11
+msgid "Text View"
+msgstr "पाठ दृश्य"
+
+#: src/widgets/window.blp:54
+msgid "_Edit Text"
+msgstr "पाठ संपादित करें (_E)"
+
+#: src/widgets/window.blp:64
+msgid "Main Menu"
+msgstr "मुख्य मेनू"
+
+#: src/widgets/window.blp:80
+msgid "Restart"
+msgstr "पुनरारंभ"
+
+#: src/widgets/window.blp:108
+msgid "Just Start Typing"
+msgstr "बस टाइप करना शुरू करें"
+
+#. Translators: "Entry" here is the act of entering text
+#: src/widgets/window.blp:117
+msgid "Enable Entry"
+msgstr "प्रविष्टि सक्षम करें"
+
+#: src/widgets/window.blp:143
+msgid "Results"
+msgstr "परिणाम"
+
+#: src/widgets/window.blp:168
+msgid "_Continue"
+msgstr "जारी रखें (_C)"
+
+#: src/widgets/window.blp:198
+msgid "Text _Language"
+msgstr "पाठ भाषा (_L)"
+
+#: src/widgets/window.blp:203
+msgid "_Keyboard Shortcuts"
+msgstr "कीबोर्ड शॉर्टकट (_K)"
+
+#: src/widgets/window.blp:208
+msgid "_About Keypunch"
+msgstr "Keypunch का परिचय (_A)"
+
+#: src/widgets/window.rs:48
+msgid "Simple"
+msgstr "सरल"
+
+#: src/widgets/window.rs:49
+msgid "Advanced"
+msgstr "उन्नत"
+
+#: src/widgets/window.rs:50
+msgid "Custom"
+msgstr "तदनुकूल"
+
+#: src/widgets/window.rs:68
+msgid "15 seconds"
+msgstr "15 सेकेंड"
+
+#: src/widgets/window.rs:69
+msgid "30 seconds"
+msgstr "30 सेकेंड"
+
+#: src/widgets/window.rs:70
+msgid "1 minute"
+msgstr "1 मिनट"
+
+#: src/widgets/window.rs:71
+msgid "5 minutes"
+msgstr "5 मिनट"
+
+#: src/widgets/window.rs:72
+msgid "10 minutes"
+msgstr "10 मिनट"
+
+#: src/widgets/window.rs:207
+msgid "Orthography by"
+msgstr "इनके द्वारा ऑर्थोग्राफी"
+
+#. Translators: Replace "translator-credits" with your names, one name per line
+#: src/widgets/window.rs:216
+msgid "translator-credits"
+msgstr "Scrambled777 <weblate.scrambled777@simplelogin.com>"
+
+#: src/widgets/window.rs:221
+msgid "Special thanks to"
+msgstr "इनको विशेष धन्यवाद"
+
+#. Translators: The `{}` blocks will be replaced with the current word count and the total word count.
+#. Do not translate them! The slash sign is a special unicode character, if your language doesn't
+#. use a completely different sign, you should probably copy and paste it from the original string.
+#: src/widgets/window/session.rs:111
+msgid "{} ⁄ {}"
+msgstr "{} ⁄ {}"
+
+#: src/widgets/window/session.rs:228
+msgid "Changes discarded"
+msgstr "परिवर्तन खारिज कर दिए गए"
+
+#: src/widgets/window/session.rs:229
+msgid "Restore"
+msgstr "पुनर्स्थापित करें"
+
+#. Translators: The format of the timer. The first `{}` block will be replaced
+#. with the minutes passed, and the second one will be replaced with the seconds
+#. passed. Do not translate the `{}` blocks. Note that the `∶` sign is a special
+#. Unicode character; if your language doesn't use something completely different,
+#. you should probably copy and paste it from the original string.
+#: src/widgets/window/session.rs:301 src/widgets/window/session.rs:303
+msgid "{}∶{}"
+msgstr "{}∶{}"
