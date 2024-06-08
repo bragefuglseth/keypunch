@@ -23,6 +23,8 @@ pub enum Language {
     German,
     #[strum(message = "Kinyarwanda", to_string = "rw_RW")]
     Kinyarwanda,
+    #[strum(message = "नेपाली",  to_string = "ne_NP")]
+    Nepali,
     #[strum(message = "Norsk bokmål", to_string = "nb_NO")]
     NorwegianBokmaal,
     #[strum(message = "Norsk nynorsk", to_string = "nn_NO")]
@@ -38,6 +40,17 @@ pub enum Language {
 // A set of punctuation that works fine for most western languages
 const GENERIC_PUNCTUATION: &'static [Punctuation] = &[
     Punctuation::suffix(".", true, 0.6),
+    Punctuation::suffix(",", false, 1.0),
+    Punctuation::suffix(";", false, 0.1),
+    Punctuation::suffix(":", false, 0.2),
+    Punctuation::suffix("!", true, 0.3),
+    Punctuation::suffix("?", true, 0.3),
+    Punctuation::wrapping("\"", "\"", false, 0.2),
+    Punctuation::wrapping("(", ")", false, 0.1),
+];
+
+const DEVANAGARI_PUNCTUATION: &'static [Punctuation] = &[
+    Punctuation::suffix("।", true, 0.6),
     Punctuation::suffix(",", false, 1.0),
     Punctuation::suffix(";", false, 0.1),
     Punctuation::suffix(":", false, 0.2),
@@ -86,6 +99,7 @@ pub fn simple(language: Language) -> String {
         | Language::French
         | Language::German
         | Language::Kinyarwanda
+        | Language::Nepali
         | Language::NorwegianBokmaal
         | Language::NorwegianNynorsk
         | Language::Spanish
@@ -134,6 +148,12 @@ pub fn advanced(language: Language) -> String {
                 Punctuation::wrapping("\"", "\"", false, 0.2),
                 Punctuation::wrapping("(", ")", false, 0.1),
             ],
+        ),
+        // Nepali uses Devanagari punctuation
+        Language::Nepali => advanced_generic(
+            &language.to_string(),
+            " ",
+            DEVANAGARI_PUNCTUATION,
         ),
         // Spanish has "wrapping" exclamation points and question marks
         Language::Spanish => advanced_generic(
