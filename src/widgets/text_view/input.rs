@@ -20,6 +20,26 @@ impl imp::KpTextView {
             }
         }));
 
+        input_context.connect_retrieve_surrounding(glib::clone!(@weak obj => @default-return false, move |ctx| {
+            let current_typed = obj.typed_text();
+            let typed_len = current_typed.len() as i32;
+            ctx.set_surrounding_with_selection(&current_typed, typed_len, typed_len);
+            true
+        }));
+
+        input_context.connect_delete_surrounding(glib::clone!(@weak obj => @default-return false, move |_, offset, _| {
+            let mut current_typed = obj.typed_text();
+
+            // The cursor will always be at the end of the typed text,
+            // so we can safely just pop the {offset} last characters
+            for _ in 0..offset.abs() {
+                current_typed = pop_grapheme(&current_typed);
+            }
+
+            obj.set_typed_text(current_typed);
+            true
+        }));
+
         obj.connect_has_focus_notify(glib::clone!(@weak input_context =>  move |obj| {
             if obj.has_focus() {
                 input_context.focus_in();
@@ -27,6 +47,14 @@ impl imp::KpTextView {
                 input_context.focus_out();
             }
         }));
+
+        input_context.set_input_hints(gtk::InputHints::NO_SPELLCHECK);
+
+        let click_gesture = gtk::GestureClick::new();
+        click_gesture.connect_released(glib::clone!(@weak input_context => move |controller, _, _, _| {
+            input_context.activate_osk(controller.current_event());
+        }));
+        self.obj().add_controller(click_gesture);
 
         let event_controller = gtk::EventControllerKey::new();
         event_controller.set_im_context(Some(&input_context));
