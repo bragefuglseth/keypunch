@@ -21,11 +21,11 @@ pub enum Language {
     French,
     #[strum(message = "Deutsch", to_string = "de_DE")]
     German,
-    #[strum(message = "हिन्दी",  to_string = "hi_IN")]
+    #[strum(message = "हिन्दी", to_string = "hi_IN")]
     Hindi,
     #[strum(message = "Kinyarwanda", to_string = "rw_RW")]
     Kinyarwanda,
-    #[strum(message = "नेपाली",  to_string = "ne_NP")]
+    #[strum(message = "नेपाली", to_string = "ne_NP")]
     Nepali,
     #[strum(message = "Norsk bokmål", to_string = "nb_NO")]
     NorwegianBokmaal,
@@ -153,11 +153,9 @@ pub fn advanced(language: Language) -> String {
             ],
         ),
         // Hindi & Nepali use Devanagari punctuation
-        Language::Hindi | Language::Nepali => advanced_generic(
-            &language.to_string(),
-            " ",
-            DEVANAGARI_PUNCTUATION,
-        ),
+        Language::Hindi | Language::Nepali => {
+            advanced_generic(&language.to_string(), " ", DEVANAGARI_PUNCTUATION)
+        }
         // Spanish has "wrapping" exclamation points and question marks
         Language::Spanish => advanced_generic(
             &language.to_string(),

@@ -149,9 +149,7 @@ pub fn pop_word(original: &str, typed: &str) -> String {
         .take(typed_graphemes_count)
         .collect();
 
-    let mut original_words_cutoff: Vec<_> = original_cutoff
-        .split_word_bounds()
-        .collect();
+    let mut original_words_cutoff: Vec<_> = original_cutoff.split_word_bounds().collect();
 
     original_words_cutoff.pop();
 
