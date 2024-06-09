@@ -51,17 +51,6 @@ const GENERIC_PUNCTUATION: &'static [Punctuation] = &[
     Punctuation::wrapping("(", ")", false, 0.1),
 ];
 
-const DEVANAGARI_PUNCTUATION: &'static [Punctuation] = &[
-    Punctuation::suffix("।", true, 0.6),
-    Punctuation::suffix(",", false, 1.0),
-    Punctuation::suffix(";", false, 0.1),
-    Punctuation::suffix(":", false, 0.2),
-    Punctuation::suffix("!", true, 0.3),
-    Punctuation::suffix("?", true, 0.3),
-    Punctuation::wrapping("\"", "\"", false, 0.2),
-    Punctuation::wrapping("(", ")", false, 0.1),
-];
-
 #[derive(Clone, Copy)]
 struct Punctuation<'a> {
     prefix: Option<&'a str>,
@@ -153,9 +142,20 @@ pub fn advanced(language: Language) -> String {
             ],
         ),
         // Hindi & Nepali use Devanagari punctuation
-        Language::Hindi | Language::Nepali => {
-            advanced_generic(&language.to_string(), " ", DEVANAGARI_PUNCTUATION)
-        }
+        Language::Hindi | Language::Nepali => advanced_generic(
+            &language.to_string(),
+            " ",
+            &[
+                Punctuation::suffix("।", true, 0.6),
+                Punctuation::suffix(",", false, 1.0),
+                Punctuation::suffix(";", false, 0.1),
+                Punctuation::suffix(":", false, 0.2),
+                Punctuation::suffix("!", true, 0.3),
+                Punctuation::suffix("?", true, 0.3),
+                Punctuation::wrapping("\"", "\"", false, 0.2),
+                Punctuation::wrapping("(", ")", false, 0.1),
+            ],
+        ),
         // Spanish has "wrapping" exclamation points and question marks
         Language::Spanish => advanced_generic(
             &language.to_string(),
