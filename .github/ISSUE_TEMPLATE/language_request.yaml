@@ -23,13 +23,13 @@ body:
   - type: textarea
     id: punctuation
     attributes:
-      label: Syntax
+      label: Orthography
       description: >-
-        Briefly explain the letter usage, word splitting, and punctuation
+        Briefly explain the alphabet, word separation, and punctuation
         conventions of the language, in the context of typing on a keyboard. If
         it's hard to put into words initially, try comparing it to English.
       placeholder: >-
-        Norwegian Bookmal is pretty similar to other Western languages. Its
+        Norwegian Bokmaal is pretty similar to other Western languages. Its
         alphabet is almost identical to the English one, except that it has
         three extra letters: Æ, Ø and Å. Sentences and proper nouns begin with a
         capitalized letter. The punctuation marks used are , ; : to break up
