@@ -15,6 +15,13 @@ pub enum GraphemeState {
     Mistake,
 }
 
+pub fn process_custom_text(s: &str) -> String {
+    s
+        .lines()
+        .map(|l| l.trim().to_owned() + "\n")
+        .collect()
+}
+
 pub fn insert_replacements(string: &str) -> String {
     let mut s = string.to_string();
     for (original, replacement) in REPLACEMENTS {

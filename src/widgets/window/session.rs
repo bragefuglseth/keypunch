@@ -1,7 +1,7 @@
 use super::*;
 use crate::text_generation;
 use crate::text_utils::{
-    calculate_accuracy, calculate_wpm, validate_with_replacements, GraphemeState,
+    process_custom_text, calculate_accuracy, calculate_wpm, validate_with_replacements, GraphemeState,
 };
 use crate::widgets::{KpCustomTextDialog, KpTextLanguageDialog};
 use gettextrs::gettext;
@@ -131,7 +131,7 @@ impl imp::KpWindow {
         let new_original = match session_type {
             SessionType::Simple => text_generation::simple(self.language.get()),
             SessionType::Advanced => text_generation::advanced(self.language.get()),
-            SessionType::Custom => self.custom_text.borrow().to_string(),
+            SessionType::Custom => process_custom_text(&self.custom_text.borrow()),
         };
         self.text_view.set_original_text(&new_original);
         self.secondary_config_stack
@@ -310,7 +310,11 @@ impl imp::KpWindow {
 
     pub(super) fn show_results_view(&self) {
         let continue_button = self.continue_button.get();
-        let original_text = self.text_view.original_text();
+        let original_text = if self.session_type.get() == SessionType::Custom {
+            process_custom_text(&self.text_view.original_text())
+        } else {
+            self.text_view.original_text()
+        };
         let typed_text = self.text_view.typed_text();
         let Some(start_time) = self.start_time.get() else {
             return;
