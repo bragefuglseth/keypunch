@@ -46,8 +46,14 @@ impl imp::KpWindow {
                 }
             }
         }));
-
         self.obj().add_controller(motion_ctrl);
+
+        let click_gesture = gtk::GestureClick::new();
+        click_gesture.connect_released(glib::clone!(@weak self as imp => move |_, _, _, _| {
+            if imp.running.get() {
+                imp.header_bar_running.remove_css_class("hide-controls");
+            }
+        }));
     }
 
     pub(super) fn ready(&self) {
