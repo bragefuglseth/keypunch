@@ -16,10 +16,11 @@ impl imp::KpWindow {
     }
 
     pub(super) fn setup_ui_hiding(&self) {
+        let obj = self.obj();
+
         self.show_cursor.set(true);
 
-        let device = self
-            .obj()
+        let device = obj
             .display()
             .default_seat()
             .expect("display always has a default seat")
@@ -46,7 +47,7 @@ impl imp::KpWindow {
                 }
             }
         }));
-        self.obj().add_controller(motion_ctrl);
+        obj.add_controller(motion_ctrl);
 
         let click_gesture = gtk::GestureClick::new();
         click_gesture.connect_released(glib::clone!(@weak self as imp => move |_, _, _, _| {
@@ -54,6 +55,7 @@ impl imp::KpWindow {
                 imp.header_bar_running.remove_css_class("hide-controls");
             }
         }));
+        obj.add_controller(click_gesture);
     }
 
     pub(super) fn ready(&self) {
