@@ -31,7 +31,6 @@ impl imp::KpWindow {
             glib::clone!(@weak self as imp, @strong device => move |_| {
                 if imp.show_cursor.get() && imp.running.get() {
                     imp.header_bar_running.add_css_class("hide-controls");
-
                     imp.hide_cursor();
                 }
             }),
@@ -51,8 +50,12 @@ impl imp::KpWindow {
 
         let click_gesture = gtk::GestureClick::new();
         click_gesture.connect_released(glib::clone!(@weak self as imp => move |_, _, _, _| {
-            if imp.running.get() {
-                imp.header_bar_running.remove_css_class("hide-controls");
+            if !imp.show_cursor.get() && device.timestamp() > imp.cursor_hidden_timestamp.get() {
+                imp.show_cursor();
+
+                if imp.running.get() {
+                    imp.header_bar_running.remove_css_class("hide-controls");
+                }
             }
         }));
         obj.add_controller(click_gesture);
