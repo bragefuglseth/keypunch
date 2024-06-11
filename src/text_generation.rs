@@ -37,6 +37,8 @@ pub enum Language {
     Swahili,
     #[strum(message = "Svenska", to_string = "sv_SE")]
     Swedish,
+    #[strum(message = "Schweizerdeutsch", to_string = "de_CH")]
+    SwissGerman,
 }
 
 // A set of punctuation that works fine for most western languages
@@ -96,7 +98,8 @@ pub fn simple(language: Language) -> String {
         | Language::NorwegianNynorsk
         | Language::Spanish
         | Language::Swahili
-        | Language::Swedish => simple_generic(&language.to_string(), " "),
+        | Language::Swedish
+        | Language::SwissGerman => simple_generic(&language.to_string(), " "),
     }
 }
 
@@ -110,7 +113,8 @@ pub fn advanced(language: Language) -> String {
         | Language::NorwegianBokmaal
         | Language::NorwegianNynorsk
         | Language::Swahili
-        | Language::Swedish => advanced_generic(&language.to_string(), " ", GENERIC_PUNCTUATION),
+        | Language::Swedish
+        | Language::SwissGerman => advanced_generic(&language.to_string(), " ", GENERIC_PUNCTUATION),
         Language::Arabic => advanced_generic(
             "ar_SA_advanced",
             " ",
