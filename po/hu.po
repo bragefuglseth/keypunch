@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: keypunch\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-06-07 08:45+0200\n"
-"PO-Revision-Date: 2024-06-13 16:15+0200\n"
+"PO-Revision-Date: 2024-06-13 16:20+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: hu\n"
@@ -393,7 +393,7 @@ msgstr "Helyesírás"
 #. Translators: Replace "translator-credits" with your names, one name per line
 #: src/widgets/window.rs:216
 msgid "translator-credits"
-msgstr "\"Daniel Uhrinyi  <12256895+danieluhrinyi@users.noreply.github.com>\""
+msgstr "Daniel Uhrinyi  <12256895+danieluhrinyi@users.noreply.github.com>"
 
 #: src/widgets/window.rs:221
 msgid "Special thanks to"
