@@ -75,7 +75,7 @@ msgstr ""
 
 #: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:30
 msgid "Get ready to accelerate your typing!"
-msgstr "Készülj fel a gépelésed gyorsulására!"
+msgstr "Készülj fel a gépelésed gyorsítására!"
 
 #: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:36
 msgid "In the middle of a session"
