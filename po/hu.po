@@ -28,7 +28,7 @@ msgstr "Keypunch"
 #: data/dev.bragefuglseth.Keypunch.desktop.in.in:4
 #: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:8
 msgid "Practice your typing skills"
-msgstr "Gyakorold gépelési készségedet"
+msgstr "Fejleszd gépelési készségedet"
 
 #: data/dev.bragefuglseth.Keypunch.desktop.in.in:10
 msgid ""
