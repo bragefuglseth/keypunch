@@ -44,9 +44,9 @@ msgid ""
 "digital age. Typing fast and accurately gives you more opportunities, more "
 "time for what matters to you, and a sense of self-accomplishment."
 msgstr ""
-"Vitán felül áll, hogy a billentyűzeten való gépelés elengedhetetlen készség "
-"a digitális korszakban. A gyors és pontos gépelés több lehetőséget, több "
-"időt ad arra, ami fontos számodra és az önmegvalósítás érzését is biztosítja."
+"Kétségtelen, hogy a billentyűzeten való gépelés elengedhetetlen készség "
+"a digitális korszakban. A gyors és pontos gépelés több időt, több "
+"lehetőséget ad arra, ami fontos számodra, és önbecsülést biztosít."
 
 #: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:18
 msgid ""
