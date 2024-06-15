@@ -102,7 +102,7 @@ msgstr "Egyedi szöveg megadása"
 msgid ""
 "This is the initial release of Keypunch! Give it a spin and say what you "
 "think."
-msgstr "Ez a Keypunch első kiadása! Próbáld ki és mondd el, amit gondolsz."
+msgstr "Ez a Keypunch első kiadása! Próbáld ki és mondd el, mit gondolsz."
 
 #: data/dev.bragefuglseth.Keypunch.gschema.xml:20
 msgid "Window Width"
