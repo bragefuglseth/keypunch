@@ -70,7 +70,7 @@ msgid ""
 "out as fast as you can."
 msgstr ""
 "Ha már profi vagy a gépelésben, a Keypunch még akkor is tartogat valamit "
-"számodra. Próbálj meg gyakorolni a számokkal és írásjelekkel vagy válaszd ki "
+"számodra. Próbálj meg gyakorolni a számokkal és írásjelekkel, vagy válaszd ki "
 "a saját szöveged, amelyet a lehető leggyorsabban gépelsz le."
 
 #: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:30
