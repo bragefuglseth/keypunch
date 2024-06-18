@@ -10,6 +10,8 @@ use adw::subclass::prelude::*;
 use gtk::glib;
 use gtk::{gdk, gsk};
 use std::cell::{Cell, OnceCell, RefCell};
+use std::sync::OnceLock;
+use glib::subclass::Signal;
 
 const LINE_HEIGHT: i32 = 50;
 
@@ -29,15 +31,13 @@ mod imp {
         pub(super) caret_y: Cell<f64>,
         #[property(get, set)]
         pub(super) caret_height: Cell<f64>,
-
-        pub(super) original_text: RefCell<String>,
-        #[property(get, set)]
-        pub(super) typed_text: RefCell<String>,
         #[property(get, set)]
         pub(super) running: Cell<bool>,
         #[property(get, set)]
         pub(super) accepts_input: Cell<bool>,
 
+        pub(super) original_text: RefCell<String>,
+        pub(super) typed_text: RefCell<String>,
         pub(super) input_context: RefCell<Option<gtk::IMMulticontext>>,
         pub(super) scroll_animation: OnceCell<adw::TimedAnimation>,
         pub(super) caret_x_animation: OnceCell<adw::TimedAnimation>,
@@ -63,6 +63,11 @@ mod imp {
     }
 
     impl ObjectImpl for KpTextView {
+        fn signals() -> &'static [Signal] {
+            static SIGNALS: OnceLock<Vec<Signal>> = OnceLock::new();
+            SIGNALS.get_or_init(|| vec![Signal::builder("typed-text-changed").build()])
+        }
+
         fn properties() -> &'static [glib::ParamSpec] {
             Self::derived_properties()
         }
@@ -83,14 +88,6 @@ mod imp {
             let text_view = self.text_view.get();
             text_view.set_bottom_margin(LINE_HEIGHT);
             text_view.set_can_target(false);
-
-            obj.connect_typed_text_notify(|obj| {
-                let imp = obj.imp();
-                imp.update_colors();
-                imp.update_caret_position(!imp.running.get());
-                imp.update_scroll_position(!imp.running.get());
-                imp.update_accessible_state();
-            });
 
             obj.connect_has_focus_notify(|obj| {
                 let imp = obj.imp();
@@ -153,6 +150,15 @@ mod imp {
             buffer.insert(&mut buffer.end_iter(), &insert_replacements(&text));
             self.update_colors();
         }
+
+        pub(super) fn typed_text_changed(&self) {
+            self.update_colors();
+            self.update_caret_position(!self.running.get());
+            self.update_scroll_position(!self.running.get());
+            self.update_accessible_state();
+
+            self.obj().emit_by_name::<()>("typed-text-changed", &[]);
+        }
     }
 }
 
@@ -162,12 +168,21 @@ glib::wrapper! {
 }
 
 impl KpTextView {
-    pub fn original_text(&self) -> String {
-        self.imp().original_text.borrow().to_string()
+    pub fn original_text(&self) -> RefCell<String> {
+        self.imp().original_text
     }
 
     pub fn set_original_text(&self, text: &str) {
         self.imp().set_original_text(text);
+    }
+
+    pub fn typed_text(&self) -> RefCell<String> {
+        self.imp().typed_text
+    }
+
+    pub fn set_typed_text(&self, text: &str) {
+        *self.imp().typed_text.borrow_mut() = text.to_string();
+        self.imp().typed_text_changed();
     }
 
     pub fn push_original_text(&self, text: &str) {

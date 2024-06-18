@@ -16,10 +16,7 @@ pub enum GraphemeState {
 }
 
 pub fn process_custom_text(s: &str) -> String {
-    s
-        .lines()
-        .map(|l| l.trim().to_owned() + "\n")
-        .collect()
+    s.lines().map(|l| l.trim().to_owned() + "\n").collect()
 }
 
 pub fn insert_replacements(string: &str) -> String {
@@ -45,6 +42,7 @@ pub fn replacement(s: &str) -> Option<&'static str> {
 pub fn validate_with_replacements(
     original: &str,
     typed: &str,
+    unfinished: &str,
 ) -> Vec<(GraphemeState, usize, usize, usize)> {
     let last_typed_grapheme_offset = typed.graphemes(true).count().checked_sub(1).unwrap_or(0);
 
@@ -140,10 +138,19 @@ pub fn line_offset_with_replacements(original: &str, grapheme_idx: usize) -> (us
     (line_num, byte_offset)
 }
 
-pub fn pop_grapheme(s: &str) -> String {
-    let mut v = s.graphemes(true).collect::<Vec<_>>();
-    v.pop();
-    v.into_iter().collect()
+pub fn pop_grapheme(s: &str) -> &str {
+    s.grapheme_indices(true)
+        .last()
+        .map(|(i, _)| &s[0..i])
+        .unwrap_or("")
+}
+
+pub fn pop_grapheme_in_place(s: &mut String) {
+    let last_chars = s.graphemes(true).last().unwrap_or("").chars().count();
+
+    for _ in 0..last_chars {
+        s.pop();
+    }
 }
 
 // Adjusts the typed text length so the caret is moved to the beginning of the current word

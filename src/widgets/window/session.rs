@@ -1,7 +1,8 @@
 use super::*;
 use crate::text_generation;
 use crate::text_utils::{
-    process_custom_text, calculate_accuracy, calculate_wpm, validate_with_replacements, GraphemeState,
+    calculate_accuracy, calculate_wpm, process_custom_text, validate_with_replacements,
+    GraphemeState,
 };
 use crate::widgets::{KpCustomTextDialog, KpTextLanguageDialog};
 use gettextrs::gettext;
@@ -71,17 +72,22 @@ impl imp::KpWindow {
             }
         }));
 
-        text_view.connect_typed_text_notify(glib::clone!(@weak self as imp => move |tw| {
-            if !imp.running.get() { return; }
+        text_view.connect_local("typed-text-changed", true, glib::clone!(@weak self as imp => @default-return None, move |values| {
+            if !imp.running.get() { return None; }
 
-            let original_text = tw.original_text();
-            let typed_text = tw.typed_text();
+            let text_view = values.get(0).unwrap().get::<KpTextView>().unwrap();
+
+            let original_text_refcell = text_view.original_text();
+            let original_text = original_text_refcell.borrow().as_str();
+
+            let typed_text_refcell = text_view.typed_text();
+            let typed_text = typed_text_refcell.borrow().as_str();
 
             let original_grapheme_count = original_text.graphemes(true).count();
             let typed_grapheme_count = typed_text.graphemes(true).count();
 
             if typed_grapheme_count >= original_grapheme_count {
-                let (last_grapheme_state, _, _, _) = validate_with_replacements(&original_text, &typed_text).pop()
+                let (last_grapheme_state, _, _, _) = validate_with_replacements(&original_text, &typed_text, "").pop()
                     .expect("text view should have content at all times");
 
                 if last_grapheme_state != GraphemeState::Unfinished {
@@ -111,6 +117,8 @@ impl imp::KpWindow {
                     imp.running_title.set_title(&i18n_fmt! { i18n_fmt("{} ⁄ {}", current_word, total_words) });
                 }
             }
+
+            None
         }));
     }
 
@@ -311,9 +319,9 @@ impl imp::KpWindow {
     pub(super) fn show_results_view(&self) {
         let continue_button = self.continue_button.get();
         let original_text = if self.session_type.get() == SessionType::Custom {
-            process_custom_text(&self.text_view.original_text())
+            &process_custom_text(&self.text_view.original_text().borrow().as_str())
         } else {
-            self.text_view.original_text()
+            self.text_view.original_text().borrow().as_str()
         };
         let typed_text = self.text_view.typed_text();
         let Some(start_time) = self.start_time.get() else {
@@ -467,3 +475,4 @@ pub(super) fn add_personal_best(
         )))
         .collect()
 }
+

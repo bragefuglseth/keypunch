@@ -101,8 +101,11 @@ impl imp::KpTextView {
     pub(super) fn update_colors(&self) {
         let obj = self.obj();
 
-        let original = obj.original_text();
-        let typed = obj.typed_text();
+        let original = obj.original_text().borrow();
+        let typed = obj.typed_text().borrow();
+
+        let input_context = self.input_context.borrow();
+        let (preedit, _, _) = input_context.as_ref().unwrap().preedit_string();
 
         let text_view = self.text_view.get();
         let buf = text_view.buffer();
@@ -163,7 +166,7 @@ impl imp::KpTextView {
             .graphemes(true)
             .count();
 
-        let comparison = validate_with_replacements(&original, &typed);
+        let comparison = validate_with_replacements(&original, &typed, &preedit.as_str());
 
         comparison
             .iter()

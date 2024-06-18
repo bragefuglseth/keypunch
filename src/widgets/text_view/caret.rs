@@ -66,8 +66,8 @@ impl imp::KpTextView {
     pub(super) fn update_caret_position(&self, force: bool) {
         let obj = self.obj();
 
-        let original = obj.original_text();
-        let typed = obj.typed_text();
+        let original = obj.original_text().borrow();
+        let typed = obj.typed_text().borrow();
         // Validation is performed on typed text with one added character, to get the start index
         // of the next character.
         let (caret_line, caret_idx) =
