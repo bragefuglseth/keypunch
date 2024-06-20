@@ -99,10 +99,8 @@ impl imp::KpTextView {
     }
 
     pub(super) fn update_colors(&self) {
-        let obj = self.obj();
-
-        let original = obj.original_text().borrow();
-        let typed = obj.typed_text().borrow();
+        let original = self.original_text.borrow();
+        let typed = self.typed_text.borrow();
 
         let input_context = self.input_context.borrow();
         let (preedit, _, _) = input_context.as_ref().unwrap().preedit_string();
@@ -148,7 +146,7 @@ impl imp::KpTextView {
         buf.remove_all_tags(&buf.start_iter(), &buf.end_iter());
 
         let (typed_line, typed_offset) =
-            line_offset_with_replacements(&original, typed.graphemes(true).count());
+            line_offset_with_replacements(&original, &typed, preedit.graphemes(true).count());
         let typed_iter = buf
             .iter_at_line_index(typed_line as i32, typed_offset as i32)
             .unwrap_or(buf.end_iter());
@@ -166,7 +164,8 @@ impl imp::KpTextView {
             .graphemes(true)
             .count();
 
-        let comparison = validate_with_replacements(&original, &typed, &preedit.as_str());
+        let comparison =
+            validate_with_replacements(&original, &typed, preedit.as_str().graphemes(true).count());
 
         comparison
             .iter()

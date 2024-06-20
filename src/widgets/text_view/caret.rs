@@ -1,6 +1,5 @@
 use super::*;
 use crate::text_utils::line_offset_with_replacements;
-use unicode_segmentation::UnicodeSegmentation;
 
 impl imp::KpTextView {
     pub(super) fn set_caret_x(&self, caret_x: f64) {
@@ -66,12 +65,11 @@ impl imp::KpTextView {
     pub(super) fn update_caret_position(&self, force: bool) {
         let obj = self.obj();
 
-        let original = obj.original_text().borrow();
-        let typed = obj.typed_text().borrow();
-        // Validation is performed on typed text with one added character, to get the start index
-        // of the next character.
+        let original = self.original_text.borrow();
+        let typed = self.typed_text.borrow();
+
         let (caret_line, caret_idx) =
-            line_offset_with_replacements(&original, typed.graphemes(true).count());
+            line_offset_with_replacements(&original, &typed, 0);
 
         let text_view = self.text_view.get();
         let buf = text_view.buffer();

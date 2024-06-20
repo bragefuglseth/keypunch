@@ -4,14 +4,17 @@ mod colors;
 mod input;
 mod scrolling;
 
-use crate::text_utils::{insert_replacements, validate_with_replacements};
+use crate::text_utils::{
+    current_word, insert_replacements, validate_with_replacements, GraphemeState,
+};
 use adw::prelude::*;
 use adw::subclass::prelude::*;
+use glib::subclass::Signal;
 use gtk::glib;
 use gtk::{gdk, gsk};
 use std::cell::{Cell, OnceCell, RefCell};
 use std::sync::OnceLock;
-use glib::subclass::Signal;
+use unicode_segmentation::UnicodeSegmentation;
 
 const LINE_HEIGHT: i32 = 50;
 
@@ -38,6 +41,7 @@ mod imp {
 
         pub(super) original_text: RefCell<String>,
         pub(super) typed_text: RefCell<String>,
+        pub(super) previous_preedit: RefCell<String>,
         pub(super) input_context: RefCell<Option<gtk::IMMulticontext>>,
         pub(super) scroll_animation: OnceCell<adw::TimedAnimation>,
         pub(super) caret_x_animation: OnceCell<adw::TimedAnimation>,
@@ -168,16 +172,20 @@ glib::wrapper! {
 }
 
 impl KpTextView {
-    pub fn original_text(&self) -> RefCell<String> {
-        self.imp().original_text
+    pub fn original_text(&self) -> String {
+        self.imp().original_text.borrow().to_string()
+    }
+
+    pub fn typed_text(&self) -> String {
+        self.imp().typed_text.borrow().to_string()
     }
 
     pub fn set_original_text(&self, text: &str) {
         self.imp().set_original_text(text);
     }
 
-    pub fn typed_text(&self) -> RefCell<String> {
-        self.imp().typed_text
+    pub fn push_original_text(&self, text: &str) {
+        self.imp().push_original_text(text);
     }
 
     pub fn set_typed_text(&self, text: &str) {
@@ -185,8 +193,48 @@ impl KpTextView {
         self.imp().typed_text_changed();
     }
 
-    pub fn push_original_text(&self, text: &str) {
-        self.imp().push_original_text(text);
+    pub fn original_grapheme_count(&self) -> usize {
+        self.imp()
+            .original_text
+            .borrow()
+            .as_str()
+            .graphemes(true)
+            .count()
+    }
+
+    pub fn typed_grapheme_count(&self) -> usize {
+        self.imp()
+            .typed_text
+            .borrow()
+            .as_str()
+            .graphemes(true)
+            .count()
+    }
+
+    pub fn last_grapheme_state(&self) -> GraphemeState {
+        let imp = self.imp();
+
+        validate_with_replacements(
+            &imp.original_text.borrow().as_str(),
+            &imp.typed_text.borrow().as_str(),
+            0,
+        )
+        .last()
+        .map(|(state, _, _, _)| *state)
+        .unwrap_or(GraphemeState::Unfinished)
+    }
+
+    // Returns a tuple with (current word, total word count)
+    pub fn progress(&self) -> (usize, usize) {
+        let imp = self.imp();
+
+        let current_word = current_word(
+            imp.original_text.borrow().as_str(),
+            imp.typed_text.borrow().as_str().graphemes(true).count(),
+        );
+        let total_words = imp.original_text.borrow().as_str().unicode_words().count();
+
+        (current_word, total_words)
     }
 
     pub fn reset(&self) {

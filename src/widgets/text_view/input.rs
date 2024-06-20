@@ -1,5 +1,5 @@
 use super::*;
-use crate::text_utils::{pop_grapheme, pop_grapheme_in_place, pop_word};
+use crate::text_utils::{end_alias, pop_grapheme_in_place, pop_word_in_place};
 
 impl imp::KpTextView {
     pub(super) fn setup_input_handling(&self) {
@@ -20,9 +20,27 @@ impl imp::KpTextView {
             }
         }));
 
+        input_context.connect_preedit_changed(glib::clone!(@weak self as imp => move |ctx| {
+            let obj = imp.obj();
+
+            let (preedit, _, _) = ctx.preedit_string();
+            let preedit = preedit.as_str();
+            let preedit_has_changed = imp.previous_preedit.borrow().as_str() != preedit;
+
+            if preedit_has_changed && obj.accepts_input() {
+                if !obj.running() {
+                    obj.set_running(true);
+                }
+
+                *imp.previous_preedit.borrow_mut() = preedit.to_string();
+                imp.typed_text_changed();
+            }
+
+        }));
+
         input_context.connect_retrieve_surrounding(
-            glib::clone!(@weak obj => @default-return false, move |ctx| {
-                let current_typed = obj.typed_text().borrow();
+            glib::clone!(@weak self as imp => @default-return false, move |ctx| {
+                let current_typed = imp.typed_text.borrow();
                 let typed_len = current_typed.len() as i32;
                 ctx.set_surrounding_with_selection(&current_typed, typed_len, typed_len);
                 true
@@ -30,16 +48,10 @@ impl imp::KpTextView {
         );
 
         input_context.connect_delete_surrounding(
-            glib::clone!(@weak obj => @default-return false, move |_, offset, _| {
-                let mut current_typed = obj.typed_text().borrow().as_str();
-
+            glib::clone!(@weak self as imp => @default-return false, move |_, offset, _| {
                 // The cursor will always be at the end of the typed text,
                 // so we can safely just pop the {offset} last characters
-                for _ in 0..offset.abs() {
-                    current_typed = pop_grapheme(&current_typed);
-                }
-
-                obj.set_typed_text(&current_typed);
+                imp.pop_typed_text(offset.abs() as usize);
                 true
             }),
         );
@@ -66,16 +78,15 @@ impl imp::KpTextView {
         event_controller.set_im_context(Some(&input_context));
 
         event_controller.connect_key_pressed(glib::clone!(@weak self as imp => @default-return glib::signal::Propagation::Proceed, move |controller, key, _, modifier| {
+                let obj = imp.obj();
+
                 match (obj.accepts_input(), key) {
                    (true, gdk::Key::BackSpace) if modifier.contains(gdk::ModifierType::CONTROL_MASK) => {
-                        let original = imp.original_text.borrow();
-                        let current_typed = imp.typed_text.borrow();
-                        imp.obj().set_typed_text(&pop_word(&original.as_str(), &current_typed));
+                        imp.pop_typed_text_word();
                         glib::signal::Propagation::Stop
                     },
                     (true, gdk::Key::BackSpace) => {
-                        let current_typed = imp.typed_text.borrow();
-                        imp.obj().set_typed_text(&pop_grapheme(&current_typed.as_str()));
+                        imp.pop_typed_text(1);
                         glib::signal::Propagation::Stop
                     },
                     (true, gdk::Key::Return) => {
@@ -92,14 +103,30 @@ impl imp::KpTextView {
 
     fn push_typed_text(&self, s: &str) {
         self.typed_text.borrow_mut().push_str(s);
+
+        let alias_opt = end_alias(&self.original_text.borrow(), &self.typed_text.borrow());
+        if let Some((letter, potential_alias, true)) = alias_opt {
+            for _ in 0..potential_alias.chars().count() {
+                self.typed_text.borrow_mut().pop();
+            }
+            self.typed_text.borrow_mut().push_str(&letter);
+        }
+
         self.typed_text_changed();
     }
 
     fn pop_typed_text(&self, graphemes: usize) {
-        let mut typed = self.typed_text.borrow_mut();
+        pop_grapheme_in_place(&mut self.typed_text.borrow_mut(), graphemes);
 
-        for i in 0..graphemes {
-            pop_grapheme_in_place(&mut typed);
-        }
+        self.typed_text_changed();
+    }
+
+    fn pop_typed_text_word(&self) {
+        pop_word_in_place(
+            &self.original_text.borrow(),
+            &mut self.typed_text.borrow_mut(),
+        );
+        self.typed_text_changed();
     }
 }
+

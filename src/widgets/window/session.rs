@@ -1,9 +1,6 @@
 use super::*;
 use crate::text_generation;
-use crate::text_utils::{
-    calculate_accuracy, calculate_wpm, process_custom_text, validate_with_replacements,
-    GraphemeState,
-};
+use crate::text_utils::{calculate_accuracy, calculate_wpm, process_custom_text, GraphemeState};
 use crate::widgets::{KpCustomTextDialog, KpTextLanguageDialog};
 use gettextrs::gettext;
 use glib::ControlFlow;
@@ -12,7 +9,6 @@ use i18n_format::i18n_fmt;
 use std::iter::once;
 use strum::{EnumMessage, IntoEnumIterator};
 use text_generation::CHUNK_GRAPHEME_COUNT;
-use unicode_segmentation::UnicodeSegmentation;
 
 impl imp::KpWindow {
     pub(super) fn setup_session_config(&self) {
@@ -66,8 +62,8 @@ impl imp::KpWindow {
     pub(super) fn setup_text_view(&self) {
         let text_view = self.text_view.get();
 
-        text_view.connect_running_notify(glib::clone!(@weak self as imp => move |tw| {
-            if tw.running() {
+        text_view.connect_running_notify(glib::clone!(@weak self as imp => move |text_view| {
+            if text_view.running() {
                 imp.start();
             }
         }));
@@ -77,20 +73,11 @@ impl imp::KpWindow {
 
             let text_view = values.get(0).unwrap().get::<KpTextView>().unwrap();
 
-            let original_text_refcell = text_view.original_text();
-            let original_text = original_text_refcell.borrow().as_str();
-
-            let typed_text_refcell = text_view.typed_text();
-            let typed_text = typed_text_refcell.borrow().as_str();
-
-            let original_grapheme_count = original_text.graphemes(true).count();
-            let typed_grapheme_count = typed_text.graphemes(true).count();
+            let original_grapheme_count = text_view.original_grapheme_count();
+            let typed_grapheme_count = text_view.typed_grapheme_count();
 
             if typed_grapheme_count >= original_grapheme_count {
-                let (last_grapheme_state, _, _, _) = validate_with_replacements(&original_text, &typed_text, "").pop()
-                    .expect("text view should have content at all times");
-
-                if last_grapheme_state != GraphemeState::Unfinished {
+                if text_view.last_grapheme_state() != GraphemeState::Unfinished {
                     imp.finish();
                 }
             }
@@ -102,14 +89,7 @@ impl imp::KpWindow {
             match imp.session_type.get() {
                 SessionType::Simple | SessionType::Advanced => (),
                 SessionType::Custom => {
-                    let current_word = original_text
-                        .graphemes(true)
-                        .take(typed_grapheme_count)
-                        .collect::<String>()
-                        .unicode_words()
-                        .count();
-
-                    let total_words = original_text.unicode_words().count();
+                    let (current_word, total_words) = text_view.progress();
 
                     // Translators: The `{}` blocks will be replaced with the current word count and the total word count.
                     // Do not translate them! The slash sign is a special unicode character, if your language doesn't
@@ -319,9 +299,9 @@ impl imp::KpWindow {
     pub(super) fn show_results_view(&self) {
         let continue_button = self.continue_button.get();
         let original_text = if self.session_type.get() == SessionType::Custom {
-            &process_custom_text(&self.text_view.original_text().borrow().as_str())
+            process_custom_text(&self.text_view.original_text())
         } else {
-            self.text_view.original_text().borrow().as_str()
+            self.text_view.original_text()
         };
         let typed_text = self.text_view.typed_text();
         let Some(start_time) = self.start_time.get() else {
@@ -475,4 +455,3 @@ pub(super) fn add_personal_best(
         )))
         .collect()
 }
-

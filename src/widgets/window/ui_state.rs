@@ -27,7 +27,9 @@ impl imp::KpWindow {
             .pointer()
             .expect("default seat has device");
 
-        self.text_view.connect_local("typed-text-changed", true,
+        self.text_view.connect_local(
+            "typed-text-changed",
+            true,
             glib::clone!(@weak self as imp, @strong device => @default-return None, move |_| {
                 if imp.show_cursor.get() && imp.running.get() {
                     imp.header_bar_running.add_css_class("hide-controls");
