@@ -1,0 +1,420 @@
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the keypunch package.
+#
+# Heimen Stoffels <vistausss@fastmail.com>, 2024.
+msgid ""
+msgstr ""
+"Project-Id-Version: keypunch\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-06-07 08:45+0200\n"
+"PO-Revision-Date: 2024-06-20 20:51+0200\n"
+"Last-Translator: Heimen Stoffels <vistausss@fastmail.com>\n"
+"Language-Team: Dutch <>\n"
+"Language: nl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Lokalize 22.12.3\n"
+
+#: data/dev.bragefuglseth.Keypunch.desktop.in.in:3
+#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:7
+#: src/widgets/window.blp:5
+msgid "Keypunch"
+msgstr "Keypunch"
+
+#: data/dev.bragefuglseth.Keypunch.desktop.in.in:4
+#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:8
+msgid "Practice your typing skills"
+msgstr "Oefen je typvaardigheden"
+
+#: data/dev.bragefuglseth.Keypunch.desktop.in.in:10
+msgid ""
+"typing;trainer;touch typing;keyboard;speed;wpm;words per minute;accuracy;"
+"test;"
+msgstr ""
+"typen;trainer;oefenen;blind typen;toetsenbord;keyboard;snelheid;wpm;aantal"
+" woorden per minuut;precisie;test;"
+
+#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:13
+msgid ""
+"There is no doubt that typing on a keyboard is an essential skill in the "
+"digital age. Typing fast and accurately gives you more opportunities, more "
+"time for what matters to you, and a sense of self-accomplishment."
+msgstr ""
+"In de digitale wereld is typen op een toetsenbord van het grootste belang."
+" Door snel en juist te typen, creëer je meer kansen, houd je meer tijd over"
+" en bezorg je jezelf een goed gevoel."
+
+#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:18
+msgid ""
+"Keypunch lets you practice typing. Thanks to fast-paced sessions with "
+"instant feedback afterwards and a plethora of available languages, you might "
+"even have a little fun doing so. With determination, proper technique and "
+"some time, you will observe a noticeable increase in both the speed and the "
+"accuracy of which your thoughts and ideas are put into words on the screen."
+msgstr ""
+"Met Keypunch kun je je typvaardigheden oefenen. De toepassing beschikt over"
+" kortdurende sessies, directe feedback en ondersteunt een behoorlijk aantal"
+" talen. Wie weet wordt typen op deze manier wel leuk! Met de juiste"
+" ingesteldheid, techniek en tijd zul je zien dat je sneller en beter typt,"
+" zodat je gedachten en ideeën sneller op (het digitale) papier staan."
+
+#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:25
+msgid ""
+"If you are already a racer at typing, Keypunch still has something for you. "
+"Try practicing with numbers and punctuation, or choose your own text to type "
+"out as fast as you can."
+msgstr ""
+"Zelfs als je al een typkampioen bent, biedt Keypunch je iets nieuws. Zo kun"
+" je oefenen met getallen en punctuatie of je eigen tekst invoeren en die zo"
+" snel mogelijk proberen te typen."
+
+#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:30
+msgid "Get ready to accelerate your typing!"
+msgstr "Gooi alle remmen los en verhoog je typsnelheid!"
+
+#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:36
+msgid "In the middle of a session"
+msgstr "Actieve sessie"
+
+#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:40
+msgid "Ready for typing"
+msgstr "Klaar om te typen"
+
+#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:44
+msgid "Session results"
+msgstr "Sessieresultaten"
+
+#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:48
+msgid "Language selection"
+msgstr "Taalkeuze"
+
+#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:52
+msgid "Custom text entry"
+msgstr "Eigen tekst"
+
+#. This is part of the changelog, and doesn't need to be translated. I've tried to mark it as untranslatable, and I have no idea why it doesn't work.
+#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:84
+msgid ""
+"This is the initial release of Keypunch! Give it a spin and say what you "
+"think."
+msgstr ""
+"Dit is de allereerste versie van Keypunch. Probeer de toepassing uit en deel"
+" je feedback!"
+
+#: data/dev.bragefuglseth.Keypunch.gschema.xml:20
+msgid "Window Width"
+msgstr "Vensterbreedte"
+
+#: data/dev.bragefuglseth.Keypunch.gschema.xml:24
+msgid "Window Height"
+msgstr "Vensterhoogte"
+
+#: data/dev.bragefuglseth.Keypunch.gschema.xml:28
+msgid "Window Maximization"
+msgstr "Venstermaximalisatie"
+
+#: data/dev.bragefuglseth.Keypunch.gschema.xml:32
+#: src/widgets/results_view.blp:83 src/widgets/window.blp:35
+msgid "Session Type"
+msgstr "Sessietype"
+
+#: data/dev.bragefuglseth.Keypunch.gschema.xml:36
+#: src/widgets/results_view.blp:96 src/widgets/window.blp:43
+msgid "Session Duration"
+msgstr "Sessieduur"
+
+#: data/dev.bragefuglseth.Keypunch.gschema.xml:37
+msgid "The duration of time-based sessions"
+msgstr "De duur van sessies met een tijdklok"
+
+#. Translators: Insert the language code of your language here (or one of an equal implemented language, for example, the en_US word list shouldn't have any words differing from UK English). Do not remove the quotation marks.
+#: data/dev.bragefuglseth.Keypunch.gschema.xml:41
+msgid "\"en_US\""
+msgstr "\"nl_NL\""
+
+#: data/dev.bragefuglseth.Keypunch.gschema.xml:42
+#: src/widgets/results_view.blp:109 src/widgets/text_language_dialog.blp:5
+#: src/widgets/text_language_dialog.blp:13
+#: src/widgets/text_language_dialog.blp:39
+msgid "Text Language"
+msgstr "Taal van tekst"
+
+#: data/dev.bragefuglseth.Keypunch.gschema.xml:43
+msgid "The code of the language used for automatically generated text"
+msgstr "De taalcode die wordt gebruikt om automatisch tekst op te maken"
+
+#: data/dev.bragefuglseth.Keypunch.gschema.xml:47
+msgid "Recent Languages"
+msgstr "Onlangs gebruikt"
+
+#: data/dev.bragefuglseth.Keypunch.gschema.xml:48
+msgid "Languages shown in the list of recent ones in the text language dialog"
+msgstr ""
+"De talen die worden getoond op de lijst met onlangs gebruikte in het"
+" teksttaalvenster"
+
+#. Translators: This is the default text for custom typing sessions. Do not translate it literally, and do not remove the quotation marks. Replace it with an appropriate "sample sentence" from your language instead. The original text is an English pangram, so you can e.g. find a pangram in your language: https://clagnut.com/blog/2380
+#: data/dev.bragefuglseth.Keypunch.gschema.xml:52
+msgid "\"The quick brown fox jumps over the lazy dog.\""
+msgstr "“Filmquiz bracht knappe ex-yogi van de wijs.”"
+
+#: data/dev.bragefuglseth.Keypunch.gschema.xml:53
+#: src/widgets/custom_text_dialog.blp:5 src/widgets/custom_text_dialog.blp:26
+msgid "Custom Text"
+msgstr "Eigen tekst"
+
+#: data/dev.bragefuglseth.Keypunch.gschema.xml:54
+msgid "Text displayed when “Custom” is chosen from the session menu"
+msgstr ""
+"De tekst die wordt getoond als je in het sessiemenu voor een eigen tekst kiest"
+
+#: data/dev.bragefuglseth.Keypunch.gschema.xml:58
+msgid "Personal Best"
+msgstr "Persoonlijk record"
+
+#: data/dev.bragefuglseth.Keypunch.gschema.xml:59
+msgid ""
+"The current highest amount of WPM received for each session type / duration "
+"and language"
+msgstr ""
+"Het huidige hoogste aantal woorden per minuut, per sessietype/duur en taal"
+
+#: data/resources/gtk/help-overlay.ui:11
+msgctxt "shortcut window"
+msgid "General"
+msgstr "Algemeen"
+
+#: data/resources/gtk/help-overlay.ui:14
+msgctxt "shortcut window"
+msgid "Text Language"
+msgstr "Taal van tekst"
+
+#: data/resources/gtk/help-overlay.ui:20
+msgctxt "shortcut window"
+msgid "Cancel Session"
+msgstr "Sessie afbreken"
+
+#: data/resources/gtk/help-overlay.ui:26
+msgctxt "shortcut window"
+msgid "Keyboard Shortcuts"
+msgstr "Sneltoetsen"
+
+#: data/resources/gtk/help-overlay.ui:32
+msgctxt "shortcut window"
+msgid "Close Window"
+msgstr "Venster sluiten"
+
+#: data/resources/gtk/help-overlay.ui:38
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr "Afsluiten"
+
+#: src/widgets/custom_text_dialog.blp:37
+msgid "Insert custom text…"
+msgstr "Voer hier je eigen tekst in…"
+
+#: src/widgets/custom_text_dialog.blp:73
+msgid "_Save"
+msgstr "Op_slaan"
+
+#: src/widgets/results_view.blp:35
+msgid "New Personal Best for Configuration"
+msgstr "Nieuw persoonlijk record binnen categorie"
+
+#: src/widgets/results_view.blp:46
+msgid "Words per Minute"
+msgstr "Aantal woorden per minuut"
+
+#: src/widgets/results_view.blp:67
+msgid "Correctness"
+msgstr "Precisie"
+
+#. Translators: The percentage label format of the results page.
+#. The `{}` block will be replaced with the percentage number,
+#. do not translate it!
+#: src/widgets/results_view.rs:130
+msgid "{}%"
+msgstr "{}%"
+
+#. Translators: The `{}` blocks will be replaced with the number of minutes
+#. and seconds. Do not translate them!
+#: src/widgets/results_view.rs:188
+msgid "{}m {}s"
+msgstr "{} min., {} sec."
+
+#. Translators: The `{}` block will be replaced with the number of minutes.
+#. Do not translate it!
+#: src/widgets/results_view.rs:192
+msgid "{} minute"
+msgid_plural "{} minutes"
+msgstr[0] "{} minuut"
+msgstr[1] "{} minuten"
+
+#. Translators: The `{}` block will be replaced with the number of seconds.
+#. Do not translate it!
+#: src/widgets/results_view.rs:196
+msgid "{} second"
+msgid_plural "{} seconds"
+msgstr[0] "{} seconde"
+msgstr[1] "{} seconden"
+
+#: src/widgets/text_language_dialog.blp:21
+#: src/widgets/text_language_dialog.blp:161
+#: src/widgets/text_language_dialog.blp:190
+msgid "Add Language"
+msgstr "Taal toevoegen"
+
+#: src/widgets/text_language_dialog.blp:51
+#: src/widgets/text_language_dialog.blp:55
+msgid "Search languages…"
+msgstr "Talen doorzoeken…"
+
+#. Translators: Recent languages in text languages list
+#: src/widgets/text_language_dialog.blp:79
+msgid "Recent"
+msgstr "Onlangs gebruikt"
+
+#. Translators: Other languages in text languages list
+#: src/widgets/text_language_dialog.blp:84
+msgid "Other"
+msgstr "Overig"
+
+#: src/widgets/text_language_dialog.blp:104
+msgid "Search Results"
+msgstr "Zoekresultaten"
+
+#: src/widgets/text_language_dialog.blp:140
+msgid "No Matches"
+msgstr "Er zijn geen zoekresultaten"
+
+#: src/widgets/text_language_dialog.blp:148
+msgid "Try a different search"
+msgstr "Probeer een andere zoekopdracht"
+
+#: src/widgets/text_language_dialog.blp:199
+msgid ""
+"You can help add a new text language to Keypunch by submitting a language "
+"request on GitHub. A GitHub account and some language knowledge is required."
+msgstr ""
+"Je kunt een nieuwe teksttaal toevoegen door een verzoek op GitHub in te"
+" dienen. Hiervoor zijn een GitHub-account en enige taalkennis vereist."
+
+#: src/widgets/text_language_dialog.blp:214
+msgid "_Create Request"
+msgstr "Verzoek _doen"
+
+#: src/widgets/text_view.blp:11
+msgid "Text View"
+msgstr "Tekstweergave"
+
+#: src/widgets/window.blp:54
+msgid "_Edit Text"
+msgstr "Tekst b_ewerken"
+
+#: src/widgets/window.blp:64
+msgid "Main Menu"
+msgstr "Hoofdmenu"
+
+#: src/widgets/window.blp:80
+msgid "Restart"
+msgstr "Opnieuw beginnen"
+
+#: src/widgets/window.blp:108
+msgid "Just Start Typing"
+msgstr "Begin met typen"
+
+#. Translators: "Entry" here is the act of entering text
+#: src/widgets/window.blp:117
+msgid "Enable Entry"
+msgstr "Item gebruiken"
+
+#: src/widgets/window.blp:143
+msgid "Results"
+msgstr "Resultaten"
+
+#: src/widgets/window.blp:168
+msgid "_Continue"
+msgstr "Her_vatten"
+
+#: src/widgets/window.blp:198
+msgid "Text _Language"
+msgstr "Teksttaa_l"
+
+#: src/widgets/window.blp:203
+msgid "_Keyboard Shortcuts"
+msgstr "_Sneltoetsen"
+
+#: src/widgets/window.blp:208
+msgid "_About Keypunch"
+msgstr "Ov_er Keypunch"
+
+#: src/widgets/window.rs:48
+msgid "Simple"
+msgstr "Eenvoudig"
+
+#: src/widgets/window.rs:49
+msgid "Advanced"
+msgstr "Expert"
+
+#: src/widgets/window.rs:50
+msgid "Custom"
+msgstr "Aangepast"
+
+#: src/widgets/window.rs:68
+msgid "15 seconds"
+msgstr "15 seconden"
+
+#: src/widgets/window.rs:69
+msgid "30 seconds"
+msgstr "30 seconden"
+
+#: src/widgets/window.rs:70
+msgid "1 minute"
+msgstr "1 minuut"
+
+#: src/widgets/window.rs:71
+msgid "5 minutes"
+msgstr "5 minuten"
+
+#: src/widgets/window.rs:72
+msgid "10 minutes"
+msgstr "10 minuten"
+
+#: src/widgets/window.rs:207
+msgid "Orthography by"
+msgstr "Orthografie van"
+
+#. Translators: Replace "translator-credits" with your names, one name per line
+#: src/widgets/window.rs:216
+msgid "translator-credits"
+msgstr "Heimen Stoffels <vistausss@fastmail.com>"
+
+#: src/widgets/window.rs:221
+msgid "Special thanks to"
+msgstr "Met dank aan"
+
+#. Translators: The `{}` blocks will be replaced with the current word count and the total word count.
+#. Do not translate them! The slash sign is a special unicode character, if your language doesn't
+#. use a completely different sign, you should probably copy and paste it from the original string.
+#: src/widgets/window/session.rs:111
+msgid "{} ⁄ {}"
+msgstr "{} ⁄ {}"
+
+#: src/widgets/window/session.rs:228
+msgid "Changes discarded"
+msgstr "Wijzigingen negeren"
+
+#: src/widgets/window/session.rs:229
+msgid "Restore"
+msgstr "Herstellen"
+
+#. Translators: The format of the timer. The first `{}` block will be replaced
+#. with the minutes passed, and the second one will be replaced with the seconds
+#. passed. Do not translate the `{}` blocks. Note that the `∶` sign is a special
+#. Unicode character; if your language doesn't use something completely different,
+#. you should probably copy and paste it from the original string.
+#: src/widgets/window/session.rs:301 src/widgets/window/session.rs:303
+msgid "{}∶{}"
+msgstr "{}∶{}"
