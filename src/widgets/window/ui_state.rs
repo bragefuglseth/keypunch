@@ -54,7 +54,7 @@ impl imp::KpWindow {
 
         let click_gesture = gtk::GestureClick::new();
         click_gesture.connect_released(glib::clone!(@weak self as imp => move |_, _, _, _| {
-            if !imp.show_cursor.get() && device.timestamp() > imp.cursor_hidden_timestamp.get() {
+            if !imp.show_cursor.get() {
                 imp.show_cursor();
 
                 if imp.running.get() {
