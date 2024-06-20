@@ -22,7 +22,7 @@ const ALIASES: &'static [(&'static str, &'static str)] = &[
 
 // The largest grapheme count of any current alias, manually kept track of for performance reasons.
 // If this is too large, nothing will happen. If it's too small, larger aliases won't be recognized.
-const ALIAS_MAX_SIZE: usize = 5;
+const ALIAS_MAX_SIZE: usize = 2;
 
 #[derive(Debug, Clone, Copy, PartialEq)]
 pub enum GraphemeState {
@@ -204,15 +204,14 @@ pub fn line_offset_with_replacements(
     typed: &str,
     unfinished_letter_length: usize,
 ) -> (usize, usize) {
-    let grapheme_idx = if let Some((_, potential_alias, _)) = end_alias(original, typed) {
-        typed[..typed.len() - potential_alias.len()]
-            .graphemes(true)
-            .count()
+    let typed_graphemes = typed.graphemes(true).count();
+
+    let grapheme_idx = if let Some((letter, potential_alias, _)) = end_alias(original, typed) {
+        typed_graphemes - potential_alias.graphemes(true).count() + letter.graphemes(true).count()
     } else if unfinished_letter_length > 0 {
-        println!("a");
-        typed.graphemes(true).count() + unfinished_letter_length
+        typed_graphemes + unfinished_letter_length
     } else {
-        typed.graphemes(true).count()
+        typed_graphemes
     };
 
     let line_num = original
