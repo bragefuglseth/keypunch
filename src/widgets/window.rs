@@ -209,6 +209,7 @@ mod imp {
                     "Angelo Verlain Shema https://www.vixalien.com/",
                     "Gregor Niehl https://gregorni.gitlab.io/",
                     "Ibrahim Muhammad",
+                    "Shellheim",
                 ],
             );
 
