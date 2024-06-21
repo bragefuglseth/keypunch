@@ -65,14 +65,13 @@ impl imp::KpTextView {
     pub(super) fn update_caret_position(&self, force: bool) {
         let obj = self.obj();
 
-        let original = self.original_text.borrow();
-        let typed = self.typed_text.borrow();
-
         let input_context = self.input_context.borrow();
         let (preedit, _, _) = input_context.as_ref().unwrap().preedit_string();
 
         let (caret_line, caret_idx) =
-            line_offset_with_replacements(&original, &typed, preedit.graphemes(true).count());
+            line_offset_with_replacements(&self.original_text.borrow(), &self.typed_text.borrow(), preedit.graphemes(true).count());
+
+        self.original_text.borrow_mut();
 
         let text_view = self.text_view.get();
         let buf = text_view.buffer();
