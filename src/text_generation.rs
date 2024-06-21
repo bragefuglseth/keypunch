@@ -25,6 +25,8 @@ pub enum Language {
     Hindi,
     #[strum(message = "Kinyarwanda", to_string = "rw_RW")]
     Kinyarwanda,
+    #[strum(message = "한국어", to_string = "ko_KR")]
+    Korean,
     #[strum(message = "नेपाली", to_string = "ne_NP")]
     Nepali,
     #[strum(message = "Norsk bokmål", to_string = "nb_NO")]
@@ -93,6 +95,7 @@ pub fn simple(language: Language) -> String {
         | Language::German
         | Language::Hindi
         | Language::Kinyarwanda
+        | Language::Korean
         | Language::Nepali
         | Language::NorwegianBokmaal
         | Language::NorwegianNynorsk
@@ -110,6 +113,7 @@ pub fn advanced(language: Language) -> String {
         | Language::English
         | Language::German
         | Language::Kinyarwanda
+        | Language::Korean
         | Language::NorwegianBokmaal
         | Language::NorwegianNynorsk
         | Language::Swahili
