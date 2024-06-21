@@ -2,8 +2,8 @@
 
 # Keypunch
 
-[![Chat on Matrix](https://img.shields.io/badge/chat-%23keypunch%3Agnome.org-mediumorchid?style=flat&logo=matrix
-)](https://matrix.to/#/#keypunch:gnome.org)
+[![Available on Flathub](https://img.shields.io/flathub/downloads/dev.bragefuglseth.Keypunch?logo=flathub&labelColor=77767b&color=4a90d9)](https://flathub.org/apps/dev.bragefuglseth.Fretboard)
+[![Chat on Matrix](https://img.shields.io/badge/chat-%23keypunch%3Agnome.org-mediumorchid?style=flat&logo=matrix)](https://matrix.to/#/#keypunch:gnome.org)
 [![Please do not theme this app](https://stopthemingmy.app/badge.svg)](https://stopthemingmy.app)
 
 ![screenshot](/data/screenshots/2-ready.png)
@@ -18,7 +18,9 @@ Get ready to accelerate your typing!
 
 ## Installation
 
-The app will be released on Flathub when it's ready.
+Keypunch is available on Flathub.
+
+[<img width="240" alt="Download on Flathub" src="https://dl.flathub.org/assets/badges/flathub-badge-en.png"/>](https://flathub.org/apps/dev.bragefuglseth.Keypunch)
 
 ## Contributing
 
