@@ -76,6 +76,11 @@ mod imp {
                 .connect_search_changed(glib::clone!(@weak self as imp => move |_| {
                     imp.update_search_state();
                 }));
+
+            self.search_entry
+                .connect_stop_search(glib::clone!(@weak self as imp => move |_| {
+                    imp.obj().close();
+                }));
         }
     }
     impl WidgetImpl for KpTextLanguageDialog {}
