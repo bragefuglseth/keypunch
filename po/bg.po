@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: keypunch\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-06-07 08:45+0200\n"
-"PO-Revision-Date: 2024-06-22 13:18+0200\n"
+"PO-Revision-Date: 2024-06-22 17:30+0200\n"
 "Last-Translator: twlvnn kraftwerk <kraft_werk@tutanota.com>\n"
 "Language-Team: Bulgarian <dict-notifications@fsa-bg.org>\n"
 "Language: bg\n"
@@ -156,7 +156,7 @@ msgstr "Езици, показани в списъка със скорошнит
 #. Translators: This is the default text for custom typing sessions. Do not translate it literally, and do not remove the quotation marks. Replace it with an appropriate "sample sentence" from your language instead. The original text is an English pangram, so you can e.g. find a pangram in your language: https://clagnut.com/blog/2380
 #: data/dev.bragefuglseth.Keypunch.gschema.xml:52
 msgid "\"The quick brown fox jumps over the lazy dog.\""
-msgstr "„Под южно дърво, цъфтящо в синьо, бягаше малко пухкаво зайче.“"
+msgstr "„Ах, чудна българска земьо, полюшвай цъфтящи жита!“"
 
 #: data/dev.bragefuglseth.Keypunch.gschema.xml:53
 #: src/widgets/custom_text_dialog.blp:5 src/widgets/custom_text_dialog.blp:26
