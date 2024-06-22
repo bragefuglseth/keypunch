@@ -196,6 +196,10 @@ mod imp {
 
     impl KpWindow {
         fn show_about_dialog(&self) {
+            if self.running.get() || self.obj().visible_dialog().is_some() {
+                return;
+            }
+
             let about = adw::AboutDialog::from_appdata(
                 "/dev/bragefuglseth/Keypunch/dev.bragefuglseth.Keypunch.metainfo.xml",
                 Some("1.0"),

@@ -21,7 +21,7 @@ pub enum Language {
     French,
     #[strum(message = "Deutsch", to_string = "de_DE")]
     German,
-    #[strum(message = "हिन्दी",  to_string = "hi_IN")]
+    #[strum(message = "हिन्दी", to_string = "hi_IN")]
     Hindi,
     #[strum(message = "Magyar", to_string = "hu_HU")]
     Hungarian,
@@ -44,7 +44,7 @@ pub enum Language {
     #[strum(message = "Schweizerdeutsch", to_string = "de_CH")]
     SwissGerman,
     #[strum(message = "Українська", to_string = "uk_UA")]
-    Ukranian
+    Ukranian,
 }
 
 // A set of punctuation that works fine for most western languages
@@ -126,9 +126,7 @@ pub fn advanced(language: Language) -> String {
         | Language::Swahili
         | Language::Swedish
         | Language::SwissGerman
-        | Language::Ukranian => {
-            advanced_generic(&language.to_string(), " ", GENERIC_PUNCTUATION)
-        }
+        | Language::Ukranian => advanced_generic(&language.to_string(), " ", GENERIC_PUNCTUATION),
         Language::Arabic => advanced_generic(
             "ar_SA_advanced",
             " ",

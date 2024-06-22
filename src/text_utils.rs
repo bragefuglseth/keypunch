@@ -309,4 +309,3 @@ pub fn calculate_accuracy(original: &str, typed: &str) -> f64 {
         correct as f64 / total as f64
     }
 }
-

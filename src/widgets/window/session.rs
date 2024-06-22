@@ -135,7 +135,7 @@ impl imp::KpWindow {
     }
 
     pub(super) fn show_text_language_dialog(&self) {
-        if self.running.get() {
+        if self.running.get() || self.obj().visible_dialog().is_some() {
             return;
         }
 
@@ -182,8 +182,11 @@ impl imp::KpWindow {
     }
 
     pub fn show_custom_text_dialog(&self, initial_text: &str) {
-        let current_text = self.custom_text.borrow();
+        if self.running.get() || self.obj().visible_dialog().is_some() {
+            return;
+        }
 
+        let current_text = self.custom_text.borrow();
         let dialog = KpCustomTextDialog::new(&current_text, &initial_text);
 
         dialog.connect_local(

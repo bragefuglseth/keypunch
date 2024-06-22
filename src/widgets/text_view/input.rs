@@ -129,4 +129,3 @@ impl imp::KpTextView {
         self.typed_text_changed();
     }
 }
-

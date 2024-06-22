@@ -68,8 +68,11 @@ impl imp::KpTextView {
         let input_context = self.input_context.borrow();
         let (preedit, _, _) = input_context.as_ref().unwrap().preedit_string();
 
-        let (caret_line, caret_idx) =
-            line_offset_with_replacements(&self.original_text.borrow(), &self.typed_text.borrow(), preedit.graphemes(true).count());
+        let (caret_line, caret_idx) = line_offset_with_replacements(
+            &self.original_text.borrow(),
+            &self.typed_text.borrow(),
+            preedit.graphemes(true).count(),
+        );
 
         self.original_text.borrow_mut();
 
