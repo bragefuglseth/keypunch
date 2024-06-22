@@ -136,7 +136,6 @@ impl imp::KpTextView {
             if let Some(input_context) = &*self.input_context.borrow() {
                 let caret_rect = gdk::Rectangle::new(x, y, 1, pos.height());
                 input_context.set_cursor_location(&caret_rect);
-                input_context.reset();
             }
         }
     }

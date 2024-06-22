@@ -113,12 +113,14 @@ impl imp::KpTextView {
         }
 
         self.typed_text_changed();
+        self.input_context.borrow().as_ref().unwrap().reset();
     }
 
     fn pop_typed_text(&self, graphemes: usize) {
         pop_grapheme_in_place(&mut self.typed_text.borrow_mut(), graphemes);
 
         self.typed_text_changed();
+        self.input_context.borrow().as_ref().unwrap().reset();
     }
 
     fn pop_typed_text_word(&self) {
@@ -126,6 +128,8 @@ impl imp::KpTextView {
             &self.original_text.borrow(),
             &mut self.typed_text.borrow_mut(),
         );
+
         self.typed_text_changed();
+        self.input_context.borrow().as_ref().unwrap().reset();
     }
 }

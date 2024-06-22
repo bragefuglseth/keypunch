@@ -136,6 +136,7 @@ mod imp {
     }
 
     impl KpTextView {
+        // TODO: Check if this can use `typed_text_changed` instead to streamline
         pub fn set_original_text(&self, text: &str) {
             *self.original_text.borrow_mut() = text.to_string();
             self.text_view
@@ -191,6 +192,7 @@ impl KpTextView {
     pub fn set_typed_text(&self, text: &str) {
         *self.imp().typed_text.borrow_mut() = text.to_string();
         self.imp().typed_text_changed();
+        self.imp().input_context.borrow().as_ref().unwrap().reset();
     }
 
     pub fn original_grapheme_count(&self) -> usize {
