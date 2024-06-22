@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: keypunch\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-06-07 08:45+0200\n"
-"PO-Revision-Date: 2024-06-22 17:30+0200\n"
+"PO-Revision-Date: 2024-06-22 17:35+0200\n"
 "Last-Translator: twlvnn kraftwerk <kraft_werk@tutanota.com>\n"
 "Language-Team: Bulgarian <dict-notifications@fsa-bg.org>\n"
 "Language: bg\n"
@@ -151,7 +151,8 @@ msgstr "Скоро ползвани езици"
 
 #: data/dev.bragefuglseth.Keypunch.gschema.xml:48
 msgid "Languages shown in the list of recent ones in the text language dialog"
-msgstr "Езици, показани в списъка със скорошните в прозорец за езика на текста"
+msgstr ""
+"Езици, показани в списъка със скорошните в прозореца за езика на текста"
 
 #. Translators: This is the default text for custom typing sessions. Do not translate it literally, and do not remove the quotation marks. Replace it with an appropriate "sample sentence" from your language instead. The original text is an English pangram, so you can e.g. find a pangram in your language: https://clagnut.com/blog/2380
 #: data/dev.bragefuglseth.Keypunch.gschema.xml:52
