@@ -7,11 +7,13 @@ use unicode_segmentation::UnicodeSegmentation;
 static EMBEDDED_WORD_LIST_DIR: Dir = include_dir!("$CARGO_MANIFEST_DIR/data/word_lists");
 pub const CHUNK_GRAPHEME_COUNT: usize = 400;
 
-// All of the languages here MUST have a corresponding file in data/word_lists/{lang_code}.txt
+// All languages here MUST have a corresponding file in data/word_lists/{lang_code}.txt
 #[derive(Clone, Copy, Default, EnumDisplay, EnumString, EnumIter, EnumMessage, PartialEq)]
 pub enum Language {
     #[strum(message = "العربية", to_string = "ar_SA")]
     Arabic,
+    #[strum(message = "Български", to_string = "bg_BG")]
+    Bulgarian,
     #[strum(message = "Dansk", to_string = "da_DK")]
     Danish,
     #[default]
@@ -45,8 +47,6 @@ pub enum Language {
     SwissGerman,
     #[strum(message = "Українська", to_string = "uk_UA")]
     Ukranian,
-    #[strum(message = "Български", to_string = "bg_BG")]
-    Bulgarian
 }
 
 // A set of punctuation that works fine for most western languages
@@ -95,6 +95,7 @@ impl<'a> Punctuation<'a> {
 pub fn simple(language: Language) -> String {
     match language {
         Language::Arabic
+        | Language::Bulgarian
         | Language::English
         | Language::Danish
         | Language::French
@@ -110,15 +111,15 @@ pub fn simple(language: Language) -> String {
         | Language::Swahili
         | Language::Swedish
         | Language::SwissGerman
-        | Language::Ukranian
-        | Language::Bulgarian => simple_generic(&language.to_string(), " "),
+        | Language::Ukranian => simple_generic(&language.to_string(), " "),
     }
 }
 
 // Some capitalized letters, punctuation and numbers
 pub fn advanced(language: Language) -> String {
     match language {
-        Language::Danish
+        Language::Bulgarian
+        | Language::Danish
         | Language::English
         | Language::German
         | Language::Hungarian
@@ -129,10 +130,7 @@ pub fn advanced(language: Language) -> String {
         | Language::Swahili
         | Language::Swedish
         | Language::SwissGerman
-        | Language::Ukranian
-        | Language::Bulgarian => {
-            advanced_generic(&language.to_string(), " ", GENERIC_PUNCTUATION)
-        }
+        | Language::Ukranian => advanced_generic(&language.to_string(), " ", GENERIC_PUNCTUATION),
         Language::Arabic => advanced_generic(
             "ar_SA_advanced",
             " ",
