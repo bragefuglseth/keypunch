@@ -123,7 +123,7 @@ mod imp {
         fn size_allocate(&self, width: i32, height: i32, baseline: i32) {
             self.text_view.allocate(width, height, baseline, None);
             self.update_scroll_position(true);
-            self.update_caret_position(true);
+            self.update_caret_position(true, false);
             self.update_colors();
         }
 
@@ -143,7 +143,7 @@ mod imp {
                 .buffer()
                 .set_text(&insert_replacements(&text));
             self.update_colors();
-            self.update_caret_position(true);
+            self.update_caret_position(true, true);
             self.update_scroll_position(true);
             self.update_accessible_state();
         }
@@ -156,9 +156,9 @@ mod imp {
             self.update_colors();
         }
 
-        pub(super) fn typed_text_changed(&self) {
+        pub(super) fn typed_text_changed(&self, preedit: bool) {
             self.update_colors();
-            self.update_caret_position(!self.running.get());
+            self.update_caret_position(!self.running.get(), !preedit);
             self.update_scroll_position(!self.running.get());
             self.update_accessible_state();
 
@@ -191,7 +191,7 @@ impl KpTextView {
 
     pub fn set_typed_text(&self, text: &str) {
         *self.imp().typed_text.borrow_mut() = text.to_string();
-        self.imp().typed_text_changed();
+        self.imp().typed_text_changed(false);
         self.imp().input_context.borrow().as_ref().unwrap().reset();
     }
 
