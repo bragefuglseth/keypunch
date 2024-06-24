@@ -121,8 +121,7 @@ pub fn simple(language: Language) -> String {
 // Some capitalized letters, punctuation and numbers
 pub fn advanced(language: Language) -> String {
     match language {
-        Language::Bulgarian
-        | Language::Danish
+        Language::Danish
         | Language::English
         | Language::German
         | Language::Hungarian
@@ -135,6 +134,7 @@ pub fn advanced(language: Language) -> String {
         | Language::Swedish
         | Language::SwissGerman
         | Language::Ukranian => advanced_generic(&language.to_string(), " ", GENERIC_PUNCTUATION),
+        // Arabic has its own set of punctuation and a couple of words with vowel markers
         Language::Arabic => advanced_generic(
             "ar_SA_advanced",
             " ",
@@ -146,6 +146,22 @@ pub fn advanced(language: Language) -> String {
                 Punctuation::suffix("!", true, 0.3),
                 Punctuation::suffix("؟", true, 0.3),
                 Punctuation::wrapping("\"", "\"", false, 0.2),
+                Punctuation::wrapping("(", ")", false, 0.1),
+            ],
+        ),
+        // Bulgarians apparently have a pretty strong culture of using „ and “ over " and ".
+        // See <https://github.com/bragefuglseth/keypunch/issues/41> if this ever comes up again
+        Language::Bulgarian => advanced_generic(
+            &language.to_string(),
+            " ",
+            &[
+                Punctuation::suffix(".", true, 0.6),
+                Punctuation::suffix(",", false, 1.0),
+                Punctuation::suffix(";", false, 0.1),
+                Punctuation::suffix(":", false, 0.2),
+                Punctuation::suffix("!", true, 0.3),
+                Punctuation::suffix("?", true, 0.3),
+                Punctuation::wrapping("„", "“", false, 0.2),
                 Punctuation::wrapping("(", ")", false, 0.1),
             ],
         ),
