@@ -33,7 +33,7 @@ impl imp::KpTextView {
                 }
 
                 *imp.previous_preedit.borrow_mut() = preedit.to_string();
-                imp.typed_text_changed(true);
+                imp.typed_text_changed();
             }
 
         }));
@@ -112,13 +112,13 @@ impl imp::KpTextView {
             self.typed_text.borrow_mut().push_str(&letter);
         }
 
-        self.typed_text_changed(false);
+        self.typed_text_changed();
     }
 
     fn pop_typed_text(&self, graphemes: usize) {
         pop_grapheme_in_place(&mut self.typed_text.borrow_mut(), graphemes);
 
-        self.typed_text_changed(false);
+        self.typed_text_changed();
     }
 
     fn pop_typed_text_word(&self) {
@@ -127,6 +127,6 @@ impl imp::KpTextView {
             &mut self.typed_text.borrow_mut(),
         );
 
-        self.typed_text_changed(false);
+        self.typed_text_changed();
     }
 }

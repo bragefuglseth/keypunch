@@ -62,7 +62,7 @@ impl imp::KpTextView {
 
     // Calculates where the caret currently should be, and runs an animation to get it there.
     // If `force` is true, the change will happen unconditionally and without an animation.
-    pub(super) fn update_caret_position(&self, force: bool, update_im_cursor: bool) {
+    pub(super) fn update_caret_position(&self, force: bool) {
         let obj = self.obj();
 
         let input_context = self.input_context.borrow();
@@ -133,13 +133,9 @@ impl imp::KpTextView {
             caret_y_animation.play();
 
             // Update virtual caret to accomodate software input methods (e.g. Pinyin)
-
-            if update_im_cursor {
-                if let Some(input_context) = &*self.input_context.borrow() {
-                    let caret_rect = gdk::Rectangle::new(x, y, 1, pos.height());
-                    input_context.set_cursor_location(&caret_rect);
-                    input_context.reset();
-                }
+            if let Some(input_context) = &*self.input_context.borrow() {
+                let caret_rect = gdk::Rectangle::new(x, y, 1, pos.height());
+                input_context.set_cursor_location(&caret_rect);
             }
         }
     }
