@@ -214,6 +214,7 @@ mod imp {
                     "Daniel Uhrinyi",
                     "Gregor Niehl https://gregorni.gitlab.io/",
                     "Ibrahim Muhammad",
+                    "Kim Jimin https://developomp.com",
                     "Shellheim",
                     "Urtsi Santsi",
                     "Yevhen Popok",
