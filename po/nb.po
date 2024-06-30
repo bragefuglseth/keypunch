@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: keypunch\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-06-07 08:45+0200\n"
-"PO-Revision-Date: 2024-06-01 21:27+0200\n"
+"PO-Revision-Date: 2024-06-30 09:13+0200\n"
 "Last-Translator: Brage <bragefuglseth@gnome.org>\n"
 "Language-Team: \n"
 "Language: nb\n"
@@ -182,35 +182,32 @@ msgstr ""
 #: data/resources/gtk/help-overlay.ui:11
 msgctxt "shortcut window"
 msgid "General"
-msgstr ""
+msgstr "Generelt"
 
 #: data/resources/gtk/help-overlay.ui:14
-#, fuzzy
 msgctxt "shortcut window"
 msgid "Text Language"
 msgstr "Tekstspråk"
 
 #: data/resources/gtk/help-overlay.ui:20
-#, fuzzy
 msgctxt "shortcut window"
 msgid "Cancel Session"
 msgstr "Stopp økt"
 
 #: data/resources/gtk/help-overlay.ui:26
-#, fuzzy
 msgctxt "shortcut window"
 msgid "Keyboard Shortcuts"
-msgstr "_Tastatursnarveier"
+msgstr "Tastatursnarveier"
 
 #: data/resources/gtk/help-overlay.ui:32
 msgctxt "shortcut window"
 msgid "Close Window"
-msgstr ""
+msgstr "Lukk vindu"
 
 #: data/resources/gtk/help-overlay.ui:38
 msgctxt "shortcut window"
 msgid "Quit"
-msgstr ""
+msgstr "Avslutt"
 
 #: src/widgets/custom_text_dialog.blp:37
 msgid "Insert custom text…"
