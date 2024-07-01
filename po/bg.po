@@ -343,15 +343,15 @@ msgstr "_Относно „Keypunch“"
 
 #: src/widgets/window.rs:48
 msgid "Simple"
-msgstr "Лесен, обикновен"
+msgstr "Лесно"
 
 #: src/widgets/window.rs:49
 msgid "Advanced"
-msgstr "Напреднал, за напреднали"
+msgstr "За напреднали"
 
 #: src/widgets/window.rs:50
 msgid "Custom"
-msgstr "По поръчка, поръчан (заб.: произлиза от израза Custom-made)"
+msgstr "Друго"
 
 #: src/widgets/window.rs:68
 msgid "15 seconds"
