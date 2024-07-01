@@ -156,7 +156,7 @@ msgstr "Testo personalizzato"
 
 #: data/dev.bragefuglseth.Keypunch.gschema.xml:54
 msgid "Text displayed when “Custom” is chosen from the session menu"
-msgstr "Testo visualizzato quando si sceglie "Personalizzato" dal menu della sessione"
+msgstr "Testo visualizzato quando si sceglie \"Personalizzato\" dal menu della sessione"
 
 #: data/dev.bragefuglseth.Keypunch.gschema.xml:58
 msgid "Personal Best"
