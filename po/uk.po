@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: keypunch\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-06-07 08:45+0200\n"
+"POT-Creation-Date: 2024-07-01 14:34+0200\n"
 "PO-Revision-Date: 2024-06-24 10:45+0300\n"
 "Last-Translator: Yevhen Popok <xalt7x.service@gmail.com>\n"
 "Language-Team: \n"
@@ -96,13 +96,6 @@ msgstr "Вибір мови"
 #: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:52
 msgid "Custom text entry"
 msgstr "Друк власного тексту"
-
-#. This is part of the changelog, and doesn't need to be translated. I've tried to mark it as untranslatable, and I have no idea why it doesn't work.
-#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:84
-msgid ""
-"This is the initial release of Keypunch! Give it a spin and say what you "
-"think."
-msgstr "Це перший реліз Keypunch! Спробуйте та поділіться своїми враженнями."
 
 #: data/dev.bragefuglseth.Keypunch.gschema.xml:20
 msgid "Window Width"
@@ -386,31 +379,31 @@ msgstr "5 хвилин"
 msgid "10 minutes"
 msgstr "10 хвилин"
 
-#: src/widgets/window.rs:207
+#: src/widgets/window.rs:211
 msgid "Orthography by"
 msgstr "Правопис від"
 
 #. Translators: Replace "translator-credits" with your names, one name per line
-#: src/widgets/window.rs:216
+#: src/widgets/window.rs:225
 msgid "translator-credits"
 msgstr "Yevhen Popok"
 
-#: src/widgets/window.rs:221
+#: src/widgets/window.rs:230
 msgid "Special thanks to"
 msgstr "Окрема подяка"
 
 #. Translators: The `{}` blocks will be replaced with the current word count and the total word count.
 #. Do not translate them! The slash sign is a special unicode character, if your language doesn't
 #. use a completely different sign, you should probably copy and paste it from the original string.
-#: src/widgets/window/session.rs:111
+#: src/widgets/window/session.rs:97
 msgid "{} ⁄ {}"
 msgstr "{} ⁄ {}"
 
-#: src/widgets/window/session.rs:228
+#: src/widgets/window/session.rs:219
 msgid "Changes discarded"
 msgstr "Зміни відхилено"
 
-#: src/widgets/window/session.rs:229
+#: src/widgets/window/session.rs:220
 msgid "Restore"
 msgstr "Відновити"
 
@@ -419,6 +412,12 @@ msgstr "Відновити"
 #. passed. Do not translate the `{}` blocks. Note that the `∶` sign is a special
 #. Unicode character; if your language doesn't use something completely different,
 #. you should probably copy and paste it from the original string.
-#: src/widgets/window/session.rs:301 src/widgets/window/session.rs:303
+#: src/widgets/window/session.rs:292 src/widgets/window/session.rs:294
 msgid "{}∶{}"
 msgstr "{}∶{}"
+
+#~ msgid ""
+#~ "This is the initial release of Keypunch! Give it a spin and say what you "
+#~ "think."
+#~ msgstr ""
+#~ "Це перший реліз Keypunch! Спробуйте та поділіться своїми враженнями."
