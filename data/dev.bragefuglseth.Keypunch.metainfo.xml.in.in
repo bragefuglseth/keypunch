@@ -89,7 +89,7 @@
           <li>Recognition of Ctrl+Backspace</li>
           <li>Special accomodations for on-screen keyboards and touch screens</li>
         </ul>
-        <p>A special thanks to everybody who have contributed orthographic information and tested the text generation and input machinery for their languages. Keypunch’s diverse language support would not be possible without you.</p>
+        <p>A special thanks to everybody who has contributed orthographic information and tested the text generation and input machinery for their languages. Keypunch’s diverse language support would not be possible without you.</p>
       </description>
     </release>
     <release date="2024-06-01" version="1.0">
