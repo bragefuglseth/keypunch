@@ -2,7 +2,7 @@
 
 # Keypunch
 
-[![Available on Flathub](https://img.shields.io/flathub/downloads/dev.bragefuglseth.Keypunch?logo=flathub&labelColor=77767b&color=4a90d9)](https://flathub.org/apps/dev.bragefuglseth.Fretboard)
+[![Available on Flathub](https://img.shields.io/flathub/downloads/dev.bragefuglseth.Keypunch?logo=flathub&labelColor=77767b&color=4a90d9)](https://flathub.org/apps/dev.bragefuglseth.Keypunch)
 [![Chat on Matrix](https://img.shields.io/badge/chat-%23keypunch%3Agnome.org-mediumorchid?style=flat&logo=matrix)](https://matrix.to/#/#keypunch:gnome.org)
 [![Please do not theme this app](https://stopthemingmy.app/badge.svg)](https://stopthemingmy.app)
 
