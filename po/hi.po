@@ -122,7 +122,7 @@ msgstr "समय-आधारित सत्रों की अवधि"
 #. Translators: Insert the language code of your language here (or one of an equal implemented language, for example, the en_US word list shouldn't have any words differing from UK English). Do not remove the quotation marks.
 #: data/dev.bragefuglseth.Keypunch.gschema.xml:41
 msgid "\"en_US\""
-msgstr "\"hi\""
+msgstr "\"hi_IN\""
 
 #: data/dev.bragefuglseth.Keypunch.gschema.xml:42
 #: src/widgets/results_view.blp:109 src/widgets/text_language_dialog.blp:5
