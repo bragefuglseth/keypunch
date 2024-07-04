@@ -12,6 +12,8 @@ pub const CHUNK_GRAPHEME_COUNT: usize = 400;
 pub enum Language {
     #[strum(message = "العربية", to_string = "ar_SA")]
     Arabic,
+    #[strum(message = "বাংলা", to_string = "bn_BD")]
+    Bangla,
     #[strum(message = "Български", to_string = "bg_BG")]
     Bulgarian,
     #[strum(message = "Dansk", to_string = "da_DK")]
@@ -97,6 +99,7 @@ impl<'a> Punctuation<'a> {
 pub fn simple(language: Language) -> String {
     match language {
         Language::Arabic
+        | Language::Bangla
         | Language::Bulgarian
         | Language::English
         | Language::Danish
@@ -182,7 +185,7 @@ pub fn advanced(language: Language) -> String {
             ],
         ),
         // Hindi & Nepali use Devanagari punctuation
-        Language::Hindi | Language::Nepali => advanced_generic(
+        Language::Bangla | Language::Hindi | Language::Nepali => advanced_generic(
             &language.to_string(),
             " ",
             &[
