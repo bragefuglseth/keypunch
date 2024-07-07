@@ -20,7 +20,7 @@ Get ready to accelerate your typing!
 
 Keypunch is available on Flathub.
 
-[<img width="240" alt="Download on Flathub" src="https://dl.flathub.org/assets/badges/flathub-badge-en.png"/>](https://flathub.org/apps/dev.bragefuglseth.Keypunch)
+[<img width="240" alt="Download on Flathub" src="https://flathub.org/api/badge?svg&locale=en"/>](https://flathub.org/apps/dev.bragefuglseth.Keypunch)
 
 ## Contributing
 
