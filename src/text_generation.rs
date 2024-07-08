@@ -53,18 +53,6 @@ pub enum Language {
     Ukranian,
 }
 
-// A set of punctuation that works fine for most western languages
-const GENERIC_PUNCTUATION: &'static [Punctuation] = &[
-    Punctuation::suffix(".", true, 0.6),
-    Punctuation::suffix(",", false, 1.0),
-    Punctuation::suffix(";", false, 0.1),
-    Punctuation::suffix(":", false, 0.2),
-    Punctuation::suffix("!", true, 0.3),
-    Punctuation::suffix("?", true, 0.3),
-    Punctuation::wrapping("\"", "\"", false, 0.2),
-    Punctuation::wrapping("(", ")", false, 0.1),
-];
-
 #[derive(Clone, Copy)]
 struct Punctuation<'a> {
     prefix: Option<&'a str>,
@@ -94,6 +82,25 @@ impl<'a> Punctuation<'a> {
         }
     }
 }
+
+// A set of punctuation that works fine for most western languages
+const GENERIC_PUNCTUATION: &'static [Punctuation] = &[
+    Punctuation::suffix(".", true, 0.6),
+    Punctuation::suffix(",", false, 1.0),
+    Punctuation::suffix(";", false, 0.1),
+    Punctuation::suffix(":", false, 0.2),
+    Punctuation::suffix("!", true, 0.3),
+    Punctuation::suffix("?", true, 0.3),
+    Punctuation::wrapping("\"", "\"", false, 0.2),
+    Punctuation::wrapping("(", ")", false, 0.1),
+];
+
+type Numerals = [&'static str; 10];
+
+const WESTERN_ARABIC_NUMERALS: &'static Numerals =
+    &["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
+const DEVANAGARI_NUMERALS: &'static Numerals = &["०", "१", "२", "३", "४", "५", "६", "७", "८", "९"];
+const BANGLA_NUMERALS: &'static Numerals = &["০", "১", "২", "৩", "৪", "৫", "৬", "৭", "৮", "৯"];
 
 // Only lowercase letters, no punctuation or numbers
 pub fn simple(language: Language) -> String {
@@ -136,7 +143,7 @@ pub fn advanced(language: Language) -> String {
         | Language::Swahili
         | Language::Swedish
         | Language::SwissGerman
-        | Language::Ukranian => advanced_generic(&language.to_string(), " ", GENERIC_PUNCTUATION),
+        | Language::Ukranian => advanced_generic(&language.to_string(), " ", GENERIC_PUNCTUATION, WESTERN_ARABIC_NUMERALS),
         // Arabic has its own set of punctuation and a couple of words with vowel markers
         Language::Arabic => advanced_generic(
             "ar_SA_advanced",
@@ -151,6 +158,7 @@ pub fn advanced(language: Language) -> String {
                 Punctuation::wrapping("\"", "\"", false, 0.2),
                 Punctuation::wrapping("(", ")", false, 0.1),
             ],
+            WESTERN_ARABIC_NUMERALS
         ),
         // Bulgarians apparently have a pretty strong culture of using „ and “ over " and ".
         // See <https://github.com/bragefuglseth/keypunch/issues/41> if this ever comes up again
@@ -167,6 +175,7 @@ pub fn advanced(language: Language) -> String {
                 Punctuation::wrapping("„", "“", false, 0.2),
                 Punctuation::wrapping("(", ")", false, 0.1),
             ],
+            WESTERN_ARABIC_NUMERALS
         ),
         // The French language has a space before certain punctuation marks.
         // See <https://www.frenchtoday.com/blog/french-grammar/french-punctuation/>
@@ -183,6 +192,7 @@ pub fn advanced(language: Language) -> String {
                 Punctuation::wrapping("\"", "\"", false, 0.2),
                 Punctuation::wrapping("(", ")", false, 0.1),
             ],
+            WESTERN_ARABIC_NUMERALS
         ),
         // Hindi & Nepali use Devanagari punctuation
         Language::Bangla | Language::Hindi | Language::Nepali => advanced_generic(
@@ -198,6 +208,7 @@ pub fn advanced(language: Language) -> String {
                 Punctuation::wrapping("\"", "\"", false, 0.2),
                 Punctuation::wrapping("(", ")", false, 0.1),
             ],
+            if language == Language::Bangla { BANGLA_NUMERALS } else { DEVANAGARI_NUMERALS }
         ),
         // Spanish has "wrapping" exclamation points and question marks
         Language::Spanish => advanced_generic(
@@ -213,6 +224,7 @@ pub fn advanced(language: Language) -> String {
                 Punctuation::wrapping("\"", "\"", false, 0.2),
                 Punctuation::wrapping("(", ")", false, 0.1),
             ],
+            WESTERN_ARABIC_NUMERALS
         ),
     }
 }
@@ -226,7 +238,12 @@ fn simple_generic(lang_code: &str, spacing: &str) -> String {
 }
 
 // Should work for most languages
-fn advanced_generic(lang_code: &str, spacing: &str, punctuations: &[Punctuation]) -> String {
+fn advanced_generic(
+    lang_code: &str,
+    spacing: &str,
+    punctuations: &[Punctuation],
+    numerals: &Numerals,
+) -> String {
     let mut rng = thread_rng();
 
     let mut generated = random_words_from_lang_code(lang_code, &mut rng);
@@ -240,7 +257,7 @@ fn advanced_generic(lang_code: &str, spacing: &str, punctuations: &[Punctuation]
     let len = generated.len();
     for i in sample(&mut rng, len, len / 20) {
         if let Some(word) = generated.get_mut(i) {
-            *word = random_number_weighted(&mut rng).to_string();
+            *word = random_number_weighted(&numerals, &mut rng).to_string();
         }
     }
 
@@ -329,18 +346,22 @@ fn insert_punctuation(word: &str, punctuation: Punctuation) -> String {
     }
 }
 
-// Generates a number between 0 and 9999, with a bias towards smaller numbers
-fn random_number_weighted(rng: &mut ThreadRng) -> usize {
-    match [1, 2, 3, 4]
-        // Makes the likelihood of getting a number with a certain amount of digits
-        // the "inverse" of the amount of digits (so 4 digits = weight 1, while 1 digit = weight 4)
-        .choose_weighted(rng, |n| 5 - n)
-        .expect("the weighted choice is performed on a static list")
-    {
-        1 => rng.gen_range(0..=9),
-        2 => rng.gen_range(10..=99),
-        3 => rng.gen_range(100..=999),
-        4 => rng.gen_range(1000..=9999),
-        _ => unreachable!("range generated is 1..=4"),
+// Generates a number between 0 and 9999, with support for multiple numeral systems
+// and a bias towards smaller numbers
+fn random_number_weighted(numerals: &Numerals, rng: &mut ThreadRng) -> String {
+    // The tuples consist of a number length and the proportion of numbers that should have
+    // that amount of digits
+    let number_length = *[(1, 0.4), (2, 0.3), (3, 0.2), (4, 0.1)]
+        .choose_weighted(rng, |(_, w)| *w)
+        .map(|(n, _)| n)
+        .unwrap();
+
+    let mut s = String::new();
+
+    for _ in 0..number_length {
+        let digit = numerals.choose(rng).unwrap();
+        s.push_str(&digit);
     }
+
+    s
 }
