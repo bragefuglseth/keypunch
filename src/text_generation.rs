@@ -177,19 +177,20 @@ pub fn advanced(language: Language) -> String {
             ],
             WESTERN_ARABIC_NUMERALS
         ),
-        // The French language has a space before certain punctuation marks.
-        // See <https://www.frenchtoday.com/blog/french-grammar/french-punctuation/>
+        // The French language has a space before certain punctuation marks, and keyboard layouts
+        // that allow for typing guillemet quotation marks easily.
+        // See <https://github.com/bragefuglseth/keypunch/issues/47>
         Language::French => advanced_generic(
             &language.to_string(),
             " ",
             &[
                 Punctuation::suffix(".", true, 0.6),
                 Punctuation::suffix(",", false, 1.0),
-                Punctuation::suffix("\u{00A0};", false, 0.1),
-                Punctuation::suffix("\u{00A0}:", false, 0.2),
-                Punctuation::suffix("\u{00A0}!", true, 0.3),
-                Punctuation::suffix("\u{00A0}?", true, 0.3),
-                Punctuation::wrapping("«\u{00A0}", "\u{00A0}»", false, 0.2),
+                Punctuation::suffix("\u{202F};", false, 0.1),
+                Punctuation::suffix("\u{202F}:", false, 0.2),
+                Punctuation::suffix("\u{202F}!", true, 0.3),
+                Punctuation::suffix("\u{202F}?", true, 0.3),
+                Punctuation::wrapping("«\u{202F}", "\u{202F}»", false, 0.2),
                 Punctuation::wrapping("(", ")", false, 0.1),
             ],
             WESTERN_ARABIC_NUMERALS
