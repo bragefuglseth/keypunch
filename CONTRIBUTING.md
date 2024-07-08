@@ -45,6 +45,6 @@ This is the technical procedure for adding a text language to Keypunch. To reque
 
    Replace `{native_name}` with the native name of the language, and `{code}` with the language code.
 
-5. Add the language to the match statements of the `simple` and `advanced` functions. If the language can use the "generic" implementation of any of those text types (words separated by spaces, punctuation inserted before and after words, etc., you can simply add it to the long, alphabetically sorted `Language | Language | Language | […]` pattern at the beginning. If it can use the generic advanced implementation, but has some special punctuation marks, add it below and imitate the other languages already implemented there.
+5. Add the language to the match statements of the `simple` and `advanced` functions. If the language can use the "generic" implementation of any of those text types (words separated by spaces, punctuation inserted before and after words, and Western Arabic numerals), you can simply add it to the long, alphabetically sorted `Language | Language | Language | […]` pattern at the beginning. If it can use the generic advanced implementation, but has some special punctuation marks or an alternate numeral system, add it below and imitate the other languages already implemented there.
 
 6. Build the app and test the implementation.
