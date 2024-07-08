@@ -10,48 +10,48 @@ pub const CHUNK_GRAPHEME_COUNT: usize = 400;
 // All languages here MUST have a corresponding file in data/word_lists/{lang_code}.txt
 #[derive(Clone, Copy, Default, EnumDisplay, EnumString, EnumIter, EnumMessage, PartialEq)]
 pub enum Language {
-    #[strum(message = "العربية", to_string = "ar_SA")]
+    #[strum(message = "العربية", to_string = "ar")]
     Arabic,
-    #[strum(message = "বাংলা", to_string = "bn_BD")]
+    #[strum(message = "বাংলা", to_string = "bn")]
     Bangla,
-    #[strum(message = "Български", to_string = "bg_BG")]
+    #[strum(message = "Български", to_string = "bg")]
     Bulgarian,
-    #[strum(message = "Dansk", to_string = "da_DK")]
+    #[strum(message = "Dansk", to_string = "da")]
     Danish,
     #[default]
-    #[strum(message = "English", to_string = "en_US")]
+    #[strum(message = "English", to_string = "en")]
     English,
-    #[strum(message = "Français", to_string = "fr_FR")]
+    #[strum(message = "Français", to_string = "fr")]
     French,
-    #[strum(message = "Deutsch", to_string = "de_DE")]
+    #[strum(message = "Deutsch", to_string = "de")]
     German,
-    #[strum(message = "हिन्दी", to_string = "hi_IN")]
+    #[strum(message = "हिन्दी", to_string = "hi")]
     Hindi,
-    #[strum(message = "Magyar", to_string = "hu_HU")]
+    #[strum(message = "Magyar", to_string = "hu")]
     Hungarian,
-    #[strum(message = "Kinyarwanda", to_string = "rw_RW")]
+    #[strum(message = "Kinyarwanda", to_string = "rw")]
     Kinyarwanda,
-    #[strum(message = "한국어", to_string = "ko_KR")]
+    #[strum(message = "한국어", to_string = "ko")]
     Korean,
-    #[strum(message = "नेपाली", to_string = "ne_NP")]
+    #[strum(message = "नेपाली", to_string = "ne")]
     Nepali,
-    #[strum(message = "Norsk bokmål", to_string = "nb_NO")]
+    #[strum(message = "Norsk bokmål", to_string = "nb")]
     NorwegianBokmaal,
-    #[strum(message = "Norsk nynorsk", to_string = "nn_NO")]
+    #[strum(message = "Norsk nynorsk", to_string = "nn")]
     NorwegianNynorsk,
-    #[strum(message = "Português", to_string = "pt_PT")]
+    #[strum(message = "Português", to_string = "pt")]
     Portugese,
-    #[strum(message = "Русский", to_string = "ru_RU")]
+    #[strum(message = "Русский", to_string = "ru")]
     Russian,
     #[strum(message = "Español", to_string = "es")]
     Spanish,
-    #[strum(message = "Swahili", to_string = "sw_KE")]
+    #[strum(message = "Swahili", to_string = "sw")]
     Swahili,
-    #[strum(message = "Svenska", to_string = "sv_SE")]
+    #[strum(message = "Svenska", to_string = "sv")]
     Swedish,
     #[strum(message = "Schweizerdeutsch", to_string = "de_CH")]
     SwissGerman,
-    #[strum(message = "Українська", to_string = "uk_UA")]
+    #[strum(message = "Українська", to_string = "uk")]
     Ukranian,
 }
 
@@ -150,7 +150,7 @@ pub fn advanced(language: Language) -> String {
         | Language::Ukranian => advanced_generic(&language.to_string(), " ", GENERIC_PUNCTUATION, WESTERN_ARABIC_NUMERALS),
         // Arabic has its own set of punctuation and a couple of words with vowel markers
         Language::Arabic => advanced_generic(
-            "ar_SA_advanced",
+            "ar_advanced",
             " ",
             &[
                 Punctuation::suffix(".", true, 0.6),

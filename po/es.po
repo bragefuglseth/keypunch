@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: keypunch\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-07-01 14:34+0200\n"
+"POT-Creation-Date: 2024-07-08 22:39+0200\n"
 "PO-Revision-Date: 2024-06-06 18:32+0200\n"
 "Last-Translator: Óscar Fernández Díaz <oscfdezdz@tuta.io>\n"
 "Language-Team: Spanish; Castilian\n"
@@ -124,9 +124,9 @@ msgstr "Duración de la sesión"
 msgid "The duration of time-based sessions"
 msgstr "La duración de las sesiones basadas en el tiempo"
 
-#. Translators: Insert the language code of your language here (or one of an equal implemented language, for example, the en_US word list shouldn't have any words differing from UK English). Do not remove the quotation marks.
+#. Translators: Insert the language code of your language here, for example "nb" for Norwegian Bokmaal. Do not remove the quotation marks. It's doesn't matter if there isn't a word list for the language in `data/word_lists` right now, the app will fall back to English in that case and start using the list if it becomes available in the future.
 #: data/dev.bragefuglseth.Keypunch.gschema.xml:41
-msgid "\"en_US\""
+msgid "\"en\""
 msgstr "\"es\""
 
 #: data/dev.bragefuglseth.Keypunch.gschema.xml:42
@@ -414,3 +414,6 @@ msgstr "Restaurar"
 #: src/widgets/window/session.rs:292 src/widgets/window/session.rs:294
 msgid "{}∶{}"
 msgstr "{}∶{}"
+
+#~ msgid "\"en_US\""
+#~ msgstr "\"es\""
