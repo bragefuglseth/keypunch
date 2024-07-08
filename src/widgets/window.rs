@@ -211,6 +211,7 @@ mod imp {
                 Some(&gettext("Orthography by")),
                 &[
                     "Angelo Verlain Shema https://www.vixalien.com/",
+                    "Arnob Goswami",
                     "Daniel Uhrinyi",
                     "Gregor Niehl https://gregorni.gitlab.io/",
                     "Ibrahim Muhammad",
