@@ -39,6 +39,8 @@ pub enum Language {
     NorwegianBokmaal,
     #[strum(message = "Norsk nynorsk", to_string = "nn_NO")]
     NorwegianNynorsk,
+    #[strum(message = "Português", to_string = "pt_PT")]
+    Portugese,
     #[strum(message = "Русский", to_string = "ru_RU")]
     Russian,
     #[strum(message = "Español", to_string = "es")]
@@ -119,6 +121,7 @@ pub fn simple(language: Language) -> String {
         | Language::Nepali
         | Language::NorwegianBokmaal
         | Language::NorwegianNynorsk
+        | Language::Portugese
         | Language::Russian
         | Language::Spanish
         | Language::Swahili
@@ -139,6 +142,7 @@ pub fn advanced(language: Language) -> String {
         | Language::Korean
         | Language::NorwegianBokmaal
         | Language::NorwegianNynorsk
+        | Language::Portugese
         | Language::Russian
         | Language::Swahili
         | Language::Swedish
