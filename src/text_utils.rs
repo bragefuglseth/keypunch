@@ -19,7 +19,7 @@ const ALIASES: &'static [(&'static str, &'static str)] = &[
     ("„", "\""), // Typographic quotation marks
     ("”", "\""),
     ("“", "\""),
-    ("’", "'"), // Typoographic apostrophe
+    ("’", "'"),               // Typoographic apostrophe
     ("\u{00A0}", "\u{0020}"), // Non-breaking spaces made typable as regular ones
     ("\u{202F}", "\u{0020}"),
 ];
