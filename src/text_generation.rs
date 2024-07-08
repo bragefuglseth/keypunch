@@ -185,11 +185,11 @@ pub fn advanced(language: Language) -> String {
             &[
                 Punctuation::suffix(".", true, 0.6),
                 Punctuation::suffix(",", false, 1.0),
-                Punctuation::suffix(" ;", false, 0.1),
-                Punctuation::suffix(" :", false, 0.2),
-                Punctuation::suffix(" !", true, 0.3),
-                Punctuation::suffix(" ?", true, 0.3),
-                Punctuation::wrapping("\"", "\"", false, 0.2),
+                Punctuation::suffix("\u{00A0};", false, 0.1),
+                Punctuation::suffix("\u{00A0}:", false, 0.2),
+                Punctuation::suffix("\u{00A0}!", true, 0.3),
+                Punctuation::suffix("\u{00A0}?", true, 0.3),
+                Punctuation::wrapping("«\u{00A0}", "\u{00A0}»", false, 0.2),
                 Punctuation::wrapping("(", ")", false, 0.1),
             ],
             WESTERN_ARABIC_NUMERALS
@@ -257,7 +257,7 @@ fn advanced_generic(
     let len = generated.len();
     for i in sample(&mut rng, len, len / 20) {
         if let Some(word) = generated.get_mut(i) {
-            *word = random_number_weighted(&numerals, &mut rng).to_string();
+            *word = random_number_weighted(&numerals, &mut rng);
         }
     }
 
