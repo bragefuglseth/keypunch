@@ -5,7 +5,6 @@ use unicode_segmentation::UnicodeSegmentation;
 // String replacements for when text is displayed in the text view
 const REPLACEMENTS: &'static [(&'static str, &'static str)] = &[
     ("\n", "↲\n"),            // Visually indicate enter
-    ("\u{0020}", "\u{2004}"), // Use a fixed-width space to avoid shifting widths with Arabic
 ];
 
 // Accepted alternate ways to type out certain characters
