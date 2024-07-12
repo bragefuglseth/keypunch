@@ -185,7 +185,7 @@ mod imp {
     impl WindowImpl for KpWindow {
         fn close_request(&self) -> glib::Propagation {
             // Save settings
-            self.save_settings().expect("able to save settings");
+            self.save_window_size().unwrap();
 
             // Don't inhibit the default handler
             glib::Propagation::Proceed

@@ -115,6 +115,7 @@ impl imp::KpWindow {
         };
 
         self.session_type.set(session_type);
+        self.settings().set_string("session-type", &session_type.to_string()).unwrap();
 
         let new_original = match session_type {
             SessionType::Simple => text_generation::simple(self.language.get()),
@@ -132,6 +133,7 @@ impl imp::KpWindow {
             .expect("dropdown only contains valid `SessionDuration` values");
 
         self.duration.set(selected);
+        self.settings().set_string("session-duration", &selected.to_string()).unwrap();
     }
 
     pub(super) fn show_text_language_dialog(&self) {
@@ -153,6 +155,7 @@ impl imp::KpWindow {
                     .expect("value sent with signal is dialog");
 
                 imp.language.set(dialog.selected_language());
+                imp.settings().set_string("text-language", &dialog.selected_language().to_string()).unwrap();
                 imp.update_original_text();
 
                 None
@@ -179,6 +182,15 @@ impl imp::KpWindow {
             )
             .take(3)
             .collect();
+
+        self.settings().set_value(
+            "recent-languages",
+            &recent_languages
+                .iter()
+                .map(Language::to_string)
+                .collect::<Vec<String>>()
+                .to_variant(),
+        ).unwrap();
     }
 
     pub fn show_custom_text_dialog(&self, initial_text: &str) {
@@ -198,6 +210,7 @@ impl imp::KpWindow {
                     .expect("save signal contains text to be saved")
                     .get().expect("value from save signal is string");
 
+                imp.settings().set_string("custom-text", &text).unwrap();
                 *imp.custom_text.borrow_mut() = text.to_string();
                 imp.update_original_text();
 

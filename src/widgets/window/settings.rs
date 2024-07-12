@@ -47,33 +47,17 @@ impl imp::KpWindow {
         *self.custom_text.borrow_mut() = custom_text.into();
     }
 
-    pub(super) fn save_settings(&self) -> Result<(), glib::BoolError> {
+    pub(super) fn save_window_size(&self) -> Result<(), glib::BoolError> {
         let obj = self.obj();
         let width = obj.default_width();
         let height = obj.default_height();
         let maximized = obj.is_maximized();
-        let session_type = self.session_type.get();
-        let duration = self.duration.get();
-        let language = self.language.get();
-        let recent_languages = self.recent_languages.borrow();
-        let custom_text = self.custom_text.borrow();
 
         let settings = self.settings();
         settings.set_int("window-width", width)?;
         settings.set_int("window-height", height)?;
         settings.set_boolean("window-maximized", maximized)?;
-        settings.set_string("session-type", &session_type.to_string())?;
-        settings.set_string("session-duration", &duration.to_string())?;
-        settings.set_string("text-language", &language.to_string())?;
-        settings.set_value(
-            "recent-languages",
-            &recent_languages
-                .iter()
-                .map(Language::to_string)
-                .collect::<Vec<String>>()
-                .to_variant(),
-        )?;
-        settings.set_string("custom-text", &custom_text)?;
+
         Ok(())
     }
 }
