@@ -151,7 +151,12 @@ pub fn advanced(language: Language) -> String {
         | Language::Swahili
         | Language::Swedish
         | Language::SwissGerman
-        | Language::Ukranian => advanced_generic(&language.to_string(), " ", GENERIC_PUNCTUATION, WESTERN_ARABIC_NUMERALS),
+        | Language::Ukranian => advanced_generic(
+            &language.to_string(),
+            " ",
+            GENERIC_PUNCTUATION,
+            WESTERN_ARABIC_NUMERALS,
+        ),
         // Arabic has its own set of punctuation and a couple of words with vowel markers
         Language::Arabic => advanced_generic(
             "ar_advanced",
@@ -166,7 +171,7 @@ pub fn advanced(language: Language) -> String {
                 Punctuation::wrapping("\"", "\"", false, 0.2),
                 Punctuation::wrapping("(", ")", false, 0.1),
             ],
-            WESTERN_ARABIC_NUMERALS
+            WESTERN_ARABIC_NUMERALS,
         ),
         // Bulgarians apparently have a pretty strong culture of using „ and “ over " and ".
         // See <https://github.com/bragefuglseth/keypunch/issues/41> if this ever comes up again
@@ -183,7 +188,7 @@ pub fn advanced(language: Language) -> String {
                 Punctuation::wrapping("„", "“", false, 0.2),
                 Punctuation::wrapping("(", ")", false, 0.1),
             ],
-            WESTERN_ARABIC_NUMERALS
+            WESTERN_ARABIC_NUMERALS,
         ),
         // The French language has a space before certain punctuation marks, and keyboard layouts
         // that allow for typing guillemet quotation marks easily.
@@ -201,7 +206,7 @@ pub fn advanced(language: Language) -> String {
                 Punctuation::wrapping("«\u{202F}", "\u{202F}»", false, 0.2),
                 Punctuation::wrapping("(", ")", false, 0.1),
             ],
-            WESTERN_ARABIC_NUMERALS
+            WESTERN_ARABIC_NUMERALS,
         ),
         // Hindi & Nepali use Devanagari punctuation
         Language::Bangla | Language::Hindi | Language::Nepali => advanced_generic(
@@ -217,7 +222,11 @@ pub fn advanced(language: Language) -> String {
                 Punctuation::wrapping("\"", "\"", false, 0.2),
                 Punctuation::wrapping("(", ")", false, 0.1),
             ],
-            if language == Language::Bangla { BANGLA_NUMERALS } else { DEVANAGARI_NUMERALS }
+            if language == Language::Bangla {
+                BANGLA_NUMERALS
+            } else {
+                DEVANAGARI_NUMERALS
+            },
         ),
         // Spanish has "wrapping" exclamation points and question marks
         Language::Spanish => advanced_generic(
@@ -233,7 +242,7 @@ pub fn advanced(language: Language) -> String {
                 Punctuation::wrapping("\"", "\"", false, 0.2),
                 Punctuation::wrapping("(", ")", false, 0.1),
             ],
-            WESTERN_ARABIC_NUMERALS
+            WESTERN_ARABIC_NUMERALS,
         ),
     }
 }

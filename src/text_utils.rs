@@ -4,7 +4,7 @@ use unicode_segmentation::UnicodeSegmentation;
 
 // String replacements for when text is displayed in the text view
 const REPLACEMENTS: &'static [(&'static str, &'static str)] = &[
-    ("\n", "↲\n"),            // Visually indicate enter
+    ("\n", "↲\n"), // Visually indicate enter
 ];
 
 // Accepted alternate ways to type out certain characters
