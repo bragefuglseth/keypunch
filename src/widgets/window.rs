@@ -232,11 +232,15 @@ mod imp {
                 &["Sophie Herold https://www.patreon.com/sophieh"],
             );
 
-            about.connect_closed(glib::clone!(@weak self as imp => move |_| {
-                imp.focus_text_view();
-            }));
+            about.connect_closed(glib::clone!(
+                #[weak(rename_to = imp)]
+                self,
+                move |_| {
+                    imp.focus_text_view();
+                }
+            ));
 
-            about.present(self.obj().upcast_ref::<gtk::Widget>());
+            about.present(Some(self.obj().upcast_ref::<gtk::Widget>()));
         }
     }
 }

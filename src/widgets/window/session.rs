@@ -22,12 +22,14 @@ impl imp::KpWindow {
             .position(|session_type| session_type == self.session_type.get())
             .unwrap();
         session_type_dropdown.set_selected(selected_type_index as u32);
-        session_type_dropdown.connect_selected_item_notify(
-            glib::clone!(@weak self as imp => move |_| {
+        session_type_dropdown.connect_selected_item_notify(glib::clone!(
+            #[weak(rename_to = imp)]
+            self,
+            move |_| {
                 imp.update_original_text();
                 imp.focus_text_view();
-            }),
-        );
+            }
+        ));
 
         setup_ellipsizing_dropdown_factory(&session_type_dropdown);
 
@@ -41,20 +43,25 @@ impl imp::KpWindow {
             .position(|duration| duration == self.duration.get())
             .unwrap();
         duration_dropdown.set_selected(selected_duration_index as u32);
-        duration_dropdown.connect_selected_item_notify(
-            glib::clone!(@weak self as imp => move |_| {
+        duration_dropdown.connect_selected_item_notify(glib::clone!(
+            #[weak(rename_to = imp)]
+            self,
+            move |_| {
                 imp.update_time();
                 imp.focus_text_view();
-            }),
-        );
+            }
+        ));
 
         setup_ellipsizing_dropdown_factory(&duration_dropdown);
 
-        self.custom_button
-            .connect_clicked(glib::clone!(@weak self as imp => move |_| {
+        self.custom_button.connect_clicked(glib::clone!(
+            #[weak(rename_to = imp)]
+            self,
+            move |_| {
                 let current_text = imp.custom_text.borrow();
                 imp.show_custom_text_dialog(&current_text);
-            }));
+            }
+        ));
 
         self.add_recent_language(self.language.get());
     }
@@ -62,44 +69,65 @@ impl imp::KpWindow {
     pub(super) fn setup_text_view(&self) {
         let text_view = self.text_view.get();
 
-        text_view.connect_running_notify(glib::clone!(@weak self as imp => move |text_view| {
-            if text_view.running() {
-                imp.start();
-            }
-        }));
-
-        text_view.connect_local("typed-text-changed", true, glib::clone!(@weak self as imp => @default-return None, move |values| {
-            if !imp.running.get() { return None; }
-
-            let text_view = values.get(0).unwrap().get::<KpTextView>().unwrap();
-
-            let original_grapheme_count = text_view.original_grapheme_count();
-            let typed_grapheme_count = text_view.typed_grapheme_count();
-
-            if typed_grapheme_count >= original_grapheme_count {
-                if text_view.last_grapheme_state() != GraphemeState::Unfinished {
-                    imp.finish();
+        text_view.connect_running_notify(glib::clone!(
+            #[weak(rename_to = imp)]
+            self,
+            move |text_view| {
+                if text_view.running() {
+                    imp.start();
                 }
             }
+        ));
 
-            if typed_grapheme_count > original_grapheme_count.checked_sub(CHUNK_GRAPHEME_COUNT / 2).unwrap_or(CHUNK_GRAPHEME_COUNT) {
-                imp.extend_original_text();
-            }
+        text_view.connect_local(
+            "typed-text-changed",
+            true,
+            glib::clone!(
+                #[weak(rename_to = imp)]
+                self,
+                #[upgrade_or_default]
+                move |values| {
+                    if !imp.running.get() {
+                        return None;
+                    }
 
-            match imp.session_type.get() {
-                SessionType::Simple | SessionType::Advanced => (),
-                SessionType::Custom => {
-                    let (current_word, total_words) = text_view.progress();
+                    let text_view = values.get(0).unwrap().get::<KpTextView>().unwrap();
 
-                    // Translators: The `{}` blocks will be replaced with the current word count and the total word count.
-                    // Do not translate them! The slash sign is a special unicode character, if your language doesn't
-                    // use a completely different sign, you should probably copy and paste it from the original string.
-                    imp.running_title.set_title(&i18n_fmt! { i18n_fmt("{} ⁄ {}", current_word, total_words) });
+                    let original_grapheme_count = text_view.original_grapheme_count();
+                    let typed_grapheme_count = text_view.typed_grapheme_count();
+
+                    if typed_grapheme_count >= original_grapheme_count {
+                        if text_view.last_grapheme_state() != GraphemeState::Unfinished {
+                            imp.finish();
+                        }
+                    }
+
+                    if typed_grapheme_count
+                        > original_grapheme_count
+                            .checked_sub(CHUNK_GRAPHEME_COUNT / 2)
+                            .unwrap_or(CHUNK_GRAPHEME_COUNT)
+                    {
+                        imp.extend_original_text();
+                    }
+
+                    match imp.session_type.get() {
+                        SessionType::Simple | SessionType::Advanced => (),
+                        SessionType::Custom => {
+                            let (current_word, total_words) = text_view.progress();
+
+                            // Translators: The `{}` blocks will be replaced with the current word count and the total word count.
+                            // Do not translate them! The slash sign is a special unicode character, if your language doesn't
+                            // use a completely different sign, you should probably copy and paste it from the original string.
+                            imp.running_title.set_title(
+                                &i18n_fmt! { i18n_fmt("{} ⁄ {}", current_word, total_words) },
+                            );
+                        }
+                    }
+
+                    None
                 }
-            }
-
-            None
-        }));
+            ),
+        );
     }
 
     pub(super) fn update_original_text(&self) {
@@ -151,27 +179,38 @@ impl imp::KpWindow {
         dialog.connect_local(
             "language-changed",
             true,
-            glib::clone!(@weak self as imp => @default-return None, move |values| {
-                let dialog: KpTextLanguageDialog = values
-                    .get(0)
-                    .expect("signal contains value at index 0")
-                    .get()
-                    .expect("value sent with signal is dialog");
+            glib::clone!(
+                #[weak(rename_to = imp)]
+                self,
+                #[upgrade_or_default]
+                move |values| {
+                    let dialog: KpTextLanguageDialog = values
+                        .get(0)
+                        .expect("signal contains value at index 0")
+                        .get()
+                        .expect("value sent with signal is dialog");
 
-                imp.language.set(dialog.selected_language());
-                imp.settings().set_string("text-language", &dialog.selected_language().to_string()).unwrap();
-                imp.update_original_text();
+                    imp.language.set(dialog.selected_language());
+                    imp.settings()
+                        .set_string("text-language", &dialog.selected_language().to_string())
+                        .unwrap();
+                    imp.update_original_text();
 
-                None
-            }),
+                    None
+                }
+            ),
         );
 
-        dialog.connect_closed(glib::clone!(@weak self as imp => move |dialog| {
-            imp.add_recent_language(dialog.selected_language());
-            imp.focus_text_view();
-        }));
+        dialog.connect_closed(glib::clone!(
+            #[weak(rename_to = imp)]
+            self,
+            move |dialog| {
+                imp.add_recent_language(dialog.selected_language());
+                imp.focus_text_view();
+            }
+        ));
 
-        dialog.present(self.obj().upcast_ref::<gtk::Widget>());
+        dialog.present(Some(self.obj().upcast_ref::<gtk::Widget>()));
     }
 
     fn add_recent_language(&self, language: Language) {
@@ -210,50 +249,70 @@ impl imp::KpWindow {
         dialog.connect_local(
             "save",
             true,
-            glib::clone!(@weak self as imp => @default-return None, move |values| {
-                let text: &str = values
-                    .get(1)
-                    .expect("save signal contains text to be saved")
-                    .get().expect("value from save signal is string");
+            glib::clone!(
+                #[weak(rename_to = imp)]
+                self,
+                #[upgrade_or_default]
+                move |values| {
+                    let text: &str = values
+                        .get(1)
+                        .expect("save signal contains text to be saved")
+                        .get()
+                        .expect("value from save signal is string");
 
-                imp.settings().set_string("custom-text", &text).unwrap();
-                *imp.custom_text.borrow_mut() = text.to_string();
-                imp.update_original_text();
+                    imp.settings().set_string("custom-text", &text).unwrap();
+                    *imp.custom_text.borrow_mut() = text.to_string();
+                    imp.update_original_text();
 
-                None
-            }),
+                    None
+                }
+            ),
         );
 
         dialog.connect_local(
             "discard",
             true,
-            glib::clone!(@weak self as imp => @default-return None, move |values| {
-                let discarded_text: String = values
-                    .get(1)
-                    .expect("save signal contains text to be saved")
-                    .get::<&str>().expect("value from save signal is string")
-                    .into();
+            glib::clone!(
+                #[weak(rename_to = imp)]
+                self,
+                #[upgrade_or_default]
+                move |values| {
+                    let discarded_text: String = values
+                        .get(1)
+                        .expect("save signal contains text to be saved")
+                        .get::<&str>()
+                        .expect("value from save signal is string")
+                        .into();
 
-                let toast = adw::Toast::builder()
-                    .title(&gettext("Changes discarded"))
-                    .button_label(&gettext("Restore"))
-                    .build();
+                    let toast = adw::Toast::builder()
+                        .title(&gettext("Changes discarded"))
+                        .button_label(&gettext("Restore"))
+                        .build();
 
-                toast.connect_button_clicked(glib::clone!(@weak imp => move |_| {
-                    imp.show_custom_text_dialog(&discarded_text);
-                }));
+                    toast.connect_button_clicked(glib::clone!(
+                        #[weak]
+                        imp,
+                        move |_| {
+                            imp.show_custom_text_dialog(&discarded_text);
+                        }
+                    ));
 
-                imp.toast_overlay.add_toast(toast);
+                    imp.toast_overlay.add_toast(toast);
 
-                None
-            }),
+                    None
+                }
+            ),
         );
 
-        dialog.connect_closed(glib::clone!(@weak self as imp => move |_| {
-            imp.focus_text_view();
-        }));
+        dialog.connect_closed(glib::clone!(
+            #[weak(rename_to = imp)]
+            self,
+            move |_| {
+                imp.focus_text_view();
+            }
+        ));
 
-        dialog.present(self.obj().upcast_ref::<gtk::Widget>());
+        dialog.present(Some(self.obj().upcast_ref::<gtk::Widget>()));
     }
 
     pub(super) fn extend_original_text(&self) {
@@ -281,22 +340,35 @@ impl imp::KpWindow {
 
         glib::timeout_add_local(
             Duration::from_millis(100),
-            glib::clone!(@weak self as imp, @strong duration => @default-return ControlFlow::Break, move || {
-                let start_time = imp.start_time.get().expect("start time is set when session is running");
+            glib::clone!(
+                #[weak(rename_to = imp)]
+                self,
+                #[strong]
+                duration,
+                #[upgrade_or]
+                ControlFlow::Break,
+                move || {
+                    let start_time = imp
+                        .start_time
+                        .get()
+                        .expect("start time is set when session is running");
 
-                if !imp.running.get() { return ControlFlow::Break; };
+                    if !imp.running.get() {
+                        return ControlFlow::Break;
+                    };
 
-                if let Some(diff) = duration.checked_sub(start_time.elapsed()) {
-                    let seconds = diff.as_secs() + 1;
+                    if let Some(diff) = duration.checked_sub(start_time.elapsed()) {
+                        let seconds = diff.as_secs() + 1;
 
-                    // add trailing zero for second values below 10
-                    imp.update_timer(seconds);
-                    ControlFlow::Continue
-                } else {
-                    imp.finish();
-                    ControlFlow::Break
+                        // add trailing zero for second values below 10
+                        imp.update_timer(seconds);
+                        ControlFlow::Continue
+                    } else {
+                        imp.finish();
+                        ControlFlow::Break
+                    }
                 }
-            }),
+            ),
         );
     }
 
@@ -395,10 +467,13 @@ impl imp::KpWindow {
 
         self.main_stack.set_visible_child_name("results");
 
-        self.obj().set_focus_widget(None::<&gtk::Widget>);
+        self.obj().set_focus(None::<&gtk::Widget>);
         glib::timeout_add_local_once(
             Duration::from_millis(500),
-            glib::clone!(@weak continue_button => move || {
+            glib::clone!(
+                #[weak]
+                continue_button,
+                move || {
                     continue_button.grab_focus();
                 }
             ),
@@ -427,29 +502,50 @@ fn setup_ellipsizing_dropdown_factory(dropdown: &gtk::DropDown) {
             .set_child(Some(&box_));
     });
 
-    factory.connect_bind(glib::clone!(@weak dropdown => move |_, obj| {
-        let list_item = obj.downcast_ref::<gtk::ListItem>().unwrap();
-        let child = list_item.child().unwrap();
-        let box_ = child.downcast_ref::<gtk::Box>().unwrap();
-        let first_child = box_.first_child().unwrap();
-        let last_child = box_.last_child().unwrap();
-        let string_object = list_item.item().unwrap().downcast::<gtk::StringObject>().unwrap();
+    factory.connect_bind(glib::clone!(
+        #[weak]
+        dropdown,
+        move |_, obj| {
+            let list_item = obj.downcast_ref::<gtk::ListItem>().unwrap();
+            let child = list_item.child().unwrap();
+            let box_ = child.downcast_ref::<gtk::Box>().unwrap();
+            let first_child = box_.first_child().unwrap();
+            let last_child = box_.last_child().unwrap();
+            let string_object = list_item
+                .item()
+                .unwrap()
+                .downcast::<gtk::StringObject>()
+                .unwrap();
 
-        let label = first_child.downcast_ref::<gtk::Label>().unwrap();
-        label.set_label(string_object.string().as_str());
+            let label = first_child.downcast_ref::<gtk::Label>().unwrap();
+            label.set_label(string_object.string().as_str());
 
-        let is_in_popover = child.parent().unwrap().parent().unwrap().type_() == gtk::ListView::static_type();
+            let is_in_popover =
+                child.parent().unwrap().parent().unwrap().type_() == gtk::ListView::static_type();
 
-        if is_in_popover {
-            label.set_ellipsize(pango::EllipsizeMode::None);
-            dropdown.connect_selected_item_notify(glib::clone!(@weak last_child, @weak string_object => move |dropdown| {
-                last_child.set_opacity(if dropdown.selected_item().unwrap() == string_object { 1. } else { 0. });
-            }));
-        } else {
-            label.set_ellipsize(pango::EllipsizeMode::End);
-            last_child.set_visible(false);
+            if is_in_popover {
+                label.set_ellipsize(pango::EllipsizeMode::None);
+                dropdown.connect_selected_item_notify(glib::clone!(
+                    #[weak]
+                    last_child,
+                    #[weak]
+                    string_object,
+                    move |dropdown| {
+                        last_child.set_opacity(
+                            if dropdown.selected_item().unwrap() == string_object {
+                                1.
+                            } else {
+                                0.
+                            },
+                        );
+                    }
+                ));
+            } else {
+                label.set_ellipsize(pango::EllipsizeMode::End);
+                last_child.set_visible(false);
+            }
         }
-    }));
+    ));
 
     dropdown.set_factory(Some(&factory));
     dropdown.notify("selected-item");

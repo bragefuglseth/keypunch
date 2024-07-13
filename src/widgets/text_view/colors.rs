@@ -5,8 +5,6 @@ use unicode_segmentation::UnicodeSegmentation;
 
 impl imp::KpTextView {
     pub(super) fn setup_color_scheme(&self) {
-        let obj = self.obj();
-
         let text_view = self.text_view.get();
         let buf = text_view.buffer();
 
@@ -88,12 +86,20 @@ impl imp::KpTextView {
         tag_mistake_dark_hc.set_background_rgba(Some(&gdk::RGBA::new(0.961, 0.379, 0.316, 1.)));
 
         let style = adw::StyleManager::default();
-        style.connect_dark_notify(glib::clone!(@weak obj => move |_| {
-            obj.imp().update_colors();
-        }));
-        style.connect_high_contrast_notify(glib::clone!(@weak obj => move |_| {
-            obj.imp().update_colors();
-        }));
+        style.connect_dark_notify(glib::clone!(
+            #[weak(rename_to = imp)]
+            self,
+            move |_| {
+                imp.update_colors();
+            }
+        ));
+        style.connect_high_contrast_notify(glib::clone!(
+            #[weak(rename_to = imp)]
+            self,
+            move |_| {
+                imp.update_colors();
+            }
+        ));
 
         self.update_colors();
     }

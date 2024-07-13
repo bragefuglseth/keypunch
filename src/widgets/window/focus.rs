@@ -4,13 +4,18 @@ const UNFOCUSED_TIMEOUT_MILLIS: u64 = 2000;
 
 impl imp::KpWindow {
     pub(super) fn setup_focus(&self) {
-        self.focus_button
-            .connect_clicked(glib::clone!(@weak self as imp => move |_| {
+        self.focus_button.connect_clicked(glib::clone!(
+            #[weak(rename_to = imp)]
+            self,
+            move |_| {
                 imp.focus_text_view();
-            }));
+            }
+        ));
 
-        self.obj().connect_focus_widget_notify(
-            glib::clone!(@weak self as imp => move |_| {
+        self.obj().connect_focus_widget_notify(glib::clone!(
+            #[weak(rename_to = imp)]
+            self,
+            move |_| {
                 let text_view = imp.text_view.get();
                 let bottom_stack_empty = imp.bottom_stack_empty.get();
                 let just_start_typing = imp.just_start_typing.get();
@@ -29,34 +34,49 @@ impl imp::KpWindow {
                     (false, _) => {
                         let timeout = glib::timeout_add_local_once(
                             Duration::from_millis(UNFOCUSED_TIMEOUT_MILLIS),
-                            glib::clone!(@weak bottom_stack,
-                                @weak focus_button,
-                                @weak imp
-                                => move || {
-                                    if !imp.text_view_focused() && imp.obj().visible_dialog().is_none() && imp.main_stack.visible_child_name().unwrap() == "session" {
+                            glib::clone!(
+                                #[weak]
+                                bottom_stack,
+                                #[weak]
+                                focus_button,
+                                #[weak]
+                                imp,
+                                move || {
+                                    if !imp.text_view_focused()
+                                        && imp.obj().visible_dialog().is_none()
+                                        && imp.main_stack.visible_child_name().unwrap() == "session"
+                                    {
                                         bottom_stack.set_visible_child(&focus_button);
                                         text_view.add_css_class("unfocused");
                                     }
-                            }
-                        ));
+                                }
+                            ),
+                        );
 
-                        let Some(previous_event) = imp.last_unfocus_event
-                            .replace(Some(timeout)) else { return; };
+                        let Some(previous_event) = imp.last_unfocus_event.replace(Some(timeout))
+                        else {
+                            return;
+                        };
 
-                        let Some(previous_timestamp) = imp.last_unfocus_timestamp
-                            .replace(Some(Instant::now())) else { return; };
+                        let Some(previous_timestamp) =
+                            imp.last_unfocus_timestamp.replace(Some(Instant::now()))
+                        else {
+                            return;
+                        };
 
-                        if (Instant::now() - previous_timestamp).as_millis() < UNFOCUSED_TIMEOUT_MILLIS.into() {
+                        if (Instant::now() - previous_timestamp).as_millis()
+                            < UNFOCUSED_TIMEOUT_MILLIS.into()
+                        {
                             previous_event.remove();
                         }
                     }
                 };
-            }),
-        );
+            }
+        ));
     }
 
     pub(super) fn text_view_focused(&self) -> bool {
-        if let Some(focus) = self.obj().focus_widget() {
+        if let Some(focus) = self.obj().focus() {
             focus == self.text_view.get()
         } else {
             false
@@ -64,6 +84,6 @@ impl imp::KpWindow {
     }
 
     pub(super) fn focus_text_view(&self) {
-        self.obj().set_focus_widget(Some(&self.text_view.get()));
+        self.obj().set_focus(Some(&self.text_view.get()));
     }
 }

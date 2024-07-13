@@ -2,17 +2,23 @@ use super::*;
 
 impl imp::KpWindow {
     pub(super) fn setup_stop_button(&self) {
-        self.stop_button
-            .connect_clicked(glib::clone!(@weak self as imp => move |_| {
+        self.stop_button.connect_clicked(glib::clone!(
+            #[weak(rename_to = imp)]
+            self,
+            move |_| {
                 imp.ready();
-            }));
+            }
+        ));
     }
 
     pub(super) fn setup_continue_button(&self) {
-        self.continue_button
-            .connect_clicked(glib::clone!(@weak self as imp => move |_| {
+        self.continue_button.connect_clicked(glib::clone!(
+            #[weak(rename_to = imp)]
+            self,
+            move |_| {
                 imp.ready();
-            }));
+            }
+        ));
     }
 
     pub(super) fn setup_ui_hiding(&self) {
@@ -30,38 +36,54 @@ impl imp::KpWindow {
         self.text_view.connect_local(
             "typed-text-changed",
             true,
-            glib::clone!(@weak self as imp, @strong device => @default-return None, move |_| {
-                if imp.show_cursor.get() && imp.running.get() {
-                    imp.header_bar_running.add_css_class("hide-controls");
-                    imp.hide_cursor();
-                }
+            glib::clone!(
+                #[weak(rename_to = imp)]
+                self,
+                #[upgrade_or_default]
+                move |_| {
+                    if imp.show_cursor.get() && imp.running.get() {
+                        imp.header_bar_running.add_css_class("hide-controls");
+                        imp.hide_cursor();
+                    }
 
-                None
-            }),
+                    None
+                }
+            ),
         );
 
         let motion_ctrl = gtk::EventControllerMotion::new();
-        motion_ctrl.connect_motion(glib::clone!(@weak self as imp, @strong device => move |_,_,_| {
-            if !imp.show_cursor.get() && device.timestamp() > imp.cursor_hidden_timestamp.get() {
-                imp.show_cursor();
+        motion_ctrl.connect_motion(glib::clone!(
+            #[weak(rename_to = imp)]
+            self,
+            #[strong]
+            device,
+            move |_, _, _| {
+                if !imp.show_cursor.get() && device.timestamp() > imp.cursor_hidden_timestamp.get()
+                {
+                    imp.show_cursor();
 
-                if imp.running.get() {
-                    imp.header_bar_running.remove_css_class("hide-controls");
+                    if imp.running.get() {
+                        imp.header_bar_running.remove_css_class("hide-controls");
+                    }
                 }
             }
-        }));
+        ));
         obj.add_controller(motion_ctrl);
 
         let click_gesture = gtk::GestureClick::new();
-        click_gesture.connect_released(glib::clone!(@weak self as imp => move |_, _, _, _| {
-            if !imp.show_cursor.get() {
-                imp.show_cursor();
+        click_gesture.connect_released(glib::clone!(
+            #[weak(rename_to = imp)]
+            self,
+            move |_, _, _, _| {
+                if !imp.show_cursor.get() {
+                    imp.show_cursor();
 
-                if imp.running.get() {
-                    imp.header_bar_running.remove_css_class("hide-controls");
+                    if imp.running.get() {
+                        imp.header_bar_running.remove_css_class("hide-controls");
+                    }
                 }
             }
-        }));
+        ));
         obj.add_controller(click_gesture);
     }
 

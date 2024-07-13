@@ -72,15 +72,21 @@ mod imp {
                 .sync_create()
                 .build();
 
-            self.search_entry
-                .connect_search_changed(glib::clone!(@weak self as imp => move |_| {
+            self.search_entry.connect_search_changed(glib::clone!(
+                #[weak(rename_to = imp)]
+                self,
+                move |_| {
                     imp.update_search_state();
-                }));
+                }
+            ));
 
-            self.search_entry
-                .connect_stop_search(glib::clone!(@weak self as imp => move |_| {
+            self.search_entry.connect_stop_search(glib::clone!(
+                #[weak(rename_to = imp)]
+                self,
+                move |_| {
                     imp.obj().close();
-                }));
+                }
+            ));
         }
     }
     impl WidgetImpl for KpTextLanguageDialog {}
@@ -192,23 +198,34 @@ mod imp {
         }
 
         pub(super) fn connect_row_checked(&self, row: &KpLanguageRow) {
-            row.connect_checked_notify(glib::clone!(@weak self as imp => move |row| {
-                if row.checked() {
-                    imp.selected_language.set(row.language());
-                    imp.obj().emit_by_name::<()>("language-changed", &[]);
+            row.connect_checked_notify(glib::clone!(
+                #[weak(rename_to = imp)]
+                self,
+                move |row| {
+                    if row.checked() {
+                        imp.selected_language.set(row.language());
+                        imp.obj().emit_by_name::<()>("language-changed", &[]);
+                    }
                 }
-            }));
+            ));
 
             self.obj().connect_local(
                 "language-changed",
                 false,
-                glib::clone!(@weak row, @weak self as imp => @default-return None, move |_| {
-                    if row.language() == imp.selected_language.get() && !row.checked() {
-                        row.set_checked(true);
-                    }
+                glib::clone!(
+                    #[weak]
+                    row,
+                    #[weak(rename_to = imp)]
+                    self,
+                    #[upgrade_or_default]
+                    move |_| {
+                        if row.language() == imp.selected_language.get() && !row.checked() {
+                            row.set_checked(true);
+                        }
 
-                    None
-                }),
+                        None
+                    }
+                ),
             );
         }
 

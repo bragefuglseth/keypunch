@@ -86,11 +86,16 @@ mod imp {
                 .sync_create()
                 .build();
 
-            save_button.connect_clicked(glib::clone!(@weak self as imp => move |_| {
-                imp.apply_changes.set(true);
-                imp.obj().emit_by_name_with_values("save", &[imp.text().into()]);
-                imp.obj().close();
-            }));
+            save_button.connect_clicked(glib::clone!(
+                #[weak(rename_to = imp)]
+                self,
+                move |_| {
+                    imp.apply_changes.set(true);
+                    imp.obj()
+                        .emit_by_name_with_values("save", &[imp.text().into()]);
+                    imp.obj().close();
+                }
+            ));
         }
     }
     impl WidgetImpl for KpCustomTextDialog {}
