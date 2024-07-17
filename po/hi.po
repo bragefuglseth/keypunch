@@ -1,29 +1,28 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# Hindi translation for keypunch.
+# Copyright (C) 2024 keypunch's COPYRIGHT HOLDER
 # This file is distributed under the same license as the keypunch package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # Scrambled777 <weblate.scrambled777@simplelogin.com>, 2024.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: keypunch\n"
-"Report-Msgid-Bugs-To: \n"
+"Report-Msgid-Bugs-To: https://github.com/bragefuglseth/keypunch/issues\n"
 "POT-Creation-Date: 2024-07-08 22:39+0200\n"
-"PO-Revision-Date: 2024-06-08 13:33+0530\n"
+"PO-Revision-Date: 2024-07-17 10:56+0530\n"
 "Last-Translator: Scrambled777 <weblate.scrambled777@simplelogin.com>\n"
 "Language-Team: Hindi <indlinux-hindi@lists.sourceforge.net>\n"
 "Language: hi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Gtranslator 46.1\n"
 
 #: data/dev.bragefuglseth.Keypunch.desktop.in.in:3
 #: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:7
 #: src/widgets/window.blp:5
 msgid "Keypunch"
-msgstr "Keypunch"
+msgstr "कीपंच"
 
 #: data/dev.bragefuglseth.Keypunch.desktop.in.in:4
 #: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:8
@@ -54,10 +53,10 @@ msgid ""
 "some time, you will observe a noticeable increase in both the speed and the "
 "accuracy of which your thoughts and ideas are put into words on the screen."
 msgstr ""
-"Keypunch आपको टाइपिंग का अभ्यास करने देता है। इसके बाद तुरंत फीडबैक के साथ तेज़ गति वाले "
-"सत्रों और उपलब्ध भाषाओं की अधिकता के कारण, आपको ऐसा करने में थोड़ा मज़ा भी आ सकता है। "
-"दृढ़ संकल्प, उचित तकनीक और कुछ समय के साथ, आप स्क्रीन पर अपने विचारों और विचारों को "
-"शब्दों में व्यक्त करने की गति और सटीकता दोनों में उल्लेखनीय वृद्धि देखेंगे।"
+"कीपंच आपको टाइपिंग का अभ्यास करने देता है। इसके बाद तुरंत फीडबैक के साथ तेज़ गति वाले सत्रों "
+"और उपलब्ध भाषाओं की अधिकता के कारण, आपको ऐसा करने में थोड़ा मज़ा भी आ सकता है। दृढ़ "
+"संकल्प, उचित तकनीक और कुछ समय के साथ, आप स्क्रीन पर अपने विचारों और विचारों को शब्दों में "
+"व्यक्त करने की गति और सटीकता दोनों में उल्लेखनीय वृद्धि देखेंगे।"
 
 #: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:25
 msgid ""
@@ -65,9 +64,9 @@ msgid ""
 "Try practicing with numbers and punctuation, or choose your own text to type "
 "out as fast as you can."
 msgstr ""
-"अगर आप पहले से ही टाइपिंग में माहिर हैं, तो Keypunch में आपके लिए भी कुछ है। संख्याओं और "
-"विराम चिह्नों के साथ अभ्यास करने की कोशिश करें, या जितनी जल्दी हो सके टाइप करने के लिए "
-"अपना खुद का पाठ चुनें।"
+"अगर आप पहले से ही टाइपिंग में माहिर हैं, तो कीपंच में आपके लिए भी कुछ है। संख्याओं और विराम "
+"चिह्नों के साथ अभ्यास करने की कोशिश करें, या जितनी जल्दी हो सके टाइप करने के लिए अपना "
+"खुद का पाठ चुनें।"
 
 #: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:30
 msgid "Get ready to accelerate your typing!"
@@ -95,15 +94,15 @@ msgstr "तदनुकूल पाठ प्रविष्टि"
 
 #: data/dev.bragefuglseth.Keypunch.gschema.xml:20
 msgid "Window Width"
-msgstr "खिड़की की चौड़ाई"
+msgstr "विंडो की चौड़ाई"
 
 #: data/dev.bragefuglseth.Keypunch.gschema.xml:24
 msgid "Window Height"
-msgstr "खिड़की की ऊंचाई"
+msgstr "विंडो की ऊंचाई"
 
 #: data/dev.bragefuglseth.Keypunch.gschema.xml:28
 msgid "Window Maximization"
-msgstr "खिड़की अधिकतमीकृत"
+msgstr "विंडो अधिकतमीकृत"
 
 #: data/dev.bragefuglseth.Keypunch.gschema.xml:32
 #: src/widgets/results_view.blp:83 src/widgets/window.blp:35
@@ -137,11 +136,11 @@ msgstr "स्वचालित रूप से उत्पन्न पा�
 
 #: data/dev.bragefuglseth.Keypunch.gschema.xml:47
 msgid "Recent Languages"
-msgstr "हालिया भाषाएँ"
+msgstr "हालिया भाषाएं"
 
 #: data/dev.bragefuglseth.Keypunch.gschema.xml:48
 msgid "Languages shown in the list of recent ones in the text language dialog"
-msgstr "पाठ भाषा संवाद में हाल की भाषाओं की सूची में दिखाई गई भाषाएँ"
+msgstr "पाठ भाषा संवाद में हाल की भाषाओं की सूची में दिखाई गई भाषाएं"
 
 #. Translators: This is the default text for custom typing sessions. Do not translate it literally, and do not remove the quotation marks. Replace it with an appropriate "sample sentence" from your language instead. The original text is an English pangram, so you can e.g. find a pangram in your language: https://clagnut.com/blog/2380
 #: data/dev.bragefuglseth.Keypunch.gschema.xml:52
@@ -192,7 +191,7 @@ msgstr "कीबोर्ड शॉर्टकट"
 #: data/resources/gtk/help-overlay.ui:32
 msgctxt "shortcut window"
 msgid "Close Window"
-msgstr "खिड़की बंद करें"
+msgstr "विंडो बंद करें"
 
 #: data/resources/gtk/help-overlay.ui:38
 msgctxt "shortcut window"
@@ -286,8 +285,8 @@ msgid ""
 "You can help add a new text language to Keypunch by submitting a language "
 "request on GitHub. A GitHub account and some language knowledge is required."
 msgstr ""
-"आप GitHub पर भाषा अनुरोध जमा करके Keypunch में एक नई पाठ भाषा जोड़ने में मदद कर सकते "
-"हैं। GitHub खाता और कुछ भाषा ज्ञान की आवश्यकता है।"
+"आप GitHub पर भाषा अनुरोध जमा करके कीपंच में एक नई पाठ भाषा जोड़ने में मदद कर सकते हैं। "
+"GitHub खाता और कुछ भाषा ज्ञान की आवश्यकता है।"
 
 #: src/widgets/text_language_dialog.blp:214
 msgid "_Create Request"
@@ -336,7 +335,7 @@ msgstr "कीबोर्ड शॉर्टकट (_K)"
 
 #: src/widgets/window.blp:208
 msgid "_About Keypunch"
-msgstr "Keypunch का परिचय (_A)"
+msgstr "कीपंच का परिचय (_A)"
 
 #: src/widgets/window.rs:48
 msgid "Simple"
@@ -372,7 +371,7 @@ msgstr "10 मिनट"
 
 #: src/widgets/window.rs:211
 msgid "Orthography by"
-msgstr "इनके द्वारा ऑर्थोग्राफी"
+msgstr "ऑर्थोग्राफी प्रदानकर्ता"
 
 #. Translators: Replace "translator-credits" with your names, one name per line
 #: src/widgets/window.rs:225
@@ -406,11 +405,3 @@ msgstr "पुनर्स्थापित करें"
 #: src/widgets/window/session.rs:292 src/widgets/window/session.rs:294
 msgid "{}∶{}"
 msgstr "{}∶{}"
-
-#~ msgid "\"en_US\""
-#~ msgstr "\"hi_IN\""
-
-#~ msgid ""
-#~ "This is the initial release of Keypunch! Give it a spin and say what you "
-#~ "think."
-#~ msgstr "यह Keypunch का आरंभिक संस्करण है! इसे चलाएँ और बताएँ कि आपको क्या लगता है।"
