@@ -78,6 +78,17 @@
   </supports>
   <launchable type="desktop-id">dev.bragefuglseth.Keypunch.desktop</launchable>
   <releases>
+    <release date="2024-07-17" version="3.0">
+      <description translate="no">
+        <p>If you appreciate accuracy and legibility, you are going to love this update!</p>
+        <ul>
+          <li>Monospaced font in the main text view</li>
+          <li>Text generation support for Bangla and Hebrew</li>
+          <li>Guillemet quotation marks for the French text generation</li>
+          <li>User interface translations for Hebrew and Italian, making Keypunch available in a total of 14 languages</li>
+        </ul>
+      </description>
+    </release>
     <release date="2024-07-01" version="2.0">
       <description translate="no">
         <p>Bonjour! Szia! 안녕! Get ready to practice typing in many new languages.</p>
