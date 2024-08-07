@@ -16,6 +16,8 @@ pub enum Language {
     Bangla,
     #[strum(message = "Български", to_string = "bg")]
     Bulgarian,
+    #[strum(message = "Čeština", to_string = "cs")]
+    Czech,
     #[strum(message = "Dansk", to_string = "da")]
     Danish,
     #[default]
@@ -116,6 +118,7 @@ pub fn simple(language: Language) -> String {
         Language::Arabic
         | Language::Bangla
         | Language::Bulgarian
+        | Language::Czech
         | Language::English
         | Language::Danish
         | Language::French
@@ -143,7 +146,8 @@ pub fn simple(language: Language) -> String {
 // Some capitalized letters, punctuation and numbers
 pub fn advanced(language: Language) -> String {
     match language {
-        Language::Danish
+        Language::Czech
+        | Language::Danish
         | Language::English
         | Language::German
         | Language::Hebrew
