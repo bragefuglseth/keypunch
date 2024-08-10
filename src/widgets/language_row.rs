@@ -61,7 +61,11 @@ mod imp {
     impl KpLanguageRow {
         pub(super) fn check_button(&self) -> gtk::CheckButton {
             self.check_button
-                .get_or_init(|| gtk::CheckButton::new())
+                .get_or_init(|| {
+                    gtk::CheckButton::builder()
+                        .valign(gtk::Align::Center)
+                        .build()
+                })
                 .to_owned()
         }
 
