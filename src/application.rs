@@ -47,7 +47,7 @@ mod imp {
 
             obj.set_accels_for_action("win.text-language-dialog", &["<primary>comma"]);
             obj.set_accels_for_action("win.cancel-session", &["Escape"]);
-            obj.set_accels_for_action("window.close", &["<Ctrl>w"]);
+            obj.set_accels_for_action("window.close", &["<primary>w"]);
             obj.set_accels_for_action("app.quit", &["<primary>q"]);
         }
     }
