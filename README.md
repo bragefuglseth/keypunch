@@ -24,7 +24,7 @@ Keypunch is available on Flathub.
 
 ## Contributing
 
-Contributions are welcome! Refer to [CONTRIBUTING.md](CONTRIBUTING.md) for more.
+Contributions are welcome! Refer to [CONTRIBUTING.md](CONTRIBUTING.md) for more. This project follows the [GNOME Code of Conduct](https://conduct.gnome.org).
 
 ## Name
 
