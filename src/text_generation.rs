@@ -149,8 +149,7 @@ pub fn simple(language: Language) -> String {
 // Some capitalized letters, punctuation and numbers
 pub fn advanced(language: Language) -> String {
     match language {
-        Language::Czech
-        | Language::Danish
+        Language::Danish
         | Language::English
         | Language::German
         | Language::Hebrew
@@ -202,6 +201,23 @@ pub fn advanced(language: Language) -> String {
                 Punctuation::suffix("!", true, 0.3),
                 Punctuation::suffix("?", true, 0.3),
                 Punctuation::wrapping("„", "“", false, 0.2),
+                Punctuation::wrapping("(", ")", false, 0.1),
+            ],
+            WESTERN_ARABIC_NUMERALS,
+        ),
+        // See <https://github.com/bragefuglseth/keypunch/issues/58>. The quotation is
+        // slightly different from above.
+        Language::Czech => advanced_generic(
+            &language.to_string(),
+            " ",
+            &[
+                Punctuation::suffix(".", true, 0.6),
+                Punctuation::suffix(",", false, 1.0),
+                Punctuation::suffix(";", false, 0.1),
+                Punctuation::suffix(":", false, 0.2),
+                Punctuation::suffix("!", true, 0.3),
+                Punctuation::suffix("?", true, 0.3),
+                Punctuation::wrapping("„", "”", false, 0.2),
                 Punctuation::wrapping("(", ")", false, 0.1),
             ],
             WESTERN_ARABIC_NUMERALS,
