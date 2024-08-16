@@ -195,7 +195,7 @@ template $KpTextLanguageDialog: Adw.Dialog {
               ]
             }
 
-            Label {
+            Label add_language_desc {
               label: _("You can help add a new text language to Keypunch by submitting a language request on GitHub. A GitHub account and some language knowledge is required.");
               justify: center;
               wrap: true;
@@ -219,6 +219,10 @@ template $KpTextLanguageDialog: Adw.Dialog {
                   icon-name: "external-link-symbolic";
                   accessible-role: presentation;
                 }
+              }
+
+              accessibility {
+                described-by: add_language_desc;
               }
 
               styles [
