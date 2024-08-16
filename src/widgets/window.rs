@@ -213,6 +213,7 @@ mod imp {
                     "Angelo Verlain Shema https://www.vixalien.com/",
                     "Arnob Goswami",
                     "Daniel Uhrinyi",
+                    "Fabio Lovato https://loviuz.it/",
                     "Gregor Niehl https://gregorni.gitlab.io/",
                     "Ibrahim Muhammad",
                     "Kim Jimin https://developomp.com",
