@@ -78,6 +78,16 @@
   </supports>
   <launchable type="desktop-id">dev.bragefuglseth.Keypunch.desktop</launchable>
   <releases>
+    <release date="2024-08-16" version="3.1">
+      <description translate="no">
+        <p>Keypunch’s already wide language support has been extended even further!</p>
+        <ul>
+          <li>Text generation support for Czech, Italian, Occitan and Polish</li>
+          <li>User interface translations for Occitan and Polish, making Keypunch available in a total of 16 languages</li>
+        </ul>
+        <p>If you would like for Keypunch to speak your language as well, feel free to reach out!</p>
+      </description>
+    </release>
     <release date="2024-07-17" version="3.0">
       <description translate="no">
         <p>If you appreciate accuracy and legibility, you are going to love this update!</p>
