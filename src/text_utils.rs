@@ -286,10 +286,10 @@ pub fn current_word(original: &str, typed_grapheme_count: usize) -> usize {
 }
 
 pub fn calculate_wpm(duration: Duration, typed: &str) -> f64 {
-    let minutes: f64 = duration.as_secs_f64() / 60.;
-    let words = typed.chars().count() / 5;
+    let minutes = duration.as_secs_f64() / 60.;
+    let words = typed.chars().count() as f64 / 5.;
 
-    words as f64 / minutes
+    words / minutes
 }
 
 pub fn calculate_accuracy(original: &str, typed: &str) -> f64 {
