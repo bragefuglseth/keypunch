@@ -62,6 +62,8 @@ pub enum Language {
     Swedish,
     #[strum(message = "Schweizerdeutsch", to_string = "de_CH")]
     SwissGerman,
+    #[strum(message = "Türkçe", to_string = "tr")]
+    Turkish,
     #[strum(message = "Українська", to_string = "uk")]
     Ukranian,
 }
@@ -143,6 +145,7 @@ pub fn simple(language: Language) -> String {
         | Language::Swahili
         | Language::Swedish
         | Language::SwissGerman
+        | Language::Turkish
         | Language::Ukranian => simple_generic(&language.to_string(), " "),
     }
 }
@@ -167,6 +170,7 @@ pub fn advanced(language: Language) -> String {
         | Language::Swahili
         | Language::Swedish
         | Language::SwissGerman
+        | Language::Turkish
         | Language::Ukranian => advanced_generic(
             &language.to_string(),
             " ",
