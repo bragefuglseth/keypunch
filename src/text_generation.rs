@@ -49,9 +49,8 @@ pub enum Language {
     Occitan,
     #[strum(message = "Polski", to_string = "pl")]
     Polish,
-    // Blocked on <https://github.com/bragefuglseth/keypunch/issues/46>
-    // #[strum(message = "Português", to_string = "pt")]
-    // Portuguese,
+    #[strum(message = "Português", to_string = "pt")]
+    Portuguese,
     #[strum(message = "Русский", to_string = "ru")]
     Russian,
     #[strum(message = "Español", to_string = "es")]
@@ -139,7 +138,7 @@ pub fn simple(language: Language) -> String {
         | Language::NorwegianNynorsk
         | Language::Occitan
         | Language::Polish
-        // | Language::Portuguese
+        | Language::Portuguese
         | Language::Russian
         | Language::Spanish
         | Language::Swahili
@@ -165,7 +164,7 @@ pub fn advanced(language: Language) -> String {
         | Language::NorwegianNynorsk
         | Language::Occitan
         | Language::Polish
-        // | Language::Portuguese
+        | Language::Portuguese
         | Language::Russian
         | Language::Swahili
         | Language::Swedish
