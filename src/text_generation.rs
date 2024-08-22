@@ -164,7 +164,6 @@ pub fn advanced(language: Language) -> String {
         | Language::NorwegianNynorsk
         | Language::Occitan
         | Language::Polish
-        | Language::Portuguese
         | Language::Russian
         | Language::Swahili
         | Language::Swedish
@@ -275,6 +274,24 @@ pub fn advanced(language: Language) -> String {
                 Punctuation::suffix(":", false, 0.2),
                 Punctuation::wrapping("¡", "!", true, 0.3),
                 Punctuation::wrapping("¿", "?", true, 0.3),
+                Punctuation::wrapping("\"", "\"", false, 0.2),
+                Punctuation::wrapping("(", ")", false, 0.1),
+            ],
+            WESTERN_ARABIC_NUMERALS,
+        ),
+        // Portuguese has many words with accents and "ç",
+        // so there is a different word_list for advanced mode with more words.
+        // extra words taken from: <https://github.com/monkeytypegame/monkeytype/blob/master/frontend/static/languages/portuguese_acentos_e_cedilha.json>
+        Language::Portuguese => advanced_generic(
+            "pt_advanced",
+            " ",
+            &[
+                Punctuation::suffix(".", true, 0.6),
+                Punctuation::suffix(",", false, 1.0),
+                Punctuation::suffix(";", false, 0.08),
+                Punctuation::suffix(":", false, 0.2),
+                Punctuation::suffix("!", true, 0.3),
+                Punctuation::suffix("?", true, 0.3),
                 Punctuation::wrapping("\"", "\"", false, 0.2),
                 Punctuation::wrapping("(", ")", false, 0.1),
             ],
