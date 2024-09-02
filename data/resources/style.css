@@ -18,11 +18,6 @@ KpResultsView .key-number {
   font-weight: 700;
 }
 
-.flat-dropdown > button:not(:checked):not(:hover) {
-  background: transparent;
-  box-shadow: none;
-}
-
 .header-bar-running .start,
 .header-bar-running .end,
 .header-bar-running.hide-controls:focus-within .start,

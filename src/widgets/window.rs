@@ -168,6 +168,10 @@ mod imp {
                 self.obj().add_css_class("devel");
             }
 
+            // Workaround until dropdowns gain proper flat styling in libadwaita 2.0
+            self.session_type_dropdown.first_child().unwrap().add_css_class("flat");
+            self.duration_dropdown.first_child().unwrap().add_css_class("flat");
+
             self.load_settings();
             self.setup_session_config();
 
