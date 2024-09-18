@@ -1,6 +1,5 @@
 use adw::prelude::*;
 use adw::subclass::prelude::*;
-use gettextrs::ngettext;
 use gtk::glib;
 use i18n_format::i18n_fmt;
 use std::cell::{Cell, RefCell};
