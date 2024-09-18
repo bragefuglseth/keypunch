@@ -78,6 +78,17 @@
   </supports>
   <launchable type="desktop-id">dev.bragefuglseth.Keypunch.desktop</launchable>
   <releases>
+    <release date="2024-09-18" version="4.0">
+      <description translate="no">
+        <p>GNOME 47 is here! Let’s celebrate:</p>
+        <ul>
+          <li>An upgraded base taking advantage of the latest platform improvements</li>
+          <li>More accurate typing speed calculation</li>
+          <li>Text generation for Portuguese and Turkish</li>
+          <li>Turkish user interface translations, making Keypunch available in a total of 17 languages</li>
+        </ul>
+      </description>
+    </release>
     <release date="2024-08-16" version="3.1">
       <description translate="no">
         <p>Keypunch’s already wide language support has been extended even further!</p>
