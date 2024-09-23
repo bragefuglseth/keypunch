@@ -1,0 +1,417 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the keypunch package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: keypunch\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-07-08 22:39+0200\n"
+"PO-Revision-Date: 2024-09-23 18:52+0300\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: ar\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=6; plural=(n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
+"&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5);\n"
+"X-Generator: Poedit 3.4.4\n"
+
+#: data/dev.bragefuglseth.Keypunch.desktop.in.in:3
+#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:7
+#: src/widgets/window.blp:5
+msgid "Keypunch"
+msgstr ""
+
+#: data/dev.bragefuglseth.Keypunch.desktop.in.in:4
+#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:8
+msgid "Practice your typing skills"
+msgstr "تدرب على مهاراتك في الطباعة"
+
+#: data/dev.bragefuglseth.Keypunch.desktop.in.in:10
+msgid ""
+"typing;trainer;touch typing;keyboard;speed;wpm;words per minute;accuracy;"
+"test;"
+msgstr ""
+"الطباعة؛مدرب؛الطباعة باللمس؛لوحة المفاتيح؛السرعة؛كلمة في الدقيقة؛دقة؛اختبار؛"
+
+#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:13
+msgid ""
+"There is no doubt that typing on a keyboard is an essential skill in the "
+"digital age. Typing fast and accurately gives you more opportunities, more "
+"time for what matters to you, and a sense of self-accomplishment."
+msgstr ""
+"لا شك أن الطباعة على لوحة المفاتيح مهارة أساسية في العصر الرقمي. فالطباعة "
+"بسرعة ودقة تمنحك المزيد من الفرص، والمزيد من الوقت للأشياء التي تهمك، "
+"والشعور بالإنجاز الذاتي."
+
+#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:18
+msgid ""
+"Keypunch lets you practice typing. Thanks to fast-paced sessions with "
+"instant feedback afterwards and a plethora of available languages, you might "
+"even have a little fun doing so. With determination, proper technique and "
+"some time, you will observe a noticeable increase in both the speed and the "
+"accuracy of which your thoughts and ideas are put into words on the screen."
+msgstr ""
+"يسمح لك تطبيق Keypunch بممارسة الطباعة. بفضل الجلسات السريعة وردود الفعل "
+"الفورية بعدها وتوفر العديد من اللغات، قد تستمتع قليلًا أثناء القيام بذلك. مع "
+"العزيمة، التقنية الصحيحة وبعض الوقت، ستلاحظ زيادة ملحوظة في كل من سرعة ودقة "
+"تحويل أفكارك إلى كلمات على الشاشة."
+
+#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:25
+msgid ""
+"If you are already a racer at typing, Keypunch still has something for you. "
+"Try practicing with numbers and punctuation, or choose your own text to type "
+"out as fast as you can."
+msgstr ""
+"إذا كنت بالفعل سريعًا في الطباعة، فإن تطبيق Keypunch لا يزال لديه شيء يقدمه "
+"لك. حاول ممارسة الطباعة مع الأرقام وعلامات الترقيم، أو اختر النص الذي تود "
+"كتابته بأقصى سرعة ممكنة."
+
+#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:30
+msgid "Get ready to accelerate your typing!"
+msgstr "استعد لتسريع مهاراتك في الطباعة!"
+
+#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:36
+msgid "In the middle of a session"
+msgstr "في منتصف الجلسة"
+
+#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:40
+msgid "Ready for typing"
+msgstr "مستعد للطباعة"
+
+#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:44
+msgid "Session results"
+msgstr "نتائج الجلسة"
+
+#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:48
+msgid "Language selection"
+msgstr "اختيار اللغة"
+
+#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:52
+msgid "Custom text entry"
+msgstr "إدخال نص مخصص"
+
+#: data/dev.bragefuglseth.Keypunch.gschema.xml:20
+msgid "Window Width"
+msgstr "عرض النافذة"
+
+#: data/dev.bragefuglseth.Keypunch.gschema.xml:24
+msgid "Window Height"
+msgstr "طول النافذة"
+
+#: data/dev.bragefuglseth.Keypunch.gschema.xml:28
+msgid "Window Maximization"
+msgstr "تكبير النافذة"
+
+#: data/dev.bragefuglseth.Keypunch.gschema.xml:32
+#: src/widgets/results_view.blp:83 src/widgets/window.blp:35
+msgid "Session Type"
+msgstr "نوع الجلسة"
+
+#: data/dev.bragefuglseth.Keypunch.gschema.xml:36
+#: src/widgets/results_view.blp:96 src/widgets/window.blp:43
+msgid "Session Duration"
+msgstr "مدة الجلسة"
+
+#: data/dev.bragefuglseth.Keypunch.gschema.xml:37
+msgid "The duration of time-based sessions"
+msgstr "مدة الجلسات المعتمدة على الوقت"
+
+#. Translators: Insert the language code of your language here, for example "nb" for Norwegian Bokmaal. Do not remove the quotation marks. It's doesn't matter if there isn't a word list for the language in `data/word_lists` right now, the app will fall back to English in that case and start using the list if it becomes available in the future.
+#: data/dev.bragefuglseth.Keypunch.gschema.xml:41
+msgid "\"en\""
+msgstr "\"ar\""
+
+#: data/dev.bragefuglseth.Keypunch.gschema.xml:42
+#: src/widgets/results_view.blp:109 src/widgets/text_language_dialog.blp:5
+#: src/widgets/text_language_dialog.blp:13
+#: src/widgets/text_language_dialog.blp:39
+msgid "Text Language"
+msgstr "لغة النص"
+
+#: data/dev.bragefuglseth.Keypunch.gschema.xml:43
+msgid "The code of the language used for automatically generated text"
+msgstr "رمز اللغة المستخدمة للنصوص المولدة تلقائيًا"
+
+#: data/dev.bragefuglseth.Keypunch.gschema.xml:47
+msgid "Recent Languages"
+msgstr "اللغات المستخدمة مؤخرًا"
+
+#: data/dev.bragefuglseth.Keypunch.gschema.xml:48
+msgid "Languages shown in the list of recent ones in the text language dialog"
+msgstr "اللغات المعروضة في قائمة اللغات المستخدمة مؤخرًا في حوار لغة النص"
+
+#. Translators: This is the default text for custom typing sessions. Do not translate it literally, and do not remove the quotation marks. Replace it with an appropriate "sample sentence" from your language instead. The original text is an English pangram, so you can e.g. find a pangram in your language: https://clagnut.com/blog/2380
+#: data/dev.bragefuglseth.Keypunch.gschema.xml:52
+msgid "\"The quick brown fox jumps over the lazy dog.\""
+msgstr "\"أبجد هوز حطي كلمن سعفص قرشت ثخذ ضظغ\""
+
+#: data/dev.bragefuglseth.Keypunch.gschema.xml:53
+#: src/widgets/custom_text_dialog.blp:5 src/widgets/custom_text_dialog.blp:26
+msgid "Custom Text"
+msgstr "نص مخصص"
+
+#: data/dev.bragefuglseth.Keypunch.gschema.xml:54
+msgid "Text displayed when “Custom” is chosen from the session menu"
+msgstr "النص المعروض عند اختيار \"مخصص\" من قائمة الجلسة"
+
+#: data/dev.bragefuglseth.Keypunch.gschema.xml:58
+msgid "Personal Best"
+msgstr "أفضل أداء شخصي"
+
+#: data/dev.bragefuglseth.Keypunch.gschema.xml:59
+msgid ""
+"The current highest amount of WPM received for each session type / duration "
+"and language"
+msgstr ""
+"أعلى معدل كلمات في الدقيقة تم الحصول عليه حاليًا لكل نوع جلسة / مدة ولغة"
+
+#: data/resources/gtk/help-overlay.ui:11
+msgctxt "shortcut window"
+msgid "General"
+msgstr "عام"
+
+#: data/resources/gtk/help-overlay.ui:14
+msgctxt "shortcut window"
+msgid "Text Language"
+msgstr "لغة النص"
+
+#: data/resources/gtk/help-overlay.ui:20
+msgctxt "shortcut window"
+msgid "Cancel Session"
+msgstr "إلغاء الجلسة"
+
+#: data/resources/gtk/help-overlay.ui:26
+msgctxt "shortcut window"
+msgid "Keyboard Shortcuts"
+msgstr "مختصرات لوحة المفاتيح"
+
+#: data/resources/gtk/help-overlay.ui:32
+msgctxt "shortcut window"
+msgid "Close Window"
+msgstr "إغلاق النافذة"
+
+#: data/resources/gtk/help-overlay.ui:38
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr "الخروج"
+
+#: src/widgets/custom_text_dialog.blp:37
+msgid "Insert custom text…"
+msgstr "ادخل النص المخصص…"
+
+#: src/widgets/custom_text_dialog.blp:73
+msgid "_Save"
+msgstr "ا_حفض"
+
+#: src/widgets/results_view.blp:35
+msgid "New Personal Best for Configuration"
+msgstr "أفضل أداء شخصي جديد للإعدادات الحالية"
+
+#: src/widgets/results_view.blp:46
+msgid "Words per Minute"
+msgstr "كلمة في الدقيقة"
+
+#: src/widgets/results_view.blp:67
+msgid "Correctness"
+msgstr "الصحة"
+
+#. Translators: The percentage label format of the results page.
+#. The `{}` block will be replaced with the percentage number,
+#. do not translate it!
+#: src/widgets/results_view.rs:130
+msgid "{}%"
+msgstr "%{}"
+
+#. Translators: The `{}` blocks will be replaced with the number of minutes
+#. and seconds. Do not translate them!
+#: src/widgets/results_view.rs:188
+msgid "{}m {}s"
+msgstr "{}د {}ث"
+
+#. Translators: The `{}` block will be replaced with the number of minutes.
+#. Do not translate it!
+#: src/widgets/results_view.rs:192
+msgid "{} minute"
+msgid_plural "{} minutes"
+msgstr[0] "{} دقيقة"
+msgstr[1] "{} دقيقة"
+msgstr[2] "{} دقيقتان"
+msgstr[3] "{} دقائق"
+msgstr[4] "{} دقائق"
+msgstr[5] "{} دقائق"
+
+#. Translators: The `{}` block will be replaced with the number of seconds.
+#. Do not translate it!
+#: src/widgets/results_view.rs:196
+msgid "{} second"
+msgid_plural "{} seconds"
+msgstr[0] "{} ثانية"
+msgstr[1] "{} ثانية"
+msgstr[2] "{} ثانيتين"
+msgstr[3] "{} ثواني"
+msgstr[4] "{} ثواني"
+msgstr[5] "{} ثواني"
+
+#: src/widgets/text_language_dialog.blp:21
+#: src/widgets/text_language_dialog.blp:161
+#: src/widgets/text_language_dialog.blp:190
+msgid "Add Language"
+msgstr "أضف لغة"
+
+#: src/widgets/text_language_dialog.blp:51
+#: src/widgets/text_language_dialog.blp:55
+msgid "Search languages…"
+msgstr "ابحث في اللغات…"
+
+#. Translators: Recent languages in text languages list
+#: src/widgets/text_language_dialog.blp:79
+msgid "Recent"
+msgstr "مؤخرًا"
+
+#. Translators: Other languages in text languages list
+#: src/widgets/text_language_dialog.blp:84
+msgid "Other"
+msgstr "أخرى"
+
+#: src/widgets/text_language_dialog.blp:104
+msgid "Search Results"
+msgstr "نتائج البحث"
+
+#: src/widgets/text_language_dialog.blp:140
+msgid "No Matches"
+msgstr "لا يوجد مباريات"
+
+#: src/widgets/text_language_dialog.blp:148
+msgid "Try a different search"
+msgstr "جرّب بحثًا مختلفًا"
+
+#: src/widgets/text_language_dialog.blp:199
+msgid ""
+"You can help add a new text language to Keypunch by submitting a language "
+"request on GitHub. A GitHub account and some language knowledge is required."
+msgstr ""
+"يمكنك المساعدة في إضافة لغة نص جديدة إلى تطبيق Keypunch من خلال إرسال طلب "
+"لغة على GitHub. يتطلب ذلك وجود حساب على GitHub وبعض المعرفة باللغة."
+
+#: src/widgets/text_language_dialog.blp:214
+msgid "_Create Request"
+msgstr "_إنشاء طلب"
+
+#: src/widgets/text_view.blp:11
+msgid "Text View"
+msgstr "عرض النص"
+
+#: src/widgets/window.blp:54
+msgid "_Edit Text"
+msgstr "_تحرير النص"
+
+#: src/widgets/window.blp:64
+msgid "Main Menu"
+msgstr "القائمة الرئيسية"
+
+#: src/widgets/window.blp:80
+msgid "Restart"
+msgstr "إعادة"
+
+#: src/widgets/window.blp:108
+msgid "Just Start Typing"
+msgstr "ابدأ بالطباعة"
+
+#. Translators: "Entry" here is the act of entering text
+#: src/widgets/window.blp:117
+msgid "Enable Entry"
+msgstr "تفعيل الإدخال"
+
+#: src/widgets/window.blp:143
+msgid "Results"
+msgstr "ألنتائج"
+
+#: src/widgets/window.blp:168
+msgid "_Continue"
+msgstr "أ_كمل"
+
+#: src/widgets/window.blp:198
+msgid "Text _Language"
+msgstr "_لغة النص"
+
+#: src/widgets/window.blp:203
+msgid "_Keyboard Shortcuts"
+msgstr "أ_ختصارات لوحة المفاتيح"
+
+#: src/widgets/window.blp:208
+msgid "_About Keypunch"
+msgstr "_حول Keypunch"
+
+#: src/widgets/window.rs:48
+msgid "Simple"
+msgstr "بسيط"
+
+#: src/widgets/window.rs:49
+msgid "Advanced"
+msgstr "متقدم"
+
+#: src/widgets/window.rs:50
+msgid "Custom"
+msgstr "مخصص"
+
+#: src/widgets/window.rs:68
+msgid "15 seconds"
+msgstr "15 ثانية"
+
+#: src/widgets/window.rs:69
+msgid "30 seconds"
+msgstr "30 ثانية"
+
+#: src/widgets/window.rs:70
+msgid "1 minute"
+msgstr "دقيقة"
+
+#: src/widgets/window.rs:71
+msgid "5 minutes"
+msgstr "5 دقائق"
+
+#: src/widgets/window.rs:72
+msgid "10 minutes"
+msgstr "10 دقائق"
+
+#: src/widgets/window.rs:211
+msgid "Orthography by"
+msgstr "الإملاء بواسطة"
+
+#. Translators: Replace "translator-credits" with your names, one name per line
+#: src/widgets/window.rs:225
+msgid "translator-credits"
+msgstr "Ronnie Nissan <https://github.com/ronniedroid>"
+
+#: src/widgets/window.rs:230
+msgid "Special thanks to"
+msgstr "شكر خاص الى"
+
+#. Translators: The `{}` blocks will be replaced with the current word count and the total word count.
+#. Do not translate them! The slash sign is a special unicode character, if your language doesn't
+#. use a completely different sign, you should probably copy and paste it from the original string.
+#: src/widgets/window/session.rs:97
+msgid "{} ⁄ {}"
+msgstr ""
+
+#: src/widgets/window/session.rs:219
+msgid "Changes discarded"
+msgstr "تم تجاهل التغييرات"
+
+#: src/widgets/window/session.rs:220
+msgid "Restore"
+msgstr "استرجع"
+
+#. Translators: The format of the timer. The first `{}` block will be replaced
+#. with the minutes passed, and the second one will be replaced with the seconds
+#. passed. Do not translate the `{}` blocks. Note that the `∶` sign is a special
+#. Unicode character; if your language doesn't use something completely different,
+#. you should probably copy and paste it from the original string.
+#: src/widgets/window/session.rs:292 src/widgets/window/session.rs:294
+msgid "{}∶{}"
+msgstr ""
