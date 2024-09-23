@@ -19,6 +19,7 @@
  */
 
 mod focus;
+mod inhibit;
 mod session;
 mod settings;
 mod ui_state;
@@ -131,6 +132,8 @@ mod imp {
         pub cursor_hidden_timestamp: Cell<u32>,
         pub last_unfocus_timestamp: Cell<Option<Instant>>,
         pub last_unfocus_event: RefCell<Option<glib::SourceId>>,
+
+        pub inhibit_cookie: Cell<Option<u32>>,
     }
 
     #[glib::object_subclass]
@@ -169,8 +172,14 @@ mod imp {
             }
 
             // Workaround until dropdowns gain proper flat styling in libadwaita 2.0
-            self.session_type_dropdown.first_child().unwrap().add_css_class("flat");
-            self.duration_dropdown.first_child().unwrap().add_css_class("flat");
+            self.session_type_dropdown
+                .first_child()
+                .unwrap()
+                .add_css_class("flat");
+            self.duration_dropdown
+                .first_child()
+                .unwrap()
+                .add_css_class("flat");
 
             self.load_settings();
             self.setup_session_config();

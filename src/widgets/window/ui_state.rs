@@ -103,6 +103,8 @@ impl imp::KpWindow {
         self.obj()
             .action_set_enabled("win.text-language-dialog", true);
         self.obj().action_set_enabled("win.cancel-session", false);
+
+        self.end_existing_inhibit();
     }
 
     pub(super) fn start(&self) {
@@ -123,6 +125,9 @@ impl imp::KpWindow {
         self.obj()
             .action_set_enabled("win.text-language-dialog", false);
         self.obj().action_set_enabled("win.cancel-session", true);
+
+        // Translators: This is shown as a warning by GNOME Shell before logging out or shutting off the system in the middle of a typing session, alongside Keypunch's name and icon
+        self.inhibit_session(&gettext("Ongoing typing session"))
     }
 
     pub(super) fn finish(&self) {
@@ -139,6 +144,8 @@ impl imp::KpWindow {
         self.obj()
             .action_set_enabled("win.text-language-dialog", false);
         self.obj().action_set_enabled("win.cancel-session", false);
+
+        self.end_existing_inhibit();
     }
 
     pub(super) fn hide_cursor(&self) {
