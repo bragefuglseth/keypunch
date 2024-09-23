@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: dev.bragefuglseth.Keypunch\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-23 20:42+0200\n"
+"POT-Creation-Date: 2024-09-23 20:52+0200\n"
 "PO-Revision-Date: 2024-08-17 23:46+0300\n"
 "Last-Translator: Sabri Ünal <yakushabb@gmail.com>\n"
 "Language-Team: Turkish <takim@gnome.org.tr>\n"
@@ -396,3 +396,8 @@ msgstr "Geri Yükle"
 #: src/widgets/window/session.rs:383 src/widgets/window/session.rs:385
 msgid "{}∶{}"
 msgstr "{}∶{}"
+
+#. Translators: This is shown as a warning by GNOME Shell before logging out or shutting off the system in the middle of a typing session, alongside Keypunch's name and icon
+#: src/widgets/window/ui_state.rs:130
+msgid "Ongoing typing session"
+msgstr ""
