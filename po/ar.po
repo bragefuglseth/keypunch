@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: keypunch\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-07-08 22:39+0200\n"
+"POT-Creation-Date: 2024-09-23 20:42+0200\n"
 "PO-Revision-Date: 2024-09-23 18:52+0300\n"
 "Last-Translator: Ronnie Nissan <ronnie.nissan@proton.me>\n"
 "Language-Team: \n"
@@ -108,12 +108,12 @@ msgid "Window Maximization"
 msgstr "تكبير النافذة"
 
 #: data/dev.bragefuglseth.Keypunch.gschema.xml:32
-#: src/widgets/results_view.blp:83 src/widgets/window.blp:35
+#: src/widgets/results_view.blp:83 src/widgets/window.blp:37
 msgid "Session Type"
 msgstr "نوع الجلسة"
 
 #: data/dev.bragefuglseth.Keypunch.gschema.xml:36
-#: src/widgets/results_view.blp:96 src/widgets/window.blp:43
+#: src/widgets/results_view.blp:96 src/widgets/window.blp:42
 msgid "Session Duration"
 msgstr "مدة الجلسة"
 
@@ -223,19 +223,19 @@ msgstr "الصحة"
 #. Translators: The percentage label format of the results page.
 #. The `{}` block will be replaced with the percentage number,
 #. do not translate it!
-#: src/widgets/results_view.rs:130
+#: src/widgets/results_view.rs:129
 msgid "{}%"
 msgstr "%{}"
 
 #. Translators: The `{}` blocks will be replaced with the number of minutes
 #. and seconds. Do not translate them!
-#: src/widgets/results_view.rs:188
+#: src/widgets/results_view.rs:187
 msgid "{}m {}s"
 msgstr "{}د {}ث"
 
 #. Translators: The `{}` block will be replaced with the number of minutes.
 #. Do not translate it!
-#: src/widgets/results_view.rs:192
+#: src/widgets/results_view.rs:191
 msgid "{} minute"
 msgid_plural "{} minutes"
 msgstr[0] "{} دقيقة"
@@ -247,7 +247,7 @@ msgstr[5] "{} دقائق"
 
 #. Translators: The `{}` block will be replaced with the number of seconds.
 #. Do not translate it!
-#: src/widgets/results_view.rs:196
+#: src/widgets/results_view.rs:195
 msgid "{} second"
 msgid_plural "{} seconds"
 msgstr[0] "{} ثانية"
@@ -306,104 +306,101 @@ msgstr "_إنشاء طلب"
 msgid "Text View"
 msgstr "عرض النص"
 
-#: src/widgets/window.blp:54
+#: src/widgets/window.blp:49
 msgid "_Edit Text"
 msgstr "_تحرير النص"
 
-#: src/widgets/window.blp:64
+#: src/widgets/window.blp:59
 msgid "Main Menu"
 msgstr "القائمة الرئيسية"
 
-#: src/widgets/window.blp:80
+#: src/widgets/window.blp:75
 msgid "Restart"
 msgstr "إعادة"
 
-#: src/widgets/window.blp:108
+#: src/widgets/window.blp:103
 msgid "Just Start Typing"
 msgstr "ابدأ بالطباعة"
 
 #. Translators: "Entry" here is the act of entering text
-#: src/widgets/window.blp:117
+#: src/widgets/window.blp:112
 msgid "Enable Entry"
 msgstr "تفعيل الإدخال"
 
-#: src/widgets/window.blp:143
+#: src/widgets/window.blp:138
 msgid "Results"
 msgstr "ألنتائج"
 
-#: src/widgets/window.blp:168
+#: src/widgets/window.blp:163
 msgid "_Continue"
 msgstr "أ_كمل"
 
-#: src/widgets/window.blp:198
+#: src/widgets/window.blp:193
 msgid "Text _Language"
 msgstr "_لغة النص"
 
-#: src/widgets/window.blp:203
+#: src/widgets/window.blp:198
 msgid "_Keyboard Shortcuts"
 msgstr "أ_ختصارات لوحة المفاتيح"
 
-#: src/widgets/window.blp:208
+#: src/widgets/window.blp:203
 msgid "_About Keypunch"
 msgstr "_حول Keypunch"
 
-#: src/widgets/window.rs:48
+#: src/widgets/window.rs:49
 msgid "Simple"
 msgstr "بسيط"
 
-#: src/widgets/window.rs:49
+#: src/widgets/window.rs:50
 msgid "Advanced"
 msgstr "متقدم"
 
-#: src/widgets/window.rs:50
+#: src/widgets/window.rs:51
 msgid "Custom"
 msgstr "مخصص"
 
-#: src/widgets/window.rs:68
+#: src/widgets/window.rs:69
 msgid "15 seconds"
 msgstr "15 ثانية"
 
-#: src/widgets/window.rs:69
+#: src/widgets/window.rs:70
 msgid "30 seconds"
 msgstr "30 ثانية"
 
-#: src/widgets/window.rs:70
+#: src/widgets/window.rs:71
 msgid "1 minute"
 msgstr "دقيقة"
 
-#: src/widgets/window.rs:71
+#: src/widgets/window.rs:72
 msgid "5 minutes"
 msgstr "5 دقائق"
 
-#: src/widgets/window.rs:72
+#: src/widgets/window.rs:73
 msgid "10 minutes"
 msgstr "10 دقائق"
 
-#: src/widgets/window.rs:211
+#: src/widgets/window.rs:224
 msgid "Orthography by"
 msgstr "الإملاء بواسطة"
 
 #. Translators: Replace "translator-credits" with your names, one name per line
-#: src/widgets/window.rs:225
+#: src/widgets/window.rs:240
 msgid "translator-credits"
 msgstr "Ronnie Nissan <https://github.com/ronniedroid>"
 
-#: src/widgets/window.rs:230
+#: src/widgets/window.rs:245
 msgid "Special thanks to"
 msgstr "شكر خاص الى"
 
-#. Translators: The `{}` blocks will be replaced with the current word count and the total word count.
-#. Do not translate them! The slash sign is a special unicode character, if your language doesn't
-#. use a completely different sign, you should probably copy and paste it from the original string.
-#: src/widgets/window/session.rs:97
+#: src/widgets/window/session.rs:122
 msgid "{} ⁄ {}"
 msgstr ""
 
-#: src/widgets/window/session.rs:219
+#: src/widgets/window/session.rs:288
 msgid "Changes discarded"
 msgstr "تم تجاهل التغييرات"
 
-#: src/widgets/window/session.rs:220
+#: src/widgets/window/session.rs:289
 msgid "Restore"
 msgstr "استرجع"
 
@@ -412,6 +409,6 @@ msgstr "استرجع"
 #. passed. Do not translate the `{}` blocks. Note that the `∶` sign is a special
 #. Unicode character; if your language doesn't use something completely different,
 #. you should probably copy and paste it from the original string.
-#: src/widgets/window/session.rs:292 src/widgets/window/session.rs:294
+#: src/widgets/window/session.rs:383 src/widgets/window/session.rs:385
 msgid "{}∶{}"
 msgstr ""

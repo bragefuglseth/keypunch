@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: keypunch\n"
-"Report-Msgid-Bugs-To: https://github.com/bragefuglseth/keypunch/issues\n"
-"POT-Creation-Date: 2024-07-08 22:39+0200\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-09-23 20:42+0200\n"
 "PO-Revision-Date: 2024-07-17 10:56+0530\n"
 "Last-Translator: Scrambled777 <weblate.scrambled777@simplelogin.com>\n"
 "Language-Team: Hindi <indlinux-hindi@lists.sourceforge.net>\n"
@@ -105,12 +105,12 @@ msgid "Window Maximization"
 msgstr "विंडो अधिकतमीकृत"
 
 #: data/dev.bragefuglseth.Keypunch.gschema.xml:32
-#: src/widgets/results_view.blp:83 src/widgets/window.blp:35
+#: src/widgets/results_view.blp:83 src/widgets/window.blp:37
 msgid "Session Type"
 msgstr "सत्र प्रकार"
 
 #: data/dev.bragefuglseth.Keypunch.gschema.xml:36
-#: src/widgets/results_view.blp:96 src/widgets/window.blp:43
+#: src/widgets/results_view.blp:96 src/widgets/window.blp:42
 msgid "Session Duration"
 msgstr "सत्र अवधि"
 
@@ -221,19 +221,19 @@ msgstr "यथार्थता"
 #. Translators: The percentage label format of the results page.
 #. The `{}` block will be replaced with the percentage number,
 #. do not translate it!
-#: src/widgets/results_view.rs:130
+#: src/widgets/results_view.rs:129
 msgid "{}%"
 msgstr "{}%"
 
 #. Translators: The `{}` blocks will be replaced with the number of minutes
 #. and seconds. Do not translate them!
-#: src/widgets/results_view.rs:188
+#: src/widgets/results_view.rs:187
 msgid "{}m {}s"
 msgstr "{}m {}s"
 
 #. Translators: The `{}` block will be replaced with the number of minutes.
 #. Do not translate it!
-#: src/widgets/results_view.rs:192
+#: src/widgets/results_view.rs:191
 msgid "{} minute"
 msgid_plural "{} minutes"
 msgstr[0] "{} मिनट"
@@ -241,7 +241,7 @@ msgstr[1] "{} मिनट"
 
 #. Translators: The `{}` block will be replaced with the number of seconds.
 #. Do not translate it!
-#: src/widgets/results_view.rs:196
+#: src/widgets/results_view.rs:195
 msgid "{} second"
 msgid_plural "{} seconds"
 msgstr[0] "{} सेकंड"
@@ -296,104 +296,101 @@ msgstr "अनुरोध बनाएं (_C)"
 msgid "Text View"
 msgstr "पाठ दृश्य"
 
-#: src/widgets/window.blp:54
+#: src/widgets/window.blp:49
 msgid "_Edit Text"
 msgstr "पाठ संपादित करें (_E)"
 
-#: src/widgets/window.blp:64
+#: src/widgets/window.blp:59
 msgid "Main Menu"
 msgstr "मुख्य मेनू"
 
-#: src/widgets/window.blp:80
+#: src/widgets/window.blp:75
 msgid "Restart"
 msgstr "पुनरारंभ"
 
-#: src/widgets/window.blp:108
+#: src/widgets/window.blp:103
 msgid "Just Start Typing"
 msgstr "बस टाइप करना शुरू करें"
 
 #. Translators: "Entry" here is the act of entering text
-#: src/widgets/window.blp:117
+#: src/widgets/window.blp:112
 msgid "Enable Entry"
 msgstr "प्रविष्टि सक्षम करें"
 
-#: src/widgets/window.blp:143
+#: src/widgets/window.blp:138
 msgid "Results"
 msgstr "परिणाम"
 
-#: src/widgets/window.blp:168
+#: src/widgets/window.blp:163
 msgid "_Continue"
 msgstr "जारी रखें (_C)"
 
-#: src/widgets/window.blp:198
+#: src/widgets/window.blp:193
 msgid "Text _Language"
 msgstr "पाठ भाषा (_L)"
 
-#: src/widgets/window.blp:203
+#: src/widgets/window.blp:198
 msgid "_Keyboard Shortcuts"
 msgstr "कीबोर्ड शॉर्टकट (_K)"
 
-#: src/widgets/window.blp:208
+#: src/widgets/window.blp:203
 msgid "_About Keypunch"
 msgstr "कीपंच का परिचय (_A)"
 
-#: src/widgets/window.rs:48
+#: src/widgets/window.rs:49
 msgid "Simple"
 msgstr "सरल"
 
-#: src/widgets/window.rs:49
+#: src/widgets/window.rs:50
 msgid "Advanced"
 msgstr "उन्नत"
 
-#: src/widgets/window.rs:50
+#: src/widgets/window.rs:51
 msgid "Custom"
 msgstr "तदनुकूल"
 
-#: src/widgets/window.rs:68
+#: src/widgets/window.rs:69
 msgid "15 seconds"
 msgstr "15 सेकेंड"
 
-#: src/widgets/window.rs:69
+#: src/widgets/window.rs:70
 msgid "30 seconds"
 msgstr "30 सेकेंड"
 
-#: src/widgets/window.rs:70
+#: src/widgets/window.rs:71
 msgid "1 minute"
 msgstr "1 मिनट"
 
-#: src/widgets/window.rs:71
+#: src/widgets/window.rs:72
 msgid "5 minutes"
 msgstr "5 मिनट"
 
-#: src/widgets/window.rs:72
+#: src/widgets/window.rs:73
 msgid "10 minutes"
 msgstr "10 मिनट"
 
-#: src/widgets/window.rs:211
+#: src/widgets/window.rs:224
 msgid "Orthography by"
 msgstr "ऑर्थोग्राफी प्रदानकर्ता"
 
 #. Translators: Replace "translator-credits" with your names, one name per line
-#: src/widgets/window.rs:225
+#: src/widgets/window.rs:240
 msgid "translator-credits"
 msgstr "Scrambled777 <weblate.scrambled777@simplelogin.com>"
 
-#: src/widgets/window.rs:230
+#: src/widgets/window.rs:245
 msgid "Special thanks to"
 msgstr "इनको विशेष धन्यवाद"
 
-#. Translators: The `{}` blocks will be replaced with the current word count and the total word count.
-#. Do not translate them! The slash sign is a special unicode character, if your language doesn't
-#. use a completely different sign, you should probably copy and paste it from the original string.
-#: src/widgets/window/session.rs:97
+#: src/widgets/window/session.rs:122
 msgid "{} ⁄ {}"
 msgstr "{} ⁄ {}"
 
-#: src/widgets/window/session.rs:219
+#: src/widgets/window/session.rs:288
 msgid "Changes discarded"
 msgstr "परिवर्तन खारिज कर दिए गए"
 
-#: src/widgets/window/session.rs:220
+#: src/widgets/window/session.rs:289
 msgid "Restore"
 msgstr "पुनर्स्थापित करें"
 
@@ -402,6 +399,6 @@ msgstr "पुनर्स्थापित करें"
 #. passed. Do not translate the `{}` blocks. Note that the `∶` sign is a special
 #. Unicode character; if your language doesn't use something completely different,
 #. you should probably copy and paste it from the original string.
-#: src/widgets/window/session.rs:292 src/widgets/window/session.rs:294
+#: src/widgets/window/session.rs:383 src/widgets/window/session.rs:385
 msgid "{}∶{}"
 msgstr "{}∶{}"
