@@ -248,10 +248,9 @@ mod imp {
 
             about.add_other_app(
                 "dev.bragefuglseth.Fretboard",
-                "Fretboard",
-                // Translators: The summary of the app Fretboard. This should match the translated
-                // version of Fretboard's actual summary, if it has been translated into your language.
-                // Have a look at <https://github.com/bragefuglseth/fretboard>
+                // Translators: Metainfo for the app Fretboard. <https://github.com/bragefuglseth/fretboard>
+                &gettext("Fretboard"),
+                // Translators: Metainfo for the app Fretboard. <https://github.com/bragefuglseth/fretboard>
                 &gettext("Look up guitar chords"),
             );
 
