@@ -51,6 +51,8 @@ pub enum Language {
     Polish,
     #[strum(message = "Português", to_string = "pt")]
     Portuguese,
+    #[strum(message = "Română", to_string = "ro")]
+    Romanian,
     #[strum(message = "Русский", to_string = "ru")]
     Russian,
     #[strum(message = "Español", to_string = "es")]
@@ -139,6 +141,7 @@ pub fn simple(language: Language) -> String {
         | Language::Occitan
         | Language::Polish
         | Language::Portuguese
+        | Language::Romanian
         | Language::Russian
         | Language::Spanish
         | Language::Swahili
@@ -293,6 +296,22 @@ pub fn advanced(language: Language) -> String {
                 Punctuation::suffix("!", true, 0.3),
                 Punctuation::suffix("?", true, 0.3),
                 Punctuation::wrapping("\"", "\"", false, 0.2),
+                Punctuation::wrapping("(", ")", false, 0.1),
+            ],
+            WESTERN_ARABIC_NUMERALS,
+        ),
+        // Romanians also have a strong culture of using „ and “ over " and ".
+        Language::Romanian => advanced_generic(
+            &language.to_string(),
+            " ",
+            &[
+                Punctuation::suffix(".", true, 0.6),
+                Punctuation::suffix(",", false, 1.0),
+                Punctuation::suffix(";", false, 0.1),
+                Punctuation::suffix(":", false, 0.2),
+                Punctuation::suffix("!", true, 0.3),
+                Punctuation::suffix("?", true, 0.3),
+                Punctuation::wrapping("„", "”", false, 0.2),
                 Punctuation::wrapping("(", ")", false, 0.1),
             ],
             WESTERN_ARABIC_NUMERALS,
