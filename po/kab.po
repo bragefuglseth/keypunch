@@ -1,0 +1,397 @@
+# Kabyle translation for Keypunch.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the keypunch package.
+# ButterflyOfFire <butterflyoffire@protonmail.com>, 2024.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: keypunch\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-09-23 20:52+0200\n"
+"PO-Revision-Date: 2024-10-29 16:47+0100\n"
+"Last-Translator: ButterflyOfFire <butterflyoffire@protonmail.com>\n"
+"Language-Team: \n"
+"Language: kab\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n>1;\n"
+"X-Generator: Poedit 3.5\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+
+#: data/dev.bragefuglseth.Keypunch.desktop.in.in:3
+#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:7
+#: src/widgets/window.blp:5
+msgid "Keypunch"
+msgstr "Keypunch"
+
+#: data/dev.bragefuglseth.Keypunch.desktop.in.in:4
+#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:8
+msgid "Practice your typing skills"
+msgstr ""
+
+#: data/dev.bragefuglseth.Keypunch.desktop.in.in:10
+msgid ""
+"typing;trainer;touch typing;keyboard;speed;wpm;words per minute;accuracy;"
+"test;"
+msgstr ""
+
+#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:13
+msgid ""
+"There is no doubt that typing on a keyboard is an essential skill in the "
+"digital age. Typing fast and accurately gives you more opportunities, more "
+"time for what matters to you, and a sense of self-accomplishment."
+msgstr ""
+
+#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:18
+msgid ""
+"Keypunch lets you practice typing. Thanks to fast-paced sessions with "
+"instant feedback afterwards and a plethora of available languages, you might "
+"even have a little fun doing so. With determination, proper technique and "
+"some time, you will observe a noticeable increase in both the speed and the "
+"accuracy of which your thoughts and ideas are put into words on the screen."
+msgstr ""
+
+#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:25
+msgid ""
+"If you are already a racer at typing, Keypunch still has something for you. "
+"Try practicing with numbers and punctuation, or choose your own text to type "
+"out as fast as you can."
+msgstr ""
+
+#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:30
+msgid "Get ready to accelerate your typing!"
+msgstr ""
+
+#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:36
+msgid "In the middle of a session"
+msgstr ""
+
+#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:40
+msgid "Ready for typing"
+msgstr "Wejdeɣ i tira"
+
+#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:44
+msgid "Session results"
+msgstr ""
+
+#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:48
+msgid "Language selection"
+msgstr "Afran n tutlayt"
+
+#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:52
+msgid "Custom text entry"
+msgstr "Asekcem n uḍris udmawan"
+
+#: data/dev.bragefuglseth.Keypunch.gschema.xml:20
+msgid "Window Width"
+msgstr "Teɣzi n usfaylu"
+
+#: data/dev.bragefuglseth.Keypunch.gschema.xml:24
+msgid "Window Height"
+msgstr "Tehri n usfaylu"
+
+#: data/dev.bragefuglseth.Keypunch.gschema.xml:28
+msgid "Window Maximization"
+msgstr ""
+
+#: data/dev.bragefuglseth.Keypunch.gschema.xml:32
+#: src/widgets/results_view.blp:83 src/widgets/window.blp:37
+msgid "Session Type"
+msgstr ""
+
+#: data/dev.bragefuglseth.Keypunch.gschema.xml:36
+#: src/widgets/results_view.blp:96 src/widgets/window.blp:42
+msgid "Session Duration"
+msgstr "Tanzagt n tɣimit"
+
+#: data/dev.bragefuglseth.Keypunch.gschema.xml:37
+msgid "The duration of time-based sessions"
+msgstr ""
+
+#. Translators: Insert the language code of your language here, for example "nb" for Norwegian Bokmaal. Do not remove the quotation marks. It's doesn't matter if there isn't a word list for the language in `data/word_lists` right now, the app will fall back to English in that case and start using the list if it becomes available in the future.
+#: data/dev.bragefuglseth.Keypunch.gschema.xml:41
+msgid "\"en\""
+msgstr "\"kab\""
+
+#: data/dev.bragefuglseth.Keypunch.gschema.xml:42
+#: src/widgets/results_view.blp:109 src/widgets/text_language_dialog.blp:5
+#: src/widgets/text_language_dialog.blp:13
+#: src/widgets/text_language_dialog.blp:39
+msgid "Text Language"
+msgstr "Tutlayt n uḍris"
+
+#: data/dev.bragefuglseth.Keypunch.gschema.xml:43
+msgid "The code of the language used for automatically generated text"
+msgstr ""
+
+#: data/dev.bragefuglseth.Keypunch.gschema.xml:47
+msgid "Recent Languages"
+msgstr "Tutlayin tineggura"
+
+#: data/dev.bragefuglseth.Keypunch.gschema.xml:48
+msgid "Languages shown in the list of recent ones in the text language dialog"
+msgstr ""
+
+#. Translators: This is the default text for custom typing sessions. Do not translate it literally, and do not remove the quotation marks. Replace it with an appropriate "sample sentence" from your language instead. The original text is an English pangram, so you can e.g. find a pangram in your language: https://clagnut.com/blog/2380
+#: data/dev.bragefuglseth.Keypunch.gschema.xml:52
+msgid "\"The quick brown fox jumps over the lazy dog.\""
+msgstr ""
+
+#: data/dev.bragefuglseth.Keypunch.gschema.xml:53
+#: src/widgets/custom_text_dialog.blp:5 src/widgets/custom_text_dialog.blp:26
+msgid "Custom Text"
+msgstr "Aḍris udmawan"
+
+#: data/dev.bragefuglseth.Keypunch.gschema.xml:54
+msgid "Text displayed when “Custom” is chosen from the session menu"
+msgstr ""
+
+#: data/dev.bragefuglseth.Keypunch.gschema.xml:58
+msgid "Personal Best"
+msgstr ""
+
+#: data/dev.bragefuglseth.Keypunch.gschema.xml:59
+msgid ""
+"The current highest amount of WPM received for each session type / duration "
+"and language"
+msgstr ""
+
+#: data/resources/gtk/help-overlay.ui:11
+msgctxt "shortcut window"
+msgid "General"
+msgstr "Amatu"
+
+#: data/resources/gtk/help-overlay.ui:14
+msgctxt "shortcut window"
+msgid "Text Language"
+msgstr "Tutlayt n uḍris"
+
+#: data/resources/gtk/help-overlay.ui:20
+msgctxt "shortcut window"
+msgid "Cancel Session"
+msgstr "Sefsex tiɣimit"
+
+#: data/resources/gtk/help-overlay.ui:26
+msgctxt "shortcut window"
+msgid "Keyboard Shortcuts"
+msgstr "Inegzumen n unasiw"
+
+#: data/resources/gtk/help-overlay.ui:32
+msgctxt "shortcut window"
+msgid "Close Window"
+msgstr "Mdel asfaylu"
+
+#: data/resources/gtk/help-overlay.ui:38
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr "Ffeɣ"
+
+#: src/widgets/custom_text_dialog.blp:37
+msgid "Insert custom text…"
+msgstr "Sekcem-d aḍris udmawan…"
+
+#: src/widgets/custom_text_dialog.blp:73
+msgid "_Save"
+msgstr "_Sekles"
+
+#: src/widgets/results_view.blp:35
+msgid "New Personal Best for Configuration"
+msgstr ""
+
+#: src/widgets/results_view.blp:46
+msgid "Words per Minute"
+msgstr "n wawalen deg tesdidt"
+
+#: src/widgets/results_view.blp:67
+msgid "Correctness"
+msgstr "Anefren"
+
+#. Translators: The percentage label format of the results page.
+#. The `{}` block will be replaced with the percentage number,
+#. do not translate it!
+#: src/widgets/results_view.rs:129
+msgid "{}%"
+msgstr "{}%"
+
+#. Translators: The `{}` blocks will be replaced with the number of minutes
+#. and seconds. Do not translate them!
+#: src/widgets/results_view.rs:187
+msgid "{}m {}s"
+msgstr "{}tsd {}tsn"
+
+#. Translators: The `{}` block will be replaced with the number of minutes.
+#. Do not translate it!
+#: src/widgets/results_view.rs:191
+msgid "{} minute"
+msgid_plural "{} minutes"
+msgstr[0] "{} tasdidt"
+msgstr[1] "{} n tesdidin"
+
+#. Translators: The `{}` block will be replaced with the number of seconds.
+#. Do not translate it!
+#: src/widgets/results_view.rs:195
+msgid "{} second"
+msgid_plural "{} seconds"
+msgstr[0] "{} tasint"
+msgstr[1] "{} n tasinin"
+
+#: src/widgets/text_language_dialog.blp:21
+#: src/widgets/text_language_dialog.blp:161
+#: src/widgets/text_language_dialog.blp:190
+msgid "Add Language"
+msgstr "Rnu tutlayt"
+
+#: src/widgets/text_language_dialog.blp:51
+#: src/widgets/text_language_dialog.blp:55
+msgid "Search languages…"
+msgstr "Anadi ɣef tutlayin …"
+
+#. Translators: Recent languages in text languages list
+#: src/widgets/text_language_dialog.blp:79
+msgid "Recent"
+msgstr "Tineggura"
+
+#. Translators: Other languages in text languages list
+#: src/widgets/text_language_dialog.blp:84
+msgid "Other"
+msgstr "Tiyyaḍ"
+
+#: src/widgets/text_language_dialog.blp:104
+msgid "Search Results"
+msgstr "Igmaḍ n unadi"
+
+#: src/widgets/text_language_dialog.blp:140
+msgid "No Matches"
+msgstr ""
+
+#: src/widgets/text_language_dialog.blp:148
+msgid "Try a different search"
+msgstr "Ɛreḍ anadi-nniḍen"
+
+#: src/widgets/text_language_dialog.blp:199
+msgid ""
+"You can help add a new text language to Keypunch by submitting a language "
+"request on GitHub. A GitHub account and some language knowledge is required."
+msgstr ""
+
+#: src/widgets/text_language_dialog.blp:214
+msgid "_Create Request"
+msgstr ""
+
+#: src/widgets/text_view.blp:11
+msgid "Text View"
+msgstr ""
+
+#: src/widgets/window.blp:49
+msgid "_Edit Text"
+msgstr "Ẓr_eg aḍris"
+
+#: src/widgets/window.blp:59
+msgid "Main Menu"
+msgstr "Umuɣ agejdan"
+
+#: src/widgets/window.blp:75
+msgid "Restart"
+msgstr "Ales asenker"
+
+#: src/widgets/window.blp:103
+msgid "Just Start Typing"
+msgstr "Bdu kan tira"
+
+#. Translators: "Entry" here is the act of entering text
+#: src/widgets/window.blp:112
+msgid "Enable Entry"
+msgstr ""
+
+#: src/widgets/window.blp:138
+msgid "Results"
+msgstr "Igmaḍ"
+
+#: src/widgets/window.blp:163
+msgid "_Continue"
+msgstr "Kemmel (_C)"
+
+#: src/widgets/window.blp:193
+msgid "Text _Language"
+msgstr "Tutlayt n weḍris"
+
+#: src/widgets/window.blp:198
+msgid "_Keyboard Shortcuts"
+msgstr "Inegzumen n unasiw (_K)"
+
+#: src/widgets/window.blp:203
+msgid "_About Keypunch"
+msgstr "Ɣef Keypunch (_A)"
+
+#: src/widgets/window.rs:49
+msgid "Simple"
+msgstr "Afessas"
+
+#: src/widgets/window.rs:50
+msgid "Advanced"
+msgstr "Leqqayen"
+
+#: src/widgets/window.rs:51
+msgid "Custom"
+msgstr "Udmawan"
+
+#: src/widgets/window.rs:69
+msgid "15 seconds"
+msgstr "15 tasinin"
+
+#: src/widgets/window.rs:70
+msgid "30 seconds"
+msgstr "30 tasinin"
+
+#: src/widgets/window.rs:71
+msgid "1 minute"
+msgstr "1 n tesdat"
+
+#: src/widgets/window.rs:72
+msgid "5 minutes"
+msgstr "5 n tesdatin"
+
+#: src/widgets/window.rs:73
+msgid "10 minutes"
+msgstr "10 n tesdatin"
+
+#: src/widgets/window.rs:224
+msgid "Orthography by"
+msgstr ""
+
+#. Translators: Replace "translator-credits" with your names, one name per line
+#: src/widgets/window.rs:240
+msgid "translator-credits"
+msgstr "ButterflyOfFire"
+
+#: src/widgets/window.rs:245
+msgid "Special thanks to"
+msgstr "Tanemmirt s tussda i"
+
+#: src/widgets/window/session.rs:122
+msgid "{} ⁄ {}"
+msgstr "{} ⁄ {}"
+
+#: src/widgets/window/session.rs:288
+msgid "Changes discarded"
+msgstr ""
+
+#: src/widgets/window/session.rs:289
+msgid "Restore"
+msgstr "Err-it-id"
+
+#. Translators: The format of the timer. The first `{}` block will be replaced
+#. with the minutes passed, and the second one will be replaced with the seconds
+#. passed. Do not translate the `{}` blocks. Note that the `∶` sign is a special
+#. Unicode character; if your language doesn't use something completely different,
+#. you should probably copy and paste it from the original string.
+#: src/widgets/window/session.rs:383 src/widgets/window/session.rs:385
+msgid "{}∶{}"
+msgstr "{}∶{}"
+
+#. Translators: This is shown as a warning by GNOME Shell before logging out or shutting off the system in the middle of a typing session, alongside Keypunch's name and icon
+#: src/widgets/window/ui_state.rs:130
+msgid "Ongoing typing session"
+msgstr ""
