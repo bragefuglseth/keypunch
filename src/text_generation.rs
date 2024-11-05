@@ -51,6 +51,8 @@ pub enum Language {
     Polish,
     #[strum(message = "Português", to_string = "pt")]
     Portuguese,
+    #[strum(message = "Română", to_string = "ro")]
+    Romanian,
     #[strum(message = "Русский", to_string = "ru")]
     Russian,
     #[strum(message = "Español", to_string = "es")]
@@ -139,6 +141,7 @@ pub fn simple(language: Language) -> String {
         | Language::Occitan
         | Language::Polish
         | Language::Portuguese
+        | Language::Romanian
         | Language::Russian
         | Language::Spanish
         | Language::Swahili
@@ -191,9 +194,10 @@ pub fn advanced(language: Language) -> String {
             ],
             WESTERN_ARABIC_NUMERALS,
         ),
-        // Bulgarians apparently have a pretty strong culture of using „ and “ over " and ".
-        // See <https://github.com/bragefuglseth/keypunch/issues/41> if this ever comes up again
-        Language::Bulgarian => advanced_generic(
+        // Bulgarians and Romanians have a pretty strong culture of using „ and “ over " and ".
+        // See <https://github.com/bragefuglseth/keypunch/issues/41> and
+        // <https://github.com/bragefuglseth/keypunch/pull/80> if this ever comes up again
+        Language::Bulgarian | Language::Romanian => advanced_generic(
             &language.to_string(),
             " ",
             &[
