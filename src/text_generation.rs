@@ -194,9 +194,10 @@ pub fn advanced(language: Language) -> String {
             ],
             WESTERN_ARABIC_NUMERALS,
         ),
-        // Bulgarians apparently have a pretty strong culture of using „ and “ over " and ".
-        // See <https://github.com/bragefuglseth/keypunch/issues/41> if this ever comes up again
-        Language::Bulgarian => advanced_generic(
+        // Bulgarians and Romanians have a pretty strong culture of using „ and “ over " and ".
+        // See <https://github.com/bragefuglseth/keypunch/issues/41> and
+        // <https://github.com/bragefuglseth/keypunch/pull/80> if this ever comes up again
+        Language::Bulgarian | Language::Romanian => advanced_generic(
             &language.to_string(),
             " ",
             &[
@@ -296,22 +297,6 @@ pub fn advanced(language: Language) -> String {
                 Punctuation::suffix("!", true, 0.3),
                 Punctuation::suffix("?", true, 0.3),
                 Punctuation::wrapping("\"", "\"", false, 0.2),
-                Punctuation::wrapping("(", ")", false, 0.1),
-            ],
-            WESTERN_ARABIC_NUMERALS,
-        ),
-        // Romanians also have a strong culture of using „ and “ over " and ".
-        Language::Romanian => advanced_generic(
-            &language.to_string(),
-            " ",
-            &[
-                Punctuation::suffix(".", true, 0.6),
-                Punctuation::suffix(",", false, 1.0),
-                Punctuation::suffix(";", false, 0.1),
-                Punctuation::suffix(":", false, 0.2),
-                Punctuation::suffix("!", true, 0.3),
-                Punctuation::suffix("?", true, 0.3),
-                Punctuation::wrapping("„", "”", false, 0.2),
                 Punctuation::wrapping("(", ")", false, 0.1),
             ],
             WESTERN_ARABIC_NUMERALS,
