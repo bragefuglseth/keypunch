@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: dev.bragefuglseth.Keypunch\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-09-23 20:52+0200\n"
-"PO-Revision-Date: 2024-08-17 23:46+0300\n"
+"PO-Revision-Date: 2024-10-23 00:24+0300\n"
 "Last-Translator: Sabri Ünal <yakushabb@gmail.com>\n"
 "Language-Team: Turkish <takim@gnome.org.tr>\n"
 "Language: tr\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 3.4.3\n"
+"X-Generator: Poedit 3.5\n"
 
 #: data/dev.bragefuglseth.Keypunch.desktop.in.in:3
 #: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:7
@@ -45,6 +45,8 @@ msgid ""
 "digital age. Typing fast and accurately gives you more opportunities, more "
 "time for what matters to you, and a sense of self-accomplishment."
 msgstr ""
+"Klavye ile yazmak sayısal çağ için önemli bir beceri. Hızlı ve doğru yazmak "
+"sizin için önemli olan şeylere daha fazla vakit ayırmanızı sağlar."
 
 #: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:18
 msgid ""
@@ -158,12 +160,11 @@ msgid "Personal Best"
 msgstr "Kişisel En İyi"
 
 #: data/dev.bragefuglseth.Keypunch.gschema.xml:59
-#, fuzzy
 msgid ""
 "The current highest amount of WPM received for each session type / duration "
 "and language"
 msgstr ""
-"Her oturum türü / süresi ve dil için alınan mevcut en yüksek WPM miktarı"
+"Her oturum türü / süresi ve dil için alınan geçerli en yüksek WPM miktarı"
 
 #: data/resources/gtk/help-overlay.ui:11
 msgctxt "shortcut window"
@@ -363,7 +364,6 @@ msgid "10 minutes"
 msgstr "10 dakika"
 
 #: src/widgets/window.rs:224
-#, fuzzy
 msgid "Orthography by"
 msgstr "Yazım tarafından"
 
@@ -400,4 +400,4 @@ msgstr "{}∶{}"
 #. Translators: This is shown as a warning by GNOME Shell before logging out or shutting off the system in the middle of a typing session, alongside Keypunch's name and icon
 #: src/widgets/window/ui_state.rs:130
 msgid "Ongoing typing session"
-msgstr ""
+msgstr "Süren yazım oturumu"
