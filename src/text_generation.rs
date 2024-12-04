@@ -121,63 +121,15 @@ const BANGLA_NUMERALS: &'static Numerals = &["০", "১", "২", "৩", "৪", 
 // Only lowercase letters, no punctuation or numbers
 pub fn simple(language: Language) -> String {
     match language {
-        Language::Arabic
-        | Language::Bangla
-        | Language::Bulgarian
-        | Language::Czech
-        | Language::English
-        | Language::Danish
-        | Language::French
-        | Language::German
-        | Language::Hebrew
-        | Language::Hindi
-        | Language::Hungarian
-        | Language::Italian
-        | Language::Kinyarwanda
-        | Language::Korean
-        | Language::Nepali
-        | Language::NorwegianBokmaal
-        | Language::NorwegianNynorsk
-        | Language::Occitan
-        | Language::Polish
-        | Language::Portuguese
-        | Language::Romanian
-        | Language::Russian
-        | Language::Spanish
-        | Language::Swahili
-        | Language::Swedish
-        | Language::SwissGerman
-        | Language::Turkish
-        | Language::Ukranian => simple_generic(&language.to_string(), " "),
+        // Add special cases here if relevant
+        _ => simple_generic(&language.to_string(), " "),
     }
 }
 
 // Some capitalized letters, punctuation and numbers
 pub fn advanced(language: Language) -> String {
     match language {
-        Language::Danish
-        | Language::English
-        | Language::German
-        | Language::Hebrew
-        | Language::Hungarian
-        | Language::Italian
-        | Language::Kinyarwanda
-        | Language::Korean
-        | Language::NorwegianBokmaal
-        | Language::NorwegianNynorsk
-        | Language::Occitan
-        | Language::Polish
-        | Language::Russian
-        | Language::Swahili
-        | Language::Swedish
-        | Language::SwissGerman
-        | Language::Turkish
-        | Language::Ukranian => advanced_generic(
-            &language.to_string(),
-            " ",
-            GENERIC_PUNCTUATION,
-            WESTERN_ARABIC_NUMERALS,
-        ),
+        // Add special cases here if relevant
         // Arabic has its own set of punctuation and a couple of words with vowel markers
         Language::Arabic => advanced_generic(
             "ar_advanced",
@@ -301,6 +253,12 @@ pub fn advanced(language: Language) -> String {
             ],
             WESTERN_ARABIC_NUMERALS,
         ),
+        _ => advanced_generic(
+            &language.to_string(),
+            " ",
+            GENERIC_PUNCTUATION,
+            WESTERN_ARABIC_NUMERALS,
+        )
     }
 }
 
