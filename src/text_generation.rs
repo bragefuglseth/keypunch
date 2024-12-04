@@ -35,6 +35,8 @@ pub enum Language {
     Hungarian,
     #[strum(message = "Italiano", to_string = "it")]
     Italian,
+    #[strum(message = "Taqbaylit", to_string = "kab")]
+    Kabyle,
     #[strum(message = "Kinyarwanda", to_string = "rw")]
     Kinyarwanda,
     #[strum(message = "한국어", to_string = "ko")]
