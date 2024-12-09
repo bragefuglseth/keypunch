@@ -623,9 +623,8 @@ checksum = "bbd2bcb4c963f2ddae06a2efc7e9f3591312473c50c6685e1f298068316e66fe"
 
 [[package]]
 name = "libadwaita"
-version = "0.7.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "2ff9c222b5c783729de45185f07b2fec2d43a7f9c63961e777d3667e20443878"
+version = "0.8.0"
+source = "git+https://gitlab.gnome.org/msandova/libadwaita-rs.git?branch=v0.7-adw-toggles-2#27198ffd66263c42ccbf4e94944f02ce44659cc6"
 dependencies = [
  "gdk4",
  "gio",
@@ -638,9 +637,8 @@ dependencies = [
 
 [[package]]
 name = "libadwaita-sys"
-version = "0.7.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "1c44d8bdbad31d6639e1f20cc9c1424f1a8e02d751fc28d44659bf743fb9eca6"
+version = "0.8.0"
+source = "git+https://gitlab.gnome.org/msandova/libadwaita-rs.git?branch=v0.7-adw-toggles-2#27198ffd66263c42ccbf4e94944f02ce44659cc6"
 dependencies = [
  "gdk4-sys",
  "gio-sys",
