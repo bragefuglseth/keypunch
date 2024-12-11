@@ -8,31 +8,35 @@ msgstr ""
 "Project-Id-Version: keypunch\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-09-23 20:52+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2024-12-11 21:58+0000\n"
+"Last-Translator: Weblate Admin <weblate.admin@artizar-enea.eus>\n"
+"Language-Team: Basque <https://weblate.artizar-enea.eus/projects/keypunch/"
+"interface/eu/>\n"
 "Language: eu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.7.2\n"
 
 #: data/dev.bragefuglseth.Keypunch.desktop.in.in:3
 #: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:7
 #: src/widgets/window.blp:5
 msgid "Keypunch"
-msgstr ""
+msgstr "Keypunch"
 
 #: data/dev.bragefuglseth.Keypunch.desktop.in.in:4
 #: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:8
 msgid "Practice your typing skills"
-msgstr ""
+msgstr "Praktikatu zure idazketa trebetasunak"
 
 #: data/dev.bragefuglseth.Keypunch.desktop.in.in:10
 msgid ""
 "typing;trainer;touch typing;keyboard;speed;wpm;words per minute;accuracy;"
 "test;"
 msgstr ""
+"idazketa;entrenatzailea;ukipen bidezko idazketa;teklatua;abiadura;mh;"
+"minutuko hitzak;zehaztasuna;proba;"
 
 #: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:13
 msgid ""
@@ -40,6 +44,9 @@ msgid ""
 "digital age. Typing fast and accurately gives you more opportunities, more "
 "time for what matters to you, and a sense of self-accomplishment."
 msgstr ""
+"Dudarik gabe, teklatuan idaztea funtsezkoa da aro digitalean. Azkar eta "
+"zehatz idazteak aukera gehiago ematen dizkizu, denbora gehiago zuri komeni "
+"zaizunerako, eta autobetetze zentzua."
 
 #: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:18
 msgid ""
@@ -49,6 +56,11 @@ msgid ""
 "some time, you will observe a noticeable increase in both the speed and the "
 "accuracy of which your thoughts and ideas are put into words on the screen."
 msgstr ""
+"Keypunch-ek idazketa praktikatzen laguntzen dizu. Erritmo bizkorreko saioei, "
+"berehalako feedbacka eta hizkuntza erabilgarri ugari izateari esker, "
+"baliteke bitartean gainera ondo pasatzea. Determinazioz, teknika egokiz eta "
+"denboraz, zure pentsamendu eta ideiak pantailako hitzetan adierazteko "
+"abiadura eta zehaztasunaren handitze nabarmen bat antzemango duzu."
 
 #: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:25
 msgid ""
@@ -56,328 +68,338 @@ msgid ""
 "Try practicing with numbers and punctuation, or choose your own text to type "
 "out as fast as you can."
 msgstr ""
+"Dagoeneko idazketan aditua bazara, Keypunchek badu oraindik zerbait "
+"zuretzat. Saiatu zenbakiekin eta puntuazioekin, edo aukeratu zure testua "
+"ahalik eta azkarren idazteko."
 
 #: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:30
 msgid "Get ready to accelerate your typing!"
-msgstr ""
+msgstr "Presta zaitez idazketa bizkortzeko!"
 
 #: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:36
 msgid "In the middle of a session"
-msgstr ""
+msgstr "Saio baten erdian"
 
 #: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:40
 msgid "Ready for typing"
-msgstr ""
+msgstr "Idazteko prest"
 
 #: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:44
 msgid "Session results"
-msgstr ""
+msgstr "Saioaren emaitzak"
 
 #: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:48
 msgid "Language selection"
-msgstr ""
+msgstr "Hizkuntzaren hautapena"
 
 #: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:52
 msgid "Custom text entry"
-msgstr ""
+msgstr "Testu-sarrera pertsonalizatua"
 
 #: data/dev.bragefuglseth.Keypunch.gschema.xml:20
 msgid "Window Width"
-msgstr ""
+msgstr "Leihoaren zabalera"
 
 #: data/dev.bragefuglseth.Keypunch.gschema.xml:24
 msgid "Window Height"
-msgstr ""
+msgstr "Leihoaren altuera"
 
 #: data/dev.bragefuglseth.Keypunch.gschema.xml:28
 msgid "Window Maximization"
-msgstr ""
+msgstr "Leihoa maximizatzea"
 
 #: data/dev.bragefuglseth.Keypunch.gschema.xml:32
 #: src/widgets/results_view.blp:83 src/widgets/window.blp:37
 msgid "Session Type"
-msgstr ""
+msgstr "Saio mota"
 
 #: data/dev.bragefuglseth.Keypunch.gschema.xml:36
 #: src/widgets/results_view.blp:96 src/widgets/window.blp:42
 msgid "Session Duration"
-msgstr ""
+msgstr "Saioaren iraupena"
 
 #: data/dev.bragefuglseth.Keypunch.gschema.xml:37
 msgid "The duration of time-based sessions"
-msgstr ""
+msgstr "Denboran oinarritutako saioen iraupena"
 
 #. Translators: Insert the language code of your language here, for example "nb" for Norwegian Bokmaal. Do not remove the quotation marks. It's doesn't matter if there isn't a word list for the language in `data/word_lists` right now, the app will fall back to English in that case and start using the list if it becomes available in the future.
 #: data/dev.bragefuglseth.Keypunch.gschema.xml:41
 msgid "\"en\""
-msgstr ""
+msgstr "\"eu\""
 
 #: data/dev.bragefuglseth.Keypunch.gschema.xml:42
 #: src/widgets/results_view.blp:109 src/widgets/text_language_dialog.blp:5
 #: src/widgets/text_language_dialog.blp:13
 #: src/widgets/text_language_dialog.blp:39
 msgid "Text Language"
-msgstr ""
+msgstr "Testu-hizkuntza"
 
 #: data/dev.bragefuglseth.Keypunch.gschema.xml:43
 msgid "The code of the language used for automatically generated text"
-msgstr ""
+msgstr "Automatikoki sortutako testurako erabiltzen den hizkuntzaren kodea"
 
 #: data/dev.bragefuglseth.Keypunch.gschema.xml:47
 msgid "Recent Languages"
-msgstr ""
+msgstr "Azken hizkuntzak"
 
 #: data/dev.bragefuglseth.Keypunch.gschema.xml:48
 msgid "Languages shown in the list of recent ones in the text language dialog"
 msgstr ""
+"Elkarrizketa-koadroko hizkuntza berrien zerrendan agertzen diren hizkuntzak"
 
 #. Translators: This is the default text for custom typing sessions. Do not translate it literally, and do not remove the quotation marks. Replace it with an appropriate "sample sentence" from your language instead. The original text is an English pangram, so you can e.g. find a pangram in your language: https://clagnut.com/blog/2380
 #: data/dev.bragefuglseth.Keypunch.gschema.xml:52
 msgid "\"The quick brown fox jumps over the lazy dog.\""
-msgstr ""
+msgstr "\"Eva eta Iñaxio quadez joan ziren flyscheko campingeko bungalowera.\""
 
 #: data/dev.bragefuglseth.Keypunch.gschema.xml:53
 #: src/widgets/custom_text_dialog.blp:5 src/widgets/custom_text_dialog.blp:26
 msgid "Custom Text"
-msgstr ""
+msgstr "Testu pertsonalizatua"
 
 #: data/dev.bragefuglseth.Keypunch.gschema.xml:54
 msgid "Text displayed when “Custom” is chosen from the session menu"
 msgstr ""
+"Saio-menutik \"Pertsonalizatua\" aukeratzen denean bistaratzen den testua"
 
 #: data/dev.bragefuglseth.Keypunch.gschema.xml:58
 msgid "Personal Best"
-msgstr ""
+msgstr "Zure marka onena"
 
 #: data/dev.bragefuglseth.Keypunch.gschema.xml:59
 msgid ""
 "The current highest amount of WPM received for each session type / duration "
 "and language"
 msgstr ""
+"Momentuan jasotako MH kopururik handiena saio mota, iraupen eta hizkuntza "
+"bakoitzeko"
 
 #: data/resources/gtk/help-overlay.ui:11
 msgctxt "shortcut window"
 msgid "General"
-msgstr ""
+msgstr "Orokorra"
 
 #: data/resources/gtk/help-overlay.ui:14
 msgctxt "shortcut window"
 msgid "Text Language"
-msgstr ""
+msgstr "Testu hizkuntza"
 
 #: data/resources/gtk/help-overlay.ui:20
 msgctxt "shortcut window"
 msgid "Cancel Session"
-msgstr ""
+msgstr "Utzi saioa"
 
 #: data/resources/gtk/help-overlay.ui:26
 msgctxt "shortcut window"
 msgid "Keyboard Shortcuts"
-msgstr ""
+msgstr "Laster-teklak"
 
 #: data/resources/gtk/help-overlay.ui:32
 msgctxt "shortcut window"
 msgid "Close Window"
-msgstr ""
+msgstr "Itxi leihoa"
 
 #: data/resources/gtk/help-overlay.ui:38
 msgctxt "shortcut window"
 msgid "Quit"
-msgstr ""
+msgstr "Irten"
 
 #: src/widgets/custom_text_dialog.blp:37
 msgid "Insert custom text…"
-msgstr ""
+msgstr "Sartu testu pertsonalizatua…"
 
 #: src/widgets/custom_text_dialog.blp:73
 msgid "_Save"
-msgstr ""
+msgstr "_Gorde"
 
 #: src/widgets/results_view.blp:35
 msgid "New Personal Best for Configuration"
-msgstr ""
+msgstr "Zure marka berririk onena konfiguraziorako"
 
 #: src/widgets/results_view.blp:46
 msgid "Words per Minute"
-msgstr ""
+msgstr "Hitzak minutuko"
 
 #: src/widgets/results_view.blp:67
 msgid "Correctness"
-msgstr ""
+msgstr "Zuzentasuna"
 
 #. Translators: The percentage label format of the results page.
 #. The `{}` block will be replaced with the percentage number,
 #. do not translate it!
 #: src/widgets/results_view.rs:129
 msgid "{}%"
-msgstr ""
+msgstr "%{}"
 
 #. Translators: The `{}` blocks will be replaced with the number of minutes
 #. and seconds. Do not translate them!
 #: src/widgets/results_view.rs:187
 msgid "{}m {}s"
-msgstr ""
+msgstr "{}m {}s"
 
 #. Translators: The `{}` block will be replaced with the number of minutes.
 #. Do not translate it!
 #: src/widgets/results_view.rs:191
 msgid "{} minute"
 msgid_plural "{} minutes"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Minutu {}"
+msgstr[1] "{} minutu"
 
 #. Translators: The `{}` block will be replaced with the number of seconds.
 #. Do not translate it!
 #: src/widgets/results_view.rs:195
 msgid "{} second"
 msgid_plural "{} seconds"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Segundu {}"
+msgstr[1] "{} segundu"
 
 #: src/widgets/text_language_dialog.blp:21
 #: src/widgets/text_language_dialog.blp:161
 #: src/widgets/text_language_dialog.blp:190
 msgid "Add Language"
-msgstr ""
+msgstr "Gehitu hizkuntza"
 
 #: src/widgets/text_language_dialog.blp:51
 #: src/widgets/text_language_dialog.blp:55
 msgid "Search languages…"
-msgstr ""
+msgstr "Bilatu hizkuntzak…"
 
 #. Translators: Recent languages in text languages list
 #: src/widgets/text_language_dialog.blp:79
 msgid "Recent"
-msgstr ""
+msgstr "Oraintsukoa"
 
 #. Translators: Other languages in text languages list
 #: src/widgets/text_language_dialog.blp:84
 msgid "Other"
-msgstr ""
+msgstr "Beste bat"
 
 #: src/widgets/text_language_dialog.blp:104
 msgid "Search Results"
-msgstr ""
+msgstr "Bilaketaren emaitzak"
 
 #: src/widgets/text_language_dialog.blp:140
 msgid "No Matches"
-msgstr ""
+msgstr "Bat ere ez"
 
 #: src/widgets/text_language_dialog.blp:148
 msgid "Try a different search"
-msgstr ""
+msgstr "Saiatu beste bilaketa batekin"
 
 #: src/widgets/text_language_dialog.blp:199
 msgid ""
 "You can help add a new text language to Keypunch by submitting a language "
 "request on GitHub. A GitHub account and some language knowledge is required."
 msgstr ""
+"Testu hizkuntza berri bat gehi diezaiokezu Keypunch-i GitHub-era hizkuntza "
+"eskaera bat bidaliz. GitHub kontu bat eta hizkuntza ezagutza batzuk behar "
+"dira."
 
 #: src/widgets/text_language_dialog.blp:214
 msgid "_Create Request"
-msgstr ""
+msgstr "_Sortu eskaera"
 
 #: src/widgets/text_view.blp:11
 msgid "Text View"
-msgstr ""
+msgstr "Testu ikuspegia"
 
 #: src/widgets/window.blp:49
 msgid "_Edit Text"
-msgstr ""
+msgstr "_Editatu testua"
 
 #: src/widgets/window.blp:59
 msgid "Main Menu"
-msgstr ""
+msgstr "Menu nagusia"
 
 #: src/widgets/window.blp:75
 msgid "Restart"
-msgstr ""
+msgstr "Berrabiarazi"
 
 #: src/widgets/window.blp:103
 msgid "Just Start Typing"
-msgstr ""
+msgstr "Has zaitez idazten"
 
 #. Translators: "Entry" here is the act of entering text
 #: src/widgets/window.blp:112
 msgid "Enable Entry"
-msgstr ""
+msgstr "Gaitu sarrera"
 
 #: src/widgets/window.blp:138
 msgid "Results"
-msgstr ""
+msgstr "Emaitzak"
 
 #: src/widgets/window.blp:163
 msgid "_Continue"
-msgstr ""
+msgstr "_Jarraitu"
 
 #: src/widgets/window.blp:193
 msgid "Text _Language"
-msgstr ""
+msgstr "Testu _Hizkuntza"
 
 #: src/widgets/window.blp:198
 msgid "_Keyboard Shortcuts"
-msgstr ""
+msgstr "_Laster teklak"
 
 #: src/widgets/window.blp:203
 msgid "_About Keypunch"
-msgstr ""
+msgstr "_Keypunch-i buruz"
 
 #: src/widgets/window.rs:49
 msgid "Simple"
-msgstr ""
+msgstr "Sinplea"
 
 #: src/widgets/window.rs:50
 msgid "Advanced"
-msgstr ""
+msgstr "Aurreratua"
 
 #: src/widgets/window.rs:51
 msgid "Custom"
-msgstr ""
+msgstr "Pertsonalizatua"
 
 #: src/widgets/window.rs:69
 msgid "15 seconds"
-msgstr ""
+msgstr "15 segundo"
 
 #: src/widgets/window.rs:70
 msgid "30 seconds"
-msgstr ""
+msgstr "30 segundo"
 
 #: src/widgets/window.rs:71
 msgid "1 minute"
-msgstr ""
+msgstr "Minutu 1"
 
 #: src/widgets/window.rs:72
 msgid "5 minutes"
-msgstr ""
+msgstr "5 minutu"
 
 #: src/widgets/window.rs:73
 msgid "10 minutes"
-msgstr ""
+msgstr "10 minutu"
 
 #: src/widgets/window.rs:224
 msgid "Orthography by"
-msgstr ""
+msgstr "Ortografia:"
 
 #. Translators: Replace "translator-credits" with your names, one name per line
 #: src/widgets/window.rs:240
 msgid "translator-credits"
-msgstr ""
+msgstr "Urtzi Odriozola Lizaso"
 
 #: src/widgets/window.rs:245
 msgid "Special thanks to"
-msgstr ""
+msgstr "Esker bereziak"
 
 #: src/widgets/window/session.rs:122
 msgid "{} ⁄ {}"
-msgstr ""
+msgstr "{} ⁄ {}"
 
 #: src/widgets/window/session.rs:288
 msgid "Changes discarded"
-msgstr ""
+msgstr "Baztertutako aldaketak"
 
 #: src/widgets/window/session.rs:289
 msgid "Restore"
-msgstr ""
+msgstr "Berrezarri"
 
 #. Translators: The format of the timer. The first `{}` block will be replaced
 #. with the minutes passed, and the second one will be replaced with the seconds
@@ -386,9 +408,9 @@ msgstr ""
 #. you should probably copy and paste it from the original string.
 #: src/widgets/window/session.rs:383 src/widgets/window/session.rs:385
 msgid "{}∶{}"
-msgstr ""
+msgstr "{}∶{}"
 
 #. Translators: This is shown as a warning by GNOME Shell before logging out or shutting off the system in the middle of a typing session, alongside Keypunch's name and icon
 #: src/widgets/window/ui_state.rs:130
 msgid "Ongoing typing session"
-msgstr ""
+msgstr "Idazketa saioa abian oraindik"
