@@ -69,6 +69,8 @@ pub enum Language {
     Turkish,
     #[strum(message = "Українська", to_string = "uk")]
     Ukranian,
+    #[strum(message = "Tiếng Việt", to_string = "vn")]
+    Vietnamese,
 }
 
 #[derive(Clone, Copy)]
