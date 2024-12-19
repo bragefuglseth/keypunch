@@ -342,7 +342,7 @@ msgstr "_Raccourcis clavier"
 
 #: src/widgets/window.blp:203
 msgid "_About Keypunch"
-msgstr "_À propose de Keypunch"
+msgstr "_À propos de Keypunch"
 
 #: src/widgets/window.rs:49
 msgid "Simple"
