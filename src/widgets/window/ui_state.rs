@@ -42,7 +42,7 @@ impl imp::KpWindow {
                 #[upgrade_or_default]
                 move |_| {
                     if imp.show_cursor.get() && imp.running.get() {
-                        imp.header_bar_running.add_css_class("hide-controls");
+                        imp.obj().add_css_class("hide-controls");
                         imp.hide_cursor();
                     }
 
@@ -63,7 +63,7 @@ impl imp::KpWindow {
                     imp.show_cursor();
 
                     if imp.running.get() {
-                        imp.header_bar_running.remove_css_class("hide-controls");
+                        imp.obj().remove_css_class("hide-controls");
                     }
                 }
             }
@@ -79,7 +79,7 @@ impl imp::KpWindow {
                     imp.show_cursor();
 
                     if imp.running.get() {
-                        imp.header_bar_running.remove_css_class("hide-controls");
+                        imp.obj().remove_css_class("hide-controls");
                     }
                 }
             }
@@ -89,11 +89,11 @@ impl imp::KpWindow {
 
     pub(super) fn ready(&self) {
         self.running.set(false);
-        self.header_bar_running.add_css_class("hide-controls");
         self.text_view.set_running(false);
         self.text_view.set_accepts_input(true);
         self.main_stack.set_visible_child_name("session");
-        self.header_stack.set_visible_child_name("ready");
+        self.status_stack.set_visible_child_name("ready");
+        self.stop_button.set_visible(false);
         self.text_view.reset();
         self.focus_text_view();
 
@@ -103,6 +103,7 @@ impl imp::KpWindow {
         self.obj()
             .action_set_enabled("win.text-language-dialog", true);
         self.obj().action_set_enabled("win.cancel-session", false);
+        self.obj().remove_css_class("hide-controls");
 
         self.end_existing_inhibit();
     }
@@ -111,11 +112,29 @@ impl imp::KpWindow {
         self.running.set(true);
         self.start_time.set(Some(Instant::now()));
         self.main_stack.set_visible_child_name("session");
-        self.header_stack.set_visible_child_name("running");
+        self.status_stack.set_visible_child_name("running");
         self.hide_cursor();
         self.bottom_stack
             .set_visible_child(&self.bottom_stack_empty.get());
-        self.header_bar_running.add_css_class("hide-controls");
+
+        // Ugly hack to stop the stop button from "flashing" when starting a session:
+        // Make it visible with 0 opacity, and set the opacity to 1 after the 200ms
+        // crossfade effect has finished
+        self.stop_button.set_opacity(0.);
+        self.stop_button.set_visible(true);
+
+        glib::timeout_add_local_once(
+            Duration::from_millis(200),
+            glib::clone!(
+                #[weak(rename_to = imp)]
+                self,
+                move || {
+                    if imp.running.get() {
+                        imp.stop_button.set_opacity(1.);
+                    }
+                }
+            )
+        );
 
         match self.session_type.get() {
             SessionType::Simple | SessionType::Advanced => self.start_timer(),
@@ -125,6 +144,7 @@ impl imp::KpWindow {
         self.obj()
             .action_set_enabled("win.text-language-dialog", false);
         self.obj().action_set_enabled("win.cancel-session", true);
+        self.obj().add_css_class("hide-controls");
 
         // Translators: This is shown as a warning by GNOME Shell before logging out or shutting off the system in the middle of a typing session, alongside Keypunch's name and icon
         self.inhibit_session(&gettext("Ongoing typing session"))
@@ -140,6 +160,7 @@ impl imp::KpWindow {
         self.text_view.set_accepts_input(false);
         self.finish_time.set(Some(Instant::now()));
         self.show_results_view();
+        self.stop_button.set_visible(false);
 
         self.obj()
             .action_set_enabled("win.text-language-dialog", false);

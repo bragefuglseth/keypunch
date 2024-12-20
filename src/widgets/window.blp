@@ -14,50 +14,154 @@ template $KpWindow: Adw.ApplicationWindow {
       StackPage {
         name: "session";
 
-        child: Adw.ToolbarView {
-          extend-content-to-top-edge: true;
-          extend-content-to-bottom-edge: true;
+        child: Adw.MultiLayoutView session_view {
+          Adw.Layout {
+            name: "status-top";
 
-          [top]
-          Stack header_stack {
+            content: Adw.ToolbarView {
+              extend-content-to-top-edge: true;
+              extend-content-to-bottom-edge: true;
+
+              [top]
+              Adw.HeaderBar {
+                centering-policy: strict;
+
+                [start]
+                Adw.LayoutSlot {
+                  id: "stop_button";
+                }
+
+                [title]
+                Adw.LayoutSlot {
+                  id: "session_status";
+                }
+
+                [end]
+                Adw.LayoutSlot {
+                  id: "menu_button";
+                }
+
+                styles [
+                  "session"
+                ]
+              }
+
+              content: Adw.Clamp {
+                maximum-size: 800;
+                tightening-threshold: 400;
+                margin-top: 48;
+                margin-bottom: 48;
+                margin-start: 12;
+                margin-end: 12;
+
+                Adw.LayoutSlot {
+                  id: "text_view";
+                }
+              };
+
+              [bottom]
+              Adw.LayoutSlot {
+                id: "bottom_stack";
+              }
+            };
+          }
+
+          Adw.Layout {
+            name: "status-bottom";
+
+            content: Adw.ToolbarView {
+              extend-content-to-top-edge: true;
+              extend-content-to-bottom-edge: true;
+
+              [top]
+              Adw.HeaderBar {
+                centering-policy: strict;
+
+                [start]
+                Adw.LayoutSlot {
+                  id: "stop_button";
+                }
+
+                [end]
+                Adw.LayoutSlot {
+                  id: "menu_button";
+                }
+
+                styles [
+                  "session"
+                ]
+              }
+
+              content: Adw.Clamp {
+                maximum-size: 800;
+                tightening-threshold: 400;
+                margin-top: 48;
+                margin-bottom: 48;
+                margin-start: 12;
+                margin-end: 12;
+
+                Box {
+                  orientation: vertical;
+                  valign: center;
+
+                  Box {
+                    hexpand: false;
+
+                    Adw.LayoutSlot {
+                      id: "session_status";
+                    }
+                  }
+
+                  Adw.LayoutSlot {
+                    id: "text_view";
+                  }
+                }
+              };
+
+              [bottom]
+              Adw.LayoutSlot {
+                id: "bottom_stack";
+              }
+            };
+          }
+
+          [stop_button]
+          Button stop_button {
+            icon-name: "arrow-circular-top-right-symbolic";
+            tooltip-text: _("Restart");
+          }
+
+          [session_status]
+          Stack status_stack {
             transition-type: crossfade;
             transition-duration: 200;
 
             StackPage {
               name: "ready";
 
-              child: Adw.HeaderBar header_bar_ready {
-                centering-policy: strict;
+              child: Box {
+                spacing: 6;
 
-                [title]
-                Box {
-                  spacing: 6;
-
-                  DropDown session_type_dropdown {
-                    tooltip-text: _("Session Type");
-                  }
-
-                  Stack secondary_config_stack {
-                    DropDown duration_dropdown {
-                      tooltip-text: _("Session Duration");
-                    }
-
-                    Button custom_button {
-                      Adw.ButtonContent {
-                        use-underline: true;
-                        icon-name: "edit-symbolic";
-                        label: _("_Edit Text");
-                      }
-                    }
-                  }
+                DropDown session_type_dropdown {
+                  tooltip-text: _("Session Type");
                 }
 
-                [end]
-                MenuButton {
-                  primary: true;
-                  icon-name: "open-menu-symbolic";
-                  tooltip-text: _("Main Menu");
-                  menu-model: primary_menu;
+                Stack secondary_config_stack {
+                  DropDown duration_dropdown {
+                    tooltip-text: _("Session Duration");
+                  }
+
+                  Button custom_button {
+                    Adw.ButtonContent {
+                      use-underline: true;
+                      icon-name: "edit-symbolic";
+                      label: _("_Edit Text");
+                    }
+
+                    styles [
+                      "flat"
+                    ]
+                  }
                 }
               };
             }
@@ -65,35 +169,33 @@ template $KpWindow: Adw.ApplicationWindow {
             StackPage {
               name: "running";
 
-              child: Adw.HeaderBar header_bar_running {
-                [title]
-                Adw.WindowTitle running_title {}
-
-                [start]
-                Button stop_button {
-                  icon-name: "arrow-circular-top-right-symbolic";
-                  tooltip-text: _("Restart");
-                }
+              child: Label status_label {
+                margin-start: 12;
+                margin-end: 12;
 
                 styles [
-                  "header-bar-running"
+                  "title-4"
                 ]
               };
             }
           }
 
-          content: Adw.Clamp {
-            maximum-size: 800;
-            tightening-threshold: 400;
-            margin-top: 48;
-            margin-bottom: 48;
+          [menu_button]
+          MenuButton {
+            primary: true;
+            icon-name: "open-menu-symbolic";
+            tooltip-text: _("Main Menu");
+            menu-model: primary_menu;
+          }
+
+          [text_view]
+          $KpTextView text_view {
+            valign: center;
             margin-start: 12;
             margin-end: 12;
+          }
 
-            $KpTextView text_view {}
-          };
-
-          [bottom]
+          [bottom_stack]
           Stack bottom_stack {
             transition-type: crossfade;
             transition-duration: 200;
@@ -183,6 +285,8 @@ template $KpWindow: Adw.ApplicationWindow {
 
     setters {
       results_view.orientation: vertical;
+      session_view.layout-name: "status-bottom";
+      status_label.xalign: 0;
     }
   }
 }

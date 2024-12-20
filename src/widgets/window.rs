@@ -86,10 +86,6 @@ mod imp {
         #[template_child]
         pub main_stack: TemplateChild<gtk::Stack>,
         #[template_child]
-        pub header_stack: TemplateChild<gtk::Stack>,
-        #[template_child]
-        pub header_bar_ready: TemplateChild<adw::HeaderBar>,
-        #[template_child]
         pub session_type_dropdown: TemplateChild<gtk::DropDown>,
         #[template_child]
         pub secondary_config_stack: TemplateChild<gtk::Stack>,
@@ -98,11 +94,11 @@ mod imp {
         #[template_child]
         pub custom_button: TemplateChild<gtk::Button>,
         #[template_child]
-        pub header_bar_running: TemplateChild<adw::HeaderBar>,
-        #[template_child]
         pub stop_button: TemplateChild<gtk::Button>,
         #[template_child]
-        pub running_title: TemplateChild<adw::WindowTitle>,
+        pub status_stack: TemplateChild<gtk::Stack>,
+        #[template_child]
+        pub status_label: TemplateChild<gtk::Label>,
         #[template_child]
         pub text_view: TemplateChild<KpTextView>,
         #[template_child]
@@ -273,3 +269,4 @@ impl KpWindow {
             .build()
     }
 }
+

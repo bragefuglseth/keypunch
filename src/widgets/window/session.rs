@@ -4,7 +4,6 @@ use crate::text_utils::{calculate_accuracy, calculate_wpm, process_custom_text, 
 use crate::widgets::{KpCustomTextDialog, KpTextLanguageDialog};
 use gettextrs::gettext;
 use glib::ControlFlow;
-use gtk::pango;
 use i18n_format::i18n_fmt;
 use std::iter::once;
 use strum::{EnumMessage, IntoEnumIterator};
@@ -31,8 +30,6 @@ impl imp::KpWindow {
             }
         ));
 
-        setup_ellipsizing_dropdown_factory(&session_type_dropdown);
-
         let duration_model: gtk::StringList = SessionDuration::iter()
             .map(|session_type| session_type.ui_string())
             .collect();
@@ -51,8 +48,6 @@ impl imp::KpWindow {
                 imp.focus_text_view();
             }
         ));
-
-        setup_ellipsizing_dropdown_factory(&duration_dropdown);
 
         self.custom_button.connect_clicked(glib::clone!(
             #[weak(rename_to = imp)]
@@ -118,7 +113,7 @@ impl imp::KpWindow {
                             // Translators: The `{}` blocks will be replaced with the current word count and the total word count.
                             // Do not translate them! The slash sign is a special unicode character, if your language doesn't
                             // use a completely different sign, you should probably copy and paste it from the original string.
-                            imp.running_title.set_title(
+                            imp.status_label.set_label(
                                 &i18n_fmt! { i18n_fmt("{} ⁄ {}", current_word, total_words) },
                             );
                         }
@@ -387,7 +382,7 @@ impl imp::KpWindow {
             seconds.to_string()
         };
 
-        self.running_title.set_title(&text);
+        self.status_label.set_label(&text);
     }
 
     pub(super) fn show_results_view(&self) {
@@ -479,76 +474,6 @@ impl imp::KpWindow {
             ),
         );
     }
-}
-
-// Creates a custom factory for a dropdown that ellipsizes the label of the top button.
-// The factory also applies a checkmark to the selected item if it's in the popover.
-// This is essentially a clone of the default factory, but with ellipsizing.
-// Ideally we'd do this by setting the factory of just the button part of `GtkDropDown`, but
-// this isn't currently possible, and there are no plans to make it so upstream.
-// See <https://gitlab.gnome.org/GNOME/gtk/-/issues/6720>
-fn setup_ellipsizing_dropdown_factory(dropdown: &gtk::DropDown) {
-    let factory = gtk::SignalListItemFactory::new();
-
-    factory.connect_setup(|_, obj| {
-        let label = gtk::Label::builder().xalign(0.).build();
-        let checkmark = gtk::Image::from_icon_name("check-plain-symbolic");
-
-        let box_ = gtk::Box::builder().build();
-        box_.append(&label);
-        box_.append(&checkmark);
-        obj.downcast_ref::<gtk::ListItem>()
-            .unwrap()
-            .set_child(Some(&box_));
-    });
-
-    factory.connect_bind(glib::clone!(
-        #[weak]
-        dropdown,
-        move |_, obj| {
-            let list_item = obj.downcast_ref::<gtk::ListItem>().unwrap();
-            let child = list_item.child().unwrap();
-            let box_ = child.downcast_ref::<gtk::Box>().unwrap();
-            let first_child = box_.first_child().unwrap();
-            let last_child = box_.last_child().unwrap();
-            let string_object = list_item
-                .item()
-                .unwrap()
-                .downcast::<gtk::StringObject>()
-                .unwrap();
-
-            let label = first_child.downcast_ref::<gtk::Label>().unwrap();
-            label.set_label(string_object.string().as_str());
-
-            let is_in_popover =
-                child.parent().unwrap().parent().unwrap().type_() == gtk::ListView::static_type();
-
-            if is_in_popover {
-                label.set_ellipsize(pango::EllipsizeMode::None);
-                dropdown.connect_selected_item_notify(glib::clone!(
-                    #[weak]
-                    last_child,
-                    #[weak]
-                    string_object,
-                    move |dropdown| {
-                        last_child.set_opacity(
-                            if dropdown.selected_item().unwrap() == string_object {
-                                1.
-                            } else {
-                                0.
-                            },
-                        );
-                    }
-                ));
-            } else {
-                label.set_ellipsize(pango::EllipsizeMode::End);
-                last_child.set_visible(false);
-            }
-        }
-    ));
-
-    dropdown.set_factory(Some(&factory));
-    dropdown.notify("selected-item");
 }
 
 pub(super) fn add_personal_best(

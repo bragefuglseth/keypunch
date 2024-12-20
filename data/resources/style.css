@@ -18,16 +18,16 @@ KpResultsView .key-number {
   font-weight: 700;
 }
 
-.header-bar-running .start,
-.header-bar-running .end,
-.header-bar-running.hide-controls:focus-within .start,
-.header-bar-running.hide-controls:focus-within .end {
+headerbar .start,
+headerbar .end,
+window.hide-controls headerbar.session:focus-within .start,
+window.hide-controls headerbar.session:focus-within .end {
   opacity: 1;
   transition: opacity 200ms;
 }
 
-.header-bar-running.hide-controls .start,
-.header-bar-running.hide-controls .end {
+window.hide-controls headerbar.session .start,
+window.hide-controls headerbar.session .end {
   opacity: 0;
 }
 
@@ -48,3 +48,4 @@ KpResultsView .key-number {
 .pill-entry {
   border-radius: 9999px;
 }
+
