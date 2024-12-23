@@ -94,6 +94,7 @@ impl imp::KpWindow {
         self.text_view.set_accepts_input(true);
         self.main_stack.set_visible_child_name("session");
         self.status_stack.set_visible_child_name("ready");
+        self.menu_button.set_visible(true);
         self.stop_button.set_visible(false);
         self.text_view.reset();
         self.focus_text_view();
@@ -144,6 +145,7 @@ impl imp::KpWindow {
                 self,
                 move || {
                     if imp.running.get() {
+                        imp.menu_button.set_visible(false);
                         imp.stop_button.set_opacity(1.);
                     }
                 }

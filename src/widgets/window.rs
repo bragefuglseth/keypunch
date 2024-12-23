@@ -60,6 +60,8 @@ mod imp {
         #[template_child]
         pub status_label: TemplateChild<gtk::Label>,
         #[template_child]
+        pub menu_button: TemplateChild<gtk::MenuButton>,
+        #[template_child]
         pub text_view: TemplateChild<KpTextView>,
         #[template_child]
         pub bottom_stack: TemplateChild<gtk::Stack>,
