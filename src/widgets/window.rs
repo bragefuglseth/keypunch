@@ -25,6 +25,7 @@ mod settings;
 mod ui_state;
 
 use crate::config::APP_ID;
+use crate::session_enums::*;
 use crate::text_generation::Language;
 use crate::widgets::{KpResultsView, KpTextView};
 use adw::prelude::*;
@@ -33,47 +34,6 @@ use gettextrs::gettext;
 use gtk::{gio, glib};
 use std::cell::{Cell, OnceCell, RefCell};
 use std::time::{Duration, Instant};
-use strum_macros::{Display as EnumDisplay, EnumIter, EnumString};
-
-#[derive(Clone, Copy, Default, PartialEq, EnumString, EnumDisplay, EnumIter)]
-pub enum SessionType {
-    #[default]
-    Simple,
-    Advanced,
-    Custom,
-}
-
-impl SessionType {
-    pub fn ui_string(&self) -> String {
-        match self {
-            SessionType::Simple => gettext("Simple"),
-            SessionType::Advanced => gettext("Advanced"),
-            SessionType::Custom => gettext("Custom"),
-        }
-    }
-}
-
-#[derive(Copy, Clone, Default, PartialEq, EnumString, EnumDisplay, EnumIter)]
-pub enum SessionDuration {
-    #[default]
-    Sec15,
-    Sec30,
-    Min1,
-    Min5,
-    Min10,
-}
-
-impl SessionDuration {
-    pub fn ui_string(&self) -> String {
-        match self {
-            SessionDuration::Sec15 => gettext("15 seconds"),
-            SessionDuration::Sec30 => gettext("30 seconds"),
-            SessionDuration::Min1 => gettext("1 minute"),
-            SessionDuration::Min5 => gettext("5 minutes"),
-            SessionDuration::Min10 => gettext("10 minutes"),
-        }
-    }
-}
 
 mod imp {
     use super::*;
@@ -186,8 +146,6 @@ mod imp {
             self.setup_continue_button();
             self.setup_ui_hiding();
             self.show_cursor();
-
-            self.ready();
         }
     }
     impl WidgetImpl for KpWindow {}
@@ -264,9 +222,12 @@ glib::wrapper! {
 
 impl KpWindow {
     pub fn new<P: IsA<gtk::Application>>(application: &P) -> Self {
-        glib::Object::builder()
+        let obj: KpWindow = glib::Object::builder()
             .property("application", application)
-            .build()
+            .build();
+
+        obj.imp().ready();
+
+        obj
     }
 }
-

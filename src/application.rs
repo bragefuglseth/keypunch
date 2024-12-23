@@ -18,6 +18,7 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
+use crate::discord_rpc::RpcWrapper;
 use adw::subclass::prelude::*;
 use gtk::prelude::*;
 use gtk::{gio, glib};
@@ -27,8 +28,10 @@ use crate::widgets::KpWindow;
 mod imp {
     use super::*;
 
-    #[derive(Debug, Default)]
-    pub struct KpApplication {}
+    #[derive(Default)]
+    pub struct KpApplication {
+        pub discord_rpc: RpcWrapper,
+    }
 
     #[glib::object_subclass]
     impl ObjectSubclass for KpApplication {
@@ -94,5 +97,9 @@ impl KpApplication {
             .build()];
 
         self.add_action_entries(actions);
+    }
+
+    pub fn discord_rpc(&self) -> &RpcWrapper {
+        &self.imp().discord_rpc
     }
 }

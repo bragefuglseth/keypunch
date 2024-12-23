@@ -1,4 +1,5 @@
 use super::*;
+use crate::application::KpApplication;
 
 impl imp::KpWindow {
     pub(super) fn setup_stop_button(&self) {
@@ -105,6 +106,19 @@ impl imp::KpWindow {
         self.obj().action_set_enabled("win.cancel-session", false);
         self.obj().remove_css_class("hide-controls");
 
+        // Discord IPC
+        self.obj()
+            .application()
+            .expect("ready() isn't called before window has been paired with application")
+            .downcast_ref::<KpApplication>()
+            .unwrap()
+            .discord_rpc()
+            .set_activity(
+                self.session_type.get(),
+                self.duration.get(),
+                PresenceState::Ready,
+            );
+
         self.end_existing_inhibit();
     }
 
@@ -133,7 +147,7 @@ impl imp::KpWindow {
                         imp.stop_button.set_opacity(1.);
                     }
                 }
-            )
+            ),
         );
 
         match self.session_type.get() {
@@ -145,6 +159,19 @@ impl imp::KpWindow {
             .action_set_enabled("win.text-language-dialog", false);
         self.obj().action_set_enabled("win.cancel-session", true);
         self.obj().add_css_class("hide-controls");
+
+        // Discord IPC
+        self.obj()
+            .application()
+            .expect("ready() isn't called before window has been paired with application")
+            .downcast_ref::<KpApplication>()
+            .unwrap()
+            .discord_rpc()
+            .set_activity(
+                self.session_type.get(),
+                self.duration.get(),
+                PresenceState::Typing,
+            );
 
         // Translators: This is shown as a warning by GNOME Shell before logging out or shutting off the system in the middle of a typing session, alongside Keypunch's name and icon
         self.inhibit_session(&gettext("Ongoing typing session"))
@@ -167,6 +194,19 @@ impl imp::KpWindow {
         self.obj().action_set_enabled("win.cancel-session", false);
 
         self.end_existing_inhibit();
+
+        // Discord IPC
+        self.obj()
+            .application()
+            .expect("ready() isn't called before window has been paired with application")
+            .downcast_ref::<KpApplication>()
+            .unwrap()
+            .discord_rpc()
+            .set_activity(
+                self.session_type.get(),
+                self.duration.get(),
+                PresenceState::Results,
+            );
     }
 
     pub(super) fn hide_cursor(&self) {
