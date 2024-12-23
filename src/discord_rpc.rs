@@ -73,7 +73,7 @@ impl Default for RpcWrapper {
                             .small_image(wpm_to_image(wpm))
                             .small_text(format!(
                                 "{:.0} WPM, {:.0}% correctness",
-                                wpm, display_accuracy
+                                wpm.floor(), display_accuracy
                             ))
                     });
                 } else {
