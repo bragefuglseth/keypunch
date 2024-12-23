@@ -1,4 +1,5 @@
 use super::*;
+use crate::application::KpApplication;
 use crate::text_generation;
 use crate::text_utils::{calculate_accuracy, calculate_wpm, process_custom_text, GraphemeState};
 use crate::widgets::{KpCustomTextDialog, KpTextLanguageDialog};
@@ -150,6 +151,19 @@ impl imp::KpWindow {
         self.text_view.set_original_text(&new_original);
         self.secondary_config_stack
             .set_visible_child(&config_widget);
+
+        // Discord IPC
+        self.obj()
+            .application()
+            .expect("ready() isn't called before window has been paired with application")
+            .downcast_ref::<KpApplication>()
+            .unwrap()
+            .discord_rpc()
+            .set_activity(
+                self.session_type.get(),
+                self.duration.get(),
+                PresenceState::Ready,
+            );
     }
 
     pub(super) fn update_time(&self) {
@@ -161,6 +175,19 @@ impl imp::KpWindow {
         self.settings()
             .set_string("session-duration", &selected.to_string())
             .unwrap();
+
+        // Discord IPC
+        self.obj()
+            .application()
+            .expect("ready() isn't called before window has been paired with application")
+            .downcast_ref::<KpApplication>()
+            .unwrap()
+            .discord_rpc()
+            .set_activity(
+                self.session_type.get(),
+                self.duration.get(),
+                PresenceState::Ready,
+            );
     }
 
     pub(super) fn show_text_language_dialog(&self) {
@@ -473,6 +500,15 @@ impl imp::KpWindow {
                 }
             ),
         );
+
+        // Discord IPC
+        self.obj()
+            .application()
+            .expect("ready() isn't called before window has been paired with application")
+            .downcast_ref::<KpApplication>()
+            .unwrap()
+            .discord_rpc()
+            .set_stats(wpm, accuracy);
     }
 }
 

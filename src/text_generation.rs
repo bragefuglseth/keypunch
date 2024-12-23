@@ -264,7 +264,7 @@ pub fn advanced(language: Language) -> String {
             " ",
             GENERIC_PUNCTUATION,
             WESTERN_ARABIC_NUMERALS,
-        )
+        ),
     }
 }
 
