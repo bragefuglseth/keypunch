@@ -77,6 +77,19 @@
   </supports>
   <launchable type="desktop-id">dev.bragefuglseth.Keypunch.desktop</launchable>
   <releases>
+    <release date="2024-12-23" version="5.0">
+      <description translate="no">
+        <p>As a slightly delayed present, this christmas update contains the following additions and improvements:</p>
+        <ul>
+          <li>A system warning displayed when attempting to log out in the middle of a typing session</li>
+          <li>Integration with your Discord status when using it alongside Keypunch</li>
+          <li>Better utilization of available screen space on small sizes</li>
+          <li>Text generation for Basque, Finnish, Romanian, and Vietnamese</li>
+          <li>Arabic, Basque, Kabyle, Romanian, Russian, and Swedish user interface translations, making Keypunch available in a total of 23 languages</li>
+        </ul>
+        <p>A special thanks goes to the students and teachers of the university of Tizi Ouzou, Algerie, for their linguistic contributions to the Kabyle text generation.</p>
+      </description>
+    </release>
     <release date="2024-09-18" version="4.0">
       <description translate="no">
         <p>GNOME 47 is here! Let’s celebrate:</p>
