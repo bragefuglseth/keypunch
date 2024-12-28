@@ -187,7 +187,7 @@ mod imp {
                     "Ibrahim Muhammad",
                     "Kim Jimin https://developomp.com",
                     "Shellheim",
-                    "Students of the University of Tizi Ouzou",
+                    "Tamazight teachers of Tizi Ouzou",
                     "Urtsi Santsi",
                     "Yevhen Popok",
                 ],

@@ -87,7 +87,7 @@
           <li>Text generation for Basque, Finnish, Romanian, and Vietnamese</li>
           <li>Arabic, Basque, Kabyle, Romanian, Russian, and Swedish user interface translations, making Keypunch available in a total of 23 languages</li>
         </ul>
-        <p>A special thanks goes to the students and teachers of the university of Tizi Ouzou, Algerie, for their linguistic contributions to the Kabyle text generation.</p>
+        <p>A special thanks goes to the Tamazight teachers of Tizi Ouzou, Algerie, for their linguistic contributions to the Kabyle text generation.</p>
       </description>
     </release>
     <release date="2024-09-18" version="4.0">
@@ -143,4 +143,5 @@
     </release>
   </releases>
 </component>
+
 
