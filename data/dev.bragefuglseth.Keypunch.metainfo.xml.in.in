@@ -77,6 +77,11 @@
   </supports>
   <launchable type="desktop-id">dev.bragefuglseth.Keypunch.desktop</launchable>
   <releases>
+    <release date="2024-12-28" version="5.1">
+      <description translate="no">
+        <p>Minor user interface translation improvements.</p>
+      </description>
+    </release>
     <release date="2024-12-23" version="5.0">
       <description translate="no">
         <p>As a slightly delayed present, this christmas update contains the following additions and improvements:</p>
