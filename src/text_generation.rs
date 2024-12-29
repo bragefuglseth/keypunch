@@ -29,6 +29,8 @@ pub enum Language {
     French,
     #[strum(message = "Deutsch", to_string = "de")]
     German,
+    #[strum(message = "Ελληνικά", to_string = "el")]
+    Greek,
     #[strum(message = "עברית", to_string = "he")]
     Hebrew,
     #[strum(message = "हिन्दी", to_string = "hi")]
