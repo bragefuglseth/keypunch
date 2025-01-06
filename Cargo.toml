@@ -5,6 +5,7 @@ edition = "2021"
 
 [dependencies]
 discord-presence = "1.5.0"
+# Locked to 0.7.0 because of https://github.com/hfiguiere/i18n-format/issues/1
 gettext-rs = { version = "=0.7.0", features = ["gettext-system"] }
 gvdb-macros = "0.1.12"
 i18n-format = "0.2.0"
