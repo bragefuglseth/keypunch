@@ -13,7 +13,6 @@
         "--socket=fallback-x11",
         "--device=dri",
         "--socket=wayland",
-        "--filesystem=xdg-run/app/com.discordapp.Discord:create",
         "--env=RUST_BACKTRACE=1"
     ],
     "build-options" : {

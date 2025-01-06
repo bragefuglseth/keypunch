@@ -4,8 +4,8 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
-discord-presence = "1.4.1"
-gettext-rs = { version = "0.6", features = ["gettext-system"] }
+discord-presence = "1.5.0"
+gettext-rs = { version = "=0.7.0", features = ["gettext-system"] }
 gvdb-macros = "0.1.12"
 i18n-format = "0.2.0"
 include_dir = "0.7.3"
