@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: keypunch\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-23 20:52+0200\n"
+"POT-Creation-Date: 2025-01-09 21:31+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FAlexei <myalexei@icloud.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -34,14 +34,20 @@ msgstr "Практикуйте навыки печати"
 msgid ""
 "typing;trainer;touch typing;keyboard;speed;wpm;words per minute;accuracy;"
 "test;"
-msgstr "печать;тренажер;сенсорная печать;клавиатура;скорость,знаки;слова;слов в минуту;точность;тест;"
+msgstr ""
+"печать;тренажер;сенсорная печать;клавиатура;скорость,знаки;слова;слов в "
+"минуту;точность;тест;"
 
 #: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:13
 msgid ""
 "There is no doubt that typing on a keyboard is an essential skill in the "
 "digital age. Typing fast and accurately gives you more opportunities, more "
 "time for what matters to you, and a sense of self-accomplishment."
-msgstr "Нет сомнений, что набор текста на клавиатуре - необходимый навык в эпоху цифровых технологий. Быстрый и точный набор текста дает вам чувство самоудовлетворения и больше возможностей, больше времени на то, что для вас важно."
+msgstr ""
+"Нет сомнений, что набор текста на клавиатуре - необходимый навык в эпоху "
+"цифровых технологий. Быстрый и точный набор текста дает вам чувство "
+"самоудовлетворения и больше возможностей, больше времени на то, что для вас "
+"важно."
 
 #: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:18
 msgid ""
@@ -50,14 +56,22 @@ msgid ""
 "even have a little fun doing so. With determination, proper technique and "
 "some time, you will observe a noticeable increase in both the speed and the "
 "accuracy of which your thoughts and ideas are put into words on the screen."
-msgstr "Keypunch позволяет практиковаться в наборе текста. Благодаря быстрым занятиям с мгновенной обратной связью и множеству доступных языков вы сможете даже немного развлечься. При наличии целеустремленности, правильной техники и некоторого времени вы заметите заметный рост как скорости, так и точности, с которой ваши мысли и идеи воплощаются в слова на экране."
+msgstr ""
+"Keypunch позволяет практиковаться в наборе текста. Благодаря быстрым "
+"занятиям с мгновенной обратной связью и множеству доступных языков вы "
+"сможете даже немного развлечься. При наличии целеустремленности, правильной "
+"техники и некоторого времени вы заметите заметный рост как скорости, так и "
+"точности, с которой ваши мысли и идеи воплощаются в слова на экране."
 
 #: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:25
 msgid ""
 "If you are already a racer at typing, Keypunch still has something for you. "
 "Try practicing with numbers and punctuation, or choose your own text to type "
 "out as fast as you can."
-msgstr "Если вы уже умеете быстро набирать текст, в Keypunch найдется кое-что для вас. Попробуйте потренироваться с цифрами и пунктуацией или выберите свой собственный текст, чтобы набрать его как можно быстрее."
+msgstr ""
+"Если вы уже умеете быстро набирать текст, в Keypunch найдется кое-что для "
+"вас. Попробуйте потренироваться с цифрами и пунктуацией или выберите свой "
+"собственный текст, чтобы набрать его как можно быстрее."
 
 #: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:30
 msgid "Get ready to accelerate your typing!"
@@ -96,12 +110,12 @@ msgid "Window Maximization"
 msgstr "Окно на весь экран"
 
 #: data/dev.bragefuglseth.Keypunch.gschema.xml:32
-#: src/widgets/results_view.blp:83 src/widgets/window.blp:37
+#: src/widgets/results_view.blp:82 src/widgets/window.blp:146
 msgid "Session Type"
 msgstr "Тип сеанса"
 
 #: data/dev.bragefuglseth.Keypunch.gschema.xml:36
-#: src/widgets/results_view.blp:96 src/widgets/window.blp:42
+#: src/widgets/results_view.blp:95 src/widgets/window.blp:151
 msgid "Session Duration"
 msgstr "Продолжительность сеанса"
 
@@ -115,7 +129,7 @@ msgid "\"en\""
 msgstr "\"ru\""
 
 #: data/dev.bragefuglseth.Keypunch.gschema.xml:42
-#: src/widgets/results_view.blp:109 src/widgets/text_language_dialog.blp:5
+#: src/widgets/results_view.blp:108 src/widgets/text_language_dialog.blp:5
 #: src/widgets/text_language_dialog.blp:13
 #: src/widgets/text_language_dialog.blp:39
 msgid "Text Language"
@@ -155,7 +169,9 @@ msgstr "Личный рекорд"
 msgid ""
 "The current highest amount of WPM received for each session type / duration "
 "and language"
-msgstr "Текущее наибольшее количество слов в минуту, полученное для каждого типа / продолжительности и языка"
+msgstr ""
+"Текущее наибольшее количество слов в минуту, полученное для каждого типа / "
+"продолжительности и языка"
 
 #: data/resources/gtk/help-overlay.ui:11
 msgctxt "shortcut window"
@@ -195,17 +211,17 @@ msgstr "Вставить свой текст..."
 msgid "_Save"
 msgstr "_Сохранить"
 
-#: src/widgets/results_view.blp:35
+#: src/widgets/results_view.blp:34
 msgid "New Personal Best for Configuration"
 msgstr "Новый личный рекорд для конфигурации"
 
-#: src/widgets/results_view.blp:46
+#: src/widgets/results_view.blp:45
 msgid "Words per Minute"
 msgstr "Слов в минуту"
 
-#: src/widgets/results_view.blp:67
-msgid "Correctness"
-msgstr "Точность"
+#: src/widgets/results_view.blp:66
+msgid "Accuracy"
+msgstr ""
 
 #. Translators: The percentage label format of the results page.
 #. The `{}` block will be replaced with the percentage number,
@@ -275,111 +291,82 @@ msgstr "Попробуйте поискать по-другому"
 msgid ""
 "You can help add a new text language to Keypunch by submitting a language "
 "request on GitHub. A GitHub account and some language knowledge is required."
-msgstr "Вы можете помочь добавить новый текстовый язык в Keypunch, отправив запрос на язык на GitHub. Для этого требуется учетная запись на GitHub и некоторое знание языка."
+msgstr ""
+"Вы можете помочь добавить новый текстовый язык в Keypunch, отправив запрос "
+"на язык на GitHub. Для этого требуется учетная запись на GitHub и некоторое "
+"знание языка."
 
 #: src/widgets/text_language_dialog.blp:214
 msgid "_Create Request"
 msgstr "Cоздать _запрос"
 
-#: src/widgets/text_view.blp:11
+#: src/widgets/text_view.blp:9
 msgid "Text View"
 msgstr "Просмотр текста"
 
-#: src/widgets/window.blp:49
-msgid "_Edit Text"
-msgstr "Править текст"
-
-#: src/widgets/window.blp:59
-msgid "Main Menu"
-msgstr "Главное меню"
-
-#: src/widgets/window.blp:75
+#: src/widgets/window.blp:131
 msgid "Restart"
 msgstr "Заново"
 
-#: src/widgets/window.blp:103
+#: src/widgets/window.blp:158
+msgid "_Edit Text"
+msgstr "Править текст"
+
+#: src/widgets/window.blp:187
+msgid "Main Menu"
+msgstr "Главное меню"
+
+#: src/widgets/window.blp:205
 msgid "Just Start Typing"
 msgstr "Начните печатать"
 
 #. Translators: "Entry" here is the act of entering text
-#: src/widgets/window.blp:112
+#: src/widgets/window.blp:214
 msgid "Enable Entry"
 msgstr "Включить ввод"
 
-#: src/widgets/window.blp:138
+#: src/widgets/window.blp:240
 msgid "Results"
 msgstr "Результаты"
 
-#: src/widgets/window.blp:163
+#: src/widgets/window.blp:265
 msgid "_Continue"
 msgstr "_Продолжить"
 
-#: src/widgets/window.blp:193
+#: src/widgets/window.blp:297
 msgid "Text _Language"
 msgstr "_Язык текста"
 
-#: src/widgets/window.blp:198
+#: src/widgets/window.blp:302
 msgid "_Keyboard Shortcuts"
 msgstr "Сочетания _клавиш"
 
-#: src/widgets/window.blp:203
+#: src/widgets/window.blp:307
 msgid "_About Keypunch"
 msgstr "_О приложении Keypunch"
 
-#: src/widgets/window.rs:49
-msgid "Simple"
-msgstr "Простой"
-
-#: src/widgets/window.rs:50
-msgid "Advanced"
-msgstr "Продвинутый"
-
-#: src/widgets/window.rs:51
-msgid "Custom"
-msgstr "Пользовательский"
-
-#: src/widgets/window.rs:69
-msgid "15 seconds"
-msgstr "15 секунд"
-
-#: src/widgets/window.rs:70
-msgid "30 seconds"
-msgstr "30 секунд"
-
-#: src/widgets/window.rs:71
-msgid "1 minute"
-msgstr "1 минута"
-
-#: src/widgets/window.rs:72
-msgid "5 minutes"
-msgstr "5 минут"
-
-#: src/widgets/window.rs:73
-msgid "10 minutes"
-msgstr "10 минут"
-
-#: src/widgets/window.rs:224
+#: src/widgets/window.rs:180
 msgid "Orthography by"
 msgstr "Автор орфографии"
 
 #. Translators: Replace "translator-credits" with your names, one name per line
-#: src/widgets/window.rs:240
+#: src/widgets/window.rs:197
 msgid "translator-credits"
 msgstr "FAlexei"
 
-#: src/widgets/window.rs:245
+#: src/widgets/window.rs:202
 msgid "Special thanks to"
 msgstr "Особая благодарность"
 
-#: src/widgets/window/session.rs:122
+#: src/widgets/window/session.rs:118
 msgid "{} ⁄ {}"
 msgstr "{} ⁄ {}"
 
-#: src/widgets/window/session.rs:288
+#: src/widgets/window/session.rs:310
 msgid "Changes discarded"
 msgstr "Изменения отменены"
 
-#: src/widgets/window/session.rs:289
+#: src/widgets/window/session.rs:311
 msgid "Restore"
 msgstr "Восстановить"
 
@@ -388,11 +375,38 @@ msgstr "Восстановить"
 #. passed. Do not translate the `{}` blocks. Note that the `∶` sign is a special
 #. Unicode character; if your language doesn't use something completely different,
 #. you should probably copy and paste it from the original string.
-#: src/widgets/window/session.rs:383 src/widgets/window/session.rs:385
+#: src/widgets/window/session.rs:405 src/widgets/window/session.rs:407
 msgid "{}∶{}"
 msgstr "{}∶{}"
 
 #. Translators: This is shown as a warning by GNOME Shell before logging out or shutting off the system in the middle of a typing session, alongside Keypunch's name and icon
-#: src/widgets/window/ui_state.rs:130
+#: src/widgets/window/ui_state.rs:179
 msgid "Ongoing typing session"
 msgstr "Текущий сеанс печати"
+
+#~ msgid "Correctness"
+#~ msgstr "Точность"
+
+#~ msgid "Simple"
+#~ msgstr "Простой"
+
+#~ msgid "Advanced"
+#~ msgstr "Продвинутый"
+
+#~ msgid "Custom"
+#~ msgstr "Пользовательский"
+
+#~ msgid "15 seconds"
+#~ msgstr "15 секунд"
+
+#~ msgid "30 seconds"
+#~ msgstr "30 секунд"
+
+#~ msgid "1 minute"
+#~ msgstr "1 минута"
+
+#~ msgid "5 minutes"
+#~ msgstr "5 минут"
+
+#~ msgid "10 minutes"
+#~ msgstr "10 минут"

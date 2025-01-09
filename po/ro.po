@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: keypunch\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-10-22 20:52+0200\n"
+"POT-Creation-Date: 2025-01-09 21:31+0100\n"
 "PO-Revision-Date: 2024-06-20 20:51+0200\n"
 "Last-Translator: Flavian Stavarache <FlavianStavarache@outlook.com>\n"
 "Language-Team: Romanian <>\n"
@@ -33,8 +33,8 @@ msgid ""
 "typing;trainer;touch typing;keyboard;speed;wpm;words per minute;accuracy;"
 "test;"
 msgstr ""
-"tastare;antrenor;dictilografie;tastatură;viteză;wpm;cuvinte pe minut;precizie;"
-"test;"
+"tastare;antrenor;dictilografie;tastatură;viteză;wpm;cuvinte pe minut;"
+"precizie;test;"
 
 #: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:13
 msgid ""
@@ -43,8 +43,8 @@ msgid ""
 "time for what matters to you, and a sense of self-accomplishment."
 msgstr ""
 "Astăzi, scrierea la tastatură este o abilitate esențială pentru noi toți. "
-"Tastarea rapidă și precisă îți oferă nu doar mai multe oportunități, dar "
-"și mai mult timp petrecut facând ceea ce îți place."
+"Tastarea rapidă și precisă îți oferă nu doar mai multe oportunități, dar și "
+"mai mult timp petrecut facând ceea ce îți place."
 
 #: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:18
 msgid ""
@@ -55,8 +55,8 @@ msgid ""
 "accuracy of which your thoughts and ideas are put into words on the screen."
 msgstr ""
 "Keypunch îți oferă șansa de a-ți antrena viteza de tastare. Datorită "
-"sesiunilor rapide, cu feedback instant, și a multitudinii de limbi"
-"disponibile, procesul de învățare este simplu și interactiv. Cu puțină "
+"sesiunilor rapide, cu feedback instant, și a multitudinii de "
+"limbidisponibile, procesul de învățare este simplu și interactiv. Cu puțină "
 "determinare și o tehnică corectă, vei observa o îmbunătățire în vitză și  "
 "precizia cu care îți expui gândurile în scris."
 
@@ -107,12 +107,12 @@ msgid "Window Maximization"
 msgstr "Maximizează fereastra"
 
 #: data/dev.bragefuglseth.Keypunch.gschema.xml:32
-#: src/widgets/results_view.blp:83 src/widgets/window.blp:37
+#: src/widgets/results_view.blp:82 src/widgets/window.blp:146
 msgid "Session Type"
 msgstr "Tipul sesiunii"
 
 #: data/dev.bragefuglseth.Keypunch.gschema.xml:36
-#: src/widgets/results_view.blp:96 src/widgets/window.blp:42
+#: src/widgets/results_view.blp:95 src/widgets/window.blp:151
 msgid "Session Duration"
 msgstr "Durata sesiunii"
 
@@ -126,7 +126,7 @@ msgid "\"en\""
 msgstr "\"ro\""
 
 #: data/dev.bragefuglseth.Keypunch.gschema.xml:42
-#: src/widgets/results_view.blp:109 src/widgets/text_language_dialog.blp:5
+#: src/widgets/results_view.blp:108 src/widgets/text_language_dialog.blp:5
 #: src/widgets/text_language_dialog.blp:13
 #: src/widgets/text_language_dialog.blp:39
 msgid "Text Language"
@@ -158,7 +158,6 @@ msgstr "Text personalizat"
 msgid "Text displayed when “Custom” is chosen from the session menu"
 msgstr "Text prezentat când opțiunea „Text personalizat” este selectată"
 
-
 #: data/dev.bragefuglseth.Keypunch.gschema.xml:58
 msgid "Personal Best"
 msgstr "Record personal"
@@ -168,8 +167,8 @@ msgid ""
 "The current highest amount of WPM received for each session type / duration "
 "and language"
 msgstr ""
-"Cele mai multe cuvinte tastate pe minut pentru fiecare tip de sesiune / durată"
-"și limbă"
+"Cele mai multe cuvinte tastate pe minut pentru fiecare tip de sesiune / "
+"duratăși limbă"
 
 #: data/resources/gtk/help-overlay.ui:11
 msgctxt "shortcut window"
@@ -209,17 +208,17 @@ msgstr "Inserează textul perosnalizat…"
 msgid "_Save"
 msgstr "_Salvează"
 
-#: src/widgets/results_view.blp:35
+#: src/widgets/results_view.blp:34
 msgid "New Personal Best for Configuration"
 msgstr "Un nou record personal pentru configurație"
 
-#: src/widgets/results_view.blp:46
+#: src/widgets/results_view.blp:45
 msgid "Words per Minute"
 msgstr "Cuvinte pe minut"
 
-#: src/widgets/results_view.blp:67
-msgid "Correctness"
-msgstr "Precizie"
+#: src/widgets/results_view.blp:66
+msgid "Accuracy"
+msgstr ""
 
 #. Translators: The percentage label format of the results page.
 #. The `{}` block will be replaced with the percentage number,
@@ -288,112 +287,80 @@ msgid ""
 "You can help add a new text language to Keypunch by submitting a language "
 "request on GitHub. A GitHub account and some language knowledge is required."
 msgstr ""
-"Poți ajuta la adăugarea unei limbi noi in Keypunch prin crearea unei cereri pe"
-"Github. Un cont de Github și cunoștiințe în acea limbă sunt necesare."
+"Poți ajuta la adăugarea unei limbi noi in Keypunch prin crearea unei cereri "
+"peGithub. Un cont de Github și cunoștiințe în acea limbă sunt necesare."
 
 #: src/widgets/text_language_dialog.blp:214
 msgid "_Create Request"
 msgstr "_Crează cerere"
 
-#: src/widgets/text_view.blp:11
+#: src/widgets/text_view.blp:9
 msgid "Text View"
 msgstr "Vizualizare text"
 
-#: src/widgets/window.blp:49
-msgid "_Edit Text"
-msgstr "_Editează text"
-
-#: src/widgets/window.blp:59
-msgid "Main Menu"
-msgstr "Meniul principal"
-
-#: src/widgets/window.blp:75
+#: src/widgets/window.blp:131
 msgid "Restart"
 msgstr "Restartează"
 
-#: src/widgets/window.blp:103
+#: src/widgets/window.blp:158
+msgid "_Edit Text"
+msgstr "_Editează text"
+
+#: src/widgets/window.blp:187
+msgid "Main Menu"
+msgstr "Meniul principal"
+
+#: src/widgets/window.blp:205
 msgid "Just Start Typing"
 msgstr "Începe a tasta"
 
 #. Translators: "Entry" here is the act of entering text
-#: src/widgets/window.blp:112
+#: src/widgets/window.blp:214
 msgid "Enable Entry"
 msgstr "Permite tastarea"
 
-#: src/widgets/window.blp:138
+#: src/widgets/window.blp:240
 msgid "Results"
 msgstr "Rezultate"
 
-#: src/widgets/window.blp:163
+#: src/widgets/window.blp:265
 msgid "_Continue"
 msgstr "_Continuă"
 
-#: src/widgets/window.blp:193
+#: src/widgets/window.blp:297
 msgid "Text _Language"
 msgstr "_Limba textului"
 
-#: src/widgets/window.blp:198
+#: src/widgets/window.blp:302
 msgid "_Keyboard Shortcuts"
 msgstr "_Comenzi rapide"
 
-#: src/widgets/window.blp:203
+#: src/widgets/window.blp:307
 msgid "_About Keypunch"
 msgstr "_Despre Keypunch"
 
-#: src/widgets/window.rs:49
-msgid "Simple"
-msgstr "Simplu"
-
-#: src/widgets/window.rs:50
-msgid "Advanced"
-msgstr "Avansat"
-
-#: src/widgets/window.rs:51
-msgid "Custom"
-msgstr "Personalizat"
-
-#: src/widgets/window.rs:69
-msgid "15 seconds"
-msgstr "15 secunde"
-
-#: src/widgets/window.rs:70
-msgid "30 seconds"
-msgstr "30 secunde"
-
-#: src/widgets/window.rs:71
-msgid "1 minute"
-msgstr "1 minut"
-
-#: src/widgets/window.rs:72
-msgid "5 minutes"
-msgstr "5 minute"
-
-#: src/widgets/window.rs:73
-msgid "10 minutes"
-msgstr "10 minute"
-
-#: src/widgets/window.rs:224
+#: src/widgets/window.rs:180
 msgid "Orthography by"
 msgstr "Ortografie realizată de"
 
 #. Translators: Replace "translator-credits" with your names, one name per line
-#: src/widgets/window.rs:240
+#: src/widgets/window.rs:197
 msgid "translator-credits"
 msgstr "Flavian Stavarache <FlavianStavarache@outlook.com>"
 
-#: src/widgets/window.rs:245
+#: src/widgets/window.rs:202
 msgid "Special thanks to"
 msgstr "Mulțumiri speciale către"
 
-#: src/widgets/window/session.rs:122
+#: src/widgets/window/session.rs:118
 msgid "{} ⁄ {}"
 msgstr "{} ⁄ {}"
 
-#: src/widgets/window/session.rs:288
+#: src/widgets/window/session.rs:310
 msgid "Changes discarded"
 msgstr "Schimbările au fost anulate"
 
-#: src/widgets/window/session.rs:289
+#: src/widgets/window/session.rs:311
 msgid "Restore"
 msgstr "Restabilește sesiunea"
 
@@ -402,14 +369,41 @@ msgstr "Restabilește sesiunea"
 #. passed. Do not translate the `{}` blocks. Note that the `∶` sign is a special
 #. Unicode character; if your language doesn't use something completely different,
 #. you should probably copy and paste it from the original string.
-#: src/widgets/window/session.rs:383 src/widgets/window/session.rs:385
+#: src/widgets/window/session.rs:405 src/widgets/window/session.rs:407
 msgid "{}∶{}"
 msgstr "{}∶{}"
 
 #. Translators: This is shown as a warning by GNOME Shell before logging out or shutting off the system in the middle of a typing session, alongside Keypunch's name and icon
-#: src/widgets/window/ui_state.rs:130
+#: src/widgets/window/ui_state.rs:179
 msgid "Ongoing typing session"
 msgstr "Sesiune de tastare în curs"
+
+#~ msgid "Correctness"
+#~ msgstr "Precizie"
+
+#~ msgid "Simple"
+#~ msgstr "Simplu"
+
+#~ msgid "Advanced"
+#~ msgstr "Avansat"
+
+#~ msgid "Custom"
+#~ msgstr "Personalizat"
+
+#~ msgid "15 seconds"
+#~ msgstr "15 secunde"
+
+#~ msgid "30 seconds"
+#~ msgstr "30 secunde"
+
+#~ msgid "1 minute"
+#~ msgstr "1 minut"
+
+#~ msgid "5 minutes"
+#~ msgstr "5 minute"
+
+#~ msgid "10 minutes"
+#~ msgstr "10 minute"
 
 #~ msgid "\"en_US\""
 #~ msgstr "\"nl_NL\""

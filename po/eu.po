@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: keypunch\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-23 20:52+0200\n"
+"POT-Creation-Date: 2025-01-09 21:31+0100\n"
 "PO-Revision-Date: 2024-12-11 21:58+0000\n"
 "Last-Translator: Weblate Admin <weblate.admin@artizar-enea.eus>\n"
 "Language-Team: Basque <https://weblate.artizar-enea.eus/projects/keypunch/"
@@ -109,12 +109,12 @@ msgid "Window Maximization"
 msgstr "Leihoa maximizatzea"
 
 #: data/dev.bragefuglseth.Keypunch.gschema.xml:32
-#: src/widgets/results_view.blp:83 src/widgets/window.blp:37
+#: src/widgets/results_view.blp:82 src/widgets/window.blp:146
 msgid "Session Type"
 msgstr "Saio mota"
 
 #: data/dev.bragefuglseth.Keypunch.gschema.xml:36
-#: src/widgets/results_view.blp:96 src/widgets/window.blp:42
+#: src/widgets/results_view.blp:95 src/widgets/window.blp:151
 msgid "Session Duration"
 msgstr "Saioaren iraupena"
 
@@ -128,7 +128,7 @@ msgid "\"en\""
 msgstr "\"eu\""
 
 #: data/dev.bragefuglseth.Keypunch.gschema.xml:42
-#: src/widgets/results_view.blp:109 src/widgets/text_language_dialog.blp:5
+#: src/widgets/results_view.blp:108 src/widgets/text_language_dialog.blp:5
 #: src/widgets/text_language_dialog.blp:13
 #: src/widgets/text_language_dialog.blp:39
 msgid "Text Language"
@@ -212,17 +212,17 @@ msgstr "Sartu testu pertsonalizatua…"
 msgid "_Save"
 msgstr "_Gorde"
 
-#: src/widgets/results_view.blp:35
+#: src/widgets/results_view.blp:34
 msgid "New Personal Best for Configuration"
 msgstr "Zure marka berririk onena konfiguraziorako"
 
-#: src/widgets/results_view.blp:46
+#: src/widgets/results_view.blp:45
 msgid "Words per Minute"
 msgstr "Hitzak minutuko"
 
-#: src/widgets/results_view.blp:67
-msgid "Correctness"
-msgstr "Zuzentasuna"
+#: src/widgets/results_view.blp:66
+msgid "Accuracy"
+msgstr ""
 
 #. Translators: The percentage label format of the results page.
 #. The `{}` block will be replaced with the percentage number,
@@ -299,105 +299,73 @@ msgstr ""
 msgid "_Create Request"
 msgstr "_Sortu eskaera"
 
-#: src/widgets/text_view.blp:11
+#: src/widgets/text_view.blp:9
 msgid "Text View"
 msgstr "Testu ikuspegia"
 
-#: src/widgets/window.blp:49
-msgid "_Edit Text"
-msgstr "_Editatu testua"
-
-#: src/widgets/window.blp:59
-msgid "Main Menu"
-msgstr "Menu nagusia"
-
-#: src/widgets/window.blp:75
+#: src/widgets/window.blp:131
 msgid "Restart"
 msgstr "Berrabiarazi"
 
-#: src/widgets/window.blp:103
+#: src/widgets/window.blp:158
+msgid "_Edit Text"
+msgstr "_Editatu testua"
+
+#: src/widgets/window.blp:187
+msgid "Main Menu"
+msgstr "Menu nagusia"
+
+#: src/widgets/window.blp:205
 msgid "Just Start Typing"
 msgstr "Has zaitez idazten"
 
 #. Translators: "Entry" here is the act of entering text
-#: src/widgets/window.blp:112
+#: src/widgets/window.blp:214
 msgid "Enable Entry"
 msgstr "Gaitu sarrera"
 
-#: src/widgets/window.blp:138
+#: src/widgets/window.blp:240
 msgid "Results"
 msgstr "Emaitzak"
 
-#: src/widgets/window.blp:163
+#: src/widgets/window.blp:265
 msgid "_Continue"
 msgstr "_Jarraitu"
 
-#: src/widgets/window.blp:193
+#: src/widgets/window.blp:297
 msgid "Text _Language"
 msgstr "Testu _Hizkuntza"
 
-#: src/widgets/window.blp:198
+#: src/widgets/window.blp:302
 msgid "_Keyboard Shortcuts"
 msgstr "_Laster teklak"
 
-#: src/widgets/window.blp:203
+#: src/widgets/window.blp:307
 msgid "_About Keypunch"
 msgstr "_Keypunch-i buruz"
 
-#: src/widgets/window.rs:49
-msgid "Simple"
-msgstr "Sinplea"
-
-#: src/widgets/window.rs:50
-msgid "Advanced"
-msgstr "Aurreratua"
-
-#: src/widgets/window.rs:51
-msgid "Custom"
-msgstr "Pertsonalizatua"
-
-#: src/widgets/window.rs:69
-msgid "15 seconds"
-msgstr "15 segundo"
-
-#: src/widgets/window.rs:70
-msgid "30 seconds"
-msgstr "30 segundo"
-
-#: src/widgets/window.rs:71
-msgid "1 minute"
-msgstr "Minutu 1"
-
-#: src/widgets/window.rs:72
-msgid "5 minutes"
-msgstr "5 minutu"
-
-#: src/widgets/window.rs:73
-msgid "10 minutes"
-msgstr "10 minutu"
-
-#: src/widgets/window.rs:224
+#: src/widgets/window.rs:180
 msgid "Orthography by"
 msgstr "Ortografia:"
 
 #. Translators: Replace "translator-credits" with your names, one name per line
-#: src/widgets/window.rs:240
+#: src/widgets/window.rs:197
 msgid "translator-credits"
 msgstr "Urtzi Odriozola Lizaso"
 
-#: src/widgets/window.rs:245
+#: src/widgets/window.rs:202
 msgid "Special thanks to"
 msgstr "Esker bereziak"
 
-#: src/widgets/window/session.rs:122
+#: src/widgets/window/session.rs:118
 msgid "{} ⁄ {}"
 msgstr "{} ⁄ {}"
 
-#: src/widgets/window/session.rs:288
+#: src/widgets/window/session.rs:310
 msgid "Changes discarded"
 msgstr "Baztertutako aldaketak"
 
-#: src/widgets/window/session.rs:289
+#: src/widgets/window/session.rs:311
 msgid "Restore"
 msgstr "Berrezarri"
 
@@ -406,11 +374,38 @@ msgstr "Berrezarri"
 #. passed. Do not translate the `{}` blocks. Note that the `∶` sign is a special
 #. Unicode character; if your language doesn't use something completely different,
 #. you should probably copy and paste it from the original string.
-#: src/widgets/window/session.rs:383 src/widgets/window/session.rs:385
+#: src/widgets/window/session.rs:405 src/widgets/window/session.rs:407
 msgid "{}∶{}"
 msgstr "{}∶{}"
 
 #. Translators: This is shown as a warning by GNOME Shell before logging out or shutting off the system in the middle of a typing session, alongside Keypunch's name and icon
-#: src/widgets/window/ui_state.rs:130
+#: src/widgets/window/ui_state.rs:179
 msgid "Ongoing typing session"
 msgstr "Idazketa saioa abian oraindik"
+
+#~ msgid "Correctness"
+#~ msgstr "Zuzentasuna"
+
+#~ msgid "Simple"
+#~ msgstr "Sinplea"
+
+#~ msgid "Advanced"
+#~ msgstr "Aurreratua"
+
+#~ msgid "Custom"
+#~ msgstr "Pertsonalizatua"
+
+#~ msgid "15 seconds"
+#~ msgstr "15 segundo"
+
+#~ msgid "30 seconds"
+#~ msgstr "30 segundo"
+
+#~ msgid "1 minute"
+#~ msgstr "Minutu 1"
+
+#~ msgid "5 minutes"
+#~ msgstr "5 minutu"
+
+#~ msgid "10 minutes"
+#~ msgstr "10 minutu"
