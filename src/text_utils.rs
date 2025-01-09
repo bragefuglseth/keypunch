@@ -1,6 +1,6 @@
 /* text_utils.rs
  *
- * SPDX-FileCopyrightText: © 2024 Brage Fuglseth
+ * SPDX-FileCopyrightText: © 2024–2025 Brage Fuglseth
  * SPDX-License-Identifier: GPL-3.0-or-later
  *
  * This program is free software: you can redistribute it and/or modify
