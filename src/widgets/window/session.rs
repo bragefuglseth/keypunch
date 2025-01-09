@@ -432,10 +432,12 @@ impl imp::KpWindow {
         let duration = finish_time.duration_since(start_time);
         results_view.set_duration(duration.as_secs());
 
-        let wpm = calculate_wpm(duration, &typed_text);
+        let wpm = calculate_wpm(duration, &original_text, &typed_text);
         results_view.set_wpm(wpm);
 
-        let accuracy = calculate_accuracy(&original_text, &typed_text);
+        let (correct_keystrokes, total_keystrokes) = self.text_view.keystrokes();
+
+        let accuracy = calculate_accuracy(correct_keystrokes, total_keystrokes);
         results_view.set_accuracy(accuracy);
 
         let session_type = self.session_type.get();

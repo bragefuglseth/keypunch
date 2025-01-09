@@ -90,21 +90,38 @@ impl imp::KpTextView {
             #[weak(rename_to = imp)]
             self,
             move |_| {
-                imp.update_colors();
+                imp.compare_and_update_colors();
             }
         ));
         style.connect_high_contrast_notify(glib::clone!(
             #[weak(rename_to = imp)]
             self,
             move |_| {
-                imp.update_colors();
+                imp.compare_and_update_colors();
             }
         ));
 
-        self.update_colors();
+        self.compare_and_update_colors();
     }
 
-    pub(super) fn update_colors(&self) {
+    // Convenience function to generate a comparison and update the colors.
+    pub(super) fn compare_and_update_colors(&self) {
+        let original = self.original_text.borrow();
+        let typed = self.typed_text.borrow();
+
+        let input_context = self.input_context.borrow();
+        let (preedit, _, _) = input_context.as_ref().unwrap().preedit_string();
+
+        let comparison =
+            validate_with_replacements(&original, &typed, preedit.as_str().graphemes(true).count());
+
+        self.update_colors(&comparison);
+    }
+
+    // Comparisons (list of right/wrong letters) are slightly computationally expensive to generate,
+    // so this function takes a reference to one as a parameter instead of generating one internally.
+    // This allows for reusing a comparison in other places during the keypress pipeline.
+    pub(super) fn update_colors(&self, comparison: &Vec<(GraphemeState, usize, usize, usize)>) {
         let original = self.original_text.borrow();
         let typed = self.typed_text.borrow();
 
@@ -169,9 +186,6 @@ impl imp::KpTextView {
             .text(&buf.start_iter(), &color_start_iter, true)
             .graphemes(true)
             .count();
-
-        let comparison =
-            validate_with_replacements(&original, &typed, preedit.as_str().graphemes(true).count());
 
         comparison
             .iter()

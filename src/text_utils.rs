@@ -285,30 +285,17 @@ pub fn current_word(original: &str, typed_grapheme_count: usize) -> usize {
         .count()
 }
 
-pub fn calculate_wpm(duration: Duration, typed: &str) -> f64 {
+pub fn calculate_wpm(duration: Duration, original: &str, typed: &str) -> f64 {
     let minutes = duration.as_secs_f64() / 60.;
-    let words = typed.chars().count() as f64 / 5.;
+
+    let correct_chars = zip(original.chars(), typed.chars())
+        .filter(|(oc, tc)| oc == tc)
+        .count();
+    let words = correct_chars as f64 / 5.;
 
     words / minutes
 }
 
-pub fn calculate_accuracy(original: &str, typed: &str) -> f64 {
-    let (correct, wrong) = zip(original.graphemes(true), typed.graphemes(true)).fold(
-        (0, 0),
-        |(correct, wrong), (og, tp)| {
-            if og == tp {
-                (correct + 1, wrong)
-            } else {
-                (correct, wrong + 1)
-            }
-        },
-    );
-
-    let total = correct + wrong;
-
-    if total == 0 {
-        0.
-    } else {
-        correct as f64 / total as f64
-    }
+pub fn calculate_accuracy(correct_keystrokes: usize, total_keystrokes: usize) -> f64 {
+    correct_keystrokes as f64 / total_keystrokes as f64
 }

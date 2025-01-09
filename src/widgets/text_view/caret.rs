@@ -74,8 +74,6 @@ impl imp::KpTextView {
             preedit.graphemes(true).count(),
         );
 
-        self.original_text.borrow_mut();
-
         let text_view = self.text_view.get();
         let buf = text_view.buffer();
 

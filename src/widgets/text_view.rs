@@ -42,6 +42,8 @@ mod imp {
         pub(super) original_text: RefCell<String>,
         pub(super) typed_text: RefCell<String>,
         pub(super) previous_preedit: RefCell<String>,
+        pub(super) total_keystrokes: Cell<usize>,
+        pub(super) correct_keystrokes: Cell<usize>,
         pub(super) input_context: RefCell<Option<gtk::IMMulticontext>>,
         pub(super) scroll_animation: OnceCell<adw::TimedAnimation>,
         pub(super) caret_x_animation: OnceCell<adw::TimedAnimation>,
@@ -100,7 +102,7 @@ mod imp {
 
             self.setup_input_handling();
             self.setup_color_scheme();
-            self.update_colors();
+            self.compare_and_update_colors();
             self.update_scroll_position(true);
         }
 
@@ -124,7 +126,7 @@ mod imp {
             self.text_view.allocate(width, height, baseline, None);
             self.update_scroll_position(true);
             self.update_caret_position(true);
-            self.update_colors();
+            self.compare_and_update_colors();
         }
 
         fn snapshot(&self, snapshot: &gtk::Snapshot) {
@@ -142,7 +144,7 @@ mod imp {
             self.text_view
                 .buffer()
                 .set_text(&insert_replacements(&text));
-            self.update_colors();
+            self.compare_and_update_colors();
             self.update_caret_position(true);
             self.update_scroll_position(true);
             self.update_accessible_state();
@@ -153,11 +155,37 @@ mod imp {
 
             let buffer = self.text_view.buffer();
             buffer.insert(&mut buffer.end_iter(), &insert_replacements(&text));
-            self.update_colors();
+            self.compare_and_update_colors();
         }
 
         pub(super) fn typed_text_changed(&self) {
-            self.update_colors();
+            let original = self.original_text.borrow();
+            let typed = self.typed_text.borrow();
+
+            let input_context = self.input_context.borrow();
+            let (preedit, _, _) = input_context.as_ref().unwrap().preedit_string();
+
+            let comparison = validate_with_replacements(
+                &original,
+                &typed,
+                preedit.as_str().graphemes(true).count(),
+            );
+
+            let last_grapheme_state = comparison
+                .iter()
+                .last()
+                .map(|(state, _, _, _)| *state)
+                .unwrap_or(GraphemeState::Unfinished);
+
+            let total_keystrokes = self.total_keystrokes.get();
+            self.total_keystrokes.set(total_keystrokes + 1);
+
+            if last_grapheme_state != GraphemeState::Mistake {
+                let correct_keystrokes = self.correct_keystrokes.get();
+                self.correct_keystrokes.set(correct_keystrokes + 1);
+            }
+
+            self.update_colors(&comparison);
             self.update_caret_position(!self.running.get());
             self.update_scroll_position(!self.running.get());
             self.update_accessible_state();
@@ -239,6 +267,13 @@ impl KpTextView {
         (current_word, total_words)
     }
 
+    // Returns a tuple with the amount of correct keystrokes and the total amount of keystrokes
+    pub fn keystrokes(&self) -> (usize, usize) {
+        let imp = self.imp();
+
+        (imp.correct_keystrokes.get(), imp.total_keystrokes.get())
+    }
+
     pub fn reset(&self) {
         self.set_original_text("");
         self.set_typed_text("");
@@ -248,5 +283,7 @@ impl KpTextView {
         imp.scroll_animation().skip();
         imp.caret_x_animation().skip();
         imp.caret_y_animation().skip();
+        imp.total_keystrokes.set(0);
+        imp.correct_keystrokes.set(0);
     }
 }
