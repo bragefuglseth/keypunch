@@ -29,6 +29,11 @@ use std::iter::once;
 use strum::{EnumMessage, IntoEnumIterator};
 use text_generation::CHUNK_GRAPHEME_COUNT;
 
+// The lower this is, the more sensitive Keypunch is to "frustration" (random key mashing).
+// If enough frustration is detected, the session will be cancelled, and a helpful
+// message will be displayed.
+const FRUSTRATION_THRESHOLD: usize = 3;
+
 impl imp::KpWindow {
     pub(super) fn setup_session_config(&self) {
         let session_type_model: gtk::StringList = SessionType::iter()
@@ -137,6 +142,18 @@ impl imp::KpWindow {
                                 &i18n_fmt! { i18n_fmt("{} ⁄ {}", current_word, total_words) },
                             );
                         }
+                    }
+
+                    let frustration_score = text_view.keystrokes().iter()
+                        .rev()
+                        .take_while(|(timestamp, _)| {
+                            timestamp.elapsed().as_secs() <= FRUSTRATION_THRESHOLD as u64
+                        })
+                        .filter(|(_, correct)| !*correct)
+                        .count();
+
+                    if frustration_score > FRUSTRATION_THRESHOLD * 10 {
+                        imp.frustration_relief();
                     }
 
                     None
@@ -432,7 +449,7 @@ impl imp::KpWindow {
     }
 
     pub(super) fn show_results_view(&self) {
-        let continue_button = self.continue_button.get();
+        let continue_button = self.results_continue_button.get();
         let original_text = if self.session_type.get() == SessionType::Custom {
             process_custom_text(&self.text_view.original_text())
         } else {
@@ -454,7 +471,10 @@ impl imp::KpWindow {
         let wpm = calculate_wpm(duration, &original_text, &typed_text);
         results_view.set_wpm(wpm);
 
-        let (correct_keystrokes, total_keystrokes) = self.text_view.keystrokes();
+        let keystrokes = self.text_view.keystrokes();
+
+        let correct_keystrokes = keystrokes.iter().filter(|(_, correct)| *correct).count();
+        let total_keystrokes = keystrokes.len();
 
         let accuracy = calculate_accuracy(correct_keystrokes, total_keystrokes);
         results_view.set_accuracy(accuracy);

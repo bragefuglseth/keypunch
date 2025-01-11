@@ -31,8 +31,9 @@ use adw::subclass::prelude::*;
 use glib::subclass::Signal;
 use gtk::glib;
 use gtk::{gdk, gsk};
-use std::cell::{Cell, OnceCell, RefCell};
+use std::cell::{Ref, Cell, OnceCell, RefCell};
 use std::sync::OnceLock;
+use std::time::Instant;
 use unicode_segmentation::UnicodeSegmentation;
 
 const LINE_HEIGHT: i32 = 50;
@@ -61,8 +62,7 @@ mod imp {
         pub(super) original_text: RefCell<String>,
         pub(super) typed_text: RefCell<String>,
         pub(super) previous_preedit: RefCell<String>,
-        pub(super) total_keystrokes: Cell<usize>,
-        pub(super) correct_keystrokes: Cell<usize>,
+        pub(super) keystrokes: RefCell<Vec<(Instant, bool)>>,
         pub(super) input_context: RefCell<Option<gtk::IMMulticontext>>,
         pub(super) scroll_animation: OnceCell<adw::TimedAnimation>,
         pub(super) caret_x_animation: OnceCell<adw::TimedAnimation>,
@@ -178,15 +178,12 @@ mod imp {
         }
 
         pub(super) fn typed_text_changed(&self) {
-            let original = self.original_text.borrow();
-            let typed = self.typed_text.borrow();
-
             let input_context = self.input_context.borrow();
             let (preedit, _, _) = input_context.as_ref().unwrap().preedit_string();
 
             let comparison = validate_with_replacements(
-                &original,
-                &typed,
+                &self.original_text.borrow(),
+                &self.typed_text.borrow(),
                 preedit.as_str().graphemes(true).count(),
             );
 
@@ -196,13 +193,11 @@ mod imp {
                 .map(|(state, _, _, _)| *state)
                 .unwrap_or(GraphemeState::Unfinished);
 
-            let total_keystrokes = self.total_keystrokes.get();
-            self.total_keystrokes.set(total_keystrokes + 1);
+            let correct = last_grapheme_state != GraphemeState::Mistake;
 
-            if last_grapheme_state != GraphemeState::Mistake {
-                let correct_keystrokes = self.correct_keystrokes.get();
-                self.correct_keystrokes.set(correct_keystrokes + 1);
-            }
+            let keystroke = (Instant::now(), correct);
+
+            self.keystrokes.borrow_mut().push(keystroke);
 
             self.update_colors(&comparison);
             self.update_caret_position(!self.running.get());
@@ -287,10 +282,8 @@ impl KpTextView {
     }
 
     // Returns a tuple with the amount of correct keystrokes and the total amount of keystrokes
-    pub fn keystrokes(&self) -> (usize, usize) {
-        let imp = self.imp();
-
-        (imp.correct_keystrokes.get(), imp.total_keystrokes.get())
+    pub fn keystrokes(&self) -> Ref<Vec<(Instant, bool)>> {
+        self.imp().keystrokes.borrow()
     }
 
     pub fn reset(&self) {
@@ -302,7 +295,6 @@ impl KpTextView {
         imp.scroll_animation().skip();
         imp.caret_x_animation().skip();
         imp.caret_y_animation().skip();
-        imp.total_keystrokes.set(0);
-        imp.correct_keystrokes.set(0);
+        imp.keystrokes.borrow_mut().clear();
     }
 }

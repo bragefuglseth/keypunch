@@ -148,6 +148,8 @@ template $KpWindow: Adw.ApplicationWindow {
           Button stop_button {
             icon-name: "arrow-circular-top-right-symbolic";
             tooltip-text: _("Restart");
+
+            clicked => $ready() swapped;
           }
 
           [session_status]
@@ -230,7 +232,7 @@ template $KpWindow: Adw.ApplicationWindow {
 
             Button focus_button {
               // Translators: "Entry" here is the act of entering text
-              label: _("Enable Entry");
+              label: _("_Enable Entry");
               use-underline: true;
 
               styles [
@@ -280,9 +282,57 @@ template $KpWindow: Adw.ApplicationWindow {
           Box {
             halign: center;
 
-            Button continue_button {
+            Button results_continue_button {
               label: _("_Continue");
               use-underline: true;
+
+              clicked => $ready() swapped;
+
+              styles [
+                "pill",
+                "suggested-action"
+              ]
+            }
+
+            styles [
+              "toolbar-thick"
+            ]
+          }
+        };
+      }
+
+      StackPage {
+        name: "frustration-relief";
+
+        child: Adw.ToolbarView {
+          [top]
+          Adw.HeaderBar {
+            title-widget: Adw.WindowTitle {
+              // Translators: "Frustration Relief" is the name of the functionality
+              // that automatically cancels a test when random key mashing is detected,
+              // and displays a recommendation to take a break.
+              title: _("Frustration Relief");
+            };
+          }
+
+          content: Adw.StatusPage {
+            icon-name: "heart-outline-thick-symbolic";
+            title: _("Frustration Detected");
+            // Translators: Make sure to convey this as politely and sensitively as possible,
+            // since it is likely to be shown to people while they are in a state of
+            // self-disappointment / anger
+            description: _("You learn faster in a calm state of mind. Consider taking a break. The test has been cancelled, and will not affect your typing statistics.");
+          };
+
+          [bottom]
+          Box {
+            halign: center;
+
+            Button frustration_continue_button {
+              label: "_Continue";
+              use-underline: true;
+
+              clicked => $ready() swapped;
 
               styles [
                 "pill",
