@@ -31,7 +31,7 @@ use adw::subclass::prelude::*;
 use glib::subclass::Signal;
 use gtk::glib;
 use gtk::{gdk, gsk};
-use std::cell::{Ref, Cell, OnceCell, RefCell};
+use std::cell::{Cell, OnceCell, Ref, RefCell};
 use std::sync::OnceLock;
 use std::time::Instant;
 use unicode_segmentation::UnicodeSegmentation;

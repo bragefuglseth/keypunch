@@ -223,7 +223,6 @@ impl imp::KpWindow {
                 }
             ),
         );
-
     }
 
     pub(super) fn end_session(&self) {
@@ -231,7 +230,6 @@ impl imp::KpWindow {
         self.text_view.set_running(false);
         self.text_view.set_accepts_input(false);
         self.finish_time.set(Some(Instant::now()));
-
 
         self.obj()
             .action_set_enabled("win.text-language-dialog", false);

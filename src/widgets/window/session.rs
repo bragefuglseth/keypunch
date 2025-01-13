@@ -144,7 +144,9 @@ impl imp::KpWindow {
                         }
                     }
 
-                    let frustration_score = text_view.keystrokes().iter()
+                    let frustration_score = text_view
+                        .keystrokes()
+                        .iter()
                         .rev()
                         .take_while(|(timestamp, _)| {
                             timestamp.elapsed().as_secs() <= FRUSTRATION_THRESHOLD as u64
