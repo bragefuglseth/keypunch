@@ -73,7 +73,9 @@ mod imp {
         #[template_child]
         pub results_view: TemplateChild<KpResultsView>,
         #[template_child]
-        pub continue_button: TemplateChild<gtk::Button>,
+        pub results_continue_button: TemplateChild<gtk::Button>,
+        #[template_child]
+        pub frustration_continue_button: TemplateChild<gtk::Button>,
 
         pub settings: OnceCell<gio::Settings>,
 
@@ -101,6 +103,7 @@ mod imp {
 
         fn class_init(klass: &mut Self::Class) {
             klass.bind_template();
+            klass.bind_template_callbacks();
 
             klass.install_action("win.about", None, move |window, _, _| {
                 window.imp().show_about_dialog();
@@ -143,8 +146,6 @@ mod imp {
 
             self.setup_text_view();
             self.setup_focus();
-            self.setup_stop_button();
-            self.setup_continue_button();
             self.setup_ui_hiding();
             self.show_cursor();
         }

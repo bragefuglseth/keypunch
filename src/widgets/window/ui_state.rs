@@ -20,27 +20,8 @@
 use super::*;
 use crate::application::KpApplication;
 
+#[gtk::template_callbacks]
 impl imp::KpWindow {
-    pub(super) fn setup_stop_button(&self) {
-        self.stop_button.connect_clicked(glib::clone!(
-            #[weak(rename_to = imp)]
-            self,
-            move |_| {
-                imp.ready();
-            }
-        ));
-    }
-
-    pub(super) fn setup_continue_button(&self) {
-        self.continue_button.connect_clicked(glib::clone!(
-            #[weak(rename_to = imp)]
-            self,
-            move |_| {
-                imp.ready();
-            }
-        ));
-    }
-
     pub(super) fn setup_ui_hiding(&self) {
         let obj = self.obj();
 
@@ -107,6 +88,7 @@ impl imp::KpWindow {
         obj.add_controller(click_gesture);
     }
 
+    #[template_callback]
     pub(super) fn ready(&self) {
         self.running.set(false);
         self.text_view.set_running(false);
@@ -203,18 +185,8 @@ impl imp::KpWindow {
             return;
         }
 
-        self.running.set(false);
-        self.text_view.set_running(false);
-        self.text_view.set_accepts_input(false);
-        self.finish_time.set(Some(Instant::now()));
+        self.end_session();
         self.show_results_view();
-        self.stop_button.set_visible(false);
-
-        self.obj()
-            .action_set_enabled("win.text-language-dialog", false);
-        self.obj().action_set_enabled("win.cancel-session", false);
-
-        self.end_existing_inhibit();
 
         // Discord IPC
         self.obj()
@@ -228,6 +200,44 @@ impl imp::KpWindow {
                 self.duration.get(),
                 PresenceState::Results,
             );
+    }
+
+    pub(super) fn frustration_relief(&self) {
+        if !self.running.get() {
+            return;
+        }
+
+        self.end_session();
+        self.main_stack.set_visible_child_name("frustration-relief");
+
+        // Avoid continue button being activated from a keypress immediately
+        let continue_button = self.frustration_continue_button.get();
+        self.obj().set_focus(None::<&gtk::Widget>);
+        glib::timeout_add_local_once(
+            Duration::from_millis(1000),
+            glib::clone!(
+                #[weak]
+                continue_button,
+                move || {
+                    continue_button.grab_focus();
+                }
+            ),
+        );
+
+    }
+
+    pub(super) fn end_session(&self) {
+        self.running.set(false);
+        self.text_view.set_running(false);
+        self.text_view.set_accepts_input(false);
+        self.finish_time.set(Some(Instant::now()));
+
+
+        self.obj()
+            .action_set_enabled("win.text-language-dialog", false);
+        self.obj().action_set_enabled("win.cancel-session", false);
+
+        self.end_existing_inhibit();
     }
 
     pub(super) fn hide_cursor(&self) {
