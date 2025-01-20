@@ -1,6 +1,6 @@
 /* mod.rs
  *
- * SPDX-FileCopyrightText: © 2024 Brage Fuglseth <bragefuglseth@gnome.org>
+ * SPDX-FileCopyrightText: © 2024–2025 Brage Fuglseth <bragefuglseth@gnome.org>
  * SPDX-License-Identifier: GPL-3.0-or-later
  *
  * This program is free software: you can redistribute it and/or modify
@@ -18,15 +18,21 @@
  */
 
 mod custom_text_dialog;
+mod interactive_graph;
 mod language_row;
+mod line_chart;
 mod results_view;
+mod statistics_dialog;
 mod text_language_dialog;
 mod text_view;
 mod window;
 
 pub use custom_text_dialog::KpCustomTextDialog;
+pub use interactive_graph::KpInteractiveGraph;
 pub use language_row::KpLanguageRow;
+pub use line_chart::KpLineChart;
 pub use results_view::KpResultsView;
+pub use statistics_dialog::KpStatisticsDialog;
 pub use text_language_dialog::KpTextLanguageDialog;
 pub use text_view::KpTextView;
 pub use window::KpWindow;

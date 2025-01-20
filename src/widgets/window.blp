@@ -47,7 +47,7 @@ template $KpWindow: Adw.ApplicationWindow {
 
                 [start]
                 Adw.LayoutSlot {
-                  id: "stop_button";
+                  id: "header_bar_start";
                 }
 
                 [title]
@@ -98,7 +98,7 @@ template $KpWindow: Adw.ApplicationWindow {
 
                 [start]
                 Adw.LayoutSlot {
-                  id: "stop_button";
+                  id: "header_bar_start";
                 }
 
                 [end]
@@ -144,12 +144,29 @@ template $KpWindow: Adw.ApplicationWindow {
             };
           }
 
-          [stop_button]
-          Button stop_button {
-            icon-name: "arrow-circular-top-right-symbolic";
-            tooltip-text: _("Restart");
+          [header_bar_start]
+          Stack header_bar_start {
+            StackPage {
+              name: "statistics_button";
 
-            clicked => $ready() swapped;
+              child: Button statistics_button {
+                icon-name: "graph-symbolic";
+                tooltip-text: _("Statistics");
+
+                action-name: "win.statistics-dialog";
+              };
+            }
+
+            StackPage {
+              name: "stop_button";
+
+              child: Button stop_button {
+                icon-name: "arrow-circular-top-right-symbolic";
+                tooltip-text: _("Restart");
+
+                action-name: "win.cancel-session";
+              };
+            }
           }
 
           [session_status]

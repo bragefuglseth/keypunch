@@ -94,9 +94,10 @@ impl imp::KpWindow {
         self.text_view.set_running(false);
         self.text_view.set_accepts_input(true);
         self.main_stack.set_visible_child_name("session");
+        self.header_bar_start
+            .set_visible_child_name("statistics_button");
         self.status_stack.set_visible_child_name("ready");
         self.menu_button.set_visible(true);
-        self.stop_button.set_visible(false);
         self.text_view.reset();
         self.focus_text_view();
 
@@ -136,9 +137,6 @@ impl imp::KpWindow {
         // Ugly hack to stop the stop button from "flashing" when starting a session:
         // Make it visible with 0 opacity, and set the opacity to 1 after the 200ms
         // crossfade effect has finished
-        self.stop_button.set_opacity(0.);
-        self.stop_button.set_visible(true);
-
         glib::timeout_add_local_once(
             Duration::from_millis(200),
             glib::clone!(
@@ -147,7 +145,7 @@ impl imp::KpWindow {
                 move || {
                     if imp.running.get() {
                         imp.menu_button.set_visible(false);
-                        imp.stop_button.set_opacity(1.);
+                        imp.header_bar_start.set_visible_child_name("stop_button");
                     }
                 }
             ),

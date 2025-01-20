@@ -25,11 +25,13 @@ edition = "2021"
 discord-presence = "1.5.0"
 # Locked to 0.7.0 because of https://github.com/hfiguiere/i18n-format/issues/1
 gettext-rs = { version = "=0.7.0", features = ["gettext-system"] }
+graphene = { package = "graphene-rs", version = "0.20.7" }
 gvdb-macros = "0.1.12"
 i18n-format = "0.2.0"
 include_dir = "0.7.3"
 rand = "0.8.5"
 rayon = "1.10.0"
+rusqlite = "0.32.1"
 strum = "0.26.2"
 strum_macros = "0.26.2"
 unicode-segmentation = "1.11.0"

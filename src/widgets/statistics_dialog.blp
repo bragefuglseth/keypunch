@@ -1,0 +1,698 @@
+/* statistics_dialog.blp
+ *
+ * SPDX-FileCopyrightText: © 2025 Brage Fuglseth <bragefuglseth@gnome.org>
+ * SPDX-License-Identifier: GPL-3.0-or-later
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ */
+
+using Gtk 4.0;
+using Adw 1;
+
+template $KpStatisticsDialog: Adw.Dialog {
+  title: _("Statistics");
+  content-width: 700;
+
+  Stack stack {
+    StackPage {
+      name: "no_data";
+
+      child: Adw.ToolbarView {
+        [top]
+        Adw.HeaderBar {}
+
+        content: Adw.StatusPage {
+          icon-name: "graph-symbolic";
+          title: _("Keep on Typing");
+          description: _("Typing data from at least 2 different days is required to view statistics. If you have statistics from earlier, you can load them.");
+
+          Button {
+            halign: center;
+
+            Adw.ButtonContent {
+              icon-name: "arrow-into-box-symbolic";
+              label: _("Load Statistics");
+            }
+
+            styles [
+              "pill"
+            ]
+          }
+        };
+      };
+    }
+
+    StackPage {
+      name: "statistics";
+
+      child: Adw.ToolbarView {
+        [top]
+        Adw.HeaderBar header_bar {}
+
+        content: ScrolledWindow scrolled_window {
+            hscrollbar-policy: never;
+            propagate-natural-height: true;
+            vexpand: true;
+
+            Adw.Clamp {
+              Box {
+                orientation: vertical;
+                margin-start: 12;
+                margin-end: 12;
+                margin-bottom: 12;
+
+                Label {
+                  label: _("Statistics");
+                  margin-bottom: 24;
+
+                  styles [
+                    "title-1"
+                  ]
+                }
+
+                // Graph
+                Box {
+                  orientation: vertical;
+
+                  styles [
+                    "card"
+                  ]
+
+                  Adw.InlineViewSwitcher {
+                    stack: graph_stack;
+                    halign: center;
+                    homogeneous: true;
+                    margin-top: 12;
+                  }
+
+                  Adw.ViewStack graph_stack {
+                    enable-transitions: true;
+                    margin-bottom: 12;
+
+                    Adw.ViewStackPage {
+                      name: "month";
+                      title: _("Month");
+
+                      child: $KpLineChart month_chart {};
+                    }
+
+                    Adw.ViewStackPage {
+                      name: "year";
+                      title: _("Year");
+
+                      child: $KpLineChart year_chart {};
+                    }
+                  }
+                }
+
+                // Last Month
+                Box {
+                  margin-top: 18;
+                  halign: fill;
+                  height-request: 46;
+
+                  styles [ "group-header" ]
+
+                  Label {
+                    label: _("Last Month");
+                    xalign: 0;
+                    hexpand: true;
+
+                    styles [
+                      "heading"
+                    ]
+                  }
+
+                  MenuButton {
+                    icon-name: "lightbulb-symbolic";
+                    direction: up;
+                    valign: center;
+
+                    styles [ "flat" ]
+
+                    popover: Popover {
+                      Label {
+                        label: _("Average speed and accuracy for generated, non-custom sessions, the share of tests that have been finished without cancelling, and the total amount of time spent on finished tests, all during the last month.");
+                        wrap: true;
+                        max-width-chars: 45;
+                        justify: center;
+                      }
+                    };
+                  }
+                }
+
+                Adw.WrapBox last_month {
+                  child-spacing: 12;
+                  line-spacing: 12;
+                  justify: fill;
+                  justify-last-line: true;
+
+                  Adw.Bin {
+                    styles [
+                      "card",
+                    ]
+                    Box {
+                      orientation: vertical;
+                      margin-top: 12;
+                      margin-bottom: 18;
+                      margin-start: 18;
+                      margin-end: 18;
+
+                      Label {
+                        label: "83";
+                        xalign: 0;
+
+                        styles [
+                          "key-number"
+                        ]
+                      }
+
+                      Label {
+                        label: "Words per Minute";
+                        xalign: 0;
+
+                        styles [
+                          "dimmed"
+                        ]
+                      }
+                    }
+                  }
+
+                  Adw.Bin {
+                    styles [
+                      "card",
+                    ]
+                    Box {
+                      orientation: vertical;
+                      margin-top: 12;
+                      margin-bottom: 18;
+                      margin-start: 18;
+                      margin-end: 18;
+
+                      Label {
+                        label: "94%";
+                        xalign: 0;
+
+                        styles [
+                          "key-number"
+                        ]
+                      }
+
+                      Label {
+                        label: "Accuracy";
+                        xalign: 0;
+
+                        styles [
+                          "dimmed"
+                        ]
+                      }
+                    }
+                  }
+
+                  Adw.Bin {
+                    styles [
+                      "card",
+                    ]
+                    Box {
+                      orientation: vertical;
+                      margin-top: 12;
+                      margin-bottom: 18;
+                      margin-start: 18;
+                      margin-end: 18;
+
+                      Label {
+                        label: "77%";
+                        xalign: 0;
+
+                        styles [
+                          "key-number"
+                        ]
+                      }
+
+                      Label {
+                        label: "Finish Rate";
+                        xalign: 0;
+
+                        styles [
+                          "dimmed"
+                        ]
+                      }
+                    }
+                  }
+
+                  Adw.Bin {
+                    styles [
+                      "card",
+                    ]
+                    Box {
+                      orientation: vertical;
+                      margin-top: 12;
+                      margin-bottom: 18;
+                      margin-start: 18;
+                      margin-end: 18;
+
+                      Label {
+                        label: "10m";
+                        xalign: 0;
+
+                        styles [
+                          "key-number"
+                        ]
+                      }
+
+                      Label {
+                        label: "Practice Time";
+                        xalign: 0;
+
+                        styles [
+                          "dimmed"
+                        ]
+                      }
+                    }
+                  }
+                }
+
+                // Missed Characters
+                Box {
+                  margin-top: 18;
+                  halign: fill;
+                  height-request: 46;
+
+                  styles [ "group-header" ]
+
+                  Label {
+                    label: _("Missed Characters");
+                    xalign: 0;
+                    hexpand: true;
+
+                    styles [
+                      "heading"
+                    ]
+                  }
+
+                  MenuButton {
+                    icon-name: "lightbulb-symbolic";
+                    direction: up;
+                    valign: center;
+
+                    styles [ "flat" ]
+
+                    popover: Popover {
+                      Label {
+                        label: _("The characters that were mistyped the most during the last month, accompanied by their respective error rates.");
+                        wrap: true;
+                        max-width-chars: 45;
+                        justify: center;
+                      }
+                    };
+                  }
+                }
+
+                Adw.WrapBox mistyped_box {
+                  child-spacing: 12;
+                  line-spacing: 12;
+                  justify: fill;
+                  justify-last-line: true;
+                  pack-direction: end_to_start;
+                  wrap-reverse: true;
+
+                  Box {
+                    orientation: vertical;
+
+                    Adw.Bin {
+                      width-request: 75;
+
+                      styles [
+                        "card"
+                      ]
+
+                      Label {
+                        label: "q";
+                        valign: center;
+                        margin-start: 12;
+                        margin-end: 12;
+                        margin-top: 12;
+                        margin-bottom: 12;
+                        yalign: 0;
+
+                        styles [
+                          "key-number",
+                        ]
+                      }
+                    }
+
+                    Label {
+                      label: "10%";
+                      margin-top: 6;
+
+                      styles [
+                        "error"
+                      ]
+                    }
+                  }
+
+                  Box {
+                    orientation: vertical;
+
+                    Adw.Bin {
+                      width-request: 75;
+
+                      styles [
+                        "card"
+                      ]
+
+                      Label {
+                        label: "x";
+                        valign: center;
+                        margin-start: 12;
+                        margin-end: 12;
+                        margin-top: 12;
+                        margin-bottom: 12;
+                        yalign: 0;
+
+                        styles [
+                          "key-number",
+                        ]
+                      }
+                    }
+
+                    Label {
+                      label: "10%";
+                      margin-top: 6;
+
+                      styles [
+                        "error"
+                      ]
+                    }
+                  }
+
+                  Box {
+                    orientation: vertical;
+
+                    Adw.Bin {
+                      width-request: 75;
+
+                      styles [
+                        "card"
+                      ]
+
+                      Label {
+                        label: "å";
+                        valign: center;
+                        margin-start: 12;
+                        margin-end: 12;
+                        margin-top: 12;
+                        margin-bottom: 12;
+                        yalign: 0;
+
+                        styles [
+                          "key-number",
+                        ]
+                      }
+                    }
+
+                    Label {
+                      label: "10%";
+                      margin-top: 6;
+
+                      styles [
+                        "error"
+                      ]
+                    }
+                  }
+
+                  Box {
+                    orientation: vertical;
+
+                    Adw.Bin {
+                      width-request: 80;
+
+                      styles [
+                        "card"
+                      ]
+
+                      Label {
+                        label: "z";
+                        valign: center;
+                        margin-start: 12;
+                        margin-end: 12;
+                        margin-top: 12;
+                        margin-bottom: 12;
+                        yalign: 0;
+
+                        styles [
+                          "key-number",
+                        ]
+                      }
+                    }
+
+                    Label {
+                      label: "10%";
+                      margin-top: 6;
+
+                      styles [
+                        "error"
+                      ]
+                    }
+                  }
+
+                  Box {
+                    orientation: vertical;
+
+                    Adw.Bin {
+                      width-request: 80;
+
+                      styles [
+                        "card"
+                      ]
+
+                      Label {
+                        label: "a";
+                        valign: center;
+                        margin-start: 12;
+                        margin-end: 12;
+                        margin-top: 12;
+                        margin-bottom: 12;
+                        yalign: 0;
+
+                        styles [
+                          "key-number",
+                        ]
+                      }
+                    }
+
+                    Label {
+                      label: "10%";
+                      margin-top: 6;
+
+                      styles [
+                        "error"
+                      ]
+                    }
+                  }
+
+                }
+
+                // PRs
+                Label {
+                  label: _("Personal Records");
+                  xalign: 0;
+                  margin-top: 18;
+                  height-request: 46;
+
+                  styles [
+                    "heading",
+                  ]
+                }
+
+                Adw.WrapBox records_box {
+                  child-spacing: 12;
+                  line-spacing: 12;
+                  justify: fill;
+                  justify-last-line: true;
+
+                  Adw.Bin {
+                    styles [
+                      "card",
+                    ]
+                    Box {
+                      orientation: vertical;
+                      margin-top: 12;
+                      margin-bottom: 18;
+                      margin-start: 18;
+                      margin-end: 18;
+
+                      Label {
+                        label: "115";
+                        xalign: 0;
+
+                        styles [
+                          "key-number"
+                        ]
+                      }
+
+                      Label {
+                        label: "15 seconds";
+                        xalign: 0;
+
+                        styles [
+                          "dimmed"
+                        ]
+                      }
+                    }
+                  }
+
+                  Adw.Bin {
+                    styles [
+                      "card",
+                    ]
+                    Box {
+                      orientation: vertical;
+                      margin-top: 12;
+                      margin-bottom: 18;
+                      margin-start: 18;
+                      margin-end: 18;
+
+                      Label {
+                        label: "103";
+                        xalign: 0;
+
+                        styles [
+                          "key-number"
+                        ]
+                      }
+
+                      Label {
+                        label: "30 seconds";
+                        xalign: 0;
+
+                        styles [
+                          "dimmed"
+                        ]
+                      }
+                    }
+                  }
+
+                  Adw.Bin {
+                    styles [
+                      "card",
+                    ]
+                    Box {
+                      orientation: vertical;
+                      margin-top: 12;
+                      margin-bottom: 18;
+                      margin-start: 18;
+                      margin-end: 18;
+
+                      Label {
+                        label: "92";
+                        xalign: 0;
+
+                        styles [
+                          "key-number"
+                        ]
+                      }
+
+                      Label {
+                        label: "1 minute";
+                        xalign: 0;
+
+                        styles [
+                          "dimmed"
+                        ]
+                      }
+                    }
+                  }
+
+                  Adw.Bin {
+                    styles [
+                      "card",
+                    ]
+                    Box {
+                      orientation: vertical;
+                      margin-top: 12;
+                      margin-bottom: 18;
+                      margin-start: 18;
+                      margin-end: 18;
+
+                      Label {
+                        label: "53";
+                        xalign: 0;
+
+                        styles [
+                          "key-number"
+                        ]
+                      }
+
+                      Label {
+                        label: "2 minutes";
+                        xalign: 0;
+
+                        styles [
+                          "dimmed"
+                        ]
+                      }
+                    }
+                  }
+
+                }
+
+                // Missed Characters
+                Label {
+                  label: _("Data Management");
+                  xalign: 0;
+                  hexpand: true;
+                  height-request: 46;
+                  margin-top: 18;
+
+                  styles [
+                    "heading"
+                  ]
+                }
+
+                Gtk.ListBox {
+                  selection-mode: none;
+
+                  styles [ "boxed-list" ]
+
+                  Adw.ButtonRow {
+                    start-icon-name: "arrow-into-box-symbolic";
+                    title: _("Load Statistics");
+                  }
+                  Adw.ButtonRow {
+                    end-icon-name: "go-next";
+                    title: _("Export Statistics");
+                  }
+                }
+
+                Gtk.ListBox {
+                  selection-mode: none;
+                  margin-top: 12;
+
+                  styles [ "boxed-list" ]
+
+                  Adw.ButtonRow {
+                    title: _("Clear Statistics");
+
+                    styles [ "destructive-action" ]
+                  }
+                }
+
+              }
+            }
+          };
+        };
+    }
+  }
+}

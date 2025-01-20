@@ -21,7 +21,7 @@ use super::*;
 use crate::application::KpApplication;
 use crate::text_generation;
 use crate::text_utils::{calculate_accuracy, calculate_wpm, process_custom_text, GraphemeState};
-use crate::widgets::{KpCustomTextDialog, KpTextLanguageDialog};
+use crate::widgets::{KpCustomTextDialog, KpStatisticsDialog, KpTextLanguageDialog};
 use gettextrs::gettext;
 use glib::ControlFlow;
 use i18n_format::i18n_fmt;
@@ -226,6 +226,12 @@ impl imp::KpWindow {
                 self.duration.get(),
                 PresenceState::Ready,
             );
+    }
+
+    pub(super) fn show_statistics_dialog(&self) {
+        let dialog = KpStatisticsDialog::new();
+
+        dialog.present(Some(self.obj().upcast_ref::<gtk::Widget>()));
     }
 
     pub(super) fn show_text_language_dialog(&self) {

@@ -53,6 +53,10 @@ mod imp {
         #[template_child]
         pub custom_button: TemplateChild<gtk::Button>,
         #[template_child]
+        pub header_bar_start: TemplateChild<gtk::Stack>,
+        #[template_child]
+        pub statistics_button: TemplateChild<gtk::Button>,
+        #[template_child]
         pub stop_button: TemplateChild<gtk::Button>,
         #[template_child]
         pub status_stack: TemplateChild<gtk::Stack>,
@@ -115,6 +119,10 @@ mod imp {
 
             klass.install_action("win.cancel-session", None, move |window, _, _| {
                 window.imp().ready();
+            });
+
+            klass.install_action("win.statistics-dialog", None, move |window, _, _| {
+                window.imp().show_statistics_dialog();
             });
         }
 
