@@ -42,5 +42,5 @@ features = ["v4_16", "blueprint"]
 
 [dependencies.adw]
 package = "libadwaita"
-version = "0.7"
-features = ["v1_6"]
+version = "0.7.1"
+features = ["v1_7"]

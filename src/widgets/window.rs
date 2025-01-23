@@ -203,6 +203,14 @@ mod imp {
                 &["Sophie Herold https://www.patreon.com/sophieh"],
             );
 
+            about.add_other_app(
+                "dev.bragefuglseth.Fretboard",
+                // Translators: Metainfo for the app Fretboard. <https://github.com/bragefuglseth/fretboard>
+                &gettext("Fretboard"),
+                // Translators: Metainfo for the app Fretboard. <https://github.com/bragefuglseth/fretboard>
+                &gettext("Look up guitar chords"),
+            );
+
             about.connect_closed(glib::clone!(
                 #[weak(rename_to = imp)]
                 self,
