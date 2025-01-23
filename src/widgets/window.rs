@@ -1,6 +1,7 @@
 /* window.rs
  *
- * Copyright 2024 Brage Fuglseth
+ * SPDX-FileCopyrightText: © 2024 Brage Fuglseth <bragefuglseth@gnome.org>
+ * SPDX-License-Identifier: GPL-3.0-or-later
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -14,8 +15,6 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
- *
- * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
 mod focus;
@@ -25,6 +24,7 @@ mod settings;
 mod ui_state;
 
 use crate::config::APP_ID;
+use crate::session_enums::*;
 use crate::text_generation::Language;
 use crate::widgets::{KpResultsView, KpTextView};
 use adw::prelude::*;
@@ -33,47 +33,6 @@ use gettextrs::gettext;
 use gtk::{gio, glib};
 use std::cell::{Cell, OnceCell, RefCell};
 use std::time::{Duration, Instant};
-use strum_macros::{Display as EnumDisplay, EnumIter, EnumString};
-
-#[derive(Clone, Copy, Default, PartialEq, EnumString, EnumDisplay, EnumIter)]
-pub enum SessionType {
-    #[default]
-    Simple,
-    Advanced,
-    Custom,
-}
-
-impl SessionType {
-    pub fn ui_string(&self) -> String {
-        match self {
-            SessionType::Simple => gettext("Simple"),
-            SessionType::Advanced => gettext("Advanced"),
-            SessionType::Custom => gettext("Custom"),
-        }
-    }
-}
-
-#[derive(Copy, Clone, Default, PartialEq, EnumString, EnumDisplay, EnumIter)]
-pub enum SessionDuration {
-    #[default]
-    Sec15,
-    Sec30,
-    Min1,
-    Min5,
-    Min10,
-}
-
-impl SessionDuration {
-    pub fn ui_string(&self) -> String {
-        match self {
-            SessionDuration::Sec15 => gettext("15 seconds"),
-            SessionDuration::Sec30 => gettext("30 seconds"),
-            SessionDuration::Min1 => gettext("1 minute"),
-            SessionDuration::Min5 => gettext("5 minutes"),
-            SessionDuration::Min10 => gettext("10 minutes"),
-        }
-    }
-}
 
 mod imp {
     use super::*;
@@ -86,10 +45,6 @@ mod imp {
         #[template_child]
         pub main_stack: TemplateChild<gtk::Stack>,
         #[template_child]
-        pub header_stack: TemplateChild<gtk::Stack>,
-        #[template_child]
-        pub header_bar_ready: TemplateChild<adw::HeaderBar>,
-        #[template_child]
         pub session_type_dropdown: TemplateChild<gtk::DropDown>,
         #[template_child]
         pub secondary_config_stack: TemplateChild<gtk::Stack>,
@@ -98,11 +53,13 @@ mod imp {
         #[template_child]
         pub custom_button: TemplateChild<gtk::Button>,
         #[template_child]
-        pub header_bar_running: TemplateChild<adw::HeaderBar>,
-        #[template_child]
         pub stop_button: TemplateChild<gtk::Button>,
         #[template_child]
-        pub running_title: TemplateChild<adw::WindowTitle>,
+        pub status_stack: TemplateChild<gtk::Stack>,
+        #[template_child]
+        pub status_label: TemplateChild<gtk::Label>,
+        #[template_child]
+        pub menu_button: TemplateChild<gtk::MenuButton>,
         #[template_child]
         pub text_view: TemplateChild<KpTextView>,
         #[template_child]
@@ -116,7 +73,9 @@ mod imp {
         #[template_child]
         pub results_view: TemplateChild<KpResultsView>,
         #[template_child]
-        pub continue_button: TemplateChild<gtk::Button>,
+        pub results_continue_button: TemplateChild<gtk::Button>,
+        #[template_child]
+        pub frustration_continue_button: TemplateChild<gtk::Button>,
 
         pub settings: OnceCell<gio::Settings>,
 
@@ -144,6 +103,7 @@ mod imp {
 
         fn class_init(klass: &mut Self::Class) {
             klass.bind_template();
+            klass.bind_template_callbacks();
 
             klass.install_action("win.about", None, move |window, _, _| {
                 window.imp().show_about_dialog();
@@ -186,12 +146,8 @@ mod imp {
 
             self.setup_text_view();
             self.setup_focus();
-            self.setup_stop_button();
-            self.setup_continue_button();
             self.setup_ui_hiding();
             self.show_cursor();
-
-            self.ready();
         }
     }
     impl WidgetImpl for KpWindow {}
@@ -215,7 +171,7 @@ mod imp {
 
             let about = adw::AboutDialog::from_appdata(
                 "/dev/bragefuglseth/Keypunch/dev.bragefuglseth.Keypunch.metainfo.xml",
-                Some("4.0"),
+                Some("5.0"),
             );
 
             about.set_developers(&["Brage Fuglseth https://bragefuglseth.dev"]);
@@ -231,6 +187,7 @@ mod imp {
                     "Ibrahim Muhammad",
                     "Kim Jimin https://developomp.com",
                     "Shellheim",
+                    "Tamazight teachers of Tizi Ouzou",
                     "Urtsi Santsi",
                     "Yevhen Popok",
                 ],
@@ -239,7 +196,7 @@ mod imp {
             // Translators: Replace "translator-credits" with your names, one name per line
             about.set_translator_credits(&gettext("translator-credits"));
 
-            about.set_copyright("© 2024 Brage Fuglseth");
+            about.set_copyright("© 2024–2025 Brage Fuglseth");
 
             about.add_acknowledgement_section(
                 Some(&gettext("Special thanks to")),
@@ -275,8 +232,12 @@ glib::wrapper! {
 
 impl KpWindow {
     pub fn new<P: IsA<gtk::Application>>(application: &P) -> Self {
-        glib::Object::builder()
+        let obj: KpWindow = glib::Object::builder()
             .property("application", application)
-            .build()
+            .build();
+
+        obj.imp().ready();
+
+        obj
     }
 }

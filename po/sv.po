@@ -1,22 +1,22 @@
-# Ukrainian translation of Keypunch.
-# Copyright (C) 2024 Keypunch Contributors
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the keypunch package.
-# Yevhen Popok <xalt7x.service@gmail.com>, 2024.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
+#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: keypunch\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-01-09 21:31+0100\n"
-"PO-Revision-Date: 2024-06-24 10:45+0300\n"
-"Last-Translator: Yevhen Popok <xalt7x.service@gmail.com>\n"
+"PO-Revision-Date: 2024-09-30 16:54+0200\n"
+"Last-Translator: \n"
 "Language-Team: \n"
-"Language: uk\n"
+"Language: sv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=n==1 ? 3 : n%10==1 && n%100!=11 ? 0 : "
-"n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 3.4.4\n"
 
 #: data/dev.bragefuglseth.Keypunch.desktop.in.in:3
@@ -28,15 +28,15 @@ msgstr "Keypunch"
 #: data/dev.bragefuglseth.Keypunch.desktop.in.in:4
 #: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:8
 msgid "Practice your typing skills"
-msgstr "Практикуйте свої навички друку"
+msgstr "Öva på din skrivförmåga"
 
 #: data/dev.bragefuglseth.Keypunch.desktop.in.in:10
 msgid ""
 "typing;trainer;touch typing;keyboard;speed;wpm;words per minute;accuracy;"
 "test;"
 msgstr ""
-"друк;тренажер;сенсорний друк;клавіатура;швидкість;сл/хв;слів за хвилину;"
-"точність;перевірка;"
+"skriva;tränare;touch;tangentbord;snabb;fart;wpm;ord per minut;"
+"fingerfärdighet;test;"
 
 #: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:13
 msgid ""
@@ -44,9 +44,10 @@ msgid ""
 "digital age. Typing fast and accurately gives you more opportunities, more "
 "time for what matters to you, and a sense of self-accomplishment."
 msgstr ""
-"Немає сумнівів, що вміння друкувати на клавіатурі є важливим в цифрову "
-"епоху. Швидкість і точність друку надає вам більше можливостей, більше часу "
-"на те, що важливо для вас, і також відчуття самореалізації."
+"Det är ingen fråga om saken: att kunna skriva på ett tangentbord är en "
+"essentiell förmåga i den digitala tidsåldern. Att skriva fort och korrekt "
+"ger dig fler möjligheter, mer tid åt det som är viktigt för dig, och en "
+"känsla av självförverkligande."
 
 #: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:18
 msgid ""
@@ -56,12 +57,11 @@ msgid ""
 "some time, you will observe a noticeable increase in both the speed and the "
 "accuracy of which your thoughts and ideas are put into words on the screen."
 msgstr ""
-"Keypunch дозволяє практикувати введення тексту. Завдяки швидкому темпу "
-"сеансів з миттєвим зворотним звʼязком і великій кількості доступних мов, ці "
-"вправи можуть навіть вас дещо розважити. Маючи цілеспрямованість, "
-"використовуючи правильну техніку та деякий час, ви помітите суттєве "
-"підвищення швидкості та точності перенесення ваших думок та ідей в слова на "
-"екрані."
+"Med Keypunch kan du öva på din skrivförmåga. Tack vare snabba sessioner med "
+"direkt återkoppling efter och en uppsjö av tillgängliga språk, kanske det "
+"till och med blir kul. Med beslutsamhet, rätt teknik och lite tid kommer du "
+"märka en faktisk skillnad på både tiden och korrektheten med vilka dina "
+"tankar och idéer blir till ord på skärmen."
 
 #: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:25
 msgid ""
@@ -69,155 +69,155 @@ msgid ""
 "Try practicing with numbers and punctuation, or choose your own text to type "
 "out as fast as you can."
 msgstr ""
-"Якщо ви вже є пілотом у наборі тексту, Keypunch все одно має дещо для вас. "
-"Спробуйте потренуватися з цифрами та розділовими знаками, або ж виберіть "
-"власний текст і надрукуйте його якнайшвидше."
+"Om du redan är en mästare på att skriva har Keypunch fortfarande något för "
+"dig. Öva på att skriva med siffror och interpunktionstecken, eller välj en "
+"egen text att skriva så fort som möjligt."
 
 #: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:30
 msgid "Get ready to accelerate your typing!"
-msgstr "Приготуйтесь до пришвидшення в наборі тексту!"
+msgstr "Förbered dig på att accelerera ditt skrivande!"
 
 #: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:36
 msgid "In the middle of a session"
-msgstr "Під час сеансу"
+msgstr "Mitt i en session"
 
 #: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:40
 msgid "Ready for typing"
-msgstr "Готові до набору тексту"
+msgstr "Redo för skrivning"
 
 #: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:44
 msgid "Session results"
-msgstr "Результати сеансу"
+msgstr "Resultat för sessionen"
 
 #: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:48
 msgid "Language selection"
-msgstr "Вибір мови"
+msgstr "Val av språk"
 
 #: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:52
 msgid "Custom text entry"
-msgstr "Друк власного тексту"
+msgstr "Anpassad textinmatning"
 
 #: data/dev.bragefuglseth.Keypunch.gschema.xml:20
 msgid "Window Width"
-msgstr "Ширина вікна"
+msgstr "Fönsterbredd"
 
 #: data/dev.bragefuglseth.Keypunch.gschema.xml:24
 msgid "Window Height"
-msgstr "Висота вікна"
+msgstr "Fönsterhöjd"
 
 #: data/dev.bragefuglseth.Keypunch.gschema.xml:28
 msgid "Window Maximization"
-msgstr "Розгортання вікна"
+msgstr "Fönstermaximering"
 
 #: data/dev.bragefuglseth.Keypunch.gschema.xml:32
 #: src/widgets/results_view.blp:82 src/widgets/window.blp:146
 msgid "Session Type"
-msgstr "Тип сеансу"
+msgstr "Sessionstyp"
 
 #: data/dev.bragefuglseth.Keypunch.gschema.xml:36
 #: src/widgets/results_view.blp:95 src/widgets/window.blp:151
 msgid "Session Duration"
-msgstr "Тривалість сеансу"
+msgstr "Varaktighet"
 
 #: data/dev.bragefuglseth.Keypunch.gschema.xml:37
 msgid "The duration of time-based sessions"
-msgstr "Тривалість обмежених у часі сеансів"
+msgstr "Varaktigheten av tidsbaserade sessioner"
 
 #. Translators: Insert the language code of your language here, for example "nb" for Norwegian Bokmaal. Do not remove the quotation marks. It's doesn't matter if there isn't a word list for the language in `data/word_lists` right now, the app will fall back to English in that case and start using the list if it becomes available in the future.
 #: data/dev.bragefuglseth.Keypunch.gschema.xml:41
 msgid "\"en\""
-msgstr "\"uk\""
+msgstr "\"sv\""
 
 #: data/dev.bragefuglseth.Keypunch.gschema.xml:42
 #: src/widgets/results_view.blp:108 src/widgets/text_language_dialog.blp:5
 #: src/widgets/text_language_dialog.blp:13
 #: src/widgets/text_language_dialog.blp:39
 msgid "Text Language"
-msgstr "Мова тексту"
+msgstr "Textspråk"
 
 #: data/dev.bragefuglseth.Keypunch.gschema.xml:43
 msgid "The code of the language used for automatically generated text"
-msgstr "Код мови, яка використовується для автоматично згенерованого тексту"
+msgstr "Koden för språket som används för automatiskt genererad text"
 
 #: data/dev.bragefuglseth.Keypunch.gschema.xml:47
 msgid "Recent Languages"
-msgstr "Нещодавні мови"
+msgstr "Senaste språken"
 
 #: data/dev.bragefuglseth.Keypunch.gschema.xml:48
 msgid "Languages shown in the list of recent ones in the text language dialog"
-msgstr "Мови для показу в списку нещодавно використаних мов"
+msgstr "Språk som visas i listan av senaste språken i fönstret med textspråk"
 
 #. Translators: This is the default text for custom typing sessions. Do not translate it literally, and do not remove the quotation marks. Replace it with an appropriate "sample sentence" from your language instead. The original text is an English pangram, so you can e.g. find a pangram in your language: https://clagnut.com/blog/2380
 #: data/dev.bragefuglseth.Keypunch.gschema.xml:52
 msgid "\"The quick brown fox jumps over the lazy dog.\""
-msgstr "\"Чуєш їх, доцю, га? Кумедна ж ти, прощайся без ґольфів!\""
+msgstr "\"Flygande bäckasiner söka hwila på mjuka tuvor.\""
 
 #: data/dev.bragefuglseth.Keypunch.gschema.xml:53
 #: src/widgets/custom_text_dialog.blp:5 src/widgets/custom_text_dialog.blp:26
 msgid "Custom Text"
-msgstr "Власний текст"
+msgstr "Anpassad text"
 
 #: data/dev.bragefuglseth.Keypunch.gschema.xml:54
 msgid "Text displayed when “Custom” is chosen from the session menu"
-msgstr "Текст показується, коли вибрано \"Власний\" в меню сеансів"
+msgstr "Text som visas när ”Anpassad” har valts från sessionsmenyn"
 
 #: data/dev.bragefuglseth.Keypunch.gschema.xml:58
 msgid "Personal Best"
-msgstr "Особистий рекорд"
+msgstr "Personligt bästa"
 
 #: data/dev.bragefuglseth.Keypunch.gschema.xml:59
 msgid ""
 "The current highest amount of WPM received for each session type / duration "
 "and language"
 msgstr ""
-"Найбільша поточна кількість слів за хвилину, зафіксована для кожного типу "
-"сеансу / тривалості та мови"
+"De för närvarande snabbaste hastighetsmätningarna från varje testad "
+"kombination av sessionstyp, varaktighet och språk"
 
 #: data/resources/gtk/help-overlay.ui:11
 msgctxt "shortcut window"
 msgid "General"
-msgstr "Загальне"
+msgstr "Allmänt"
 
 #: data/resources/gtk/help-overlay.ui:14
 msgctxt "shortcut window"
 msgid "Text Language"
-msgstr "Мова тексту"
+msgstr "Textspråk"
 
 #: data/resources/gtk/help-overlay.ui:20
 msgctxt "shortcut window"
 msgid "Cancel Session"
-msgstr "Скасувати сеанс"
+msgstr "Avbryt session"
 
 #: data/resources/gtk/help-overlay.ui:26
 msgctxt "shortcut window"
 msgid "Keyboard Shortcuts"
-msgstr "Клавіатурні скорочення"
+msgstr "Tangentbordsgenvägar"
 
 #: data/resources/gtk/help-overlay.ui:32
 msgctxt "shortcut window"
 msgid "Close Window"
-msgstr "Закрити вікно"
+msgstr "Stäng fönster"
 
 #: data/resources/gtk/help-overlay.ui:38
 msgctxt "shortcut window"
 msgid "Quit"
-msgstr "Вийти"
+msgstr "Avsluta"
 
 #: src/widgets/custom_text_dialog.blp:37
 msgid "Insert custom text…"
-msgstr "Вставте власний текст..."
+msgstr "Infoga anpassad text…"
 
 #: src/widgets/custom_text_dialog.blp:73
 msgid "_Save"
-msgstr "_Зберегти"
+msgstr "_Spara"
 
 #: src/widgets/results_view.blp:34
 msgid "New Personal Best for Configuration"
-msgstr "Новий особистий рекорд по конфігурації"
+msgstr "Nytt personligt bästa för denna konfiguration"
 
 #: src/widgets/results_view.blp:45
 msgid "Words per Minute"
-msgstr "Слів за хвилину"
+msgstr "Ord per minut"
 
 #: src/widgets/results_view.blp:66
 msgid "Accuracy"
@@ -234,131 +234,127 @@ msgstr "{}%"
 #. and seconds. Do not translate them!
 #: src/widgets/results_view.rs:187
 msgid "{}m {}s"
-msgstr "{}хв {}сек"
+msgstr "{}m {}s"
 
 #. Translators: The `{}` block will be replaced with the number of minutes.
 #. Do not translate it!
 #: src/widgets/results_view.rs:191
 msgid "{} minute"
 msgid_plural "{} minutes"
-msgstr[0] "{} хвилина"
-msgstr[1] "{} хвилини"
-msgstr[2] "{} хвилин"
-msgstr[3] "{} хвилина"
+msgstr[0] "{} minut"
+msgstr[1] "{} minuter"
 
 #. Translators: The `{}` block will be replaced with the number of seconds.
 #. Do not translate it!
 #: src/widgets/results_view.rs:195
 msgid "{} second"
 msgid_plural "{} seconds"
-msgstr[0] "{} секунда"
-msgstr[1] "{} секунди"
-msgstr[2] "{} секунд"
-msgstr[3] "{} секунда"
+msgstr[0] "{} sekund"
+msgstr[1] "{} sekunder"
 
 #: src/widgets/text_language_dialog.blp:21
 #: src/widgets/text_language_dialog.blp:161
 #: src/widgets/text_language_dialog.blp:190
 msgid "Add Language"
-msgstr "Додати мову"
+msgstr "Lägg till språk"
 
 #: src/widgets/text_language_dialog.blp:51
 #: src/widgets/text_language_dialog.blp:55
 msgid "Search languages…"
-msgstr "Пошук мов..."
+msgstr "Sök efter språk…"
 
 #. Translators: Recent languages in text languages list
 #: src/widgets/text_language_dialog.blp:79
 msgid "Recent"
-msgstr "Нещодавні"
+msgstr "Senaste"
 
 #. Translators: Other languages in text languages list
 #: src/widgets/text_language_dialog.blp:84
 msgid "Other"
-msgstr "Інші"
+msgstr "Andra"
 
 #: src/widgets/text_language_dialog.blp:104
 msgid "Search Results"
-msgstr "Результати пошуку"
+msgstr "Sökresultat"
 
 #: src/widgets/text_language_dialog.blp:140
 msgid "No Matches"
-msgstr "Нічого не знайдено"
+msgstr "Inga träffar"
 
 #: src/widgets/text_language_dialog.blp:148
 msgid "Try a different search"
-msgstr "Спробуйте інший пошук"
+msgstr "Testa en annan sökning"
 
 #: src/widgets/text_language_dialog.blp:199
 msgid ""
 "You can help add a new text language to Keypunch by submitting a language "
 "request on GitHub. A GitHub account and some language knowledge is required."
 msgstr ""
-"Ви можете допомогти додати до Keypunch нову мову тексту, створивши на GitHub "
-"запит на додавання мови. Для цього потрібен обліковий запис GitHub і деякі "
-"знання мови."
+"Du kan vara behjälplig med att lägga till ett nytt textspråk till Keypunch "
+"genom att öppna ett språkärende på GitHub. Ett GitHub-konto och lite kunskap "
+"om språket avkrävs."
 
 #: src/widgets/text_language_dialog.blp:214
 msgid "_Create Request"
-msgstr "_Надіслати запит"
+msgstr "Skapa förfr_ågan"
 
 #: src/widgets/text_view.blp:9
 msgid "Text View"
-msgstr "Текстовий вигляд"
+msgstr "Textvy"
 
 #: src/widgets/window.blp:131
 msgid "Restart"
-msgstr "Перезапустити"
+msgstr "Starta om"
 
 #: src/widgets/window.blp:158
 msgid "_Edit Text"
-msgstr "_Редагувати текст"
+msgstr "_Redigera text"
 
 #: src/widgets/window.blp:187
 msgid "Main Menu"
-msgstr "Головне меню"
+msgstr "Huvudmeny"
 
 #: src/widgets/window.blp:205
 msgid "Just Start Typing"
-msgstr "Просто почніть друкувати"
+msgstr "Börja skriv"
 
 #. Translators: "Entry" here is the act of entering text
 #: src/widgets/window.blp:214
 msgid "Enable Entry"
-msgstr "Увімкнути набір тексту"
+msgstr "Aktivera textinmatning"
 
 #: src/widgets/window.blp:240
 msgid "Results"
-msgstr "Результати"
+msgstr "Resultat"
 
 #: src/widgets/window.blp:265
 msgid "_Continue"
-msgstr "_Далі"
+msgstr "_Fortsätt"
 
 #: src/widgets/window.blp:297
 msgid "Text _Language"
-msgstr "_Мова тексту"
+msgstr "Texts_pråk"
 
 #: src/widgets/window.blp:302
 msgid "_Keyboard Shortcuts"
-msgstr "_Клавіатурні скорочення"
+msgstr "_Tangentbordsgenvägar"
 
 #: src/widgets/window.blp:307
 msgid "_About Keypunch"
-msgstr "_Про Keypunch"
+msgstr "_Om Keypunch"
 
 #: src/widgets/window.rs:180
 msgid "Orthography by"
-msgstr "Правопис від"
+msgstr "Korrekturläst av"
 
 #. Translators: Replace "translator-credits" with your names, one name per line
 #: src/widgets/window.rs:197
 msgid "translator-credits"
-msgstr "Yevhen Popok"
+msgstr "Miró Allard <info@miroallard.com>"
 
 #: src/widgets/window.rs:202
 msgid "Special thanks to"
-msgstr "Окрема подяка"
+msgstr "Tack till"
 
 #: src/widgets/window/session.rs:118
 msgid "{} ⁄ {}"
@@ -366,11 +362,11 @@ msgstr "{} ⁄ {}"
 
 #: src/widgets/window/session.rs:310
 msgid "Changes discarded"
-msgstr "Зміни відхилено"
+msgstr "Ändringar förkastade"
 
 #: src/widgets/window/session.rs:311
 msgid "Restore"
-msgstr "Відновити"
+msgstr "Återställ"
 
 #. Translators: The format of the timer. The first `{}` block will be replaced
 #. with the minutes passed, and the second one will be replaced with the seconds
@@ -384,40 +380,31 @@ msgstr "{}∶{}"
 #. Translators: This is shown as a warning by GNOME Shell before logging out or shutting off the system in the middle of a typing session, alongside Keypunch's name and icon
 #: src/widgets/window/ui_state.rs:179
 msgid "Ongoing typing session"
-msgstr ""
+msgstr "Pågående skrivsession"
 
 #~ msgid "Correctness"
-#~ msgstr "Коректність"
+#~ msgstr "Korrekthet"
 
 #~ msgid "Simple"
-#~ msgstr "Простий"
+#~ msgstr "Enkel"
 
 #~ msgid "Advanced"
-#~ msgstr "Розширений"
+#~ msgstr "Avancerad"
 
 #~ msgid "Custom"
-#~ msgstr "Власний"
+#~ msgstr "Anpassad"
 
 #~ msgid "15 seconds"
-#~ msgstr "15 секунд"
+#~ msgstr "15 sekunder"
 
 #~ msgid "30 seconds"
-#~ msgstr "30 секунд"
+#~ msgstr "30 sekunder"
 
 #~ msgid "1 minute"
-#~ msgstr "1 хвилина"
+#~ msgstr "1 minut"
 
 #~ msgid "5 minutes"
-#~ msgstr "5 хвилин"
+#~ msgstr "5 minuter"
 
 #~ msgid "10 minutes"
-#~ msgstr "10 хвилин"
-
-#~ msgid "\"en_US\""
-#~ msgstr "\"en_US\""
-
-#~ msgid ""
-#~ "This is the initial release of Keypunch! Give it a spin and say what you "
-#~ "think."
-#~ msgstr ""
-#~ "Це перший реліз Keypunch! Спробуйте та поділіться своїми враженнями."
+#~ msgstr "10 minuter"

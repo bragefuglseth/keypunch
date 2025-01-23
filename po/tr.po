@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: dev.bragefuglseth.Keypunch\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-23 20:52+0200\n"
-"PO-Revision-Date: 2024-08-17 23:46+0300\n"
+"POT-Creation-Date: 2025-01-09 21:31+0100\n"
+"PO-Revision-Date: 2024-10-23 00:24+0300\n"
 "Last-Translator: Sabri Ünal <yakushabb@gmail.com>\n"
 "Language-Team: Turkish <takim@gnome.org.tr>\n"
 "Language: tr\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 3.4.3\n"
+"X-Generator: Poedit 3.5\n"
 
 #: data/dev.bragefuglseth.Keypunch.desktop.in.in:3
 #: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:7
@@ -45,6 +45,8 @@ msgid ""
 "digital age. Typing fast and accurately gives you more opportunities, more "
 "time for what matters to you, and a sense of self-accomplishment."
 msgstr ""
+"Klavye ile yazmak sayısal çağ için önemli bir beceri. Hızlı ve doğru yazmak "
+"sizin için önemli olan şeylere daha fazla vakit ayırmanızı sağlar."
 
 #: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:18
 msgid ""
@@ -99,12 +101,12 @@ msgid "Window Maximization"
 msgstr "Pencerenin Büyütülme Durumu"
 
 #: data/dev.bragefuglseth.Keypunch.gschema.xml:32
-#: src/widgets/results_view.blp:83 src/widgets/window.blp:37
+#: src/widgets/results_view.blp:82 src/widgets/window.blp:146
 msgid "Session Type"
 msgstr "Oturum Türü"
 
 #: data/dev.bragefuglseth.Keypunch.gschema.xml:36
-#: src/widgets/results_view.blp:96 src/widgets/window.blp:42
+#: src/widgets/results_view.blp:95 src/widgets/window.blp:151
 msgid "Session Duration"
 msgstr "Oturum Süresi"
 
@@ -119,7 +121,7 @@ msgid "\"en\""
 msgstr "\"tr\""
 
 #: data/dev.bragefuglseth.Keypunch.gschema.xml:42
-#: src/widgets/results_view.blp:109 src/widgets/text_language_dialog.blp:5
+#: src/widgets/results_view.blp:108 src/widgets/text_language_dialog.blp:5
 #: src/widgets/text_language_dialog.blp:13
 #: src/widgets/text_language_dialog.blp:39
 msgid "Text Language"
@@ -158,12 +160,11 @@ msgid "Personal Best"
 msgstr "Kişisel En İyi"
 
 #: data/dev.bragefuglseth.Keypunch.gschema.xml:59
-#, fuzzy
 msgid ""
 "The current highest amount of WPM received for each session type / duration "
 "and language"
 msgstr ""
-"Her oturum türü / süresi ve dil için alınan mevcut en yüksek WPM miktarı"
+"Her oturum türü / süresi ve dil için alınan geçerli en yüksek WPM miktarı"
 
 #: data/resources/gtk/help-overlay.ui:11
 msgctxt "shortcut window"
@@ -203,17 +204,17 @@ msgstr "Özel metin ekle…"
 msgid "_Save"
 msgstr "_Kaydet"
 
-#: src/widgets/results_view.blp:35
+#: src/widgets/results_view.blp:34
 msgid "New Personal Best for Configuration"
 msgstr "Yapılandırma için Yeni Kişisel En İyi"
 
-#: src/widgets/results_view.blp:46
+#: src/widgets/results_view.blp:45
 msgid "Words per Minute"
 msgstr "Dakika Başına Kelime"
 
-#: src/widgets/results_view.blp:67
-msgid "Correctness"
-msgstr "Doğruluk"
+#: src/widgets/results_view.blp:66
+msgid "Accuracy"
+msgstr ""
 
 #. Translators: The percentage label format of the results page.
 #. The `{}` block will be replaced with the percentage number,
@@ -285,106 +286,73 @@ msgstr ""
 msgid "_Create Request"
 msgstr "İstek _Oluştur"
 
-#: src/widgets/text_view.blp:11
+#: src/widgets/text_view.blp:9
 msgid "Text View"
 msgstr "Metin Görünümü"
 
-#: src/widgets/window.blp:49
-msgid "_Edit Text"
-msgstr "Metni _Düzenle"
-
-#: src/widgets/window.blp:59
-msgid "Main Menu"
-msgstr "Ana Menü"
-
-#: src/widgets/window.blp:75
+#: src/widgets/window.blp:131
 msgid "Restart"
 msgstr "Yeniden Başlat"
 
-#: src/widgets/window.blp:103
+#: src/widgets/window.blp:158
+msgid "_Edit Text"
+msgstr "Metni _Düzenle"
+
+#: src/widgets/window.blp:187
+msgid "Main Menu"
+msgstr "Ana Menü"
+
+#: src/widgets/window.blp:205
 msgid "Just Start Typing"
 msgstr "Yazmaya Başlayın"
 
 #. Translators: "Entry" here is the act of entering text
-#: src/widgets/window.blp:112
+#: src/widgets/window.blp:214
 msgid "Enable Entry"
 msgstr "Girdiyi Etkinleştir"
 
-#: src/widgets/window.blp:138
+#: src/widgets/window.blp:240
 msgid "Results"
 msgstr "Sonuçlar"
 
-#: src/widgets/window.blp:163
+#: src/widgets/window.blp:265
 msgid "_Continue"
 msgstr "_Sürdür"
 
-#: src/widgets/window.blp:193
+#: src/widgets/window.blp:297
 msgid "Text _Language"
 msgstr "Metin _Dilleri"
 
-#: src/widgets/window.blp:198
+#: src/widgets/window.blp:302
 msgid "_Keyboard Shortcuts"
 msgstr "_Klavye Kısayolları"
 
-#: src/widgets/window.blp:203
+#: src/widgets/window.blp:307
 msgid "_About Keypunch"
 msgstr "Keypunch _Hakkında"
 
-#: src/widgets/window.rs:49
-msgid "Simple"
-msgstr "Basit"
-
-#: src/widgets/window.rs:50
-msgid "Advanced"
-msgstr "Gelişmiş"
-
-#: src/widgets/window.rs:51
-msgid "Custom"
-msgstr "Özel"
-
-#: src/widgets/window.rs:69
-msgid "15 seconds"
-msgstr "15 Saniye"
-
-#: src/widgets/window.rs:70
-msgid "30 seconds"
-msgstr "30 saniye"
-
-#: src/widgets/window.rs:71
-msgid "1 minute"
-msgstr "1 dakika"
-
-#: src/widgets/window.rs:72
-msgid "5 minutes"
-msgstr "5 dakika"
-
-#: src/widgets/window.rs:73
-msgid "10 minutes"
-msgstr "10 dakika"
-
-#: src/widgets/window.rs:224
-#, fuzzy
+#: src/widgets/window.rs:180
 msgid "Orthography by"
 msgstr "Yazım tarafından"
 
 #. Translators: Replace "translator-credits" with your names, one name per line
-#: src/widgets/window.rs:240
+#: src/widgets/window.rs:197
 msgid "translator-credits"
 msgstr "Sabri Ünal <yakushabb@gmail.com>"
 
-#: src/widgets/window.rs:245
+#: src/widgets/window.rs:202
 msgid "Special thanks to"
 msgstr "Özel teşekkürler"
 
-#: src/widgets/window/session.rs:122
+#: src/widgets/window/session.rs:118
 msgid "{} ⁄ {}"
 msgstr "{} ⁄ {}"
 
-#: src/widgets/window/session.rs:288
+#: src/widgets/window/session.rs:310
 msgid "Changes discarded"
 msgstr "Değişikliklerden vazgeçildi"
 
-#: src/widgets/window/session.rs:289
+#: src/widgets/window/session.rs:311
 msgid "Restore"
 msgstr "Geri Yükle"
 
@@ -393,11 +361,38 @@ msgstr "Geri Yükle"
 #. passed. Do not translate the `{}` blocks. Note that the `∶` sign is a special
 #. Unicode character; if your language doesn't use something completely different,
 #. you should probably copy and paste it from the original string.
-#: src/widgets/window/session.rs:383 src/widgets/window/session.rs:385
+#: src/widgets/window/session.rs:405 src/widgets/window/session.rs:407
 msgid "{}∶{}"
 msgstr "{}∶{}"
 
 #. Translators: This is shown as a warning by GNOME Shell before logging out or shutting off the system in the middle of a typing session, alongside Keypunch's name and icon
-#: src/widgets/window/ui_state.rs:130
+#: src/widgets/window/ui_state.rs:179
 msgid "Ongoing typing session"
-msgstr ""
+msgstr "Süren yazım oturumu"
+
+#~ msgid "Correctness"
+#~ msgstr "Doğruluk"
+
+#~ msgid "Simple"
+#~ msgstr "Basit"
+
+#~ msgid "Advanced"
+#~ msgstr "Gelişmiş"
+
+#~ msgid "Custom"
+#~ msgstr "Özel"
+
+#~ msgid "15 seconds"
+#~ msgstr "15 Saniye"
+
+#~ msgid "30 seconds"
+#~ msgstr "30 saniye"
+
+#~ msgid "1 minute"
+#~ msgstr "1 dakika"
+
+#~ msgid "5 minutes"
+#~ msgstr "5 dakika"
+
+#~ msgid "10 minutes"
+#~ msgstr "10 dakika"

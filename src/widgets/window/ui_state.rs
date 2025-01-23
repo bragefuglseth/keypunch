@@ -1,26 +1,27 @@
+/* ui_state.rs
+ *
+ * SPDX-FileCopyrightText: © 2024 Brage Fuglseth <bragefuglseth@gnome.org>
+ * SPDX-License-Identifier: GPL-3.0-or-later
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ */
+
 use super::*;
+use crate::application::KpApplication;
 
+#[gtk::template_callbacks]
 impl imp::KpWindow {
-    pub(super) fn setup_stop_button(&self) {
-        self.stop_button.connect_clicked(glib::clone!(
-            #[weak(rename_to = imp)]
-            self,
-            move |_| {
-                imp.ready();
-            }
-        ));
-    }
-
-    pub(super) fn setup_continue_button(&self) {
-        self.continue_button.connect_clicked(glib::clone!(
-            #[weak(rename_to = imp)]
-            self,
-            move |_| {
-                imp.ready();
-            }
-        ));
-    }
-
     pub(super) fn setup_ui_hiding(&self) {
         let obj = self.obj();
 
@@ -42,7 +43,7 @@ impl imp::KpWindow {
                 #[upgrade_or_default]
                 move |_| {
                     if imp.show_cursor.get() && imp.running.get() {
-                        imp.header_bar_running.add_css_class("hide-controls");
+                        imp.obj().add_css_class("hide-controls");
                         imp.hide_cursor();
                     }
 
@@ -63,7 +64,7 @@ impl imp::KpWindow {
                     imp.show_cursor();
 
                     if imp.running.get() {
-                        imp.header_bar_running.remove_css_class("hide-controls");
+                        imp.obj().remove_css_class("hide-controls");
                     }
                 }
             }
@@ -79,7 +80,7 @@ impl imp::KpWindow {
                     imp.show_cursor();
 
                     if imp.running.get() {
-                        imp.header_bar_running.remove_css_class("hide-controls");
+                        imp.obj().remove_css_class("hide-controls");
                     }
                 }
             }
@@ -87,13 +88,15 @@ impl imp::KpWindow {
         obj.add_controller(click_gesture);
     }
 
+    #[template_callback]
     pub(super) fn ready(&self) {
         self.running.set(false);
-        self.header_bar_running.add_css_class("hide-controls");
         self.text_view.set_running(false);
         self.text_view.set_accepts_input(true);
         self.main_stack.set_visible_child_name("session");
-        self.header_stack.set_visible_child_name("ready");
+        self.status_stack.set_visible_child_name("ready");
+        self.menu_button.set_visible(true);
+        self.stop_button.set_visible(false);
         self.text_view.reset();
         self.focus_text_view();
 
@@ -103,6 +106,20 @@ impl imp::KpWindow {
         self.obj()
             .action_set_enabled("win.text-language-dialog", true);
         self.obj().action_set_enabled("win.cancel-session", false);
+        self.obj().remove_css_class("hide-controls");
+
+        // Discord IPC
+        self.obj()
+            .application()
+            .expect("ready() isn't called before window has been paired with application")
+            .downcast_ref::<KpApplication>()
+            .unwrap()
+            .discord_rpc()
+            .set_activity(
+                self.session_type.get(),
+                self.duration.get(),
+                PresenceState::Ready,
+            );
 
         self.end_existing_inhibit();
     }
@@ -111,11 +128,30 @@ impl imp::KpWindow {
         self.running.set(true);
         self.start_time.set(Some(Instant::now()));
         self.main_stack.set_visible_child_name("session");
-        self.header_stack.set_visible_child_name("running");
+        self.status_stack.set_visible_child_name("running");
         self.hide_cursor();
         self.bottom_stack
             .set_visible_child(&self.bottom_stack_empty.get());
-        self.header_bar_running.add_css_class("hide-controls");
+
+        // Ugly hack to stop the stop button from "flashing" when starting a session:
+        // Make it visible with 0 opacity, and set the opacity to 1 after the 200ms
+        // crossfade effect has finished
+        self.stop_button.set_opacity(0.);
+        self.stop_button.set_visible(true);
+
+        glib::timeout_add_local_once(
+            Duration::from_millis(200),
+            glib::clone!(
+                #[weak(rename_to = imp)]
+                self,
+                move || {
+                    if imp.running.get() {
+                        imp.menu_button.set_visible(false);
+                        imp.stop_button.set_opacity(1.);
+                    }
+                }
+            ),
+        );
 
         match self.session_type.get() {
             SessionType::Simple | SessionType::Advanced => self.start_timer(),
@@ -125,6 +161,20 @@ impl imp::KpWindow {
         self.obj()
             .action_set_enabled("win.text-language-dialog", false);
         self.obj().action_set_enabled("win.cancel-session", true);
+        self.obj().add_css_class("hide-controls");
+
+        // Discord IPC
+        self.obj()
+            .application()
+            .expect("ready() isn't called before window has been paired with application")
+            .downcast_ref::<KpApplication>()
+            .unwrap()
+            .discord_rpc()
+            .set_activity(
+                self.session_type.get(),
+                self.duration.get(),
+                PresenceState::Typing,
+            );
 
         // Translators: This is shown as a warning by GNOME Shell before logging out or shutting off the system in the middle of a typing session, alongside Keypunch's name and icon
         self.inhibit_session(&gettext("Ongoing typing session"))
@@ -135,11 +185,51 @@ impl imp::KpWindow {
             return;
         }
 
+        self.end_session();
+        self.show_results_view();
+
+        // Discord IPC
+        self.obj()
+            .application()
+            .expect("ready() isn't called before window has been paired with application")
+            .downcast_ref::<KpApplication>()
+            .unwrap()
+            .discord_rpc()
+            .set_activity(
+                self.session_type.get(),
+                self.duration.get(),
+                PresenceState::Results,
+            );
+    }
+
+    pub(super) fn frustration_relief(&self) {
+        if !self.running.get() {
+            return;
+        }
+
+        self.end_session();
+        self.main_stack.set_visible_child_name("frustration-relief");
+
+        // Avoid continue button being activated from a keypress immediately
+        let continue_button = self.frustration_continue_button.get();
+        self.obj().set_focus(None::<&gtk::Widget>);
+        glib::timeout_add_local_once(
+            Duration::from_millis(1000),
+            glib::clone!(
+                #[weak]
+                continue_button,
+                move || {
+                    continue_button.grab_focus();
+                }
+            ),
+        );
+    }
+
+    pub(super) fn end_session(&self) {
         self.running.set(false);
         self.text_view.set_running(false);
         self.text_view.set_accepts_input(false);
         self.finish_time.set(Some(Instant::now()));
-        self.show_results_view();
 
         self.obj()
             .action_set_enabled("win.text-language-dialog", false);

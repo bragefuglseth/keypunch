@@ -1,3 +1,22 @@
+/* text_view.rs
+ *
+ * SPDX-FileCopyrightText: © 2024–2025 Brage Fuglseth <bragefuglseth@gnome.org>
+ * SPDX-License-Identifier: GPL-3.0-or-later
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ */
+
 mod accessibility;
 mod caret;
 mod colors;
@@ -12,8 +31,9 @@ use adw::subclass::prelude::*;
 use glib::subclass::Signal;
 use gtk::glib;
 use gtk::{gdk, gsk};
-use std::cell::{Cell, OnceCell, RefCell};
+use std::cell::{Cell, OnceCell, Ref, RefCell};
 use std::sync::OnceLock;
+use std::time::Instant;
 use unicode_segmentation::UnicodeSegmentation;
 
 const LINE_HEIGHT: i32 = 50;
@@ -42,6 +62,7 @@ mod imp {
         pub(super) original_text: RefCell<String>,
         pub(super) typed_text: RefCell<String>,
         pub(super) previous_preedit: RefCell<String>,
+        pub(super) keystrokes: RefCell<Vec<(Instant, bool)>>,
         pub(super) input_context: RefCell<Option<gtk::IMMulticontext>>,
         pub(super) scroll_animation: OnceCell<adw::TimedAnimation>,
         pub(super) caret_x_animation: OnceCell<adw::TimedAnimation>,
@@ -100,7 +121,7 @@ mod imp {
 
             self.setup_input_handling();
             self.setup_color_scheme();
-            self.update_colors();
+            self.compare_and_update_colors();
             self.update_scroll_position(true);
         }
 
@@ -124,7 +145,7 @@ mod imp {
             self.text_view.allocate(width, height, baseline, None);
             self.update_scroll_position(true);
             self.update_caret_position(true);
-            self.update_colors();
+            self.compare_and_update_colors();
         }
 
         fn snapshot(&self, snapshot: &gtk::Snapshot) {
@@ -142,7 +163,7 @@ mod imp {
             self.text_view
                 .buffer()
                 .set_text(&insert_replacements(&text));
-            self.update_colors();
+            self.compare_and_update_colors();
             self.update_caret_position(true);
             self.update_scroll_position(true);
             self.update_accessible_state();
@@ -153,11 +174,32 @@ mod imp {
 
             let buffer = self.text_view.buffer();
             buffer.insert(&mut buffer.end_iter(), &insert_replacements(&text));
-            self.update_colors();
+            self.compare_and_update_colors();
         }
 
         pub(super) fn typed_text_changed(&self) {
-            self.update_colors();
+            let input_context = self.input_context.borrow();
+            let (preedit, _, _) = input_context.as_ref().unwrap().preedit_string();
+
+            let comparison = validate_with_replacements(
+                &self.original_text.borrow(),
+                &self.typed_text.borrow(),
+                preedit.as_str().graphemes(true).count(),
+            );
+
+            let last_grapheme_state = comparison
+                .iter()
+                .last()
+                .map(|(state, _, _, _)| *state)
+                .unwrap_or(GraphemeState::Unfinished);
+
+            let correct = last_grapheme_state != GraphemeState::Mistake;
+
+            let keystroke = (Instant::now(), correct);
+
+            self.keystrokes.borrow_mut().push(keystroke);
+
+            self.update_colors(&comparison);
             self.update_caret_position(!self.running.get());
             self.update_scroll_position(!self.running.get());
             self.update_accessible_state();
@@ -239,6 +281,11 @@ impl KpTextView {
         (current_word, total_words)
     }
 
+    // Returns a tuple with the amount of correct keystrokes and the total amount of keystrokes
+    pub fn keystrokes(&self) -> Ref<Vec<(Instant, bool)>> {
+        self.imp().keystrokes.borrow()
+    }
+
     pub fn reset(&self) {
         self.set_original_text("");
         self.set_typed_text("");
@@ -248,5 +295,6 @@ impl KpTextView {
         imp.scroll_animation().skip();
         imp.caret_x_animation().skip();
         imp.caret_y_animation().skip();
+        imp.keystrokes.borrow_mut().clear();
     }
 }

@@ -4,15 +4,19 @@
     "runtime-version" : "master",
     "sdk" : "org.gnome.Sdk",
     "sdk-extensions" : [
-        "org.freedesktop.Sdk.Extension.rust-stable"
+    	{
+    	     "id" : "org.freedesktop.Sdk.Extension.rust-stable",
+    	     "version" : "24.08"
+    	}
     ],
-    "command" : "keypunch-wrapper.sh",
+    "command" : "keypunch",
     "finish-args" : [
         "--share=network",
         "--share=ipc",
         "--socket=fallback-x11",
         "--device=dri",
         "--socket=wayland",
+        "--filesystem=xdg-run/app/com.discordapp.Discord:create",
         "--env=RUST_BACKTRACE=1"
     ],
     "build-options" : {
@@ -45,26 +49,9 @@
 	    {
 	      "type": "git",
 	      "url": "https://gitlab.gnome.org/jwestman/blueprint-compiler",
-	      "tag": "v0.16.0"
+	      "tag": "v0.14.0"
 	    }
 	  ]
-	},
-	{
-	    "name" : "keypunch-wrapper",
-	    "buildsystem" : "simple",
-	    "build-commands" : [
-	    	"install -Dm755 keypunch-wrapper.sh /app/bin/keypunch-wrapper.sh"
-	    ],
-	    "sources" : [
-	    	{
-            	    "type" : "script",
-            	    "dest-filename" : "keypunch-wrapper.sh",
-            	    "commands" : [
-            	    	"for i in {0..9}; do\ntest -S $XDG_RUNTIME_DIR/discord-ipc-$i || ln -sf {app/com.discordapp.Discord,$XDG_RUNTIME_DIR}/discord-ipc-$i;\ndone",
-            	    	"keypunch"
-            	    ]
-            	}
-	    ]
 	},
         {
             "name" : "keypunch",

@@ -1,6 +1,7 @@
 /* main.rs
  *
- * Copyright 2024 Brage Fuglseth
+ * SPDX-FileCopyrightText: © 2024 Brage Fuglseth <bragefuglseth@gnome.org>
+ * SPDX-License-Identifier: GPL-3.0-or-later
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -14,12 +15,12 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
- *
- * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
 mod application;
 mod config;
+mod discord_rpc;
+mod session_enums;
 mod text_generation;
 mod text_utils;
 mod widgets;

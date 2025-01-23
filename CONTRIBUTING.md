@@ -23,7 +23,7 @@ Use the Flatpak version of [GNOME Builder](https://apps.gnome.org/Builder) to bu
    ```
 
 3. Press the "Clone repository…" button
-4. Press confirm if asked aboout automatic installation of any dependencies, and wait for them to download
+4. Press confirm if asked about automatic installation of any dependencies, and wait for them to download
 5. Press the play button in the header bar
 
 ## Translating
@@ -32,7 +32,7 @@ Keypunch does not have any external translation infrastructure as of now, but a 
 
 ## Adding a Language
 
-This is the technical procedure for adding a text language to Keypunch. To request a language and help with the non-technical aspects, [create a langauge request](https://github.com/bragefuglseth/keypunch/issues/new?assignees=&labels=new+language&projects=&template=language_request.yaml&title=%5BLanguage+Request%5D%3A+) instead. To translate the UI, refer to the section above.
+This is the technical procedure for adding a text language to Keypunch. To request a language and help with the non-technical aspects, [create a language request](https://github.com/bragefuglseth/keypunch/issues/new?assignees=&labels=new+language&projects=&template=language_request.yaml&title=%5BLanguage+Request%5D%3A+) instead. To translate the UI, refer to the section above.
 
 1. Add a word list with approximately 200 words to `data/word_lists/{code}.txt`. Replace `{code}` with the code of your language (e.g. `en` or `nb`). If the language has a corresponding list in [Monkeytype's language directory](https://github.com/monkeytypegame/monkeytype/tree/master/frontend/static/languages), you can download that, rename it and run `scripts/json_to_word_list.sh {file_path}` to generate a plain word list. Replace `{file_path}` with a path to the file. You'll need to have `jq` installed for the script to work.
 3. Locate and open `src/text_generation.rs`. This is where all language work takes place.
@@ -45,6 +45,6 @@ This is the technical procedure for adding a text language to Keypunch. To reque
 
    Replace `{native_name}` with the native name of the language, and `{code}` with the language code.
 
-5. Add the language to the match statements of the `simple` and `advanced` functions. If the language can use the "generic" implementation of any of those text types (words separated by spaces, punctuation inserted before and after words, and Western Arabic numerals), you can simply add it to the long, alphabetically sorted `Language | Language | Language | […]` pattern at the beginning. If it can use the generic advanced implementation, but has some special punctuation marks or an alternate numeral system, add it below and imitate the other languages already implemented there.
+5. If the language has punctuation or spacing that deviates from the default (words separated by spaces, punctuation inserted before and after words, and Western Arabic numerals), add it to the match statements of the `simple` and `advanced` functions. Existing language entries can be used as examples.
 
 6. Build the app and test the implementation.

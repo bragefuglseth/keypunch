@@ -1,14 +1,38 @@
+/* session.rs
+ *
+ * SPDX-FileCopyrightText: © 2024–2025 Brage Fuglseth <bragefuglseth@gnome.org>
+ * SPDX-License-Identifier: GPL-3.0-or-later
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ */
+
 use super::*;
+use crate::application::KpApplication;
 use crate::text_generation;
 use crate::text_utils::{calculate_accuracy, calculate_wpm, process_custom_text, GraphemeState};
 use crate::widgets::{KpCustomTextDialog, KpTextLanguageDialog};
 use gettextrs::gettext;
 use glib::ControlFlow;
-use gtk::pango;
 use i18n_format::i18n_fmt;
 use std::iter::once;
 use strum::{EnumMessage, IntoEnumIterator};
 use text_generation::CHUNK_GRAPHEME_COUNT;
+
+// The lower this is, the more sensitive Keypunch is to "frustration" (random key mashing).
+// If enough frustration is detected, the session will be cancelled, and a helpful
+// message will be displayed.
+const FRUSTRATION_THRESHOLD: usize = 3;
 
 impl imp::KpWindow {
     pub(super) fn setup_session_config(&self) {
@@ -31,8 +55,6 @@ impl imp::KpWindow {
             }
         ));
 
-        setup_ellipsizing_dropdown_factory(&session_type_dropdown);
-
         let duration_model: gtk::StringList = SessionDuration::iter()
             .map(|session_type| session_type.ui_string())
             .collect();
@@ -51,8 +73,6 @@ impl imp::KpWindow {
                 imp.focus_text_view();
             }
         ));
-
-        setup_ellipsizing_dropdown_factory(&duration_dropdown);
 
         self.custom_button.connect_clicked(glib::clone!(
             #[weak(rename_to = imp)]
@@ -118,10 +138,24 @@ impl imp::KpWindow {
                             // Translators: The `{}` blocks will be replaced with the current word count and the total word count.
                             // Do not translate them! The slash sign is a special unicode character, if your language doesn't
                             // use a completely different sign, you should probably copy and paste it from the original string.
-                            imp.running_title.set_title(
+                            imp.status_label.set_label(
                                 &i18n_fmt! { i18n_fmt("{} ⁄ {}", current_word, total_words) },
                             );
                         }
+                    }
+
+                    let frustration_score = text_view
+                        .keystrokes()
+                        .iter()
+                        .rev()
+                        .take_while(|(timestamp, _)| {
+                            timestamp.elapsed().as_secs() <= FRUSTRATION_THRESHOLD as u64
+                        })
+                        .filter(|(_, correct)| !*correct)
+                        .count();
+
+                    if frustration_score > FRUSTRATION_THRESHOLD * 10 {
+                        imp.frustration_relief();
                     }
 
                     None
@@ -155,6 +189,19 @@ impl imp::KpWindow {
         self.text_view.set_original_text(&new_original);
         self.secondary_config_stack
             .set_visible_child(&config_widget);
+
+        // Discord IPC
+        self.obj()
+            .application()
+            .expect("ready() isn't called before window has been paired with application")
+            .downcast_ref::<KpApplication>()
+            .unwrap()
+            .discord_rpc()
+            .set_activity(
+                self.session_type.get(),
+                self.duration.get(),
+                PresenceState::Ready,
+            );
     }
 
     pub(super) fn update_time(&self) {
@@ -166,6 +213,19 @@ impl imp::KpWindow {
         self.settings()
             .set_string("session-duration", &selected.to_string())
             .unwrap();
+
+        // Discord IPC
+        self.obj()
+            .application()
+            .expect("ready() isn't called before window has been paired with application")
+            .downcast_ref::<KpApplication>()
+            .unwrap()
+            .discord_rpc()
+            .set_activity(
+                self.session_type.get(),
+                self.duration.get(),
+                PresenceState::Ready,
+            );
     }
 
     pub(super) fn show_text_language_dialog(&self) {
@@ -387,11 +447,11 @@ impl imp::KpWindow {
             seconds.to_string()
         };
 
-        self.running_title.set_title(&text);
+        self.status_label.set_label(&text);
     }
 
     pub(super) fn show_results_view(&self) {
-        let continue_button = self.continue_button.get();
+        let continue_button = self.results_continue_button.get();
         let original_text = if self.session_type.get() == SessionType::Custom {
             process_custom_text(&self.text_view.original_text())
         } else {
@@ -410,10 +470,15 @@ impl imp::KpWindow {
         let duration = finish_time.duration_since(start_time);
         results_view.set_duration(duration.as_secs());
 
-        let wpm = calculate_wpm(duration, &typed_text);
+        let wpm = calculate_wpm(duration, &original_text, &typed_text);
         results_view.set_wpm(wpm);
 
-        let accuracy = calculate_accuracy(&original_text, &typed_text);
+        let keystrokes = self.text_view.keystrokes();
+
+        let correct_keystrokes = keystrokes.iter().filter(|(_, correct)| *correct).count();
+        let total_keystrokes = keystrokes.len();
+
+        let accuracy = calculate_accuracy(correct_keystrokes, total_keystrokes);
         results_view.set_accuracy(accuracy);
 
         let session_type = self.session_type.get();
@@ -478,77 +543,16 @@ impl imp::KpWindow {
                 }
             ),
         );
-    }
-}
 
-// Creates a custom factory for a dropdown that ellipsizes the label of the top button.
-// The factory also applies a checkmark to the selected item if it's in the popover.
-// This is essentially a clone of the default factory, but with ellipsizing.
-// Ideally we'd do this by setting the factory of just the button part of `GtkDropDown`, but
-// this isn't currently possible, and there are no plans to make it so upstream.
-// See <https://gitlab.gnome.org/GNOME/gtk/-/issues/6720>
-fn setup_ellipsizing_dropdown_factory(dropdown: &gtk::DropDown) {
-    let factory = gtk::SignalListItemFactory::new();
-
-    factory.connect_setup(|_, obj| {
-        let label = gtk::Label::builder().xalign(0.).build();
-        let checkmark = gtk::Image::from_icon_name("check-plain-symbolic");
-
-        let box_ = gtk::Box::builder().build();
-        box_.append(&label);
-        box_.append(&checkmark);
-        obj.downcast_ref::<gtk::ListItem>()
+        // Discord IPC
+        self.obj()
+            .application()
+            .expect("ready() isn't called before window has been paired with application")
+            .downcast_ref::<KpApplication>()
             .unwrap()
-            .set_child(Some(&box_));
-    });
-
-    factory.connect_bind(glib::clone!(
-        #[weak]
-        dropdown,
-        move |_, obj| {
-            let list_item = obj.downcast_ref::<gtk::ListItem>().unwrap();
-            let child = list_item.child().unwrap();
-            let box_ = child.downcast_ref::<gtk::Box>().unwrap();
-            let first_child = box_.first_child().unwrap();
-            let last_child = box_.last_child().unwrap();
-            let string_object = list_item
-                .item()
-                .unwrap()
-                .downcast::<gtk::StringObject>()
-                .unwrap();
-
-            let label = first_child.downcast_ref::<gtk::Label>().unwrap();
-            label.set_label(string_object.string().as_str());
-
-            let is_in_popover =
-                child.parent().unwrap().parent().unwrap().type_() == gtk::ListView::static_type();
-
-            if is_in_popover {
-                label.set_ellipsize(pango::EllipsizeMode::None);
-                dropdown.connect_selected_item_notify(glib::clone!(
-                    #[weak]
-                    last_child,
-                    #[weak]
-                    string_object,
-                    move |dropdown| {
-                        last_child.set_opacity(
-                            if dropdown.selected_item().unwrap() == string_object {
-                                1.
-                            } else {
-                                0.
-                            },
-                        );
-                    }
-                ));
-            } else {
-                label.set_ellipsize(pango::EllipsizeMode::End);
-                last_child.set_visible(false);
-            }
-        }
-    ));
-
-    dropdown.set_factory(Some(&factory));
-    dropdown.notify("selected-item");
+            .discord_rpc()
+            .set_stats(wpm, accuracy);
+    }
 }
 
 pub(super) fn add_personal_best(

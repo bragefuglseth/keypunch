@@ -1,3 +1,22 @@
+/* text_generation.rs
+ *
+ * SPDX-FileCopyrightText: © 2024 Brage Fuglseth <bragefuglseth@gnome.org>
+ * SPDX-License-Identifier: GPL-3.0-or-later
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ */
+
 use include_dir::{include_dir, Dir};
 use rand::prelude::*;
 use rand::seq::index::sample;
@@ -23,10 +42,14 @@ pub enum Language {
     #[default]
     #[strum(message = "English", to_string = "en")]
     English,
+    #[strum(message = "Suomi", to_string = "fi")]
+    Finnish,
     #[strum(message = "Français", to_string = "fr")]
     French,
     #[strum(message = "Deutsch", to_string = "de")]
     German,
+    #[strum(message = "Ελληνικά", to_string = "el")]
+    Greek,
     #[strum(message = "עברית", to_string = "he")]
     Hebrew,
     #[strum(message = "हिन्दी", to_string = "hi")]
@@ -35,6 +58,8 @@ pub enum Language {
     Hungarian,
     #[strum(message = "Italiano", to_string = "it")]
     Italian,
+    #[strum(message = "Taqbaylit", to_string = "kab")]
+    Kabyle,
     #[strum(message = "Kinyarwanda", to_string = "rw")]
     Kinyarwanda,
     #[strum(message = "한국어", to_string = "ko")]
@@ -51,6 +76,8 @@ pub enum Language {
     Polish,
     #[strum(message = "Português", to_string = "pt")]
     Portuguese,
+    #[strum(message = "Română", to_string = "ro")]
+    Romanian,
     #[strum(message = "Русский", to_string = "ru")]
     Russian,
     #[strum(message = "Español", to_string = "es")]
@@ -65,6 +92,8 @@ pub enum Language {
     Turkish,
     #[strum(message = "Українська", to_string = "uk")]
     Ukranian,
+    #[strum(message = "Tiếng Việt", to_string = "vn")]
+    Vietnamese,
 }
 
 #[derive(Clone, Copy)]
@@ -119,62 +148,15 @@ const BANGLA_NUMERALS: &'static Numerals = &["০", "১", "২", "৩", "৪", 
 // Only lowercase letters, no punctuation or numbers
 pub fn simple(language: Language) -> String {
     match language {
-        Language::Arabic
-        | Language::Bangla
-        | Language::Bulgarian
-        | Language::Czech
-        | Language::English
-        | Language::Danish
-        | Language::French
-        | Language::German
-        | Language::Hebrew
-        | Language::Hindi
-        | Language::Hungarian
-        | Language::Italian
-        | Language::Kinyarwanda
-        | Language::Korean
-        | Language::Nepali
-        | Language::NorwegianBokmaal
-        | Language::NorwegianNynorsk
-        | Language::Occitan
-        | Language::Polish
-        | Language::Portuguese
-        | Language::Russian
-        | Language::Spanish
-        | Language::Swahili
-        | Language::Swedish
-        | Language::SwissGerman
-        | Language::Turkish
-        | Language::Ukranian => simple_generic(&language.to_string(), " "),
+        // Add special cases here if relevant
+        _ => simple_generic(&language.to_string(), " "),
     }
 }
 
 // Some capitalized letters, punctuation and numbers
 pub fn advanced(language: Language) -> String {
     match language {
-        Language::Danish
-        | Language::English
-        | Language::German
-        | Language::Hebrew
-        | Language::Hungarian
-        | Language::Italian
-        | Language::Kinyarwanda
-        | Language::Korean
-        | Language::NorwegianBokmaal
-        | Language::NorwegianNynorsk
-        | Language::Occitan
-        | Language::Polish
-        | Language::Russian
-        | Language::Swahili
-        | Language::Swedish
-        | Language::SwissGerman
-        | Language::Turkish
-        | Language::Ukranian => advanced_generic(
-            &language.to_string(),
-            " ",
-            GENERIC_PUNCTUATION,
-            WESTERN_ARABIC_NUMERALS,
-        ),
+        // Add special cases here if relevant
         // Arabic has its own set of punctuation and a couple of words with vowel markers
         Language::Arabic => advanced_generic(
             "ar_advanced",
@@ -191,9 +173,10 @@ pub fn advanced(language: Language) -> String {
             ],
             WESTERN_ARABIC_NUMERALS,
         ),
-        // Bulgarians apparently have a pretty strong culture of using „ and “ over " and ".
-        // See <https://github.com/bragefuglseth/keypunch/issues/41> if this ever comes up again
-        Language::Bulgarian => advanced_generic(
+        // Bulgarians and Romanians have a pretty strong culture of using „ and “ over " and ".
+        // See <https://github.com/bragefuglseth/keypunch/issues/41> and
+        // <https://github.com/bragefuglseth/keypunch/pull/80> if this ever comes up again
+        Language::Bulgarian | Language::Romanian => advanced_generic(
             &language.to_string(),
             " ",
             &[
@@ -295,6 +278,12 @@ pub fn advanced(language: Language) -> String {
                 Punctuation::wrapping("\"", "\"", false, 0.2),
                 Punctuation::wrapping("(", ")", false, 0.1),
             ],
+            WESTERN_ARABIC_NUMERALS,
+        ),
+        _ => advanced_generic(
+            &language.to_string(),
+            " ",
+            GENERIC_PUNCTUATION,
             WESTERN_ARABIC_NUMERALS,
         ),
     }

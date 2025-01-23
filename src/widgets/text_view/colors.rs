@@ -1,3 +1,22 @@
+/* colors.rs
+ *
+ * SPDX-FileCopyrightText: © 2024–2025 Brage Fuglseth <bragefuglseth@gnome.org>
+ * SPDX-License-Identifier: GPL-3.0-or-later
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ */
+
 use super::*;
 use crate::text_utils::{line_offset_with_replacements, GraphemeState};
 use gtk::pango;
@@ -90,21 +109,38 @@ impl imp::KpTextView {
             #[weak(rename_to = imp)]
             self,
             move |_| {
-                imp.update_colors();
+                imp.compare_and_update_colors();
             }
         ));
         style.connect_high_contrast_notify(glib::clone!(
             #[weak(rename_to = imp)]
             self,
             move |_| {
-                imp.update_colors();
+                imp.compare_and_update_colors();
             }
         ));
 
-        self.update_colors();
+        self.compare_and_update_colors();
     }
 
-    pub(super) fn update_colors(&self) {
+    // Convenience function to generate a comparison and update the colors.
+    pub(super) fn compare_and_update_colors(&self) {
+        let original = self.original_text.borrow();
+        let typed = self.typed_text.borrow();
+
+        let input_context = self.input_context.borrow();
+        let (preedit, _, _) = input_context.as_ref().unwrap().preedit_string();
+
+        let comparison =
+            validate_with_replacements(&original, &typed, preedit.as_str().graphemes(true).count());
+
+        self.update_colors(&comparison);
+    }
+
+    // Comparisons (list of right/wrong letters) are slightly computationally expensive to generate,
+    // so this function takes a reference to one as a parameter instead of generating one internally.
+    // This allows for reusing a comparison in other places during the keypress pipeline.
+    pub(super) fn update_colors(&self, comparison: &Vec<(GraphemeState, usize, usize, usize)>) {
         let original = self.original_text.borrow();
         let typed = self.typed_text.borrow();
 
@@ -169,9 +205,6 @@ impl imp::KpTextView {
             .text(&buf.start_iter(), &color_start_iter, true)
             .graphemes(true)
             .count();
-
-        let comparison =
-            validate_with_replacements(&original, &typed, preedit.as_str().graphemes(true).count());
 
         comparison
             .iter()

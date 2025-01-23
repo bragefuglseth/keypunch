@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: keypunch\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-23 20:52+0200\n"
+"POT-Creation-Date: 2025-01-09 21:31+0100\n"
 "PO-Revision-Date: 2024-06-12 00:46+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -111,12 +111,12 @@ msgid "Window Maximization"
 msgstr "Fenstermaximierung"
 
 #: data/dev.bragefuglseth.Keypunch.gschema.xml:32
-#: src/widgets/results_view.blp:83 src/widgets/window.blp:37
+#: src/widgets/results_view.blp:82 src/widgets/window.blp:146
 msgid "Session Type"
 msgstr "Sitzungstyp"
 
 #: data/dev.bragefuglseth.Keypunch.gschema.xml:36
-#: src/widgets/results_view.blp:96 src/widgets/window.blp:42
+#: src/widgets/results_view.blp:95 src/widgets/window.blp:151
 msgid "Session Duration"
 msgstr "Sitzungsdauer"
 
@@ -130,7 +130,7 @@ msgid "\"en\""
 msgstr "\"de\""
 
 #: data/dev.bragefuglseth.Keypunch.gschema.xml:42
-#: src/widgets/results_view.blp:109 src/widgets/text_language_dialog.blp:5
+#: src/widgets/results_view.blp:108 src/widgets/text_language_dialog.blp:5
 #: src/widgets/text_language_dialog.blp:13
 #: src/widgets/text_language_dialog.blp:39
 msgid "Text Language"
@@ -216,17 +216,17 @@ msgstr "Benutzerdefinierten Text einfügen..."
 msgid "_Save"
 msgstr "_Speichern"
 
-#: src/widgets/results_view.blp:35
+#: src/widgets/results_view.blp:34
 msgid "New Personal Best for Configuration"
 msgstr "Neue persönliche Bestleistung bei der Konfiguration"
 
-#: src/widgets/results_view.blp:46
+#: src/widgets/results_view.blp:45
 msgid "Words per Minute"
 msgstr "Wörter pro Minute"
 
-#: src/widgets/results_view.blp:67
-msgid "Correctness"
-msgstr "Korrektheit"
+#: src/widgets/results_view.blp:66
+msgid "Accuracy"
+msgstr ""
 
 #. Translators: The percentage label format of the results page.
 #. The `{}` block will be replaced with the percentage number,
@@ -303,105 +303,73 @@ msgstr ""
 msgid "_Create Request"
 msgstr "_Anfrage erstellen"
 
-#: src/widgets/text_view.blp:11
+#: src/widgets/text_view.blp:9
 msgid "Text View"
 msgstr "Textansicht"
 
-#: src/widgets/window.blp:49
-msgid "_Edit Text"
-msgstr "_Text bearbeiten"
-
-#: src/widgets/window.blp:59
-msgid "Main Menu"
-msgstr "Hauptmenü"
-
-#: src/widgets/window.blp:75
+#: src/widgets/window.blp:131
 msgid "Restart"
 msgstr "Neustart"
 
-#: src/widgets/window.blp:103
+#: src/widgets/window.blp:158
+msgid "_Edit Text"
+msgstr "_Text bearbeiten"
+
+#: src/widgets/window.blp:187
+msgid "Main Menu"
+msgstr "Hauptmenü"
+
+#: src/widgets/window.blp:205
 msgid "Just Start Typing"
 msgstr "Tippen Sie einfach los"
 
 #. Translators: "Entry" here is the act of entering text
-#: src/widgets/window.blp:112
+#: src/widgets/window.blp:214
 msgid "Enable Entry"
 msgstr "Eingabe aktivieren"
 
-#: src/widgets/window.blp:138
+#: src/widgets/window.blp:240
 msgid "Results"
 msgstr "Ergebnise"
 
-#: src/widgets/window.blp:163
+#: src/widgets/window.blp:265
 msgid "_Continue"
 msgstr "_Weiter"
 
-#: src/widgets/window.blp:193
+#: src/widgets/window.blp:297
 msgid "Text _Language"
 msgstr "Text _Sprache"
 
-#: src/widgets/window.blp:198
+#: src/widgets/window.blp:302
 msgid "_Keyboard Shortcuts"
 msgstr "_Tastenkombinationen"
 
-#: src/widgets/window.blp:203
+#: src/widgets/window.blp:307
 msgid "_About Keypunch"
 msgstr "_Über Keypunch"
 
-#: src/widgets/window.rs:49
-msgid "Simple"
-msgstr "Einfach"
-
-#: src/widgets/window.rs:50
-msgid "Advanced"
-msgstr "Fortgeschritten"
-
-#: src/widgets/window.rs:51
-msgid "Custom"
-msgstr "Benutzerdefiniert"
-
-#: src/widgets/window.rs:69
-msgid "15 seconds"
-msgstr "15 Sekunden"
-
-#: src/widgets/window.rs:70
-msgid "30 seconds"
-msgstr "30 Sekunden"
-
-#: src/widgets/window.rs:71
-msgid "1 minute"
-msgstr "1 Minute"
-
-#: src/widgets/window.rs:72
-msgid "5 minutes"
-msgstr "5 Minuten"
-
-#: src/widgets/window.rs:73
-msgid "10 minutes"
-msgstr "10 Minuten"
-
-#: src/widgets/window.rs:224
+#: src/widgets/window.rs:180
 msgid "Orthography by"
 msgstr "Rechtschreibung durch"
 
 #. Translators: Replace "translator-credits" with your names, one name per line
-#: src/widgets/window.rs:240
+#: src/widgets/window.rs:197
 msgid "translator-credits"
 msgstr "alp10711 <93343276+alp10711@users.noreply.github.com>"
 
-#: src/widgets/window.rs:245
+#: src/widgets/window.rs:202
 msgid "Special thanks to"
 msgstr "Besonderer Dank geht an"
 
-#: src/widgets/window/session.rs:122
+#: src/widgets/window/session.rs:118
 msgid "{} ⁄ {}"
 msgstr "{} ⁄ {}"
 
-#: src/widgets/window/session.rs:288
+#: src/widgets/window/session.rs:310
 msgid "Changes discarded"
 msgstr "Verworfene Änderungen"
 
-#: src/widgets/window/session.rs:289
+#: src/widgets/window/session.rs:311
 msgid "Restore"
 msgstr "Wiederherstellen"
 
@@ -410,14 +378,41 @@ msgstr "Wiederherstellen"
 #. passed. Do not translate the `{}` blocks. Note that the `∶` sign is a special
 #. Unicode character; if your language doesn't use something completely different,
 #. you should probably copy and paste it from the original string.
-#: src/widgets/window/session.rs:383 src/widgets/window/session.rs:385
+#: src/widgets/window/session.rs:405 src/widgets/window/session.rs:407
 msgid "{}∶{}"
 msgstr "{}∶{}"
 
 #. Translators: This is shown as a warning by GNOME Shell before logging out or shutting off the system in the middle of a typing session, alongside Keypunch's name and icon
-#: src/widgets/window/ui_state.rs:130
+#: src/widgets/window/ui_state.rs:179
 msgid "Ongoing typing session"
 msgstr ""
+
+#~ msgid "Correctness"
+#~ msgstr "Korrektheit"
+
+#~ msgid "Simple"
+#~ msgstr "Einfach"
+
+#~ msgid "Advanced"
+#~ msgstr "Fortgeschritten"
+
+#~ msgid "Custom"
+#~ msgstr "Benutzerdefiniert"
+
+#~ msgid "15 seconds"
+#~ msgstr "15 Sekunden"
+
+#~ msgid "30 seconds"
+#~ msgstr "30 Sekunden"
+
+#~ msgid "1 minute"
+#~ msgstr "1 Minute"
+
+#~ msgid "5 minutes"
+#~ msgstr "5 Minuten"
+
+#~ msgid "10 minutes"
+#~ msgstr "10 Minuten"
 
 #~ msgid "\"en_US\""
 #~ msgstr "\"de\""

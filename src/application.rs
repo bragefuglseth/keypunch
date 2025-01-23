@@ -1,6 +1,7 @@
 /* application.rs
  *
- * Copyright 2024 Brage Fuglseth
+ * SPDX-FileCopyrightText: © 2024 Brage Fuglseth <bragefuglseth@gnome.org>
+ * SPDX-License-Identifier: GPL-3.0-or-later
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -14,10 +15,9 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
- *
- * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
+use crate::discord_rpc::RpcWrapper;
 use adw::subclass::prelude::*;
 use gtk::prelude::*;
 use gtk::{gio, glib};
@@ -27,8 +27,10 @@ use crate::widgets::KpWindow;
 mod imp {
     use super::*;
 
-    #[derive(Debug, Default)]
-    pub struct KpApplication {}
+    #[derive(Default)]
+    pub struct KpApplication {
+        pub discord_rpc: RpcWrapper,
+    }
 
     #[glib::object_subclass]
     impl ObjectSubclass for KpApplication {
@@ -94,5 +96,9 @@ impl KpApplication {
             .build()];
 
         self.add_action_entries(actions);
+    }
+
+    pub fn discord_rpc(&self) -> &RpcWrapper {
+        &self.imp().discord_rpc
     }
 }
