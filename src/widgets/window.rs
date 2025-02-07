@@ -184,6 +184,7 @@ mod imp {
                     "Daniel Uhrinyi",
                     "Fabio Lovato https://loviuz.it/",
                     "Gregor Niehl https://gregorni.gitlab.io/",
+                    "Hadi Azarnasab https://hadi7546.ir/",
                     "Ibrahim Muhammad",
                     "Kim Jimin https://developomp.com",
                     "Shellheim",
