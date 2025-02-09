@@ -31,9 +31,9 @@ template $KpWindow: Adw.ApplicationWindow {
       transition-duration: 200;
 
       StackPage {
-        name: "session";
+        name: "test";
 
-        child: Adw.MultiLayoutView session_view {
+        child: Adw.MultiLayoutView test_view {
           Adw.Layout {
             name: "status-top";
 
@@ -52,7 +52,7 @@ template $KpWindow: Adw.ApplicationWindow {
 
                 [title]
                 Adw.LayoutSlot {
-                  id: "session_status";
+                  id: "test_status";
                 }
 
                 [end]
@@ -61,7 +61,7 @@ template $KpWindow: Adw.ApplicationWindow {
                 }
 
                 styles [
-                  "session"
+                  "test"
                 ]
               }
 
@@ -107,7 +107,7 @@ template $KpWindow: Adw.ApplicationWindow {
                 }
 
                 styles [
-                  "session"
+                  "test"
                 ]
               }
 
@@ -127,7 +127,7 @@ template $KpWindow: Adw.ApplicationWindow {
                     hexpand: false;
 
                     Adw.LayoutSlot {
-                      id: "session_status";
+                      id: "test_status";
                     }
                   }
 
@@ -152,7 +152,7 @@ template $KpWindow: Adw.ApplicationWindow {
             clicked => $ready() swapped;
           }
 
-          [session_status]
+          [test_status]
           Stack status_stack {
             transition-type: crossfade;
             transition-duration: 200;
@@ -163,8 +163,8 @@ template $KpWindow: Adw.ApplicationWindow {
               child: Box {
                 spacing: 6;
 
-                DropDown session_type_dropdown {
-                  tooltip-text: _("Session Type");
+                DropDown test_type_dropdown {
+                  tooltip-text: _("Test Type");
                   model: StringList {
                     strings [_("Simple"), _("Advanced"), _("Custom")]
                   };
@@ -172,7 +172,7 @@ template $KpWindow: Adw.ApplicationWindow {
 
                 Stack secondary_config_stack {
                   DropDown duration_dropdown {
-                    tooltip-text: _("Session Duration");
+                    tooltip-text: _("Test Duration");
                     model: StringList {
                       strings [
                         _("15 seconds"),
@@ -366,7 +366,7 @@ template $KpWindow: Adw.ApplicationWindow {
 
     setters {
       results_view.orientation: vertical;
-      session_view.layout-name: "status-bottom";
+      test_view.layout-name: "status-bottom";
       status_label.xalign: 0;
     }
   }

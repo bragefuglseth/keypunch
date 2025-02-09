@@ -27,47 +27,47 @@ use std::time::{Duration, Instant, SystemTime};
 use strum_macros::{Display as EnumDisplay, EnumIter, EnumString};
 
 #[derive(Clone, Copy, PartialEq, EnumString, EnumDisplay)]
-pub enum GeneratedSessionDifficulty {
+pub enum GeneratedTestDifficulty {
     Simple,
     Advanced,
 }
 
-impl GeneratedSessionDifficulty {
+impl GeneratedTestDifficulty {
     pub fn from_settings_string(s: &str) -> Option<Self> {
         match s {
-            "simple" => Some(GeneratedSessionDifficulty::Simple),
-            "advanced" => Some(GeneratedSessionDifficulty::Advanced),
+            "simple" => Some(GeneratedTestDifficulty::Simple),
+            "advanced" => Some(GeneratedTestDifficulty::Advanced),
             _ => None,
         }
     }
 }
 
 #[derive(Clone, Copy, PartialEq)]
-pub enum SessionConfig {
+pub enum TestConfig {
     Finite,
     Generated {
         language: Language,
-        difficulty: GeneratedSessionDifficulty,
-        duration: SessionDuration,
+        difficulty: GeneratedTestDifficulty,
+        duration: TestDuration,
     },
 }
 
-impl SessionConfig {
+impl TestConfig {
     pub fn from_settings(settings: &gio::Settings) -> Self {
         match settings.string("session-type").as_str() {
-            difficulty_string @ ("Simple" | "Advanced") => SessionConfig::Generated {
+            difficulty_string @ ("Simple" | "Advanced") => TestConfig::Generated {
                 language: Language::from_str(&settings.string("text-language")).unwrap(),
-                difficulty: GeneratedSessionDifficulty::from_str(&difficulty_string).unwrap(),
-                duration: SessionDuration::from_str(&settings.string("session-duration")).unwrap(),
+                difficulty: GeneratedTestDifficulty::from_str(&difficulty_string).unwrap(),
+                duration: TestDuration::from_str(&settings.string("session-duration")).unwrap(),
             },
-            "Custom" => SessionConfig::Finite,
+            "Custom" => TestConfig::Finite,
             _ => panic!("invalid settings value for `session-type` key"),
         }
     }
 }
 
 #[derive(Copy, Clone, Default, PartialEq, EnumString, EnumDisplay, EnumIter)]
-pub enum SessionDuration {
+pub enum TestDuration {
     #[default]
     Sec15,
     Sec30,
@@ -76,24 +76,24 @@ pub enum SessionDuration {
     Min10,
 }
 
-impl SessionDuration {
+impl TestDuration {
     pub fn ui_string(&self) -> String {
         match self {
-            SessionDuration::Sec15 => gettext("15 seconds"),
-            SessionDuration::Sec30 => gettext("30 seconds"),
-            SessionDuration::Min1 => gettext("1 minute"),
-            SessionDuration::Min5 => gettext("5 minutes"),
-            SessionDuration::Min10 => gettext("10 minutes"),
+            TestDuration::Sec15 => gettext("15 seconds"),
+            TestDuration::Sec30 => gettext("30 seconds"),
+            TestDuration::Min1 => gettext("1 minute"),
+            TestDuration::Min5 => gettext("5 minutes"),
+            TestDuration::Min10 => gettext("10 minutes"),
         }
     }
 
     pub fn english_string(&self) -> &str {
         match self {
-            SessionDuration::Sec15 => "15 seconds",
-            SessionDuration::Sec30 => "30 seconds",
-            SessionDuration::Min1 => "1 minute",
-            SessionDuration::Min5 => "5 minutes",
-            SessionDuration::Min10 => "10 minutes",
+            TestDuration::Sec15 => "15 seconds",
+            TestDuration::Sec30 => "30 seconds",
+            TestDuration::Min1 => "1 minute",
+            TestDuration::Min5 => "5 minutes",
+            TestDuration::Min10 => "10 minutes",
         }
     }
 }
@@ -116,15 +116,15 @@ impl PresenceState {
 }
 
 #[derive(Clone, Copy)]
-pub struct TypingSession {
-    pub config: SessionConfig,
+pub struct TypingTest {
+    pub config: TestConfig,
     pub start_instant: Instant,
     pub start_system_time: SystemTime,
 }
 
-impl TypingSession {
-    pub fn new(config: SessionConfig) -> Self {
-        TypingSession {
+impl TypingTest {
+    pub fn new(config: TestConfig) -> Self {
+        TypingTest {
             config,
             start_instant: Instant::now(),
             start_system_time: SystemTime::now(),
@@ -133,20 +133,20 @@ impl TypingSession {
 }
 
 #[derive(Clone, Copy)]
-pub struct SessionSummary {
-    pub config: SessionConfig,
+pub struct TestSummary {
+    pub config: TestConfig,
     pub real_duration: Duration,
     pub wpm: f64,
     pub start_timestamp: SystemTime,
     pub accuracy: f64,
 }
 
-impl SessionSummary {
+impl TestSummary {
     pub fn new(
         start_timestamp: SystemTime,
         start_instant: Instant,
         end_instant: Instant,
-        config: SessionConfig,
+        config: TestConfig,
         original: &str,
         typed: &str,
         keystrokes: &Vec<(Instant, bool)>,
@@ -155,7 +155,7 @@ impl SessionSummary {
         let correct_keystrokes = keystrokes.iter().filter(|(_, correct)| *correct).count();
         let total_keystrokes = keystrokes.len();
 
-        SessionSummary {
+        TestSummary {
             config,
             real_duration,
             wpm: calculate_wpm(real_duration, &original, &typed),

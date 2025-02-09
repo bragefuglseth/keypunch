@@ -91,27 +91,27 @@ template $KpResultsView: Widget{
       }
     }
 
-    Box session_info_box {
+    Box test_info_box {
       halign: center;
       homogeneous: true;
 
       Box {
         halign: center;
         spacing: 6;
-        tooltip-text: _("Session Type");
+        tooltip-text: _("Test Type");
 
         Image {
           icon-name: "quotation-symbolic";
           accessible-role: presentation;
         }
 
-        Label session_type_label {}
+        Label test_type_label {}
       }
 
       Box {
         halign: center;
         spacing: 6;
-        tooltip-text: _("Session Duration");
+        tooltip-text: _("Test Duration");
 
         Image {
           icon-name: "timer-symbolic";

@@ -19,11 +19,11 @@
 
 mod focus;
 mod inhibit;
-mod session;
+mod typing_test;
 
 use crate::application::KpApplication;
 use crate::config::APP_ID;
-use crate::session_enums::*;
+use crate::typing_test_utils::*;
 use crate::settings;
 use crate::widgets::{KpResultsView, KpTextView};
 use adw::prelude::*;
@@ -44,7 +44,7 @@ mod imp {
         #[template_child]
         pub main_stack: TemplateChild<gtk::Stack>,
         #[template_child]
-        pub session_type_dropdown: TemplateChild<gtk::DropDown>,
+        pub test_type_dropdown: TemplateChild<gtk::DropDown>,
         #[template_child]
         pub secondary_config_stack: TemplateChild<gtk::Stack>,
         #[template_child]
@@ -78,7 +78,7 @@ mod imp {
 
         pub settings: OnceCell<gio::Settings>,
 
-        pub session: Cell<Option<TypingSession>>,
+        pub current_test: Cell<Option<TypingTest>>,
         pub show_cursor: Cell<bool>,
         pub cursor_hidden_timestamp: Cell<u32>,
         pub last_unfocus_timestamp: Cell<Option<Instant>>,
@@ -105,7 +105,7 @@ mod imp {
                 window.imp().show_text_language_dialog();
             });
 
-            klass.install_action("win.cancel-session", None, move |window, _, _| {
+            klass.install_action("win.cancel-test", None, move |window, _, _| {
                 window.imp().ready();
             });
         }
@@ -124,7 +124,7 @@ mod imp {
             }
 
             // Workaround until dropdowns gain proper flat styling in libadwaita 2.0
-            self.session_type_dropdown
+            self.test_type_dropdown
                 .first_child()
                 .unwrap()
                 .add_css_class("flat");
@@ -240,7 +240,7 @@ mod imp {
         }
 
         pub fn is_running(&self) -> bool {
-            self.session.get().is_some()
+            self.current_test.get().is_some()
         }
     }
 }
@@ -263,7 +263,7 @@ impl KpWindow {
         imp.setup_focus();
         imp.setup_ui_hiding();
         imp.show_cursor();
-        imp.setup_session_config();
+        imp.setup_test_config();
         imp.ready();
 
         obj

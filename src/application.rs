@@ -50,7 +50,7 @@ mod imp {
             obj.setup_gactions();
 
             obj.set_accels_for_action("win.text-language-dialog", &["<primary>comma"]);
-            obj.set_accels_for_action("win.cancel-session", &["Escape"]);
+            obj.set_accels_for_action("win.cancel-test", &["Escape"]);
             obj.set_accels_for_action("window.close", &["<primary>w"]);
             obj.set_accels_for_action("app.quit", &["<primary>q"]);
         }

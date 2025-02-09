@@ -1,6 +1,6 @@
 /* results_view.rs
  *
- * SPDX-FileCopyrightText: © 2024 Brage Fuglseth <bragefuglseth@gnome.org>
+ * SPDX-FileCopyrightText: © 2024–2025 Brage Fuglseth <bragefuglseth@gnome.org>
  * SPDX-License-Identifier: GPL-3.0-or-later
  *
  * This program is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-use crate::session_enums::*;
+use crate::typing_test_utils::*;
 use adw::prelude::*;
 use adw::subclass::prelude::*;
 use gettextrs::gettext;
@@ -41,9 +41,9 @@ mod imp {
         #[template_child]
         pub accuracy_label: TemplateChild<gtk::Label>,
         #[template_child]
-        pub session_info_box: TemplateChild<gtk::Box>,
+        pub test_info_box: TemplateChild<gtk::Box>,
         #[template_child]
-        pub session_type_label: TemplateChild<gtk::Label>,
+        pub test_type_label: TemplateChild<gtk::Label>,
         #[template_child]
         pub duration_label: TemplateChild<gtk::Label>,
         #[template_child]
@@ -80,8 +80,8 @@ mod imp {
                 wpm_accuracy_box: Default::default(),
                 wpm_label: Default::default(),
                 accuracy_label: Default::default(),
-                session_info_box: Default::default(),
-                session_type_label: Default::default(),
+                test_info_box: Default::default(),
+                test_type_label: Default::default(),
                 duration_label: Default::default(),
                 language_box: Default::default(),
                 language_label: Default::default(),
@@ -109,17 +109,17 @@ mod imp {
             self.parent_constructed();
 
             let wpm_accuracy_box = self.wpm_accuracy_box.get();
-            let session_info_box = self.session_info_box.get();
+            let test_info_box = self.test_info_box.get();
 
             let obj = self.obj();
 
             obj.bind_property("orientation", &wpm_accuracy_box, "orientation")
                 .build();
 
-            obj.bind_property("orientation", &session_info_box, "orientation")
+            obj.bind_property("orientation", &test_info_box, "orientation")
                 .build();
 
-            obj.bind_property("orientation", &session_info_box, "spacing")
+            obj.bind_property("orientation", &test_info_box, "spacing")
                 .transform_to(|_, orientation| match orientation {
                     gtk::Orientation::Horizontal => Some(30),
                     gtk::Orientation::Vertical => Some(18),
@@ -144,8 +144,8 @@ glib::wrapper! {
 }
 
 impl KpResultsView {
-    pub fn set_summary(&self, summary: SessionSummary) {
-        let SessionSummary {
+    pub fn set_summary(&self, summary: TestSummary) {
+        let TestSummary {
             config,
             real_duration,
             wpm,
@@ -167,19 +167,19 @@ impl KpResultsView {
         imp.duration_label
             .set_label(&human_readable_duration(real_duration));
 
-        let session_type_string = match config {
-            SessionConfig::Finite => gettext("Custom"),
-            SessionConfig::Generated { difficulty, .. } => match difficulty {
-                GeneratedSessionDifficulty::Simple => gettext("Simple"),
-                GeneratedSessionDifficulty::Advanced => gettext("Advanced"),
+        let test_type_string = match config {
+            TestConfig::Finite => gettext("Custom"),
+            TestConfig::Generated { difficulty, .. } => match difficulty {
+                GeneratedTestDifficulty::Simple => gettext("Simple"),
+                GeneratedTestDifficulty::Advanced => gettext("Advanced"),
             },
         };
 
-        imp.session_type_label.set_label(&session_type_string);
+        imp.test_type_label.set_label(&test_type_string);
 
         match config {
-            SessionConfig::Finite => imp.language_box.set_visible(false),
-            SessionConfig::Generated { language, .. } => {
+            TestConfig::Finite => imp.language_box.set_visible(false),
+            TestConfig::Generated { language, .. } => {
                 imp.language_box.set_visible(true);
                 imp.language_label
                     .set_label(&language.get_message().unwrap());
