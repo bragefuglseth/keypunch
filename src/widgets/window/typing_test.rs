@@ -1,4 +1,4 @@
-/* session.rs
+/* typing_test.rs
  *
  * SPDX-FileCopyrightText: © 2024–2025 Brage Fuglseth <bragefuglseth@gnome.org>
  * SPDX-License-Identifier: GPL-3.0-or-later
@@ -18,7 +18,7 @@
  */
 
 use super::*;
-use crate::session_enums::SessionSummary;
+use crate::typing_test_utils::TestSummary;
 use crate::text_generation;
 use crate::text_utils::{process_custom_text, GraphemeState};
 use crate::widgets::{KpCustomTextDialog, KpTextLanguageDialog};
@@ -29,20 +29,20 @@ use std::iter::once;
 use text_generation::CHUNK_GRAPHEME_COUNT;
 
 // The lower this is, the more sensitive Keypunch is to "frustration" (random key mashing).
-// If enough frustration is detected, the session will be cancelled, and a helpful
+// If enough frustration is detected, the test will be cancelled, and a helpful
 // message will be displayed.
 const FRUSTRATION_THRESHOLD: usize = 3;
 
 #[gtk::template_callbacks]
 impl imp::KpWindow {
-    pub(super) fn setup_session_config(&self) {
+    pub(super) fn setup_test_config(&self) {
         let app = self.obj().kp_application();
         let settings = app.settings();
 
-        let session_type_dropdown = self.session_type_dropdown.get();
+        let test_type_dropdown = self.test_type_dropdown.get();
         settings::bind_dropdown_selected(
             &settings,
-            &session_type_dropdown,
+            &test_type_dropdown,
             "session-type",
             settings::SESSION_TYPE_VALUES,
         );
@@ -130,7 +130,7 @@ impl imp::KpWindow {
                 self,
                 #[upgrade_or_default]
                 move |values| {
-                    let Some(TypingSession { config, .. }) = imp.session.get() else {
+                    let Some(TypingTest { config, .. }) = imp.current_test.get() else {
                         return None;
                     };
 
@@ -153,7 +153,7 @@ impl imp::KpWindow {
                         imp.extend_original_text(config);
                     }
 
-                    if config == SessionConfig::Finite {
+                    if config == TestConfig::Finite {
                         let (current_word, total_words) = text_view.progress();
 
                         // Translators: The `{}` blocks will be replaced with the current word count and the total word count.
@@ -252,10 +252,10 @@ impl imp::KpWindow {
 
     #[template_callback]
     pub(super) fn ready(&self) {
-        self.session.set(None);
+        self.current_test.set(None);
         self.text_view.set_running(false);
         self.text_view.set_accepts_input(true);
-        self.main_stack.set_visible_child_name("session");
+        self.main_stack.set_visible_child_name("test");
         self.status_stack.set_visible_child_name("ready");
         self.menu_button.set_visible(true);
         self.stop_button.set_visible(false);
@@ -267,7 +267,7 @@ impl imp::KpWindow {
 
         self.obj()
             .action_set_enabled("win.text-language-dialog", true);
-        self.obj().action_set_enabled("win.cancel-session", false);
+        self.obj().action_set_enabled("win.cancel-test", false);
         self.obj().remove_css_class("hide-controls");
 
         let app = self.obj().kp_application();
@@ -275,7 +275,7 @@ impl imp::KpWindow {
 
         // Discord IPC
         self.obj().kp_application().discord_rpc().set_activity(
-            SessionConfig::from_settings(&settings),
+            TestConfig::from_settings(&settings),
             PresenceState::Ready,
         );
 
@@ -286,16 +286,16 @@ impl imp::KpWindow {
         let app = self.obj().kp_application();
         let settings = app.settings();
 
-        let config = SessionConfig::from_settings(&settings);
+        let config = TestConfig::from_settings(&settings);
 
-        self.session.set(Some(TypingSession::new(config)));
-        self.main_stack.set_visible_child_name("session");
+        self.current_test.set(Some(TypingTest::new(config)));
+        self.main_stack.set_visible_child_name("test");
         self.status_stack.set_visible_child_name("running");
         self.hide_cursor();
         self.bottom_stack
             .set_visible_child(&self.bottom_stack_empty.get());
 
-        // Ugly hack to stop the stop button from "flashing" when starting a session:
+        // Ugly hack to stop the stop button from "flashing" when starting a test:
         // Make it visible with 0 opacity, and set the opacity to 1 after the 200ms
         // crossfade effect has finished
         self.stop_button.set_opacity(0.);
@@ -315,13 +315,13 @@ impl imp::KpWindow {
             ),
         );
 
-        if matches!(config, SessionConfig::Generated { .. }) {
+        if matches!(config, TestConfig::Generated { .. }) {
             self.start_timer(config);
         }
 
         self.obj()
             .action_set_enabled("win.text-language-dialog", false);
-        self.obj().action_set_enabled("win.cancel-session", true);
+        self.obj().action_set_enabled("win.cancel-test", true);
         self.obj().add_css_class("hide-controls");
 
         // Discord IPC
@@ -330,19 +330,19 @@ impl imp::KpWindow {
             .discord_rpc()
             .set_activity(config, PresenceState::Typing);
 
-        // Translators: This is shown as a warning by GNOME Shell before logging out or shutting off the system in the middle of a typing session, alongside Keypunch's name and icon
-        self.inhibit_session(&gettext("Ongoing typing session"))
+        // Translators: This is shown as a warning by GNOME Shell before logging out or shutting off the system in the middle of a typing test, alongside Keypunch's name and icon
+        self.inhibit_session(&gettext("Ongoing typing test"))
     }
 
     pub(super) fn finish(&self) {
-        let Some(session) = self.session.get() else {
+        let Some(test) = self.current_test.get() else {
             return;
         };
 
-        self.end_session();
-        self.show_results_view(session, Instant::now());
+        self.end_test();
+        self.show_results_view(test, Instant::now());
 
-        let config = session.config;
+        let config = test.config;
 
         // Discord IPC
         self.obj()
@@ -356,7 +356,7 @@ impl imp::KpWindow {
             return;
         }
 
-        self.end_session();
+        self.end_test();
         self.main_stack.set_visible_child_name("frustration-relief");
 
         // Avoid continue button being activated from a keypress immediately
@@ -374,14 +374,14 @@ impl imp::KpWindow {
         );
     }
 
-    pub(super) fn end_session(&self) {
-        self.session.set(None);
+    pub(super) fn end_test(&self) {
+        self.current_test.set(None);
         self.text_view.set_running(false);
         self.text_view.set_accepts_input(false);
 
         self.obj()
             .action_set_enabled("win.text-language-dialog", false);
-        self.obj().action_set_enabled("win.cancel-session", false);
+        self.obj().action_set_enabled("win.cancel-test", false);
 
         self.end_existing_inhibit();
     }
@@ -413,25 +413,25 @@ impl imp::KpWindow {
         let app = self.obj().kp_application();
         let settings = app.settings();
 
-        let config = SessionConfig::from_settings(&settings);
+        let config = TestConfig::from_settings(&settings);
 
         let config_widget = match config {
-            SessionConfig::Generated { .. } => self.duration_dropdown.get().upcast::<gtk::Widget>(),
-            SessionConfig::Finite => self.custom_button.get().upcast::<gtk::Widget>(),
+            TestConfig::Generated { .. } => self.duration_dropdown.get().upcast::<gtk::Widget>(),
+            TestConfig::Finite => self.custom_button.get().upcast::<gtk::Widget>(),
         };
         self.secondary_config_stack
             .set_visible_child(&config_widget);
 
         let new_original = match config {
-            SessionConfig::Generated {
+            TestConfig::Generated {
                 language,
                 difficulty,
                 ..
             } => match difficulty {
-                GeneratedSessionDifficulty::Simple => text_generation::simple(language),
-                GeneratedSessionDifficulty::Advanced => text_generation::advanced(language),
+                GeneratedTestDifficulty::Simple => text_generation::simple(language),
+                GeneratedTestDifficulty::Advanced => text_generation::advanced(language),
             },
-            SessionConfig::Finite => process_custom_text(&settings.string("custom-text")),
+            TestConfig::Finite => process_custom_text(&settings.string("custom-text")),
         };
         self.text_view.set_original_text(&new_original);
 
@@ -447,7 +447,7 @@ impl imp::KpWindow {
         let app = self.obj().kp_application();
         let settings = app.settings();
 
-        let config = SessionConfig::from_settings(&settings);
+        let config = TestConfig::from_settings(&settings);
 
         // Discord IPC
         self.obj()
@@ -533,8 +533,8 @@ impl imp::KpWindow {
         dialog.present(Some(self.obj().upcast_ref::<gtk::Widget>()));
     }
 
-    pub(super) fn extend_original_text(&self, config: SessionConfig) {
-        let SessionConfig::Generated {
+    pub(super) fn extend_original_text(&self, config: TestConfig) {
+        let TestConfig::Generated {
             language,
             difficulty,
             ..
@@ -544,23 +544,23 @@ impl imp::KpWindow {
         };
 
         let new_chunk = match difficulty {
-            GeneratedSessionDifficulty::Simple => text_generation::simple(language),
-            GeneratedSessionDifficulty::Advanced => text_generation::advanced(language),
+            GeneratedTestDifficulty::Simple => text_generation::simple(language),
+            GeneratedTestDifficulty::Advanced => text_generation::advanced(language),
         };
         self.text_view.push_original_text(&new_chunk);
     }
 
-    pub(super) fn start_timer(&self, config: SessionConfig) {
-        let SessionConfig::Generated { duration, .. } = config else {
+    pub(super) fn start_timer(&self, config: TestConfig) {
+        let TestConfig::Generated { duration, .. } = config else {
             return;
         };
 
         let duration = match duration {
-            SessionDuration::Sec15 => Duration::from_secs(15),
-            SessionDuration::Sec30 => Duration::from_secs(30),
-            SessionDuration::Min1 => Duration::from_secs(60),
-            SessionDuration::Min5 => Duration::from_secs(5 * 60),
-            SessionDuration::Min10 => Duration::from_secs(10 * 60),
+            TestDuration::Sec15 => Duration::from_secs(15),
+            TestDuration::Sec30 => Duration::from_secs(30),
+            TestDuration::Min1 => Duration::from_secs(60),
+            TestDuration::Min5 => Duration::from_secs(5 * 60),
+            TestDuration::Min10 => Duration::from_secs(10 * 60),
         };
 
         self.update_timer(duration.as_secs() + 1);
@@ -575,7 +575,7 @@ impl imp::KpWindow {
                 #[upgrade_or]
                 ControlFlow::Break,
                 move || {
-                    let Some(TypingSession { start_instant, .. }) = imp.session.get() else {
+                    let Some(TypingTest { start_instant, .. }) = imp.current_test.get() else {
                         return ControlFlow::Break;
                     };
 
@@ -612,18 +612,18 @@ impl imp::KpWindow {
         self.status_label.set_label(&text);
     }
 
-    pub(super) fn show_results_view(&self, session: TypingSession, finish_instant: Instant) {
+    pub(super) fn show_results_view(&self, test: TypingTest, finish_instant: Instant) {
         let continue_button = self.results_continue_button.get();
 
-        let TypingSession {
+        let TypingTest {
             config,
             start_instant,
             start_system_time,
-        } = session;
+        } = test;
 
         let original_text = match config {
-            SessionConfig::Generated { .. } => self.text_view.original_text(),
-            SessionConfig::Finite => process_custom_text(&self.text_view.original_text()),
+            TestConfig::Generated { .. } => self.text_view.original_text(),
+            TestConfig::Finite => process_custom_text(&self.text_view.original_text()),
         };
         let typed_text = self.text_view.typed_text();
 
@@ -631,7 +631,7 @@ impl imp::KpWindow {
 
         let keystrokes = self.text_view.keystrokes();
 
-        let summary = SessionSummary::new(
+        let summary = TestSummary::new(
             start_system_time,
             start_instant,
             finish_instant,
@@ -651,7 +651,7 @@ impl imp::KpWindow {
             .get()
             .unwrap_or_else(|| Vec::new());
 
-        if let SessionConfig::Generated {
+        if let TestConfig::Generated {
             language,
             difficulty,
             duration,
@@ -713,18 +713,18 @@ pub(super) fn add_personal_best(
     old: Vec<(String, String, String, u32)>,
     new: (&str, &str, &str, u32),
 ) -> Vec<(String, String, String, u32)> {
-    let (new_session_type, new_duration, new_language, new_wpm) = new;
+    let (new_test_type, new_duration, new_language, new_wpm) = new;
 
     old.into_iter()
         .filter(
-            |(stored_session_type, stored_duration, stored_lang_code, _)| {
-                *stored_session_type != new_session_type
+            |(stored_test_type, stored_duration, stored_lang_code, _)| {
+                *stored_test_type != new_test_type
                     || *stored_duration != new_duration
                     || *stored_lang_code != new_language
             },
         )
         .chain(once((
-            new_session_type.to_string(),
+            new_test_type.to_string(),
             new_duration.to_string(),
             new_language.to_string(),
             new_wpm,

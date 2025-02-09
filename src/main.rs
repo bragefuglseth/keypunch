@@ -20,7 +20,7 @@
 mod application;
 mod config;
 mod discord_rpc;
-mod session_enums;
+mod typing_test_utils;
 mod settings;
 mod text_generation;
 mod text_utils;

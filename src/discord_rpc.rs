@@ -1,6 +1,6 @@
 /* discord_rpc.rs
  *
- * SPDX-FileCopyrightText: © 2024 Brage Fuglseth <bragefuglseth@gnome.org>
+ * SPDX-FileCopyrightText: © 2024–2025 Brage Fuglseth <bragefuglseth@gnome.org>
  * SPDX-License-Identifier: GPL-3.0-or-later
  *
  * This program is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-use crate::session_enums::*;
+use crate::typing_test_utils::*;
 use discord_presence::models::rich_presence::Activity;
 use discord_presence::Client;
 use std::sync::mpsc;
@@ -29,7 +29,7 @@ const DISCORD_CLIENT_ID: u64 = 1320106636743802923;
 
 enum RpcMessage {
     SendStored,
-    Change(SessionConfig, PresenceState),
+    Change(TestConfig, PresenceState),
     UpdateStats(f64, f64),
 }
 
@@ -67,14 +67,14 @@ impl Default for RpcWrapper {
             for msg in receiver.iter() {
                 if let RpcMessage::Change(session_config, state) = msg {
                     let details_string = match session_config {
-                        SessionConfig::Finite => "Custom text".to_string(),
-                        SessionConfig::Generated {
-                            difficulty: GeneratedSessionDifficulty::Simple,
+                        TestConfig::Finite => "Custom text".to_string(),
+                        TestConfig::Generated {
+                            difficulty: GeneratedTestDifficulty::Simple,
                             duration,
                             ..
                         } => format!("Simple, {}", duration.english_string()),
-                        SessionConfig::Generated {
-                            difficulty: GeneratedSessionDifficulty::Advanced,
+                        TestConfig::Generated {
+                            difficulty: GeneratedTestDifficulty::Advanced,
                             duration,
                             ..
                         } => format!("Advanced, {}", duration.english_string()),
@@ -121,7 +121,7 @@ impl Default for RpcWrapper {
 }
 
 impl RpcWrapper {
-    pub fn set_activity(&self, session_config: SessionConfig, state: PresenceState) {
+    pub fn set_activity(&self, session_config: TestConfig, state: PresenceState) {
         self.sender
             .send(RpcMessage::Change(session_config, state))
             .expect("channel exists until app shuts down");
