@@ -29,7 +29,7 @@ const DISCORD_CLIENT_ID: u64 = 1320106636743802923;
 
 enum RpcMessage {
     SendStored,
-    Change(SessionType, SessionDuration, PresenceState),
+    Change(SessionConfig, PresenceState),
     UpdateStats(f64, f64),
 }
 
@@ -65,11 +65,19 @@ impl Default for RpcWrapper {
             client.start();
 
             for msg in receiver.iter() {
-                if let RpcMessage::Change(session_type, duration, state) = msg {
-                    let details_string = match session_type {
-                        SessionType::Simple => format!("Simple, {}", duration.english_string()),
-                        SessionType::Advanced => format!("Advanced, {}", duration.english_string()),
-                        SessionType::Custom => "Custom text".to_string(),
+                if let RpcMessage::Change(session_config, state) = msg {
+                    let details_string = match session_config {
+                        SessionConfig::Finite => "Custom text".to_string(),
+                        SessionConfig::Generated {
+                            difficulty: GeneratedSessionDifficulty::Simple,
+                            duration,
+                            ..
+                        } => format!("Simple, {}", duration.english_string()),
+                        SessionConfig::Generated {
+                            difficulty: GeneratedSessionDifficulty::Advanced,
+                            duration,
+                            ..
+                        } => format!("Advanced, {}", duration.english_string()),
                     };
 
                     stored_activity = Activity::new()
@@ -113,14 +121,9 @@ impl Default for RpcWrapper {
 }
 
 impl RpcWrapper {
-    pub fn set_activity(
-        &self,
-        session_type: SessionType,
-        duration: SessionDuration,
-        state: PresenceState,
-    ) {
+    pub fn set_activity(&self, session_config: SessionConfig, state: PresenceState) {
         self.sender
-            .send(RpcMessage::Change(session_type, duration, state))
+            .send(RpcMessage::Change(session_config, state))
             .expect("channel exists until app shuts down");
     }
 

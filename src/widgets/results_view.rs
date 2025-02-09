@@ -17,11 +17,15 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+use crate::session_enums::*;
 use adw::prelude::*;
 use adw::subclass::prelude::*;
+use gettextrs::gettext;
 use gtk::glib;
 use i18n_format::i18n_fmt;
 use std::cell::{Cell, RefCell};
+use std::time::Duration;
+use strum::EnumMessage;
 
 mod imp {
     use super::*;
@@ -31,34 +35,22 @@ mod imp {
     #[template(file = "src/widgets/results_view.blp")]
     pub struct KpResultsView {
         #[template_child]
-        wpm_accuracy_box: TemplateChild<gtk::Box>,
+        pub wpm_accuracy_box: TemplateChild<gtk::Box>,
         #[template_child]
-        wpm_label: TemplateChild<gtk::Label>,
+        pub wpm_label: TemplateChild<gtk::Label>,
         #[template_child]
-        accuracy_label: TemplateChild<gtk::Label>,
+        pub accuracy_label: TemplateChild<gtk::Label>,
         #[template_child]
-        session_info_box: TemplateChild<gtk::Box>,
+        pub session_info_box: TemplateChild<gtk::Box>,
         #[template_child]
-        session_type_label: TemplateChild<gtk::Label>,
+        pub session_type_label: TemplateChild<gtk::Label>,
         #[template_child]
-        duration_label: TemplateChild<gtk::Label>,
+        pub duration_label: TemplateChild<gtk::Label>,
         #[template_child]
-        language_box: TemplateChild<gtk::Box>,
+        pub language_box: TemplateChild<gtk::Box>,
         #[template_child]
-        language_label: TemplateChild<gtk::Label>,
+        pub language_label: TemplateChild<gtk::Label>,
 
-        #[property(get, set)]
-        wpm: Cell<f64>,
-        #[property(get, set)]
-        accuracy: Cell<f64>,
-        #[property(get, set)]
-        session_type: RefCell<String>,
-        #[property(get, set)]
-        duration: Cell<u64>,
-        #[property(get, set)]
-        language: RefCell<String>,
-        #[property(get, set)]
-        show_language: Cell<bool>,
         #[property(get, set)]
         show_personal_best: Cell<bool>,
         #[property(get, set, builder(gtk::Orientation::Vertical))]
@@ -94,12 +86,6 @@ mod imp {
                 language_box: Default::default(),
                 language_label: Default::default(),
 
-                wpm: Default::default(),
-                accuracy: Default::default(),
-                session_type: Default::default(),
-                duration: Default::default(),
-                language: Default::default(),
-                show_language: Default::default(),
                 show_personal_best: Default::default(),
                 orientation: RefCell::new(gtk::Orientation::Horizontal),
             }
@@ -123,48 +109,9 @@ mod imp {
             self.parent_constructed();
 
             let wpm_accuracy_box = self.wpm_accuracy_box.get();
-            let wpm_label = self.wpm_label.get();
-            let accuracy_label = self.accuracy_label.get();
-            let session_type_label = self.session_type_label.get();
-            let duration_label = self.duration_label.get();
-            let language_box = self.language_box.get();
-            let language_label = self.language_label.get();
             let session_info_box = self.session_info_box.get();
 
             let obj = self.obj();
-            obj.bind_property("wpm", &wpm_label, "label")
-                .transform_to(|_, wpm: f64| {
-                    let formatted = format!("{:.0}", wpm.floor());
-                    Some(formatted)
-                })
-                .build();
-
-            obj.bind_property("accuracy", &accuracy_label, "label")
-                .transform_to(|_, accuracy: f64| {
-                    let display_accuracy = (accuracy * 100.).floor() as usize;
-                    // Translators: The percentage label format of the results page.
-                    // The `{}` block will be replaced with the percentage number,
-                    // do not translate it!
-                    let formatted = i18n_fmt! { i18n_fmt("{}%", display_accuracy) };
-                    Some(formatted)
-                })
-                .build();
-
-            obj.bind_property("session-type", &session_type_label, "label")
-                .build();
-
-            obj.bind_property("duration", &duration_label, "label")
-                .transform_to(|_, duration: u64| {
-                    let formatted = human_readable_duration(duration);
-                    Some(formatted)
-                })
-                .build();
-
-            obj.bind_property("show-language", &language_box, "visible")
-                .build();
-
-            obj.bind_property("language", &language_label, "label")
-                .build();
 
             obj.bind_property("orientation", &wpm_accuracy_box, "orientation")
                 .build();
@@ -196,7 +143,54 @@ glib::wrapper! {
         @extends gtk::Widget, @implements gtk::Orientable;
 }
 
-pub fn human_readable_duration(total_secs: u64) -> String {
+impl KpResultsView {
+    pub fn set_summary(&self, summary: SessionSummary) {
+        let SessionSummary {
+            config,
+            real_duration,
+            wpm,
+            accuracy,
+            ..
+        } = summary;
+
+        let imp = self.imp();
+
+        imp.wpm_label.set_label(&format!("{:.0}", wpm.floor()));
+
+        let display_accuracy = (accuracy * 100.).floor();
+        // Translators: The percentage label format of the results page.
+        // The `{}` block will be replaced with the percentage number,
+        // do not translate it!
+        imp.accuracy_label
+            .set_label(&i18n_fmt! { i18n_fmt("{}%", display_accuracy) });
+
+        imp.duration_label
+            .set_label(&human_readable_duration(real_duration));
+
+        let session_type_string = match config {
+            SessionConfig::Finite => gettext("Custom"),
+            SessionConfig::Generated { difficulty, .. } => match difficulty {
+                GeneratedSessionDifficulty::Simple => gettext("Simple"),
+                GeneratedSessionDifficulty::Advanced => gettext("Advanced"),
+            },
+        };
+
+        imp.session_type_label.set_label(&session_type_string);
+
+        match config {
+            SessionConfig::Finite => imp.language_box.set_visible(false),
+            SessionConfig::Generated { language, .. } => {
+                imp.language_box.set_visible(true);
+                imp.language_label
+                    .set_label(&language.get_message().unwrap());
+            }
+        }
+    }
+}
+
+pub fn human_readable_duration(duration: Duration) -> String {
+    let total_secs = duration.as_secs();
+
     let minutes = total_secs / 60;
     let secs = total_secs % 60;
 
