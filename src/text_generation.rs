@@ -39,6 +39,8 @@ pub enum Language {
     Czech,
     #[strum(message = "Dansk", to_string = "da")]
     Danish,
+    #[strum(message = "Nederlands", to_string = "nl")]
+    Dutch,
     #[default]
     #[strum(message = "English", to_string = "en")]
     English,
@@ -94,6 +96,8 @@ pub enum Language {
     Ukranian,
     #[strum(message = "Tiếng Việt", to_string = "vn")]
     Vietnamese,
+    #[strum(message = "فارسی", to_string = "fa")]
+    Persian,
 }
 
 #[derive(Clone, Copy)]
@@ -142,6 +146,8 @@ type Numerals = [&'static str; 10];
 
 const WESTERN_ARABIC_NUMERALS: &'static Numerals =
     &["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
+const PERSIAN_NUMERALS: &'static Numerals =
+    &["۰", "۱", "۲", "۳", "۴", "۵", "۶", "۷", "۸", "۹"];
 const DEVANAGARI_NUMERALS: &'static Numerals = &["०", "१", "२", "३", "४", "५", "६", "७", "८", "९"];
 const BANGLA_NUMERALS: &'static Numerals = &["০", "১", "২", "৩", "৪", "৫", "৬", "৭", "৮", "৯"];
 
@@ -279,6 +285,26 @@ pub fn advanced(language: Language) -> String {
                 Punctuation::wrapping("(", ")", false, 0.1),
             ],
             WESTERN_ARABIC_NUMERALS,
+        ),
+
+        // Persian is similar to Arabic,
+        // but on the default Persian keyboard in GNOME,
+        // the numbers are the same as Persian.
+        Language::Persian => advanced_generic(
+            "fa_advanced",
+            " ",
+            &[
+                Punctuation::suffix(".", true, 0.6),
+                Punctuation::suffix("،", false, 1.0),
+                Punctuation::suffix("؛", false, 0.1),
+                Punctuation::suffix(":", false, 0.2),
+                Punctuation::suffix("!", true, 0.3),
+                Punctuation::suffix("؟", true, 0.3),
+                Punctuation::wrapping("\"", "\"", false, 0.0),
+                Punctuation::wrapping("(", ")", false, 0.1),
+
+            ],
+            PERSIAN_NUMERALS,
         ),
         _ => advanced_generic(
             &language.to_string(),
@@ -425,3 +451,4 @@ fn random_number_weighted(numerals: &Numerals, rng: &mut ThreadRng) -> String {
 
     s
 }
+

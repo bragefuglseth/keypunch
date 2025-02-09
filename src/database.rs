@@ -1,4 +1,4 @@
-use crate::session_enums::SessionType;
+use crate::typing_test_utils::TestSummary;
 use crate::text_generation::Language;
 use anyhow::Result;
 use gtk::glib;
@@ -18,16 +18,6 @@ pub const DATABASE: LazyLock<TypingStatsDb> = LazyLock::new(|| {
 
 refinery::embed_migrations!("./src/migrations");
 
-pub struct TestData {
-    pub timestamp: SystemTime,
-    pub finished: bool,
-    pub test_type: SessionType,
-    pub language: Option<Language>,
-    pub duration: Duration,
-    pub wpm: f64,
-    pub accuracy: f64,
-}
-
 pub struct TypingStatsDb(Connection);
 
 impl TypingStatsDb {
@@ -38,32 +28,33 @@ impl TypingStatsDb {
         TypingStatsDb(conn)
     }
 
-    pub fn push_test(&self, data: &TestData) -> Result<()> {
-        self.0.execute(
-            "
-            INSERT INTO tests (
-                timestamp,
-                finished,
-                test_type,
-                language,
-                duration,
-                wpm,
-                accuracy
-            )
-            VALUES (?, ?, ?, ?, ?, ?, ?)",
-            (
-                data.timestamp
-                    .duration_since(UNIX_EPOCH)
-                    .expect("System time is always post-UNIX epoch")
-                    .as_secs(),
-                data.finished,
-                data.test_type.to_string(),
-                data.language.map(|l| l.to_string()),
-                data.duration.as_secs(),
-                data.wpm,
-                data.accuracy,
-            ),
-        )?;
-        Ok(())
-    }
+    // TODO
+    // pub fn push_test(&self, data: &TestSummary) -> Result<()> {
+    //     self.0.execute(
+    //         "
+    //         INSERT INTO tests (
+    //             timestamp,
+    //             finished,
+    //             test_type,
+    //             language,
+    //             duration,
+    //             wpm,
+    //             accuracy
+    //         )
+    //         VALUES (?, ?, ?, ?, ?, ?, ?)",
+    //         (
+    //             data.timestamp
+    //                 .duration_since(UNIX_EPOCH)
+    //                 .expect("System time is always post-UNIX epoch")
+    //                 .as_secs(),
+    //             data.finished,
+    //             data.test_type.to_string(),
+    //             data.language.map(|l| l.to_string()),
+    //             data.duration.as_secs(),
+    //             data.wpm,
+    //             data.accuracy,
+    //         ),
+    //     )?;
+    //     Ok(())
+    // }
 }

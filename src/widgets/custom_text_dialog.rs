@@ -20,15 +20,16 @@
 use adw::prelude::*;
 use adw::subclass::prelude::*;
 use glib::subclass::Signal;
-use gtk::glib;
+use gtk::{gio, glib};
 use std::cell::{Cell, RefCell};
 use std::sync::OnceLock;
 
 mod imp {
     use super::*;
 
-    #[derive(Default, gtk::CompositeTemplate)]
+    #[derive(Default, gtk::CompositeTemplate, glib::Properties)]
     #[template(file = "src/widgets/custom_text_dialog.blp")]
+    #[properties(wrapper_type = super::KpCustomTextDialog)]
     pub struct KpCustomTextDialog {
         #[template_child]
         pub header_bar: TemplateChild<adw::HeaderBar>,
@@ -41,9 +42,10 @@ mod imp {
         #[template_child]
         pub save_button: TemplateChild<gtk::Button>,
 
-        pub current_text: RefCell<String>,
-
         pub apply_changes: Cell<bool>,
+
+        #[property(get, construct_only, nullable)]
+        pub settings: RefCell<Option<gio::Settings>>,
     }
 
     #[glib::object_subclass]
@@ -61,18 +63,14 @@ mod imp {
         }
     }
 
+    #[glib::derived_properties]
     impl ObjectImpl for KpCustomTextDialog {
         fn signals() -> &'static [Signal] {
             static SIGNALS: OnceLock<Vec<Signal>> = OnceLock::new();
             SIGNALS.get_or_init(|| {
-                vec![
-                    Signal::builder("save")
-                        .param_types([str::static_type()])
-                        .build(),
-                    Signal::builder("discard")
-                        .param_types([str::static_type()])
-                        .build(),
-                ]
+                vec![Signal::builder("discard")
+                    .param_types([str::static_type()])
+                    .build()]
             })
         }
 
@@ -111,7 +109,10 @@ mod imp {
                 move |_| {
                     imp.apply_changes.set(true);
                     imp.obj()
-                        .emit_by_name_with_values("save", &[imp.text().into()]);
+                        .settings()
+                        .unwrap()
+                        .set_string("custom-text", &imp.text())
+                        .unwrap();
                     imp.obj().close();
                 }
             ));
@@ -129,7 +130,12 @@ mod imp {
 
     impl KpCustomTextDialog {
         fn changed(&self) -> bool {
-            self.current_text.borrow().as_str() != self.text()
+            self.obj()
+                .settings()
+                .unwrap()
+                .string("custom-text")
+                .as_str()
+                != self.text()
         }
 
         fn text(&self) -> String {
@@ -146,13 +152,23 @@ glib::wrapper! {
 }
 
 impl KpCustomTextDialog {
-    pub fn new(current_text: &str, initial_text: &str) -> Self {
-        let obj = glib::Object::new::<Self>();
+    pub fn new(settings: &gio::Settings, initial_override: Option<&str>) -> Self {
+        let obj: Self = glib::Object::builder()
+            .property("settings", settings.clone())
+            .build();
+
         let imp = obj.imp();
-        *imp.current_text.borrow_mut() = current_text.to_string();
+
+        let current_text = settings.string("custom-text");
+        let initial_text = match initial_override {
+            Some(s) => s,
+            None => current_text.as_str(),
+        };
         imp.text_view.buffer().set_text(initial_text);
+
         imp.text_view
             .emit_by_name_with_values("select-all", &[true.into()]);
+
         obj
     }
 }

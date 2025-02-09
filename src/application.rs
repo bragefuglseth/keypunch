@@ -21,6 +21,7 @@ use crate::discord_rpc::RpcWrapper;
 use adw::subclass::prelude::*;
 use gtk::prelude::*;
 use gtk::{gio, glib};
+use std::cell::OnceCell;
 
 use crate::widgets::KpWindow;
 
@@ -29,6 +30,7 @@ mod imp {
 
     #[derive(Default)]
     pub struct KpApplication {
+        pub settings: OnceCell<gio::Settings>,
         pub discord_rpc: RpcWrapper,
     }
 
@@ -48,7 +50,7 @@ mod imp {
             obj.setup_gactions();
 
             obj.set_accels_for_action("win.text-language-dialog", &["<primary>comma"]);
-            obj.set_accels_for_action("win.cancel-session", &["Escape"]);
+            obj.set_accels_for_action("win.cancel-test", &["Escape"]);
             obj.set_accels_for_action("window.close", &["<primary>w"]);
             obj.set_accels_for_action("app.quit", &["<primary>q"]);
         }
@@ -96,6 +98,16 @@ impl KpApplication {
             .build()];
 
         self.add_action_entries(actions);
+
+        let text_language_action = self.settings().create_action("text-language");
+
+        self.add_action(&text_language_action);
+    }
+
+    pub fn settings(&self) -> &gio::Settings {
+        self.imp()
+            .settings
+            .get_or_init(|| gio::Settings::new("dev.bragefuglseth.Keypunch"))
     }
 
     pub fn discord_rpc(&self) -> &RpcWrapper {

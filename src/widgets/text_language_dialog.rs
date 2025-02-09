@@ -18,13 +18,12 @@
  */
 
 use crate::text_generation::Language;
-use crate::widgets::KpLanguageRow;
 use adw::prelude::*;
 use adw::subclass::prelude::*;
-use glib::subclass::Signal;
 use gtk::{gio, glib};
-use std::cell::{Cell, OnceCell};
-use std::sync::OnceLock;
+use std::cell::RefCell;
+use std::iter::once;
+use std::str::FromStr;
 use strum::{EnumMessage, IntoEnumIterator};
 use unidecode::unidecode;
 
@@ -33,8 +32,9 @@ const LANGUAGE_REQUEST_URL: &'static str = "https://github.com/bragefuglseth/key
 mod imp {
     use super::*;
 
-    #[derive(Default, gtk::CompositeTemplate)]
+    #[derive(Default, gtk::CompositeTemplate, glib::Properties)]
     #[template(file = "src/widgets/text_language_dialog.blp")]
+    #[properties(wrapper_type = super::KpTextLanguageDialog)]
     pub struct KpTextLanguageDialog {
         #[template_child]
         pub header_bar: TemplateChild<adw::HeaderBar>,
@@ -53,9 +53,8 @@ mod imp {
         #[template_child]
         pub no_results_box: TemplateChild<gtk::Box>,
 
-        pub check_button_group: OnceCell<gtk::CheckButton>,
-
-        pub selected_language: Cell<Language>,
+        #[property(get, construct_only, nullable)]
+        pub settings: RefCell<Option<gio::Settings>>,
     }
 
     #[glib::object_subclass]
@@ -74,12 +73,8 @@ mod imp {
         }
     }
 
+    #[glib::derived_properties]
     impl ObjectImpl for KpTextLanguageDialog {
-        fn signals() -> &'static [Signal] {
-            static SIGNALS: OnceLock<Vec<Signal>> = OnceLock::new();
-            SIGNALS.get_or_init(|| vec![Signal::builder("language-changed").build()])
-        }
-
         fn constructed(&self) {
             self.parent_constructed();
 
@@ -109,20 +104,35 @@ mod imp {
         }
     }
     impl WidgetImpl for KpTextLanguageDialog {}
-    impl AdwDialogImpl for KpTextLanguageDialog {}
+    impl AdwDialogImpl for KpTextLanguageDialog {
+        fn closed(&self) {
+            let settings = self.obj().settings().unwrap();
+
+            let current_language = settings.string("text-language").to_string();
+            let stored_recent_languages = settings
+                .value("recent-languages")
+                .get::<Vec<String>>()
+                .unwrap();
+
+            let recent_languages: Vec<String> = once(current_language.clone())
+                .chain(
+                    stored_recent_languages
+                        .into_iter()
+                        .filter(|recent_language| &*recent_language != &current_language),
+                )
+                .take(3)
+                .collect();
+
+            settings
+                .set_value("recent-languages", &recent_languages.to_variant())
+                .unwrap();
+        }
+    }
 
     #[gtk::template_callbacks]
     impl KpTextLanguageDialog {
         pub(super) fn populate_list(&self, current: Language, recent: &[Language]) {
-            let current_language_row = KpLanguageRow::new(current);
-            self.check_button_group
-                .set(current_language_row.check_button())
-                .expect(
-                    "check button group field hasn't been written to yet when list is populated",
-                );
-
-            current_language_row.set_checked(true);
-            self.connect_row_checked(&current_language_row);
+            let current_language_row = language_row(current);
 
             self.group_recent.add(&current_language_row);
 
@@ -130,11 +140,8 @@ mod imp {
                 .iter()
                 .filter(|&&recent_language| recent_language != current);
             for language in recent_without_current {
-                let row = KpLanguageRow::new(*language);
-                row.check_button()
-                    .set_group(Some(self.check_button_group.get().unwrap()));
+                let row = language_row(*language);
                 self.group_recent.add(&row);
-                self.connect_row_checked(&row);
             }
 
             let mut languages_without_recent_or_current: Vec<Language> = Language::iter()
@@ -154,11 +161,9 @@ mod imp {
             });
 
             for language in languages_without_recent_or_current {
-                let row = KpLanguageRow::new(language);
-                row.check_button()
-                    .set_group(Some(self.check_button_group.get().unwrap()));
+                let row = language_row(language);
+
                 self.group_other.add(&row);
-                self.connect_row_checked(&row);
             }
         }
 
@@ -197,16 +202,8 @@ mod imp {
 
                     search_list.remove_all();
 
-                    let check_button_group = gtk::CheckButton::new();
-
                     for result in results {
-                        let row = KpLanguageRow::new(result);
-                        if self.selected_language.get() == result {
-                            row.set_checked(true);
-                        }
-
-                        self.connect_row_checked(&row);
-                        row.check_button().set_group(Some(&check_button_group));
+                        let row = language_row(result);
                         search_list.append(&row);
                     }
 
@@ -214,38 +211,6 @@ mod imp {
                     self.stack.set_visible_child_name("search-results");
                 }
             }
-        }
-
-        pub(super) fn connect_row_checked(&self, row: &KpLanguageRow) {
-            row.connect_checked_notify(glib::clone!(
-                #[weak(rename_to = imp)]
-                self,
-                move |row| {
-                    if row.checked() {
-                        imp.selected_language.set(row.language());
-                        imp.obj().emit_by_name::<()>("language-changed", &[]);
-                    }
-                }
-            ));
-
-            self.obj().connect_local(
-                "language-changed",
-                false,
-                glib::clone!(
-                    #[weak]
-                    row,
-                    #[weak(rename_to = imp)]
-                    self,
-                    #[upgrade_or_default]
-                    move |_| {
-                        if row.language() == imp.selected_language.get() && !row.checked() {
-                            row.set_checked(true);
-                        }
-
-                        None
-                    }
-                ),
-            );
         }
 
         pub(super) fn no_results_lock_height(&self, lock: bool) {
@@ -289,18 +254,40 @@ glib::wrapper! {
 }
 
 impl KpTextLanguageDialog {
-    pub fn new(current: Language, recent: &[Language]) -> Self {
-        let obj: Self = glib::Object::new();
+    pub fn new(settings: &gio::Settings) -> Self {
+        let obj: Self = glib::Object::builder()
+            .property("settings", settings.clone())
+            .build();
+
+        let current = Language::from_str(&settings.string("text-language")).unwrap();
+
+        let recent: Vec<Language> = settings
+            .value("recent-languages")
+            .get::<Vec<String>>()
+            .unwrap()
+            .iter()
+            .map(|s| Language::from_str(&s).unwrap())
+            .collect();
 
         let imp = obj.imp();
 
-        imp.populate_list(current, recent);
-        imp.selected_language.set(current);
+        imp.populate_list(current, &recent);
 
         obj
     }
+}
 
-    pub fn selected_language(&self) -> Language {
-        self.imp().selected_language.get()
-    }
+fn language_row(language: Language) -> adw::ActionRow {
+    let row = adw::ActionRow::new();
+    row.set_title(&language.get_message().unwrap());
+
+    let check_button = gtk::CheckButton::builder()
+        .action_name("app.text-language")
+        .action_target(&language.to_string().to_variant())
+        .build();
+
+    row.add_prefix(&check_button);
+    row.set_activatable_widget(Some(&check_button));
+
+    row
 }

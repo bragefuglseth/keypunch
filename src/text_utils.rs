@@ -314,7 +314,3 @@ pub fn calculate_wpm(duration: Duration, original: &str, typed: &str) -> f64 {
 
     words / minutes
 }
-
-pub fn calculate_accuracy(correct_keystrokes: usize, total_keystrokes: usize) -> f64 {
-    correct_keystrokes as f64 / total_keystrokes as f64
-}

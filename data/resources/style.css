@@ -20,14 +20,14 @@ KpTextView > textview {
 
 headerbar .start,
 headerbar .end,
-window.hide-controls headerbar.session:focus-within .start,
-window.hide-controls headerbar.session:focus-within .end {
+window.hide-controls headerbar.test:focus-within .start,
+window.hide-controls headerbar.test:focus-within .end {
   opacity: 1;
   transition: opacity 200ms;
 }
 
-window.hide-controls headerbar.session .start,
-window.hide-controls headerbar.session .end {
+window.hide-controls headerbar.test .start,
+window.hide-controls headerbar.test .end {
   opacity: 0;
 }
 

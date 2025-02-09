@@ -19,7 +19,6 @@
 
 mod custom_text_dialog;
 mod interactive_graph;
-mod language_row;
 mod line_chart;
 mod results_view;
 mod statistics_dialog;
@@ -29,7 +28,6 @@ mod window;
 
 pub use custom_text_dialog::KpCustomTextDialog;
 pub use interactive_graph::KpInteractiveGraph;
-pub use language_row::KpLanguageRow;
 pub use line_chart::KpLineChart;
 pub use results_view::KpResultsView;
 pub use statistics_dialog::KpStatisticsDialog;
