@@ -165,11 +165,23 @@ template $KpWindow: Adw.ApplicationWindow {
 
                 DropDown session_type_dropdown {
                   tooltip-text: _("Session Type");
+                  model: StringList {
+                    strings [_("Simple"), _("Advanced"), _("Custom")]
+                  };
                 }
 
                 Stack secondary_config_stack {
                   DropDown duration_dropdown {
                     tooltip-text: _("Session Duration");
+                    model: StringList {
+                      strings [
+                        _("15 seconds"),
+                        _("30 seconds"),
+                        _("1 minute"),
+                        _("5 minutes"),
+                        _("10 minutes"),
+                      ]
+                    };
                   }
 
                   Button custom_button {

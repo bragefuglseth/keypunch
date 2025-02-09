@@ -21,6 +21,7 @@ mod application;
 mod config;
 mod discord_rpc;
 mod session_enums;
+mod settings;
 mod text_generation;
 mod text_utils;
 mod widgets;

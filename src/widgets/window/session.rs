@@ -18,15 +18,14 @@
  */
 
 use super::*;
-use crate::application::KpApplication;
+use crate::session_enums::SessionSummary;
 use crate::text_generation;
-use crate::text_utils::{calculate_accuracy, calculate_wpm, process_custom_text, GraphemeState};
+use crate::text_utils::{process_custom_text, GraphemeState};
 use crate::widgets::{KpCustomTextDialog, KpTextLanguageDialog};
 use gettextrs::gettext;
 use glib::ControlFlow;
 use i18n_format::i18n_fmt;
 use std::iter::once;
-use strum::{EnumMessage, IntoEnumIterator};
 use text_generation::CHUNK_GRAPHEME_COUNT;
 
 // The lower this is, the more sensitive Keypunch is to "frustration" (random key mashing).
@@ -34,37 +33,64 @@ use text_generation::CHUNK_GRAPHEME_COUNT;
 // message will be displayed.
 const FRUSTRATION_THRESHOLD: usize = 3;
 
+#[gtk::template_callbacks]
 impl imp::KpWindow {
     pub(super) fn setup_session_config(&self) {
-        let session_type_model: gtk::StringList = SessionType::iter()
-            .map(|session_type| session_type.ui_string())
-            .collect();
+        let app = self.obj().kp_application();
+        let settings = app.settings();
 
         let session_type_dropdown = self.session_type_dropdown.get();
-        session_type_dropdown.set_model(Some(&session_type_model));
-        let selected_type_index = SessionType::iter()
-            .position(|session_type| session_type == self.session_type.get())
-            .unwrap();
-        session_type_dropdown.set_selected(selected_type_index as u32);
-        session_type_dropdown.connect_selected_item_notify(glib::clone!(
-            #[weak(rename_to = imp)]
-            self,
-            move |_| {
-                imp.update_original_text();
-                imp.focus_text_view();
-            }
-        ));
+        settings::bind_dropdown_selected(
+            &settings,
+            &session_type_dropdown,
+            "session-type",
+            settings::SESSION_TYPE_VALUES,
+        );
+        settings.connect_changed(
+            Some("session-type"),
+            glib::clone!(
+                #[weak(rename_to = imp)]
+                self,
+                move |_, _| {
+                    imp.refresh_original_text();
+                    imp.focus_text_view();
+                }
+            ),
+        );
 
-        let duration_model: gtk::StringList = SessionDuration::iter()
-            .map(|session_type| session_type.ui_string())
-            .collect();
+        settings.connect_changed(
+            Some("text-language"),
+            glib::clone!(
+                #[weak(rename_to=imp)]
+                self,
+                move |_, _| {
+                    imp.refresh_original_text();
+                    imp.focus_text_view();
+                }
+            ),
+        );
+
+        settings.connect_changed(
+            Some("custom-text"),
+            glib::clone!(
+                #[weak(rename_to=imp)]
+                self,
+                move |_, _| {
+                    imp.refresh_original_text();
+                    imp.focus_text_view();
+                }
+            ),
+        );
 
         let duration_dropdown = self.duration_dropdown.get();
-        duration_dropdown.set_model(Some(&duration_model));
-        let selected_duration_index = SessionDuration::iter()
-            .position(|duration| duration == self.duration.get())
-            .unwrap();
-        duration_dropdown.set_selected(selected_duration_index as u32);
+
+        settings::bind_dropdown_selected(
+            &settings,
+            &duration_dropdown,
+            "session-duration",
+            settings::SESSION_DURATION_VALUES,
+        );
+
         duration_dropdown.connect_selected_item_notify(glib::clone!(
             #[weak(rename_to = imp)]
             self,
@@ -78,12 +104,9 @@ impl imp::KpWindow {
             #[weak(rename_to = imp)]
             self,
             move |_| {
-                let current_text = imp.custom_text.borrow();
-                imp.show_custom_text_dialog(&current_text);
+                imp.show_custom_text_dialog(None);
             }
         ));
-
-        self.add_recent_language(self.language.get());
     }
 
     pub(super) fn setup_text_view(&self) {
@@ -107,9 +130,9 @@ impl imp::KpWindow {
                 self,
                 #[upgrade_or_default]
                 move |values| {
-                    if !imp.running.get() {
+                    let Some(TypingSession { config, .. }) = imp.session.get() else {
                         return None;
-                    }
+                    };
 
                     let text_view = values.get(0).unwrap().get::<KpTextView>().unwrap();
 
@@ -127,21 +150,18 @@ impl imp::KpWindow {
                             .checked_sub(CHUNK_GRAPHEME_COUNT / 2)
                             .unwrap_or(CHUNK_GRAPHEME_COUNT)
                     {
-                        imp.extend_original_text();
+                        imp.extend_original_text(config);
                     }
 
-                    match imp.session_type.get() {
-                        SessionType::Simple | SessionType::Advanced => (),
-                        SessionType::Custom => {
-                            let (current_word, total_words) = text_view.progress();
+                    if config == SessionConfig::Finite {
+                        let (current_word, total_words) = text_view.progress();
 
-                            // Translators: The `{}` blocks will be replaced with the current word count and the total word count.
-                            // Do not translate them! The slash sign is a special unicode character, if your language doesn't
-                            // use a completely different sign, you should probably copy and paste it from the original string.
-                            imp.status_label.set_label(
-                                &i18n_fmt! { i18n_fmt("{} ⁄ {}", current_word, total_words) },
-                            );
-                        }
+                        // Translators: The `{}` blocks will be replaced with the current word count and the total word count.
+                        // Do not translate them! The slash sign is a special unicode character, if your language doesn't
+                        // use a completely different sign, you should probably copy and paste it from the original string.
+                        imp.status_label.set_label(
+                            &i18n_fmt! { i18n_fmt("{} ⁄ {}", current_word, total_words) },
+                        );
                     }
 
                     let frustration_score = text_view
@@ -164,108 +184,292 @@ impl imp::KpWindow {
         );
     }
 
-    pub(super) fn update_original_text(&self) {
-        let session_type = SessionType::iter()
-            .nth(self.session_type_dropdown.selected() as usize)
-            .expect("dropdown contains valid `SessionType` values");
+    pub(super) fn setup_ui_hiding(&self) {
+        let obj = self.obj();
 
-        let config_widget = match session_type {
-            SessionType::Simple | SessionType::Advanced => {
-                self.duration_dropdown.get().upcast::<gtk::Widget>()
-            }
-            SessionType::Custom => self.custom_button.get().upcast::<gtk::Widget>(),
-        };
+        self.show_cursor.set(true);
 
-        self.session_type.set(session_type);
-        self.settings()
-            .set_string("session-type", &session_type.to_string())
-            .unwrap();
+        let device = obj
+            .display()
+            .default_seat()
+            .expect("display always has a default seat")
+            .pointer()
+            .expect("default seat has device");
 
-        let new_original = match session_type {
-            SessionType::Simple => text_generation::simple(self.language.get()),
-            SessionType::Advanced => text_generation::advanced(self.language.get()),
-            SessionType::Custom => process_custom_text(&self.custom_text.borrow()),
-        };
-        self.text_view.set_original_text(&new_original);
-        self.secondary_config_stack
-            .set_visible_child(&config_widget);
-
-        // Discord IPC
-        self.obj()
-            .application()
-            .expect("ready() isn't called before window has been paired with application")
-            .downcast_ref::<KpApplication>()
-            .unwrap()
-            .discord_rpc()
-            .set_activity(
-                self.session_type.get(),
-                self.duration.get(),
-                PresenceState::Ready,
-            );
-    }
-
-    pub(super) fn update_time(&self) {
-        let selected = SessionDuration::iter()
-            .nth(self.duration_dropdown.selected() as usize)
-            .expect("dropdown only contains valid `SessionDuration` values");
-
-        self.duration.set(selected);
-        self.settings()
-            .set_string("session-duration", &selected.to_string())
-            .unwrap();
-
-        // Discord IPC
-        self.obj()
-            .application()
-            .expect("ready() isn't called before window has been paired with application")
-            .downcast_ref::<KpApplication>()
-            .unwrap()
-            .discord_rpc()
-            .set_activity(
-                self.session_type.get(),
-                self.duration.get(),
-                PresenceState::Ready,
-            );
-    }
-
-    pub(super) fn show_text_language_dialog(&self) {
-        if self.running.get() || self.obj().visible_dialog().is_some() {
-            return;
-        }
-
-        let dialog =
-            KpTextLanguageDialog::new(self.language.get(), &self.recent_languages.borrow_mut());
-
-        dialog.connect_local(
-            "language-changed",
+        self.text_view.connect_local(
+            "typed-text-changed",
             true,
             glib::clone!(
                 #[weak(rename_to = imp)]
                 self,
                 #[upgrade_or_default]
-                move |values| {
-                    let dialog: KpTextLanguageDialog = values
-                        .get(0)
-                        .expect("signal contains value at index 0")
-                        .get()
-                        .expect("value sent with signal is dialog");
-
-                    imp.language.set(dialog.selected_language());
-                    imp.settings()
-                        .set_string("text-language", &dialog.selected_language().to_string())
-                        .unwrap();
-                    imp.update_original_text();
+                move |_| {
+                    if imp.show_cursor.get() && imp.is_running() {
+                        imp.obj().add_css_class("hide-controls");
+                        imp.hide_cursor();
+                    }
 
                     None
                 }
             ),
         );
 
+        let motion_ctrl = gtk::EventControllerMotion::new();
+        motion_ctrl.connect_motion(glib::clone!(
+            #[weak(rename_to = imp)]
+            self,
+            #[strong]
+            device,
+            move |_, _, _| {
+                if !imp.show_cursor.get() && device.timestamp() > imp.cursor_hidden_timestamp.get()
+                {
+                    imp.show_cursor();
+
+                    if imp.is_running() {
+                        imp.obj().remove_css_class("hide-controls");
+                    }
+                }
+            }
+        ));
+        obj.add_controller(motion_ctrl);
+
+        let click_gesture = gtk::GestureClick::new();
+        click_gesture.connect_released(glib::clone!(
+            #[weak(rename_to = imp)]
+            self,
+            move |_, _, _, _| {
+                if !imp.show_cursor.get() {
+                    imp.show_cursor();
+
+                    if imp.is_running() {
+                        imp.obj().remove_css_class("hide-controls");
+                    }
+                }
+            }
+        ));
+        obj.add_controller(click_gesture);
+    }
+
+    #[template_callback]
+    pub(super) fn ready(&self) {
+        self.session.set(None);
+        self.text_view.set_running(false);
+        self.text_view.set_accepts_input(true);
+        self.main_stack.set_visible_child_name("session");
+        self.status_stack.set_visible_child_name("ready");
+        self.menu_button.set_visible(true);
+        self.stop_button.set_visible(false);
+        self.text_view.reset();
+        self.focus_text_view();
+
+        self.refresh_original_text();
+        self.update_time();
+
+        self.obj()
+            .action_set_enabled("win.text-language-dialog", true);
+        self.obj().action_set_enabled("win.cancel-session", false);
+        self.obj().remove_css_class("hide-controls");
+
+        let app = self.obj().kp_application();
+        let settings = app.settings();
+
+        // Discord IPC
+        self.obj().kp_application().discord_rpc().set_activity(
+            SessionConfig::from_settings(&settings),
+            PresenceState::Ready,
+        );
+
+        self.end_existing_inhibit();
+    }
+
+    pub(super) fn start(&self) {
+        let app = self.obj().kp_application();
+        let settings = app.settings();
+
+        let config = SessionConfig::from_settings(&settings);
+
+        self.session.set(Some(TypingSession::new(config)));
+        self.main_stack.set_visible_child_name("session");
+        self.status_stack.set_visible_child_name("running");
+        self.hide_cursor();
+        self.bottom_stack
+            .set_visible_child(&self.bottom_stack_empty.get());
+
+        // Ugly hack to stop the stop button from "flashing" when starting a session:
+        // Make it visible with 0 opacity, and set the opacity to 1 after the 200ms
+        // crossfade effect has finished
+        self.stop_button.set_opacity(0.);
+        self.stop_button.set_visible(true);
+
+        glib::timeout_add_local_once(
+            Duration::from_millis(200),
+            glib::clone!(
+                #[weak(rename_to = imp)]
+                self,
+                move || {
+                    if imp.is_running() {
+                        imp.menu_button.set_visible(false);
+                        imp.stop_button.set_opacity(1.);
+                    }
+                }
+            ),
+        );
+
+        if matches!(config, SessionConfig::Generated { .. }) {
+            self.start_timer(config);
+        }
+
+        self.obj()
+            .action_set_enabled("win.text-language-dialog", false);
+        self.obj().action_set_enabled("win.cancel-session", true);
+        self.obj().add_css_class("hide-controls");
+
+        // Discord IPC
+        self.obj()
+            .kp_application()
+            .discord_rpc()
+            .set_activity(config, PresenceState::Typing);
+
+        // Translators: This is shown as a warning by GNOME Shell before logging out or shutting off the system in the middle of a typing session, alongside Keypunch's name and icon
+        self.inhibit_session(&gettext("Ongoing typing session"))
+    }
+
+    pub(super) fn finish(&self) {
+        let Some(session) = self.session.get() else {
+            return;
+        };
+
+        self.end_session();
+        self.show_results_view(session, Instant::now());
+
+        let config = session.config;
+
+        // Discord IPC
+        self.obj()
+            .kp_application()
+            .discord_rpc()
+            .set_activity(config, PresenceState::Results);
+    }
+
+    pub(super) fn frustration_relief(&self) {
+        if !self.is_running() {
+            return;
+        }
+
+        self.end_session();
+        self.main_stack.set_visible_child_name("frustration-relief");
+
+        // Avoid continue button being activated from a keypress immediately
+        let continue_button = self.frustration_continue_button.get();
+        self.obj().set_focus(None::<&gtk::Widget>);
+        glib::timeout_add_local_once(
+            Duration::from_millis(1000),
+            glib::clone!(
+                #[weak]
+                continue_button,
+                move || {
+                    continue_button.grab_focus();
+                }
+            ),
+        );
+    }
+
+    pub(super) fn end_session(&self) {
+        self.session.set(None);
+        self.text_view.set_running(false);
+        self.text_view.set_accepts_input(false);
+
+        self.obj()
+            .action_set_enabled("win.text-language-dialog", false);
+        self.obj().action_set_enabled("win.cancel-session", false);
+
+        self.end_existing_inhibit();
+    }
+
+    pub(super) fn hide_cursor(&self) {
+        let device = self
+            .obj()
+            .display()
+            .default_seat()
+            .expect("display always has a default seat")
+            .pointer()
+            .expect("default seat has device");
+
+        self.show_cursor.set(false);
+        self.cursor_hidden_timestamp.set(device.timestamp());
+        self.obj().set_cursor_from_name(Some("none"));
+    }
+
+    pub(super) fn show_cursor(&self) {
+        self.show_cursor.set(true);
+        self.obj().set_cursor_from_name(Some("default"));
+    }
+
+    pub(super) fn refresh_original_text(&self) {
+        if self.is_running() {
+            return;
+        }
+
+        let app = self.obj().kp_application();
+        let settings = app.settings();
+
+        let config = SessionConfig::from_settings(&settings);
+
+        let config_widget = match config {
+            SessionConfig::Generated { .. } => self.duration_dropdown.get().upcast::<gtk::Widget>(),
+            SessionConfig::Finite => self.custom_button.get().upcast::<gtk::Widget>(),
+        };
+        self.secondary_config_stack
+            .set_visible_child(&config_widget);
+
+        let new_original = match config {
+            SessionConfig::Generated {
+                language,
+                difficulty,
+                ..
+            } => match difficulty {
+                GeneratedSessionDifficulty::Simple => text_generation::simple(language),
+                GeneratedSessionDifficulty::Advanced => text_generation::advanced(language),
+            },
+            SessionConfig::Finite => process_custom_text(&settings.string("custom-text")),
+        };
+        self.text_view.set_original_text(&new_original);
+
+        // Discord IPC
+        self.obj()
+            .kp_application()
+            .discord_rpc()
+            .set_activity(config, PresenceState::Ready);
+    }
+
+    // TODO: is this needed?
+    pub(super) fn update_time(&self) {
+        let app = self.obj().kp_application();
+        let settings = app.settings();
+
+        let config = SessionConfig::from_settings(&settings);
+
+        // Discord IPC
+        self.obj()
+            .kp_application()
+            .discord_rpc()
+            .set_activity(config, PresenceState::Ready);
+    }
+
+    pub(super) fn show_text_language_dialog(&self) {
+        if self.is_running() || self.obj().visible_dialog().is_some() {
+            return;
+        }
+
+        let app = self.obj().kp_application();
+        let settings = app.settings();
+
+        let dialog = KpTextLanguageDialog::new(&settings);
+
         dialog.connect_closed(glib::clone!(
             #[weak(rename_to = imp)]
             self,
-            move |dialog| {
-                imp.add_recent_language(dialog.selected_language());
+            move |_| {
                 imp.focus_text_view();
             }
         ));
@@ -273,61 +477,15 @@ impl imp::KpWindow {
         dialog.present(Some(self.obj().upcast_ref::<gtk::Widget>()));
     }
 
-    fn add_recent_language(&self, language: Language) {
-        let mut recent_languages = self.recent_languages.borrow_mut();
-
-        *recent_languages = once(language)
-            .chain(
-                recent_languages
-                    .iter()
-                    .filter(|&recent_language| *recent_language != language)
-                    .map(|p| *p),
-            )
-            .take(3)
-            .collect();
-
-        self.settings()
-            .set_value(
-                "recent-languages",
-                &recent_languages
-                    .iter()
-                    .map(Language::to_string)
-                    .collect::<Vec<String>>()
-                    .to_variant(),
-            )
-            .unwrap();
-    }
-
-    pub fn show_custom_text_dialog(&self, initial_text: &str) {
-        if self.running.get() || self.obj().visible_dialog().is_some() {
+    pub fn show_custom_text_dialog(&self, initial_override: Option<&str>) {
+        if self.is_running() || self.obj().visible_dialog().is_some() {
             return;
         }
 
-        let current_text = self.custom_text.borrow();
-        let dialog = KpCustomTextDialog::new(&current_text, &initial_text);
+        let app = self.obj().kp_application();
+        let settings = app.settings();
 
-        dialog.connect_local(
-            "save",
-            true,
-            glib::clone!(
-                #[weak(rename_to = imp)]
-                self,
-                #[upgrade_or_default]
-                move |values| {
-                    let text: &str = values
-                        .get(1)
-                        .expect("save signal contains text to be saved")
-                        .get()
-                        .expect("value from save signal is string");
-
-                    imp.settings().set_string("custom-text", &text).unwrap();
-                    *imp.custom_text.borrow_mut() = text.to_string();
-                    imp.update_original_text();
-
-                    None
-                }
-            ),
-        );
+        let dialog = KpCustomTextDialog::new(&settings, initial_override);
 
         dialog.connect_local(
             "discard",
@@ -353,7 +511,7 @@ impl imp::KpWindow {
                         #[weak]
                         imp,
                         move |_| {
-                            imp.show_custom_text_dialog(&discarded_text);
+                            imp.show_custom_text_dialog(Some(&discarded_text));
                         }
                     ));
 
@@ -375,20 +533,29 @@ impl imp::KpWindow {
         dialog.present(Some(self.obj().upcast_ref::<gtk::Widget>()));
     }
 
-    pub(super) fn extend_original_text(&self) {
-        let language = self.language.get();
-        let new_chunk = match self.session_type.get() {
-            SessionType::Simple => text_generation::simple(language),
-            SessionType::Advanced => text_generation::advanced(language),
-            SessionType::Custom => {
-                return;
-            }
+    pub(super) fn extend_original_text(&self, config: SessionConfig) {
+        let SessionConfig::Generated {
+            language,
+            difficulty,
+            ..
+        } = config
+        else {
+            return;
+        };
+
+        let new_chunk = match difficulty {
+            GeneratedSessionDifficulty::Simple => text_generation::simple(language),
+            GeneratedSessionDifficulty::Advanced => text_generation::advanced(language),
         };
         self.text_view.push_original_text(&new_chunk);
     }
 
-    pub(super) fn start_timer(&self) {
-        let duration = match self.duration.get() {
+    pub(super) fn start_timer(&self, config: SessionConfig) {
+        let SessionConfig::Generated { duration, .. } = config else {
+            return;
+        };
+
+        let duration = match duration {
             SessionDuration::Sec15 => Duration::from_secs(15),
             SessionDuration::Sec30 => Duration::from_secs(30),
             SessionDuration::Min1 => Duration::from_secs(60),
@@ -408,16 +575,11 @@ impl imp::KpWindow {
                 #[upgrade_or]
                 ControlFlow::Break,
                 move || {
-                    let start_time = imp
-                        .start_time
-                        .get()
-                        .expect("start time is set when session is running");
-
-                    if !imp.running.get() {
+                    let Some(TypingSession { start_instant, .. }) = imp.session.get() else {
                         return ControlFlow::Break;
                     };
 
-                    if let Some(diff) = duration.checked_sub(start_time.elapsed()) {
+                    if let Some(diff) = duration.checked_sub(start_instant.elapsed()) {
                         let seconds = diff.as_secs() + 1;
 
                         // add trailing zero for second values below 10
@@ -450,85 +612,80 @@ impl imp::KpWindow {
         self.status_label.set_label(&text);
     }
 
-    pub(super) fn show_results_view(&self) {
+    pub(super) fn show_results_view(&self, session: TypingSession, finish_instant: Instant) {
         let continue_button = self.results_continue_button.get();
-        let original_text = if self.session_type.get() == SessionType::Custom {
-            process_custom_text(&self.text_view.original_text())
-        } else {
-            self.text_view.original_text()
+
+        let TypingSession {
+            config,
+            start_instant,
+            start_system_time,
+        } = session;
+
+        let original_text = match config {
+            SessionConfig::Generated { .. } => self.text_view.original_text(),
+            SessionConfig::Finite => process_custom_text(&self.text_view.original_text()),
         };
         let typed_text = self.text_view.typed_text();
-        let Some(start_time) = self.start_time.get() else {
-            return;
-        };
-        let Some(finish_time) = self.finish_time.get() else {
-            return;
-        };
 
         let results_view = self.results_view.get();
 
-        let duration = finish_time.duration_since(start_time);
-        results_view.set_duration(duration.as_secs());
-
-        let wpm = calculate_wpm(duration, &original_text, &typed_text);
-        results_view.set_wpm(wpm);
-
         let keystrokes = self.text_view.keystrokes();
 
-        let correct_keystrokes = keystrokes.iter().filter(|(_, correct)| *correct).count();
-        let total_keystrokes = keystrokes.len();
-
-        let accuracy = calculate_accuracy(correct_keystrokes, total_keystrokes);
-        results_view.set_accuracy(accuracy);
-
-        let session_type = self.session_type.get();
-        results_view.set_session_type(session_type.ui_string());
-
-        let language = self.language.get();
-        results_view.set_language(
-            language
-                .get_message()
-                .expect("all languages have names set"),
+        let summary = SessionSummary::new(
+            start_system_time,
+            start_instant,
+            finish_instant,
+            config,
+            &original_text,
+            &typed_text,
+            &keystrokes,
         );
 
-        let personal_best_vec: Vec<(String, String, String, u32)> = self
-            .settings()
+        results_view.set_summary(summary);
+
+        let app = self.obj().kp_application();
+        let settings = app.settings();
+
+        let personal_best_vec: Vec<(String, String, String, u32)> = settings
             .value("personal-best")
             .get()
             .unwrap_or_else(|| Vec::new());
 
-        let is_personal_best = accuracy > 0.9
-            && personal_best_vec
-                .iter()
-                .find(|(stored_session_type, duration, lang_code, _)| {
-                    *stored_session_type == session_type.to_string()
-                        && *duration == self.duration.get().to_string()
-                        && *lang_code == self.language.get().to_string()
-                })
-                .map(|(_, _, _, best_wpm)| wpm.floor() as u32 > *best_wpm)
-                .unwrap_or(true);
+        if let SessionConfig::Generated {
+            language,
+            difficulty,
+            duration,
+        } = config
+        {
+            let is_personal_best = summary.accuracy > 0.9
+                && personal_best_vec
+                    .iter()
+                    .find(|(stored_difficulty, duration, lang_code, _)| {
+                        *stored_difficulty == difficulty.to_string()
+                            && *duration == duration.to_string()
+                            && *lang_code == language.to_string()
+                    })
+                    .map(|(_, _, _, best_wpm)| summary.wpm.floor() as u32 > *best_wpm)
+                    .unwrap_or(true);
 
-        let session_is_generated =
-            matches!(session_type, SessionType::Simple | SessionType::Advanced);
-        results_view.set_show_personal_best(is_personal_best && session_is_generated);
+            if is_personal_best {
+                let new_personal_best_vec = add_personal_best(
+                    personal_best_vec,
+                    (
+                        &difficulty.to_string(),
+                        &duration.to_string(),
+                        &language.to_string(),
+                        summary.wpm.floor() as u32,
+                    ),
+                );
 
-        if session_is_generated && is_personal_best {
-            let new_personal_best_vec = add_personal_best(
-                personal_best_vec,
-                (
-                    &session_type.to_string(),
-                    &self.duration.get().to_string(),
-                    &language.to_string(),
-                    wpm.floor() as u32,
-                ),
-            );
+                settings
+                    .set_value("personal-best", &new_personal_best_vec.to_variant())
+                    .expect("can update stored personal best values");
 
-            self.settings()
-                .set_value("personal-best", &new_personal_best_vec.to_variant())
-                .expect("can update stored personal best values");
+                results_view.set_show_personal_best(true);
+            }
         }
-
-        results_view.set_show_language(session_is_generated);
 
         self.main_stack.set_visible_child_name("results");
 
@@ -546,12 +703,9 @@ impl imp::KpWindow {
 
         // Discord IPC
         self.obj()
-            .application()
-            .expect("ready() isn't called before window has been paired with application")
-            .downcast_ref::<KpApplication>()
-            .unwrap()
+            .kp_application()
             .discord_rpc()
-            .set_stats(wpm, accuracy);
+            .set_stats(summary.wpm, summary.accuracy);
     }
 }
 
