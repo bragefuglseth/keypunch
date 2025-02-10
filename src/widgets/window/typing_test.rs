@@ -22,6 +22,7 @@ use crate::typing_test_utils::TestSummary;
 use crate::text_generation;
 use crate::text_utils::{process_custom_text, GraphemeState};
 use crate::widgets::{KpCustomTextDialog, KpStatisticsDialog, KpTextLanguageDialog};
+use crate::database::DATABASE;
 use gettextrs::gettext;
 use glib::ControlFlow;
 use i18n_format::i18n_fmt;
@@ -335,8 +336,8 @@ impl imp::KpWindow {
             return;
         };
 
-        self.end_test();
-        self.show_results_view(test, Instant::now());
+        let summary = self.end_test(test, true);
+        self.show_results_view(summary);
 
         let config = test.config;
 
@@ -348,11 +349,9 @@ impl imp::KpWindow {
     }
 
     pub(super) fn frustration_relief(&self) {
-        if !self.is_running() {
-            return;
-        }
+        let Some(test) = self.current_test.get() else { return; };
 
-        self.end_test();
+        self.end_test(test, false);
         self.main_stack.set_visible_child_name("frustration-relief");
 
         // Avoid continue button being activated from a keypress immediately
@@ -369,8 +368,45 @@ impl imp::KpWindow {
             ),
         );
     }
+    #[template_callback]
+    pub(super) fn cancel_test(&self) {
+        let Some(test) = self.current_test.get() else { return; };
+        self.end_test(test, false);
+        self.ready();
+    }
 
-    pub(super) fn end_test(&self) {
+    pub(super) fn end_test(&self, test: TypingTest, finished: bool) -> TestSummary {
+        let end_instant = Instant::now();
+
+        let TypingTest {
+            config,
+            start_instant,
+            start_system_time,
+        } = test;
+
+        let original_text = match config {
+            TestConfig::Generated { .. } => self.text_view.original_text(),
+            TestConfig::Finite => process_custom_text(&self.text_view.original_text()),
+        };
+        let typed_text = self.text_view.typed_text();
+
+        let keystrokes = self.text_view.keystrokes();
+
+        let summary = TestSummary::new(
+            start_system_time,
+            start_instant,
+            end_instant,
+            config,
+            &original_text,
+            &typed_text,
+            &keystrokes,
+            finished
+        );
+
+        if let Err(e) = DATABASE.push_summary(&summary) {
+            println!("Database error: {e}");
+        }
+
         self.current_test.set(None);
         self.text_view.set_running(false);
         self.text_view.set_accepts_input(false);
@@ -380,6 +416,8 @@ impl imp::KpWindow {
         self.obj().action_set_enabled("win.cancel-test", false);
 
         self.end_existing_inhibit();
+
+        summary
     }
 
     pub(super) fn hide_cursor(&self) {
@@ -614,34 +652,10 @@ impl imp::KpWindow {
         self.status_label.set_label(&text);
     }
 
-    pub(super) fn show_results_view(&self, test: TypingTest, finish_instant: Instant) {
+    pub(super) fn show_results_view(&self, summary: TestSummary) {
         let continue_button = self.results_continue_button.get();
 
-        let TypingTest {
-            config,
-            start_instant,
-            start_system_time,
-        } = test;
-
-        let original_text = match config {
-            TestConfig::Generated { .. } => self.text_view.original_text(),
-            TestConfig::Finite => process_custom_text(&self.text_view.original_text()),
-        };
-        let typed_text = self.text_view.typed_text();
-
         let results_view = self.results_view.get();
-
-        let keystrokes = self.text_view.keystrokes();
-
-        let summary = TestSummary::new(
-            start_system_time,
-            start_instant,
-            finish_instant,
-            config,
-            &original_text,
-            &typed_text,
-            &keystrokes,
-        );
 
         results_view.set_summary(summary);
 
@@ -657,7 +671,7 @@ impl imp::KpWindow {
             language,
             difficulty,
             duration,
-        } = config
+        } = summary.config
         {
             let is_personal_best = summary.accuracy > 0.9
                 && personal_best_vec

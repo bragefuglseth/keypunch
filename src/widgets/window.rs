@@ -110,7 +110,7 @@ mod imp {
             });
 
             klass.install_action("win.cancel-test", None, move |window, _, _| {
-                window.imp().ready();
+                window.imp().cancel_test();
             });
 
             klass.install_action("win.statistics-dialog", None, move |window, _, _| {

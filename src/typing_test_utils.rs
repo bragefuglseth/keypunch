@@ -1,6 +1,6 @@
 /* session_enums.rs
  *
- * SPDX-FileCopyrightText: © 2024 Brage Fuglseth <bragefuglseth@gnome.org>
+ * SPDX-FileCopyrightText: © 2024–2025 Brage Fuglseth <bragefuglseth@gnome.org>
  * SPDX-License-Identifier: GPL-3.0-or-later
  *
  * This program is free software: you can redistribute it and/or modify
@@ -139,6 +139,7 @@ pub struct TestSummary {
     pub wpm: f64,
     pub start_timestamp: SystemTime,
     pub accuracy: f64,
+    pub finished: bool,
 }
 
 impl TestSummary {
@@ -150,6 +151,7 @@ impl TestSummary {
         original: &str,
         typed: &str,
         keystrokes: &Vec<(Instant, bool)>,
+        finished: bool,
     ) -> Self {
         let real_duration = end_instant.duration_since(start_instant);
         let correct_keystrokes = keystrokes.iter().filter(|(_, correct)| *correct).count();
@@ -161,6 +163,8 @@ impl TestSummary {
             wpm: calculate_wpm(real_duration, &original, &typed),
             start_timestamp,
             accuracy: correct_keystrokes as f64 / total_keystrokes as f64,
+            finished
         }
     }
 }
+

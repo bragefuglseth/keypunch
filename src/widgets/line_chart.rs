@@ -21,7 +21,7 @@ use crate::widgets::KpInteractiveGraph;
 use adw::prelude::*;
 use adw::subclass::prelude::*;
 use gtk::glib;
-use std::cell::{Cell, OnceCell, RefCell};
+use std::cell::{OnceCell, RefCell};
 
 struct ChartItem {
     pub title: String,
