@@ -1,4 +1,4 @@
-/* session_enums.rs
+/* typing_test_utils.rs
  *
  * SPDX-FileCopyrightText: © 2024–2025 Brage Fuglseth <bragefuglseth@gnome.org>
  * SPDX-License-Identifier: GPL-3.0-or-later
@@ -167,4 +167,5 @@ impl TestSummary {
         }
     }
 }
+
 
