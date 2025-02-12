@@ -19,13 +19,12 @@
 
 mod focus;
 mod inhibit;
-mod session;
-mod settings;
-mod ui_state;
+mod typing_test;
 
+use crate::application::KpApplication;
 use crate::config::APP_ID;
-use crate::session_enums::*;
-use crate::text_generation::Language;
+use crate::typing_test_utils::*;
+use crate::settings;
 use crate::widgets::{KpResultsView, KpTextView};
 use adw::prelude::*;
 use adw::subclass::prelude::*;
@@ -45,7 +44,7 @@ mod imp {
         #[template_child]
         pub main_stack: TemplateChild<gtk::Stack>,
         #[template_child]
-        pub session_type_dropdown: TemplateChild<gtk::DropDown>,
+        pub test_type_dropdown: TemplateChild<gtk::DropDown>,
         #[template_child]
         pub secondary_config_stack: TemplateChild<gtk::Stack>,
         #[template_child]
@@ -79,14 +78,7 @@ mod imp {
 
         pub settings: OnceCell<gio::Settings>,
 
-        pub session_type: Cell<SessionType>,
-        pub language: Cell<Language>,
-        pub recent_languages: RefCell<Vec<Language>>,
-        pub custom_text: RefCell<String>,
-        pub duration: Cell<SessionDuration>,
-        pub start_time: Cell<Option<Instant>>,
-        pub finish_time: Cell<Option<Instant>>,
-        pub running: Cell<bool>,
+        pub current_test: Cell<Option<TypingTest>>,
         pub show_cursor: Cell<bool>,
         pub cursor_hidden_timestamp: Cell<u32>,
         pub last_unfocus_timestamp: Cell<Option<Instant>>,
@@ -113,7 +105,7 @@ mod imp {
                 window.imp().show_text_language_dialog();
             });
 
-            klass.install_action("win.cancel-session", None, move |window, _, _| {
+            klass.install_action("win.cancel-test", None, move |window, _, _| {
                 window.imp().ready();
             });
         }
@@ -132,7 +124,7 @@ mod imp {
             }
 
             // Workaround until dropdowns gain proper flat styling in libadwaita 2.0
-            self.session_type_dropdown
+            self.test_type_dropdown
                 .first_child()
                 .unwrap()
                 .add_css_class("flat");
@@ -140,14 +132,6 @@ mod imp {
                 .first_child()
                 .unwrap()
                 .add_css_class("flat");
-
-            self.load_settings();
-            self.setup_session_config();
-
-            self.setup_text_view();
-            self.setup_focus();
-            self.setup_ui_hiding();
-            self.show_cursor();
         }
     }
     impl WidgetImpl for KpWindow {}
@@ -164,8 +148,40 @@ mod imp {
     impl AdwApplicationWindowImpl for KpWindow {}
 
     impl KpWindow {
+        pub(super) fn load_window_size(&self) {
+            let app = self.obj().kp_application();
+            let settings = app.settings();
+
+            let width = settings.int("window-width");
+            let height = settings.int("window-height");
+            let maximized = settings.boolean("window-maximized");
+
+            let obj = self.obj();
+            obj.set_default_size(width, height);
+
+            if maximized {
+                obj.maximize();
+            }
+        }
+
+        pub(super) fn save_window_size(&self) -> Result<(), glib::BoolError> {
+            let obj = self.obj();
+            let width = obj.default_width();
+            let height = obj.default_height();
+            let maximized = obj.is_maximized();
+
+            let app = self.obj().kp_application();
+            let settings = app.settings();
+
+            settings.set_int("window-width", width)?;
+            settings.set_int("window-height", height)?;
+            settings.set_boolean("window-maximized", maximized)?;
+
+            Ok(())
+        }
+
         fn show_about_dialog(&self) {
-            if self.running.get() || self.obj().visible_dialog().is_some() {
+            if self.is_running() || self.obj().visible_dialog().is_some() {
                 return;
             }
 
@@ -222,6 +238,10 @@ mod imp {
 
             about.present(Some(self.obj().upcast_ref::<gtk::Widget>()));
         }
+
+        pub fn is_running(&self) -> bool {
+            self.current_test.get().is_some()
+        }
     }
 }
 
@@ -237,8 +257,22 @@ impl KpWindow {
             .property("application", application)
             .build();
 
-        obj.imp().ready();
+        let imp = obj.imp();
+        imp.load_window_size();
+        imp.setup_text_view();
+        imp.setup_focus();
+        imp.setup_ui_hiding();
+        imp.show_cursor();
+        imp.setup_test_config();
+        imp.ready();
 
         obj
+    }
+
+    pub fn kp_application(&self) -> KpApplication {
+        self.application()
+            .unwrap()
+            .downcast::<KpApplication>()
+            .unwrap()
     }
 }

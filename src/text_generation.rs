@@ -39,6 +39,8 @@ pub enum Language {
     Czech,
     #[strum(message = "Dansk", to_string = "da")]
     Danish,
+    #[strum(message = "Nederlands", to_string = "nl")]
+    Dutch,
     #[default]
     #[strum(message = "English", to_string = "en")]
     English,

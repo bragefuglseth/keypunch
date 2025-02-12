@@ -41,7 +41,7 @@ impl imp::KpWindow {
                 let focus_button = imp.focus_button.get();
                 let bottom_stack = imp.bottom_stack.get();
 
-                match (imp.text_view_focused(), imp.running.get()) {
+                match (imp.text_view_focused(), imp.is_running()) {
                     (true, true) => {
                         bottom_stack.set_visible_child(&bottom_stack_empty);
                         text_view.remove_css_class("unfocused");
