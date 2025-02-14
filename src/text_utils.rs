@@ -40,6 +40,8 @@ const ALIASES: &'static [(&'static str, &'static str)] = &[
     ("’", "'"),               // Typoographic apostrophe
     ("\u{00A0}", "\u{0020}"), // Non-breaking spaces made typable as regular ones
     ("\u{202F}", "\u{0020}"),
+    ("\u{0020}", "\u{00A0}"), // Vice versa
+    ("\u{0020}", "\u{202F}"),
 ];
 
 // The largest grapheme count of any current alias, manually kept track of for performance reasons.
