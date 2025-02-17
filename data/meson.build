@@ -58,4 +58,4 @@ test('Validate schema file',
      compile_schemas,
      args: ['--strict', '--dry-run', meson.current_source_dir()])
 
-subdir('icons')
+subdir('artwork' / 'icon')
