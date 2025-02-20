@@ -18,13 +18,17 @@
  */
 
 mod custom_text_dialog;
+mod prompt_dialog;
 mod results_view;
 mod text_language_dialog;
+mod ollama_config_dialog;
 mod text_view;
 mod window;
 
 pub use custom_text_dialog::KpCustomTextDialog;
+pub use prompt_dialog::KpPromptDialog;
 pub use results_view::KpResultsView;
 pub use text_language_dialog::KpTextLanguageDialog;
+pub use ollama_config_dialog::KpOllamaConfigDialog;
 pub use text_view::KpTextView;
 pub use window::KpWindow;

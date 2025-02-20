@@ -32,6 +32,7 @@ use gettextrs::gettext;
 use gtk::{gio, glib};
 use std::cell::{Cell, OnceCell, RefCell};
 use std::time::{Duration, Instant};
+use url::Url;
 
 mod imp {
     use super::*;
@@ -49,6 +50,8 @@ mod imp {
         pub secondary_config_stack: TemplateChild<gtk::Stack>,
         #[template_child]
         pub duration_dropdown: TemplateChild<gtk::DropDown>,
+        #[template_child]
+        pub prompt_button: TemplateChild<gtk::Button>,
         #[template_child]
         pub custom_button: TemplateChild<gtk::Button>,
         #[template_child]
@@ -103,6 +106,10 @@ mod imp {
 
             klass.install_action("win.text-language-dialog", None, move |window, _, _| {
                 window.imp().show_text_language_dialog();
+            });
+
+            klass.install_action("win.ollama-config-dialog", None, move |window, _, _| {
+                window.imp().show_ollama_config_dialog();
             });
 
             klass.install_action("win.cancel-test", None, move |window, _, _| {

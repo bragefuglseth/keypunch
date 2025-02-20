@@ -3,6 +3,7 @@ data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in
 data/dev.bragefuglseth.Keypunch.gschema.xml
 data/resources/gtk/help-overlay.ui
 src/widgets/custom_text_dialog.blp
+src/widgets/prompt_dialog.blp
 src/widgets/results_view.blp
 src/widgets/results_view.rs
 src/widgets/text_language_dialog.blp

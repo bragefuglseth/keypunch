@@ -78,6 +78,8 @@ impl Default for RpcWrapper {
                             duration,
                             ..
                         } => format!("Advanced, {}", duration.english_string()),
+                        
+                        TestConfig::AIGenerated => "AI Generated text".to_string(),
                     };
 
                     stored_activity = Activity::new()

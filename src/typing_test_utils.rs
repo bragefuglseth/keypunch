@@ -50,6 +50,7 @@ pub enum TestConfig {
         difficulty: GeneratedTestDifficulty,
         duration: TestDuration,
     },
+    AIGenerated
 }
 
 impl TestConfig {
@@ -61,6 +62,7 @@ impl TestConfig {
                 duration: TestDuration::from_str(&settings.string("session-duration")).unwrap(),
             },
             "Custom" => TestConfig::Finite,
+            "AI Generated"=> TestConfig::AIGenerated,
             _ => panic!("invalid settings value for `session-type` key"),
         }
     }

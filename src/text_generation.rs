@@ -18,10 +18,14 @@
  */
 
 use include_dir::{include_dir, Dir};
+use ollama_rs::generation::options::GenerationOptions;
 use rand::prelude::*;
 use rand::seq::index::sample;
 use strum_macros::{Display as EnumDisplay, EnumIter, EnumMessage, EnumString};
 use unicode_segmentation::UnicodeSegmentation;
+use ollama_rs::Ollama;
+use ollama_rs::generation::completion::request::GenerationRequest;
+use url::Url;
 
 static EMBEDDED_WORD_LIST_DIR: Dir = include_dir!("$CARGO_MANIFEST_DIR/data/word_lists");
 pub const CHUNK_GRAPHEME_COUNT: usize = 400;
@@ -313,6 +317,28 @@ pub fn advanced(language: Language) -> String {
             WESTERN_ARABIC_NUMERALS,
         ),
     }
+}
+
+pub fn ai(prompt:String, ollama_model:String, ollama_url:String) -> String {
+
+    let url = Url::parse(&ollama_url).unwrap();
+    let ollama = Ollama::from_url(url);
+    let rt = tokio::runtime::Runtime::new().unwrap();
+
+
+    let options = GenerationOptions::default()
+    .temperature(1.0).repeat_penalty(1.5).top_k(50).top_p(0.95).seed(45);
+
+    //TODO: The patterns of asnyc fuction blocking thread cause the main application to be un-responsive.
+    let res =   rt.block_on(ollama.generate(GenerationRequest::new(ollama_model, prompt).options(options)));
+
+    if let Ok(res) = res {
+        return res.response.to_string()
+    }else{
+        //TODO handle exception cases properly
+        return res.unwrap_err().to_string()
+    }
+
 }
 
 // Should work for most languages
