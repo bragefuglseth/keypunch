@@ -28,12 +28,15 @@ gettext-rs = { version = "=0.7.0", features = ["gettext-system"] }
 gvdb-macros = "0.1.12"
 i18n-format = "0.2.0"
 include_dir = "0.7.3"
+ollama-rs = "0.2.4"
 rand = "0.8.5"
 rayon = "1.10.0"
 strum = "0.26.2"
 strum_macros = "0.26.2"
+tokio = { version = "1.43.0", features = ["full"] }
 unicode-segmentation = "1.11.0"
 unidecode = "0.3.0"
+url = "2.5.4"
 
 [dependencies.gtk]
 package = "gtk4"

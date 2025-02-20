@@ -173,12 +173,13 @@ impl KpResultsView {
                 GeneratedTestDifficulty::Simple => gettext("Simple"),
                 GeneratedTestDifficulty::Advanced => gettext("Advanced"),
             },
+            TestConfig::AIGenerated => "AI Generated".to_string()
         };
 
         imp.test_type_label.set_label(&test_type_string);
 
         match config {
-            TestConfig::Finite => imp.language_box.set_visible(false),
+            TestConfig::Finite | TestConfig::AIGenerated => imp.language_box.set_visible(false),
             TestConfig::Generated { language, .. } => {
                 imp.language_box.set_visible(true);
                 imp.language_label
