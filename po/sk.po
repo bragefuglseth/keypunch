@@ -3,13 +3,12 @@
 # This file is distributed under the same license as the keypunch package.
 # FIRST AUTHOR Martin Kolenič <m.kolenic@proton.me>, 2025.
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: keypunch\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-01-09 21:31+0100\n"
-"PO-Revision-Date: 2025-02-24 12:40+0100\n"
+"PO-Revision-Date: 2025-02-25 11:24+0100\n"
 "Last-Translator: Martin kolenič <m.kolenic@proton.me>\n"
 "Language-Team: \n"
 "Language: sk\n"
@@ -17,11 +16,10 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n>=2 && n<=4 ? 1 : 2);\n"
-"X-Generator: Poedit 3.4.4\n"
+"X-Generator: Poedit 3.1.1\n"
 
 #: data/dev.bragefuglseth.Keypunch.desktop.in.in:3
-#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:7
-#: src/widgets/window.blp:5
+#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:7 src/widgets/window.blp:5
 msgid "Keypunch"
 msgstr "Keypunch"
 
@@ -31,46 +29,44 @@ msgid "Practice your typing skills"
 msgstr "Precvičovanie strojopisu"
 
 #: data/dev.bragefuglseth.Keypunch.desktop.in.in:10
-msgid ""
-"typing;trainer;touch typing;keyboard;speed;wpm;words per minute;accuracy;"
-"test;"
+msgid "typing;trainer;touch typing;keyboard;speed;wpm;words per minute;accuracy;test;"
 msgstr ""
-"typing;trainer;touch typing;keyboard;speed;wpm;words per minute;accuracy;"
-"test;strojopis;klávesnica;rýchlosť;presnosť;slová za minutu;písanie všetkými desiatimi;"
+"typing;trainer;touch typing;keyboard;speed;wpm;words per minute;accuracy;test;"
+"strojopis;klávesnica;rýchlosť;presnosť;slová za minutu;písanie všetkými desiatimi;"
 
 #: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:13
 msgid ""
-"There is no doubt that typing on a keyboard is an essential skill in the "
-"digital age. Typing fast and accurately gives you more opportunities, more "
-"time for what matters to you, and a sense of self-accomplishment."
+"There is no doubt that typing on a keyboard is an essential skill in the digital age. "
+"Typing fast and accurately gives you more opportunities, more time for what matters to "
+"you, and a sense of self-accomplishment."
 msgstr ""
-"Strojopis je v digitálnej dobe nepochybne nutnou zručnosťou. Pri rýchlom "
-"a presnom písaní získate viac príležitostí a viac času na všetko, čo je "
-"pre vás dôležité, ako aj pocit naplnenia z dosiahnutého úspechu."
+"Strojopis je v digitálnej dobe nepochybne nutnou zručnosťou. Pri rýchlom a presnom "
+"písaní získate viac príležitostí a viac času na všetko, čo je pre vás dôležité, ako aj "
+"pocit naplnenia z dosiahnutého úspechu."
 
 #: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:18
 msgid ""
-"Keypunch lets you practice typing. Thanks to fast-paced sessions with "
-"instant feedback afterwards and a plethora of available languages, you might "
-"even have a little fun doing so. With determination, proper technique and "
-"some time, you will observe a noticeable increase in both the speed and the "
-"accuracy of which your thoughts and ideas are put into words on the screen."
+"Keypunch lets you practice typing. Thanks to fast-paced sessions with instant feedback "
+"afterwards and a plethora of available languages, you might even have a little fun "
+"doing so. With determination, proper technique and some time, you will observe a "
+"noticeable increase in both the speed and the accuracy of which your thoughts and "
+"ideas are put into words on the screen."
 msgstr ""
-"V Keypunchi si môžete precvičiť strojopis. Vďaka rýchlym cvičeniam, okamžitej "
-"spätnej väzbe a množstvu dostupných jazykov sa pri tom možno aj trochu zabavíte."
-"Pri dostatočnom odhodlaní, správnej technike a troche času si čoskoro všimnete"
-"citeľný nárast rýchlosti i presnosti, s akou sa vám myšlienky a nápady menia"
-"pod rukami na slová na obrazovke."
+"V Keypunchi si môžete precvičiť strojopis. Vďaka rýchlym cvičeniam, okamžitej spätnej "
+"väzbe a množstvu dostupných jazykov sa pri tom možno aj trochu zabavíte.Pri "
+"dostatočnom odhodlaní, správnej technike a troche času si čoskoro všimneteciteľný "
+"nárast rýchlosti i presnosti, s akou sa vám myšlienky a nápady meniapod rukami na "
+"slová na obrazovke."
 
 #: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:25
 msgid ""
-"If you are already a racer at typing, Keypunch still has something for you. "
-"Try practicing with numbers and punctuation, or choose your own text to type "
-"out as fast as you can."
+"If you are already a racer at typing, Keypunch still has something for you. Try "
+"practicing with numbers and punctuation, or choose your own text to type out as fast "
+"as you can."
 msgstr ""
-"Ak aj máte nacvičené svižné tempo písania, Keypunch vám má stále čo ponúknuť. "
-"Skúste si precvičiť čísla a interpunkciu, alebo si vyberte vlastný text, ktorý "
-"sa posnažíte prepísať čo najrýchlejšie."
+"Ak aj máte nacvičené svižné tempo písania, Keypunch vám má stále čo ponúknuť. Skúste "
+"si precvičiť čísla a interpunkciu, alebo si vyberte vlastný text, ktorý sa posnažíte "
+"prepísať čo najrýchlejšie."
 
 #: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:30
 msgid "Get ready to accelerate your typing!"
@@ -108,13 +104,13 @@ msgstr "Výška okna"
 msgid "Window Maximization"
 msgstr "Maximalizácia okna"
 
-#: data/dev.bragefuglseth.Keypunch.gschema.xml:32
-#: src/widgets/results_view.blp:82 src/widgets/window.blp:146
+#: data/dev.bragefuglseth.Keypunch.gschema.xml:32 src/widgets/results_view.blp:82
+#: src/widgets/window.blp:146
 msgid "Session Type"
 msgstr "Typ cvičenia"
 
-#: data/dev.bragefuglseth.Keypunch.gschema.xml:36
-#: src/widgets/results_view.blp:95 src/widgets/window.blp:151
+#: data/dev.bragefuglseth.Keypunch.gschema.xml:36 src/widgets/results_view.blp:95
+#: src/widgets/window.blp:151
 msgid "Session Duration"
 msgstr "Dĺžka cvičenia"
 
@@ -127,9 +123,8 @@ msgstr "Trvanie cvičení zameraných na čas"
 msgid "\"en\""
 msgstr "\"sk\""
 
-#: data/dev.bragefuglseth.Keypunch.gschema.xml:42
-#: src/widgets/results_view.blp:108 src/widgets/text_language_dialog.blp:5
-#: src/widgets/text_language_dialog.blp:13
+#: data/dev.bragefuglseth.Keypunch.gschema.xml:42 src/widgets/results_view.blp:108
+#: src/widgets/text_language_dialog.blp:5 src/widgets/text_language_dialog.blp:13
 #: src/widgets/text_language_dialog.blp:39
 msgid "Text Language"
 msgstr "Jazyk textu"
@@ -144,22 +139,21 @@ msgstr "Naposledy použité jazyky"
 
 #: data/dev.bragefuglseth.Keypunch.gschema.xml:48
 msgid "Languages shown in the list of recent ones in the text language dialog"
-msgstr ""
-"Jazyky zobrazené v zozname nedávnych jazykov v dialógovom okne jazyka textu"
+msgstr "Jazyky zobrazené v zozname nedávnych jazykov v dialógovom okne jazyka textu"
 
 #. Translators: This is the default text for custom typing sessions. Do not translate it literally, and do not remove the quotation marks. Replace it with an appropriate "sample sentence" from your language instead. The original text is an English pangram, so you can e.g. find a pangram in your language: https://clagnut.com/blog/2380
 #: data/dev.bragefuglseth.Keypunch.gschema.xml:52
 msgid "\"The quick brown fox jumps over the lazy dog.\""
 msgstr "\"Päťtýždňové vĺčatá nervózne štekajú na môjho ďatľa v tŕní.\""
 
-#: data/dev.bragefuglseth.Keypunch.gschema.xml:53
-#: src/widgets/custom_text_dialog.blp:5 src/widgets/custom_text_dialog.blp:26
+#: data/dev.bragefuglseth.Keypunch.gschema.xml:53 src/widgets/custom_text_dialog.blp:5
+#: src/widgets/custom_text_dialog.blp:26
 msgid "Custom Text"
 msgstr "Vlastný text"
 
 #: data/dev.bragefuglseth.Keypunch.gschema.xml:54
 msgid "Text displayed when “Custom” is chosen from the session menu"
-msgstr "Text, ktorý sa zobrazí pri výbere cvičenia s vlastným textom z ponuky."
+msgstr "Text, ktorý sa zobrazí pri výbere cvičenia s vlastným textom z ponuky"
 
 #: data/dev.bragefuglseth.Keypunch.gschema.xml:58
 msgid "Personal Best"
@@ -167,11 +161,9 @@ msgstr "Osobný rekord"
 
 #: data/dev.bragefuglseth.Keypunch.gschema.xml:59
 msgid ""
-"The current highest amount of WPM received for each session type / duration "
-"and language"
-msgstr ""
-"Aktuálny najvyšší počet slov za minutu pre všetky typy cvičení / trvanie "
-"a jazyk"
+"The current highest amount of WPM received for each session type / duration and "
+"language"
+msgstr "Aktuálny najvyšší počet slov za minutu pre všetky typy cvičení / trvanie a jazyk"
 
 #: data/resources/gtk/help-overlay.ui:11
 msgctxt "shortcut window"
@@ -179,7 +171,6 @@ msgid "General"
 msgstr "Všeobecné"
 
 #: data/resources/gtk/help-overlay.ui:14
-#, fuzzy
 msgctxt "shortcut window"
 msgid "Text Language"
 msgstr "Jazyk textu"
@@ -190,7 +181,6 @@ msgid "Cancel Session"
 msgstr "Zrušiť cvičenie"
 
 #: data/resources/gtk/help-overlay.ui:26
-#, fuzzy
 msgctxt "shortcut window"
 msgid "Keyboard Shortcuts"
 msgstr "_Klávesové skratky"
@@ -256,14 +246,12 @@ msgstr[0] "{} sekunda"
 msgstr[1] "{} sekundy"
 msgstr[2] "{} sekúnd"
 
-#: src/widgets/text_language_dialog.blp:21
-#: src/widgets/text_language_dialog.blp:161
+#: src/widgets/text_language_dialog.blp:21 src/widgets/text_language_dialog.blp:161
 #: src/widgets/text_language_dialog.blp:190
 msgid "Add Language"
 msgstr "Pridať jazyk"
 
-#: src/widgets/text_language_dialog.blp:51
-#: src/widgets/text_language_dialog.blp:55
+#: src/widgets/text_language_dialog.blp:51 src/widgets/text_language_dialog.blp:55
 msgid "Search languages…"
 msgstr "Vyhľadávať jazyky…"
 
@@ -291,11 +279,11 @@ msgstr "Skúste iné vyhľadávanie"
 
 #: src/widgets/text_language_dialog.blp:199
 msgid ""
-"You can help add a new text language to Keypunch by submitting a language "
-"request on GitHub. A GitHub account and some language knowledge is required."
+"You can help add a new text language to Keypunch by submitting a language request on "
+"GitHub. A GitHub account and some language knowledge is required."
 msgstr ""
-"Ak chcete pomôcť s pridaním jazyka do Keypunchu, môžete odoslať žiadosť o jazyk "
-"na portáli GitHub. Je potrebné mať konto GitHub a aspoň nejaké vedomosti o jazykoch."
+"Ak chcete pomôcť s pridaním jazyka do Keypunchu, môžete odoslať žiadosť o jazyk na "
+"portáli GitHub. Je potrebné mať konto GitHub a aspoň nejaké vedomosti o jazykoch."
 
 #: src/widgets/text_language_dialog.blp:214
 msgid "_Create Request"
@@ -383,7 +371,7 @@ msgstr "{}∶{}"
 #. Translators: This is shown as a warning by GNOME Shell before logging out or shutting off the system in the middle of a typing session, alongside Keypunch's name and icon
 #: src/widgets/window/ui_state.rs:179
 msgid "Ongoing typing session"
-msgstr ""
+msgstr "Rozpracované strojopisné cvičenie"
 
 #~ msgid "Correctness"
 #~ msgstr "Správnosť"
@@ -416,8 +404,7 @@ msgstr ""
 #~ msgstr "\"sk_SK\""
 
 #~ msgid ""
-#~ "This is the initial release of Keypunch! Give it a spin and say what you "
-#~ "think."
+#~ "This is the initial release of Keypunch! Give it a spin and say what you think."
 #~ msgstr ""
-#~ "Toto je prvé vydanie Keypunchu! Vyskúšajte ho a dajte nám vedieť, čo si "
-#~ "o ňom myslíte."
+#~ "Toto je prvé vydanie Keypunchu! Vyskúšajte ho a dajte nám vedieť, čo si o ňom "
+#~ "myslíte."
