@@ -82,6 +82,8 @@ pub enum Language {
     Romanian,
     #[strum(message = "Русский", to_string = "ru")]
     Russian,
+    #[strum(message = "Slovenčina", to_string = "sk")]
+    Slovak,
     #[strum(message = "Español", to_string = "es")]
     Spanish,
     #[strum(message = "Swahili", to_string = "sw")]
