@@ -20,8 +20,8 @@
 use super::*;
 use crate::typing_test_utils::TestSummary;
 use crate::text_generation;
-use crate::text_utils::{process_custom_text, GraphemeState};
-use crate::widgets::{KpCustomTextDialog, KpTextLanguageDialog};
+use crate::text_utils::{process_custom_text ,GraphemeState};
+use crate::widgets::{KpCustomTextDialog, KpTextLanguageDialog, KpOllamaConfigDialog, KpPromptDialog};
 use gettextrs::gettext;
 use glib::ControlFlow;
 use i18n_format::i18n_fmt;
@@ -82,6 +82,18 @@ impl imp::KpWindow {
             ),
         );
 
+        settings.connect_changed(
+            Some("prompt"),
+            glib::clone!(
+                #[weak(rename_to=imp)]
+                self,
+                move |_, _| {
+                    imp.refresh_original_text();
+                    imp.focus_text_view();
+                }
+            ),
+        );
+
         let duration_dropdown = self.duration_dropdown.get();
 
         settings::bind_dropdown_selected(
@@ -105,6 +117,14 @@ impl imp::KpWindow {
             self,
             move |_| {
                 imp.show_custom_text_dialog(None);
+            }
+        ));
+
+        self.prompt_button.connect_clicked(glib::clone!(
+            #[weak(rename_to = imp)]
+            self,
+            move |_| {
+                imp.show_prompt_text_dialog();
             }
         ));
     }
@@ -153,7 +173,7 @@ impl imp::KpWindow {
                         imp.extend_original_text(config);
                     }
 
-                    if config == TestConfig::Finite {
+                    if config == TestConfig::Finite || config == TestConfig::AIGenerated{
                         let (current_word, total_words) = text_view.progress();
 
                         // Translators: The `{}` blocks will be replaced with the current word count and the total word count.
@@ -418,6 +438,7 @@ impl imp::KpWindow {
         let config_widget = match config {
             TestConfig::Generated { .. } => self.duration_dropdown.get().upcast::<gtk::Widget>(),
             TestConfig::Finite => self.custom_button.get().upcast::<gtk::Widget>(),
+            TestConfig::AIGenerated => self.prompt_button.get().upcast::<gtk::Widget>(),
         };
         self.secondary_config_stack
             .set_visible_child(&config_widget);
@@ -432,6 +453,10 @@ impl imp::KpWindow {
                 GeneratedTestDifficulty::Advanced => text_generation::advanced(language),
             },
             TestConfig::Finite => process_custom_text(&settings.string("custom-text")),
+            TestConfig::AIGenerated => text_generation::ai(
+                                    settings.string("prompt").to_string(),
+                                    settings.string("ollama-model").to_string(), 
+                                    settings.string("ollama-url").to_string()), //"Sample".to_string(), //
         };
         self.text_view.set_original_text(&new_original);
 
@@ -533,6 +558,117 @@ impl imp::KpWindow {
         dialog.present(Some(self.obj().upcast_ref::<gtk::Widget>()));
     }
 
+    pub fn show_prompt_text_dialog(&self) {
+        if self.is_running() || self.obj().visible_dialog().is_some() {
+            return;
+        }
+
+        let app = self.obj().kp_application();
+        let settings = app.settings();
+
+        let dialog = KpPromptDialog::new(&settings);
+
+
+        dialog.connect_local(
+            "generate",
+            true,
+            glib::clone!(
+                #[weak(rename_to = imp)]
+                self,
+                #[upgrade_or_default]
+                move |values| {
+                    let prompt: &str = values
+                        .get(1)
+                        .expect("generate signal contains prompt to be saved")
+                        .get()
+                        .expect("value from save signal is string");
+
+                    //let current_prompt: std::cell::Ref<'_, String> = self.prompt.borrow();
+                    app.settings().set_string("prompt", prompt).expect("exception on updating prompt settings");
+                    imp.refresh_original_text();
+
+                    None
+                }
+            ),
+        );
+
+        dialog.connect_local(
+            "discard",
+            true,
+            glib::clone!(
+                #[weak(rename_to = imp)]
+                self,
+                #[upgrade_or_default]
+                move |_values| {
+
+                    let toast = adw::Toast::builder()
+                        .title(&gettext("Changes discarded"))
+                        .button_label(&gettext("Restore"))
+                        .build();
+
+                    toast.connect_button_clicked(glib::clone!(
+                        #[weak]
+                        imp,
+                        move |_| {
+                            imp.show_prompt_text_dialog();
+                        }
+                    ));
+
+                    imp.toast_overlay.add_toast(toast);
+
+                    None
+                }
+            ),
+        );
+
+        dialog.connect_closed(glib::clone!(
+            #[weak(rename_to = imp)]
+            self,
+            move |_| {
+                imp.focus_text_view();
+            }
+        ));
+
+        dialog.present(Some(self.obj().upcast_ref::<gtk::Widget>()));
+    }
+
+    pub(super) fn show_ollama_config_dialog(&self) {
+        if self.is_running() || self.obj().visible_dialog().is_some() {
+            return;
+        }
+        let app = self.obj().kp_application();
+        let current_url = app.settings().string("ollama-url");        
+
+        let dialog: KpOllamaConfigDialog =
+            KpOllamaConfigDialog::new(&Url::parse(&current_url.to_string()).unwrap(), &app.settings().string("ollama-model"));
+        dialog.connect_local(
+            "save",
+            true,
+            glib::clone!(
+                #[weak(rename_to = _imp)]
+                self,
+                #[upgrade_or_default]
+                move |values| {
+                    let dialog: KpOllamaConfigDialog = values
+                        .get(0)
+                        .expect("signal contains value at index 0")
+                        .get()
+                        .expect("value sent with signal is dialog");
+
+
+                    app.settings().set_string("ollama-url", &dialog.get_ollama_url().to_string())
+                                .expect("exception on updating ollama url in settings");
+
+                    app.settings().set_string("ollama-model", &dialog.get_model_name().to_string())
+                                .expect("exception on updating ollama model name in settings");
+                    None
+                }
+            ),
+        );
+
+        dialog.present(Some(self.obj().upcast_ref::<gtk::Widget>()));
+    }
+
     pub(super) fn extend_original_text(&self, config: TestConfig) {
         let TestConfig::Generated {
             language,
@@ -624,6 +760,7 @@ impl imp::KpWindow {
         let original_text = match config {
             TestConfig::Generated { .. } => self.text_view.original_text(),
             TestConfig::Finite => process_custom_text(&self.text_view.original_text()),
+            TestConfig::AIGenerated { .. } => self.text_view.original_text(),
         };
         let typed_text = self.text_view.typed_text();
 

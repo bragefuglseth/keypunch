@@ -3,7 +3,8 @@
   <enum id="dev.bragefuglseth.Keypunch.SessionType">
     <value nick="Simple" value="0" />
     <value nick="Advanced" value="1" />
-    <value nick="Custom" value="2" />
+	<value nick="AI Generated" value="2" />
+    <value nick="Custom" value="3" />
   </enum>
 
   <enum id="dev.bragefuglseth.Keypunch.SessionDuration">
@@ -42,6 +43,17 @@
 	    <summary>Text Language</summary>
 	    <description>The code of the language used for automatically generated text</description>
 	  </key>
+	  <key name="ollama-url" type="s">
+	    <default l10n="messages">"http://127.0.0.1:11434/"</default>
+	    <summary>Ollama</summary>
+	    <description>The host where the ollama server is running</description>
+	  </key>
+	  <key name="ollama-model" type="s">
+	    <default l10n="messages">"granite3.1-moe:1b"</default>
+	    <summary>Ollama</summary>
+	    <description>Ollama must be running with the model. Use the command ollama pull granite3.1-moe:1b</description>
+	  </key>
+
 	  <key name="recent-languages" type="as">
 	    <default>[]</default>
 	    <summary>Recent Languages</summary>
@@ -52,6 +64,11 @@
 	    <default l10n="messages" >"The quick brown fox jumps over the lazy dog."</default>
 	    <summary>Custom Text</summary>
 	    <description>Text displayed when “Custom” is chosen from the session menu</description>
+	  </key>
+	  <key name="prompt" type="s">
+	    <default l10n="messages" >"Tell me a story about unity in few words"</default>
+	    <summary>Custom Prompt</summary>
+	    <description>The prompt used by the AI to generate text</description>
 	  </key>
 	  <key name="personal-best" type="a(sssu)">
 	    <default>[]</default>

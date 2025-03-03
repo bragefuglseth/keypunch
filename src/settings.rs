@@ -2,7 +2,7 @@ use gtk::gio;
 use gtk::prelude::*;
 
 // Must match their corresponding gschema enumss
-pub const SESSION_TYPE_VALUES: &'static [&str] = &["Simple", "Advanced", "Custom"];
+pub const SESSION_TYPE_VALUES: &'static [&str] = &["Simple", "Advanced", "AI Generated", "Custom"];
 pub const SESSION_DURATION_VALUES: &'static [&str] = &["Sec15", "Sec30", "Min1", "Min5", "Min10"];
 
 pub fn bind_dropdown_selected(
