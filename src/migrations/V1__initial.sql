@@ -1,7 +1,7 @@
 PRAGMA foreign_keys = ON;
 
 CREATE TABLE tests (
-	timestamp   	INTEGER NOT NULL,
+	timestamp   	TEXT NOT NULL,
 	finished    	INTEGER NOT NULL,
 	test_type   	TEXT NOT NULL,
 	language    	TEXT,

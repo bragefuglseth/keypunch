@@ -33,9 +33,10 @@ include_dir = "0.7.3"
 rand = "0.8.5"
 rayon = "1.10.0"
 refinery = { version = "0.8.14", features = ["rusqlite"] }
-rusqlite = { version = "=0.31.0", features = ["bundled"] } # Locked until Refinery is updated
+rusqlite = { version = "=0.31.0", features = ["bundled", "time"] } # Locked until Refinery is updated
 strum = "0.26.2"
 strum_macros = "0.26.2"
+time = { version = "0.3.37", features = ["parsing", "local-offset"] }
 unicode-segmentation = "1.11.0"
 unidecode = "0.3.0"
 

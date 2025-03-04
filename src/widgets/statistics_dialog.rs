@@ -23,6 +23,9 @@ use adw::subclass::prelude::*;
 use glib::subclass::Signal;
 use gtk::glib;
 use std::sync::OnceLock;
+use crate::database::DATABASE;
+use crate::database::ChartItem;
+use time::{Time, OffsetDateTime, Duration};
 
 mod imp {
     use super::*;
@@ -37,9 +40,9 @@ mod imp {
         #[template_child]
         scrolled_window: TemplateChild<gtk::ScrolledWindow>,
         #[template_child]
-        month_chart: TemplateChild<KpLineChart>,
+        month_bin: TemplateChild<adw::Bin>,
         #[template_child]
-        year_chart: TemplateChild<KpLineChart>,
+        year_bin: TemplateChild<adw::Bin>,
     }
 
     #[glib::object_subclass]
@@ -84,6 +87,12 @@ mod imp {
                 .transform_to(|_, scroll_position: f64| Some(scroll_position > 0.))
                 .sync_create()
                 .build();
+
+            let month_data = DATABASE.get_past_month().unwrap(); // TODO: Handle the no data case
+
+            let month_stats_chart = KpLineChart::new(&month_data);
+
+            self.month_bin.set_child(Some(&month_stats_chart));
         }
     }
     impl WidgetImpl for KpStatisticsDialog {}

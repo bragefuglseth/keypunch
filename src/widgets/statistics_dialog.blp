@@ -104,14 +104,14 @@ template $KpStatisticsDialog: Adw.Dialog {
                       name: "month";
                       title: _("Month");
 
-                      child: $KpLineChart month_chart {};
+                      child: Adw.Bin month_bin {};
                     }
 
                     Adw.ViewStackPage {
                       name: "year";
                       title: _("Year");
 
-                      child: $KpLineChart year_chart {};
+                      child: Adw.Bin year_bin {};
                     }
                   }
                 }

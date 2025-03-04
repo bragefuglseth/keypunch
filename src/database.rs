@@ -3,8 +3,15 @@ use anyhow::Result;
 use rusqlite::Connection;
 use std::path::PathBuf;
 use std::sync::LazyLock;
-use std::time::UNIX_EPOCH;
 use std::fs;
+use time::{OffsetDateTime, Duration, Time};
+
+pub struct ChartItem {
+    pub title: String,
+    pub time_index: usize,
+    pub wpm: f64,
+    pub accuracy: f64,
+}
 
 pub const DATABASE: LazyLock<TypingStatsDb> = LazyLock::new(|| {
     let path = gtk::glib::user_data_dir().join("keypunch");
@@ -52,10 +59,7 @@ impl TypingStatsDb {
             )
             VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
             (
-                summary.start_timestamp
-                    .duration_since(UNIX_EPOCH)
-                    .expect("System time is always post-UNIX epoch")
-                    .as_secs(),
+                summary.start_timestamp,
                 summary.finished,
                 test_type,
                 language,
@@ -66,5 +70,50 @@ impl TypingStatsDb {
             ),
         )?;
         Ok(())
+    }
+
+    // Returns the average WPM and accuracy at a given date
+    pub fn average_from_period(&self, start: OffsetDateTime, end: OffsetDateTime) -> rusqlite::Result<(f64, f64)> {
+        self.0.query_row(
+            "SELECT     AVG(wpm), AVG(accuracy)
+            FROM        tests
+            WHERE       finished = TRUE
+            AND         UNIXEPOCH(timestamp) BETWEEN ? AND ?
+            AND         test_type IN ('Simple', 'Advanced')",
+            (start.unix_timestamp(), end.unix_timestamp()),
+            |row| Ok((row.get(0)?, row.get(1)?))
+        )
+    }
+
+    pub fn get_past_month(&self) -> Option<Vec<ChartItem>> {
+        let now = OffsetDateTime::now_local().unwrap_or(OffsetDateTime::now_utc());
+        let today_start = now.replace_time(Time::MIDNIGHT);
+        let today_end = now.replace_time(Time::MAX);
+
+        let mut month_data: Vec<ChartItem> = (0..30)
+            .filter_map(|n| {
+                let start = today_start - Duration::days(29 - n);
+                let end = today_end - Duration::days(29 - n);
+
+                if let Ok((wpm, accuracy)) = DATABASE.average_from_period(start, end) {
+                    Some(ChartItem {
+                        title: "Test".to_string(),
+                        time_index: n as usize,
+                        wpm,
+                        accuracy,
+                    })
+                } else {
+                    None
+                }
+            })
+            .collect();
+
+        let &ChartItem { time_index: time_offset, .. } = month_data.get(0)?;
+
+        for item in month_data.iter_mut() {
+            item.time_index -= time_offset;
+        }
+
+        Some(month_data)
     }
 }

@@ -23,7 +23,8 @@ use gettextrs::gettext;
 use gtk::gio;
 use gtk::prelude::*;
 use std::str::FromStr;
-use std::time::{Duration, Instant, SystemTime};
+use std::time::{Duration, Instant};
+use time::OffsetDateTime;
 use strum_macros::{Display as EnumDisplay, EnumIter, EnumString};
 
 #[derive(Clone, Copy, PartialEq, EnumString, EnumDisplay)]
@@ -119,7 +120,7 @@ impl PresenceState {
 pub struct TypingTest {
     pub config: TestConfig,
     pub start_instant: Instant,
-    pub start_system_time: SystemTime,
+    pub start_system_time: OffsetDateTime,
 }
 
 impl TypingTest {
@@ -127,7 +128,7 @@ impl TypingTest {
         TypingTest {
             config,
             start_instant: Instant::now(),
-            start_system_time: SystemTime::now(),
+            start_system_time: OffsetDateTime::now_local().unwrap_or(OffsetDateTime::now_utc()),
         }
     }
 }
@@ -137,14 +138,14 @@ pub struct TestSummary {
     pub config: TestConfig,
     pub real_duration: Duration,
     pub wpm: f64,
-    pub start_timestamp: SystemTime,
+    pub start_timestamp: OffsetDateTime,
     pub accuracy: f64,
     pub finished: bool,
 }
 
 impl TestSummary {
     pub fn new(
-        start_timestamp: SystemTime,
+        start_timestamp: OffsetDateTime,
         start_instant: Instant,
         end_instant: Instant,
         config: TestConfig,
