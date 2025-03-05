@@ -4,6 +4,7 @@
 
 [![Available on Flathub](https://img.shields.io/flathub/downloads/dev.bragefuglseth.Keypunch?logo=flathub&labelColor=77767b&color=4a90d9)](https://flathub.org/apps/dev.bragefuglseth.Keypunch)
 [![Chat on Matrix](https://img.shields.io/badge/chat-%23keypunch%3Agnome.org-mediumorchid?style=flat&logo=matrix)](https://matrix.to/#/#keypunch:gnome.org)
+[![Proudly part of GNOME Circle](https://circle.gnome.org/assets/button/badge.svg)](https://circle.gnome.org)
 [![Please do not theme this app](https://stopthemingmy.app/badge.svg)](https://stopthemingmy.app)
 
 ![screenshot](/data/screenshots/2-ready.png)
@@ -22,9 +23,25 @@ Keypunch is available on Flathub.
 
 [<img width="240" alt="Download on Flathub" src="https://flathub.org/api/badge?svg&locale=en"/>](https://flathub.org/apps/dev.bragefuglseth.Keypunch)
 
+## GNOME Circle
+
+Keypunch is proudly part of GNOME Circle, an initiative that champions the
+great software that is available for the GNOME platform. For more information,
+visit the GNOME Circle website.
+
+[<img width="240" src="https://circle.gnome.org/assets/button/circle-button-fullcolor.svg">](https://circle.gnome.org)
+
 ## Contributing
 
-Contributions are welcome! Refer to [CONTRIBUTING.md](CONTRIBUTING.md) for more. This project follows the [GNOME Code of Conduct](https://conduct.gnome.org).
+## Contributing
+
+Contributions are extremely welcome. To see how you can help with issue reporting, development, and translations, consult Keypunch's [contribution guide](https://welcome.gnome.org/app/Keypunch). For project-specific documentation, such as how to add a new text language, see [CONTRIBUTING.md](CONTRIBUTING.md).
+
+Please take this into consideration as well:
+
+- This project follows the [GNOME Code of Conduct](https://conduct.gnome.org).
+- Only Flatpak is officially supported.
+- If you want to contribute major changes, please discuss them beforehand to verify that they are suitable for the project.
 
 ## Name
 
