@@ -1,4 +1,4 @@
-![icon](/data/icons/dev.bragefuglseth.Keypunch.svg)
+![icon](/data/artwork/icon/dev.bragefuglseth.Keypunch.svg)
 
 # Keypunch
 
@@ -30,8 +30,6 @@ great software that is available for the GNOME platform. For more information,
 visit the GNOME Circle website.
 
 [<img width="240" src="https://circle.gnome.org/assets/button/circle-button-fullcolor.svg">](https://circle.gnome.org)
-
-## Contributing
 
 ## Contributing
 
