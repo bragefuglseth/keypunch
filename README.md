@@ -60,3 +60,10 @@ In addition to sounding neat, "Keypunch" is the name of an [actual keyboard devi
 ## Join the Community
 
 Any questions about the app? Or do you just want to hang out and share your typing results? Join the [Keypunch room](https://matrix.to/#/#keypunch:gnome.org) on Matrix! We can't wait to see you there.
+
+## Support Keypunch
+
+If you're enjoying Keypunch, I'm glad to hear that! Tag me on Mastodon and let me know! I don't accept donations through a lot of platforms at the moment, but if you happen to live in a Nordic country and have access to Vipps or MobilePay, feel free to throw some money in my virtual tip jar:
+
+[![Donate with Vipps](/data/assets/vipps_button.svg)](https://qr.vipps.no/box/c18bade5-d2c3-48a2-91ec-2eb235590bea/pay-in)
+[![Donate with MobilePay](/data/assets/mobilepay_button.svg)](https://qr.mobilepay.dk/box/c18bade5-d2c3-48a2-91ec-2eb235590bea/pay-in)
