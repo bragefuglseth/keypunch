@@ -166,7 +166,7 @@ template $KpWindow: Adw.ApplicationWindow {
                 DropDown test_type_dropdown {
                   tooltip-text: _("Test Type");
                   model: StringList {
-                    strings [_("Simple"), _("Advanced"), _("Custom")]
+                    strings [_("Simple"), _("Advanced"), _("AI Generated"), _("Custom")]
                   };
                 }
 
@@ -189,6 +189,18 @@ template $KpWindow: Adw.ApplicationWindow {
                       use-underline: true;
                       icon-name: "edit-symbolic";
                       label: _("_Edit Text");
+                    }
+
+                    styles [
+                      "flat"
+                    ]
+                  }
+
+                  Button prompt_button {
+                    Adw.ButtonContent {
+                      use-underline: true;
+                      icon-name: "edit-symbolic";
+                      label: _("_Edit Prompt");
                     }
 
                     styles [
@@ -377,6 +389,11 @@ menu primary_menu {
     item {
       label: _("Text _Language");
       action: 'win.text-language-dialog';
+    }
+    
+    item {
+      label: _("Ollama");
+      action: 'win.ollama-config-dialog';
     }
 
     item {
