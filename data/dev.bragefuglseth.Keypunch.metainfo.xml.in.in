@@ -63,7 +63,7 @@
   <url type="homepage">https://apps.gnome.org/Keypunch</url>
   <url type="bugtracker">https://github.com/bragefuglseth/keypunch/issues</url>
   <url type="contribute">https://welcome.gnome.org/app/Keypunch</url>
-  <url type="translate">https://github.com/bragefuglseth/keypunch/tree/main/po</url>
+  <url type="translate">https://l10n.gnome.org/module/Keypunch</url>
   <url type="vcs-browser">https://github.com/bragefuglseth/keypunch</url>
   <url type="contact">https://matrix.to/#/#keypunch:gnome.org</url>
   <update_contact>bragefuglseth_AT_gnome.org</update_contact>
