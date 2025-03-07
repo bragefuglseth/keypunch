@@ -40,9 +40,9 @@ mod imp {
         #[template_child]
         scrolled_window: TemplateChild<gtk::ScrolledWindow>,
         #[template_child]
-        month_bin: TemplateChild<adw::Bin>,
+        daily_bin: TemplateChild<adw::Bin>,
         #[template_child]
-        year_bin: TemplateChild<adw::Bin>,
+        monthly_bin: TemplateChild<adw::Bin>,
     }
 
     #[glib::object_subclass]
@@ -89,10 +89,12 @@ mod imp {
                 .build();
 
             let month_data = DATABASE.get_past_month().unwrap(); // TODO: Handle the no data case
-
             let month_stats_chart = KpLineChart::new(&month_data);
+            self.daily_bin.set_child(Some(&month_stats_chart));
 
-            self.month_bin.set_child(Some(&month_stats_chart));
+            let year_data = DATABASE.get_past_year().unwrap(); // TODO: Handle the no data case
+            let year_stats_chart = KpLineChart::new(&year_data);
+            self.monthly_bin.set_child(Some(&year_stats_chart));
         }
     }
     impl WidgetImpl for KpStatisticsDialog {}

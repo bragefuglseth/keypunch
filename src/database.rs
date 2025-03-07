@@ -4,7 +4,9 @@ use rusqlite::Connection;
 use std::path::PathBuf;
 use std::sync::LazyLock;
 use std::fs;
-use time::{OffsetDateTime, Duration, Time};
+use time::{Date, Month, OffsetDateTime, Duration, Time};
+use i18n_format::i18n_fmt;
+use gettextrs::gettext;
 
 pub struct ChartItem {
     pub title: String,
@@ -97,7 +99,7 @@ impl TypingStatsDb {
 
                 if let Ok((wpm, accuracy)) = DATABASE.average_from_period(start, end) {
                     Some(ChartItem {
-                        title: "Test".to_string(),
+                        title: formatted_date(start.date()),
                         time_index: n as usize,
                         wpm,
                         accuracy,
@@ -115,5 +117,83 @@ impl TypingStatsDb {
         }
 
         Some(month_data)
+    }
+
+    pub fn get_past_year(&self) -> Option<Vec<ChartItem>> {
+        let now = OffsetDateTime::now_local().unwrap_or(OffsetDateTime::now_utc());
+
+        let mut month_data: Vec<ChartItem> = (0..12)
+            .filter_map(|n| {
+                let mut start = now.clone().replace_day(1).unwrap().replace_time(Time::MIDNIGHT);
+
+                for _ in 0..(11-n) {
+                    let prev_month_length = start.month().previous().length(start.year());
+                    start -= Duration::days(prev_month_length as i64)
+                }
+
+                let month_length = start.month().length(start.year());
+                let end = start.replace_day(month_length).unwrap().replace_time(Time::MAX);
+
+                if let Ok((wpm, accuracy)) = DATABASE.average_from_period(start, end) {
+                    Some(ChartItem {
+                        title: formatted_month(start.date()),
+                        time_index: n as usize,
+                        wpm,
+                        accuracy,
+                    })
+                } else {
+                    None
+                }
+            })
+            .collect();
+
+        let &ChartItem { time_index: time_offset, .. } = month_data.get(0)?;
+
+        for item in month_data.iter_mut() {
+            item.time_index -= time_offset;
+        }
+
+        Some(month_data)
+    }
+}
+
+fn formatted_date(date: Date) -> String {
+    let day = date.day();
+
+    match date.month() {
+        // Translators: This is a date. The {} is replaced with a number.
+        Month::January => i18n_fmt! { i18n_fmt("January {}", day) },
+        Month::February => i18n_fmt! { i18n_fmt("February {}", day) },
+        Month::March => i18n_fmt! { i18n_fmt("March {}", day) },
+        Month::April => i18n_fmt! { i18n_fmt("April {}", day) },
+        Month::May => i18n_fmt! { i18n_fmt("May {}", day) },
+        Month::June => i18n_fmt! { i18n_fmt("June {}", day) },
+        Month::July => i18n_fmt! { i18n_fmt("July {}", day) },
+        Month::August => i18n_fmt! { i18n_fmt("August {}", day) },
+        Month::September => i18n_fmt! { i18n_fmt("September {}", day) },
+        Month::October => i18n_fmt! { i18n_fmt("October {}", day) },
+        Month::November => i18n_fmt! { i18n_fmt("November {}", day) },
+        Month::December => i18n_fmt! { i18n_fmt("December {}", day) },
+    }
+}
+
+fn formatted_month(date: Date) -> String {
+    let year = date.year();
+
+    match date.month() {
+        // Translators: This is a month label for the "monthly" view in the statistics dialog.
+        // The {} is replaced with a year.
+        Month::January => i18n_fmt! { i18n_fmt("January {}", year) },
+        Month::February => i18n_fmt! { i18n_fmt("February {}", year) },
+        Month::March => i18n_fmt! { i18n_fmt("March {}", year) },
+        Month::April => i18n_fmt! { i18n_fmt("April {}", year) },
+        Month::May => i18n_fmt! { i18n_fmt("May {}", year) },
+        Month::June => i18n_fmt! { i18n_fmt("June {}", year) },
+        Month::July => i18n_fmt! { i18n_fmt("July {}", year) },
+        Month::August => i18n_fmt! { i18n_fmt("August {}", year) },
+        Month::September => i18n_fmt! { i18n_fmt("September {}", year) },
+        Month::October => i18n_fmt! { i18n_fmt("October {}", year) },
+        Month::November => i18n_fmt! { i18n_fmt("November {}", year) },
+        Month::December => i18n_fmt! { i18n_fmt("December {}", year) },
     }
 }

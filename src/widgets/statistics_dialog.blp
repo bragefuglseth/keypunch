@@ -101,17 +101,19 @@ template $KpStatisticsDialog: Adw.Dialog {
                     margin-bottom: 12;
 
                     Adw.ViewStackPage {
-                      name: "month";
-                      title: _("Month");
+                      name: "daily";
+                      // Translators: label for viewing average typing speed and accuracy for each *day* in the last *month* (30 days)
+                      title: _("Daily");
 
-                      child: Adw.Bin month_bin {};
+                      child: Adw.Bin daily_bin {};
                     }
 
                     Adw.ViewStackPage {
-                      name: "year";
-                      title: _("Year");
+                      name: "monthly";
+                      // Translators: label for viewing average typing speed and accuracy for each *month* in the last *year*
+                      title: _("Monthly");
 
-                      child: Adw.Bin year_bin {};
+                      child: Adw.Bin monthly_bin {};
                     }
                   }
                 }
