@@ -7,9 +7,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: keypunch\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-01-09 21:31+0100\n"
-"PO-Revision-Date: 2024-07-14 19:42+0300\n"
+"Report-Msgid-Bugs-To: https://github.com/bragefuglseth/keypunch/issues\n"
+"POT-Creation-Date: 2025-03-07 14:20+0000\n"
+"PO-Revision-Date: 2025-03-13 10:57+0200\n"
 "Last-Translator: Yosef Or Boczko <yoseforb@gmail.com>\n"
 "Language-Team: Hebrew\n"
 "Language: he\n"
@@ -17,13 +17,13 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n==1 ? 0 : n==2 ? 1 : n>10 && n%10==0 ? "
-"2 : 3)\n"
-"X-Generator: Gtranslator 46.1\n"
+"2 : 3);\n"
+"X-Generator: Poedit 3.5\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 
 #: data/dev.bragefuglseth.Keypunch.desktop.in.in:3
 #: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:7
-#: src/widgets/window.blp:5
+#: src/widgets/window.blp:24
 msgid "Keypunch"
 msgstr "הקלדה עיוורת"
 
@@ -76,23 +76,33 @@ msgstr ""
 msgid "Get ready to accelerate your typing!"
 msgstr "היכונו לשיפור ההקלדה שלכם!"
 
-#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:36
+#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:33
+msgid ""
+"Keypunch is proudly part of GNOME Circle, an initiative that champions the "
+"great software that is available for the GNOME platform. For more "
+"information, visit the GNOME Circle website."
+msgstr ""
+"מיזם „הקלדה עיוורת” גאה להיות חלק מ־GNOME Circle, יוזמה שמרימה לתוכנות "
+"המדהימות שזמינות לפלטפורמת GNOME. למידע נוסף, מומלץ לבקר באתר של GNOME "
+"Circle ."
+
+#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:39
 msgid "In the middle of a session"
 msgstr "באמצע ההקלדה"
 
-#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:40
+#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:43
 msgid "Ready for typing"
 msgstr "מוכן להקלדה"
 
-#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:44
+#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:47
 msgid "Session results"
 msgstr "תוצאות ההקלדה"
 
-#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:48
+#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:51
 msgid "Language selection"
 msgstr "בחירת שפה"
 
-#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:52
+#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:55
 msgid "Custom text entry"
 msgstr "הזנת טקסט מותאם אישית"
 
@@ -109,12 +119,10 @@ msgid "Window Maximization"
 msgstr "האם החלון מוגדל"
 
 #: data/dev.bragefuglseth.Keypunch.gschema.xml:32
-#: src/widgets/results_view.blp:82 src/widgets/window.blp:146
 msgid "Session Type"
 msgstr "סוג הפעלה"
 
 #: data/dev.bragefuglseth.Keypunch.gschema.xml:36
-#: src/widgets/results_view.blp:95 src/widgets/window.blp:151
 msgid "Session Duration"
 msgstr "משך הפעלה"
 
@@ -128,9 +136,9 @@ msgid "\"en\""
 msgstr "\"he\""
 
 #: data/dev.bragefuglseth.Keypunch.gschema.xml:42
-#: src/widgets/results_view.blp:108 src/widgets/text_language_dialog.blp:5
-#: src/widgets/text_language_dialog.blp:13
-#: src/widgets/text_language_dialog.blp:39
+#: src/widgets/results_view.blp:127 src/widgets/text_language_dialog.blp:24
+#: src/widgets/text_language_dialog.blp:32
+#: src/widgets/text_language_dialog.blp:58
 msgid "Text Language"
 msgstr "שפת הטקסט"
 
@@ -153,7 +161,7 @@ msgstr ""
 "\"השועל הירוק הזוהר רוכב על דרקון סגול תוך כדי שהוא משחק שחמט עם סוס מעופף.\""
 
 #: data/dev.bragefuglseth.Keypunch.gschema.xml:53
-#: src/widgets/custom_text_dialog.blp:5 src/widgets/custom_text_dialog.blp:26
+#: src/widgets/custom_text_dialog.blp:24 src/widgets/custom_text_dialog.blp:45
 msgid "Custom Text"
 msgstr "טקסט מותאם אישית"
 
@@ -201,42 +209,59 @@ msgctxt "shortcut window"
 msgid "Quit"
 msgstr "יציאה"
 
-#: src/widgets/custom_text_dialog.blp:37
+#: src/widgets/custom_text_dialog.blp:56
 msgid "Insert custom text…"
 msgstr "הכנסת טקסט מותאם אישית…"
 
-#: src/widgets/custom_text_dialog.blp:73
+#: src/widgets/custom_text_dialog.blp:92
 msgid "_Save"
 msgstr "_שמירה"
 
-#: src/widgets/results_view.blp:34
+#: src/widgets/results_view.blp:53
 msgid "New Personal Best for Configuration"
 msgstr "שיא אישי חדש לקטגוריה"
 
-#: src/widgets/results_view.blp:45
+#: src/widgets/results_view.blp:64
 msgid "Words per Minute"
 msgstr "מילים לדקה"
 
-#: src/widgets/results_view.blp:66
+#: src/widgets/results_view.blp:85
 msgid "Accuracy"
-msgstr ""
+msgstr "דיוק"
 
-#. Translators: The percentage label format of the results page.
-#. The `{}` block will be replaced with the percentage number,
-#. do not translate it!
-#: src/widgets/results_view.rs:129
+#: src/widgets/results_view.blp:101 src/widgets/window.blp:167
+msgid "Test Type"
+msgstr "בחינת הקלדה"
+
+#: src/widgets/results_view.blp:114 src/widgets/window.blp:175
+msgid "Test Duration"
+msgstr "משך בחינה"
+
+#: src/widgets/results_view.rs:165
 msgid "{}%"
 msgstr "{}%"
 
+#: src/widgets/results_view.rs:171 src/widgets/window.blp:169
+msgid "Custom"
+msgstr "מותאם אישית"
+
+#: src/widgets/results_view.rs:173 src/widgets/window.blp:169
+msgid "Simple"
+msgstr "פשוט"
+
+#: src/widgets/results_view.rs:174 src/widgets/window.blp:169
+msgid "Advanced"
+msgstr "מתקדם"
+
 #. Translators: The `{}` blocks will be replaced with the number of minutes
 #. and seconds. Do not translate them!
-#: src/widgets/results_view.rs:187
+#: src/widgets/results_view.rs:200
 msgid "{}m {}s"
 msgstr "{} דקות ו־{} שניות"
 
 #. Translators: The `{}` block will be replaced with the number of minutes.
 #. Do not translate it!
-#: src/widgets/results_view.rs:191
+#: src/widgets/results_view.rs:204
 msgid "{} minute"
 msgid_plural "{} minutes"
 msgstr[0] "דקה אחת"
@@ -246,7 +271,7 @@ msgstr[3] "{} דקות"
 
 #. Translators: The `{}` block will be replaced with the number of seconds.
 #. Do not translate it!
-#: src/widgets/results_view.rs:195
+#: src/widgets/results_view.rs:208
 msgid "{} second"
 msgid_plural "{} seconds"
 msgstr[0] "שנייה"
@@ -254,40 +279,40 @@ msgstr[1] "שתי שניות"
 msgstr[2] "{} שניות"
 msgstr[3] "{} שניות"
 
-#: src/widgets/text_language_dialog.blp:21
-#: src/widgets/text_language_dialog.blp:161
-#: src/widgets/text_language_dialog.blp:190
+#: src/widgets/text_language_dialog.blp:40
+#: src/widgets/text_language_dialog.blp:180
+#: src/widgets/text_language_dialog.blp:209
 msgid "Add Language"
 msgstr "הוספת שפה"
 
-#: src/widgets/text_language_dialog.blp:51
-#: src/widgets/text_language_dialog.blp:55
+#: src/widgets/text_language_dialog.blp:70
+#: src/widgets/text_language_dialog.blp:74
 msgid "Search languages…"
 msgstr "חיפוש שפות…"
 
 #. Translators: Recent languages in text languages list
-#: src/widgets/text_language_dialog.blp:79
+#: src/widgets/text_language_dialog.blp:98
 msgid "Recent"
 msgstr "בשימוש לאחרונה"
 
 #. Translators: Other languages in text languages list
-#: src/widgets/text_language_dialog.blp:84
+#: src/widgets/text_language_dialog.blp:103
 msgid "Other"
 msgstr "אחר"
 
-#: src/widgets/text_language_dialog.blp:104
+#: src/widgets/text_language_dialog.blp:123
 msgid "Search Results"
 msgstr "תוצאות חיפוש"
 
-#: src/widgets/text_language_dialog.blp:140
+#: src/widgets/text_language_dialog.blp:159
 msgid "No Matches"
 msgstr "אין התאמות"
 
-#: src/widgets/text_language_dialog.blp:148
+#: src/widgets/text_language_dialog.blp:167
 msgid "Try a different search"
 msgstr "יש לנסות חיפוש שונה"
 
-#: src/widgets/text_language_dialog.blp:199
+#: src/widgets/text_language_dialog.blp:218
 msgid ""
 "You can help add a new text language to Keypunch by submitting a language "
 "request on GitHub. A GitHub account and some language knowledge is required."
@@ -295,79 +320,136 @@ msgstr ""
 "באפשרותך לעזור ולהוסיף שפה חדשה להקלדה עיוורת על ידי הגשת בקשה לשפה חדשה "
 "ב־GitHub. נדרש חשבון GitHub ומעט ידע בשפה."
 
-#: src/widgets/text_language_dialog.blp:214
+#: src/widgets/text_language_dialog.blp:233
 msgid "_Create Request"
 msgstr "_הגשת בקשה"
 
-#: src/widgets/text_view.blp:9
+#: src/widgets/text_view.blp:28
 msgid "Text View"
 msgstr "תצוגת טקסט"
 
-#: src/widgets/window.blp:131
+#: src/widgets/window.blp:150
 msgid "Restart"
 msgstr "הפעלה מחדש"
 
-#: src/widgets/window.blp:158
+#: src/widgets/window.blp:178
+msgid "15 seconds"
+msgstr "15 שניות"
+
+#: src/widgets/window.blp:179
+msgid "30 seconds"
+msgstr "30 שניות"
+
+#: src/widgets/window.blp:180
+msgid "1 minute"
+msgstr "דקה אחת"
+
+#: src/widgets/window.blp:181
+msgid "5 minutes"
+msgstr "5 דקות"
+
+#: src/widgets/window.blp:182
+msgid "10 minutes"
+msgstr "10 דקות"
+
+#: src/widgets/window.blp:191
 msgid "_Edit Text"
 msgstr "_עריכת טקסט"
 
-#: src/widgets/window.blp:187
+#: src/widgets/window.blp:220
 msgid "Main Menu"
 msgstr "תפריט ראשי"
 
-#: src/widgets/window.blp:205
+#: src/widgets/window.blp:238
 msgid "Just Start Typing"
 msgstr "אפשר להתחיל להקליד"
 
 #. Translators: "Entry" here is the act of entering text
-#: src/widgets/window.blp:214
-msgid "Enable Entry"
-msgstr "לאפשר הקלדה"
+#: src/widgets/window.blp:247
+msgid "_Enable Entry"
+msgstr "לאפשר ה_קלדה"
 
-#: src/widgets/window.blp:240
+#: src/widgets/window.blp:273
 msgid "Results"
 msgstr "תוצאות"
 
-#: src/widgets/window.blp:265
+#: src/widgets/window.blp:298
 msgid "_Continue"
 msgstr "לה_משיך"
 
-#: src/widgets/window.blp:297
+#. Translators: "Frustration Relief" is the name of the functionality
+#. that automatically cancels a test when random key mashing is detected,
+#. and displays a recommendation to take a break.
+#: src/widgets/window.blp:326
+msgid "Frustration Relief"
+msgstr "הקלה בתסכול"
+
+#: src/widgets/window.blp:332
+msgid "Frustration Detected"
+msgstr "זוהה תסכול"
+
+#. Translators: Make sure to convey this as politely and sensitively as possible,
+#. since it is likely to be shown to people while they are in a state of
+#. self-disappointment / anger
+#: src/widgets/window.blp:336
+msgid ""
+"You learn faster in a calm state of mind. Consider taking a break. The test "
+"has been cancelled, and will not affect your typing statistics."
+msgstr ""
+"שקט נפשי מאיץ את הלימוד. כדאי לנוח קצת. הבחינה בוטלה ולא תשפיע על סטטיסטיקת "
+"ההקלדה שלך."
+
+#: src/widgets/window.blp:378
 msgid "Text _Language"
 msgstr "_שפת הטקסט"
 
-#: src/widgets/window.blp:302
+#: src/widgets/window.blp:383
 msgid "_Keyboard Shortcuts"
 msgstr "_צירופי מקשים"
 
-#: src/widgets/window.blp:307
+#: src/widgets/window.blp:388
 msgid "_About Keypunch"
 msgstr "_על הקלדה עיוורת"
 
-#: src/widgets/window.rs:180
+#: src/widgets/window.rs:196
 msgid "Orthography by"
 msgstr "אורתוגרפיה על ידי"
 
 #. Translators: Replace "translator-credits" with your names, one name per line
-#: src/widgets/window.rs:197
+#: src/widgets/window.rs:214
 msgid "translator-credits"
 msgstr ""
 "יוסף אור בוצ׳קו <yoseforb@gmail.com>\n"
 "מיזם תרגום GNOME לעברית https://l10n.gnome.org/teams/he/"
 
-#: src/widgets/window.rs:202
+#: src/widgets/window.rs:219
 msgid "Special thanks to"
 msgstr "תודות מיוחדות ל"
 
-#: src/widgets/window/session.rs:118
+#. Translators: Metainfo for the app Fretboard. <https://github.com/bragefuglseth/fretboard>
+#: src/widgets/window.rs:226
+msgid "Fretboard"
+msgstr "Fretboard"
+
+#. Translators: Metainfo for the app Fretboard. <https://github.com/bragefuglseth/fretboard>
+#: src/widgets/window.rs:228
+msgid "Look up guitar chords"
+msgstr "חיפוש אקורדים לגיטרה"
+
+#: src/widgets/window/typing_test.rs:163
 msgid "{} ⁄ {}"
 msgstr "‎{} ⁄ {}"
 
-#: src/widgets/window/session.rs:310
+#. Translators: This is shown as a warning by GNOME Shell before logging out or shutting off the system in the middle of a typing test, alongside Keypunch's name and icon
+#: src/widgets/window/typing_test.rs:334
+msgid "Ongoing typing test"
+msgstr "מתקיימת כרגע בחינת הקלדה"
+
+#: src/widgets/window/typing_test.rs:506
 msgid "Changes discarded"
 msgstr "שינויים בוטלו"
 
-#: src/widgets/window/session.rs:311
+#: src/widgets/window/typing_test.rs:507
 msgid "Restore"
 msgstr "שחזור"
 
@@ -376,38 +458,9 @@ msgstr "שחזור"
 #. passed. Do not translate the `{}` blocks. Note that the `∶` sign is a special
 #. Unicode character; if your language doesn't use something completely different,
 #. you should probably copy and paste it from the original string.
-#: src/widgets/window/session.rs:405 src/widgets/window/session.rs:407
+#: src/widgets/window/typing_test.rs:605 src/widgets/window/typing_test.rs:607
 msgid "{}∶{}"
 msgstr "{}:{}"
 
-#. Translators: This is shown as a warning by GNOME Shell before logging out or shutting off the system in the middle of a typing session, alongside Keypunch's name and icon
-#: src/widgets/window/ui_state.rs:179
-msgid "Ongoing typing session"
-msgstr ""
-
 #~ msgid "Correctness"
 #~ msgstr "דיוק"
-
-#~ msgid "Simple"
-#~ msgstr "פשוט"
-
-#~ msgid "Advanced"
-#~ msgstr "מתקדם"
-
-#~ msgid "Custom"
-#~ msgstr "מותאם אישית"
-
-#~ msgid "15 seconds"
-#~ msgstr "15 שניות"
-
-#~ msgid "30 seconds"
-#~ msgstr "30 שניות"
-
-#~ msgid "1 minute"
-#~ msgstr "דקה אחת"
-
-#~ msgid "5 minutes"
-#~ msgstr "5 דקות"
-
-#~ msgid "10 minutes"
-#~ msgstr "10 דקות"
