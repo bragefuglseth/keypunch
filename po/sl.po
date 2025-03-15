@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Keypunch main\n"
 "Report-Msgid-Bugs-To: https://github.com/bragefuglseth/keypunch/issues\n"
 "POT-Creation-Date: 2025-03-15 15:28+0000\n"
-"PO-Revision-Date: 2025-03-15 22:51+0100\n"
+"PO-Revision-Date: 2025-03-15 23:10+0100\n"
 "Language-Team: Slovenian <Slovenian>\n"
 "Language: sl\n"
 "MIME-Version: 1.0\n"
@@ -79,7 +79,6 @@ msgstr ""
 "vtipkali čim hitreje."
 
 #: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:30
-#, fuzzy
 msgid "Get ready to accelerate your typing!"
 msgstr "Pripravite se na pospešitev tipkanja!"
 
@@ -112,7 +111,6 @@ msgid "Language selection"
 msgstr "Izbira jezika"
 
 #: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:55
-#, fuzzy
 msgid "Custom text entry"
 msgstr "Vnos besedila po meri"
 
@@ -154,7 +152,6 @@ msgid "Text Language"
 msgstr "Jezik besedila"
 
 #: data/dev.bragefuglseth.Keypunch.gschema.xml:43
-#, fuzzy
 msgid "The code of the language used for automatically generated text"
 msgstr "Koda jezika, ki se uporablja za samodejno ustvarjeno besedilo"
 
@@ -163,7 +160,6 @@ msgid "Recent Languages"
 msgstr "Nedavni jeziki"
 
 #: data/dev.bragefuglseth.Keypunch.gschema.xml:48
-#, fuzzy
 msgid "Languages shown in the list of recent ones in the text language dialog"
 msgstr ""
 "Jeziki, prikazani na seznamu nedavnih jezikov v pogovornem oknu jezika "
@@ -171,9 +167,8 @@ msgstr ""
 
 #. Translators: This is the default text for custom typing sessions. Do not translate it literally, and do not remove the quotation marks. Replace it with an appropriate "sample sentence" from your language instead. The original text is an English pangram, so you can e.g. find a pangram in your language: https://clagnut.com/blog/2380
 #: data/dev.bragefuglseth.Keypunch.gschema.xml:52
-#, fuzzy
 msgid "\"The quick brown fox jumps over the lazy dog.\""
-msgstr "Šerif bo za vajo spet skuhal domače žgance"
+msgstr "»Šerif bo za vajo spet skuhal domače žgance.«"
 
 #: data/dev.bragefuglseth.Keypunch.gschema.xml:53
 #: src/widgets/custom_text_dialog.blp:24 src/widgets/custom_text_dialog.blp:45
@@ -470,9 +465,8 @@ msgid "Ongoing typing test"
 msgstr "Preizkus tipkanja v teku"
 
 #: src/widgets/window/typing_test.rs:506
-#, fuzzy
 msgid "Changes discarded"
-msgstr "Spremembe so bile zavržene"
+msgstr "Spremembe so bile opuščene"
 
 #: src/widgets/window/typing_test.rs:507
 msgid "Restore"
