@@ -1,0 +1,459 @@
+# Indonesian translation for Keypunch.
+# Copyright (C) 2025 Keypunch's COPYRIGHT HOLDER
+# This file is distributed under the same license as the Keypunch package.
+# Andika Triwidada <atriwidada@gnome.org>,  2025.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Keypunch main\n"
+"Report-Msgid-Bugs-To: https://github.com/bragefuglseth/keypunch/issues\n"
+"POT-Creation-Date: 2025-03-10 15:29+0000\n"
+"PO-Revision-Date: 2025-03-17 18:19+0700\n"
+"Last-Translator: Andika Triwidada <andika@gmail.com>\n"
+"Language-Team: Indonesian <Indonesian>\n"
+"Language: id\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Poedit 3.5\n"
+
+#: data/dev.bragefuglseth.Keypunch.desktop.in.in:3
+#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:7
+#: src/widgets/window.blp:24
+msgid "Keypunch"
+msgstr "Keypunch"
+
+#: data/dev.bragefuglseth.Keypunch.desktop.in.in:4
+#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:8
+msgid "Practice your typing skills"
+msgstr "Praktikkan ketrampilan mengetik Anda"
+
+#: data/dev.bragefuglseth.Keypunch.desktop.in.in:10
+msgid ""
+"typing;trainer;touch typing;keyboard;speed;wpm;words per minute;accuracy;"
+"test;"
+msgstr ""
+"mengetik;pelatih;ketik sentuh;papan tik;kecepatan;wpm;kata per menit;akurasi;"
+"uji;"
+
+#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:13
+msgid ""
+"There is no doubt that typing on a keyboard is an essential skill in the "
+"digital age. Typing fast and accurately gives you more opportunities, more "
+"time for what matters to you, and a sense of self-accomplishment."
+msgstr ""
+"Tidak ada keraguan bahwa mengetik pada suatu papan tik adalah ketrampilan "
+"esensial di zaman digital. Mengetik secara cepat dan akurat memberi Anda "
+"lebih banyak peluang, lebih banyak waktu untuk hal-hal yang penting bagi "
+"Anda, dan rasa keberhasilan."
+
+#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:18
+msgid ""
+"Keypunch lets you practice typing. Thanks to fast-paced sessions with "
+"instant feedback afterwards and a plethora of available languages, you might "
+"even have a little fun doing so. With determination, proper technique and "
+"some time, you will observe a noticeable increase in both the speed and the "
+"accuracy of which your thoughts and ideas are put into words on the screen."
+msgstr ""
+"Keypunch memungkinkan Anda berlatih mengetik. Terima kasih ke sesi irama "
+"tinggi dengan umpan balik instan setelahnya dan berbagai bahasa yang "
+"tersedia, Anda bahkan mungkin merasa senang melakukannya. Dengan "
+"determinasi, teknik yang tepat, dan waktu tertentu, Anda akan mengamati "
+"peningkatan yang teramati dalam kecepatan dan akurasi pikiran dan ide Anda "
+"diwujudkan dalam kata-kata pada layar."
+
+#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:25
+msgid ""
+"If you are already a racer at typing, Keypunch still has something for you. "
+"Try practicing with numbers and punctuation, or choose your own text to type "
+"out as fast as you can."
+msgstr ""
+"Bila Anda sudah menjadi pembalap ketik, Keypunch masih punya sesuatu untuk "
+"Anda. Cobalah berlatih dengan angka dan tanda baca, atau pilih teks Anda "
+"sendiri untuk diketik secepat yang Anda mampu."
+
+#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:30
+msgid "Get ready to accelerate your typing!"
+msgstr "Bersiaplah mengakselerasi pengetikan Anda!"
+
+#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:33
+msgid ""
+"Keypunch is proudly part of GNOME Circle, an initiative that champions the "
+"great software that is available for the GNOME platform. For more "
+"information, visit the GNOME Circle website."
+msgstr ""
+"Keypunch bangga menjadi bagian dari GNOME Circle, suatu inisiatif yang "
+"menjagokan perangkat lunak hebat yang tersedia bagi platform GNOME. Untuk "
+"informasi lebih lanjut, kunjungi situs web GNOME Circle."
+
+#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:39
+msgid "In the middle of a session"
+msgstr "Di tengah suatu sesi"
+
+#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:43
+msgid "Ready for typing"
+msgstr "Siap untuk mengetik"
+
+#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:47
+msgid "Session results"
+msgstr "Hasil sesi"
+
+#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:51
+msgid "Language selection"
+msgstr "Pemilihan bahasa"
+
+#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:55
+msgid "Custom text entry"
+msgstr "Entri teks khusus"
+
+#: data/dev.bragefuglseth.Keypunch.gschema.xml:20
+msgid "Window Width"
+msgstr "Lebar Jendela"
+
+#: data/dev.bragefuglseth.Keypunch.gschema.xml:24
+msgid "Window Height"
+msgstr "Tinggi Jendela"
+
+#: data/dev.bragefuglseth.Keypunch.gschema.xml:28
+msgid "Window Maximization"
+msgstr "Termaksimalkannya Jendela"
+
+#: data/dev.bragefuglseth.Keypunch.gschema.xml:32
+msgid "Session Type"
+msgstr "Jenis Sesi"
+
+#: data/dev.bragefuglseth.Keypunch.gschema.xml:36
+msgid "Session Duration"
+msgstr "Durasi Sesi"
+
+#: data/dev.bragefuglseth.Keypunch.gschema.xml:37
+msgid "The duration of time-based sessions"
+msgstr "Durasi sesi berbasis waktu"
+
+#. Translators: Insert the language code of your language here, for example "nb" for Norwegian Bokmaal. Do not remove the quotation marks. It's doesn't matter if there isn't a word list for the language in `data/word_lists` right now, the app will fall back to English in that case and start using the list if it becomes available in the future.
+#: data/dev.bragefuglseth.Keypunch.gschema.xml:41
+msgid "\"en\""
+msgstr "\"id\""
+
+#: data/dev.bragefuglseth.Keypunch.gschema.xml:42
+#: src/widgets/results_view.blp:127 src/widgets/text_language_dialog.blp:24
+#: src/widgets/text_language_dialog.blp:32
+#: src/widgets/text_language_dialog.blp:58
+msgid "Text Language"
+msgstr "Bahasa Teks"
+
+#: data/dev.bragefuglseth.Keypunch.gschema.xml:43
+msgid "The code of the language used for automatically generated text"
+msgstr ""
+"Kode dari bahasa yang digunakan untuk teks yang dihasilkan secara otomatis"
+
+#: data/dev.bragefuglseth.Keypunch.gschema.xml:47
+msgid "Recent Languages"
+msgstr "Bahasa Terbaru"
+
+#: data/dev.bragefuglseth.Keypunch.gschema.xml:48
+msgid "Languages shown in the list of recent ones in the text language dialog"
+msgstr "Bahasa yang dicantumkan dalam daftar terkini dalam dialog bahasa teks"
+
+#. Translators: This is the default text for custom typing sessions. Do not translate it literally, and do not remove the quotation marks. Replace it with an appropriate "sample sentence" from your language instead. The original text is an English pangram, so you can e.g. find a pangram in your language: https://clagnut.com/blog/2380
+#: data/dev.bragefuglseth.Keypunch.gschema.xml:52
+msgid "\"The quick brown fox jumps over the lazy dog.\""
+msgstr "\"The quick brown fox jumps over the lazy dog.\""
+
+#: data/dev.bragefuglseth.Keypunch.gschema.xml:53
+#: src/widgets/custom_text_dialog.blp:24 src/widgets/custom_text_dialog.blp:45
+msgid "Custom Text"
+msgstr "Teks Ubahan"
+
+#: data/dev.bragefuglseth.Keypunch.gschema.xml:54
+msgid "Text displayed when “Custom” is chosen from the session menu"
+msgstr "Teks yang ditampilkan ketika \"Ubahan\" dipilih dari menu sesi"
+
+#: data/dev.bragefuglseth.Keypunch.gschema.xml:58
+msgid "Personal Best"
+msgstr "Terbaik Pribadi"
+
+#: data/dev.bragefuglseth.Keypunch.gschema.xml:59
+msgid ""
+"The current highest amount of WPM received for each session type / duration "
+"and language"
+msgstr ""
+"WPM tertinggi saat ini yang diterima bagi setiap tipe / durasi sesi dan "
+"bahasa"
+
+#: data/resources/gtk/help-overlay.ui:11
+msgctxt "shortcut window"
+msgid "General"
+msgstr "Umum"
+
+#: data/resources/gtk/help-overlay.ui:14
+msgctxt "shortcut window"
+msgid "Text Language"
+msgstr "Bahasa Teks"
+
+#: data/resources/gtk/help-overlay.ui:20
+msgctxt "shortcut window"
+msgid "Cancel Session"
+msgstr "Batalkan Sesi"
+
+#: data/resources/gtk/help-overlay.ui:26
+msgctxt "shortcut window"
+msgid "Keyboard Shortcuts"
+msgstr "Pintasan Papan Tik"
+
+#: data/resources/gtk/help-overlay.ui:32
+msgctxt "shortcut window"
+msgid "Close Window"
+msgstr "Tutup Jendela"
+
+#: data/resources/gtk/help-overlay.ui:38
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr "Keluar"
+
+#: src/widgets/custom_text_dialog.blp:56
+msgid "Insert custom text…"
+msgstr "Sisipkan teks ubahan…"
+
+#: src/widgets/custom_text_dialog.blp:92
+msgid "_Save"
+msgstr "_Simpan"
+
+#: src/widgets/results_view.blp:53
+msgid "New Personal Best for Configuration"
+msgstr "Terbaik Pribadi Baru untuk Konfigurasi"
+
+#: src/widgets/results_view.blp:64
+msgid "Words per Minute"
+msgstr "Kata per Menit"
+
+#: src/widgets/results_view.blp:85
+msgid "Accuracy"
+msgstr "Akurasi"
+
+#: src/widgets/results_view.blp:101 src/widgets/window.blp:167
+msgid "Test Type"
+msgstr "Jenis Tes"
+
+#: src/widgets/results_view.blp:114 src/widgets/window.blp:175
+msgid "Test Duration"
+msgstr "Durasi Tes"
+
+#: src/widgets/results_view.rs:165
+msgid "{}%"
+msgstr "{}%"
+
+#: src/widgets/results_view.rs:171 src/widgets/window.blp:169
+msgid "Custom"
+msgstr "Ubahan"
+
+#: src/widgets/results_view.rs:173 src/widgets/window.blp:169
+msgid "Simple"
+msgstr "Sederhana"
+
+#: src/widgets/results_view.rs:174 src/widgets/window.blp:169
+msgid "Advanced"
+msgstr "Tingkat Lanjut"
+
+#. Translators: The `{}` blocks will be replaced with the number of minutes
+#. and seconds. Do not translate them!
+#: src/widgets/results_view.rs:200
+msgid "{}m {}s"
+msgstr "{}m {}d"
+
+#. Translators: The `{}` block will be replaced with the number of minutes.
+#. Do not translate it!
+#: src/widgets/results_view.rs:204
+msgid "{} minute"
+msgid_plural "{} minutes"
+msgstr[0] "{} menit"
+
+#. Translators: The `{}` block will be replaced with the number of seconds.
+#. Do not translate it!
+#: src/widgets/results_view.rs:208
+msgid "{} second"
+msgid_plural "{} seconds"
+msgstr[0] "{} detik"
+
+#: src/widgets/text_language_dialog.blp:40
+#: src/widgets/text_language_dialog.blp:180
+#: src/widgets/text_language_dialog.blp:209
+msgid "Add Language"
+msgstr "Tambahkan Bahasa"
+
+#: src/widgets/text_language_dialog.blp:70
+#: src/widgets/text_language_dialog.blp:74
+msgid "Search languages…"
+msgstr "Cari bahasa…"
+
+#. Translators: Recent languages in text languages list
+#: src/widgets/text_language_dialog.blp:98
+msgid "Recent"
+msgstr "Baru-baru Ini"
+
+#. Translators: Other languages in text languages list
+#: src/widgets/text_language_dialog.blp:103
+msgid "Other"
+msgstr "Lainnya"
+
+#: src/widgets/text_language_dialog.blp:123
+msgid "Search Results"
+msgstr "Hasil Pencarian"
+
+#: src/widgets/text_language_dialog.blp:159
+msgid "No Matches"
+msgstr "Tidak Ada yang Cocok"
+
+#: src/widgets/text_language_dialog.blp:167
+msgid "Try a different search"
+msgstr "Cobalah pencarian lain"
+
+#: src/widgets/text_language_dialog.blp:218
+msgid ""
+"You can help add a new text language to Keypunch by submitting a language "
+"request on GitHub. A GitHub account and some language knowledge is required."
+msgstr ""
+"Anda dapat membantu menambahkan bahasa teks baru ke Keypunch dengan mengirim "
+"suatu permintaan bahasa pada GitHub. Suatu akun GitHub dan pengetahuan "
+"bahasa tertentu diperlukan."
+
+#: src/widgets/text_language_dialog.blp:233
+msgid "_Create Request"
+msgstr "_Buat Permintaan"
+
+#: src/widgets/text_view.blp:28
+msgid "Text View"
+msgstr "Tampilan Teks"
+
+#: src/widgets/window.blp:150
+msgid "Restart"
+msgstr "Mulai Ulang"
+
+#: src/widgets/window.blp:178
+msgid "15 seconds"
+msgstr "15 detik"
+
+#: src/widgets/window.blp:179
+msgid "30 seconds"
+msgstr "30 detik"
+
+#: src/widgets/window.blp:180
+msgid "1 minute"
+msgstr "1 menit"
+
+#: src/widgets/window.blp:181
+msgid "5 minutes"
+msgstr "5 menit"
+
+#: src/widgets/window.blp:182
+msgid "10 minutes"
+msgstr "10 menit"
+
+#: src/widgets/window.blp:191
+msgid "_Edit Text"
+msgstr "_Sunting Teks"
+
+#: src/widgets/window.blp:220
+msgid "Main Menu"
+msgstr "Menu Utama"
+
+#: src/widgets/window.blp:238
+msgid "Just Start Typing"
+msgstr "Mulai Saja Mengetik"
+
+#. Translators: "Entry" here is the act of entering text
+#: src/widgets/window.blp:247
+msgid "_Enable Entry"
+msgstr "Fungsikan _Entri"
+
+#: src/widgets/window.blp:273
+msgid "Results"
+msgstr "Hasil"
+
+#: src/widgets/window.blp:298
+msgid "_Continue"
+msgstr "_Lanjutkan"
+
+#. Translators: "Frustration Relief" is the name of the functionality
+#. that automatically cancels a test when random key mashing is detected,
+#. and displays a recommendation to take a break.
+#: src/widgets/window.blp:326
+msgid "Frustration Relief"
+msgstr ""
+
+#: src/widgets/window.blp:332
+msgid "Frustration Detected"
+msgstr "Frustrasi Terdeteksi"
+
+#. Translators: Make sure to convey this as politely and sensitively as possible,
+#. since it is likely to be shown to people while they are in a state of
+#. self-disappointment / anger
+#: src/widgets/window.blp:336
+msgid ""
+"You learn faster in a calm state of mind. Consider taking a break. The test "
+"has been cancelled, and will not affect your typing statistics."
+msgstr ""
+"Anda belajar lebih cepat bila pikiran tenang. Pertimbangkan beristirahat. "
+"Uji telah dibatalkan, dan tidak akan memengaruhi statistik pengetikan Anda."
+
+#: src/widgets/window.blp:378
+msgid "Text _Language"
+msgstr "_Bahasa Teks"
+
+#: src/widgets/window.blp:383
+msgid "_Keyboard Shortcuts"
+msgstr "Pintasan Papan Ti_k"
+
+#: src/widgets/window.blp:388
+msgid "_About Keypunch"
+msgstr "Tent_ang Keypunch"
+
+#: src/widgets/window.rs:196
+msgid "Orthography by"
+msgstr "Ortografi oleh"
+
+#. Translators: Replace "translator-credits" with your names, one name per line
+#: src/widgets/window.rs:214
+msgid "translator-credits"
+msgstr "Andika Triwidada <andika@gmail.com>, 2025."
+
+#: src/widgets/window.rs:219
+msgid "Special thanks to"
+msgstr "Ucapan terima kasih khusus kepada"
+
+#. Translators: Metainfo for the app Fretboard. <https://github.com/bragefuglseth/fretboard>
+#: src/widgets/window.rs:226
+msgid "Fretboard"
+msgstr "Fretboard"
+
+#. Translators: Metainfo for the app Fretboard. <https://github.com/bragefuglseth/fretboard>
+#: src/widgets/window.rs:228
+msgid "Look up guitar chords"
+msgstr "Lihat kord gitar"
+
+#: src/widgets/window/typing_test.rs:163
+msgid "{} ⁄ {}"
+msgstr "{} ⁄ {}"
+
+#. Translators: This is shown as a warning by GNOME Shell before logging out or shutting off the system in the middle of a typing test, alongside Keypunch's name and icon
+#: src/widgets/window/typing_test.rs:334
+msgid "Ongoing typing test"
+msgstr "Uji mengetik yang tengah berlangsung"
+
+#: src/widgets/window/typing_test.rs:506
+msgid "Changes discarded"
+msgstr "Perubahan dibuang"
+
+#: src/widgets/window/typing_test.rs:507
+msgid "Restore"
+msgstr "Pulihkan"
+
+#. Translators: The format of the timer. The first `{}` block will be replaced
+#. with the minutes passed, and the second one will be replaced with the seconds
+#. passed. Do not translate the `{}` blocks. Note that the `∶` sign is a special
+#. Unicode character; if your language doesn't use something completely different,
+#. you should probably copy and paste it from the original string.
+#: src/widgets/window/typing_test.rs:605 src/widgets/window/typing_test.rs:607
+msgid "{}∶{}"
+msgstr "{}∶{}"
