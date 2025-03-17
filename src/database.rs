@@ -124,7 +124,7 @@ impl TypingStatsDb {
 
         let mut month_data: Vec<ChartItem> = (0..12)
             .filter_map(|n| {
-                let mut start = now.clone().replace_day(1).unwrap().replace_time(Time::MIDNIGHT);
+                let mut start = now.replace_day(1).unwrap().replace_time(Time::MIDNIGHT);
 
                 for _ in 0..(11-n) {
                     let prev_month_length = start.month().previous().length(start.year());
@@ -154,6 +154,24 @@ impl TypingStatsDb {
         }
 
         Some(month_data)
+    }
+
+    pub fn last_month(&self) -> Option<(f64, f64, f64, String)> {
+        let now = OffsetDateTime::now_local().unwrap_or(OffsetDateTime::now_utc());
+
+        let start = now.replace_time(Time::MIDNIGHT) - Duration::days(29);
+        let (wpm, accuracy) = self.average_from_period(start, now).ok()?;
+
+        let finished_share = self.0.query_row(
+            "SELECT     (SUM(finished), COUNT(*)
+            FROM        tests
+            WHERE       UNIXEPOCH(timestamp) BETWEEN ? AND ?
+            AND         test_type IN ('Simple', 'Advanced')",
+            (start.unix_timestamp(), now.unix_timestamp()),
+            |row| Ok((row.get::<_, f64>(0)? / row.get::<_, f64>(1)?).floor() as usize),
+        ).ok()?;
+
+        todo!()
     }
 }
 
