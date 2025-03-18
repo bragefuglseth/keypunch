@@ -2,13 +2,14 @@
 # Copyright (C) 2025 Keypunch's COPYRIGHT HOLDER
 # This file is distributed under the same license as the Keypunch package.
 # Andi Chandler <andi@gowling.com>, 2025.
+# Bruce Cowan <bruce@bcowan.me.uk>, 2025.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Keypunch main\n"
 "Report-Msgid-Bugs-To: https://github.com/bragefuglseth/keypunch/issues\n"
-"POT-Creation-Date: 2025-03-18 15:29+0000\n"
-"PO-Revision-Date: 2025-03-18 20:34+0000\n"
+"POT-Creation-Date: 2025-03-18 20:35+0000\n"
+"PO-Revision-Date: 2025-03-18 20:45+0000\n"
 "Last-Translator: Bruce Cowan <bruce@bcowan.me.uk>\n"
 "Language-Team: British English <en_GB@li.org>\n"
 "Language: en_GB\n"
@@ -27,7 +28,7 @@ msgstr "Keypunch"
 #: data/dev.bragefuglseth.Keypunch.desktop.in.in:4
 #: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:8
 msgid "Practice your typing skills"
-msgstr "Practice your typing skills"
+msgstr "Practise your typing skills"
 
 #: data/dev.bragefuglseth.Keypunch.desktop.in.in:10
 msgid ""
@@ -415,7 +416,9 @@ msgstr "Orthography by"
 #. Translators: Replace "translator-credits" with your names, one name per line
 #: src/widgets/window.rs:214
 msgid "translator-credits"
-msgstr "Andi Chandler <andi@gowling.com>"
+msgstr ""
+"Andi Chandler <andi@gowling.com>\n"
+"Bruce Cowan <bruce@bcowan.me.uk>"
 
 #: src/widgets/window.rs:219
 msgid "Special thanks to"
