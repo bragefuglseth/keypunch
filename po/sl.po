@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Keypunch main\n"
 "Report-Msgid-Bugs-To: https://github.com/bragefuglseth/keypunch/issues\n"
 "POT-Creation-Date: 2025-03-16 03:29+0000\n"
-"PO-Revision-Date: 2025-03-19 22:37+0100\n"
+"PO-Revision-Date: 2025-03-19 22:40+0100\n"
 "Last-Translator: Martin Srebotnjak <miles@filmsi.net>\n"
 "Language-Team: Slovenian <Slovenian>\n"
 "Language: sl\n"
@@ -385,12 +385,10 @@ msgstr "N_adaljuj"
 #. that automatically cancels a test when random key mashing is detected,
 #. and displays a recommendation to take a break.
 #: src/widgets/window.blp:326
-#, fuzzy
 msgid "Frustration Relief"
-msgstr "Olajšanje frustracije"
+msgstr "Sprostitev frustracije"
 
 #: src/widgets/window.blp:332
-#, fuzzy
 msgid "Frustration Detected"
 msgstr "Zaznana frustracija"
 
@@ -418,9 +416,8 @@ msgid "_About Keypunch"
 msgstr "_O programu Tipkarica"
 
 #: src/widgets/window.rs:196
-#, fuzzy
 msgid "Orthography by"
-msgstr "Pravopis avtorja"
+msgstr "Pravopis"
 
 #. Translators: Replace "translator-credits" with your names, one name per line
 #: src/widgets/window.rs:214
