@@ -8,8 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Keypunch main\n"
 "Report-Msgid-Bugs-To: https://github.com/bragefuglseth/keypunch/issues\n"
-"POT-Creation-Date: 2025-03-15 15:28+0000\n"
-"PO-Revision-Date: 2025-03-15 23:10+0100\n"
+"POT-Creation-Date: 2025-03-16 03:29+0000\n"
+"PO-Revision-Date: 2025-03-19 22:37+0100\n"
+"Last-Translator: Martin Srebotnjak <miles@filmsi.net>\n"
 "Language-Team: Slovenian <Slovenian>\n"
 "Language: sl\n"
 "MIME-Version: 1.0\n"
@@ -17,15 +18,13 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || n"
 "%100==4 ? 3 : 0) ;\n"
-"Last-Translator: Martin Srebotnjak <miles@filmsi.net>\n"
 "X-Generator: Poedit 2.2.1\n"
 
 #: data/dev.bragefuglseth.Keypunch.desktop.in.in:3
 #: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:7
 #: src/widgets/window.blp:24
-#, fuzzy
 msgid "Keypunch"
-msgstr "Udarec tipke"
+msgstr "Tipkarica"
 
 #: data/dev.bragefuglseth.Keypunch.desktop.in.in:4
 #: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:8
@@ -33,27 +32,24 @@ msgid "Practice your typing skills"
 msgstr "Vadite svoje tipkanje"
 
 #: data/dev.bragefuglseth.Keypunch.desktop.in.in:10
-#, fuzzy
 msgid ""
 "typing;trainer;touch typing;keyboard;speed;wpm;words per minute;accuracy;"
 "test;"
 msgstr ""
-"Tipkanje; trener; tipkanje na dotik; tipkovnica; hitrost; Wpm; besede na "
-"minuto; Natančnost; preizkus;"
+"tipkanje;trener;vaditelj;vadnica;tipkanje na dotik;tipkovnica;hitrost;wpm;"
+"bnm;besede na minuto;besed na minuto;natančnost;preizkus;"
 
 #: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:13
-#, fuzzy
 msgid ""
 "There is no doubt that typing on a keyboard is an essential skill in the "
 "digital age. Typing fast and accurately gives you more opportunities, more "
 "time for what matters to you, and a sense of self-accomplishment."
 msgstr ""
-"Nobenega dvoma ni, da je tipkanje na tipkovnici bistvena veščina v digitalni "
-"dobi. Hitro in natančno tipkanje vam daje več priložnosti, več časa za "
-"tisto, kar vam je pomembno, in občutek samouresničitve."
+"Nobenega dvoma ni, da je tipkanje bistvena veščina v digitalni dobi. Hitro "
+"in natančno tipkanje vam daje več priložnosti, več časa za tisto, kar vam je "
+"pomembno, in občutek samouresničitve."
 
 #: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:18
-#, fuzzy
 msgid ""
 "Keypunch lets you practice typing. Thanks to fast-paced sessions with "
 "instant feedback afterwards and a plethora of available languages, you might "
@@ -61,35 +57,33 @@ msgid ""
 "some time, you will observe a noticeable increase in both the speed and the "
 "accuracy of which your thoughts and ideas are put into words on the screen."
 msgstr ""
-"Keypunch vam omogoča vadbo tipkanja. Zahvaljujoč hitrim sejam s takojšnjimi "
-"povratnimi informacijami in številnim razpoložljivim jezikom, se boste morda "
+"Tipkarica vam omogoča vadbo tipkanja. Zahvaljujoč hitrim sejam s takojšnjimi "
+"povratnimi informacijami in številnim razpoložljivim jezikom se boste morda "
 "celo malo zabavali. Z odločnostjo, pravilno tehniko in nekaj časa boste "
-"opazili opazno povečanje hitrosti in natančnosti, katere vaše misli in ideje "
-"so izražene v besedah na zaslonu."
+"opazili opazno povečanje hitrosti in natančnosti, ko se vaše misli in ideje "
+"izražajo v besedah na zaslonu."
 
 #: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:25
-#, fuzzy
 msgid ""
 "If you are already a racer at typing, Keypunch still has something for you. "
 "Try practicing with numbers and punctuation, or choose your own text to type "
 "out as fast as you can."
 msgstr ""
-"Če ste že dirkač pri tipkanju, ima Keypunch še vedno nekaj za vas. Poskusite "
-"vaditi s številkami in ločili ali pa izberite svoje besedilo, ki ga boste "
-"vtipkali čim hitreje."
+"Če ste že hitrih prstov pri tipkanju, ima Tipkarica še vedno nekaj za vas. "
+"Poskusite vaditi s številkami in ločili ali pa izberite svoje besedilo, ki "
+"ga boste natipkali čim hitreje."
 
 #: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:30
 msgid "Get ready to accelerate your typing!"
 msgstr "Pripravite se na pospešitev tipkanja!"
 
 #: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:33
-#, fuzzy
 msgid ""
 "Keypunch is proudly part of GNOME Circle, an initiative that champions the "
 "great software that is available for the GNOME platform. For more "
 "information, visit the GNOME Circle website."
 msgstr ""
-"Keypunch je ponosen del GNOME Circle, pobude, ki zagovarja odlično "
+"Tipkarica je ponosen del GNOME Circle, pobude, ki zagovarja odlično "
 "programsko opremo, ki je na voljo za platformo GNOME. Za več informacij "
 "obiščite spletno mesto GNOME Circle."
 
@@ -98,9 +92,8 @@ msgid "In the middle of a session"
 msgstr "Sredi seje"
 
 #: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:43
-#, fuzzy
 msgid "Ready for typing"
-msgstr "Pripravljen za tipkanje"
+msgstr "Pripravljeno za tipkanje"
 
 #: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:47
 msgid "Session results"
@@ -123,9 +116,8 @@ msgid "Window Height"
 msgstr "Višina okna"
 
 #: data/dev.bragefuglseth.Keypunch.gschema.xml:28
-#, fuzzy
 msgid "Window Maximization"
-msgstr "Povečanje števila oken"
+msgstr "Povečanje okna"
 
 #: data/dev.bragefuglseth.Keypunch.gschema.xml:32
 msgid "Session Type"
@@ -299,9 +291,8 @@ msgstr "Dodaj jezik"
 
 #: src/widgets/text_language_dialog.blp:70
 #: src/widgets/text_language_dialog.blp:74
-#, fuzzy
 msgid "Search languages…"
-msgstr "Jeziki iskanja ..."
+msgstr "Išči jezike ..."
 
 #. Translators: Recent languages in text languages list
 #: src/widgets/text_language_dialog.blp:98
@@ -326,12 +317,11 @@ msgid "Try a different search"
 msgstr "Poskusite z drugačnim iskalnim nizom"
 
 #: src/widgets/text_language_dialog.blp:218
-#, fuzzy
 msgid ""
 "You can help add a new text language to Keypunch by submitting a language "
 "request on GitHub. A GitHub account and some language knowledge is required."
 msgstr ""
-"Nov jezik besedila lahko dodate v Keypunch tako, da pošljete jezikovno "
+"Nov jezik besedila lahko dodate v Tipkarico tako, da pošljete jezikovno "
 "zahtevo na GitHub. Potrebujete račun GitHub in nekaj jezikovnega znanja."
 
 #: src/widgets/text_language_dialog.blp:233
@@ -408,12 +398,11 @@ msgstr "Zaznana frustracija"
 #. since it is likely to be shown to people while they are in a state of
 #. self-disappointment / anger
 #: src/widgets/window.blp:336
-#, fuzzy
 msgid ""
 "You learn faster in a calm state of mind. Consider taking a break. The test "
 "has been cancelled, and will not affect your typing statistics."
 msgstr ""
-"Hitreje se učite v mirnem stanju duha. Razmislite o odmoru. Test je bil "
+"Hitreje se učite v mirnem stanju duha. Razmislite o odmoru. Preizkus je "
 "preklican in ne bo vplival na statistiko tipkanja."
 
 #: src/widgets/window.blp:378
@@ -425,9 +414,8 @@ msgid "_Keyboard Shortcuts"
 msgstr "_Tipkovne bližnjice‫"
 
 #: src/widgets/window.blp:388
-#, fuzzy
 msgid "_About Keypunch"
-msgstr "_O programu Keypunch"
+msgstr "_O programu Tipkarica"
 
 #: src/widgets/window.rs:196
 #, fuzzy
@@ -445,13 +433,11 @@ msgstr "Posebna zahvala"
 
 #. Translators: Metainfo for the app Fretboard. <https://github.com/bragefuglseth/fretboard>
 #: src/widgets/window.rs:226
-#, fuzzy
 msgid "Fretboard"
-msgstr "Fretboard"
+msgstr "Ubiralka"
 
 #. Translators: Metainfo for the app Fretboard. <https://github.com/bragefuglseth/fretboard>
 #: src/widgets/window.rs:228
-#, fuzzy
 msgid "Look up guitar chords"
 msgstr "Poiščite kitarske akorde"
 
