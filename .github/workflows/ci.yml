@@ -14,8 +14,8 @@ jobs:
       image: bilelmoussaoui/flatpak-github-actions:gnome-nightly
       options: --privileged
     steps:
-    - uses: actions/checkout@v3
-    - uses: bilelmoussaoui/flatpak-github-actions/flatpak-builder@v6
+    - uses: actions/checkout@v4
+    - uses: flathub-infra/flatpak-github-actions/flatpak-builder@master
       with:
         bundle: keypunch.flatpak
         manifest-path: build-aux/dev.bragefuglseth.Keypunch.Devel.json

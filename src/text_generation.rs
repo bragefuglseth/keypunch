@@ -59,6 +59,8 @@ pub enum Language {
     #[strum(message = "Magyar", to_string = "hu")]
     Hungarian,
     #[strum(message = "Italiano", to_string = "it")]
+    Indonesian,
+    #[strum(message = "Bahasa Indonesia", to_string = "id")]
     Italian,
     #[strum(message = "Taqbaylit", to_string = "kab")]
     Kabyle,
@@ -82,6 +84,8 @@ pub enum Language {
     Romanian,
     #[strum(message = "Русский", to_string = "ru")]
     Russian,
+    #[strum(message = "Slovenčina", to_string = "sk")]
+    Slovak,
     #[strum(message = "Español", to_string = "es")]
     Spanish,
     #[strum(message = "Swahili", to_string = "sw")]

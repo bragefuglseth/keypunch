@@ -9,5 +9,5 @@ src/widgets/text_language_dialog.blp
 src/widgets/text_view.blp
 src/widgets/window.blp
 src/widgets/window.rs
-src/widgets/window/session.rs
+src/widgets/window/typing_test.rs
 src/widgets/window/ui_state.rs

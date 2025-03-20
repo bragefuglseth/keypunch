@@ -30,6 +30,9 @@
     <p>
       Get ready to accelerate your typing!
     </p>
+    <p>
+      Keypunch is proudly part of GNOME Circle, an initiative that champions the great software that is available for the GNOME platform. For more information, visit the GNOME Circle website.
+    </p>
   </description>
   <screenshots>
     <screenshot type="default">
@@ -57,10 +60,10 @@
     <color type="primary" scheme_preference="light">#c879ff</color>
     <color type="primary" scheme_preference="dark">#9a00d3</color>
   </branding>
-  <url type="homepage">https://github.com/bragefuglseth/keypunch</url>
+  <url type="homepage">https://apps.gnome.org/Keypunch</url>
   <url type="bugtracker">https://github.com/bragefuglseth/keypunch/issues</url>
-  <url type="contribute">https://github.com/bragefuglseth/keypunch/blob/main/CONTRIBUTING.md</url>
-  <url type="translate">https://github.com/bragefuglseth/keypunch/blob/main/CONTRIBUTING.md#translating</url>
+  <url type="contribute">https://welcome.gnome.org/app/Keypunch</url>
+  <url type="translate">https://l10n.gnome.org/module/Keypunch</url>
   <url type="vcs-browser">https://github.com/bragefuglseth/keypunch</url>
   <url type="contact">https://matrix.to/#/#keypunch:gnome.org</url>
   <update_contact>bragefuglseth_AT_gnome.org</update_contact>

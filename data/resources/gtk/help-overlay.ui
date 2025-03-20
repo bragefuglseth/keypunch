@@ -18,7 +18,7 @@
             <child>
               <object class="GtkShortcutsShortcut">
                 <property name="title" translatable="yes" context="shortcut window">Cancel Session</property>
-                <property name="action-name">win.cancel-session</property>
+                <property name="action-name">win.cancel-test</property>
               </object>
             </child>
             <child>
