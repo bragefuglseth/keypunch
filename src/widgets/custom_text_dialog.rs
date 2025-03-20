@@ -19,6 +19,7 @@
 
 use adw::prelude::*;
 use adw::subclass::prelude::*;
+use gettextrs::gettext;
 use glib::subclass::Signal;
 use gtk::{gio, glib};
 use std::cell::{Cell, RefCell};
@@ -104,7 +105,7 @@ mod imp {
                     let obj = imp.obj();
 
                     let filter = gtk::FileFilter::new();
-                    filter.set_name(Some("Text Files"));
+                    filter.set_name(Some(&gettext("Text Files")));
                     filter.add_mime_type("text/plain");
 
                     dialog.set_default_filter(Some(&filter));

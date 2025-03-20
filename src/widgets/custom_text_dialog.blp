@@ -28,6 +28,12 @@ template $KpCustomTextDialog: Adw.Dialog {
         [top]
         Adw.HeaderBar header_bar {
             show-title: false;
+
+            [start]
+            Button open_button {
+                icon-name: "arrow-into-box";
+                tooltip-text: _("Open Text File");
+            }
         }
 
         ScrolledWindow scrolled_window {
@@ -45,7 +51,7 @@ template $KpCustomTextDialog: Adw.Dialog {
                     margin-bottom: 24;
 
                     styles [
-                        "title-1"
+                        "title-1",
                     ]
                 }
 
@@ -60,7 +66,7 @@ template $KpCustomTextDialog: Adw.Dialog {
                         margin-end: 12;
 
                         styles [
-                            "dim-label"
+                            "dim-label",
                         ]
                     }
 
@@ -75,7 +81,7 @@ template $KpCustomTextDialog: Adw.Dialog {
 
                         styles [
                             "card",
-                            "card-text-view"
+                            "card-text-view",
                         ]
                     }
                 }
@@ -87,28 +93,18 @@ template $KpCustomTextDialog: Adw.Dialog {
             halign: center;
             valign: center;
 
-            Button open_button {
-                label: _("_Open");
-                use-underline: true;
-                margin-end: 4;
-
-                styles [
-                    "pill",
-                ]
-            }
-
             Button save_button {
                 label: _("_Save");
                 use-underline: true;
 
                 styles [
                     "pill",
-                    "suggested-action"
+                    "suggested-action",
                 ]
             }
 
             styles [
-                "toolbar-thick"
+                "toolbar-thick",
             ]
         }
     }
