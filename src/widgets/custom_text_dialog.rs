@@ -102,6 +102,13 @@ mod imp {
                 move |_| {
                     let dialog = gtk::FileDialog::new();
                     let obj = imp.obj();
+
+                    let filter = gtk::FileFilter::new();
+                    filter.set_name(Some("Text Files"));
+                    filter.add_mime_type("text/plain");
+
+                    dialog.set_default_filter(Some(&filter));
+
                     dialog.open(
                         Some(obj.root().unwrap().downcast_ref::<gtk::Window>().unwrap()),
                         gio::Cancellable::NONE,
