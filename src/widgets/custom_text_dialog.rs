@@ -19,9 +19,11 @@
 
 use adw::prelude::*;
 use adw::subclass::prelude::*;
+use gettextrs::gettext;
 use glib::subclass::Signal;
 use gtk::{gio, glib};
 use std::cell::{Cell, RefCell};
+use std::fs::read_to_string;
 use std::sync::OnceLock;
 
 mod imp {
@@ -41,6 +43,8 @@ mod imp {
         pub text_view: TemplateChild<gtk::TextView>,
         #[template_child]
         pub save_button: TemplateChild<gtk::Button>,
+        #[template_child]
+        pub open_button: TemplateChild<gtk::Button>,
 
         pub apply_changes: Cell<bool>,
 
@@ -91,6 +95,36 @@ mod imp {
                 .transform_to(|_, text: String| Some(text.is_empty()))
                 .sync_create()
                 .build();
+
+            let open_button = self.open_button.get();
+            open_button.connect_clicked(glib::clone!(
+                #[weak(rename_to = imp)]
+                self,
+                move |_| {
+                    let dialog = gtk::FileDialog::new();
+                    let obj = imp.obj();
+
+                    let filter = gtk::FileFilter::new();
+                    filter.set_name(Some(&gettext("Text Files")));
+                    filter.add_mime_type("text/plain");
+
+                    dialog.set_default_filter(Some(&filter));
+
+                    dialog.open(
+                        Some(obj.root().unwrap().downcast_ref::<gtk::Window>().unwrap()),
+                        gio::Cancellable::NONE,
+                        move |file| {
+                            if let Ok(file) = file {
+                                let filename = file.path().expect("Couldn't get file path");
+                                let contents =
+                                    read_to_string(filename).expect("Couldn't open file");
+
+                                imp.text_view.buffer().set_text(&contents);
+                            }
+                        },
+                    );
+                }
+            ));
 
             let save_button = self.save_button.get();
             self.text_view
