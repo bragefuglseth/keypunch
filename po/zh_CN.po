@@ -1,0 +1,449 @@
+# Chinese (China) translation for Keypunch.
+# Copyright (C) 2025 Keypunch's COPYRIGHT HOLDER
+# This file is distributed under the same license as the Keypunch package.
+# Luming Zh <lumingzh@qq.com>,  2025.
+# lumingzh <lumingzh@qq.com>, 2025.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Keypunch main\n"
+"Report-Msgid-Bugs-To: https://github.com/bragefuglseth/keypunch/issues\n"
+"POT-Creation-Date: 2025-03-22 05:17+0000\n"
+"PO-Revision-Date: 2025-03-22 17:53+0800\n"
+"Last-Translator: lumingzh <lumingzh@qq.com>\n"
+"Language-Team: Chinese (China) <i18n-zh@googlegroups.com>\n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Gtranslator 47.1\n"
+
+#: data/dev.bragefuglseth.Keypunch.desktop.in.in:3
+#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:7
+#: src/widgets/window.blp:24
+msgid "Keypunch"
+msgstr "Keypunch"
+
+#: data/dev.bragefuglseth.Keypunch.desktop.in.in:4
+#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:8
+msgid "Practice your typing skills"
+msgstr "练习您的打字技能"
+
+#: data/dev.bragefuglseth.Keypunch.desktop.in.in:10
+msgid ""
+"typing;trainer;touch typing;keyboard;speed;wpm;words per minute;accuracy;"
+"test;"
+msgstr ""
+"typing;trainer;touch typing;keyboard;speed;wpm;words per minute;accuracy;"
+"test;打字;训练;教练;触摸打字;键盘;速度;每分钟字数;测试;"
+
+#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:13
+msgid ""
+"There is no doubt that typing on a keyboard is an essential skill in the "
+"digital age. Typing fast and accurately gives you more opportunities, more "
+"time for what matters to you, and a sense of self-accomplishment."
+msgstr ""
+"毫无疑问在数字时代用键盘打字是一项必备技能。快速并正确地打字可以给你更多机"
+"会，可以腾出更多时间让你做更重要的事情，且会有一种自我成就的感觉。"
+
+#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:18
+msgid ""
+"Keypunch lets you practice typing. Thanks to fast-paced sessions with "
+"instant feedback afterwards and a plethora of available languages, you might "
+"even have a little fun doing so. With determination, proper technique and "
+"some time, you will observe a noticeable increase in both the speed and the "
+"accuracy of which your thoughts and ideas are put into words on the screen."
+msgstr ""
+"Keypunch 可让您练习打字。得益于具有即时反馈和大量可用语言的快节奏课程，您甚至"
+"可能会享受到一些乐趣。拥有决心、合适的技巧和一些时间，在将您的想法和点子变成"
+"屏幕上的文字时您将同时在打字速度和精准度上观察到明显的进步。"
+
+#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:25
+msgid ""
+"If you are already a racer at typing, Keypunch still has something for you. "
+"Try practicing with numbers and punctuation, or choose your own text to type "
+"out as fast as you can."
+msgstr ""
+"如果您已经是一名打字比赛运动员，Keypunch 仍可为您提供一些帮助。尝试练习带有数"
+"字和标点符号的文本，或选择您自己的文本来让您达到更快的打字速度。"
+
+#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:30
+msgid "Get ready to accelerate your typing!"
+msgstr "准备好加速打字！"
+
+#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:33
+msgid ""
+"Keypunch is proudly part of GNOME Circle, an initiative that champions the "
+"great software that is available for the GNOME platform. For more "
+"information, visit the GNOME Circle website."
+msgstr ""
+"Keypunch 荣幸的成为 GNOME 生态圈一员，一项拥护适用于 GNOME 平台极佳软件的倡"
+"议。要获取更多信息，请访问 GNOME 生态圈网站。"
+
+#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:39
+msgid "In the middle of a session"
+msgstr "课程中期"
+
+#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:43
+msgid "Ready for typing"
+msgstr "准备好打字"
+
+#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:47
+msgid "Session results"
+msgstr "课程结果"
+
+#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:51
+msgid "Language selection"
+msgstr "语言选择"
+
+#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:55
+msgid "Custom text entry"
+msgstr "自定义文本输入"
+
+#: data/dev.bragefuglseth.Keypunch.gschema.xml:20
+msgid "Window Width"
+msgstr "窗口宽度"
+
+#: data/dev.bragefuglseth.Keypunch.gschema.xml:24
+msgid "Window Height"
+msgstr "窗口高度"
+
+#: data/dev.bragefuglseth.Keypunch.gschema.xml:28
+msgid "Window Maximization"
+msgstr "窗口最大化"
+
+#: data/dev.bragefuglseth.Keypunch.gschema.xml:32
+msgid "Session Type"
+msgstr "课程类型"
+
+#: data/dev.bragefuglseth.Keypunch.gschema.xml:36
+msgid "Session Duration"
+msgstr "课程时长"
+
+#: data/dev.bragefuglseth.Keypunch.gschema.xml:37
+msgid "The duration of time-based sessions"
+msgstr "基于时间的课程时长"
+
+#. Translators: Insert the language code of your language here, for example "nb" for Norwegian Bokmaal. Do not remove the quotation marks. It's doesn't matter if there isn't a word list for the language in `data/word_lists` right now, the app will fall back to English in that case and start using the list if it becomes available in the future.
+#: data/dev.bragefuglseth.Keypunch.gschema.xml:41
+msgid "\"en\""
+msgstr "\"en\""
+
+#: data/dev.bragefuglseth.Keypunch.gschema.xml:42
+#: src/widgets/results_view.blp:127 src/widgets/text_language_dialog.blp:24
+#: src/widgets/text_language_dialog.blp:32
+#: src/widgets/text_language_dialog.blp:58
+msgid "Text Language"
+msgstr "文本语言"
+
+#: data/dev.bragefuglseth.Keypunch.gschema.xml:43
+msgid "The code of the language used for automatically generated text"
+msgstr "用于自动生成文本的语言代码"
+
+#: data/dev.bragefuglseth.Keypunch.gschema.xml:47
+msgid "Recent Languages"
+msgstr "最近使用的语言"
+
+#: data/dev.bragefuglseth.Keypunch.gschema.xml:48
+msgid "Languages shown in the list of recent ones in the text language dialog"
+msgstr "在文本语言对话框中显示在最近列表中的语言"
+
+#. Translators: This is the default text for custom typing sessions. Do not translate it literally, and do not remove the quotation marks. Replace it with an appropriate "sample sentence" from your language instead. The original text is an English pangram, so you can e.g. find a pangram in your language: https://clagnut.com/blog/2380
+#: data/dev.bragefuglseth.Keypunch.gschema.xml:52
+msgid "\"The quick brown fox jumps over the lazy dog.\""
+msgstr "\"我能吞下玻璃而不伤身体。\""
+
+#: data/dev.bragefuglseth.Keypunch.gschema.xml:53
+#: src/widgets/custom_text_dialog.blp:24 src/widgets/custom_text_dialog.blp:45
+msgid "Custom Text"
+msgstr "自定义文本"
+
+#: data/dev.bragefuglseth.Keypunch.gschema.xml:54
+msgid "Text displayed when “Custom” is chosen from the session menu"
+msgstr "在课程菜单中选择“自定义”时显示的文本"
+
+#: data/dev.bragefuglseth.Keypunch.gschema.xml:58
+msgid "Personal Best"
+msgstr "个人最佳"
+
+#: data/dev.bragefuglseth.Keypunch.gschema.xml:59
+msgid ""
+"The current highest amount of WPM received for each session type / duration "
+"and language"
+msgstr "每个课程类型/时长和语言的当前最高每分钟打字数量"
+
+#: data/resources/gtk/help-overlay.ui:11
+msgctxt "shortcut window"
+msgid "General"
+msgstr "常规"
+
+#: data/resources/gtk/help-overlay.ui:14
+msgctxt "shortcut window"
+msgid "Text Language"
+msgstr "文本语言"
+
+#: data/resources/gtk/help-overlay.ui:20
+msgctxt "shortcut window"
+msgid "Cancel Session"
+msgstr "取消课程"
+
+#: data/resources/gtk/help-overlay.ui:26
+msgctxt "shortcut window"
+msgid "Keyboard Shortcuts"
+msgstr "键盘快捷键"
+
+#: data/resources/gtk/help-overlay.ui:32
+msgctxt "shortcut window"
+msgid "Close Window"
+msgstr "关闭窗口"
+
+#: data/resources/gtk/help-overlay.ui:38
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr "退出"
+
+#: src/widgets/custom_text_dialog.blp:56
+msgid "Insert custom text…"
+msgstr "插入自定义文本…"
+
+#: src/widgets/custom_text_dialog.blp:92
+msgid "_Save"
+msgstr "保存(_S)"
+
+#: src/widgets/results_view.blp:53
+msgid "New Personal Best for Configuration"
+msgstr "配置的新个人最佳"
+
+#: src/widgets/results_view.blp:64
+msgid "Words per Minute"
+msgstr "每分钟打字"
+
+#: src/widgets/results_view.blp:85
+msgid "Accuracy"
+msgstr "正确率"
+
+#: src/widgets/results_view.blp:101 src/widgets/window.blp:167
+msgid "Test Type"
+msgstr "测试类型"
+
+#: src/widgets/results_view.blp:114 src/widgets/window.blp:175
+msgid "Test Duration"
+msgstr "测试时长"
+
+#: src/widgets/results_view.rs:165
+msgid "{}%"
+msgstr "{}%"
+
+#: src/widgets/results_view.rs:171 src/widgets/window.blp:169
+msgid "Custom"
+msgstr "自定义"
+
+#: src/widgets/results_view.rs:173 src/widgets/window.blp:169
+msgid "Simple"
+msgstr "简单"
+
+#: src/widgets/results_view.rs:174 src/widgets/window.blp:169
+msgid "Advanced"
+msgstr "高级"
+
+#. Translators: The `{}` blocks will be replaced with the number of minutes
+#. and seconds. Do not translate them!
+#: src/widgets/results_view.rs:200
+msgid "{}m {}s"
+msgstr "{}m {}s"
+
+#. Translators: The `{}` block will be replaced with the number of minutes.
+#. Do not translate it!
+#: src/widgets/results_view.rs:204
+msgid "{} minute"
+msgid_plural "{} minutes"
+msgstr[0] "{} 分"
+
+#. Translators: The `{}` block will be replaced with the number of seconds.
+#. Do not translate it!
+#: src/widgets/results_view.rs:208
+msgid "{} second"
+msgid_plural "{} seconds"
+msgstr[0] "{} 秒"
+
+#: src/widgets/text_language_dialog.blp:40
+#: src/widgets/text_language_dialog.blp:180
+#: src/widgets/text_language_dialog.blp:209
+msgid "Add Language"
+msgstr "添加语言"
+
+#: src/widgets/text_language_dialog.blp:70
+#: src/widgets/text_language_dialog.blp:74
+msgid "Search languages…"
+msgstr "搜索语言…"
+
+#. Translators: Recent languages in text languages list
+#: src/widgets/text_language_dialog.blp:98
+msgid "Recent"
+msgstr "最近"
+
+#. Translators: Other languages in text languages list
+#: src/widgets/text_language_dialog.blp:103
+msgid "Other"
+msgstr "其它"
+
+#: src/widgets/text_language_dialog.blp:123
+msgid "Search Results"
+msgstr "搜索结果"
+
+#: src/widgets/text_language_dialog.blp:159
+msgid "No Matches"
+msgstr "无匹配项"
+
+#: src/widgets/text_language_dialog.blp:167
+msgid "Try a different search"
+msgstr "尝试不同的搜索"
+
+#: src/widgets/text_language_dialog.blp:218
+msgid ""
+"You can help add a new text language to Keypunch by submitting a language "
+"request on GitHub. A GitHub account and some language knowledge is required."
+msgstr ""
+"您可以通过在 GitHub 上提交语言申请来帮助向 Keypunch 添加新的文本语言。需要 "
+"GitHub 账户和一些语言知识。"
+
+#: src/widgets/text_language_dialog.blp:233
+msgid "_Create Request"
+msgstr "创建申请(_C)"
+
+#: src/widgets/text_view.blp:28
+msgid "Text View"
+msgstr "文本视图"
+
+#: src/widgets/window.blp:150
+msgid "Restart"
+msgstr "重新开始"
+
+#: src/widgets/window.blp:178
+msgid "15 seconds"
+msgstr "15 秒"
+
+#: src/widgets/window.blp:179
+msgid "30 seconds"
+msgstr "30 秒"
+
+#: src/widgets/window.blp:180
+msgid "1 minute"
+msgstr "1 分钟"
+
+#: src/widgets/window.blp:181
+msgid "5 minutes"
+msgstr "5 分钟"
+
+#: src/widgets/window.blp:182
+msgid "10 minutes"
+msgstr "10 分钟"
+
+#: src/widgets/window.blp:191
+msgid "_Edit Text"
+msgstr "编辑文本(_E)"
+
+#: src/widgets/window.blp:220
+msgid "Main Menu"
+msgstr "主菜单"
+
+#: src/widgets/window.blp:238
+msgid "Just Start Typing"
+msgstr "请直接开始打字"
+
+#. Translators: "Entry" here is the act of entering text
+#: src/widgets/window.blp:247
+msgid "_Enable Entry"
+msgstr "启用输入(_E)"
+
+#: src/widgets/window.blp:273
+msgid "Results"
+msgstr "结果"
+
+#: src/widgets/window.blp:298
+msgid "_Continue"
+msgstr "继续(_C)"
+
+#. Translators: "Frustration Relief" is the name of the functionality
+#. that automatically cancels a test when random key mashing is detected,
+#. and displays a recommendation to take a break.
+#: src/widgets/window.blp:326
+msgid "Frustration Relief"
+msgstr "缓解压力"
+
+#: src/widgets/window.blp:332
+msgid "Frustration Detected"
+msgstr "检测到压力过高"
+
+#. Translators: Make sure to convey this as politely and sensitively as possible,
+#. since it is likely to be shown to people while they are in a state of
+#. self-disappointment / anger
+#: src/widgets/window.blp:336
+msgid ""
+"You learn faster in a calm state of mind. Consider taking a break. The test "
+"has been cancelled, and will not affect your typing statistics."
+msgstr ""
+"您在思维冷静状态会学的更快。请考虑休息一下。该测试已取消，且不会影响您的打字"
+"统计。"
+
+#: src/widgets/window.blp:378
+msgid "Text _Language"
+msgstr "文本语言(_L)"
+
+#: src/widgets/window.blp:383
+msgid "_Keyboard Shortcuts"
+msgstr "键盘快捷键(_K)"
+
+#: src/widgets/window.blp:388
+msgid "_About Keypunch"
+msgstr "关于 Keypunch(_A)"
+
+#: src/widgets/window.rs:196
+msgid "Orthography by"
+msgstr "校正"
+
+#. Translators: Replace "translator-credits" with your names, one name per line
+#: src/widgets/window.rs:214
+msgid "translator-credits"
+msgstr "lumingzh <lumingzh@qq.com>, 2025"
+
+#: src/widgets/window.rs:219
+msgid "Special thanks to"
+msgstr "特别感谢"
+
+#. Translators: Metainfo for the app Fretboard. <https://github.com/bragefuglseth/fretboard>
+#: src/widgets/window.rs:226
+msgid "Fretboard"
+msgstr "Fretboard"
+
+#. Translators: Metainfo for the app Fretboard. <https://github.com/bragefuglseth/fretboard>
+#: src/widgets/window.rs:228
+msgid "Look up guitar chords"
+msgstr "查找吉他和弦"
+
+#: src/widgets/window/typing_test.rs:163
+msgid "{} ⁄ {}"
+msgstr "{} ⁄ {}"
+
+#. Translators: This is shown as a warning by GNOME Shell before logging out or shutting off the system in the middle of a typing test, alongside Keypunch's name and icon
+#: src/widgets/window/typing_test.rs:334
+msgid "Ongoing typing test"
+msgstr "打字测试正在进行"
+
+#: src/widgets/window/typing_test.rs:506
+msgid "Changes discarded"
+msgstr "更改已丢弃"
+
+#: src/widgets/window/typing_test.rs:507
+msgid "Restore"
+msgstr "恢复"
+
+#. Translators: The format of the timer. The first `{}` block will be replaced
+#. with the minutes passed, and the second one will be replaced with the seconds
+#. passed. Do not translate the `{}` blocks. Note that the `∶` sign is a special
+#. Unicode character; if your language doesn't use something completely different,
+#. you should probably copy and paste it from the original string.
+#: src/widgets/window/typing_test.rs:605 src/widgets/window/typing_test.rs:607
+msgid "{}∶{}"
+msgstr "{}∶{}"
