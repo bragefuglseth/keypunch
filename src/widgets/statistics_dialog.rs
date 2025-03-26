@@ -24,8 +24,9 @@ use glib::subclass::Signal;
 use gtk::glib;
 use std::sync::OnceLock;
 use crate::database::DATABASE;
-use crate::database::ChartItem;
+use crate::database::{PeriodSummary, ChartItem};
 use time::{Time, OffsetDateTime, Duration};
+use i18n_format::i18n_fmt;
 
 mod imp {
     use super::*;
@@ -43,6 +44,14 @@ mod imp {
         daily_bin: TemplateChild<adw::Bin>,
         #[template_child]
         monthly_bin: TemplateChild<adw::Bin>,
+        #[template_child]
+        month_wpm_label: TemplateChild<gtk::Label>,
+        #[template_child]
+        month_accuracy_label: TemplateChild<gtk::Label>,
+        #[template_child]
+        month_finish_rate_label: TemplateChild<gtk::Label>,
+        #[template_child]
+        month_practice_time_label: TemplateChild<gtk::Label>,
     }
 
     #[glib::object_subclass]
@@ -95,6 +104,12 @@ mod imp {
             let year_data = DATABASE.get_past_year().unwrap(); // TODO: Handle the no data case
             let year_stats_chart = KpLineChart::new(&year_data);
             self.monthly_bin.set_child(Some(&year_stats_chart));
+
+            let month_summary = DATABASE.last_month_summary().unwrap(); // TODO: Handle the no data case
+
+            self.month_wpm_label.set_label(&month_summary.wpm.floor().to_string());
+            self.month_accuracy_label.set_label(&i18n_fmt! { i18n_fmt("{}%", (month_summary.accuracy * 100.).floor()) });
+            self.month_finish_rate_label.set_label(&i18n_fmt! { i18n_fmt("{}%", (month_summary.finish_rate * 100.).floor()) });
         }
     }
     impl WidgetImpl for KpStatisticsDialog {}

@@ -15,6 +15,13 @@ pub struct ChartItem {
     pub accuracy: f64,
 }
 
+pub struct PeriodSummary {
+    pub wpm: f64,
+    pub accuracy: f64,
+    pub finish_rate: f64,
+    pub practice_time: String, // TODO: store this as a time::Duration instead
+}
+
 pub const DATABASE: LazyLock<TypingStatsDb> = LazyLock::new(|| {
     let path = gtk::glib::user_data_dir().join("keypunch");
 
@@ -156,22 +163,22 @@ impl TypingStatsDb {
         Some(month_data)
     }
 
-    pub fn last_month(&self) -> Option<(f64, f64, f64, String)> {
+    pub fn last_month_summary(&self) -> Option<PeriodSummary> {
         let now = OffsetDateTime::now_local().unwrap_or(OffsetDateTime::now_utc());
 
-        let start = now.replace_time(Time::MIDNIGHT) - Duration::days(29);
+        let start = now.replace_time(Time::MIDNIGHT) - Duration::days(27);
         let (wpm, accuracy) = self.average_from_period(start, now).ok()?;
 
-        let finished_share = self.0.query_row(
-            "SELECT     (SUM(finished), COUNT(*)
+        let finish_rate = self.0.query_row(
+            "SELECT     SUM(finished), COUNT(*)
             FROM        tests
             WHERE       UNIXEPOCH(timestamp) BETWEEN ? AND ?
             AND         test_type IN ('Simple', 'Advanced')",
             (start.unix_timestamp(), now.unix_timestamp()),
-            |row| Ok((row.get::<_, f64>(0)? / row.get::<_, f64>(1)?).floor() as usize),
+            |row| Ok(row.get::<_, f64>(0)? / row.get::<_, f64>(1)?),
         ).ok()?;
 
-        todo!()
+        Some(PeriodSummary { wpm, accuracy, finish_rate, practice_time: String::from("todo")})
     }
 }
 
