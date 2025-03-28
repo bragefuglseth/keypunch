@@ -9,9 +9,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: keypunch\n"
 "Report-Msgid-Bugs-To: https://github.com/bragefuglseth/keypunch/issues\n"
-"POT-Creation-Date: 2025-03-18 20:35+0000\n"
-"PO-Revision-Date: 2025-03-22 18:08+0100\n"
-"Last-Translator: Tim Sabsch <tim@sabsch.com>\n"
+"POT-Creation-Date: 2025-03-23 03:29+0000\n"
+"PO-Revision-Date: 2025-03-27 20:27+0100\n"
+"Last-Translator: Gabriel Brand <gabr.brand@gmail.com>\n"
 "Language-Team: \n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
@@ -360,7 +360,7 @@ msgstr "10 Minuten"
 
 #: src/widgets/window.blp:191
 msgid "_Edit Text"
-msgstr "T_ext bearbeiten"
+msgstr "Text _bearbeiten"
 
 #: src/widgets/window.blp:220
 msgid "Main Menu"
@@ -377,7 +377,7 @@ msgstr "_Eingabe aktivieren"
 
 #: src/widgets/window.blp:273
 msgid "Results"
-msgstr "Ergebnise"
+msgstr "Ergebnisse"
 
 #: src/widgets/window.blp:298
 msgid "_Continue"
