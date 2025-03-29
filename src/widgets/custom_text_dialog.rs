@@ -27,9 +27,11 @@ use std::fs::read_to_string;
 use std::sync::OnceLock;
 
 mod imp {
+    use std::path::Path;
+
     use super::*;
 
-    #[derive(Default, gtk::CompositeTemplate, glib::Properties)]
+    #[derive(gtk::CompositeTemplate, glib::Properties)]
     #[template(file = "src/widgets/custom_text_dialog.blp")]
     #[properties(wrapper_type = super::KpCustomTextDialog)]
     pub struct KpCustomTextDialog {
@@ -45,11 +47,41 @@ mod imp {
         pub save_button: TemplateChild<gtk::Button>,
         #[template_child]
         pub open_button: TemplateChild<gtk::Button>,
+        #[template_child]
+        pub stack: TemplateChild<gtk::Stack>,
+        #[template_child]
+        pub action_row: TemplateChild<adw::ActionRow>,
+        #[template_child]
+        pub file_text_view: TemplateChild<gtk::TextView>,
+        #[template_child]
+        pub open_file_location_button: TemplateChild<gtk::Button>,
+        #[template_child]
+        pub close_file_button: TemplateChild<gtk::Button>,
 
         pub apply_changes: Cell<bool>,
 
         #[property(get, construct_only, nullable)]
         pub settings: RefCell<Option<gio::Settings>>,
+    }
+
+    impl Default for KpCustomTextDialog {
+        fn default() -> Self {
+            Self {
+                header_bar: Default::default(),
+                scrolled_window: Default::default(),
+                placeholder: Default::default(),
+                text_view: Default::default(),
+                save_button: Default::default(),
+                open_button: Default::default(),
+                stack: Default::default(),
+                action_row: Default::default(),
+                file_text_view: Default::default(),
+                open_file_location_button: Default::default(),
+                close_file_button: Default::default(),
+                apply_changes: Cell::new(false),
+                settings: RefCell::new(None),
+            }
+        }
     }
 
     #[glib::object_subclass]
@@ -80,6 +112,7 @@ mod imp {
 
         fn constructed(&self) {
             self.parent_constructed();
+            self.stack.set_visible_child_name("text");
 
             let header_bar = self.header_bar.get();
             self.scrolled_window
@@ -115,18 +148,36 @@ mod imp {
                         gio::Cancellable::NONE,
                         move |file| {
                             if let Ok(file) = file {
-                                let filename = file.path().expect("Couldn't get file path");
+                                let filepath = file.path().expect("Couldn't get file path");
                                 let contents =
-                                    read_to_string(filename).expect("Couldn't open file");
+                                    read_to_string(&filepath).expect("Couldn't open file");
 
-                                imp.text_view.buffer().set_text(&contents);
+                                let filename =
+                                    Path::new(&filepath).file_name().unwrap().to_str().unwrap();
+
+                                imp.stack.set_visible_child_name("file");
+
+                                imp.action_row.set_title(&filename);
+
+                                imp.file_text_view.buffer().set_text(&contents);
                             }
                         },
                     );
                 }
             ));
 
+            let close_file_button = self.close_file_button.get();
+
+            close_file_button.connect_clicked(glib::clone!(
+                #[weak(rename_to = imp)]
+                self,
+                move |_| {
+                    imp.stack.set_visible_child_name("text");
+                }
+            ));
+
             let save_button = self.save_button.get();
+
             self.text_view
                 .buffer()
                 .bind_property("text", &save_button, "sensitive")

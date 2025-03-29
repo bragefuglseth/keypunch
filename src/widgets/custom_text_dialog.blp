@@ -44,7 +44,7 @@ template $KpCustomTextDialog: Adw.Dialog {
                 orientation: vertical;
                 margin-start: 12;
                 margin-end: 12;
-                margin-bottom: 12;
+                margin-bottom: 6;
 
                 Label {
                     label: _("Custom Text");
@@ -55,34 +55,102 @@ template $KpCustomTextDialog: Adw.Dialog {
                     ]
                 }
 
-                Overlay {
-                    [overlay]
-                    Label placeholder {
-                        label: _("Insert custom text…");
-                        valign: start;
-                        halign: start;
-                        margin-top: 12;
-                        margin-start: 12;
-                        margin-end: 12;
+                Stack stack {
+                    vexpand: true;
+                    hexpand: true;
 
-                        styles [
-                            "dim-label",
-                        ]
+                    StackPage {
+                        name: "file";
+
+                        child: ListBox {
+                            selection-mode: none;
+
+                            styles [
+                                "boxed-list",
+                            ]
+
+                            Adw.ActionRow action_row {
+                                title: _("custom.txt");
+
+                                [prefix]
+                                Image {
+                                    icon-name: "rich-text-symbolic";
+                                }
+
+                                [suffix]
+                                Button open_file_location_button {
+                                    valign: center;
+                                    icon-name: "external-link-symbolic";
+                                    tooltip-text: _("Open File Location");
+
+                                    styles [
+                                        "flat",
+                                    ]
+                                }
+
+                                Button close_file_button {
+                                    valign: center;
+                                    icon-name: "cross-large-circle-outline-symbolic";
+                                    tooltip-text: _("Close File");
+
+                                    styles [
+                                        "flat",
+                                    ]
+                                }
+                            }
+
+                            TextView file_text_view {
+                                vexpand: true;
+                                // hexpand: true;
+                                wrap-mode: word_char;
+                                accepts-tab: false;
+                                editable: false;
+
+                                styles [
+                                    "card",
+                                    "card-text-view",
+                                    "dim-label",
+                                ]
+                            }
+                        };
                     }
 
-                    TextView text_view {
-                        vexpand: true;
-                        wrap-mode: word_char;
-                        accepts-tab: false;
+                    StackPage {
+                        name: "text";
 
-                        accessibility {
-                            labelled-by: placeholder;
-                        }
+                        child: Overlay {
+                            [overlay]
+                            Label placeholder {
+                                visible: false;
+                                label: _("Insert custom text…");
+                                valign: start;
+                                halign: start;
+                                margin-top: 12;
+                                margin-start: 12;
+                                margin-end: 12;
 
-                        styles [
-                            "card",
-                            "card-text-view",
-                        ]
+                                styles [
+                                    "dim-label",
+                                ]
+                            }
+
+                            TextView text_view {
+                                vexpand: true;
+                                hexpand: true;
+                                wrap-mode: word_char;
+                                accepts-tab: false;
+                                editable: true;
+
+                                styles [
+                                    "card",
+                                    "card-text-view",
+                                ]
+
+                                accessibility {
+                                    labelled-by: placeholder;
+                                }
+                            }
+                        };
                     }
                 }
             }
