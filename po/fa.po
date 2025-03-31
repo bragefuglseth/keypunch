@@ -1,0 +1,382 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the keypunch package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: keypunch\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-01-09 21:31+0100\n"
+"PO-Revision-Date: 2025-03-31 20:55+0330\n"
+"Last-Translator: Hadi Azarnasab <hazard7546@gmail.com\n"
+"Language-Team: Persian\n"
+"Language: fa\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n==0 || n==1);\n"
+"X-Generator: Poedit 3.5\n"
+
+#: data/dev.bragefuglseth.Keypunch.desktop.in.in:3
+#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:7
+#: src/widgets/window.blp:5
+msgid "Keypunch"
+msgstr "Keypunch"
+
+#: data/dev.bragefuglseth.Keypunch.desktop.in.in:4
+#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:8
+msgid "Practice your typing skills"
+msgstr "مهارت تایپ کردن را تمرین کنید"
+
+#: data/dev.bragefuglseth.Keypunch.desktop.in.in:10
+msgid ""
+"typing;trainer;touch typing;keyboard;speed;wpm;words per "
+"minute;accuracy;test;"
+msgstr ""
+"تایپ‌ کردن;مربی;تایپ کردن;کیبورد;سرعت;کدم;واژه در دقیقه;دقت;تست;صفحه "
+"کلید;امتحان;"
+
+#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:13
+msgid ""
+"There is no doubt that typing on a keyboard is an essential skill in the "
+"digital age. Typing fast and accurately gives you more opportunities, more "
+"time for what matters to you, and a sense of self-accomplishment."
+msgstr ""
+"بدون شک مهارت تایپ کردن سریع با صفحه‌کلید در عصر دیجیتال ضروری است. سریع و "
+"دقیق تایپ کردن به شما فرصت‌های بیشتر، زمان بیشتر برای چیزی که مهم‌تر است و "
+"احساس خودشکوفایی می‌دهد."
+
+#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:18
+msgid ""
+"Keypunch lets you practice typing. Thanks to fast-paced sessions with "
+"instant feedback afterwards and a plethora of available languages, you might "
+"even have a little fun doing so. With determination, proper technique and "
+"some time, you will observe a noticeable increase in both the speed and the "
+"accuracy of which your thoughts and ideas are put into words on the screen."
+msgstr ""
+"کی‌پانچ به شما امکان تمرین تایپ کردن را می‌دهد. به لطف نشست‌های سریع با بازخورد "
+"فوری پس از آن و انبوهی از زبان‌های موجود، شاید حتی کمی هم سرگرم شوید. با "
+"اراده قوی، تکنیک مناسب و کمی زمان، شاهد افزایش قابل توجهی در سرعت و دقت "
+"تبدیل افکار و ایده‌هایتان به کلمات روی صفحه نمایش خواهید بود."
+
+#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:25
+msgid ""
+"If you are already a racer at typing, Keypunch still has something for you. "
+"Try practicing with numbers and punctuation, or choose your own text to type "
+"out as fast as you can."
+msgstr ""
+"حتی اگر یک تایپیست حرفه‌ای هستید، بازهم کی‌پانج برای شما چیزی دارد. می‌توانید "
+"با اعداد و علائم نگارشی تمرین کنید یا متن سف خود را برای تایپ کردن انتخاب "
+"کنید."
+
+#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:30
+msgid "Get ready to accelerate your typing!"
+msgstr "برای سرعت بخشیدن به تایپ کردن خود آماده شوید!"
+
+#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:36
+msgid "In the middle of a session"
+msgstr "در حین یک نشست"
+
+#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:40
+msgid "Ready for typing"
+msgstr "برای تایپ کردن آماده شوید"
+
+#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:44
+msgid "Session results"
+msgstr "نتایج نشست"
+
+#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:48
+msgid "Language selection"
+msgstr "انتخاب زبان"
+
+#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:52
+msgid "Custom text entry"
+msgstr "وارد کردن متن سفارشی"
+
+#: data/dev.bragefuglseth.Keypunch.gschema.xml:20
+msgid "Window Width"
+msgstr "عرض پنجره"
+
+#: data/dev.bragefuglseth.Keypunch.gschema.xml:24
+msgid "Window Height"
+msgstr "طول پنجره"
+
+#: data/dev.bragefuglseth.Keypunch.gschema.xml:28
+msgid "Window Maximization"
+msgstr "گسترش کامل پنجره"
+
+#: data/dev.bragefuglseth.Keypunch.gschema.xml:32
+#: src/widgets/results_view.blp:82 src/widgets/window.blp:146
+msgid "Session Type"
+msgstr "نوع نشست"
+
+#: data/dev.bragefuglseth.Keypunch.gschema.xml:36
+#: src/widgets/results_view.blp:95 src/widgets/window.blp:151
+msgid "Session Duration"
+msgstr "مدت زمان نشست"
+
+#: data/dev.bragefuglseth.Keypunch.gschema.xml:37
+msgid "The duration of time-based sessions"
+msgstr "مدت زمان نشست‌های زمان‌محور"
+
+#. Translators: Insert the language code of your language here, for example "nb" for Norwegian Bokmaal. Do not remove the quotation marks. It's doesn't matter if there isn't a word list for the language in `data/word_lists` right now, the app will fall back to English in that case and start using the list if it becomes available in the future.
+#: data/dev.bragefuglseth.Keypunch.gschema.xml:41
+msgid "\"en\""
+msgstr "\"fa\""
+
+#: data/dev.bragefuglseth.Keypunch.gschema.xml:42
+#: src/widgets/results_view.blp:108 src/widgets/text_language_dialog.blp:5
+#: src/widgets/text_language_dialog.blp:13
+#: src/widgets/text_language_dialog.blp:39
+msgid "Text Language"
+msgstr "زبان متن"
+
+#: data/dev.bragefuglseth.Keypunch.gschema.xml:43
+msgid "The code of the language used for automatically generated text"
+msgstr "شناسه زبان مورد استفاده برای متن‌های تولیدشده به‌صورت خودکار"
+
+#: data/dev.bragefuglseth.Keypunch.gschema.xml:47
+msgid "Recent Languages"
+msgstr "زبان‌های اخیر"
+
+#: data/dev.bragefuglseth.Keypunch.gschema.xml:48
+msgid "Languages shown in the list of recent ones in the text language dialog"
+msgstr "زبان‌های نمایش داده شده در فهرست زبان‌های اخیر در پنجره‌ انتخاب زبان متن"
+
+#. Translators: This is the default text for custom typing sessions. Do not translate it literally, and do not remove the quotation marks. Replace it with an appropriate "sample sentence" from your language instead. The original text is an English pangram, so you can e.g. find a pangram in your language: https://clagnut.com/blog/2380
+#: data/dev.bragefuglseth.Keypunch.gschema.xml:52
+msgid "\"The quick brown fox jumps over the lazy dog.\""
+msgstr "\"ضحاک ژنده‌پوش، غازچران خبیث عصمت‌السلطنه ظفرقندی جذام گرفت.\""
+
+#: data/dev.bragefuglseth.Keypunch.gschema.xml:53
+#: src/widgets/custom_text_dialog.blp:5 src/widgets/custom_text_dialog.blp:26
+msgid "Custom Text"
+msgstr "متن سفارشی"
+
+#: data/dev.bragefuglseth.Keypunch.gschema.xml:54
+msgid "Text displayed when “Custom” is chosen from the session menu"
+msgstr "متنی که هنگام انتخاب «سفارشی» از منوی نشست نمایش داده می‌شود"
+
+#: data/dev.bragefuglseth.Keypunch.gschema.xml:58
+msgid "Personal Best"
+msgstr "برترین دستاوردها"
+
+#: data/dev.bragefuglseth.Keypunch.gschema.xml:59
+msgid ""
+"The current highest amount of WPM received for each session type / duration "
+"and language"
+msgstr "بیشترین میزان WPM ثبت‌شده برای هر نوع/مدت نشست و زبان"
+
+#: data/resources/gtk/help-overlay.ui:11
+msgctxt "shortcut window"
+msgid "General"
+msgstr "عمومی"
+
+#: data/resources/gtk/help-overlay.ui:14
+msgctxt "shortcut window"
+msgid "Text Language"
+msgstr "زبان متن"
+
+#: data/resources/gtk/help-overlay.ui:20
+msgctxt "shortcut window"
+msgid "Cancel Session"
+msgstr "لغو نشست"
+
+#: data/resources/gtk/help-overlay.ui:26
+msgctxt "shortcut window"
+msgid "Keyboard Shortcuts"
+msgstr "میان‌برهای صفحه‌کلید"
+
+#: data/resources/gtk/help-overlay.ui:32
+msgctxt "shortcut window"
+msgid "Close Window"
+msgstr "بستن پنجره"
+
+#: data/resources/gtk/help-overlay.ui:38
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr "خروج"
+
+#: src/widgets/custom_text_dialog.blp:37
+msgid "Insert custom text…"
+msgstr "وارد کردن متن سفارشی"
+
+#: src/widgets/custom_text_dialog.blp:73
+msgid "_Save"
+msgstr "_ذخیره"
+
+#: src/widgets/results_view.blp:34
+msgid "New Personal Best for Configuration"
+msgstr "برترین دستاوردها برای پیکربندی"
+
+#: src/widgets/results_view.blp:45
+msgid "Words per Minute"
+msgstr "واژه در دقیقه"
+
+#: src/widgets/results_view.blp:66
+msgid "Accuracy"
+msgstr ""
+"کی‌پانچ به شما امکان تمرین تایپ کردن را می‌دهد. به لطف جلسات سریع با بازخورد "
+"فوری پس از آن و انبوهی از زبان‌های موجود، شاید حتی کمی هم سرگرم شوید. با "
+"اراده قوی، تکنیک مناسب و کمی زمان، شاهد افزایش قابل توجهی در سرعت و دقت "
+"تبدیل افکار و ایده‌هایتان به کلمات روی صفحه نمایش خواهید بود."
+
+#. Translators: The percentage label format of the results page.
+#. The `{}` block will be replaced with the percentage number,
+#. do not translate it!
+#: src/widgets/results_view.rs:129
+msgid "{}%"
+msgstr "{}٪"
+
+#. Translators: The `{}` blocks will be replaced with the number of minutes
+#. and seconds. Do not translate them!
+#: src/widgets/results_view.rs:187
+msgid "{}m {}s"
+msgstr "{}م {}ث"
+
+#. Translators: The `{}` block will be replaced with the number of minutes.
+#. Do not translate it!
+#: src/widgets/results_view.rs:191
+msgid "{} minute"
+msgid_plural "{} minutes"
+msgstr[0] "{} دقیقه"
+msgstr[1] "{} دقائق"
+
+#. Translators: The `{}` block will be replaced with the number of seconds.
+#. Do not translate it!
+#: src/widgets/results_view.rs:195
+msgid "{} second"
+msgid_plural "{} seconds"
+msgstr[0] "{} ثانیه"
+msgstr[1] "{} ثانیه‌ها"
+
+#: src/widgets/text_language_dialog.blp:21
+#: src/widgets/text_language_dialog.blp:161
+#: src/widgets/text_language_dialog.blp:190
+msgid "Add Language"
+msgstr "افزودن یک زبان"
+
+#: src/widgets/text_language_dialog.blp:51
+#: src/widgets/text_language_dialog.blp:55
+msgid "Search languages…"
+msgstr "جست‌وجوی زبان‌ها..."
+
+#. Translators: Recent languages in text languages list
+#: src/widgets/text_language_dialog.blp:79
+msgid "Recent"
+msgstr "اخیر"
+
+#. Translators: Other languages in text languages list
+#: src/widgets/text_language_dialog.blp:84
+msgid "Other"
+msgstr "دیگر"
+
+#: src/widgets/text_language_dialog.blp:104
+msgid "Search Results"
+msgstr "نتایج جست‌وجو"
+
+#: src/widgets/text_language_dialog.blp:140
+msgid "No Matches"
+msgstr "نتیجه‌ای یافت نشد"
+
+#: src/widgets/text_language_dialog.blp:148
+msgid "Try a different search"
+msgstr "یک جست‌وجوی دیگر را امتحان کنید"
+
+#: src/widgets/text_language_dialog.blp:199
+msgid ""
+"You can help add a new text language to Keypunch by submitting a language "
+"request on GitHub. A GitHub account and some language knowledge is required."
+msgstr ""
+"شما می‌توانید به Keypunch در اضافه کردن زبان جدید با ثبت درخواست زبان در "
+"گیت‌هاب کمک کنید. یک حساب کاربری در گیت‌هاب و دانش در آن زبان مورد نیاز است."
+
+#: src/widgets/text_language_dialog.blp:214
+msgid "_Create Request"
+msgstr "_درخواست"
+
+#: src/widgets/text_view.blp:9
+msgid "Text View"
+msgstr "نمایان‌گر متن"
+
+#: src/widgets/window.blp:131
+msgid "Restart"
+msgstr "شروع مجدد"
+
+#: src/widgets/window.blp:158
+msgid "_Edit Text"
+msgstr "_ویرایش متن"
+
+#: src/widgets/window.blp:187
+msgid "Main Menu"
+msgstr "فهرست اصلی"
+
+#: src/widgets/window.blp:205
+msgid "Just Start Typing"
+msgstr "شروع به تایپ کنید"
+
+#. Translators: "Entry" here is the act of entering text
+#: src/widgets/window.blp:214
+msgid "Enable Entry"
+msgstr "فعال‌سازی ورود"
+
+#: src/widgets/window.blp:240
+msgid "Results"
+msgstr "نتایج"
+
+#: src/widgets/window.blp:265
+msgid "_Continue"
+msgstr "_ادامه دادن"
+
+#: src/widgets/window.blp:297
+msgid "Text _Language"
+msgstr "زبان_متن"
+
+#: src/widgets/window.blp:302
+msgid "_Keyboard Shortcuts"
+msgstr "_میان‌برهای صفحه کلید"
+
+#: src/widgets/window.blp:307
+msgid "_About Keypunch"
+msgstr "_درباره Keypunch"
+
+#: src/widgets/window.rs:180
+msgid "Orthography by"
+msgstr "اُرتانگاری‌شده توسط"
+
+#. Translators: Replace "translator-credits" with your names, one name per line
+#: src/widgets/window.rs:197
+msgid "translator-credits"
+msgstr "Hadi Azarnasab <hadi7546.ir>"
+
+#: src/widgets/window.rs:202
+msgid "Special thanks to"
+msgstr "تشکر ویژه از"
+
+#: src/widgets/window/session.rs:118
+msgid "{} ⁄ {}"
+msgstr "{}/{}"
+
+#: src/widgets/window/session.rs:310
+msgid "Changes discarded"
+msgstr "ویرایش‌ها لغو شدند"
+
+#: src/widgets/window/session.rs:311
+msgid "Restore"
+msgstr "بازگردانی"
+
+#. Translators: The format of the timer. The first `{}` block will be replaced
+#. with the minutes passed, and the second one will be replaced with the seconds
+#. passed. Do not translate the `{}` blocks. Note that the `∶` sign is a special
+#. Unicode character; if your language doesn't use something completely different,
+#. you should probably copy and paste it from the original string.
+#: src/widgets/window/session.rs:405 src/widgets/window/session.rs:407
+msgid "{}∶{}"
+msgstr "{}:{}"
+
+#. Translators: This is shown as a warning by GNOME Shell before logging out or shutting off the system in the middle of a typing session, alongside Keypunch's name and icon
+#: src/widgets/window/ui_state.rs:179
+msgid "Ongoing typing session"
+msgstr "نشست تایپ در حال انجام"
