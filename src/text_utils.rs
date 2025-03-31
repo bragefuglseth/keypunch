@@ -17,9 +17,12 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-use std::iter::zip;
 use std::time::Duration;
 use unicode_segmentation::UnicodeSegmentation;
+
+// An approximation of the length of a "word". 5 is the most common one used by
+// the vast majority of typing trainers.
+const WORD_LENGTH: usize = 5;
 
 // String replacements for when text is displayed in the text view
 const REPLACEMENTS: &'static [(&'static str, &'static str)] = &[
@@ -309,10 +312,31 @@ pub fn current_word(original: &str, typed_grapheme_count: usize) -> usize {
 pub fn calculate_wpm(duration: Duration, original: &str, typed: &str) -> f64 {
     let minutes = duration.as_secs_f64() / 60.;
 
-    let correct_chars = zip(original.chars(), typed.chars())
-        .filter(|(oc, tc)| oc == tc)
-        .count();
-    let words = correct_chars as f64 / 5.;
+    // Helper iterator for comparing to the original string
+    let mut typed_graphemes = typed.graphemes(true);
+
+    // Calculates the combined char count of all correctly typed words.
+    let correct_chars: usize = original
+        .split_word_bounds()
+        .filter(|w| {
+            let mut word_is_correct = true;
+
+            // Since we're using use a mutable iterator for the typed graphemes, we need to
+            // ensure that it's run for each corresponding grapheme in the original text
+            // to "keep up"
+            for g in w.graphemes(true) {
+                if typed_graphemes.next() != Some(g) {
+                    word_is_correct = false;
+                }
+            }
+            word_is_correct
+        })
+        .map(|w| w.chars().count())
+        .sum();
+
+    dbg!(&correct_chars);
+
+    let words = correct_chars as f64 / WORD_LENGTH as f64;
 
     words / minutes
 }
