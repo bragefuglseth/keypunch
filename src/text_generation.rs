@@ -46,7 +46,7 @@ pub enum Language {
     #[default]
     #[strum(message = "English", to_string = "en")]
     English,
-    #[strum(message = "eesti", to_string = "et")]
+    #[strum(message = "Eesti", to_string = "et")]
     Estonian,
     #[strum(message = "Suomi", to_string = "fi")]
     Finnish,
