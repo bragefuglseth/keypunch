@@ -23,8 +23,8 @@ mod typing_test;
 
 use crate::application::KpApplication;
 use crate::config::APP_ID;
-use crate::typing_test_utils::*;
 use crate::settings;
+use crate::typing_test_utils::*;
 use crate::widgets::{KpResultsView, KpTextView};
 use adw::prelude::*;
 use adw::subclass::prelude::*;
@@ -190,7 +190,10 @@ mod imp {
                 Some("5.0"),
             );
 
-            about.set_developers(&["Brage Fuglseth https://bragefuglseth.dev"]);
+            about.set_developers(&[
+                "Brage Fuglseth https://bragefuglseth.dev",
+                "Hadi Azarnasab https://hadi7546.ir",
+            ]);
 
             about.add_credit_section(
                 Some(&gettext("Orthography by")),
