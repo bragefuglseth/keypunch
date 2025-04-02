@@ -64,7 +64,7 @@ mod imp {
         #[template_child]
         pub bottom_stack: TemplateChild<gtk::Stack>,
         #[template_child]
-        pub bottom_stack_empty: TemplateChild<gtk::Box>,
+        pub bottom_stack_empty: TemplateChild<adw::Bin>,
         #[template_child]
         pub just_start_typing: TemplateChild<gtk::Label>,
         #[template_child]

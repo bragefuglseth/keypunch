@@ -257,6 +257,8 @@ impl imp::KpWindow {
         self.text_view.set_accepts_input(true);
         self.main_stack.set_visible_child_name("test");
         self.status_stack.set_visible_child_name("ready");
+        self.bottom_stack
+            .set_visible_child(&self.just_start_typing.get());
         self.menu_button.set_visible(true);
         self.stop_button.set_visible(false);
         self.text_view.reset();
