@@ -80,6 +80,20 @@
   </supports>
   <launchable type="desktop-id">dev.bragefuglseth.Keypunch.desktop</launchable>
   <releases>
+    <release date="2025-04-05" version="6.0">
+      <url type="details">https://blogs.gnome.org/bragefuglseth/2025/05/04/keypunch-6.0</url>
+      <description translate="no">
+        <p>Enjoy the spring with this vernal bundle of improvements:</p>
+        <ul>
+          <li>More realistic test results</li>
+          <li>Frustration relief: Helpful break reminders when aggressive key mashing is detected</li>
+          <li>Support for entering non-breaking spaces in the place of regular ones</li>
+          <li>An upgraded technical base taking advantage of the latest platform improvements</li>
+          <li>Text generation for Catalan, Dutch, Estonian, Greek, Indonesian, Slovak, and Persian</li>
+          <li>User interface translations for Catalan, British English, Persian, Finnish, Indonesian, Kabyle, Slovak, Slovenian, and Chinese</li>
+        </ul>
+      </description>
+    </release>
     <release date="2024-12-28" version="5.1">
       <description translate="no">
         <p>Minor user interface translation improvements.</p>

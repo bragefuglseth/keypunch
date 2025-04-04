@@ -187,7 +187,7 @@ mod imp {
 
             let about = adw::AboutDialog::from_appdata(
                 "/dev/bragefuglseth/Keypunch/dev.bragefuglseth.Keypunch.metainfo.xml",
-                Some("5.0"),
+                Some("6.0"),
             );
 
             about.set_developers(&["Brage Fuglseth https://bragefuglseth.dev"]);
