@@ -81,7 +81,7 @@
   <launchable type="desktop-id">dev.bragefuglseth.Keypunch.desktop</launchable>
   <releases>
     <release date="2025-04-05" version="6.0">
-      <url type="details">https://blogs.gnome.org/bragefuglseth/2025/05/04/keypunch-6.0</url>
+      <url type="details">https://blogs.gnome.org/bragefuglseth/2025/04/05/keypunch-6.0</url>
       <description translate="no">
         <p>Enjoy the spring with this vernal bundle of improvements:</p>
         <ul>
