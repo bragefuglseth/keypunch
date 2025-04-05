@@ -82,7 +82,7 @@
   <releases>
     <release date="2025-04-05" version="6.1">
       <description translate="no">
-        <p>This minor release fixes a critical bug that causes the app to crash when Keypunch attempts to identify an unknown language.</p>
+        <p>Fixes a critical bug that causes the app to crash when Keypunch attempts to identify an unknown language.</p>
       </description>
     </release>
     <release date="2025-04-05" version="6.0">
