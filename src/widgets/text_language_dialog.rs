@@ -259,7 +259,8 @@ impl KpTextLanguageDialog {
             .property("settings", settings.clone())
             .build();
 
-        let current = Language::from_str(&settings.string("text-language")).unwrap();
+        let current =
+            Language::from_str(&settings.string("text-language")).unwrap_or(Language::English);
 
         let recent: Vec<Language> = settings
             .value("recent-languages")
