@@ -80,6 +80,11 @@
   </supports>
   <launchable type="desktop-id">dev.bragefuglseth.Keypunch.desktop</launchable>
   <releases>
+    <release date="2025-04-05" version="6.1">
+      <description translate="no">
+        <p>This minor release fixes a critical bug that causes the app to crash when Keypunch attempts to identify an unknown language.</p>
+      </description>
+    </release>
     <release date="2025-04-05" version="6.0">
       <url type="details">https://blogs.gnome.org/bragefuglseth/2025/04/05/keypunch-6.0</url>
       <description translate="no">
