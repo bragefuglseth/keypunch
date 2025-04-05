@@ -56,7 +56,8 @@ impl TestConfig {
     pub fn from_settings(settings: &gio::Settings) -> Self {
         match settings.string("session-type").as_str() {
             difficulty_string @ ("Simple" | "Advanced") => TestConfig::Generated {
-                language: Language::from_str(&settings.string("text-language")).unwrap(),
+                language: Language::from_str(&settings.string("text-language"))
+                    .unwrap_or(Language::English),
                 difficulty: GeneratedTestDifficulty::from_str(&difficulty_string).unwrap(),
                 duration: TestDuration::from_str(&settings.string("session-duration")).unwrap(),
             },
