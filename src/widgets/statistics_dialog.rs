@@ -20,6 +20,7 @@
 use crate::database::DATABASE;
 use crate::database::{ChartItem, PeriodSummary};
 use crate::widgets::KpLineChart;
+use anyhow::Result;
 use adw::prelude::*;
 use adw::subclass::prelude::*;
 use glib::subclass::Signal;
@@ -87,8 +88,6 @@ mod imp {
         fn constructed(&self) {
             self.parent_constructed();
 
-            self.stack.set_visible_child_name("statistics");
-
             let header_bar = self.header_bar.get();
             self.scrolled_window
                 .vadjustment()
@@ -97,15 +96,26 @@ mod imp {
                 .sync_create()
                 .build();
 
-            let month_data = DATABASE.get_past_month().unwrap(); // TODO: Handle the no data case
+            self.stack.set_visible_child_name(if self.populate() {
+                "statistics"
+            } else {
+                "no_data"
+            });
+        }
+    }
+    impl WidgetImpl for KpStatisticsDialog {}
+    impl AdwDialogImpl for KpStatisticsDialog {}
+    impl KpStatisticsDialog {
+        fn populate(&self) -> bool {
+            let Some(month_data) = DATABASE.get_past_month() else { return false; };
             let month_stats_chart = KpLineChart::new(&month_data);
             self.daily_bin.set_child(Some(&month_stats_chart));
 
-            let year_data = DATABASE.get_past_year().unwrap(); // TODO: Handle the no data case
+            let Some(year_data) = DATABASE.get_past_year() else { return false; };
             let year_stats_chart = KpLineChart::new(&year_data);
             self.monthly_bin.set_child(Some(&year_stats_chart));
 
-            let month_summary = DATABASE.last_month_summary().unwrap(); // TODO: Handle the no data case
+            let Some(month_summary) = DATABASE.last_month_summary() else { return false; };
 
             self.month_wpm_label
                 .set_label(&month_summary.wpm.floor().to_string());
@@ -114,11 +124,10 @@ mod imp {
             self.month_finish_rate_label.set_label(
                 &i18n_fmt! { i18n_fmt("{}%", (month_summary.finish_rate * 100.).floor()) },
             );
+
+            true
         }
     }
-    impl WidgetImpl for KpStatisticsDialog {}
-    impl AdwDialogImpl for KpStatisticsDialog {}
-    impl KpStatisticsDialog {}
 }
 
 glib::wrapper! {
