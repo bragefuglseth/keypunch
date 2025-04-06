@@ -9,16 +9,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: dev.bragefuglseth.Keypunch\n"
 "Report-Msgid-Bugs-To: https://github.com/bragefuglseth/keypunch/issues\n"
-"POT-Creation-Date: 2025-03-07 14:20+0000\n"
-"PO-Revision-Date: 2025-03-24 00:38+0300\n"
-"Last-Translator: Muhammet Kara <muhammetk@gmail.com>\n"
+"POT-Creation-Date: 2025-03-24 03:27+0000\n"
+"PO-Revision-Date: 2025-04-04 17:28+0300\n"
+"Last-Translator: Sabri Ünal <yakushabb@gmail.com>\n"
 "Language-Team: Turkish <gnome-turk@gnome.org>\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Gtranslator 47.1\n"
+"X-Generator: Poedit 3.5\n"
 
 #: data/dev.bragefuglseth.Keypunch.desktop.in.in:3
 #: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:7
@@ -304,6 +304,8 @@ msgid ""
 "You can help add a new text language to Keypunch by submitting a language "
 "request on GitHub. A GitHub account and some language knowledge is required."
 msgstr ""
+"GitHub ile dil isteği göndererek Keypunchʼa yeni metin dili eklenmesine "
+"yardımcı olabilirsiniz. GitHub hesabı ve biraz dil bilgisi gereklidir."
 
 #: src/widgets/text_language_dialog.blp:233
 msgid "_Create Request"
@@ -367,11 +369,11 @@ msgstr "_Sürdür"
 #. and displays a recommendation to take a break.
 #: src/widgets/window.blp:326
 msgid "Frustration Relief"
-msgstr ""
+msgstr "Hayal Kırıklığını Giderme"
 
 #: src/widgets/window.blp:332
 msgid "Frustration Detected"
-msgstr ""
+msgstr "Hayal Kırıklığı Algılandı"
 
 #. Translators: Make sure to convey this as politely and sensitively as possible,
 #. since it is likely to be shown to people while they are in a state of
@@ -381,6 +383,8 @@ msgid ""
 "You learn faster in a calm state of mind. Consider taking a break. The test "
 "has been cancelled, and will not affect your typing statistics."
 msgstr ""
+"Sakin ruh halinde daha hızlı öğrenirsiniz. Ara vermeyi düşünebilirsiniz. "
+"Sınav iptal edilmiştir ve yazım istatistikleriniz etkilemeyecek."
 
 #: src/widgets/window.blp:378
 msgid "Text _Language"
@@ -410,12 +414,12 @@ msgstr "Özel teşekkürler"
 #. Translators: Metainfo for the app Fretboard. <https://github.com/bragefuglseth/fretboard>
 #: src/widgets/window.rs:226
 msgid "Fretboard"
-msgstr ""
+msgstr "Fretboard"
 
 #. Translators: Metainfo for the app Fretboard. <https://github.com/bragefuglseth/fretboard>
 #: src/widgets/window.rs:228
 msgid "Look up guitar chords"
-msgstr ""
+msgstr "Gitar akorlarına bak"
 
 #: src/widgets/window/typing_test.rs:163
 msgid "{} ⁄ {}"
