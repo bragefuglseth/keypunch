@@ -68,7 +68,7 @@ mod imp {
         #[template_child]
         pub bottom_stack: TemplateChild<gtk::Stack>,
         #[template_child]
-        pub bottom_stack_empty: TemplateChild<gtk::Box>,
+        pub bottom_stack_empty: TemplateChild<adw::Bin>,
         #[template_child]
         pub just_start_typing: TemplateChild<gtk::Label>,
         #[template_child]
@@ -195,7 +195,7 @@ mod imp {
 
             let about = adw::AboutDialog::from_appdata(
                 "/dev/bragefuglseth/Keypunch/dev.bragefuglseth.Keypunch.metainfo.xml",
-                Some("5.0"),
+                Some("6.0"),
             );
 
             about.set_developers(&["Brage Fuglseth https://bragefuglseth.dev"]);

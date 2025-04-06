@@ -32,7 +32,7 @@ use text_generation::CHUNK_GRAPHEME_COUNT;
 // The lower this is, the more sensitive Keypunch is to "frustration" (random key mashing).
 // If enough frustration is detected, the test will be cancelled, and a helpful
 // message will be displayed.
-const FRUSTRATION_THRESHOLD: usize = 3;
+const FRUSTRATION_THRESHOLD: f64 = 2.2;
 
 #[gtk::template_callbacks]
 impl imp::KpWindow {
@@ -170,12 +170,12 @@ impl imp::KpWindow {
                         .iter()
                         .rev()
                         .take_while(|(timestamp, _)| {
-                            timestamp.elapsed().as_secs() <= FRUSTRATION_THRESHOLD as u64
+                            timestamp.elapsed().as_secs_f64() <= FRUSTRATION_THRESHOLD
                         })
                         .filter(|(_, correct)| !*correct)
                         .count();
 
-                    if frustration_score > FRUSTRATION_THRESHOLD * 10 {
+                    if frustration_score as f64 > FRUSTRATION_THRESHOLD * 10. {
                         imp.frustration_relief();
                     }
 
@@ -260,6 +260,8 @@ impl imp::KpWindow {
         self.status_stack.set_visible_child_name("ready");
         self.header_bar_start
             .set_visible_child_name("statistics_button");
+        self.bottom_stack
+            .set_visible_child(&self.just_start_typing.get());
         self.menu_button.set_visible(true);
         self.text_view.reset();
         self.focus_text_view();

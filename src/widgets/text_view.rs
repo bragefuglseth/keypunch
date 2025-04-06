@@ -38,6 +38,13 @@ use unicode_segmentation::UnicodeSegmentation;
 
 const LINE_HEIGHT: i32 = 50;
 
+#[derive(PartialEq)]
+enum TextChange {
+    Addition,
+    Removal,
+    Replacement,
+}
+
 mod imp {
     use super::*;
 
@@ -177,7 +184,7 @@ mod imp {
             self.compare_and_update_colors();
         }
 
-        pub(super) fn typed_text_changed(&self) {
+        pub(super) fn typed_text_changed(&self, change: TextChange) {
             let input_context = self.input_context.borrow();
             let (preedit, _, _) = input_context.as_ref().unwrap().preedit_string();
 
@@ -187,17 +194,21 @@ mod imp {
                 preedit.as_str().graphemes(true).count(),
             );
 
-            let last_grapheme_state = comparison
-                .iter()
-                .last()
-                .map(|(state, _, _, _)| *state)
-                .unwrap_or(GraphemeState::Unfinished);
+            if change == TextChange::Addition {
+                let last_grapheme_state = comparison
+                    .iter()
+                    .last()
+                    .map(|(state, _, _, _)| *state)
+                    .unwrap_or(GraphemeState::Unfinished);
 
-            let correct = last_grapheme_state != GraphemeState::Mistake;
-
-            let keystroke = (Instant::now(), correct);
-
-            self.keystrokes.borrow_mut().push(keystroke);
+                let correct = last_grapheme_state != GraphemeState::Mistake;
+                let keystroke = (Instant::now(), correct);
+                self.keystrokes.borrow_mut().push(keystroke);
+            } else if change == TextChange::Removal {
+                // If text is removed, it's always a "correct" stroke
+                let keystroke = (Instant::now(), true);
+                self.keystrokes.borrow_mut().push(keystroke);
+            }
 
             self.update_colors(&comparison);
             self.update_caret_position(!self.running.get());
@@ -233,7 +244,7 @@ impl KpTextView {
 
     pub fn set_typed_text(&self, text: &str) {
         *self.imp().typed_text.borrow_mut() = text.to_string();
-        self.imp().typed_text_changed();
+        self.imp().typed_text_changed(TextChange::Replacement);
         self.imp().input_context.borrow().as_ref().unwrap().reset();
     }
 

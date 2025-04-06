@@ -270,7 +270,7 @@ template $KpWindow: Adw.ApplicationWindow {
               ]
             }
 
-            Box bottom_stack_empty {}
+            Adw.Bin bottom_stack_empty {}
 
             styles [
               "toolbar-thick"
@@ -358,7 +358,7 @@ template $KpWindow: Adw.ApplicationWindow {
             halign: center;
 
             Button frustration_continue_button {
-              label: "_Continue";
+              label: _("_Continue");
               use-underline: true;
 
               clicked => $ready() swapped;

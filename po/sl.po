@@ -1,42 +1,43 @@
-# Russian translation of Keypunch.
-# Copyright (C) 2024 Keypunch Contributors
-# This file is distributed under the same license as the keypunch package.
-# FAlexei <myalexei@icloud.com>, 2024.
+# Slovenian translation for Keypunch.
+# Copyright (C) 2025 Keypunch's COPYRIGHT HOLDER
+# This file is distributed under the same license as the Keypunch package.
+#
+# Martin <miles@filmsi.net>,  2025.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: keypunch\n"
+"Project-Id-Version: Keypunch main\n"
 "Report-Msgid-Bugs-To: https://github.com/bragefuglseth/keypunch/issues\n"
-"POT-Creation-Date: 2025-03-07 14:20+0000\n"
-"PO-Revision-Date: 2025-03-28 18:03+0300\n"
-"Last-Translator: Artur So <arturios2005@mail.ru>\n"
-"Language-Team: Russian <Ru@li.org>\n"
-"Language: ru\n"
+"POT-Creation-Date: 2025-03-16 03:29+0000\n"
+"PO-Revision-Date: 2025-03-19 22:40+0100\n"
+"Last-Translator: Martin Srebotnjak <miles@filmsi.net>\n"
+"Language-Team: Slovenian <Slovenian>\n"
+"Language: sl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
-"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Poedit 3.5\n"
+"Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || n"
+"%100==4 ? 3 : 0) ;\n"
+"X-Generator: Poedit 2.2.1\n"
 
 #: data/dev.bragefuglseth.Keypunch.desktop.in.in:3
 #: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:7
 #: src/widgets/window.blp:24
 msgid "Keypunch"
-msgstr "Keypunch"
+msgstr "Tipkarica"
 
 #: data/dev.bragefuglseth.Keypunch.desktop.in.in:4
 #: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:8
 msgid "Practice your typing skills"
-msgstr "Практика навыков набора текста"
+msgstr "Vadite svoje tipkanje"
 
 #: data/dev.bragefuglseth.Keypunch.desktop.in.in:10
 msgid ""
 "typing;trainer;touch typing;keyboard;speed;wpm;words per minute;accuracy;"
 "test;"
 msgstr ""
-"набор текста;тренажер;сенсорный набор текста;клавиатура;скорость,знаки;слова;слов в "
-"минуту;точность;тест;"
+"tipkanje;trener;vaditelj;vadnica;tipkanje na dotik;tipkovnica;hitrost;wpm;"
+"bnm;besede na minuto;besed na minuto;natančnost;preizkus;"
 
 #: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:13
 msgid ""
@@ -44,10 +45,9 @@ msgid ""
 "digital age. Typing fast and accurately gives you more opportunities, more "
 "time for what matters to you, and a sense of self-accomplishment."
 msgstr ""
-"Нет сомнений, что набор текста на клавиатуре - необходимый навык в эпоху "
-"цифровых технологий. Быстрый и точный набор текста дает вам чувство "
-"самоудовлетворения и больше возможностей, больше времени на то, что для вас "
-"важно."
+"Nobenega dvoma ni, da je tipkanje bistvena veščina v digitalni dobi. Hitro "
+"in natančno tipkanje vam daje več priložnosti, več časa za tisto, kar vam je "
+"pomembno, in občutek samouresničitve."
 
 #: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:18
 msgid ""
@@ -57,11 +57,11 @@ msgid ""
 "some time, you will observe a noticeable increase in both the speed and the "
 "accuracy of which your thoughts and ideas are put into words on the screen."
 msgstr ""
-"Keypunch позволяет практиковаться в наборе текста. Благодаря быстрым "
-"занятиям с мгновенной обратной связью и множеству доступных языков вы "
-"сможете даже немного развлечься. При наличии целеустремленности, правильной "
-"техники и некоторого времени вы заметите заметный рост как скорости, так и "
-"точности, с которой ваши мысли и идеи воплощаются в слова на экране."
+"Tipkarica vam omogoča vadbo tipkanja. Zahvaljujoč hitrim sejam s takojšnjimi "
+"povratnimi informacijami in številnim razpoložljivim jezikom se boste morda "
+"celo malo zabavali. Z odločnostjo, pravilno tehniko in nekaj časa boste "
+"opazili opazno povečanje hitrosti in natančnosti, ko se vaše misli in ideje "
+"izražajo v besedah na zaslonu."
 
 #: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:25
 msgid ""
@@ -69,13 +69,13 @@ msgid ""
 "Try practicing with numbers and punctuation, or choose your own text to type "
 "out as fast as you can."
 msgstr ""
-"Если вы уже умеете быстро набирать текст, в Keypunch найдется кое-что для "
-"вас. Попробуйте потренироваться с цифрами и пунктуацией или выберите свой "
-"собственный текст, чтобы набрать его как можно быстрее."
+"Če ste že hitrih prstov pri tipkanju, ima Tipkarica še vedno nekaj za vas. "
+"Poskusite vaditi s številkami in ločili ali pa izberite svoje besedilo, ki "
+"ga boste natipkali čim hitreje."
 
 #: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:30
 msgid "Get ready to accelerate your typing!"
-msgstr "Приготовьтесь ускорить набор текста!"
+msgstr "Pripravite se na pospešitev tipkanja!"
 
 #: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:33
 msgid ""
@@ -83,311 +83,314 @@ msgid ""
 "great software that is available for the GNOME platform. For more "
 "information, visit the GNOME Circle website."
 msgstr ""
-"Keypunch с гордостью входит в GNOME Circle, инициативу, которая пропагандирует "
-"замечательное программное обеспечение, доступное для платформы GNOME. "
-"Для получения дополнительной информации посетите веб-сайт GNOME Circle."
+"Tipkarica je ponosen del GNOME Circle, pobude, ki zagovarja odlično "
+"programsko opremo, ki je na voljo za platformo GNOME. Za več informacij "
+"obiščite spletno mesto GNOME Circle."
 
 #: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:39
 msgid "In the middle of a session"
-msgstr "По среди сеанса"
+msgstr "Sredi seje"
 
 #: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:43
 msgid "Ready for typing"
-msgstr "Готовность к набору текста"
+msgstr "Pripravljeno za tipkanje"
 
 #: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:47
 msgid "Session results"
-msgstr "Результаты сеанса"
+msgstr "Rezultati seje"
 
 #: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:51
 msgid "Language selection"
-msgstr "Выбор языка"
+msgstr "Izbira jezika"
 
 #: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:55
 msgid "Custom text entry"
-msgstr "Ввод своего текста"
+msgstr "Vnos besedila po meri"
 
 #: data/dev.bragefuglseth.Keypunch.gschema.xml:20
 msgid "Window Width"
-msgstr "Ширина окна"
+msgstr "Širina okna"
 
 #: data/dev.bragefuglseth.Keypunch.gschema.xml:24
 msgid "Window Height"
-msgstr "Высота окна"
+msgstr "Višina okna"
 
 #: data/dev.bragefuglseth.Keypunch.gschema.xml:28
 msgid "Window Maximization"
-msgstr "Окно на весь экран"
+msgstr "Povečanje okna"
 
 #: data/dev.bragefuglseth.Keypunch.gschema.xml:32
 msgid "Session Type"
-msgstr "Тип сеанса"
+msgstr "Vrsta seje"
 
 #: data/dev.bragefuglseth.Keypunch.gschema.xml:36
 msgid "Session Duration"
-msgstr "Продолжительность сеанса"
+msgstr "Trajanje seje"
 
 #: data/dev.bragefuglseth.Keypunch.gschema.xml:37
 msgid "The duration of time-based sessions"
-msgstr "Продолжительность сеансов на время"
+msgstr "Trajanje časovno omejenih sej"
 
 #. Translators: Insert the language code of your language here, for example "nb" for Norwegian Bokmaal. Do not remove the quotation marks. It's doesn't matter if there isn't a word list for the language in `data/word_lists` right now, the app will fall back to English in that case and start using the list if it becomes available in the future.
 #: data/dev.bragefuglseth.Keypunch.gschema.xml:41
 msgid "\"en\""
-msgstr "\"ru\""
+msgstr "\"sl\""
 
 #: data/dev.bragefuglseth.Keypunch.gschema.xml:42
 #: src/widgets/results_view.blp:127 src/widgets/text_language_dialog.blp:24
 #: src/widgets/text_language_dialog.blp:32
 #: src/widgets/text_language_dialog.blp:58
 msgid "Text Language"
-msgstr "Язык текста"
+msgstr "Jezik besedila"
 
 #: data/dev.bragefuglseth.Keypunch.gschema.xml:43
 msgid "The code of the language used for automatically generated text"
-msgstr "Код языка, используемого для автоматического создания текста"
+msgstr "Koda jezika, ki se uporablja za samodejno ustvarjeno besedilo"
 
 #: data/dev.bragefuglseth.Keypunch.gschema.xml:47
 msgid "Recent Languages"
-msgstr "Недавние языки"
+msgstr "Nedavni jeziki"
 
 #: data/dev.bragefuglseth.Keypunch.gschema.xml:48
 msgid "Languages shown in the list of recent ones in the text language dialog"
-msgstr "Языки, отображаемые в списке недавних в диалоге языка текста"
+msgstr ""
+"Jeziki, prikazani na seznamu nedavnih jezikov v pogovornem oknu jezika "
+"besedila"
 
 #. Translators: This is the default text for custom typing sessions. Do not translate it literally, and do not remove the quotation marks. Replace it with an appropriate "sample sentence" from your language instead. The original text is an English pangram, so you can e.g. find a pangram in your language: https://clagnut.com/blog/2380
 #: data/dev.bragefuglseth.Keypunch.gschema.xml:52
 msgid "\"The quick brown fox jumps over the lazy dog.\""
-msgstr "\"Съешь ещё этих мягких французских булок, да выпей же чаю.\""
+msgstr "»Šerif bo za vajo spet skuhal domače žgance.«"
 
 #: data/dev.bragefuglseth.Keypunch.gschema.xml:53
 #: src/widgets/custom_text_dialog.blp:24 src/widgets/custom_text_dialog.blp:45
 msgid "Custom Text"
-msgstr "Свой текст"
+msgstr "Besedilo po meri"
 
 #: data/dev.bragefuglseth.Keypunch.gschema.xml:54
 msgid "Text displayed when “Custom” is chosen from the session menu"
-msgstr "Текст, отображаемый при выборе «Свой» в меню сеанса"
+msgstr "Besedilo, ki se prikaže, ko je v meniju seje izbrana možnost »Po meri«"
 
 #: data/dev.bragefuglseth.Keypunch.gschema.xml:58
 msgid "Personal Best"
-msgstr "Личный рекорд"
+msgstr "Osebni rekord"
 
 #: data/dev.bragefuglseth.Keypunch.gschema.xml:59
 msgid ""
 "The current highest amount of WPM received for each session type / duration "
 "and language"
 msgstr ""
-"Текущее наибольшее количество слов в минуту, полученное для каждого типа / "
-"продолжительности и языка"
+"Trenutna najvišja količina BNM (WPM), prejeta za vsako vrsto seje / trajanje "
+"in jezik"
 
 #: data/resources/gtk/help-overlay.ui:11
 msgctxt "shortcut window"
 msgid "General"
-msgstr "Общие"
+msgstr "Splošno"
 
 #: data/resources/gtk/help-overlay.ui:14
 msgctxt "shortcut window"
 msgid "Text Language"
-msgstr "Язык текста"
+msgstr "Jezik besedila"
 
 #: data/resources/gtk/help-overlay.ui:20
 msgctxt "shortcut window"
 msgid "Cancel Session"
-msgstr "Отменить сеанс"
+msgstr "Preklic seje"
 
 #: data/resources/gtk/help-overlay.ui:26
 msgctxt "shortcut window"
 msgid "Keyboard Shortcuts"
-msgstr "Комбинации клавиш"
+msgstr "Tipke za bližnjice"
 
 #: data/resources/gtk/help-overlay.ui:32
 msgctxt "shortcut window"
 msgid "Close Window"
-msgstr "Закрыть окно"
+msgstr "Zapre okno"
 
 #: data/resources/gtk/help-overlay.ui:38
 msgctxt "shortcut window"
 msgid "Quit"
-msgstr "Выйти"
+msgstr "Izhod"
 
 #: src/widgets/custom_text_dialog.blp:56
 msgid "Insert custom text…"
-msgstr "Вставить свой текст…"
+msgstr "Vstavi besedilo po meri ..."
 
 #: src/widgets/custom_text_dialog.blp:92
 msgid "_Save"
-msgstr "_Сохранить"
+msgstr "_Shrani"
 
 #: src/widgets/results_view.blp:53
 msgid "New Personal Best for Configuration"
-msgstr "Новый личный рекорд для конфигурации"
+msgstr "Nov osebni rekord za prilagoditev"
 
 #: src/widgets/results_view.blp:64
 msgid "Words per Minute"
-msgstr "Слов в минуту"
+msgstr "Besed na minuto"
 
 #: src/widgets/results_view.blp:85
 msgid "Accuracy"
-msgstr "Точность"
+msgstr "Natančnost"
 
 #: src/widgets/results_view.blp:101 src/widgets/window.blp:167
 msgid "Test Type"
-msgstr "Тип теста"
+msgstr "Vrsta preskusa"
 
 #: src/widgets/results_view.blp:114 src/widgets/window.blp:175
 msgid "Test Duration"
-msgstr "Продолжительность теста"
+msgstr "Trajanje preskusa"
 
 #: src/widgets/results_view.rs:165
 msgid "{}%"
-msgstr "{}%"
+msgstr "{} %"
 
 #: src/widgets/results_view.rs:171 src/widgets/window.blp:169
 msgid "Custom"
-msgstr "Свой"
+msgstr "Po meri"
 
 #: src/widgets/results_view.rs:173 src/widgets/window.blp:169
 msgid "Simple"
-msgstr "Простой"
+msgstr "Enostavno"
 
 #: src/widgets/results_view.rs:174 src/widgets/window.blp:169
 msgid "Advanced"
-msgstr "Продвинутый"
+msgstr "Napredno"
 
 #. Translators: The `{}` blocks will be replaced with the number of minutes
 #. and seconds. Do not translate them!
 #: src/widgets/results_view.rs:200
 msgid "{}m {}s"
-msgstr "{} мин {} сек"
+msgstr "{} min {} s"
 
 #. Translators: The `{}` block will be replaced with the number of minutes.
 #. Do not translate it!
 #: src/widgets/results_view.rs:204
 msgid "{} minute"
 msgid_plural "{} minutes"
-msgstr[0] "{} минута"
-msgstr[1] "{} минуты"
-msgstr[2] "{} минут"
+msgstr[0] "{} minut"
+msgstr[1] "{} minuta"
+msgstr[2] "{} minuti"
+msgstr[3] "{} minute"
 
 #. Translators: The `{}` block will be replaced with the number of seconds.
 #. Do not translate it!
 #: src/widgets/results_view.rs:208
 msgid "{} second"
 msgid_plural "{} seconds"
-msgstr[0] "{} секунда"
-msgstr[1] "{} секунды"
-msgstr[2] "{} секунд"
+msgstr[0] "{} s"
+msgstr[1] "{} s"
+msgstr[2] "{} s"
+msgstr[3] "{} s"
 
 #: src/widgets/text_language_dialog.blp:40
 #: src/widgets/text_language_dialog.blp:180
 #: src/widgets/text_language_dialog.blp:209
 msgid "Add Language"
-msgstr "Добавить язык"
+msgstr "Dodaj jezik"
 
 #: src/widgets/text_language_dialog.blp:70
 #: src/widgets/text_language_dialog.blp:74
 msgid "Search languages…"
-msgstr "Поиск языков…"
+msgstr "Išči jezike ..."
 
 #. Translators: Recent languages in text languages list
 #: src/widgets/text_language_dialog.blp:98
 msgid "Recent"
-msgstr "Недавние"
+msgstr "Nedavno"
 
 #. Translators: Other languages in text languages list
 #: src/widgets/text_language_dialog.blp:103
 msgid "Other"
-msgstr "Другие"
+msgstr "Drugo"
 
 #: src/widgets/text_language_dialog.blp:123
 msgid "Search Results"
-msgstr "Результаты поиска"
+msgstr "Zadetki iskanja"
 
 #: src/widgets/text_language_dialog.blp:159
 msgid "No Matches"
-msgstr "Нет совпадений"
+msgstr "Ni zadetkov"
 
 #: src/widgets/text_language_dialog.blp:167
 msgid "Try a different search"
-msgstr "Попробуйте другой поисковый запрос"
+msgstr "Poskusite z drugačnim iskalnim nizom"
 
 #: src/widgets/text_language_dialog.blp:218
 msgid ""
 "You can help add a new text language to Keypunch by submitting a language "
 "request on GitHub. A GitHub account and some language knowledge is required."
 msgstr ""
-"Вы можете помочь добавить новый текстовый язык в Keypunch, отправив запрос "
-"на язык на GitHub. Для этого требуется учетная запись на GitHub и некоторое "
-"знание языка."
+"Nov jezik besedila lahko dodate v Tipkarico tako, da pošljete jezikovno "
+"zahtevo na GitHub. Potrebujete račun GitHub in nekaj jezikovnega znanja."
 
 #: src/widgets/text_language_dialog.blp:233
 msgid "_Create Request"
-msgstr "Cоздать _запрос"
+msgstr "_Ustvari zahtevo"
 
 #: src/widgets/text_view.blp:28
 msgid "Text View"
-msgstr "Просмотр текста"
+msgstr "Pogled besedila"
 
 #: src/widgets/window.blp:150
 msgid "Restart"
-msgstr "Заново"
+msgstr "Ponovno zaženi"
 
 #: src/widgets/window.blp:178
 msgid "15 seconds"
-msgstr "15 секунд"
+msgstr "15 sekund"
 
 #: src/widgets/window.blp:179
 msgid "30 seconds"
-msgstr "30 секунд"
+msgstr "30 sekund"
 
 #: src/widgets/window.blp:180
 msgid "1 minute"
-msgstr "1 минута"
+msgstr "1 minuta"
 
 #: src/widgets/window.blp:181
 msgid "5 minutes"
-msgstr "5 минут"
+msgstr "5 minut"
 
 #: src/widgets/window.blp:182
 msgid "10 minutes"
-msgstr "10 минут"
+msgstr "10 minut"
 
 #: src/widgets/window.blp:191
 msgid "_Edit Text"
-msgstr "_Редактировать текст"
+msgstr "_Uredi besedilo"
 
 #: src/widgets/window.blp:220
 msgid "Main Menu"
-msgstr "Главное меню"
+msgstr "Glavni meni"
 
 #: src/widgets/window.blp:238
 msgid "Just Start Typing"
-msgstr "Начните печатать"
+msgstr "Samo začnite tipkati"
 
 #. Translators: "Entry" here is the act of entering text
 #: src/widgets/window.blp:247
 msgid "_Enable Entry"
-msgstr "_Включить ввод текста"
+msgstr "_Omogoči vnos"
 
 #: src/widgets/window.blp:273
 msgid "Results"
-msgstr "Результаты"
+msgstr "Rezultati"
 
 #: src/widgets/window.blp:298
 msgid "_Continue"
-msgstr "_Продолжить"
+msgstr "N_adaljuj"
 
 #. Translators: "Frustration Relief" is the name of the functionality
 #. that automatically cancels a test when random key mashing is detected,
 #. and displays a recommendation to take a break.
 #: src/widgets/window.blp:326
 msgid "Frustration Relief"
-msgstr "Устранение фрустрации"
+msgstr "Sprostitev frustracije"
 
 #: src/widgets/window.blp:332
 msgid "Frustration Detected"
-msgstr "Обнаружена фрустрация"
+msgstr "Zaznana frustracija"
 
 #. Translators: Make sure to convey this as politely and sensitively as possible,
 #. since it is likely to be shown to people while they are in a state of
@@ -397,43 +400,43 @@ msgid ""
 "You learn faster in a calm state of mind. Consider taking a break. The test "
 "has been cancelled, and will not affect your typing statistics."
 msgstr ""
-"В спокойном состоянии вы учитесь быстрее. Подумайте о том, чтобы сделать "
-"перерыв. Тест был отменен и не повлияет на вашу статистику набора текста."
+"Hitreje se učite v mirnem stanju duha. Razmislite o odmoru. Preizkus je "
+"preklican in ne bo vplival na statistiko tipkanja."
 
 #: src/widgets/window.blp:378
 msgid "Text _Language"
-msgstr "_Язык текста"
+msgstr "_Jezik besedila"
 
 #: src/widgets/window.blp:383
 msgid "_Keyboard Shortcuts"
-msgstr "_Комбинации клавиш"
+msgstr "_Tipkovne bližnjice‫"
 
 #: src/widgets/window.blp:388
 msgid "_About Keypunch"
-msgstr "_О приложении"
+msgstr "_O programu Tipkarica"
 
 #: src/widgets/window.rs:196
 msgid "Orthography by"
-msgstr "Автор орфографии"
+msgstr "Pravopis"
 
 #. Translators: Replace "translator-credits" with your names, one name per line
 #: src/widgets/window.rs:214
 msgid "translator-credits"
-msgstr "FAlexei"
+msgstr "Martin Srebotnjak <miles@filmsi.net>"
 
 #: src/widgets/window.rs:219
 msgid "Special thanks to"
-msgstr "Особая благодарность"
+msgstr "Posebna zahvala"
 
 #. Translators: Metainfo for the app Fretboard. <https://github.com/bragefuglseth/fretboard>
 #: src/widgets/window.rs:226
 msgid "Fretboard"
-msgstr "Fretboard"
+msgstr "Ubiralka"
 
 #. Translators: Metainfo for the app Fretboard. <https://github.com/bragefuglseth/fretboard>
 #: src/widgets/window.rs:228
 msgid "Look up guitar chords"
-msgstr "Поиск гитарных аккордов"
+msgstr "Poiščite kitarske akorde"
 
 #: src/widgets/window/typing_test.rs:163
 msgid "{} ⁄ {}"
@@ -442,15 +445,15 @@ msgstr "{} ⁄ {}"
 #. Translators: This is shown as a warning by GNOME Shell before logging out or shutting off the system in the middle of a typing test, alongside Keypunch's name and icon
 #: src/widgets/window/typing_test.rs:334
 msgid "Ongoing typing test"
-msgstr "Текущий тест набора текста"
+msgstr "Preizkus tipkanja v teku"
 
 #: src/widgets/window/typing_test.rs:506
 msgid "Changes discarded"
-msgstr "Изменения отменены"
+msgstr "Spremembe so bile opuščene"
 
 #: src/widgets/window/typing_test.rs:507
 msgid "Restore"
-msgstr "Восстановить"
+msgstr "Obnovi"
 
 #. Translators: The format of the timer. The first `{}` block will be replaced
 #. with the minutes passed, and the second one will be replaced with the seconds

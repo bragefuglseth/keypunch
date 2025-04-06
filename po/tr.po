@@ -3,15 +3,16 @@
 # This file is distributed under the same license as the dev.bragefuglseth.Keypunch package.
 #
 # Sabri Ünal <yakushabb@gmail.com>, 2024.
+# Muhammet Kara <muhammetk@gmail.com>, 2025.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: dev.bragefuglseth.Keypunch\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-01-09 21:31+0100\n"
-"PO-Revision-Date: 2024-10-23 00:24+0300\n"
+"Report-Msgid-Bugs-To: https://github.com/bragefuglseth/keypunch/issues\n"
+"POT-Creation-Date: 2025-03-24 03:27+0000\n"
+"PO-Revision-Date: 2025-04-04 17:28+0300\n"
 "Last-Translator: Sabri Ünal <yakushabb@gmail.com>\n"
-"Language-Team: Turkish <takim@gnome.org.tr>\n"
+"Language-Team: Turkish <gnome-turk@gnome.org>\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -21,7 +22,7 @@ msgstr ""
 
 #: data/dev.bragefuglseth.Keypunch.desktop.in.in:3
 #: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:7
-#: src/widgets/window.blp:5
+#: src/widgets/window.blp:24
 msgid "Keypunch"
 msgstr "Keypunch"
 
@@ -68,23 +69,30 @@ msgstr ""
 msgid "Get ready to accelerate your typing!"
 msgstr "Yazımınızı hızlandırmaya hazır olun!"
 
-#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:36
+#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:33
+msgid ""
+"Keypunch is proudly part of GNOME Circle, an initiative that champions the "
+"great software that is available for the GNOME platform. For more "
+"information, visit the GNOME Circle website."
+msgstr ""
+
+#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:39
 msgid "In the middle of a session"
 msgstr "Oturumun ortasında"
 
-#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:40
+#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:43
 msgid "Ready for typing"
 msgstr "Yazmaya hazır"
 
-#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:44
+#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:47
 msgid "Session results"
 msgstr "Oturum sonuçları"
 
-#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:48
+#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:51
 msgid "Language selection"
 msgstr "Dil seçimi"
 
-#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:52
+#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:55
 msgid "Custom text entry"
 msgstr "Özel metin girdisi"
 
@@ -101,12 +109,10 @@ msgid "Window Maximization"
 msgstr "Pencerenin Büyütülme Durumu"
 
 #: data/dev.bragefuglseth.Keypunch.gschema.xml:32
-#: src/widgets/results_view.blp:82 src/widgets/window.blp:146
 msgid "Session Type"
 msgstr "Oturum Türü"
 
 #: data/dev.bragefuglseth.Keypunch.gschema.xml:36
-#: src/widgets/results_view.blp:95 src/widgets/window.blp:151
 msgid "Session Duration"
 msgstr "Oturum Süresi"
 
@@ -121,9 +127,9 @@ msgid "\"en\""
 msgstr "\"tr\""
 
 #: data/dev.bragefuglseth.Keypunch.gschema.xml:42
-#: src/widgets/results_view.blp:108 src/widgets/text_language_dialog.blp:5
-#: src/widgets/text_language_dialog.blp:13
-#: src/widgets/text_language_dialog.blp:39
+#: src/widgets/results_view.blp:127 src/widgets/text_language_dialog.blp:24
+#: src/widgets/text_language_dialog.blp:32
+#: src/widgets/text_language_dialog.blp:58
 msgid "Text Language"
 msgstr "Metin Dili"
 
@@ -147,7 +153,7 @@ msgid "\"The quick brown fox jumps over the lazy dog.\""
 msgstr "\"Pijamalı hasta yağız şoföre çabucak güvendi.\""
 
 #: data/dev.bragefuglseth.Keypunch.gschema.xml:53
-#: src/widgets/custom_text_dialog.blp:5 src/widgets/custom_text_dialog.blp:26
+#: src/widgets/custom_text_dialog.blp:24 src/widgets/custom_text_dialog.blp:45
 msgid "Custom Text"
 msgstr "Özel Metin"
 
@@ -196,163 +202,239 @@ msgctxt "shortcut window"
 msgid "Quit"
 msgstr "Çık"
 
-#: src/widgets/custom_text_dialog.blp:37
+#: src/widgets/custom_text_dialog.blp:56
 msgid "Insert custom text…"
 msgstr "Özel metin ekle…"
 
-#: src/widgets/custom_text_dialog.blp:73
+#: src/widgets/custom_text_dialog.blp:92
 msgid "_Save"
 msgstr "_Kaydet"
 
-#: src/widgets/results_view.blp:34
+#: src/widgets/results_view.blp:53
 msgid "New Personal Best for Configuration"
 msgstr "Yapılandırma için Yeni Kişisel En İyi"
 
-#: src/widgets/results_view.blp:45
+#: src/widgets/results_view.blp:64
 msgid "Words per Minute"
 msgstr "Dakika Başına Kelime"
 
-#: src/widgets/results_view.blp:66
+#: src/widgets/results_view.blp:85
 msgid "Accuracy"
-msgstr ""
+msgstr "Kesinlik"
 
-#. Translators: The percentage label format of the results page.
-#. The `{}` block will be replaced with the percentage number,
-#. do not translate it!
-#: src/widgets/results_view.rs:129
+#: src/widgets/results_view.blp:101 src/widgets/window.blp:167
+msgid "Test Type"
+msgstr "Sınama Türü"
+
+#: src/widgets/results_view.blp:114 src/widgets/window.blp:175
+msgid "Test Duration"
+msgstr "Sınama Süresi"
+
+#: src/widgets/results_view.rs:165
 msgid "{}%"
 msgstr "%{}"
 
+#: src/widgets/results_view.rs:171 src/widgets/window.blp:169
+msgid "Custom"
+msgstr "Özel"
+
+#: src/widgets/results_view.rs:173 src/widgets/window.blp:169
+msgid "Simple"
+msgstr "Basit"
+
+#: src/widgets/results_view.rs:174 src/widgets/window.blp:169
+msgid "Advanced"
+msgstr "Gelişmiş"
+
 #. Translators: The `{}` blocks will be replaced with the number of minutes
 #. and seconds. Do not translate them!
-#: src/widgets/results_view.rs:187
+#: src/widgets/results_view.rs:200
 msgid "{}m {}s"
 msgstr "{}dk {}sn"
 
 #. Translators: The `{}` block will be replaced with the number of minutes.
 #. Do not translate it!
-#: src/widgets/results_view.rs:191
+#: src/widgets/results_view.rs:204
 msgid "{} minute"
 msgid_plural "{} minutes"
 msgstr[0] "{} dakika"
 
 #. Translators: The `{}` block will be replaced with the number of seconds.
 #. Do not translate it!
-#: src/widgets/results_view.rs:195
+#: src/widgets/results_view.rs:208
 msgid "{} second"
 msgid_plural "{} seconds"
 msgstr[0] "{} saniye"
 
-#: src/widgets/text_language_dialog.blp:21
-#: src/widgets/text_language_dialog.blp:161
-#: src/widgets/text_language_dialog.blp:190
+#: src/widgets/text_language_dialog.blp:40
+#: src/widgets/text_language_dialog.blp:180
+#: src/widgets/text_language_dialog.blp:209
 msgid "Add Language"
 msgstr "Dil Ekle"
 
-#: src/widgets/text_language_dialog.blp:51
-#: src/widgets/text_language_dialog.blp:55
+#: src/widgets/text_language_dialog.blp:70
+#: src/widgets/text_language_dialog.blp:74
 msgid "Search languages…"
 msgstr "Dil ara"
 
 #. Translators: Recent languages in text languages list
-#: src/widgets/text_language_dialog.blp:79
+#: src/widgets/text_language_dialog.blp:98
 msgid "Recent"
 msgstr "Son Kullanılan"
 
 #. Translators: Other languages in text languages list
-#: src/widgets/text_language_dialog.blp:84
+#: src/widgets/text_language_dialog.blp:103
 msgid "Other"
 msgstr "Diğer"
 
-#: src/widgets/text_language_dialog.blp:104
+#: src/widgets/text_language_dialog.blp:123
 msgid "Search Results"
 msgstr "Arama Sonuçları"
 
-#: src/widgets/text_language_dialog.blp:140
+#: src/widgets/text_language_dialog.blp:159
 msgid "No Matches"
 msgstr "Eşleşme Yok"
 
-#: src/widgets/text_language_dialog.blp:148
+#: src/widgets/text_language_dialog.blp:167
 msgid "Try a different search"
 msgstr "Başka arama dene"
 
-#: src/widgets/text_language_dialog.blp:199
+#: src/widgets/text_language_dialog.blp:218
 msgid ""
 "You can help add a new text language to Keypunch by submitting a language "
 "request on GitHub. A GitHub account and some language knowledge is required."
 msgstr ""
+"GitHub ile dil isteği göndererek Keypunchʼa yeni metin dili eklenmesine "
+"yardımcı olabilirsiniz. GitHub hesabı ve biraz dil bilgisi gereklidir."
 
-#: src/widgets/text_language_dialog.blp:214
+#: src/widgets/text_language_dialog.blp:233
 msgid "_Create Request"
 msgstr "İstek _Oluştur"
 
-#: src/widgets/text_view.blp:9
+#: src/widgets/text_view.blp:28
 msgid "Text View"
 msgstr "Metin Görünümü"
 
-#: src/widgets/window.blp:131
+#: src/widgets/window.blp:150
 msgid "Restart"
 msgstr "Yeniden Başlat"
 
-#: src/widgets/window.blp:158
+#: src/widgets/window.blp:178
+msgid "15 seconds"
+msgstr "15 Saniye"
+
+#: src/widgets/window.blp:179
+msgid "30 seconds"
+msgstr "30 saniye"
+
+#: src/widgets/window.blp:180
+msgid "1 minute"
+msgstr "1 dakika"
+
+#: src/widgets/window.blp:181
+msgid "5 minutes"
+msgstr "5 dakika"
+
+#: src/widgets/window.blp:182
+msgid "10 minutes"
+msgstr "10 dakika"
+
+#: src/widgets/window.blp:191
 msgid "_Edit Text"
 msgstr "Metni _Düzenle"
 
-#: src/widgets/window.blp:187
+#: src/widgets/window.blp:220
 msgid "Main Menu"
 msgstr "Ana Menü"
 
-#: src/widgets/window.blp:205
+#: src/widgets/window.blp:238
 msgid "Just Start Typing"
 msgstr "Yazmaya Başlayın"
 
 #. Translators: "Entry" here is the act of entering text
-#: src/widgets/window.blp:214
-msgid "Enable Entry"
-msgstr "Girdiyi Etkinleştir"
+#: src/widgets/window.blp:247
+msgid "_Enable Entry"
+msgstr "Girdiyi _Etkinleştir"
 
-#: src/widgets/window.blp:240
+#: src/widgets/window.blp:273
 msgid "Results"
 msgstr "Sonuçlar"
 
-#: src/widgets/window.blp:265
+#: src/widgets/window.blp:298
 msgid "_Continue"
 msgstr "_Sürdür"
 
-#: src/widgets/window.blp:297
+#. Translators: "Frustration Relief" is the name of the functionality
+#. that automatically cancels a test when random key mashing is detected,
+#. and displays a recommendation to take a break.
+#: src/widgets/window.blp:326
+msgid "Frustration Relief"
+msgstr "Hayal Kırıklığını Giderme"
+
+#: src/widgets/window.blp:332
+msgid "Frustration Detected"
+msgstr "Hayal Kırıklığı Algılandı"
+
+#. Translators: Make sure to convey this as politely and sensitively as possible,
+#. since it is likely to be shown to people while they are in a state of
+#. self-disappointment / anger
+#: src/widgets/window.blp:336
+msgid ""
+"You learn faster in a calm state of mind. Consider taking a break. The test "
+"has been cancelled, and will not affect your typing statistics."
+msgstr ""
+"Sakin ruh halinde daha hızlı öğrenirsiniz. Ara vermeyi düşünebilirsiniz. "
+"Sınav iptal edilmiştir ve yazım istatistikleriniz etkilemeyecek."
+
+#: src/widgets/window.blp:378
 msgid "Text _Language"
 msgstr "Metin _Dilleri"
 
-#: src/widgets/window.blp:302
+#: src/widgets/window.blp:383
 msgid "_Keyboard Shortcuts"
 msgstr "_Klavye Kısayolları"
 
-#: src/widgets/window.blp:307
+#: src/widgets/window.blp:388
 msgid "_About Keypunch"
 msgstr "Keypunch _Hakkında"
 
-#: src/widgets/window.rs:180
+#: src/widgets/window.rs:196
 msgid "Orthography by"
 msgstr "Yazım tarafından"
 
 #. Translators: Replace "translator-credits" with your names, one name per line
-#: src/widgets/window.rs:197
+#: src/widgets/window.rs:214
 msgid "translator-credits"
 msgstr "Sabri Ünal <yakushabb@gmail.com>"
 
-#: src/widgets/window.rs:202
+#: src/widgets/window.rs:219
 msgid "Special thanks to"
 msgstr "Özel teşekkürler"
 
-#: src/widgets/window/session.rs:118
+#. Translators: Metainfo for the app Fretboard. <https://github.com/bragefuglseth/fretboard>
+#: src/widgets/window.rs:226
+msgid "Fretboard"
+msgstr "Fretboard"
+
+#. Translators: Metainfo for the app Fretboard. <https://github.com/bragefuglseth/fretboard>
+#: src/widgets/window.rs:228
+msgid "Look up guitar chords"
+msgstr "Gitar akorlarına bak"
+
+#: src/widgets/window/typing_test.rs:163
 msgid "{} ⁄ {}"
 msgstr "{} ⁄ {}"
 
-#: src/widgets/window/session.rs:310
+#. Translators: This is shown as a warning by GNOME Shell before logging out or shutting off the system in the middle of a typing test, alongside Keypunch's name and icon
+#: src/widgets/window/typing_test.rs:334
+msgid "Ongoing typing test"
+msgstr "Süren yazım sınaması"
+
+#: src/widgets/window/typing_test.rs:506
 msgid "Changes discarded"
 msgstr "Değişikliklerden vazgeçildi"
 
-#: src/widgets/window/session.rs:311
+#: src/widgets/window/typing_test.rs:507
 msgid "Restore"
 msgstr "Geri Yükle"
 
@@ -361,38 +443,9 @@ msgstr "Geri Yükle"
 #. passed. Do not translate the `{}` blocks. Note that the `∶` sign is a special
 #. Unicode character; if your language doesn't use something completely different,
 #. you should probably copy and paste it from the original string.
-#: src/widgets/window/session.rs:405 src/widgets/window/session.rs:407
+#: src/widgets/window/typing_test.rs:605 src/widgets/window/typing_test.rs:607
 msgid "{}∶{}"
 msgstr "{}∶{}"
 
-#. Translators: This is shown as a warning by GNOME Shell before logging out or shutting off the system in the middle of a typing session, alongside Keypunch's name and icon
-#: src/widgets/window/ui_state.rs:179
-msgid "Ongoing typing session"
-msgstr "Süren yazım oturumu"
-
 #~ msgid "Correctness"
 #~ msgstr "Doğruluk"
-
-#~ msgid "Simple"
-#~ msgstr "Basit"
-
-#~ msgid "Advanced"
-#~ msgstr "Gelişmiş"
-
-#~ msgid "Custom"
-#~ msgstr "Özel"
-
-#~ msgid "15 seconds"
-#~ msgstr "15 Saniye"
-
-#~ msgid "30 seconds"
-#~ msgstr "30 saniye"
-
-#~ msgid "1 minute"
-#~ msgstr "1 dakika"
-
-#~ msgid "5 minutes"
-#~ msgstr "5 dakika"
-
-#~ msgid "10 minutes"
-#~ msgstr "10 dakika"

@@ -6,7 +6,7 @@
 
   <name xml:lang="en">Keypunch</name>
   <shortdesc xml:lang="en">Practice your typing skills</shortdesc>
-  <homepage rdf:resource="https://github.com/bragefuglseth/keypunch" />
+  <homepage rdf:resource="https://apps.gnome.org/Keypunch" />
   <bug-database rdf:resource="https://github.com/bragefuglseth/keypunch/issues" />
 
   <programming-language>Rust</programming-language>

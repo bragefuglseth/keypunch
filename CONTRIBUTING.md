@@ -1,34 +1,6 @@
 # Contributing
 
-Thanks for your interest in contributing to Keypunch! Here are some useful things to know:
-
-## Issues and suggestions
-
-Bug reports and feature requests are welcome. However, please keep the following in mind:
-
-- Flatpak is the only officially supported packaging format
-- The app has a [conservative approach to preferences](https://ometer.com/preferences.html); things should ideally be good enough out of the box
-- Before making a change and opening a pull request, make sure to discuss it in the issue tracker first, to make sure that the change will be accepted
-- This project follows the [GNOME Code of Conduct](https://conduct.gnome.org)
-
-## Building
-
-Use the Flatpak version of [GNOME Builder](https://apps.gnome.org/Builder) to build and run the project from source: 
-
-1. Open Builder and press the "Clone Repository…" button
-2. Paste a link to the repository in the "Repository URL" field:
-
-   ```
-   https://github.com/bragefuglseth/keypunch
-   ```
-
-3. Press the "Clone repository…" button
-4. Press confirm if asked about automatic installation of any dependencies, and wait for them to download
-5. Press the play button in the header bar
-
-## Translating
-
-Keypunch does not have any external translation infrastructure as of now, but a slot on Weblate will be applied for as soon as the project meets the requirements. Until then, please submit translations as regular pull requests. Translation work happens in the `po` directory.
+Thanks for your interest in contributing to Keypunch! Most of the information you're looking for can likely be found in Keypunch's [contribution guide](https://welcome.gnome.org/app/Keypunch) on the Welcome to GNOME website. This document contains information specific to Keypunch that cannot be found in said contribution guide.
 
 ## Adding a Language
 

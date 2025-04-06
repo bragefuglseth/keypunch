@@ -35,6 +35,8 @@ pub enum Language {
     Bangla,
     #[strum(message = "Български", to_string = "bg")]
     Bulgarian,
+    #[strum(message = "Català", to_string = "ca")]
+    Catalan,
     #[strum(message = "Čeština", to_string = "cs")]
     Czech,
     #[strum(message = "Dansk", to_string = "da")]
@@ -44,6 +46,8 @@ pub enum Language {
     #[default]
     #[strum(message = "English", to_string = "en")]
     English,
+    #[strum(message = "Eesti", to_string = "et")]
+    Estonian,
     #[strum(message = "Suomi", to_string = "fi")]
     Finnish,
     #[strum(message = "Français", to_string = "fr")]
@@ -58,6 +62,8 @@ pub enum Language {
     Hindi,
     #[strum(message = "Magyar", to_string = "hu")]
     Hungarian,
+    #[strum(message = "Bahasa Indonesia", to_string = "id")]
+    Indonesian,
     #[strum(message = "Italiano", to_string = "it")]
     Italian,
     #[strum(message = "Taqbaylit", to_string = "kab")]

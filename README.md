@@ -1,9 +1,10 @@
-![icon](/data/icons/dev.bragefuglseth.Keypunch.svg)
+![icon](/data/artwork/icon/dev.bragefuglseth.Keypunch.svg)
 
 # Keypunch
 
 [![Available on Flathub](https://img.shields.io/flathub/downloads/dev.bragefuglseth.Keypunch?logo=flathub&labelColor=77767b&color=4a90d9)](https://flathub.org/apps/dev.bragefuglseth.Keypunch)
 [![Chat on Matrix](https://img.shields.io/badge/chat-%23keypunch%3Agnome.org-mediumorchid?style=flat&logo=matrix)](https://matrix.to/#/#keypunch:gnome.org)
+[![Proudly part of GNOME Circle](https://circle.gnome.org/assets/button/badge.svg)](https://circle.gnome.org)
 [![Please do not theme this app](https://stopthemingmy.app/badge.svg)](https://stopthemingmy.app)
 
 ![screenshot](/data/screenshots/2-ready.png)
@@ -22,9 +23,23 @@ Keypunch is available on Flathub.
 
 [<img width="240" alt="Download on Flathub" src="https://flathub.org/api/badge?svg&locale=en"/>](https://flathub.org/apps/dev.bragefuglseth.Keypunch)
 
+## GNOME Circle
+
+Keypunch is proudly part of GNOME Circle, an initiative that champions the
+great software that is available for the GNOME platform. For more information,
+visit the GNOME Circle website.
+
+[<img width="240" src="https://circle.gnome.org/assets/button/circle-button-fullcolor.svg">](https://circle.gnome.org)
+
 ## Contributing
 
-Contributions are welcome! Refer to [CONTRIBUTING.md](CONTRIBUTING.md) for more. This project follows the [GNOME Code of Conduct](https://conduct.gnome.org).
+Contributions are extremely welcome. To see how you can help with issue reporting, development, and translations, consult Keypunch's [contribution guide](https://welcome.gnome.org/app/Keypunch). For project-specific documentation, such as how to add a new text language, see [CONTRIBUTING.md](CONTRIBUTING.md).
+
+Please take this into consideration as well:
+
+- This project follows the [GNOME Code of Conduct](https://conduct.gnome.org).
+- Only Flatpak is officially supported.
+- If you want to contribute major changes, please discuss them beforehand to verify that they are suitable for the project.
 
 ## Name
 
@@ -45,3 +60,10 @@ In addition to sounding neat, "Keypunch" is the name of an [actual keyboard devi
 ## Join the Community
 
 Any questions about the app? Or do you just want to hang out and share your typing results? Join the [Keypunch room](https://matrix.to/#/#keypunch:gnome.org) on Matrix! We can't wait to see you there.
+
+## Support Keypunch
+
+If you're enjoying Keypunch, I'm glad to hear that! Tag me on Mastodon and let me know! I don't accept donations through a lot of platforms at the moment, but if you happen to live in a Nordic country and have access to Vipps or MobilePay, feel free to throw some money into my virtual tip jar:
+
+[![Donate with Vipps](/data/assets/vipps_button.svg)](https://qr.vipps.no/box/c18bade5-d2c3-48a2-91ec-2eb235590bea/pay-in)
+[![Donate with MobilePay](/data/assets/mobilepay_button.svg)](https://qr.mobilepay.dk/box/c18bade5-d2c3-48a2-91ec-2eb235590bea/pay-in)
