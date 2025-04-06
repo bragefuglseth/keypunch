@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: keypunch\n"
 "Report-Msgid-Bugs-To: https://github.com/bragefuglseth/keypunch/issues\n"
-"POT-Creation-Date: 2025-03-24 03:27+0000\n"
-"PO-Revision-Date: 2025-04-01 06:23+0330\n"
+"POT-Creation-Date: 2025-04-01 02:54+0000\n"
+"PO-Revision-Date: 2025-04-06 19:40+0330\n"
 "Last-Translator: Danial Behzadi <dani.behzi@ubuntu.com>\n"
 "Language-Team: Persian\n"
 "Language: fa\n"
@@ -39,12 +39,11 @@ msgstr ""
 #: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:13
 msgid ""
 "There is no doubt that typing on a keyboard is an essential skill in the "
-"digital age. Typing fast and accurately gives you more opportunities, more time "
-"for what matters to you, and a sense of self-accomplishment."
+"digital age. Typing fast and accurately gives you more opportunities, more "
+"time for what matters to you, and a sense of self-accomplishment."
 msgstr ""
-"بدون شک مهارت تایپ کردن سریع با صفحه‌کلید در عصر دیجیتال ضروری است. سریع و دقیق "
-"تایپ کردن به شما فرصت‌های بیشتر، زمان بیشتر برای چیزی که مهم‌تر است و احساس "
-"خودشکوفایی می‌دهد."
+"بی‌شک مهارت نوشتن سریع با صفحه‌کلید در عصر دیجیتال ضروری است. سریع و دقیق نوشتن "
+"فرصت‌ها و زمان بیش‌تری فراهم کرده و حس خودشکوفایی می‌دهد."
 
 #: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:18
 msgid ""
@@ -56,14 +55,14 @@ msgid ""
 msgstr ""
 "کلیدزنی می‌گذارد نوشتن را تمرین کنید. به لطف نشست‌های سریع با بازخورد فوری پس از "
 "آن و انبوهی از زبان‌های موجود، شاید حتا کمی هم سرگرم شوید. با ارادهٔ قوی، فن "
-"مناسب و کمی زمان، شاهد افزایش قابل توجهی در سرعت و دقت تبدیل افکار و ایده‌هایتان "
-"به کلمات روی صفحه نمایش خواهید بود."
+"مناسب و کمی زمان، شاهد افزایش قابل توجهی در سرعت و دقت تبدیل افکار و "
+"ایده‌هایتان به کلمات روی صفحه نمایش خواهید بود."
 
 #: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:25
 msgid ""
-"If you are already a racer at typing, Keypunch still has something for you. Try "
-"practicing with numbers and punctuation, or choose your own text to type out as "
-"fast as you can."
+"If you are already a racer at typing, Keypunch still has something for you. "
+"Try practicing with numbers and punctuation, or choose your own text to type "
+"out as fast as you can."
 msgstr ""
 "حتا اگر یک حروف‌چین حرفه‌ای هستید، بازهم کلیدزنی برای شما چیزی دارد. می‌توانید با "
 "اعداد و علائم نگارشی تمرین کرده یا متن خود را برای نوشتن هرچه سریع‌تر برگزینید."
@@ -78,7 +77,7 @@ msgid ""
 "great software that is available for the GNOME platform. For more information, "
 "visit the GNOME Circle website."
 msgstr ""
-"کلیدزنی با افتحار بخشی از حلقهٔ گنوم است. دیدن پایگاه وب حلقهٔ گنوم برای اطّلاعات "
+"کلیدزنی با افتخار بخشی از حلقهٔ گنوم است. دیدن پایگاه وب حلقهٔ گنوم برای اطّلاعات "
 "بیش‌تر."
 
 #: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:39
@@ -130,8 +129,9 @@ msgstr "مدت زمان نشست‌های زمان‌محور"
 msgid "\"en\""
 msgstr "\"fa\""
 
-#: data/dev.bragefuglseth.Keypunch.gschema.xml:42 src/widgets/results_view.blp:127
-#: src/widgets/text_language_dialog.blp:24 src/widgets/text_language_dialog.blp:32
+#: data/dev.bragefuglseth.Keypunch.gschema.xml:42
+#: src/widgets/results_view.blp:127 src/widgets/text_language_dialog.blp:24
+#: src/widgets/text_language_dialog.blp:32
 #: src/widgets/text_language_dialog.blp:58
 msgid "Text Language"
 msgstr "زبان متن"
@@ -168,8 +168,8 @@ msgstr "برترین دستاوردها"
 
 #: data/dev.bragefuglseth.Keypunch.gschema.xml:59
 msgid ""
-"The current highest amount of WPM received for each session type / duration and "
-"language"
+"The current highest amount of WPM received for each session type / duration "
+"and language"
 msgstr "بیشترین میزان WPM ثبت‌شده برای هر نوع/مدت نشست و زبان"
 
 #: data/resources/gtk/help-overlay.ui:11
@@ -274,7 +274,8 @@ msgstr[1] "{} ثانیه‌ها"
 msgid "Add Language"
 msgstr "افزودن زبان"
 
-#: src/widgets/text_language_dialog.blp:70 src/widgets/text_language_dialog.blp:74
+#: src/widgets/text_language_dialog.blp:70
+#: src/widgets/text_language_dialog.blp:74
 msgid "Search languages…"
 msgstr "جست‌وجوی زبان‌ها…"
 
@@ -305,8 +306,8 @@ msgid ""
 "You can help add a new text language to Keypunch by submitting a language "
 "request on GitHub. A GitHub account and some language knowledge is required."
 msgstr ""
-"می‌توانید با ثبت درخواست زبان در گیت‌هاب به افزودن زبان جدید به کلیدزنی کمک کنید. "
-"نیازمند حساب گیت‌هاب و دانش زبانی."
+"می‌توانید با ثبت درخواست زبان در گیت‌هاب به افزودن زبان جدید به کلیدزنی کمک "
+"کنید. نیازمند حساب گیت‌هاب و دانش زبانی."
 
 #: src/widgets/text_language_dialog.blp:233
 msgid "_Create Request"
@@ -381,8 +382,8 @@ msgstr "تشخیص سرخوردگی"
 #. self-disappointment / anger
 #: src/widgets/window.blp:336
 msgid ""
-"You learn faster in a calm state of mind. Consider taking a break. The test has "
-"been cancelled, and will not affect your typing statistics."
+"You learn faster in a calm state of mind. Consider taking a break. The test "
+"has been cancelled, and will not affect your typing statistics."
 msgstr ""
 "در حالت آرامش فکری سریع‌تر یاد می‌گیرید. کمی استراحت کنید. آزمون لغو شد و تأثیری "
 "روی آمار نوشتنتان نخواهد گذاشت."
