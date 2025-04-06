@@ -1,12 +1,12 @@
 use crate::typing_test_utils::*;
 use anyhow::Result;
+use gettextrs::gettext;
+use i18n_format::i18n_fmt;
 use rusqlite::Connection;
+use std::fs;
 use std::path::PathBuf;
 use std::sync::LazyLock;
-use std::fs;
-use time::{Date, Month, OffsetDateTime, Duration, Time};
-use i18n_format::i18n_fmt;
-use gettextrs::gettext;
+use time::{Date, Duration, Month, OffsetDateTime, Time};
 
 pub struct ChartItem {
     pub title: String,
@@ -45,12 +45,21 @@ impl TypingStatsDb {
     pub fn push_summary(&self, summary: &TestSummary) -> Result<()> {
         let (test_type, language, duration) = match summary.config {
             TestConfig::Finite => ("Custom", None, None),
-            TestConfig::Generated { difficulty, language, duration, .. } => {
+            TestConfig::Generated {
+                difficulty,
+                language,
+                duration,
+                ..
+            } => {
                 let difficulty = match difficulty {
                     GeneratedTestDifficulty::Simple => "Simple",
                     GeneratedTestDifficulty::Advanced => "Advanced",
                 };
-                (difficulty, Some(language.to_string()), Some(duration.to_string()))
+                (
+                    difficulty,
+                    Some(language.to_string()),
+                    Some(duration.to_string()),
+                )
             }
         };
 
@@ -82,7 +91,11 @@ impl TypingStatsDb {
     }
 
     // Returns the average WPM and accuracy at a given date
-    pub fn average_from_period(&self, start: OffsetDateTime, end: OffsetDateTime) -> rusqlite::Result<(f64, f64)> {
+    pub fn average_from_period(
+        &self,
+        start: OffsetDateTime,
+        end: OffsetDateTime,
+    ) -> rusqlite::Result<(f64, f64)> {
         self.0.query_row(
             "SELECT     AVG(wpm), AVG(accuracy)
             FROM        tests
@@ -90,7 +103,7 @@ impl TypingStatsDb {
             AND         UNIXEPOCH(timestamp) BETWEEN ? AND ?
             AND         test_type IN ('Simple', 'Advanced')",
             (start.unix_timestamp(), end.unix_timestamp()),
-            |row| Ok((row.get(0)?, row.get(1)?))
+            |row| Ok((row.get(0)?, row.get(1)?)),
         )
     }
 
@@ -117,7 +130,10 @@ impl TypingStatsDb {
             })
             .collect();
 
-        let &ChartItem { time_index: time_offset, .. } = month_data.get(0)?;
+        let &ChartItem {
+            time_index: time_offset,
+            ..
+        } = month_data.get(0)?;
 
         for item in month_data.iter_mut() {
             item.time_index -= time_offset;
@@ -133,13 +149,16 @@ impl TypingStatsDb {
             .filter_map(|n| {
                 let mut start = now.replace_day(1).unwrap().replace_time(Time::MIDNIGHT);
 
-                for _ in 0..(11-n) {
+                for _ in 0..(11 - n) {
                     let prev_month_length = start.month().previous().length(start.year());
                     start -= Duration::days(prev_month_length as i64)
                 }
 
                 let month_length = start.month().length(start.year());
-                let end = start.replace_day(month_length).unwrap().replace_time(Time::MAX);
+                let end = start
+                    .replace_day(month_length)
+                    .unwrap()
+                    .replace_time(Time::MAX);
 
                 if let Ok((wpm, accuracy)) = DATABASE.average_from_period(start, end) {
                     Some(ChartItem {
@@ -154,7 +173,10 @@ impl TypingStatsDb {
             })
             .collect();
 
-        let &ChartItem { time_index: time_offset, .. } = month_data.get(0)?;
+        let &ChartItem {
+            time_index: time_offset,
+            ..
+        } = month_data.get(0)?;
 
         for item in month_data.iter_mut() {
             item.time_index -= time_offset;
@@ -169,16 +191,24 @@ impl TypingStatsDb {
         let start = now.replace_time(Time::MIDNIGHT) - Duration::days(27);
         let (wpm, accuracy) = self.average_from_period(start, now).ok()?;
 
-        let finish_rate = self.0.query_row(
-            "SELECT     SUM(finished), COUNT(*)
+        let finish_rate = self
+            .0
+            .query_row(
+                "SELECT     SUM(finished), COUNT(*)
             FROM        tests
             WHERE       UNIXEPOCH(timestamp) BETWEEN ? AND ?
             AND         test_type IN ('Simple', 'Advanced')",
-            (start.unix_timestamp(), now.unix_timestamp()),
-            |row| Ok(row.get::<_, f64>(0)? / row.get::<_, f64>(1)?),
-        ).ok()?;
+                (start.unix_timestamp(), now.unix_timestamp()),
+                |row| Ok(row.get::<_, f64>(0)? / row.get::<_, f64>(1)?),
+            )
+            .ok()?;
 
-        Some(PeriodSummary { wpm, accuracy, finish_rate, practice_time: String::from("todo")})
+        Some(PeriodSummary {
+            wpm,
+            accuracy,
+            finish_rate,
+            practice_time: String::from("todo"),
+        })
     }
 }
 

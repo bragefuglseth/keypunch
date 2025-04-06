@@ -17,16 +17,16 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+use crate::database::DATABASE;
+use crate::database::{ChartItem, PeriodSummary};
 use crate::widgets::KpLineChart;
 use adw::prelude::*;
 use adw::subclass::prelude::*;
 use glib::subclass::Signal;
 use gtk::glib;
-use std::sync::OnceLock;
-use crate::database::DATABASE;
-use crate::database::{PeriodSummary, ChartItem};
-use time::{Time, OffsetDateTime, Duration};
 use i18n_format::i18n_fmt;
+use std::sync::OnceLock;
+use time::{Duration, OffsetDateTime, Time};
 
 mod imp {
     use super::*;
@@ -107,9 +107,13 @@ mod imp {
 
             let month_summary = DATABASE.last_month_summary().unwrap(); // TODO: Handle the no data case
 
-            self.month_wpm_label.set_label(&month_summary.wpm.floor().to_string());
-            self.month_accuracy_label.set_label(&i18n_fmt! { i18n_fmt("{}%", (month_summary.accuracy * 100.).floor()) });
-            self.month_finish_rate_label.set_label(&i18n_fmt! { i18n_fmt("{}%", (month_summary.finish_rate * 100.).floor()) });
+            self.month_wpm_label
+                .set_label(&month_summary.wpm.floor().to_string());
+            self.month_accuracy_label
+                .set_label(&i18n_fmt! { i18n_fmt("{}%", (month_summary.accuracy * 100.).floor()) });
+            self.month_finish_rate_label.set_label(
+                &i18n_fmt! { i18n_fmt("{}%", (month_summary.finish_rate * 100.).floor()) },
+            );
         }
     }
     impl WidgetImpl for KpStatisticsDialog {}

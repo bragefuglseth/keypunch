@@ -18,11 +18,11 @@
  */
 
 use super::*;
-use crate::typing_test_utils::TestSummary;
+use crate::database::DATABASE;
 use crate::text_generation;
 use crate::text_utils::{process_custom_text, GraphemeState};
+use crate::typing_test_utils::TestSummary;
 use crate::widgets::{KpCustomTextDialog, KpStatisticsDialog, KpTextLanguageDialog};
-use crate::database::DATABASE;
 use gettextrs::gettext;
 use glib::ControlFlow;
 use i18n_format::i18n_fmt;
@@ -276,10 +276,10 @@ impl imp::KpWindow {
         let settings = app.settings();
 
         // Discord IPC
-        self.obj().kp_application().discord_rpc().set_activity(
-            TestConfig::from_settings(&settings),
-            PresenceState::Ready,
-        );
+        self.obj()
+            .kp_application()
+            .discord_rpc()
+            .set_activity(TestConfig::from_settings(&settings), PresenceState::Ready);
 
         self.end_existing_inhibit();
     }
@@ -305,8 +305,7 @@ impl imp::KpWindow {
                 move || {
                     if imp.is_running() {
                         imp.menu_button.set_visible(false);
-                        imp.header_bar_start
-                            .set_visible_child_name("stop_button");
+                        imp.header_bar_start.set_visible_child_name("stop_button");
                     }
                 }
             ),
@@ -349,7 +348,9 @@ impl imp::KpWindow {
     }
 
     pub(super) fn frustration_relief(&self) {
-        let Some(test) = self.current_test.get() else { return; };
+        let Some(test) = self.current_test.get() else {
+            return;
+        };
 
         self.end_test(test, false);
         self.main_stack.set_visible_child_name("frustration-relief");
@@ -370,7 +371,9 @@ impl imp::KpWindow {
     }
     #[template_callback]
     pub(super) fn cancel_test(&self) {
-        let Some(test) = self.current_test.get() else { return; };
+        let Some(test) = self.current_test.get() else {
+            return;
+        };
         self.end_test(test, false);
         self.ready();
     }
@@ -400,7 +403,7 @@ impl imp::KpWindow {
             &original_text,
             &typed_text,
             &keystrokes,
-            finished
+            finished,
         );
 
         if let Err(e) = DATABASE.push_summary(&summary) {
@@ -732,13 +735,11 @@ pub(super) fn add_personal_best(
     let (new_test_type, new_duration, new_language, new_wpm) = new;
 
     old.into_iter()
-        .filter(
-            |(stored_test_type, stored_duration, stored_lang_code, _)| {
-                *stored_test_type != new_test_type
-                    || *stored_duration != new_duration
-                    || *stored_lang_code != new_language
-            },
-        )
+        .filter(|(stored_test_type, stored_duration, stored_lang_code, _)| {
+            *stored_test_type != new_test_type
+                || *stored_duration != new_duration
+                || *stored_lang_code != new_language
+        })
         .chain(once((
             new_test_type.to_string(),
             new_duration.to_string(),

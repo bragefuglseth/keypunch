@@ -24,8 +24,8 @@ use gtk::gio;
 use gtk::prelude::*;
 use std::str::FromStr;
 use std::time::{Duration, Instant};
-use time::OffsetDateTime;
 use strum_macros::{Display as EnumDisplay, EnumIter, EnumString};
+use time::OffsetDateTime;
 
 #[derive(Clone, Copy, PartialEq, EnumString, EnumDisplay)]
 pub enum GeneratedTestDifficulty {
@@ -164,9 +164,7 @@ impl TestSummary {
             wpm: calculate_wpm(real_duration, &original, &typed),
             start_timestamp,
             accuracy: correct_keystrokes as f64 / total_keystrokes as f64,
-            finished
+            finished,
         }
     }
 }
-
-

@@ -21,10 +21,10 @@ mod application;
 mod config;
 mod database;
 mod discord_rpc;
-mod typing_test_utils;
 mod settings;
 mod text_generation;
 mod text_utils;
+mod typing_test_utils;
 mod widgets;
 
 use self::application::KpApplication;

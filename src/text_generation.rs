@@ -148,8 +148,7 @@ type Numerals = [&'static str; 10];
 
 const WESTERN_ARABIC_NUMERALS: &'static Numerals =
     &["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
-const PERSIAN_NUMERALS: &'static Numerals =
-    &["۰", "۱", "۲", "۳", "۴", "۵", "۶", "۷", "۸", "۹"];
+const PERSIAN_NUMERALS: &'static Numerals = &["۰", "۱", "۲", "۳", "۴", "۵", "۶", "۷", "۸", "۹"];
 const DEVANAGARI_NUMERALS: &'static Numerals = &["०", "१", "२", "३", "४", "५", "६", "७", "८", "९"];
 const BANGLA_NUMERALS: &'static Numerals = &["০", "১", "২", "৩", "৪", "৫", "৬", "৭", "৮", "৯"];
 
@@ -304,7 +303,6 @@ pub fn advanced(language: Language) -> String {
                 Punctuation::suffix("؟", true, 0.3),
                 Punctuation::wrapping("\"", "\"", false, 0.0),
                 Punctuation::wrapping("(", ")", false, 0.1),
-
             ],
             PERSIAN_NUMERALS,
         ),
@@ -453,4 +451,3 @@ fn random_number_weighted(numerals: &Numerals, rng: &mut ThreadRng) -> String {
 
     s
 }
-
