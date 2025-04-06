@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: keypunch\n"
 "Report-Msgid-Bugs-To: https://github.com/bragefuglseth/keypunch/issues\n"
 "POT-Creation-Date: 2025-04-01 02:54+0000\n"
-"PO-Revision-Date: 2025-04-06 19:40+0330\n"
+"PO-Revision-Date: 2025-04-06 19:52+0330\n"
 "Last-Translator: Danial Behzadi <dani.behzi@ubuntu.com>\n"
 "Language-Team: Persian\n"
 "Language: fa\n"
@@ -42,8 +42,9 @@ msgid ""
 "digital age. Typing fast and accurately gives you more opportunities, more "
 "time for what matters to you, and a sense of self-accomplishment."
 msgstr ""
-"بی‌شک مهارت نوشتن سریع با صفحه‌کلید در عصر دیجیتال ضروری است. سریع و دقیق نوشتن "
-"فرصت‌ها و زمان بیش‌تری فراهم کرده و حس خودشکوفایی می‌دهد."
+"بدون شک مهارت تایپ کردن سریع با صفحه‌کلید در عصر دیجیتال ضروری است. سریع و دقیق "
+"تایپ کردن به شما فرصت‌های بیشتر، زمان بیشتر برای چیزی که مهم‌تر است و احساس "
+"خودشکوفایی می‌دهد."
 
 #: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:18
 msgid ""
@@ -69,7 +70,7 @@ msgstr ""
 
 #: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:30
 msgid "Get ready to accelerate your typing!"
-msgstr "آکاده شدن برای شتاب‌دهی به نوشتنتان!"
+msgstr "آماده شدن برای شتاب‌دهی به نوشتنتان!"
 
 #: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:33
 msgid ""
@@ -77,7 +78,7 @@ msgid ""
 "great software that is available for the GNOME platform. For more information, "
 "visit the GNOME Circle website."
 msgstr ""
-"کلیدزنی با افتخار بخشی از حلقهٔ گنوم است. دیدن پایگاه وب حلقهٔ گنوم برای اطّلاعات "
+"کلیدزنی با افتحار بخشی از حلقهٔ گنوم است. دیدن پایگاه وب حلقهٔ گنوم برای اطّلاعات "
 "بیش‌تر."
 
 #: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:39
