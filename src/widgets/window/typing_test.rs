@@ -18,9 +18,9 @@
  */
 
 use super::*;
-use crate::typing_test_utils::TestSummary;
 use crate::text_generation;
 use crate::text_utils::{process_custom_text, GraphemeState};
+use crate::typing_test_utils::TestSummary;
 use crate::widgets::{KpCustomTextDialog, KpTextLanguageDialog};
 use gettextrs::gettext;
 use glib::ControlFlow;
@@ -276,10 +276,10 @@ impl imp::KpWindow {
         let settings = app.settings();
 
         // Discord IPC
-        self.obj().kp_application().discord_rpc().set_activity(
-            TestConfig::from_settings(&settings),
-            PresenceState::Ready,
-        );
+        self.obj()
+            .kp_application()
+            .discord_rpc()
+            .set_activity(TestConfig::from_settings(&settings), PresenceState::Ready);
 
         self.end_existing_inhibit();
     }
@@ -718,13 +718,11 @@ pub(super) fn add_personal_best(
     let (new_test_type, new_duration, new_language, new_wpm) = new;
 
     old.into_iter()
-        .filter(
-            |(stored_test_type, stored_duration, stored_lang_code, _)| {
-                *stored_test_type != new_test_type
-                    || *stored_duration != new_duration
-                    || *stored_lang_code != new_language
-            },
-        )
+        .filter(|(stored_test_type, stored_duration, stored_lang_code, _)| {
+            *stored_test_type != new_test_type
+                || *stored_duration != new_duration
+                || *stored_lang_code != new_language
+        })
         .chain(once((
             new_test_type.to_string(),
             new_duration.to_string(),
@@ -733,4 +731,3 @@ pub(super) fn add_personal_best(
         )))
         .collect()
 }
-

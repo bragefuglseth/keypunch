@@ -196,7 +196,7 @@ mod imp {
 
             if change == TextChange::Addition {
                 let last_grapheme_state = comparison
-                   .iter()
+                    .iter()
                     .last()
                     .map(|(state, _, _, _)| *state)
                     .unwrap_or(GraphemeState::Unfinished);

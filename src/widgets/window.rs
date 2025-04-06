@@ -23,8 +23,8 @@ mod typing_test;
 
 use crate::application::KpApplication;
 use crate::config::APP_ID;
-use crate::typing_test_utils::*;
 use crate::settings;
+use crate::typing_test_utils::*;
 use crate::widgets::{KpResultsView, KpTextView};
 use adw::prelude::*;
 use adw::subclass::prelude::*;

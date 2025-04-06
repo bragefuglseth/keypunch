@@ -121,7 +121,9 @@ impl imp::KpTextView {
             #[upgrade_or]
             glib::signal::Propagation::Proceed,
             move |controller, key, _, modifier| {
-                if imp.typed_text.borrow().is_empty() { return glib::signal::Propagation::Proceed; }
+                if imp.typed_text.borrow().is_empty() {
+                    return glib::signal::Propagation::Proceed;
+                }
 
                 let obj = imp.obj();
 
