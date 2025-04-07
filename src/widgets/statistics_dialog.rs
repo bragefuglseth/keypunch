@@ -124,6 +124,9 @@ mod imp {
             self.month_finish_rate_label.set_label(
                 &i18n_fmt! { i18n_fmt("{}%", (month_summary.finish_rate * 100.).floor()) },
             );
+            self.month_practice_time_label.set_label(
+                &month_summary.practice_time,
+            );
 
             true
         }

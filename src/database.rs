@@ -191,15 +191,15 @@ impl TypingStatsDb {
         let start = now.replace_time(Time::MIDNIGHT) - Duration::days(27);
         let (wpm, accuracy) = self.average_from_period(start, now).ok()?;
 
-        let finish_rate = self
+        let (finish_rate, practice_time) = self
             .0
             .query_row(
-                "SELECT     SUM(finished), COUNT(*)
-            FROM        tests
-            WHERE       UNIXEPOCH(timestamp) BETWEEN ? AND ?
-            AND         test_type IN ('Simple', 'Advanced')",
+                "SELECT     SUM(finished), COUNT(*), SUM(real_duration)
+                FROM        tests
+                WHERE       UNIXEPOCH(timestamp) BETWEEN ? AND ?
+                AND         test_type IN ('Simple', 'Advanced')",
                 (start.unix_timestamp(), now.unix_timestamp()),
-                |row| Ok(row.get::<_, f64>(0)? / row.get::<_, f64>(1)?),
+                |row| Ok((row.get::<_, f64>(0)? / row.get::<_, f64>(1)?, row.get::<_, i64>(2)?)),
             )
             .ok()?;
 
@@ -207,10 +207,12 @@ impl TypingStatsDb {
             wpm,
             accuracy,
             finish_rate,
-            practice_time: String::from("todo"),
+            practice_time: human_readable_duration_short(Duration::seconds(practice_time))
         })
     }
 }
+
+// TODO: move i18n stuff into separate file
 
 fn formatted_date(date: Date) -> String {
     let day = date.day();
@@ -250,5 +252,26 @@ fn formatted_month(date: Date) -> String {
         Month::October => i18n_fmt! { i18n_fmt("October {}", year) },
         Month::November => i18n_fmt! { i18n_fmt("November {}", year) },
         Month::December => i18n_fmt! { i18n_fmt("December {}", year) },
+    }
+}
+
+pub fn human_readable_duration_short(duration: Duration) -> String {
+    let total_secs = duration.as_seconds_f32().floor() as u32;
+
+    let minutes = total_secs / 60;
+    let secs = total_secs % 60;
+
+    if minutes > 0 && secs > 0 {
+        // Translators: The `{}` blocks will be replaced with the number of minutes
+        // and seconds. Do not translate them!
+        i18n_fmt! { i18n_fmt("{}m {}s", minutes, secs) }
+    } else if minutes > 0 {
+        // Translators: The `{}` block will be replaced with the number of minutes.
+        // Do not translate it!
+        i18n_fmt! { i18n_nfmt("{} m", "{} m", minutes as u32, minutes) }
+    } else {
+        // Translators: The `{}` block will be replaced with the number of seconds.
+        // Do not translate it!
+        i18n_fmt! { i18n_nfmt("{} s", "{} s", secs as u32, secs) }
     }
 }
