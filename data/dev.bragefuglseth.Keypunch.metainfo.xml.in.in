@@ -80,6 +80,11 @@
   </supports>
   <launchable type="desktop-id">dev.bragefuglseth.Keypunch.desktop</launchable>
   <releases>
+    <release date="2025-04-14" version="6.2">
+      <description translate="no">
+        <p>This update improves the translations of Keypunch into different languages.</p>
+      </description>
+    </release>
     <release date="2025-04-05" version="6.1">
       <description translate="no">
         <p>Fixes a critical bug that causes the app to crash when Keypunch attempts to identify an unknown language.</p>
