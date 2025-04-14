@@ -32,6 +32,8 @@ const ALIASES: &'static [(&'static str, &'static str)] = &[
     ("æ", "ae"),
     ("Œ", "Oe"), // The French use this to type out œ
     ("œ", "oe"),
+    ("\u{025B}", "\u{03B5}"), // ɛ and ε, often used interchangeably due to lack of keyboard standardization, especially for Kabyle
+    ("\u{03B5}", "\u{025B}"),
     ("«", "\""), // Guillemet quotation marks
     ("»", "\""),
     ("„", "\""), // Typographic quotation marks
