@@ -19,6 +19,7 @@
 
 mod application;
 mod config;
+mod database;
 mod discord_rpc;
 mod settings;
 mod text_generation;
@@ -52,6 +53,8 @@ fn main() -> glib::ExitCode {
     // application windows, integration with the window manager/compositor, and
     // desktop features such as file opening and single-instance applications.
     let app = KpApplication::new(APP_ID, &gio::ApplicationFlags::empty());
+
+    std::sync::LazyLock::force(&crate::database::DATABASE);
 
     // Run the application. This function will block until the application
     // exits. Upon return, we have our exit code to return to the shell. (This
