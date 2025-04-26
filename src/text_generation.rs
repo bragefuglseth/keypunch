@@ -239,6 +239,21 @@ pub fn advanced(language: Language) -> String {
             ],
             WESTERN_ARABIC_NUMERALS,
         ),
+        Language::Greek => advanced_generic(
+            &language.to_string(),
+            " ",
+            &[
+                Punctuation::suffix(".", true, 0.6),
+                Punctuation::suffix(",", false, 1.0),
+                Punctuation::suffix("·", false, 0.1),
+                Punctuation::suffix(":", false, 0.2),
+                Punctuation::suffix("!", true, 0.3),
+                Punctuation::suffix(";", true, 0.3),
+                Punctuation::wrapping("\"", "\"", false, 0.2),
+                Punctuation::wrapping("(", ")", false, 0.1),
+            ],
+            WESTERN_ARABIC_NUMERALS,
+        ),
         // Hindi & Nepali use Devanagari punctuation
         Language::Bangla | Language::Hindi | Language::Nepali => advanced_generic(
             &language.to_string(),
