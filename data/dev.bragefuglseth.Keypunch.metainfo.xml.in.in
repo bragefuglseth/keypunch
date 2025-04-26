@@ -80,6 +80,17 @@
   </supports>
   <launchable type="desktop-id">dev.bragefuglseth.Keypunch.desktop</launchable>
   <releases>
+    <release date="2025-04-26" version="6.3">
+      <description translate="no">
+        <p>Miscellaneous bug fixes and improvements:</p>
+        <ul>
+          <li>The “Enable Entry” button is now shown whenever it should be</li>
+          <li>Greek tests now use proper Greek punctuation in advanced mode</li>
+          <li>Kabyle tests now use the proper “open E” letter in all cases</li>
+          <li>Updated user interface translations</li>
+        </ul>
+      </description>
+    </release>
     <release date="2025-04-14" version="6.2">
       <description translate="no">
         <p>This update improves the translations of Keypunch into different languages.</p>
