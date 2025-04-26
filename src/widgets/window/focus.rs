@@ -63,7 +63,7 @@ impl imp::KpWindow {
                                 move || {
                                     if !imp.text_view_focused()
                                         && imp.obj().visible_dialog().is_none()
-                                        && imp.main_stack.visible_child_name().unwrap() == "session"
+                                        && imp.main_stack.visible_child_name().unwrap() == "test"
                                     {
                                         bottom_stack.set_visible_child(&focus_button);
                                         text_view.add_css_class("unfocused");
