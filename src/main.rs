@@ -21,6 +21,7 @@ mod application;
 mod config;
 mod discord_rpc;
 mod settings;
+mod text_file;
 mod text_generation;
 mod text_utils;
 mod typing_test_utils;
