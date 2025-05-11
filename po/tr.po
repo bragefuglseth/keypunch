@@ -4,15 +4,16 @@
 #
 # Sabri Ünal <yakushabb@gmail.com>, 2024.
 # Muhammet Kara <muhammetk@gmail.com>, 2025.
+# Emin Tufan Çetin <etcetin@gmail.com>, 2025.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: dev.bragefuglseth.Keypunch\n"
 "Report-Msgid-Bugs-To: https://github.com/bragefuglseth/keypunch/issues\n"
-"POT-Creation-Date: 2025-03-24 03:27+0000\n"
-"PO-Revision-Date: 2025-04-04 17:28+0300\n"
-"Last-Translator: Sabri Ünal <yakushabb@gmail.com>\n"
-"Language-Team: Turkish <gnome-turk@gnome.org>\n"
+"POT-Creation-Date: 2025-04-07 07:53+0000\n"
+"PO-Revision-Date: 2025-05-11 08:00+0300\n"
+"Last-Translator: Emin Tufan Çetin <etcetin@gmail.com>\n"
+"Language-Team: Turkish <takim@gnome.org.tr>\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -57,6 +58,11 @@ msgid ""
 "some time, you will observe a noticeable increase in both the speed and the "
 "accuracy of which your thoughts and ideas are put into words on the screen."
 msgstr ""
+"Keypunch, yazım alıştırması yapmanızı sağlar. Ardına anlık geri bildirim "
+"veren hızlı oturum ve var olan birçok dil seçeneği sayesinde biraz eğlenmenizi "
+"bile sağlar. Adanmışlık, doğru teknik ve biraz zaman ile hem düşüncelerinizi ve "
+"görüşlerinizi ekrana doğruca koyabilmenizi, hem de hızınızı önemli biçimde "
+"yükseltmeyi sağladığını göreceksiniz."
 
 #: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:25
 msgid ""
@@ -64,6 +70,9 @@ msgid ""
 "Try practicing with numbers and punctuation, or choose your own text to type "
 "out as fast as you can."
 msgstr ""
+"Eğer halihazırda yazım yarışçısıysanız, yine de Keypunch’ın size sunacakları vardır. "
+"Sayı ve noktalamalarla alıştırma yapın ya da olabildiğince hızlı yazabilmek için "
+"kendi metin türünüzü seçin."
 
 #: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:30
 msgid "Get ready to accelerate your typing!"
@@ -75,6 +84,8 @@ msgid ""
 "great software that is available for the GNOME platform. For more "
 "information, visit the GNOME Circle website."
 msgstr ""
+"Keypunch, GNOME platformu için harika yazılımları destekleyen GNOME Çevre’nin "
+"parçasıdır. Daha çok bilgi için GNOME Çevre web sitesine göz atın."
 
 #: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:39
 msgid "In the middle of a session"
@@ -360,7 +371,7 @@ msgstr "Girdiyi _Etkinleştir"
 msgid "Results"
 msgstr "Sonuçlar"
 
-#: src/widgets/window.blp:298
+#: src/widgets/window.blp:298 src/widgets/window.blp:344
 msgid "_Continue"
 msgstr "_Sürdür"
 
@@ -405,7 +416,9 @@ msgstr "Yazım tarafından"
 #. Translators: Replace "translator-credits" with your names, one name per line
 #: src/widgets/window.rs:214
 msgid "translator-credits"
-msgstr "Sabri Ünal <yakushabb@gmail.com>"
+msgstr ""
+"Sabri Ünal <yakushabb@gmail.com>\n"
+"Emin Tufan Çetin <etcetin@gmail.com>"
 
 #: src/widgets/window.rs:219
 msgid "Special thanks to"
@@ -426,15 +439,15 @@ msgid "{} ⁄ {}"
 msgstr "{} ⁄ {}"
 
 #. Translators: This is shown as a warning by GNOME Shell before logging out or shutting off the system in the middle of a typing test, alongside Keypunch's name and icon
-#: src/widgets/window/typing_test.rs:334
+#: src/widgets/window/typing_test.rs:336
 msgid "Ongoing typing test"
 msgstr "Süren yazım sınaması"
 
-#: src/widgets/window/typing_test.rs:506
+#: src/widgets/window/typing_test.rs:508
 msgid "Changes discarded"
 msgstr "Değişikliklerden vazgeçildi"
 
-#: src/widgets/window/typing_test.rs:507
+#: src/widgets/window/typing_test.rs:509
 msgid "Restore"
 msgstr "Geri Yükle"
 
@@ -443,9 +456,6 @@ msgstr "Geri Yükle"
 #. passed. Do not translate the `{}` blocks. Note that the `∶` sign is a special
 #. Unicode character; if your language doesn't use something completely different,
 #. you should probably copy and paste it from the original string.
-#: src/widgets/window/typing_test.rs:605 src/widgets/window/typing_test.rs:607
+#: src/widgets/window/typing_test.rs:607 src/widgets/window/typing_test.rs:609
 msgid "{}∶{}"
 msgstr "{}∶{}"
-
-#~ msgid "Correctness"
-#~ msgstr "Doğruluk"
