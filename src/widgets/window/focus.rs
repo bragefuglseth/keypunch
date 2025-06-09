@@ -37,7 +37,7 @@ impl imp::KpWindow {
             move |_| {
                 let text_view = imp.text_view.get();
                 let bottom_stack_empty = imp.bottom_stack_empty.get();
-                let just_start_typing = imp.just_start_typing.get();
+                let just_start_typing = imp.typing_indicator.get();
                 let focus_button = imp.focus_button.get();
                 let bottom_stack = imp.bottom_stack.get();
 
