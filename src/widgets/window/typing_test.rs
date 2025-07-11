@@ -139,10 +139,10 @@ impl imp::KpWindow {
                     let original_grapheme_count = text_view.original_grapheme_count();
                     let typed_grapheme_count = text_view.typed_grapheme_count();
 
-                    if typed_grapheme_count >= original_grapheme_count {
-                        if text_view.last_grapheme_state() != GraphemeState::Unfinished {
-                            imp.finish();
-                        }
+                    if typed_grapheme_count >= original_grapheme_count
+                        && text_view.last_grapheme_state() != GraphemeState::Unfinished
+                    {
+                        imp.finish();
                     }
 
                     if typed_grapheme_count
@@ -195,6 +195,24 @@ impl imp::KpWindow {
             .expect("display always has a default seat")
             .pointer()
             .expect("default seat has device");
+
+        let keyboard = obj
+            .display()
+            .default_seat()
+            .expect("display always has a default seat")
+            .keyboard()
+            .expect("default seat has device");
+        keyboard.connect_caps_lock_state_notify(glib::clone!(
+            #[weak(rename_to = imp)]
+            self,
+            move |_| {
+                let caps_text = imp.typing_indicator.get().first_child().unwrap();
+                caps_text.set_visible(!caps_text.get_visible());
+            }
+        ));
+
+        let typing_indicator = self.typing_indicator.get().first_child().unwrap();
+        typing_indicator.set_visible(keyboard.is_caps_locked());
 
         self.text_view.connect_local(
             "typed-text-changed",
@@ -258,7 +276,8 @@ impl imp::KpWindow {
         self.main_stack.set_visible_child_name("test");
         self.status_stack.set_visible_child_name("ready");
         self.bottom_stack
-            .set_visible_child(&self.just_start_typing.get());
+            .set_visible_child(&self.typing_indicator.get());
+
         self.menu_button.set_visible(true);
         self.stop_button.set_visible(false);
         self.text_view.reset();
