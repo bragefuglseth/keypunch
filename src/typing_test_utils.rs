@@ -1,6 +1,6 @@
-/* session_enums.rs
+/* typing_test_utils.rs
  *
- * SPDX-FileCopyrightText: © 2024 Brage Fuglseth <bragefuglseth@gnome.org>
+ * SPDX-FileCopyrightText: © 2024–2025 Brage Fuglseth <bragefuglseth@gnome.org>
  * SPDX-License-Identifier: GPL-3.0-or-later
  *
  * This program is free software: you can redistribute it and/or modify
@@ -23,8 +23,9 @@ use gettextrs::gettext;
 use gtk::gio;
 use gtk::prelude::*;
 use std::str::FromStr;
-use std::time::{Duration, Instant, SystemTime};
+use std::time::{Duration, Instant};
 use strum_macros::{Display as EnumDisplay, EnumIter, EnumString};
+use time::OffsetDateTime;
 
 #[derive(Clone, Copy, PartialEq, EnumString, EnumDisplay)]
 pub enum GeneratedTestDifficulty {
@@ -120,7 +121,7 @@ impl PresenceState {
 pub struct TypingTest {
     pub config: TestConfig,
     pub start_instant: Instant,
-    pub start_system_time: SystemTime,
+    pub start_system_time: OffsetDateTime,
 }
 
 impl TypingTest {
@@ -128,7 +129,7 @@ impl TypingTest {
         TypingTest {
             config,
             start_instant: Instant::now(),
-            start_system_time: SystemTime::now(),
+            start_system_time: OffsetDateTime::now_local().unwrap_or(OffsetDateTime::now_utc()),
         }
     }
 }
@@ -138,19 +139,21 @@ pub struct TestSummary {
     pub config: TestConfig,
     pub real_duration: Duration,
     pub wpm: f64,
-    pub start_timestamp: SystemTime,
+    pub start_timestamp: OffsetDateTime,
     pub accuracy: f64,
+    pub finished: bool,
 }
 
 impl TestSummary {
     pub fn new(
-        start_timestamp: SystemTime,
+        start_timestamp: OffsetDateTime,
         start_instant: Instant,
         end_instant: Instant,
         config: TestConfig,
         original: &str,
         typed: &str,
         keystrokes: &Vec<(Instant, bool)>,
+        finished: bool,
     ) -> Self {
         let real_duration = end_instant.duration_since(start_instant);
         let correct_keystrokes = keystrokes.iter().filter(|(_, correct)| *correct).count();
@@ -162,6 +165,7 @@ impl TestSummary {
             wpm: calculate_wpm(real_duration, &original, &typed),
             start_timestamp,
             accuracy: correct_keystrokes as f64 / total_keystrokes as f64,
+            finished,
         }
     }
 }
