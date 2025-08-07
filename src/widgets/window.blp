@@ -234,12 +234,29 @@ template $KpWindow: Adw.ApplicationWindow {
             transition-duration: 200;
             halign: center;
 
-            Label just_start_typing {
-              label: _("Just Start Typing");
+            Box typing_indicator {
+              spacing: 10;
+              orientation: vertical;
 
-              styles [
-                "dim-label"
-              ]
+              [top]
+              Label caps_lock {
+                label: _("Caps Lock is on");
+
+                visible: false;
+
+                styles [
+                  "warning"
+                ]
+              }
+
+              [bottom]
+              Label just_start_typing {
+                label: _("Just Start Typing");
+
+                styles [
+                  "dim-label",
+                ]
+              }
             }
 
             Button focus_button {
