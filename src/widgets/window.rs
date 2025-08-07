@@ -190,7 +190,10 @@ mod imp {
                 Some("6.0"),
             );
 
-            about.set_developers(&["Brage Fuglseth https://bragefuglseth.dev"]);
+            about.set_developers(&[
+                "Brage Fuglseth https://bragefuglseth.dev",
+                "Hadi Azarnasab https://hadi7546.ir",
+            ]);
 
             about.add_credit_section(
                 Some(&gettext("Orthography by")),

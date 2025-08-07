@@ -16,91 +16,164 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
-
 using Gtk 4.0;
 using Adw 1;
 
 template $KpCustomTextDialog: Adw.Dialog {
-  title: _("Custom Text");
-  content-width: 450;
-  content-height: 500;
+    title: _("Custom Text");
+    content-width: 450;
+    content-height: 500;
 
-  Adw.ToolbarView {
-    [top]
-    Adw.HeaderBar header_bar {
-      show-title: false;
-    }
+    Adw.ToolbarView {
+        [top]
+        Adw.HeaderBar header_bar {
+            show-title: false;
 
-    ScrolledWindow scrolled_window {
-      hscrollbar-policy: never;
-      propagate-natural-height: true;
-
-      Box {
-        orientation: vertical;
-        margin-start: 12;
-        margin-end: 12;
-        margin-bottom: 12;
-
-        Label {
-          label: _("Custom Text");
-          margin-bottom: 24;
-
-          styles [
-            "title-1"
-          ]
+            [start]
+            Button open_button {
+                icon-name: "arrow-into-box";
+                tooltip-text: _("Open Text File");
+            }
         }
 
-        Overlay {
-          [overlay]
-          Label placeholder {
-            label: _("Insert custom text…");
-            valign: start;
-            halign: start;
-            margin-top: 12;
-            margin-start: 12;
-            margin-end: 12;
+        ScrolledWindow scrolled_window {
+            hscrollbar-policy: never;
+            propagate-natural-height: true;
 
-            styles [
-              "dim-label"
-            ]
-          }
+            Box {
+                orientation: vertical;
+                margin-start: 12;
+                margin-end: 12;
+                margin-bottom: 6;
 
-          TextView text_view {
-            vexpand: true;
-            wrap-mode: word_char;
-            accepts-tab: false;
+                Label {
+                    label: _("Custom Text");
+                    margin-bottom: 24;
 
-            accessibility {
-              labelled-by: placeholder;
+                    styles [
+                        "title-1",
+                    ]
+                }
+
+                Stack stack {
+                    vexpand: true;
+                    hexpand: true;
+
+                    StackPage {
+                        name: "file";
+
+                        child: ListBox {
+                            selection-mode: none;
+
+                            styles [
+                                "boxed-list",
+                            ]
+
+                            Adw.ActionRow action_row {
+                                title: _("custom.txt");
+
+                                [prefix]
+                                Image {
+                                    icon-name: "rich-text-symbolic";
+                                }
+
+                                [suffix]
+                                Button open_file_location_button {
+                                    valign: center;
+                                    icon-name: "external-link-symbolic";
+                                    tooltip-text: _("Open File Location");
+
+                                    styles [
+                                        "flat",
+                                    ]
+                                }
+
+                                Button close_file_button {
+                                    valign: center;
+                                    icon-name: "cross-large-circle-outline-symbolic";
+                                    tooltip-text: _("Close File");
+
+                                    styles [
+                                        "flat",
+                                    ]
+                                }
+                            }
+
+                            TextView file_text_view {
+                                vexpand: true;
+                                // hexpand: true;
+                                wrap-mode: word_char;
+                                accepts-tab: false;
+                                editable: false;
+
+                                styles [
+                                    "card",
+                                    "card-text-view",
+                                    "dim-label",
+                                ]
+                            }
+                        };
+                    }
+
+                    StackPage {
+                        name: "text";
+
+                        child: Overlay {
+                            [overlay]
+                            Label placeholder {
+                                visible: false;
+                                label: _("Insert custom text…");
+                                valign: start;
+                                halign: start;
+                                margin-top: 12;
+                                margin-start: 12;
+                                margin-end: 12;
+
+                                styles [
+                                    "dim-label",
+                                ]
+                            }
+
+                            TextView text_view {
+                                vexpand: true;
+                                hexpand: true;
+                                wrap-mode: word_char;
+                                accepts-tab: false;
+                                editable: true;
+
+                                styles [
+                                    "card",
+                                    "card-text-view",
+                                ]
+
+                                accessibility {
+                                    labelled-by: placeholder;
+                                }
+                            }
+                        };
+                    }
+                }
+            }
+        }
+
+        [bottom]
+        Box {
+            halign: center;
+            valign: center;
+
+            Button save_button {
+                label: _("_Save");
+                use-underline: true;
+
+                styles [
+                    "pill",
+                    "suggested-action",
+                ]
             }
 
             styles [
-              "card",
-              "card-text-view"
+                "toolbar-thick",
             ]
-          }
         }
-      }
     }
-
-    [bottom]
-    Box {
-      halign: center;
-      valign: center;
-
-      Button save_button {
-        label: _("_Save");
-        use-underline: true;
-
-        styles [
-          "pill",
-          "suggested-action"
-        ]
-      }
-
-      styles [
-        "toolbar-thick"
-      ]
-    }
-  }
 }
