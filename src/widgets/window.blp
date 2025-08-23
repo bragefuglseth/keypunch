@@ -293,6 +293,7 @@ template $KpWindow: Adw.ApplicationWindow {
           [bottom]
           Box {
             halign: center;
+            spacing: 12;
 
             Button results_continue_button {
               label: _("_Continue");
@@ -303,6 +304,19 @@ template $KpWindow: Adw.ApplicationWindow {
               styles [
                 "pill",
                 "suggested-action"
+              ]
+            }
+
+            Button results_share_button {
+              label: _("Copy");
+
+              action-name: "win.copy-results";
+
+              use-underline: true;
+
+              styles [
+                "pill",
+                "accent"
               ]
             }
 

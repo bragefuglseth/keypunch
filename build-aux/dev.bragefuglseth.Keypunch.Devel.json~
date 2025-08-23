@@ -4,10 +4,7 @@
     "runtime-version" : "master",
     "sdk" : "org.gnome.Sdk",
     "sdk-extensions" : [
-        {
-            "id" : "org.freedesktop.Sdk.Extension.rust-stable",
-            "version" : "24.08"
-        }
+        "org.freedesktop.Sdk.Extension.rust-stable"
     ],
     "command" : "keypunch",
     "finish-args" : [
@@ -16,7 +13,6 @@
         "--socket=fallback-x11",
         "--device=dri",
         "--socket=wayland",
-        "--filesystem=xdg-run/app/com.discordapp.Discord:create",
         "--env=RUST_BACKTRACE=1"
     ],
     "build-options" : {
@@ -41,20 +37,18 @@
         "*.a"
     ],
     "modules" : [
-        {
-            "name" : "blueprint-compiler",
-            "buildsystem" : "meson",
-            "cleanup" : [
-                "*"
-            ],
-            "sources" : [
-                {
-                    "type" : "git",
-                    "url" : "https://gitlab.gnome.org/jwestman/blueprint-compiler",
-                    "tag" : "v0.16.0"
-                }
-            ]
-        },
+    	{
+	  "name": "blueprint-compiler",
+	  "buildsystem": "meson",
+	  "cleanup": ["*"],
+	  "sources": [
+	    {
+	      "type": "git",
+	      "url": "https://gitlab.gnome.org/jwestman/blueprint-compiler",
+	      "tag": "v0.16.0"
+	    }
+	  ]
+	},
         {
             "name" : "keypunch",
             "builddir" : true,
@@ -65,9 +59,6 @@
                     "type" : "dir",
                     "path" : ".."
                 }
-            ],
-            "config-opts" : [
-                "--libdir=lib"
             ]
         }
     ]
