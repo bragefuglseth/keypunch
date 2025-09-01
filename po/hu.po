@@ -1,42 +1,42 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# Hungarian translation for keypunch.
+# Copyright (C) 2025 Free Software Foundation, Inc.
 # This file is distributed under the same license as the keypunch package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#, fuzzy
+# Balázs Meskó <mesko.balazs at fsf dot hu>, 2025.
+# Balázs Úr <ur.balazs at fsf dot hu>, 2025.
 msgid ""
 msgstr ""
 "Project-Id-Version: keypunch\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-01-09 21:31+0100\n"
-"PO-Revision-Date: 2024-06-13 16:20+0200\n"
-"Last-Translator: \n"
-"Language-Team: \n"
+"Report-Msgid-Bugs-To: https://github.com/bragefuglseth/keypunch/issues\n"
+"POT-Creation-Date: 2025-09-01 03:29+0000\n"
+"PO-Revision-Date: 2025-09-01 16:28+0200\n"
+"Last-Translator: Balázs Úr <ur.balazs at fsf dot hu>\n"
+"Language-Team: Hungarian <openscope at fsf dot hu>\n"
 "Language: hu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.4.4\n"
+"X-Generator: Lokalize 24.12.3\n"
+
+#: data/dev.bragefuglseth.Keypunch.desktop.in.in:2
+#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:7
+#: src/widgets/window.blp:24
+msgid "Keypunch"
+msgstr "Billentyűző"
 
 #: data/dev.bragefuglseth.Keypunch.desktop.in.in:3
-#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:7
-#: src/widgets/window.blp:5
-msgid "Keypunch"
-msgstr "Keypunch"
-
-#: data/dev.bragefuglseth.Keypunch.desktop.in.in:4
 #: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:8
 msgid "Practice your typing skills"
-msgstr "Fejleszd gépelési készségedet"
+msgstr "Gyakorolja gépelési készségét"
 
-#: data/dev.bragefuglseth.Keypunch.desktop.in.in:10
+#: data/dev.bragefuglseth.Keypunch.desktop.in.in:9
 msgid ""
-"typing;trainer;touch typing;keyboard;speed;wpm;words per minute;accuracy;"
-"test;"
+"typing;trainer;touch typing;keyboard;speed;wpm;words per "
+"minute;accuracy;test;"
 msgstr ""
-"gépelés;tréner;érintős gépelés;billentyűzet;sebesség;wpm;szavak percenként;"
-"pontosság;teszt;"
+"gépelés;edző;tréner;érintős gépelés;billentyűzet;sebesség;wpm;szavak "
+"percenként;pontosság;teszt;"
 
 #: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:13
 msgid ""
@@ -44,9 +44,9 @@ msgid ""
 "digital age. Typing fast and accurately gives you more opportunities, more "
 "time for what matters to you, and a sense of self-accomplishment."
 msgstr ""
-"Kétségtelen, hogy a billentyűzeten való gépelés elengedhetetlen készség a "
-"digitális korszakban. A gyors és pontos gépelés több időt, több lehetőséget "
-"ad arra, ami fontos számodra, és önbecsülést biztosít."
+"Kétségtelen, hogy a billentyűzeten való gépelés elengedhetetlen készség a digi"
+"tális korban. A gyors és pontos gépelés több lehetőséget, több időt biztosít a"
+"z Ön számára fontos dolgokra, és önbizalmat ad."
 
 #: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:18
 msgid ""
@@ -56,12 +56,11 @@ msgid ""
 "some time, you will observe a noticeable increase in both the speed and the "
 "accuracy of which your thoughts and ideas are put into words on the screen."
 msgstr ""
-"A Keypunch segítségével a gépelést gyakorolhatod. A gyors tempójú "
-"munkameneteknek, az azonnali visszajelzéseknek és a rengeteg elérhető "
-"nyelvnek köszönhetően akár szórakozva is teheted mindezt. Elszántsággal, "
-"megfelelő technikával és némi idővel észrevehető növekedést tapasztalhatsz "
-"gondolataid és ötleteid képernyőn történő szavakba foglalásában mind "
-"sebesség, mind pontosság tekintetében."
+"A Billentyűző segítségével gyakorolhatja a gépelést. A gyors tempójú munkamene"
+"teknek, az azonnali visszajelzéseknek és a rengeteg elérhető nyelvnek köszönhe"
+"tően még élvezni is fogja a gyakorlást. Elszántsággal, megfelelő technikával é"
+"s egy kis idővel észrevehető javulást fog tapasztalni mind a sebesség, mind a "
+"pontosság terén, amellyel gondolatai és ötletei szavakká válnak a képernyőn."
 
 #: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:25
 msgid ""
@@ -69,33 +68,43 @@ msgid ""
 "Try practicing with numbers and punctuation, or choose your own text to type "
 "out as fast as you can."
 msgstr ""
-"Ha már profi vagy a gépelésben, a Keypunch még akkor is tartogat valamit "
-"számodra. Próbálj meg gyakorolni a számokkal és írásjelekkel, vagy válaszd "
-"ki a saját szöveged, amelyet a lehető leggyorsabban gépelsz le."
+"Ha Ön már gyors gépelő, a Billentyűző akkor is tartogat Önnek valamit. Próbálj"
+"a ki a számokkal és írásjelekkel való gyakorlást, vagy válasszon saját szövege"
+"t, és gépelje le azt a lehető leggyorsabban."
 
 #: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:30
 msgid "Get ready to accelerate your typing!"
-msgstr "Készülj fel a gépelésed gyorsítására!"
+msgstr "Készüljön fel a gépelése gyorsítására!"
 
-#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:36
+#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:33
+msgid ""
+"Keypunch is proudly part of GNOME Circle, an initiative that champions the "
+"great software that is available for the GNOME platform. For more "
+"information, visit the GNOME Circle website."
+msgstr ""
+"A Billentyűző a GNOME Kör büszke tagja, egy kezdeményezésé, amely a GNOME plat"
+"formon elérhető nagyszerű szoftvereket támogatja. További információkért keres"
+"se fel a GNOME Kör webhelyét."
+
+#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:39
 msgid "In the middle of a session"
 msgstr "Munkamenet közepén"
 
-#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:40
+#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:43
 msgid "Ready for typing"
 msgstr "Készen áll a gépelésre"
 
-#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:44
+#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:47
 msgid "Session results"
 msgstr "Munkamenet eredményei"
 
-#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:48
+#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:51
 msgid "Language selection"
 msgstr "Nyelvválasztás"
 
-#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:52
+#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:55
 msgid "Custom text entry"
-msgstr "Egyedi szöveg megadása"
+msgstr "Egyéni szöveg megadása"
 
 #: data/dev.bragefuglseth.Keypunch.gschema.xml:20
 msgid "Window Width"
@@ -110,14 +119,12 @@ msgid "Window Maximization"
 msgstr "Ablak maximalizálása"
 
 #: data/dev.bragefuglseth.Keypunch.gschema.xml:32
-#: src/widgets/results_view.blp:82 src/widgets/window.blp:146
 msgid "Session Type"
 msgstr "Munkamenet típusa"
 
 #: data/dev.bragefuglseth.Keypunch.gschema.xml:36
-#: src/widgets/results_view.blp:95 src/widgets/window.blp:151
 msgid "Session Duration"
-msgstr "Munkamenet hossza"
+msgstr "Munkamenet időtartama"
 
 #: data/dev.bragefuglseth.Keypunch.gschema.xml:37
 msgid "The duration of time-based sessions"
@@ -129,15 +136,15 @@ msgid "\"en\""
 msgstr "\"hu\""
 
 #: data/dev.bragefuglseth.Keypunch.gschema.xml:42
-#: src/widgets/results_view.blp:108 src/widgets/text_language_dialog.blp:5
-#: src/widgets/text_language_dialog.blp:13
-#: src/widgets/text_language_dialog.blp:39
+#: src/widgets/results_view.blp:127 src/widgets/text_language_dialog.blp:24
+#: src/widgets/text_language_dialog.blp:32
+#: src/widgets/text_language_dialog.blp:58
 msgid "Text Language"
 msgstr "Szöveg nyelve"
 
 #: data/dev.bragefuglseth.Keypunch.gschema.xml:43
 msgid "The code of the language used for automatically generated text"
-msgstr "Az automatikusan generált szöveg nyelvi kódja"
+msgstr "Az automatikusan előállított szöveg nyelvi kódja"
 
 #: data/dev.bragefuglseth.Keypunch.gschema.xml:47
 msgid "Recent Languages"
@@ -146,25 +153,25 @@ msgstr "Legutóbbi nyelvek"
 #: data/dev.bragefuglseth.Keypunch.gschema.xml:48
 msgid "Languages shown in the list of recent ones in the text language dialog"
 msgstr ""
-"A legutóbbi nyelvek listájában látható nyelvek a szövegnyelv "
-"párbeszédablakban"
+"A legutóbbi nyelvek listájában látható nyelvek a szöveg nyelvének párbeszédabl"
+"akában"
 
 #. Translators: This is the default text for custom typing sessions. Do not translate it literally, and do not remove the quotation marks. Replace it with an appropriate "sample sentence" from your language instead. The original text is an English pangram, so you can e.g. find a pangram in your language: https://clagnut.com/blog/2380
 #: data/dev.bragefuglseth.Keypunch.gschema.xml:52
 msgid "\"The quick brown fox jumps over the lazy dog.\""
 msgstr ""
-"\"Jó foxim és don Quijote húszwattos lámpánál ülve egy pár bűvös cipőt "
-"készít.\""
+"\"Jó foxim és don Quijote húszwattos lámpánál ülve egy pár bűvös cipőt készít."
+"\""
 
 #: data/dev.bragefuglseth.Keypunch.gschema.xml:53
-#: src/widgets/custom_text_dialog.blp:5 src/widgets/custom_text_dialog.blp:26
+#: src/widgets/custom_text_dialog.blp:24 src/widgets/custom_text_dialog.blp:45
 msgid "Custom Text"
-msgstr "Egyedi szöveg"
+msgstr "Egyéni szöveg"
 
 #: data/dev.bragefuglseth.Keypunch.gschema.xml:54
 msgid "Text displayed when “Custom” is chosen from the session menu"
 msgstr ""
-"Megjelenített szöveg az „Egyedi” kiválasztása esetén a munkamenet menüjében"
+"Megjelenített szöveg az „Egyéni” kiválasztása esetén a munkamenet menüjében"
 
 #: data/dev.bragefuglseth.Keypunch.gschema.xml:58
 msgid "Personal Best"
@@ -175,8 +182,8 @@ msgid ""
 "The current highest amount of WPM received for each session type / duration "
 "and language"
 msgstr ""
-"Az egyes munkamenettípusokhoz, időtartamokhoz és nyelvekhez tartozó aktuális "
-"legmagasabb WPM (szó per perc) érték"
+"Az egyes munkamenettípusokhoz, időtartamokhoz és nyelvekhez tartozó jelenlegi "
+"legmagasabb WPM (szavak percenként) érték"
 
 #: data/resources/gtk/help-overlay.ui:11
 msgctxt "shortcut window"
@@ -208,42 +215,61 @@ msgctxt "shortcut window"
 msgid "Quit"
 msgstr "Kilépés"
 
-#: src/widgets/custom_text_dialog.blp:37
+#: src/widgets/custom_text_dialog.blp:56
 msgid "Insert custom text…"
-msgstr "Egyedi szöveg beillesztése…"
+msgstr "Egyéni szöveg beillesztése…"
 
-#: src/widgets/custom_text_dialog.blp:73
+#: src/widgets/custom_text_dialog.blp:92
 msgid "_Save"
 msgstr "_Mentés"
 
-#: src/widgets/results_view.blp:34
+#: src/widgets/results_view.blp:53
 msgid "New Personal Best for Configuration"
-msgstr "Új személyes rekord"
+msgstr "Új személyes rekord a beállításhoz"
 
-#: src/widgets/results_view.blp:45
+#: src/widgets/results_view.blp:64
 msgid "Words per Minute"
 msgstr "Szavak percenként"
 
-#: src/widgets/results_view.blp:66
+#: src/widgets/results_view.blp:85
 msgid "Accuracy"
-msgstr ""
+msgstr "Pontosság"
 
-#. Translators: The percentage label format of the results page.
-#. The `{}` block will be replaced with the percentage number,
-#. do not translate it!
-#: src/widgets/results_view.rs:129
+#: src/widgets/results_view.blp:101 src/widgets/window.blp:167
+#| msgid "Session Type"
+msgid "Test Type"
+msgstr "Teszt típusa"
+
+#: src/widgets/results_view.blp:114 src/widgets/window.blp:175
+#| msgid "Session Duration"
+msgid "Test Duration"
+msgstr "Teszt időtartama"
+
+#: src/widgets/results_view.rs:165
 msgid "{}%"
 msgstr "{}%"
 
+#: src/widgets/results_view.rs:171 src/widgets/window.blp:169
+msgid "Custom"
+msgstr "Egyéni"
+
+#: src/widgets/results_view.rs:173 src/widgets/window.blp:169
+msgid "Simple"
+msgstr "Egyszerű"
+
+#: src/widgets/results_view.rs:174 src/widgets/window.blp:169
+msgid "Advanced"
+msgstr "Haladó"
+
 #. Translators: The `{}` blocks will be replaced with the number of minutes
 #. and seconds. Do not translate them!
-#: src/widgets/results_view.rs:187
+#: src/widgets/results_view.rs:200
 msgid "{}m {}s"
-msgstr "{}p {}mp"
+msgstr "{} p {} mp"
 
 #. Translators: The `{}` block will be replaced with the number of minutes.
 #. Do not translate it!
-#: src/widgets/results_view.rs:191
+#: src/widgets/results_view.rs:204
 msgid "{} minute"
 msgid_plural "{} minutes"
 msgstr[0] "{} perc"
@@ -251,172 +277,193 @@ msgstr[1] "{} perc"
 
 #. Translators: The `{}` block will be replaced with the number of seconds.
 #. Do not translate it!
-#: src/widgets/results_view.rs:195
+#: src/widgets/results_view.rs:208
 msgid "{} second"
 msgid_plural "{} seconds"
 msgstr[0] "{} másodperc"
 msgstr[1] "{} másodperc"
 
-#: src/widgets/text_language_dialog.blp:21
-#: src/widgets/text_language_dialog.blp:161
-#: src/widgets/text_language_dialog.blp:190
+#: src/widgets/text_language_dialog.blp:40
+#: src/widgets/text_language_dialog.blp:180
+#: src/widgets/text_language_dialog.blp:209
 msgid "Add Language"
 msgstr "Nyelv hozzáadása"
 
-#: src/widgets/text_language_dialog.blp:51
-#: src/widgets/text_language_dialog.blp:55
+#: src/widgets/text_language_dialog.blp:70
+#: src/widgets/text_language_dialog.blp:74
 msgid "Search languages…"
-msgstr "Nyelv keresése…"
+msgstr "Nyelvek keresése…"
 
 #. Translators: Recent languages in text languages list
-#: src/widgets/text_language_dialog.blp:79
+#: src/widgets/text_language_dialog.blp:98
 msgid "Recent"
 msgstr "Legutóbbi"
 
 #. Translators: Other languages in text languages list
-#: src/widgets/text_language_dialog.blp:84
+#: src/widgets/text_language_dialog.blp:103
 msgid "Other"
 msgstr "Egyéb"
 
-#: src/widgets/text_language_dialog.blp:104
+#: src/widgets/text_language_dialog.blp:123
 msgid "Search Results"
 msgstr "Keresési eredmények"
 
-#: src/widgets/text_language_dialog.blp:140
+#: src/widgets/text_language_dialog.blp:159
 msgid "No Matches"
 msgstr "Nincs találat"
 
-#: src/widgets/text_language_dialog.blp:148
+#: src/widgets/text_language_dialog.blp:167
 msgid "Try a different search"
-msgstr "Próbálkozz új kereséssel"
+msgstr "Próbáljon másik keresést"
 
-#: src/widgets/text_language_dialog.blp:199
+#: src/widgets/text_language_dialog.blp:218
 msgid ""
 "You can help add a new text language to Keypunch by submitting a language "
 "request on GitHub. A GitHub account and some language knowledge is required."
 msgstr ""
-"Segíthetsz új szövegnyelvet hozzáadni a Keypunchhoz nyelvi kérelem "
-"küldésével GitHubon. GitHub fiók és némi nyelvtudás szükséges."
+"Segíthet új szövegnyelv hozzáadásában a Billentyűzőhöz, ha nyelvkérést küld be"
+" a GitHub-on. Ehhez GitHub-fiók és némi nyelvtudás szükséges."
 
-#: src/widgets/text_language_dialog.blp:214
+#: src/widgets/text_language_dialog.blp:233
 msgid "_Create Request"
 msgstr "_Kérés létrehozása"
 
-#: src/widgets/text_view.blp:9
+#: src/widgets/text_view.blp:28
 msgid "Text View"
 msgstr "Szövegnézet"
 
-#: src/widgets/window.blp:131
+#: src/widgets/window.blp:150
 msgid "Restart"
 msgstr "Újraindítás"
 
-#: src/widgets/window.blp:158
+#: src/widgets/window.blp:178
+msgid "15 seconds"
+msgstr "15 másodperc"
+
+#: src/widgets/window.blp:179
+msgid "30 seconds"
+msgstr "30 másodperc"
+
+#: src/widgets/window.blp:180
+msgid "1 minute"
+msgstr "1 perc"
+
+#: src/widgets/window.blp:181
+msgid "5 minutes"
+msgstr "5 perc"
+
+#: src/widgets/window.blp:182
+msgid "10 minutes"
+msgstr "10 perc"
+
+#: src/widgets/window.blp:191
 msgid "_Edit Text"
 msgstr "_Szöveg szerkesztése"
 
-#: src/widgets/window.blp:187
+#: src/widgets/window.blp:220
 msgid "Main Menu"
 msgstr "Főmenü"
 
-#: src/widgets/window.blp:205
+#: src/widgets/window.blp:238
 msgid "Just Start Typing"
-msgstr "Csak kezdj gépelni"
+msgstr "Csak kezdjen gépelni"
 
 #. Translators: "Entry" here is the act of entering text
-#: src/widgets/window.blp:214
-msgid "Enable Entry"
-msgstr "Bevitel engedélyezése"
+#: src/widgets/window.blp:247
+#| msgid "Enable Entry"
+msgid "_Enable Entry"
+msgstr "_Bevitel engedélyezése"
 
-#: src/widgets/window.blp:240
+#: src/widgets/window.blp:273
 msgid "Results"
 msgstr "Eredmények"
 
-#: src/widgets/window.blp:265
+#: src/widgets/window.blp:298 src/widgets/window.blp:344
 msgid "_Continue"
 msgstr "_Folytatás"
 
-#: src/widgets/window.blp:297
+#. Translators: "Frustration Relief" is the name of the functionality
+#. that automatically cancels a test when random key mashing is detected,
+#. and displays a recommendation to take a break.
+#: src/widgets/window.blp:326
+msgid "Frustration Relief"
+msgstr "Frusztráció enyhítése"
+
+#: src/widgets/window.blp:332
+msgid "Frustration Detected"
+msgstr "Frusztráció észlelve"
+
+#. Translators: Make sure to convey this as politely and sensitively as possible,
+#. since it is likely to be shown to people while they are in a state of
+#. self-disappointment / anger
+#: src/widgets/window.blp:336
+msgid ""
+"You learn faster in a calm state of mind. Consider taking a break. The test "
+"has been cancelled, and will not affect your typing statistics."
+msgstr ""
+"Nyugodt állapotban gyorsabban tanulhat. Fontolja meg, hogy szünetet tartson. A"
+" teszt meg lett szakítva, és nem lesz hatással a gépelési statisztikáira."
+
+#: src/widgets/window.blp:378
 msgid "Text _Language"
-msgstr "Szöveg_nyelve"
+msgstr "Szöveg _nyelve"
 
-#: src/widgets/window.blp:302
+#: src/widgets/window.blp:383
 msgid "_Keyboard Shortcuts"
-msgstr "Billentyűparancsok"
+msgstr "_Gyorsbillentyűk"
 
-#: src/widgets/window.blp:307
+#: src/widgets/window.blp:388
 msgid "_About Keypunch"
-msgstr "Keypunch névjegye"
+msgstr "A Billentyűző _névjegye"
 
-#: src/widgets/window.rs:180
+#: src/widgets/window.rs:196
 msgid "Orthography by"
 msgstr "Helyesírás"
 
 #. Translators: Replace "translator-credits" with your names, one name per line
-#: src/widgets/window.rs:197
+#: src/widgets/window.rs:214
 msgid "translator-credits"
-msgstr "Daniel Uhrinyi  <12256895+danieluhrinyi@users.noreply.github.com>"
+msgstr ""
+"Meskó Balázs <mesko.balazs at fsf dot hu>, 2025.\n"
+"Uhrinyi Dániel <12256895+danieluhrinyi@users.noreply.github.com>\n"
+"Úr Balázs <ur.balazs at fsf dot hu>, 2025."
 
-#: src/widgets/window.rs:202
+#: src/widgets/window.rs:219
 msgid "Special thanks to"
 msgstr "Külön köszönet"
 
-#: src/widgets/window/session.rs:118
+#. Translators: Metainfo for the app Fretboard. <https://github.com/bragefuglseth/fretboard>
+#: src/widgets/window.rs:226
+msgid "Fretboard"
+msgstr "Fretboard"
+
+#. Translators: Metainfo for the app Fretboard. <https://github.com/bragefuglseth/fretboard>
+#: src/widgets/window.rs:228
+msgid "Look up guitar chords"
+msgstr "Gitárakkordok keresése"
+
+#: src/widgets/window/typing_test.rs:163
 msgid "{} ⁄ {}"
 msgstr "{} ⁄ {}"
 
-#: src/widgets/window/session.rs:310
-msgid "Changes discarded"
-msgstr "Változtatások elvetése"
+#. Translators: This is shown as a warning by GNOME Shell before logging out or shutting off the system in the middle of a typing test, alongside Keypunch's name and icon
+#: src/widgets/window/typing_test.rs:336
+msgid "Ongoing typing test"
+msgstr "Futó gépelési teszt"
 
-#: src/widgets/window/session.rs:311
+#: src/widgets/window/typing_test.rs:508
+msgid "Changes discarded"
+msgstr "Változtatások elvetve"
+
+#: src/widgets/window/typing_test.rs:509
 msgid "Restore"
-msgstr "Visszaállítás"
+msgstr "Helyreállítás"
 
 #. Translators: The format of the timer. The first `{}` block will be replaced
 #. with the minutes passed, and the second one will be replaced with the seconds
 #. passed. Do not translate the `{}` blocks. Note that the `∶` sign is a special
 #. Unicode character; if your language doesn't use something completely different,
 #. you should probably copy and paste it from the original string.
-#: src/widgets/window/session.rs:405 src/widgets/window/session.rs:407
+#: src/widgets/window/typing_test.rs:607 src/widgets/window/typing_test.rs:609
 msgid "{}∶{}"
 msgstr "{}∶{}"
-
-#. Translators: This is shown as a warning by GNOME Shell before logging out or shutting off the system in the middle of a typing session, alongside Keypunch's name and icon
-#: src/widgets/window/ui_state.rs:179
-msgid "Ongoing typing session"
-msgstr ""
-
-#~ msgid "Correctness"
-#~ msgstr "Pontosság"
-
-#~ msgid "Simple"
-#~ msgstr "Egyszerű"
-
-#~ msgid "Advanced"
-#~ msgstr "Haladó"
-
-#~ msgid "Custom"
-#~ msgstr "Egyedi"
-
-#~ msgid "15 seconds"
-#~ msgstr "15 másodperc"
-
-#~ msgid "30 seconds"
-#~ msgstr "30 másodperc"
-
-#~ msgid "1 minute"
-#~ msgstr "1 perc"
-
-#~ msgid "5 minutes"
-#~ msgstr "5 perc"
-
-#~ msgid "10 minutes"
-#~ msgstr "10 perc"
-
-#~ msgid "\"en_US\""
-#~ msgstr "\"hu_HU\""
-
-#~ msgid ""
-#~ "This is the initial release of Keypunch! Give it a spin and say what you "
-#~ "think."
-#~ msgstr "Ez a Keypunch első kiadása! Próbáld ki és mondd el, mit gondolsz."
