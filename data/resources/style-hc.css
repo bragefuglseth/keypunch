@@ -1,0 +1,7 @@
+.line-chart-button > button {
+  box-shadow: none;
+}
+
+.line-chart-button .line-chart-dot {
+  background-color: currentColor;
+}
