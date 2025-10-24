@@ -1,0 +1,458 @@
+# Uzbek (Latin) translation for Keypunch.
+# Copyright (C) 2025 Keypunch's COPYRIGHT HOLDER
+# This file is distributed under the same license as the Keypunch package.
+# Maftuna Vohidjonovna <vohidjonovnamaftuna@gmail.com>,  2025.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Keypunch main\n"
+"Report-Msgid-Bugs-To: https://github.com/bragefuglseth/keypunch/issues\n"
+"POT-Creation-Date: 2025-10-24 03:31+0000\n"
+"PO-Revision-Date: 2025-10-24 15:16+0500\n"
+"Last-Translator: Baxrom Raxmatov <https://t.me/bahrom04>\n"
+"Language-Team: Uzbek (Latin) <Uzbek>\n"
+"Language: uz\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Poedit 3.5\n"
+
+#: data/dev.bragefuglseth.Keypunch.desktop.in.in:2
+#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:7
+#: src/widgets/window.blp:24
+msgid "Keypunch"
+msgstr "Keypunch"
+
+#: data/dev.bragefuglseth.Keypunch.desktop.in.in:3
+#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:8
+msgid "Practice your typing skills"
+msgstr "Matn terish qobiliyatingizni mashq qiling"
+
+#: data/dev.bragefuglseth.Keypunch.desktop.in.in:9
+msgid ""
+"typing;trainer;touch typing;keyboard;speed;wpm;words per "
+"minute;accuracy;test;"
+msgstr ""
+"matn terish;murabbiy;ko‘r usulda yozish;klaviatura;tezlik;dss;daqiqadagi "
+"so‘zlar soni;aniqlik;sinov;"
+
+#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:13
+msgid ""
+"There is no doubt that typing on a keyboard is an essential skill in the "
+"digital age. Typing fast and accurately gives you more opportunities, more "
+"time for what matters to you, and a sense of self-accomplishment."
+msgstr ""
+"Klaviaturada matn terish raqamli asrda muhim mahorat ekanligiga shubha yoʻq. "
+"Tez va toʻgʻri matn terish sizga koʻproq imkoniyatlar beradi. Siz uchun "
+"muhim boʻlgan narsalarga koʻproq vaqt va oʻz-oʻzini kamol toptirish hissini "
+"beradi."
+
+#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:18
+msgid ""
+"Keypunch lets you practice typing. Thanks to fast-paced sessions with "
+"instant feedback afterwards and a plethora of available languages, you might "
+"even have a little fun doing so. With determination, proper technique and "
+"some time, you will observe a noticeable increase in both the speed and the "
+"accuracy of which your thoughts and ideas are put into words on the screen."
+msgstr ""
+"Keypunch sizga matn terishni mashq qilish imkonini beradi. Tezkor sessiyalar "
+"va ulardan keyin tezkor fikr-mulohazalar hamda mavjud tillarning koʻpligi "
+"tufayli, siz buni bajarishdan biroz zavqlanishingiz mumkin. Qatʼiyat, "
+"toʻgʻri texnika va ma’lum vaqt o‘tgach, siz fikrlaringiz va g‘oyalaringizni "
+"ekranda so‘zlarga aylantirish tezligi va aniqligining sezilarli darajada "
+"oshganini kuzatasiz."
+
+#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:25
+msgid ""
+"If you are already a racer at typing, Keypunch still has something for you. "
+"Try practicing with numbers and punctuation, or choose your own text to type "
+"out as fast as you can."
+msgstr ""
+"Agar siz allaqachon matn terishda mohir bo‘lsangiz, Keypunchʼda hali ham siz "
+"uchun nimadir bor. Raqamlar va tinish belgilari bilan mashq qiling yoki "
+"imkon qadar tezroq yozish uchun o‘z matningizni tanlang."
+
+#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:30
+msgid "Get ready to accelerate your typing!"
+msgstr "Yozishni tezlashtirishga tayyorlaning!"
+
+#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:33
+msgid ""
+"Keypunch is proudly part of GNOME Circle, an initiative that champions the "
+"great software that is available for the GNOME platform. For more "
+"information, visit the GNOME Circle website."
+msgstr ""
+"Keypunch GNOME platformasi uchun mavjud bo‘lgan ajoyib dasturiy taʼminotni "
+"qo‘llab-quvvatlovchi GNOME Circle tashabbusining faxrli qismidir. Batafsil "
+"GNOME Circle vebsaytiga kiring."
+
+#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:39
+msgid "In the middle of a session"
+msgstr "Mashgʻulot oʻrtasida"
+
+#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:43
+msgid "Ready for typing"
+msgstr "Matn terishga tayyor"
+
+#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:47
+msgid "Session results"
+msgstr "Mashgʻulot natijalari"
+
+#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:51
+msgid "Language selection"
+msgstr "Til tanlash"
+
+#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:55
+msgid "Custom text entry"
+msgstr "Maxsus matn kiritish"
+
+#: data/dev.bragefuglseth.Keypunch.gschema.xml:20
+msgid "Window Width"
+msgstr "Oyna kengligi"
+
+#: data/dev.bragefuglseth.Keypunch.gschema.xml:24
+msgid "Window Height"
+msgstr "Oyna balandligi"
+
+#: data/dev.bragefuglseth.Keypunch.gschema.xml:28
+msgid "Window Maximization"
+msgstr "Oynani maksimallashtirish"
+
+#: data/dev.bragefuglseth.Keypunch.gschema.xml:32
+msgid "Session Type"
+msgstr "Mashgʻulot turi"
+
+#: data/dev.bragefuglseth.Keypunch.gschema.xml:36
+msgid "Session Duration"
+msgstr "Mashgʻulot davomiyligi"
+
+#: data/dev.bragefuglseth.Keypunch.gschema.xml:37
+msgid "The duration of time-based sessions"
+msgstr "Vaqtga asoslangan mashg‘ulotlar davomiyligi"
+
+#. Translators: Insert the language code of your language here, for example "nb" for Norwegian Bokmaal. Do not remove the quotation marks. It's doesn't matter if there isn't a word list for the language in `data/word_lists` right now, the app will fall back to English in that case and start using the list if it becomes available in the future.
+#: data/dev.bragefuglseth.Keypunch.gschema.xml:41
+msgid "\"en\""
+msgstr "\"uz\""
+
+#: data/dev.bragefuglseth.Keypunch.gschema.xml:42
+#: src/widgets/results_view.blp:127 src/widgets/text_language_dialog.blp:24
+#: src/widgets/text_language_dialog.blp:32
+#: src/widgets/text_language_dialog.blp:58
+msgid "Text Language"
+msgstr "Matn tili"
+
+#: data/dev.bragefuglseth.Keypunch.gschema.xml:43
+msgid "The code of the language used for automatically generated text"
+msgstr "Avtomatik yaratilgan matn uchun ishlatiladigan til kodi"
+
+#: data/dev.bragefuglseth.Keypunch.gschema.xml:47
+msgid "Recent Languages"
+msgstr "Soʻnggi tillar"
+
+#: data/dev.bragefuglseth.Keypunch.gschema.xml:48
+msgid "Languages shown in the list of recent ones in the text language dialog"
+msgstr "Matn tili dialogida soʻnggi ro‘yxatda ko‘rsatilgan tillar"
+
+#. Translators: This is the default text for custom typing sessions. Do not translate it literally, and do not remove the quotation marks. Replace it with an appropriate "sample sentence" from your language instead. The original text is an English pangram, so you can e.g. find a pangram in your language: https://clagnut.com/blog/2380
+#: data/dev.bragefuglseth.Keypunch.gschema.xml:52
+msgid "\"The quick brown fox jumps over the lazy dog.\""
+msgstr "“Tezkor qoʻngʻir tulki dangasa it ustidan sakrab o‘tadi.”"
+
+#: data/dev.bragefuglseth.Keypunch.gschema.xml:53
+#: src/widgets/custom_text_dialog.blp:24 src/widgets/custom_text_dialog.blp:45
+msgid "Custom Text"
+msgstr "Maxsus matn"
+
+#: data/dev.bragefuglseth.Keypunch.gschema.xml:54
+msgid "Text displayed when “Custom” is chosen from the session menu"
+msgstr "Mashgʻulot menyusidan “Maxsus” tanlanganda chiqadigan matn"
+
+#: data/dev.bragefuglseth.Keypunch.gschema.xml:58
+msgid "Personal Best"
+msgstr "Shaxsiy eng yaxshi"
+
+#: data/dev.bragefuglseth.Keypunch.gschema.xml:59
+msgid ""
+"The current highest amount of WPM received for each session type / duration "
+"and language"
+msgstr ""
+"Har bir mashgʻulot turi / davomiyligi va tili uchun olingan joriy eng yuqori "
+"DSS miqdori"
+
+#: data/resources/gtk/help-overlay.ui:11
+msgctxt "shortcut window"
+msgid "General"
+msgstr "Umumiy"
+
+#: data/resources/gtk/help-overlay.ui:14
+msgctxt "shortcut window"
+msgid "Text Language"
+msgstr "Matn tili"
+
+#: data/resources/gtk/help-overlay.ui:20
+msgctxt "shortcut window"
+msgid "Cancel Session"
+msgstr "Mashgʻulotni bekor qilish"
+
+#: data/resources/gtk/help-overlay.ui:26
+msgctxt "shortcut window"
+msgid "Keyboard Shortcuts"
+msgstr "Klaviatura yorliqlari"
+
+#: data/resources/gtk/help-overlay.ui:32
+msgctxt "shortcut window"
+msgid "Close Window"
+msgstr "Oynani yopish"
+
+#: data/resources/gtk/help-overlay.ui:38
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr "Chiqish"
+
+#: src/widgets/custom_text_dialog.blp:56
+msgid "Insert custom text…"
+msgstr "Maxsus matn kiritish…"
+
+#: src/widgets/custom_text_dialog.blp:92
+msgid "_Save"
+msgstr "Saqlash"
+
+#: src/widgets/results_view.blp:53
+msgid "New Personal Best for Configuration"
+msgstr "Konfiguratsiya uchun yangi shaxsiy eng yaxshi"
+
+#: src/widgets/results_view.blp:64
+msgid "Words per Minute"
+msgstr "Daqiqadagi soʻzlar soni"
+
+#: src/widgets/results_view.blp:85
+msgid "Accuracy"
+msgstr "Toʻgʻrilik"
+
+#: src/widgets/results_view.blp:101 src/widgets/window.blp:167
+msgid "Test Type"
+msgstr "Sinov turi"
+
+#: src/widgets/results_view.blp:114 src/widgets/window.blp:175
+msgid "Test Duration"
+msgstr "Sinov davomiyligi"
+
+#: src/widgets/results_view.rs:165
+msgid "{}%"
+msgstr "{}%"
+
+#: src/widgets/results_view.rs:171 src/widgets/window.blp:169
+msgid "Custom"
+msgstr "Maxsus"
+
+#: src/widgets/results_view.rs:173 src/widgets/window.blp:169
+msgid "Simple"
+msgstr "Oddiy"
+
+#: src/widgets/results_view.rs:174 src/widgets/window.blp:169
+msgid "Advanced"
+msgstr "Murakkab"
+
+#. Translators: The `{}` blocks will be replaced with the number of minutes
+#. and seconds. Do not translate them!
+#: src/widgets/results_view.rs:200
+msgid "{}m {}s"
+msgstr "{}d {}son"
+
+#. Translators: The `{}` block will be replaced with the number of minutes.
+#. Do not translate it!
+#: src/widgets/results_view.rs:204
+msgid "{} minute"
+msgid_plural "{} minutes"
+msgstr[0] "{} daqiqa"
+
+#. Translators: The `{}` block will be replaced with the number of seconds.
+#. Do not translate it!
+#: src/widgets/results_view.rs:208
+msgid "{} second"
+msgid_plural "{} seconds"
+msgstr[0] "{} soniya"
+
+#: src/widgets/text_language_dialog.blp:40
+#: src/widgets/text_language_dialog.blp:180
+#: src/widgets/text_language_dialog.blp:209
+msgid "Add Language"
+msgstr "Til qoʻshish"
+
+#: src/widgets/text_language_dialog.blp:70
+#: src/widgets/text_language_dialog.blp:74
+msgid "Search languages…"
+msgstr "Tillarni qidirish…"
+
+#. Translators: Recent languages in text languages list
+#: src/widgets/text_language_dialog.blp:98
+msgid "Recent"
+msgstr "Soʻnggi"
+
+#. Translators: Other languages in text languages list
+#: src/widgets/text_language_dialog.blp:103
+msgid "Other"
+msgstr "Boshqalar"
+
+#: src/widgets/text_language_dialog.blp:123
+msgid "Search Results"
+msgstr "Qidiruv natijalari"
+
+#: src/widgets/text_language_dialog.blp:159
+msgid "No Matches"
+msgstr "Moslik yoʻq"
+
+#: src/widgets/text_language_dialog.blp:167
+msgid "Try a different search"
+msgstr "Boshqa qidiruvni sinab koʻring"
+
+#: src/widgets/text_language_dialog.blp:218
+msgid ""
+"You can help add a new text language to Keypunch by submitting a language "
+"request on GitHub. A GitHub account and some language knowledge is required."
+msgstr ""
+"GitHubda til soʻrovini yuborish orqali Keypunchga yangi matn tilini "
+"qoʻshishga yordam berishingiz mumkin. GitHub hisobi va baʼzi til bilimlari "
+"talab qilinadi."
+
+#: src/widgets/text_language_dialog.blp:233
+msgid "_Create Request"
+msgstr "Yaratish soʻrovi"
+
+#: src/widgets/text_view.blp:28
+msgid "Text View"
+msgstr "Matn koʻrinishi"
+
+#: src/widgets/window.blp:150
+msgid "Restart"
+msgstr "Qayta ishga tushirish"
+
+#: src/widgets/window.blp:178
+msgid "15 seconds"
+msgstr "15 soniya"
+
+#: src/widgets/window.blp:179
+msgid "30 seconds"
+msgstr "30 soniya"
+
+#: src/widgets/window.blp:180
+msgid "1 minute"
+msgstr "1 daqiqa"
+
+#: src/widgets/window.blp:181
+msgid "5 minutes"
+msgstr "5 daqiqa"
+
+#: src/widgets/window.blp:182
+msgid "10 minutes"
+msgstr "10 daqiqa"
+
+#: src/widgets/window.blp:191
+msgid "_Edit Text"
+msgstr "Matnni tahrirlash"
+
+#: src/widgets/window.blp:220
+msgid "Main Menu"
+msgstr "Asosiy menyu"
+
+#: src/widgets/window.blp:238
+msgid "Just Start Typing"
+msgstr "Shunchaki matn terishni boshlang"
+
+#. Translators: "Entry" here is the act of entering text
+#: src/widgets/window.blp:247
+msgid "_Enable Entry"
+msgstr "Kirishni yoqish"
+
+#: src/widgets/window.blp:273
+msgid "Results"
+msgstr "Natijalar"
+
+#: src/widgets/window.blp:298 src/widgets/window.blp:344
+msgid "_Continue"
+msgstr "Davom etish"
+
+#. Translators: "Frustration Relief" is the name of the functionality
+#. that automatically cancels a test when random key mashing is detected,
+#. and displays a recommendation to take a break.
+#: src/widgets/window.blp:326
+msgid "Frustration Relief"
+msgstr "Xafagarchilikdan xalos bo'lish"
+
+#: src/widgets/window.blp:332
+msgid "Frustration Detected"
+msgstr "Xafagarchilik aniqlandi"
+
+#. Translators: Make sure to convey this as politely and sensitively as possible,
+#. since it is likely to be shown to people while they are in a state of
+#. self-disappointment / anger
+#: src/widgets/window.blp:336
+msgid ""
+"You learn faster in a calm state of mind. Consider taking a break. The test "
+"has been cancelled, and will not affect your typing statistics."
+msgstr ""
+"Siz xotirjam holatda tezroq oʻrganasiz. Tanaffus qilishni oʻylab koʻring. "
+"Sinov bekor qilindi va matn kiritish statistikangizga taʻsir qilmaydi."
+
+#: src/widgets/window.blp:378
+msgid "Text _Language"
+msgstr "Matn tili"
+
+#: src/widgets/window.blp:383
+msgid "_Keyboard Shortcuts"
+msgstr "Klaviature yorliqlari"
+
+#: src/widgets/window.blp:388
+msgid "_About Keypunch"
+msgstr "Keypunch haqida"
+
+#: src/widgets/window.rs:196
+msgid "Orthography by"
+msgstr "Orfografiya boʻyicha"
+
+#. Translators: Replace "translator-credits" with your names, one name per line
+#: src/widgets/window.rs:214
+msgid "translator-credits"
+msgstr "tarjimon-kreditlari"
+
+#: src/widgets/window.rs:219
+msgid "Special thanks to"
+msgstr "Alohida rahmat"
+
+#. Translators: Metainfo for the app Fretboard. <https://github.com/bragefuglseth/fretboard>
+#: src/widgets/window.rs:226
+msgid "Fretboard"
+msgstr "Fretboard"
+
+#. Translators: Metainfo for the app Fretboard. <https://github.com/bragefuglseth/fretboard>
+#: src/widgets/window.rs:228
+msgid "Look up guitar chords"
+msgstr "Gitara akkordlarini qidiring"
+
+#: src/widgets/window/typing_test.rs:163
+msgid "{} ⁄ {}"
+msgstr "{} ⁄ {}"
+
+#. Translators: This is shown as a warning by GNOME Shell before logging out or shutting off the system in the middle of a typing test, alongside Keypunch's name and icon
+#: src/widgets/window/typing_test.rs:336
+msgid "Ongoing typing test"
+msgstr "Davom etayotgan matn terish sinovi"
+
+#: src/widgets/window/typing_test.rs:508
+msgid "Changes discarded"
+msgstr "Oʻzgarishlar bekor qilindi"
+
+#: src/widgets/window/typing_test.rs:509
+msgid "Restore"
+msgstr "Qayta tiklash"
+
+#. Translators: The format of the timer. The first `{}` block will be replaced
+#. with the minutes passed, and the second one will be replaced with the seconds
+#. passed. Do not translate the `{}` blocks. Note that the `∶` sign is a special
+#. Unicode character; if your language doesn't use something completely different,
+#. you should probably copy and paste it from the original string.
+#: src/widgets/window/typing_test.rs:607 src/widgets/window/typing_test.rs:609
+msgid "{}∶{}"
+msgstr "{}∶{}"
