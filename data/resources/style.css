@@ -13,8 +13,8 @@ KpTextView > textview {
   font-variant-ligatures: none;
 }
 
-KpResultsView .key-number {
-  font-size: 3.5rem;
+.key-number {
+  font-size: 3.2rem;
   font-weight: 700;
 }
 
@@ -49,3 +49,36 @@ window.hide-controls headerbar.test .end {
   border-radius: 9999px;
 }
 
+.group-header {
+  padding: 6px 0px;
+}
+
+.wpm-legend {
+  border-bottom: 2px solid var(--accent-bg-color);
+}
+
+.accuracy-legend {
+  border-bottom: 2px dashed currentColor;
+  opacity: calc(var(--dim-opacity) - 0.2);
+}
+
+.line-chart-dot {
+  border-radius: 50%;
+  background-color: var(--accent-bg-color);
+  transition: transform 200ms;
+}
+
+.line-chart-button > button {
+  background: transparent;
+  padding: 0px;
+}
+
+.line-chart-button > button:hover .line-chart-dot,
+.line-chart-button > button:checked .line-chart-dot {
+  transform: scale(2);
+}
+
+.line-chart-button {
+  --popover-bg-color: var(--accent-bg-color);
+  --popover-fg-color: var(--light-1);
+}
