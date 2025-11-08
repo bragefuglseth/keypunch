@@ -1,0 +1,466 @@
+# Greek translation for Keypunch.
+# Copyright (C) 2025 Keypunch's COPYRIGHT HOLDER
+# This file is distributed under the same license as the Keypunch package.
+# Efstathios Iosifidis <eiosifidis@gnome.org>,  2025.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Keypunch main\n"
+"Report-Msgid-Bugs-To: https://github.com/bragefuglseth/keypunch/issues\n"
+"POT-Creation-Date: 2025-11-08 03:29+0000\n"
+"PO-Revision-Date: 2025-11-08 03:29+0000\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Greek <Greek>\n"
+"Language: el\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: data/dev.bragefuglseth.Keypunch.desktop.in.in:2
+#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:7
+#: src/widgets/window.blp:24
+msgid "Keypunch"
+msgstr "Keypunch"
+
+#: data/dev.bragefuglseth.Keypunch.desktop.in.in:3
+#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:8
+msgid "Practice your typing skills"
+msgstr "Εξασκήστε τις δεξιότητές σας στην πληκτρολόγηση"
+
+#: data/dev.bragefuglseth.Keypunch.desktop.in.in:9
+msgid ""
+"typing;trainer;touch typing;keyboard;speed;wpm;words per "
+"minute;accuracy;test;"
+msgstr ""
+"πληκτρολόγηση;εκπαιδευτής;τυφλό σύστημα;πληκτρολόγιο;ταχύτητα;λπλ;λέξεις ανά "
+"λεπτό;ακρίβεια;δοκιμή;"
+
+#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:13
+msgid ""
+"There is no doubt that typing on a keyboard is an essential skill in the "
+"digital age. Typing fast and accurately gives you more opportunities, more "
+"time for what matters to you, and a sense of self-accomplishment."
+msgstr ""
+"Δεν υπάρχει αμφιβολία ότι η πληκτρολόγηση σε ένα πληκτρολόγιο είναι μια "
+"απαραίτητη δεξιότητα στην ψηφιακή εποχή. Η γρήγορη και ακριβής πληκτρολόγηση "
+"σας δίνει περισσότερες ευκαιρίες, περισσότερο χρόνο για ό,τι έχει σημασία "
+"για εσάς, και μια αίσθηση αυτο-ολοκλήρωσης."
+
+#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:18
+msgid ""
+"Keypunch lets you practice typing. Thanks to fast-paced sessions with "
+"instant feedback afterwards and a plethora of available languages, you might "
+"even have a little fun doing so. With determination, proper technique and "
+"some time, you will observe a noticeable increase in both the speed and the "
+"accuracy of which your thoughts and ideas are put into words on the screen."
+msgstr ""
+"Το Keypunch σάς επιτρέπει να εξασκηθείτε στην πληκτρολόγηση. Χάρη στις "
+"γρήγορες συνεδρίες με άμεση ανατροφοδότηση στη συνέχεια και μια πληθώρα "
+"διαθέσιμων γλωσσών, μπορεί ακόμη και να διασκεδάσετε λίγο κάνοντάς το. Με "
+"αποφασιστικότητα, σωστή τεχνική και λίγο χρόνο, θα παρατηρήσετε μια "
+"αξιοσημείωτη αύξηση τόσο στην ταχύτητα όσο και στην ακρίβεια με την οποία οι "
+"σκέψεις και οι ιδέες σας μετατρέπονται σε λέξεις στην οθόνη."
+
+#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:25
+msgid ""
+"If you are already a racer at typing, Keypunch still has something for you. "
+"Try practicing with numbers and punctuation, or choose your own text to type "
+"out as fast as you can."
+msgstr ""
+"Αν είστε ήδη άσος στην πληκτρολόγηση, το Keypunch έχει ακόμα κάτι για εσάς. "
+"Δοκιμάστε να εξασκηθείτε με αριθμούς και σημεία στίξης, ή επιλέξτε το δικό "
+"σας κείμενο για να το πληκτρολογήσετε όσο πιο γρήγορα μπορείτε."
+
+#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:30
+msgid "Get ready to accelerate your typing!"
+msgstr "Ετοιμαστείτε να επιταχύνετε την πληκτρολόγησή σας!"
+
+#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:33
+msgid ""
+"Keypunch is proudly part of GNOME Circle, an initiative that champions the "
+"great software that is available for the GNOME platform. For more "
+"information, visit the GNOME Circle website."
+msgstr ""
+"Το Keypunch είναι με περηφάνια μέρος του GNOME Circle, μιας πρωτοβουλίας που "
+"υποστηρίζει το σπουδαίο λογισμικό που είναι διαθέσιμο για την πλατφόρμα "
+"GNOME. Για περισσότερες πληροφορίες, επισκεφθείτε την ιστοσελίδα του GNOME "
+"Circle."
+
+#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:39
+msgid "In the middle of a session"
+msgstr "Στη μέση μιας συνεδρίας"
+
+#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:43
+msgid "Ready for typing"
+msgstr "Έτοιμο για πληκτρολόγηση"
+
+#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:47
+msgid "Session results"
+msgstr "Αποτελέσματα συνεδρίας"
+
+#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:51
+msgid "Language selection"
+msgstr "Επιλογή γλώσσας"
+
+#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:55
+msgid "Custom text entry"
+msgstr "Εισαγωγή προσαρμοσμένου κειμένου"
+
+#: data/dev.bragefuglseth.Keypunch.gschema.xml:20
+msgid "Window Width"
+msgstr "Πλάτος παραθύρου"
+
+#: data/dev.bragefuglseth.Keypunch.gschema.xml:24
+msgid "Window Height"
+msgstr "Ύψος παραθύρου"
+
+#: data/dev.bragefuglseth.Keypunch.gschema.xml:28
+msgid "Window Maximization"
+msgstr "Μεγιστοποίηση παραθύρου"
+
+#: data/dev.bragefuglseth.Keypunch.gschema.xml:32
+msgid "Session Type"
+msgstr "Τύπος συνεδρίας"
+
+#: data/dev.bragefuglseth.Keypunch.gschema.xml:36
+msgid "Session Duration"
+msgstr "Διάρκεια συνεδρίας"
+
+#: data/dev.bragefuglseth.Keypunch.gschema.xml:37
+msgid "The duration of time-based sessions"
+msgstr "Η διάρκεια των χρονομετρημένων συνεδριών"
+
+#. Translators: Insert the language code of your language here, for example "nb" for Norwegian Bokmaal. Do not remove the quotation marks. It's doesn't matter if there isn't a word list for the language in `data/word_lists` right now, the app will fall back to English in that case and start using the list if it becomes available in the future.
+#: data/dev.bragefuglseth.Keypunch.gschema.xml:41
+msgid "\"en\""
+msgstr "\"el\""
+
+#: data/dev.bragefuglseth.Keypunch.gschema.xml:42
+#: src/widgets/results_view.blp:127 src/widgets/text_language_dialog.blp:24
+#: src/widgets/text_language_dialog.blp:32
+#: src/widgets/text_language_dialog.blp:58
+msgid "Text Language"
+msgstr "Γλώσσα κειμένου"
+
+#: data/dev.bragefuglseth.Keypunch.gschema.xml:43
+msgid "The code of the language used for automatically generated text"
+msgstr "Ο κωδικός της γλώσσας που χρησιμοποιείται για το αυτόματα δημιουργούμενο κείμενο"
+
+#: data/dev.bragefuglseth.Keypunch.gschema.xml:47
+msgid "Recent Languages"
+msgstr "Πρόσφατες γλώσσες"
+
+#: data/dev.bragefuglseth.Keypunch.gschema.xml:48
+msgid "Languages shown in the list of recent ones in the text language dialog"
+msgstr "Γλώσσες που εμφανίζονται στη λίστα των πρόσφατων στον διάλογο γλώσσας κειμένου"
+
+#. Translators: This is the default text for custom typing sessions. Do not translate it literally, and do not remove the quotation marks. Replace it with an appropriate "sample sentence" from your language instead. The original text is an English pangram, so you can e.g. find a pangram in your language: https://clagnut.com/blog/2380
+#: data/dev.bragefuglseth.Keypunch.gschema.xml:52
+msgid "\"The quick brown fox jumps over the lazy dog.\""
+msgstr "\"Ταχίστη αλώπηξ βαφής ψημένη γη, δρασκελίζει υπέρ νωθρού κυνός.\""
+
+#: data/dev.bragefuglseth.Keypunch.gschema.xml:53
+#: src/widgets/custom_text_dialog.blp:24 src/widgets/custom_text_dialog.blp:45
+msgid "Custom Text"
+msgstr "Προσαρμοσμένο κείμενο"
+
+#: data/dev.bragefuglseth.Keypunch.gschema.xml:54
+msgid "Text displayed when “Custom” is chosen from the session menu"
+msgstr "Κείμενο που εμφανίζεται όταν επιλέγεται «Προσαρμοσμένο» από το μενού συνεδρίας"
+
+#: data/dev.bragefuglseth.Keypunch.gschema.xml:58
+msgid "Personal Best"
+msgstr "Ατομικό ρεκόρ"
+
+#: data/dev.bragefuglseth.Keypunch.gschema.xml:59
+msgid ""
+"The current highest amount of WPM received for each session type / duration "
+"and language"
+msgstr ""
+"Ο τρέχων υψηλότερος αριθμός ΛΠΛ που έχει επιτευχθεί για κάθε τύπο / διάρκεια "
+"συνεδρίας και γλώσσα"
+
+#: data/resources/gtk/help-overlay.ui:11
+msgctxt "shortcut window"
+msgid "General"
+msgstr "Γενικά"
+
+#: data/resources/gtk/help-overlay.ui:14
+msgctxt "shortcut window"
+msgid "Text Language"
+msgstr "Γλώσσα κειμένου"
+
+#: data/resources/gtk/help-overlay.ui:20
+msgctxt "shortcut window"
+msgid "Cancel Session"
+msgstr "Ακύρωση συνεδρίας"
+
+#: data/resources/gtk/help-overlay.ui:26
+msgctxt "shortcut window"
+msgid "Keyboard Shortcuts"
+msgstr "Συντομεύσεις πληκτρολογίου"
+
+#: data/resources/gtk/help-overlay.ui:32
+msgctxt "shortcut window"
+msgid "Close Window"
+msgstr "Κλείσιμο παραθύρου"
+
+#: data/resources/gtk/help-overlay.ui:38
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr "Έξοδος"
+
+#: src/widgets/custom_text_dialog.blp:56
+msgid "Insert custom text…"
+msgstr "Εισαγωγή προσαρμοσμένου κειμένου…"
+
+#: src/widgets/custom_text_dialog.blp:92
+msgid "_Save"
+msgstr "_Αποθήκευση"
+
+#: src/widgets/results_view.blp:53
+msgid "New Personal Best for Configuration"
+msgstr "Νέο ατομικό ρεκόρ για τη διαμόρφωση"
+
+#: src/widgets/results_view.blp:64
+msgid "Words per Minute"
+msgstr "Λέξεις ανά λεπτό"
+
+#: src/widgets/results_view.blp:85
+msgid "Accuracy"
+msgstr "Ακρίβεια"
+
+#: src/widgets/results_view.blp:101 src/widgets/window.blp:167
+msgid "Test Type"
+msgstr "Τύπος δοκιμής"
+
+#: src/widgets/results_view.blp:114 src/widgets/window.blp:175
+msgid "Test Duration"
+msgstr "Διάρκεια δοκιμής"
+
+#: src/widgets/results_view.rs:165
+msgid "{}%"
+msgstr "{}%"
+
+#: src/widgets/results_view.rs:171 src/widgets/window.blp:169
+msgid "Custom"
+msgstr "Προσαρμοσμένο"
+
+#: src/widgets/results_view.rs:173 src/widgets/window.blp:169
+msgid "Simple"
+msgstr "Απλό"
+
+#: src/widgets/results_view.rs:174 src/widgets/window.blp:169
+msgid "Advanced"
+msgstr "Για προχωρημένους"
+
+#. Translators: The `{}` blocks will be replaced with the number of minutes
+#. and seconds. Do not translate them!
+#: src/widgets/results_view.rs:200
+msgid "{}m {}s"
+msgstr "{}λ {}δ"
+
+#. Translators: The `{}` block will be replaced with the number of minutes.
+#. Do not translate it!
+#: src/widgets/results_view.rs:204
+msgid "{} minute"
+msgid_plural "{} minutes"
+msgstr[0] "{} λεπτό"
+msgstr[1] "{} λεπτά"
+
+#. Translators: The `{}` block will be replaced with the number of seconds.
+#. Do not translate it!
+#: src/widgets/results_view.rs:208
+msgid "{} second"
+msgid_plural "{} seconds"
+msgstr[0] "{} δευτερόλεπτο"
+msgstr[1] "{} δευτερόλεπτα"
+
+#: src/widgets/text_language_dialog.blp:40
+#: src/widgets/text_language_dialog.blp:180
+#: src/widgets/text_language_dialog.blp:209
+msgid "Add Language"
+msgstr "Προσθήκη γλώσσας"
+
+#: src/widgets/text_language_dialog.blp:70
+#: src/widgets/text_language_dialog.blp:74
+msgid "Search languages…"
+msgstr "Αναζήτηση γλωσσών…"
+
+#. Translators: Recent languages in text languages list
+#: src/widgets/text_language_dialog.blp:98
+msgid "Recent"
+msgstr "Πρόσφατα"
+
+#. Translators: Other languages in text languages list
+#: src/widgets/text_language_dialog.blp:103
+msgid "Other"
+msgstr "Άλλα"
+
+#: src/widgets/text_language_dialog.blp:123
+msgid "Search Results"
+msgstr "Αποτελέσματα αναζήτησης"
+
+#: src/widgets/text_language_dialog.blp:159
+msgid "No Matches"
+msgstr "Κανένα ταίριασμα"
+
+#: src/widgets/text_language_dialog.blp:167
+msgid "Try a different search"
+msgstr "Δοκιμάστε μια διαφορετική αναζήτηση"
+
+#: src/widgets/text_language_dialog.blp:218
+msgid ""
+"You can help add a new text language to Keypunch by submitting a language "
+"request on GitHub. A GitHub account and some language knowledge is required."
+msgstr ""
+"Μπορείτε να βοηθήσετε στην προσθήκη μιας νέας γλώσσας κειμένου στο Keypunch "
+"υποβάλλοντας ένα αίτημα γλώσσας στο GitHub. Απαιτείται λογαριασμός GitHub και "
+"κάποια γνώση της γλώσσας."
+
+#: src/widgets/text_language_dialog.blp:233
+msgid "_Create Request"
+msgstr "_Δημιουργία αιτήματος"
+
+#: src/widgets/text_view.blp:28
+msgid "Text View"
+msgstr "Προβολή κειμένου"
+
+#: src/widgets/window.blp:150
+msgid "Restart"
+msgstr "Επανεκκίνηση"
+
+#: src/widgets/window.blp:178
+msgid "15 seconds"
+msgstr "15 δευτερόλεπτα"
+
+#: src/widgets/window.blp:179
+msgid "30 seconds"
+msgstr "30 δευτερόλεπτα"
+
+#: src/widgets/window.blp:180
+msgid "1 minute"
+msgstr "1 λεπτό"
+
+#: src/widgets/window.blp:181
+msgid "5 minutes"
+msgstr "5 λεπτά"
+
+#: src/widgets/window.blp:182
+msgid "10 minutes"
+msgstr "10 λεπτά"
+
+#: src/widgets/window.blp:191
+msgid "_Edit Text"
+msgstr "_Επεξεργασία κειμένου"
+
+#: src/widgets/window.blp:220
+msgid "Main Menu"
+msgstr "Κύριο μενού"
+
+#: src/widgets/window.blp:238
+msgid "Just Start Typing"
+msgstr "Απλώς αρχίστε να πληκτρολογείτε"
+
+#. Translators: "Entry" here is the act of entering text
+#: src/widgets/window.blp:247
+msgid "_Enable Entry"
+msgstr "_Ενεργοποίηση εισαγωγής"
+
+#: src/widgets/window.blp:273
+msgid "Results"
+msgstr "Αποτελέσματα"
+
+#: src/widgets/window.blp:298 src/widgets/window.blp:344
+msgid "_Continue"
+msgstr "_Συνέχεια"
+
+#. Translators: "Frustration Relief" is the name of the functionality
+#. that automatically cancels a test when random key mashing is detected,
+#. and displays a recommendation to take a break.
+#: src/widgets/window.blp:326
+msgid "Frustration Relief"
+msgstr "Ανακούφιση από την απογοήτευση"
+
+#: src/widgets/window.blp:332
+msgid "Frustration Detected"
+msgstr "Εντοπίστηκε απογοήτευση"
+
+#. Translators: Make sure to convey this as politely and sensitively as possible,
+#. since it is likely to be shown to people while they are in a state of
+#. self-disappointment / anger
+#: src/widgets/window.blp:336
+msgid ""
+"You learn faster in a calm state of mind. Consider taking a break. The test "
+"has been cancelled, and will not affect your typing statistics."
+msgstr ""
+"Μαθαίνετε γρηγορότερα σε μια ήρεμη ψυχική κατάσταση. Σκεφτείτε να κάνετε ένα "
+"διάλειμμα. Η δοκιμή έχει ακυρωθεί και δεν θα επηρεάσει τα στατιστικά "
+"πληκτρολόγησής σας."
+
+#: src/widgets/window.blp:378
+msgid "Text _Language"
+msgstr "_Γλώσσα κειμένου"
+
+#: src/widgets/window.blp:383
+msgid "_Keyboard Shortcuts"
+msgstr "Συντομεύσεις _πληκτρολογίου"
+
+#: src/widgets/window.blp:388
+msgid "_About Keypunch"
+msgstr "_Σχετικά με το Keypunch"
+
+#: src/widgets/window.rs:196
+msgid "Orthography by"
+msgstr "Ορθογραφία από"
+
+#. Translators: Replace "translator-credits" with your names, one name per line
+#: src/widgets/window.rs:214
+msgid "translator-credits"
+msgstr ""
+"Ελληνική μεταφραστική ομάδα GNOME\n"
+" Ευστάθιος Ιωσηφίδης <iosifidis@opensuse.org>\n"
+"\n"
+"Για περισσότερες πληροφορίες, επισκεφθείτε τη σελίδα\n"
+"https://gr.gnome.org/"
+
+#: src/widgets/window.rs:219
+msgid "Special thanks to"
+msgstr "Ιδιαίτερες ευχαριστίες σε"
+
+#. Translators: Metainfo for the app Fretboard. <https://github.com/bragefuglseth/fretboard>
+#: src/widgets/window.rs:226
+msgid "Fretboard"
+msgstr "Fretboard"
+
+#. Translators: Metainfo for the app Fretboard. <https://github.com/bragefuglseth/fretboard>
+#: src/widgets/window.rs:228
+msgid "Look up guitar chords"
+msgstr "Αναζήτηση συγχορδιών κιθάρας"
+
+#: src/widgets/window/typing_test.rs:163
+msgid "{} ⁄ {}"
+msgstr "{} / {}"
+
+#. Translators: This is shown as a warning by GNOME Shell before logging out or shutting off the system in the middle of a typing test, alongside Keypunch's name and icon
+#: src/widgets/window/typing_test.rs:336
+msgid "Ongoing typing test"
+msgstr "Εν εξελίξει δοκιμή πληκτρολόγησης"
+
+#: src/widgets/window/typing_test.rs:508
+msgid "Changes discarded"
+msgstr "Οι αλλαγές απορρίφθηκαν"
+
+#: src/widgets/window/typing_test.rs:509
+msgid "Restore"
+msgstr "Επαναφορά"
+
+#. Translators: The format of the timer. The first `{}` block will be replaced
+#. with the minutes passed, and the second one will be replaced with the seconds
+#. passed. Do not translate the `{}` blocks. Note that the `∶` sign is a special
+#. Unicode character; if your language doesn't use something completely different,
+#. you should probably copy and paste it from the original string.
+#: src/widgets/window/typing_test.rs:607 src/widgets/window/typing_test.rs:609
+msgid "{}∶{}"
+msgstr "{}∶{}"
