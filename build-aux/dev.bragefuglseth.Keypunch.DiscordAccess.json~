@@ -4,10 +4,10 @@
     "runtime-version" : "master",
     "sdk" : "org.gnome.Sdk",
     "sdk-extensions" : [
-        {
-            "id" : "org.freedesktop.Sdk.Extension.rust-stable",
-            "version" : "24.08"
-        }
+    	{
+    	     "id" : "org.freedesktop.Sdk.Extension.rust-stable",
+    	     "version" : "24.08"
+    	}
     ],
     "command" : "keypunch",
     "finish-args" : [
@@ -41,20 +41,18 @@
         "*.a"
     ],
     "modules" : [
-        {
-            "name" : "blueprint-compiler",
-            "buildsystem" : "meson",
-            "cleanup" : [
-                "*"
-            ],
-            "sources" : [
-                {
-                    "type" : "git",
-                    "url" : "https://gitlab.gnome.org/jwestman/blueprint-compiler",
-                    "tag" : "v0.16.0"
-                }
-            ]
-        },
+    	{
+	  "name": "blueprint-compiler",
+	  "buildsystem": "meson",
+	  "cleanup": ["*"],
+	  "sources": [
+	    {
+	      "type": "git",
+	      "url": "https://gitlab.gnome.org/jwestman/blueprint-compiler",
+	      "tag": "v0.16.0"
+	    }
+	  ]
+	},
         {
             "name" : "keypunch",
             "builddir" : true,
@@ -65,9 +63,6 @@
                     "type" : "dir",
                     "path" : ".."
                 }
-            ],
-            "config-opts" : [
-                "--libdir=lib"
             ]
         }
     ]
