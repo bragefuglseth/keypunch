@@ -172,6 +172,7 @@ impl KpResultsView {
             TestConfig::Generated { difficulty, .. } => match difficulty {
                 GeneratedTestDifficulty::Simple => gettext("Simple"),
                 GeneratedTestDifficulty::Advanced => gettext("Advanced"),
+                GeneratedTestDifficulty::Numbers => gettext("Numbers"),
             },
         };
 
