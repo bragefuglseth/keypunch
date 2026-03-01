@@ -1,15 +1,14 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# Copyright (C) 2024 twlvnn kraftwerk.
 # This file is distributed under the same license as the keypunch package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # twlvnn kraftwerk <kraft_werk@tutanota.com>, 2024.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: keypunch\n"
+"Project-Id-Version: keypunch main\n"
 "Report-Msgid-Bugs-To: https://github.com/bragefuglseth/keypunch/issues\n"
-"POT-Creation-Date: 2025-03-18 20:35+0000\n"
-"PO-Revision-Date: 2025-03-19 21:30+0100\n"
+"POT-Creation-Date: 2025-04-26 12:47+0000\n"
+"PO-Revision-Date: 2026-03-01 16:51+0100\n"
 "Last-Translator: twlvnn kraftwerk <kraft_werk@tutanota.com>\n"
 "Language-Team: Bulgarian <dict-notifications@fsa-bg.org>\n"
 "Language: bg\n"
@@ -19,22 +18,25 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 3.5\n"
 
-#: data/dev.bragefuglseth.Keypunch.desktop.in.in:3
+#: data/dev.bragefuglseth.Keypunch.desktop.in.in:2
 #: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:7
 #: src/widgets/window.blp:24
 msgid "Keypunch"
 msgstr "Keypunch"
 
-#: data/dev.bragefuglseth.Keypunch.desktop.in.in:4
+#: data/dev.bragefuglseth.Keypunch.desktop.in.in:3
 #: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:8
 msgid "Practice your typing skills"
 msgstr "Упражнявайте уменията си по машинопис"
 
-#: data/dev.bragefuglseth.Keypunch.desktop.in.in:10
+#: data/dev.bragefuglseth.Keypunch.desktop.in.in:9
 msgid ""
 "typing;trainer;touch typing;keyboard;speed;wpm;words per "
 "minute;accuracy;test;"
-msgstr "машинопис;писане;тренажор;клавиатура;скорост;думи в минута;точност;"
+msgstr ""
+"машинопис;писане;тренажор;клавиатура;скорост;думи в "
+"минута;точност;typing;trainer;touch typing;keyboard;speed;wpm;words per "
+"minute;accuracy;test;"
 
 #: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:13
 msgid ""
@@ -238,6 +240,7 @@ msgid "Test Duration"
 msgstr "Продължителност на теста"
 
 #: src/widgets/results_view.rs:165
+#, rust-format
 msgid "{}%"
 msgstr "{}%"
 
@@ -256,12 +259,14 @@ msgstr "За напреднали"
 #. Translators: The `{}` blocks will be replaced with the number of minutes
 #. and seconds. Do not translate them!
 #: src/widgets/results_view.rs:200
+#, rust-format
 msgid "{}m {}s"
 msgstr "{} мин. {} сек."
 
 #. Translators: The `{}` block will be replaced with the number of minutes.
 #. Do not translate it!
 #: src/widgets/results_view.rs:204
+#, rust-format
 msgid "{} minute"
 msgid_plural "{} minutes"
 msgstr[0] "{} минута"
@@ -270,6 +275,7 @@ msgstr[1] "{} минути"
 #. Translators: The `{}` block will be replaced with the number of seconds.
 #. Do not translate it!
 #: src/widgets/results_view.rs:208
+#, rust-format
 msgid "{} second"
 msgid_plural "{} seconds"
 msgstr[0] "{} секунда"
@@ -370,7 +376,7 @@ msgstr "_Включване на писането"
 msgid "Results"
 msgstr "Резултати"
 
-#: src/widgets/window.blp:298
+#: src/widgets/window.blp:298 src/widgets/window.blp:344
 msgid "_Continue"
 msgstr "_Продължаване"
 
@@ -393,7 +399,7 @@ msgid ""
 "You learn faster in a calm state of mind. Consider taking a break. The test "
 "has been cancelled, and will not affect your typing statistics."
 msgstr ""
-"Учите се по-бързо, ако сте спокойни. Вземете си почивка. Тестът е отменен и "
+"Учите по-бързо, ако сте спокойни. Вземете си почивка. Тестът е отменен и "
 "няма да се отрази на статистиката ви за машинопис."
 
 #: src/widgets/window.blp:378
@@ -440,28 +446,17 @@ msgstr "Fretboard"
 msgid "Look up guitar chords"
 msgstr "Потърсете акорди за китара"
 
-#: src/widgets/window/typing_test.rs:163
-msgid "{} ⁄ {}"
-msgstr "{} ⁄ {}"
-
 #. Translators: This is shown as a warning by GNOME Shell before logging out or shutting off the system in the middle of a typing test, alongside Keypunch's name and icon
-#: src/widgets/window/typing_test.rs:334
+#: src/widgets/window/typing_test.rs:336
 msgid "Ongoing typing test"
 msgstr "В момента се провежда тест за машинопис"
-
-#: src/widgets/window/typing_test.rs:506
-msgid "Changes discarded"
-msgstr "Промените са отхвърлени"
-
-#: src/widgets/window/typing_test.rs:507
-msgid "Restore"
-msgstr "Възстановяване"
 
 #. Translators: The format of the timer. The first `{}` block will be replaced
 #. with the minutes passed, and the second one will be replaced with the seconds
 #. passed. Do not translate the `{}` blocks. Note that the `∶` sign is a special
 #. Unicode character; if your language doesn't use something completely different,
 #. you should probably copy and paste it from the original string.
-#: src/widgets/window/typing_test.rs:605 src/widgets/window/typing_test.rs:607
+#: src/widgets/window/typing_test.rs:607 src/widgets/window/typing_test.rs:609
+#, rust-format
 msgid "{}∶{}"
 msgstr "{}∶{}"
