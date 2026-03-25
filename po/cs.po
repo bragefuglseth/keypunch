@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: keypunch\n"
 "Report-Msgid-Bugs-To: https://github.com/bragefuglseth/keypunch/issues\n"
 "POT-Creation-Date: 2025-04-26 12:47+0000\n"
-"PO-Revision-Date: 2026-03-25 18:16+0100\n"
+"PO-Revision-Date: 2026-03-25 18:19+0100\n"
 "Last-Translator: Patrik Sivek <sivekpatrik@gmail.com>\n"
 "Language-Team: Czech\n"
 "Language: cs\n"
@@ -159,7 +159,7 @@ msgstr ""
 #. Translators: This is the default text for custom typing sessions. Do not translate it literally, and do not remove the quotation marks. Replace it with an appropriate "sample sentence" from your language instead. The original text is an English pangram, so you can e.g. find a pangram in your language: https://clagnut.com/blog/2380
 #: data/dev.bragefuglseth.Keypunch.gschema.xml:52
 msgid "\"The quick brown fox jumps over the lazy dog.\""
-msgstr "„Příliš žluťoučký kůň úpěl ďábelské ódy.“"
+msgstr "\"Příliš žluťoučký kůň úpěl ďábelské ódy.\""
 
 #: data/dev.bragefuglseth.Keypunch.gschema.xml:53
 #: src/widgets/custom_text_dialog.blp:24 src/widgets/custom_text_dialog.blp:45
