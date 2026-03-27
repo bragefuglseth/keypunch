@@ -37,18 +37,20 @@
         "*.a"
     ],
     "modules" : [
-    	{
-	  "name": "blueprint-compiler",
-	  "buildsystem": "meson",
-	  "cleanup": ["*"],
-	  "sources": [
-	    {
-	      "type": "git",
-	      "url": "https://gitlab.gnome.org/jwestman/blueprint-compiler",
-	      "tag": "v0.16.0"
-	    }
-	  ]
-	},
+        {
+            "name" : "blueprint-compiler",
+            "buildsystem" : "meson",
+            "cleanup" : [
+                "*"
+            ],
+            "sources" : [
+                {
+                    "type" : "git",
+                    "url" : "https://gitlab.gnome.org/jwestman/blueprint-compiler",
+                    "tag" : "v0.16.0"
+                }
+            ]
+        },
         {
             "name" : "keypunch",
             "builddir" : true,
@@ -59,6 +61,9 @@
                     "type" : "dir",
                     "path" : ".."
                 }
+            ],
+            "config-opts" : [
+                "--libdir=lib"
             ]
         }
     ]
