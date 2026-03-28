@@ -3,7 +3,8 @@
   <enum id="dev.bragefuglseth.Keypunch.SessionType">
     <value nick="Simple" value="0" />
     <value nick="Advanced" value="1" />
-    <value nick="Custom" value="2" />
+    <value nick="Numbers" value="2" />
+    <value nick="Custom" value="3" />
   </enum>
 
   <enum id="dev.bragefuglseth.Keypunch.SessionDuration">

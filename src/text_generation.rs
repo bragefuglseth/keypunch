@@ -472,3 +472,21 @@ fn random_number_weighted(numerals: &Numerals, rng: &mut ThreadRng) -> String {
 
     s
 }
+
+// Generates a string of random numbers (0-9999) separated by spaces.
+// Uses Western Arabic numerals only.
+pub fn numbers_only() -> String {
+    let mut rng = rand::thread_rng();
+    let numerals = WESTERN_ARABIC_NUMERALS;
+
+    let mut generated = Vec::new();
+    let mut grapheme_count = 0;
+
+    while grapheme_count < CHUNK_GRAPHEME_COUNT {
+        let number = random_number_weighted(numerals, &mut rng);
+        grapheme_count += number.graphemes(true).count() + 1; // +1 for space
+        generated.push(number);
+    }
+
+    generated.join(" ")
+}

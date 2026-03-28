@@ -78,6 +78,11 @@ impl Default for RpcWrapper {
                             duration,
                             ..
                         } => format!("Advanced, {}", duration.english_string()),
+                        TestConfig::Generated {
+                            difficulty: GeneratedTestDifficulty::Numbers,
+                            duration,
+                            ..
+                        } => format!("Numbers, {}", duration.english_string()),
                     };
 
                     stored_activity = Activity::new()

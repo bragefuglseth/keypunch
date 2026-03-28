@@ -432,6 +432,7 @@ impl imp::KpWindow {
             } => match difficulty {
                 GeneratedTestDifficulty::Simple => text_generation::simple(language),
                 GeneratedTestDifficulty::Advanced => text_generation::advanced(language),
+                GeneratedTestDifficulty::Numbers => text_generation::numbers_only(),
             },
             TestConfig::Finite => process_custom_text(&settings.string("custom-text")),
         };
@@ -548,6 +549,7 @@ impl imp::KpWindow {
         let new_chunk = match difficulty {
             GeneratedTestDifficulty::Simple => text_generation::simple(language),
             GeneratedTestDifficulty::Advanced => text_generation::advanced(language),
+            GeneratedTestDifficulty::Numbers => text_generation::numbers_only(),
         };
         self.text_view.push_original_text(&new_chunk);
     }

@@ -30,6 +30,7 @@ use strum_macros::{Display as EnumDisplay, EnumIter, EnumString};
 pub enum GeneratedTestDifficulty {
     Simple,
     Advanced,
+    Numbers,
 }
 
 impl GeneratedTestDifficulty {
@@ -37,6 +38,7 @@ impl GeneratedTestDifficulty {
         match s {
             "simple" => Some(GeneratedTestDifficulty::Simple),
             "advanced" => Some(GeneratedTestDifficulty::Advanced),
+            "numbers" => Some(GeneratedTestDifficulty::Numbers),
             _ => None,
         }
     }
@@ -55,7 +57,7 @@ pub enum TestConfig {
 impl TestConfig {
     pub fn from_settings(settings: &gio::Settings) -> Self {
         match settings.string("session-type").as_str() {
-            difficulty_string @ ("Simple" | "Advanced") => TestConfig::Generated {
+            difficulty_string @ ("Simple" | "Advanced" | "Numbers") => TestConfig::Generated {
                 language: Language::from_str(&settings.string("text-language"))
                     .unwrap_or(Language::English),
                 difficulty: GeneratedTestDifficulty::from_str(&difficulty_string).unwrap(),
