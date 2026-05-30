@@ -22,7 +22,12 @@ endif
 run_command('cp', 'dev.bragefuglseth.Keypunch.metainfo.xml.in.in', 'dev.bragefuglseth.Keypunch.metainfo.xml.in', check: true)
 
 # Sed is used as a poor man's `configure_file` here because we need access to it in the src dir
-sed = find_program('sed', required: true)
+
+if build_machine.system() in ['freebsd', 'netbsd', 'openbsd', 'dragonfly']
+  meson.override_find_program('sed', find_program('gsed'))
+endif
+
+sed = find_program('gsed', 'sed', required: true) # We should probably still prefer gsed if it exists
 run_command(sed, '-i', 's/@app-id@/' + app_id + '/g', 'dev.bragefuglseth.Keypunch.metainfo.xml.in', check: true)
 
 appstream_file = i18n.merge_file(
