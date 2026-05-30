@@ -33,6 +33,8 @@ pub enum Language {
     Arabic,
     #[strum(message = "বাংলা", to_string = "bn")]
     Bangla,
+    #[strum(message = "Euskara", to_string = "eu")]
+    Basque,
     #[strum(message = "Български", to_string = "bg")]
     Bulgarian,
     #[strum(message = "Català", to_string = "ca")]
