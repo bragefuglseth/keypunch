@@ -30,6 +30,7 @@ use adw::prelude::*;
 use adw::subclass::prelude::*;
 use gettextrs::gettext;
 use gtk::{gio, glib};
+use gtk::gdk::Display;
 use std::cell::{Cell, OnceCell, RefCell};
 use std::time::{Duration, Instant};
 
@@ -74,6 +75,8 @@ mod imp {
         #[template_child]
         pub results_continue_button: TemplateChild<gtk::Button>,
         #[template_child]
+        pub results_share_button: TemplateChild<gtk::Button>,
+        #[template_child]
         pub frustration_continue_button: TemplateChild<gtk::Button>,
 
         pub settings: OnceCell<gio::Settings>,
@@ -103,6 +106,10 @@ mod imp {
 
             klass.install_action("win.text-language-dialog", None, move |window, _, _| {
                 window.imp().show_text_language_dialog();
+            });
+
+            klass.install_action("win.copy-results", None, move |window, _, _| {
+                window.imp().copy_results()
             });
 
             klass.install_action("win.cancel-test", None, move |window, _, _| {
@@ -237,6 +244,14 @@ mod imp {
             ));
 
             about.present(Some(self.obj().upcast_ref::<gtk::Widget>()));
+        }
+
+        pub fn copy_results(&self) {
+            if let Some(display) = Display::default() {
+                let clipboard = display.clipboard();
+                let text = self.results_view.get_text_summary();
+                clipboard.set_text(&text);
+            }
         }
 
         pub fn is_running(&self) -> bool {

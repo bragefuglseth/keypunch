@@ -186,6 +186,18 @@ impl KpResultsView {
             }
         }
     }
+
+    pub fn get_text_summary(&self) -> String {
+        let imp = self.imp();
+
+        let wpm = imp.wpm_label.text().to_string() + " WPM\n";
+        let accuracy = imp.accuracy_label.text().to_string() + " Accuracy\n";
+        let duration = imp.duration_label.text().to_string() + " | ";
+        let test_type = imp.test_type_label.text().to_string() + " | ";
+        let language = imp.language_label.text().to_string();
+
+        return wpm + &accuracy + &duration + &test_type + &language;
+    }
 }
 
 pub fn human_readable_duration(duration: Duration) -> String {
