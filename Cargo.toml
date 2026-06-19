@@ -22,16 +22,21 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
+anyhow = "1.0.95"
 discord-presence = "1.5.0"
 # Locked to 0.7.0 because of https://github.com/hfiguiere/i18n-format/issues/1
 gettext-rs = { version = "=0.7.0", features = ["gettext-system"] }
+graphene = { package = "graphene-rs", version = "0.20.7" }
 gvdb-macros = "0.1.12"
 i18n-format = "0.2.0"
 include_dir = "0.7.3"
 rand = "0.8.5"
 rayon = "1.10.0"
+refinery = { version = "0.8.14", features = ["rusqlite"] }
+rusqlite = { version = "=0.31.0", features = ["bundled", "time"] } # Locked until Refinery is updated
 strum = "0.26.2"
 strum_macros = "0.26.2"
+time = { version = "0.3.37", features = ["parsing", "local-offset"] }
 unicode-segmentation = "1.11.0"
 unidecode = "0.3.0"
 
