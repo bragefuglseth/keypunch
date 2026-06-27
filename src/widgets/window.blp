@@ -314,26 +314,16 @@ template $KpWindow: Adw.ApplicationWindow {
       }
 
       StackPage {
-        name: "frustration-relief";
+        name: "test-cancelled";
 
         child: Adw.ToolbarView {
           [top]
-          Adw.HeaderBar {
-            title-widget: Adw.WindowTitle {
-              // Translators: "Frustration Relief" is the name of the functionality
-              // that automatically cancels a test when random key mashing is detected,
-              // and displays a recommendation to take a break.
-              title: _("Frustration Relief");
-            };
-          }
+          Adw.HeaderBar {}
 
           content: Adw.StatusPage {
-            icon-name: "heart-outline-thick-symbolic";
-            title: _("Frustration Detected");
-            // Translators: Make sure to convey this as politely and sensitively as possible,
-            // since it is likely to be shown to people while they are in a state of
-            // self-disappointment / anger
-            description: _("You learn faster in a calm state of mind. Consider taking a break. The test has been cancelled, and will not affect your typing statistics.");
+            icon-name: "warning-outline-symbolic";
+            title: _("Test Cancelled");
+            description: _("The test has been cancelled due to an excessive amount of invalid keystrokes. This will not affect your typing statistics.");
           };
 
           [bottom]

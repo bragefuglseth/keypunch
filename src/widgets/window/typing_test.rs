@@ -359,7 +359,7 @@ impl imp::KpWindow {
         }
 
         self.end_test();
-        self.main_stack.set_visible_child_name("frustration-relief");
+        self.main_stack.set_visible_child_name("test-cancelled");
 
         // Avoid continue button being activated from a keypress immediately
         let continue_button = self.frustration_continue_button.get();
