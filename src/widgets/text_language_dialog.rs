@@ -267,7 +267,7 @@ impl KpTextLanguageDialog {
             .get::<Vec<String>>()
             .unwrap()
             .iter()
-            .map(|s| Language::from_str(&s).unwrap())
+            .filter_map(|s| Language::from_str(&s).ok())
             .collect();
 
         let imp = obj.imp();
