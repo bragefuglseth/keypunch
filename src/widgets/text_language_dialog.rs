@@ -20,6 +20,7 @@
 use crate::text_generation::Language;
 use adw::prelude::*;
 use adw::subclass::prelude::*;
+use gettextrs::gettext;
 use gtk::{gio, glib};
 use std::cell::RefCell;
 use std::iter::once;
@@ -154,11 +155,8 @@ mod imp {
                 .collect();
 
             // Sort alphabetically
-            languages_without_recent_or_current.sort_by_key(|language| {
-                language
-                    .get_message()
-                    .expect("all languages have names set")
-            });
+            languages_without_recent_or_current
+                .sort_by_key(|language| language_display_name(*language));
 
             for language in languages_without_recent_or_current {
                 let row = language_row(language);
@@ -177,22 +175,12 @@ mod imp {
                 let normalized_query = unidecode(&query.to_lowercase());
                 let mut results: Vec<Language> = Language::iter()
                     .filter(|language| {
-                        unidecode(
-                            &language
-                                .get_message()
-                                .expect("all languages have names set")
-                                .to_lowercase(),
-                        )
-                        .contains(&normalized_query)
+                        unidecode(&language_display_name(*language).to_lowercase())
+                            .contains(&normalized_query)
                     })
                     .collect();
 
-                results.sort_by_key(|language| {
-                    language
-                        .get_message()
-                        .expect("all languages have names set")
-                        .to_lowercase()
-                });
+                results.sort_by_key(|language| language_display_name(*language).to_lowercase());
 
                 if results.is_empty() {
                     self.no_results_lock_height(false);
@@ -278,9 +266,19 @@ impl KpTextLanguageDialog {
     }
 }
 
+fn language_display_name(language: Language) -> String {
+    match language {
+        Language::Numbers => gettext("Numbers & Symbols"),
+        _ => language
+            .get_message()
+            .expect("all languages have names set")
+            .to_string(),
+    }
+}
+
 fn language_row(language: Language) -> adw::ActionRow {
     let row = adw::ActionRow::new();
-    row.set_title(&language.get_message().unwrap());
+    row.set_title(&language_display_name(language));
 
     let check_button = gtk::CheckButton::builder()
         .action_name("app.text-language")
