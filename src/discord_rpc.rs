@@ -99,7 +99,7 @@ impl Default for RpcWrapper {
                             .large_text("Keypunch")
                             .small_image(wpm_to_image(wpm))
                             .small_text(format!(
-                                "{:.0} WPM, {:.0}% correctness",
+                                "{:.0} WPM, {:.0}% accuracy",
                                 wpm.floor(),
                                 display_accuracy
                             ))
