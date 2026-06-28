@@ -17,6 +17,7 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+use gettextrs::gettext;
 use include_dir::{include_dir, Dir};
 use rand::prelude::*;
 use rand::seq::index::sample;
@@ -110,6 +111,23 @@ pub enum Language {
     Vietnamese,
     #[strum(message = "فارسی", to_string = "fa")]
     Persian,
+}
+
+impl Language {
+    // Localized name shown in the UI. Real languages use their autonym (which
+    // should not be translated), while pseudo-languages like Numbers are app
+    // UI copy and go through gettext.
+    pub fn display_name(self) -> String {
+        use strum::EnumMessage;
+
+        match self {
+            Language::Numbers => gettext("Numbers & Symbols"),
+            _ => self
+                .get_message()
+                .expect("all languages have names set")
+                .to_string(),
+        }
+    }
 }
 
 #[derive(Clone, Copy)]
