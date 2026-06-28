@@ -3,41 +3,41 @@
 # This file is distributed under the same license as the keypunch package.
 #
 # Yevhen Popok <xalt7x.service@gmail.com>, 2024.
-# Yuri Chornoivan <yurchor@ukr.net>, 2025.
+# Yuri Chornoivan <yurchor@ukr.net>, 2025, 2026.
 msgid ""
 msgstr ""
 "Project-Id-Version: keypunch\n"
 "Report-Msgid-Bugs-To: https://github.com/bragefuglseth/keypunch/issues\n"
-"POT-Creation-Date: 2025-03-18 15:29+0000\n"
-"PO-Revision-Date: 2025-03-17 22:22+0200\n"
+"POT-Creation-Date: 2026-06-28 13:01+0000\n"
+"PO-Revision-Date: 2026-06-28 20:57+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=n==1 ? 3 : n%10==1 && n%100!=11 ? 0 : "
-"n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"Plural-Forms: nplurals=4; plural=n==1 ? 3 : n%10==1 && n%100!=11 ? 0 : n"
+"%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Generator: Lokalize 23.04.3\n"
 
-#: data/dev.bragefuglseth.Keypunch.desktop.in.in:3
+#: data/dev.bragefuglseth.Keypunch.desktop.in.in:2
 #: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:7
 #: src/widgets/window.blp:24
 msgid "Keypunch"
 msgstr "Keypunch"
 
-#: data/dev.bragefuglseth.Keypunch.desktop.in.in:4
+#: data/dev.bragefuglseth.Keypunch.desktop.in.in:3
 #: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:8
 msgid "Practice your typing skills"
 msgstr "Практикуйте свої навички друку"
 
-#: data/dev.bragefuglseth.Keypunch.desktop.in.in:10
+#: data/dev.bragefuglseth.Keypunch.desktop.in.in:9
 msgid ""
-"typing;trainer;touch typing;keyboard;speed;wpm;words per minute;accuracy;"
-"test;"
+"typing;trainer;touch typing;keyboard;speed;wpm;words per "
+"minute;accuracy;test;"
 msgstr ""
-"друк;тренажер;сенсорний друк;клавіатура;швидкість;сл/хв;слів за хвилину;"
-"точність;перевірка;"
+"друк;тренажер;сенсорний друк;клавіатура;швидкість;сл/хв;слів за "
+"хвилину;точність;перевірка;"
 
 #: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:13
 msgid ""
@@ -182,35 +182,44 @@ msgstr ""
 "Найбільша поточна кількість слів за хвилину, зафіксована для кожного типу "
 "сеансу / тривалості та мови"
 
-#: data/resources/gtk/help-overlay.ui:11
-msgctxt "shortcut window"
+#: data/resources/shortcuts-dialog.ui:6
+#| msgctxt "shortcut window"
+#| msgid "General"
+msgctxt "shortcut dialog"
 msgid "General"
 msgstr "Загальне"
 
-#: data/resources/gtk/help-overlay.ui:14
-msgctxt "shortcut window"
+#: data/resources/shortcuts-dialog.ui:9
+#| msgid "Main Menu"
+msgid "Open Menu"
+msgstr "Відкрити меню"
+
+#: data/resources/shortcuts-dialog.ui:15 data/resources/shortcuts-dialog.ui:39
+#| msgid "Text Language"
+msgctxt "shortcut dialog"
 msgid "Text Language"
 msgstr "Мова тексту"
 
-#: data/resources/gtk/help-overlay.ui:20
-msgctxt "shortcut window"
-msgid "Cancel Session"
-msgstr "Скасувати сеанс"
+#: data/resources/shortcuts-dialog.ui:21
+#| msgctxt "shortcut window"
+#| msgid "Cancel Session"
+msgctxt "shortcut dialog"
+msgid "Cancel Test"
+msgstr "Скасувати тест"
 
-#: data/resources/gtk/help-overlay.ui:26
-msgctxt "shortcut window"
+#: data/resources/shortcuts-dialog.ui:27
+#| msgctxt "shortcut window"
+#| msgid "Keyboard Shortcuts"
+msgctxt "shortcut dialog"
 msgid "Keyboard Shortcuts"
 msgstr "Клавіатурні скорочення"
 
-#: data/resources/gtk/help-overlay.ui:32
-msgctxt "shortcut window"
+#: data/resources/shortcuts-dialog.ui:33
+#| msgctxt "shortcut window"
+#| msgid "Close Window"
+msgctxt "shortcut dialog"
 msgid "Close Window"
 msgstr "Закрити вікно"
-
-#: data/resources/gtk/help-overlay.ui:38
-msgctxt "shortcut window"
-msgid "Quit"
-msgstr "Вийти"
 
 #: src/widgets/custom_text_dialog.blp:56
 msgid "Insert custom text…"
@@ -241,6 +250,7 @@ msgid "Test Duration"
 msgstr "Тривалість тесту"
 
 #: src/widgets/results_view.rs:165
+#, rust-format
 msgid "{}%"
 msgstr "{}%"
 
@@ -259,12 +269,14 @@ msgstr "Розширений"
 #. Translators: The `{}` blocks will be replaced with the number of minutes
 #. and seconds. Do not translate them!
 #: src/widgets/results_view.rs:200
+#, rust-format
 msgid "{}m {}s"
 msgstr "{}хв {}сек"
 
 #. Translators: The `{}` block will be replaced with the number of minutes.
 #. Do not translate it!
 #: src/widgets/results_view.rs:204
+#, rust-format
 msgid "{} minute"
 msgid_plural "{} minutes"
 msgstr[0] "{} хвилина"
@@ -275,6 +287,7 @@ msgstr[3] "{} хвилина"
 #. Translators: The `{}` block will be replaced with the number of seconds.
 #. Do not translate it!
 #: src/widgets/results_view.rs:208
+#, rust-format
 msgid "{} second"
 msgid_plural "{} seconds"
 msgstr[0] "{} секунда"
@@ -377,41 +390,31 @@ msgstr "_Увімкнути введення"
 msgid "Results"
 msgstr "Результати"
 
-#: src/widgets/window.blp:298
+#: src/widgets/window.blp:298 src/widgets/window.blp:334
 msgid "_Continue"
 msgstr "_Далі"
 
-#. Translators: "Frustration Relief" is the name of the functionality
-#. that automatically cancels a test when random key mashing is detected,
-#. and displays a recommendation to take a break.
+#: src/widgets/window.blp:325
+msgid "Test Cancelled"
+msgstr "Тест скасовано"
+
 #: src/widgets/window.blp:326
-msgid "Frustration Relief"
-msgstr "Відпочинок від зневіри"
-
-#: src/widgets/window.blp:332
-msgid "Frustration Detected"
-msgstr "Виявлено зневіру"
-
-#. Translators: Make sure to convey this as politely and sensitively as possible,
-#. since it is likely to be shown to people while they are in a state of
-#. self-disappointment / anger
-#: src/widgets/window.blp:336
 msgid ""
-"You learn faster in a calm state of mind. Consider taking a break. The test "
-"has been cancelled, and will not affect your typing statistics."
+"The test has been cancelled due to an excessive amount of invalid "
+"keystrokes. This will not affect your typing statistics."
 msgstr ""
-"Навчання відбувається швидше, якщо ви спокійні. Зробіть перерву. Тест було "
-"скасовано, він не вплине на вашу статистику."
+"Тесту скасовано через надмірну кількість некоректних натискань клавіш. Це не"
+" вплине на вашу статистику друку."
 
-#: src/widgets/window.blp:378
+#: src/widgets/window.blp:368
 msgid "Text _Language"
 msgstr "_Мова тексту"
 
-#: src/widgets/window.blp:383
+#: src/widgets/window.blp:373
 msgid "_Keyboard Shortcuts"
 msgstr "_Клавіатурні скорочення"
 
-#: src/widgets/window.blp:388
+#: src/widgets/window.blp:378
 msgid "_About Keypunch"
 msgstr "_Про Keypunch"
 
@@ -438,28 +441,47 @@ msgstr "Fretboard"
 msgid "Look up guitar chords"
 msgstr "Шукайте акорди для гітари"
 
-#: src/widgets/window/typing_test.rs:163
-msgid "{} ⁄ {}"
-msgstr "{} ⁄ {}"
-
 #. Translators: This is shown as a warning by GNOME Shell before logging out or shutting off the system in the middle of a typing test, alongside Keypunch's name and icon
-#: src/widgets/window/typing_test.rs:334
+#: src/widgets/window/typing_test.rs:336
 msgid "Ongoing typing test"
 msgstr "На черзі перевірка навичок з друку"
-
-#: src/widgets/window/typing_test.rs:506
-msgid "Changes discarded"
-msgstr "Зміни відхилено"
-
-#: src/widgets/window/typing_test.rs:507
-msgid "Restore"
-msgstr "Відновити"
 
 #. Translators: The format of the timer. The first `{}` block will be replaced
 #. with the minutes passed, and the second one will be replaced with the seconds
 #. passed. Do not translate the `{}` blocks. Note that the `∶` sign is a special
 #. Unicode character; if your language doesn't use something completely different,
 #. you should probably copy and paste it from the original string.
-#: src/widgets/window/typing_test.rs:605 src/widgets/window/typing_test.rs:607
+#: src/widgets/window/typing_test.rs:607 src/widgets/window/typing_test.rs:609
+#, rust-format
 msgid "{}∶{}"
 msgstr "{}∶{}"
+
+#~ msgctxt "shortcut window"
+#~ msgid "Text Language"
+#~ msgstr "Мова тексту"
+
+#~ msgctxt "shortcut window"
+#~ msgid "Quit"
+#~ msgstr "Вийти"
+
+#~ msgid "Frustration Relief"
+#~ msgstr "Відпочинок від зневіри"
+
+#~ msgid "Frustration Detected"
+#~ msgstr "Виявлено зневіру"
+
+#~ msgid ""
+#~ "You learn faster in a calm state of mind. Consider taking a break. The "
+#~ "test has been cancelled, and will not affect your typing statistics."
+#~ msgstr ""
+#~ "Навчання відбувається швидше, якщо ви спокійні. Зробіть перерву. Тест "
+#~ "було скасовано, він не вплине на вашу статистику."
+
+#~ msgid "{} ⁄ {}"
+#~ msgstr "{} ⁄ {}"
+
+#~ msgid "Changes discarded"
+#~ msgstr "Зміни відхилено"
+
+#~ msgid "Restore"
+#~ msgstr "Відновити"
