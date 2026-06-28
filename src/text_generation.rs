@@ -26,7 +26,7 @@ use unicode_segmentation::UnicodeSegmentation;
 static EMBEDDED_WORD_LIST_DIR: Dir = include_dir!("$CARGO_MANIFEST_DIR/data/word_lists");
 pub const CHUNK_GRAPHEME_COUNT: usize = 400;
 
-// All languages here MUST have a corresponding file in data/word_lists/{lang_code}.txt
+// All word-list languages here MUST have a corresponding file in data/word_lists/{lang_code}.txt
 #[derive(Clone, Copy, Default, EnumDisplay, EnumString, EnumIter, EnumMessage, PartialEq)]
 pub enum Language {
     #[strum(message = "العربية", to_string = "ar")]
@@ -48,6 +48,8 @@ pub enum Language {
     #[default]
     #[strum(message = "English", to_string = "en")]
     English,
+    #[strum(message = "Numbers & Symbols", to_string = "numbers")]
+    Numbers,
     #[strum(message = "Eesti", to_string = "et")]
     Estonian,
     #[strum(message = "Suomi", to_string = "fi")]
@@ -164,6 +166,13 @@ const BANGLA_NUMERALS: &'static Numerals = &["০", "১", "২", "৩", "৪", 
 pub fn simple(language: Language) -> String {
     match language {
         // Add special cases here if relevant
+        Language::Numbers => {
+            let mut rng = thread_rng();
+            random_numbers(&mut rng)
+                .into_iter()
+                .map(|s| s + " ")
+                .collect()
+        }
         _ => simple_generic(&language.to_string(), " "),
     }
 }
@@ -172,6 +181,14 @@ pub fn simple(language: Language) -> String {
 pub fn advanced(language: Language) -> String {
     match language {
         // Add special cases here if relevant
+        Language::Numbers => {
+            let mut rng = thread_rng();
+            let mut generated = random_numbers(&mut rng);
+
+            insert_random_punctuation(&mut generated, GENERIC_PUNCTUATION, &mut rng);
+
+            generated.into_iter().map(|s| s + " ").collect()
+        }
         // Arabic has its own set of punctuation and a couple of words with vowel markers
         Language::Arabic => advanced_generic(
             "ar_advanced",
@@ -370,11 +387,23 @@ fn advanced_generic(
         }
     }
 
+    insert_random_punctuation(&mut generated, punctuations, &mut rng);
+
+    generated.into_iter().map(|s| s + spacing).collect()
+}
+
+fn insert_random_punctuation(
+    generated: &mut [String],
+    punctuations: &[Punctuation],
+    rng: &mut ThreadRng,
+) {
+    let len = generated.len();
+
     // Sample from the entire text except for the last word, since that gets punctuation
     // further down in the function
-    for i in sample(&mut rng, len - 2, len / 4) {
+    for i in sample(rng, len - 2, len / 4) {
         if let Some(word) = generated.get_mut(i) {
-            if let Ok(punctuation) = punctuations.choose_weighted(&mut rng, |p| p.weight) {
+            if let Ok(punctuation) = punctuations.choose_weighted(rng, |p| p.weight) {
                 *word = insert_punctuation(&word, *punctuation);
 
                 if punctuation.ends_sentence {
@@ -387,17 +416,11 @@ fn advanced_generic(
     }
 
     // Insert random "sentence ending" punctuation on last word
-    if let Some(end_punctuation) = punctuations
-        .iter()
-        .filter(|p| p.ends_sentence)
-        .choose(&mut rng)
-    {
+    if let Some(end_punctuation) = punctuations.iter().filter(|p| p.ends_sentence).choose(rng) {
         if let Some(word) = generated.get_mut(len - 1) {
             *word = insert_punctuation(&word, *end_punctuation);
         }
     }
-
-    generated.into_iter().map(|s| s + spacing).collect()
 }
 
 fn uppercase_first_letter(s: &str) -> String {
@@ -446,6 +469,15 @@ fn random_words_from_lang_code(lang_code: &str, rng: &mut ThreadRng) -> Vec<Stri
     generated
 }
 
+fn random_numbers(rng: &mut ThreadRng) -> Vec<String> {
+    let mut generated: Vec<String> = Vec::new();
+    while generated.iter().flat_map(|s| s.graphemes(true)).count() < CHUNK_GRAPHEME_COUNT {
+        generated.push(random_number_weighted(WESTERN_ARABIC_NUMERALS, rng));
+    }
+
+    generated
+}
+
 fn insert_punctuation(word: &str, punctuation: Punctuation) -> String {
     match (punctuation.prefix, punctuation.suffix) {
         (Some(pre), Some(suf)) => format!("{pre}{word}{suf}"),
@@ -473,4 +505,28 @@ fn random_number_weighted(numerals: &Numerals, rng: &mut ThreadRng) -> String {
     }
 
     s
+}
+
+#[cfg(test)]
+mod tests {
+    use std::str::FromStr;
+
+    use super::*;
+
+    #[test]
+    fn numbers_language_generates_numeric_text() {
+        let simple_numbers = simple(Language::Numbers);
+        assert!(!simple_numbers.is_empty());
+        assert!(simple_numbers
+            .chars()
+            .all(|c| c.is_ascii_digit() || c == ' '));
+
+        let advanced_numbers = advanced(Language::Numbers);
+        assert!(!advanced_numbers.is_empty());
+
+        assert!(matches!(
+            Language::from_str("numbers"),
+            Ok(Language::Numbers)
+        ));
+    }
 }
