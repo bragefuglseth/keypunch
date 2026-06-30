@@ -6,7 +6,7 @@
         <property name="title" translatable="yes" context="shortcut dialog">General</property>
         <child>
           <object class="AdwShortcutsItem">
-            <property name="title" translatable="yes">Open Menu</property>
+            <property name="title" translatable="yes" context="shortcut dialog">Open Menu</property>
             <property name="accelerator">F10</property>
           </object>
         </child>
