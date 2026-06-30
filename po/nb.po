@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: keypunch\n"
 "Report-Msgid-Bugs-To: https://github.com/bragefuglseth/keypunch/issues\n"
-"POT-Creation-Date: 2025-03-07 14:20+0000\n"
-"PO-Revision-Date: 2025-03-17 20:03+0100\n"
+"POT-Creation-Date: 2026-06-28 13:01+0000\n"
+"PO-Revision-Date: 2026-06-30 22:50+0200\n"
 "Last-Translator: Brage <bragefuglseth@gnome.org>\n"
 "Language-Team: \n"
 "Language: nb\n"
@@ -17,26 +17,26 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.4.4\n"
+"X-Generator: Poedit 3.9\n"
 
-#: data/dev.bragefuglseth.Keypunch.desktop.in.in:3
+#: data/dev.bragefuglseth.Keypunch.desktop.in.in:2
 #: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:7
 #: src/widgets/window.blp:24
 msgid "Keypunch"
 msgstr "Keypunch"
 
-#: data/dev.bragefuglseth.Keypunch.desktop.in.in:4
+#: data/dev.bragefuglseth.Keypunch.desktop.in.in:3
 #: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:8
 msgid "Practice your typing skills"
 msgstr "Tren opp skriveferdighetene dine"
 
-#: data/dev.bragefuglseth.Keypunch.desktop.in.in:10
+#: data/dev.bragefuglseth.Keypunch.desktop.in.in:9
 msgid ""
-"typing;trainer;touch typing;keyboard;speed;wpm;words per minute;accuracy;"
-"test;"
+"typing;trainer;touch typing;keyboard;speed;wpm;words per "
+"minute;accuracy;test;"
 msgstr ""
-"skrive;trener;øving;touch;skriving;tastatur;fart;wpm;ord i minuttet;"
-"nøyaktighet;test;skrivetest;tasting;"
+"skrive;trener;øving;touch;skriving;tastatur;fart;wpm;ord i "
+"minuttet;nøyaktighet;test;skrivetest;tasting;"
 
 #: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:13
 msgid ""
@@ -180,35 +180,34 @@ msgstr ""
 "De foreløpig raskeste fartsmålingene fra hver utprøvde kombinasjon av "
 "økttype, varighet og språk"
 
-#: data/resources/gtk/help-overlay.ui:11
-msgctxt "shortcut window"
+#: data/resources/shortcuts-dialog.ui:6
+msgctxt "shortcut dialog"
 msgid "General"
 msgstr "Generelt"
 
-#: data/resources/gtk/help-overlay.ui:14
-msgctxt "shortcut window"
+#: data/resources/shortcuts-dialog.ui:9
+msgid "Open Menu"
+msgstr "Hovedmeny"
+
+#: data/resources/shortcuts-dialog.ui:15 data/resources/shortcuts-dialog.ui:39
+msgctxt "shortcut dialog"
 msgid "Text Language"
 msgstr "Tekstspråk"
 
-#: data/resources/gtk/help-overlay.ui:20
-msgctxt "shortcut window"
-msgid "Cancel Session"
+#: data/resources/shortcuts-dialog.ui:21
+msgctxt "shortcut dialog"
+msgid "Cancel Test"
 msgstr "Stopp økt"
 
-#: data/resources/gtk/help-overlay.ui:26
-msgctxt "shortcut window"
+#: data/resources/shortcuts-dialog.ui:27
+msgctxt "shortcut dialog"
 msgid "Keyboard Shortcuts"
 msgstr "Tastatursnarveier"
 
-#: data/resources/gtk/help-overlay.ui:32
-msgctxt "shortcut window"
+#: data/resources/shortcuts-dialog.ui:33
+msgctxt "shortcut dialog"
 msgid "Close Window"
 msgstr "Lukk vindu"
-
-#: data/resources/gtk/help-overlay.ui:38
-msgctxt "shortcut window"
-msgid "Quit"
-msgstr "Avslutt"
 
 #: src/widgets/custom_text_dialog.blp:56
 msgid "Insert custom text…"
@@ -239,6 +238,7 @@ msgid "Test Duration"
 msgstr "Varighet"
 
 #: src/widgets/results_view.rs:165
+#, rust-format
 msgid "{}%"
 msgstr "{}%"
 
@@ -257,12 +257,14 @@ msgstr "Avansert"
 #. Translators: The `{}` blocks will be replaced with the number of minutes
 #. and seconds. Do not translate them!
 #: src/widgets/results_view.rs:200
+#, rust-format
 msgid "{}m {}s"
 msgstr "{}m {}s"
 
 #. Translators: The `{}` block will be replaced with the number of minutes.
 #. Do not translate it!
 #: src/widgets/results_view.rs:204
+#, rust-format
 msgid "{} minute"
 msgid_plural "{} minutes"
 msgstr[0] "{} minutt"
@@ -271,6 +273,7 @@ msgstr[1] "{} minutter"
 #. Translators: The `{}` block will be replaced with the number of seconds.
 #. Do not translate it!
 #: src/widgets/results_view.rs:208
+#, rust-format
 msgid "{} second"
 msgid_plural "{} seconds"
 msgstr[0] "{} sekund"
@@ -371,41 +374,31 @@ msgstr "_Aktiver inntasting"
 msgid "Results"
 msgstr "Resultater"
 
-#: src/widgets/window.blp:298
+#: src/widgets/window.blp:298 src/widgets/window.blp:334
 msgid "_Continue"
 msgstr "_Fortsett"
 
-#. Translators: "Frustration Relief" is the name of the functionality
-#. that automatically cancels a test when random key mashing is detected,
-#. and displays a recommendation to take a break.
+#: src/widgets/window.blp:325
+msgid "Test Cancelled"
+msgstr "Test avbrutt"
+
 #: src/widgets/window.blp:326
-msgid "Frustration Relief"
-msgstr "Frustrasjonssperre"
-
-#: src/widgets/window.blp:332
-msgid "Frustration Detected"
-msgstr "Frustrasjon oppdaget"
-
-#. Translators: Make sure to convey this as politely and sensitively as possible,
-#. since it is likely to be shown to people while they are in a state of
-#. self-disappointment / anger
-#: src/widgets/window.blp:336
 msgid ""
-"You learn faster in a calm state of mind. Consider taking a break. The test "
-"has been cancelled, and will not affect your typing statistics."
+"The test has been cancelled due to an excessive amount of invalid "
+"keystrokes. This will not affect your typing statistics."
 msgstr ""
-"Du lærer raskere i en rolig sinnstilstand. Vurder å ta en pause. Testen har "
-"blitt avbrutt, og vil ikke påvirke skrivestatistikken din."
+"Testen har blitt avbrutt på grunn av en stor mengde ugyldige tastetrykk. "
+"Dette vil ikke påvirke statistikken din."
 
-#: src/widgets/window.blp:378
+#: src/widgets/window.blp:368
 msgid "Text _Language"
 msgstr "Tekst_språk"
 
-#: src/widgets/window.blp:383
+#: src/widgets/window.blp:373
 msgid "_Keyboard Shortcuts"
 msgstr "_Tastatursnarveier"
 
-#: src/widgets/window.blp:388
+#: src/widgets/window.blp:378
 msgid "_About Keypunch"
 msgstr "_Om Keypunch"
 
@@ -432,31 +425,50 @@ msgstr "Fretboard"
 msgid "Look up guitar chords"
 msgstr "Finn gitarakkorder"
 
-#: src/widgets/window/typing_test.rs:163
-msgid "{} ⁄ {}"
-msgstr "{} ⁄ {}"
-
 #. Translators: This is shown as a warning by GNOME Shell before logging out or shutting off the system in the middle of a typing test, alongside Keypunch's name and icon
-#: src/widgets/window/typing_test.rs:334
+#: src/widgets/window/typing_test.rs:336
 msgid "Ongoing typing test"
 msgstr "Pågående test"
-
-#: src/widgets/window/typing_test.rs:506
-msgid "Changes discarded"
-msgstr "Endringer forkastet"
-
-#: src/widgets/window/typing_test.rs:507
-msgid "Restore"
-msgstr "Gjenopprett"
 
 #. Translators: The format of the timer. The first `{}` block will be replaced
 #. with the minutes passed, and the second one will be replaced with the seconds
 #. passed. Do not translate the `{}` blocks. Note that the `∶` sign is a special
 #. Unicode character; if your language doesn't use something completely different,
 #. you should probably copy and paste it from the original string.
-#: src/widgets/window/typing_test.rs:605 src/widgets/window/typing_test.rs:607
+#: src/widgets/window/typing_test.rs:607 src/widgets/window/typing_test.rs:609
+#, rust-format
 msgid "{}∶{}"
 msgstr "{}∶{}"
+
+#~ msgctxt "shortcut window"
+#~ msgid "Text Language"
+#~ msgstr "Tekstspråk"
+
+#~ msgctxt "shortcut window"
+#~ msgid "Quit"
+#~ msgstr "Avslutt"
+
+#~ msgid "Frustration Relief"
+#~ msgstr "Frustrasjonssperre"
+
+#~ msgid "Frustration Detected"
+#~ msgstr "Frustrasjon oppdaget"
+
+#~ msgid ""
+#~ "You learn faster in a calm state of mind. Consider taking a break. The "
+#~ "test has been cancelled, and will not affect your typing statistics."
+#~ msgstr ""
+#~ "Du lærer raskere i en rolig sinnstilstand. Vurder å ta en pause. Testen "
+#~ "har blitt avbrutt, og vil ikke påvirke skrivestatistikken din."
+
+#~ msgid "{} ⁄ {}"
+#~ msgstr "{} ⁄ {}"
+
+#~ msgid "Changes discarded"
+#~ msgstr "Endringer forkastet"
+
+#~ msgid "Restore"
+#~ msgstr "Gjenopprett"
 
 #~ msgid "Correctness"
 #~ msgstr "Korrekthet"
