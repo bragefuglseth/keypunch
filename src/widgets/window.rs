@@ -192,6 +192,8 @@ mod imp {
 
             about.set_developers(&["Brage Fuglseth https://bragefuglseth.dev"]);
 
+            about.add_link(&gettext("Donate"), "https://bragefuglseth.no/donate.html");
+
             about.add_credit_section(
                 Some(&gettext("Orthography by")),
                 &[

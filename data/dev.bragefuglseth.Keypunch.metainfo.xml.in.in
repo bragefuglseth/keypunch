@@ -66,6 +66,7 @@
   <url type="translate">https://l10n.gnome.org/module/Keypunch</url>
   <url type="vcs-browser">https://github.com/bragefuglseth/keypunch</url>
   <url type="contact">https://matrix.to/#/#keypunch:gnome.org</url>
+  <url type="donation">https://bragefuglseth.no/donate.html</url>
   <update_contact>bragefuglseth_AT_gnome.org</update_contact>
   <content_rating type="oars-1.1"/>
   <translation type="gettext">keypunch</translation>
