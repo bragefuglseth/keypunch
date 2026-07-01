@@ -1,21 +1,21 @@
 # Georgian translation for Keypunch.
 # Copyright (C) 2025 Keypunch's authors
 # This file is distributed under the same license as the Keypunch package.
-# Ekaterine Papava <papava.e@gtu.ge>, 2025-2025.
+# Ekaterine Papava <papava.e@gtu.ge>, 2025-2026.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Keypunch main\n"
 "Report-Msgid-Bugs-To: https://github.com/bragefuglseth/keypunch/issues\n"
-"POT-Creation-Date: 2026-06-28 13:01+0000\n"
-"PO-Revision-Date: 2026-06-29 06:38+0200\n"
+"POT-Creation-Date: 2026-06-30 23:18+0000\n"
+"PO-Revision-Date: 2026-07-01 05:49+0200\n"
 "Last-Translator: Ekaterine Papava <papava.e@gtu.ge>\n"
 "Language-Team: Georgian <ka@li.org>\n"
 "Language: ka\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 3.9\n"
 
 #: data/dev.bragefuglseth.Keypunch.desktop.in.in:2
@@ -133,7 +133,7 @@ msgstr "დროზე დაფუძნებული სესიები�
 #. Translators: Insert the language code of your language here, for example "nb" for Norwegian Bokmaal. Do not remove the quotation marks. It's doesn't matter if there isn't a word list for the language in `data/word_lists` right now, the app will fall back to English in that case and start using the list if it becomes available in the future.
 #: data/dev.bragefuglseth.Keypunch.gschema.xml:41
 msgid "\"en\""
-msgstr "\"en\""
+msgstr "\"ka\""
 
 #: data/dev.bragefuglseth.Keypunch.gschema.xml:42
 #: src/widgets/results_view.blp:127 src/widgets/text_language_dialog.blp:24
@@ -186,6 +186,7 @@ msgid "General"
 msgstr "ზოგადი"
 
 #: data/resources/shortcuts-dialog.ui:9
+msgctxt "shortcut dialog"
 msgid "Open Menu"
 msgstr "მენიუს გახსნა"
 
@@ -268,6 +269,7 @@ msgstr "{}წთ {}წმ"
 msgid "{} minute"
 msgid_plural "{} minutes"
 msgstr[0] "{} წუთი"
+msgstr[1] "{} წუთი"
 
 #. Translators: The `{}` block will be replaced with the number of seconds.
 #. Do not translate it!
@@ -276,6 +278,7 @@ msgstr[0] "{} წუთი"
 msgid "{} second"
 msgid_plural "{} seconds"
 msgstr[0] "{} წამი"
+msgstr[1] "{} წამი"
 
 #: src/widgets/text_language_dialog.blp:40
 #: src/widgets/text_language_dialog.blp:180
@@ -399,26 +402,30 @@ msgstr "_კლავიატურის მალსახმობები"
 msgid "_About Keypunch"
 msgstr "Keypunch-ის შეს_ახებ"
 
-#: src/widgets/window.rs:196
+#: src/widgets/window.rs:195
+msgid "Donate"
+msgstr "შეწირვა"
+
+#: src/widgets/window.rs:198
 msgid "Orthography by"
 msgstr "ორთოგრაფიის ავტორი"
 
 #. Translators: Replace "translator-credits" with your names, one name per line
-#: src/widgets/window.rs:214
+#: src/widgets/window.rs:216
 msgid "translator-credits"
 msgstr "თემური დოღონაძე"
 
-#: src/widgets/window.rs:219
+#: src/widgets/window.rs:221
 msgid "Special thanks to"
 msgstr "განსაკუთრებული მადლობა"
 
 #. Translators: Metainfo for the app Fretboard. <https://github.com/bragefuglseth/fretboard>
-#: src/widgets/window.rs:226
+#: src/widgets/window.rs:228
 msgid "Fretboard"
 msgstr "Fretboard"
 
 #. Translators: Metainfo for the app Fretboard. <https://github.com/bragefuglseth/fretboard>
-#: src/widgets/window.rs:228
+#: src/widgets/window.rs:230
 msgid "Look up guitar chords"
 msgstr "გიტარის აკორდების ძებნა"
 
