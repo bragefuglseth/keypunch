@@ -24,7 +24,7 @@ use gtk::{gio, glib};
 use std::cell::RefCell;
 use std::iter::once;
 use std::str::FromStr;
-use strum::{EnumMessage, IntoEnumIterator};
+use strum::IntoEnumIterator;
 use unidecode::unidecode;
 
 const LANGUAGE_REQUEST_URL: &'static str = "https://github.com/bragefuglseth/keypunch/issues/new?assignees=&labels=new+language&projects=&template=language_request.yaml&title=%5BLanguage+Request%5D%3A+";
@@ -154,11 +154,7 @@ mod imp {
                 .collect();
 
             // Sort alphabetically
-            languages_without_recent_or_current.sort_by_key(|language| {
-                language
-                    .get_message()
-                    .expect("all languages have names set")
-            });
+            languages_without_recent_or_current.sort_by_key(|language| language.display_name());
 
             for language in languages_without_recent_or_current {
                 let row = language_row(language);
@@ -177,22 +173,12 @@ mod imp {
                 let normalized_query = unidecode(&query.to_lowercase());
                 let mut results: Vec<Language> = Language::iter()
                     .filter(|language| {
-                        unidecode(
-                            &language
-                                .get_message()
-                                .expect("all languages have names set")
-                                .to_lowercase(),
-                        )
-                        .contains(&normalized_query)
+                        unidecode(&language.display_name().to_lowercase())
+                            .contains(&normalized_query)
                     })
                     .collect();
 
-                results.sort_by_key(|language| {
-                    language
-                        .get_message()
-                        .expect("all languages have names set")
-                        .to_lowercase()
-                });
+                results.sort_by_key(|language| language.display_name().to_lowercase());
 
                 if results.is_empty() {
                     self.no_results_lock_height(false);
@@ -280,7 +266,7 @@ impl KpTextLanguageDialog {
 
 fn language_row(language: Language) -> adw::ActionRow {
     let row = adw::ActionRow::new();
-    row.set_title(&language.get_message().unwrap());
+    row.set_title(&language.display_name());
 
     let check_button = gtk::CheckButton::builder()
         .action_name("app.text-language")
