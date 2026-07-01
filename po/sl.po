@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Keypunch main\n"
 "Report-Msgid-Bugs-To: https://github.com/bragefuglseth/keypunch/issues\n"
-"POT-Creation-Date: 2026-06-28 13:01+0000\n"
-"PO-Revision-Date: 2026-06-28 18:14+0200\n"
+"POT-Creation-Date: 2026-06-30 23:18+0000\n"
+"PO-Revision-Date: 2026-07-01 19:11+0200\n"
 "Last-Translator: Martin Srebotnjak <miles@filmsi.net>\n"
 "Language-Team: Slovenian <Slovenian>\n"
 "Language: sl\n"
@@ -190,8 +190,9 @@ msgid "General"
 msgstr "Splošno"
 
 #: data/resources/shortcuts-dialog.ui:9
+msgctxt "shortcut dialog"
 msgid "Open Menu"
-msgstr "Odpri meni"
+msgstr "Odpre meni"
 
 #: data/resources/shortcuts-dialog.ui:15 data/resources/shortcuts-dialog.ui:39
 msgctxt "shortcut dialog"
@@ -409,26 +410,30 @@ msgstr "_Tipkovne bližnjice‫"
 msgid "_About Keypunch"
 msgstr "_O programu Tipkarica"
 
-#: src/widgets/window.rs:196
+#: src/widgets/window.rs:195
+msgid "Donate"
+msgstr "Doniraj"
+
+#: src/widgets/window.rs:198
 msgid "Orthography by"
 msgstr "Pravopis"
 
 #. Translators: Replace "translator-credits" with your names, one name per line
-#: src/widgets/window.rs:214
+#: src/widgets/window.rs:216
 msgid "translator-credits"
 msgstr "Martin Srebotnjak <miles@filmsi.net>"
 
-#: src/widgets/window.rs:219
+#: src/widgets/window.rs:221
 msgid "Special thanks to"
 msgstr "Posebna zahvala"
 
 #. Translators: Metainfo for the app Fretboard. <https://github.com/bragefuglseth/fretboard>
-#: src/widgets/window.rs:226
+#: src/widgets/window.rs:228
 msgid "Fretboard"
 msgstr "Ubiralka"
 
 #. Translators: Metainfo for the app Fretboard. <https://github.com/bragefuglseth/fretboard>
-#: src/widgets/window.rs:228
+#: src/widgets/window.rs:230
 msgid "Look up guitar chords"
 msgstr "Poiščite kitarske akorde"
 
