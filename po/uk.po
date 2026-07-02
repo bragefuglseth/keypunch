@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: keypunch\n"
 "Report-Msgid-Bugs-To: https://github.com/bragefuglseth/keypunch/issues\n"
-"POT-Creation-Date: 2026-06-28 13:01+0000\n"
-"PO-Revision-Date: 2026-06-28 20:57+0300\n"
+"POT-Creation-Date: 2026-06-30 23:18+0000\n"
+"PO-Revision-Date: 2026-07-02 20:05+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -183,40 +183,32 @@ msgstr ""
 "сеансу / тривалості та мови"
 
 #: data/resources/shortcuts-dialog.ui:6
-#| msgctxt "shortcut window"
-#| msgid "General"
 msgctxt "shortcut dialog"
 msgid "General"
 msgstr "Загальне"
 
 #: data/resources/shortcuts-dialog.ui:9
-#| msgid "Main Menu"
+#| msgid "Open Menu"
+msgctxt "shortcut dialog"
 msgid "Open Menu"
 msgstr "Відкрити меню"
 
 #: data/resources/shortcuts-dialog.ui:15 data/resources/shortcuts-dialog.ui:39
-#| msgid "Text Language"
 msgctxt "shortcut dialog"
 msgid "Text Language"
 msgstr "Мова тексту"
 
 #: data/resources/shortcuts-dialog.ui:21
-#| msgctxt "shortcut window"
-#| msgid "Cancel Session"
 msgctxt "shortcut dialog"
 msgid "Cancel Test"
 msgstr "Скасувати тест"
 
 #: data/resources/shortcuts-dialog.ui:27
-#| msgctxt "shortcut window"
-#| msgid "Keyboard Shortcuts"
 msgctxt "shortcut dialog"
 msgid "Keyboard Shortcuts"
 msgstr "Клавіатурні скорочення"
 
 #: data/resources/shortcuts-dialog.ui:33
-#| msgctxt "shortcut window"
-#| msgid "Close Window"
 msgctxt "shortcut dialog"
 msgid "Close Window"
 msgstr "Закрити вікно"
@@ -403,8 +395,8 @@ msgid ""
 "The test has been cancelled due to an excessive amount of invalid "
 "keystrokes. This will not affect your typing statistics."
 msgstr ""
-"Тесту скасовано через надмірну кількість некоректних натискань клавіш. Це не"
-" вплине на вашу статистику друку."
+"Тесту скасовано через надмірну кількість некоректних натискань клавіш. Це не "
+"вплине на вашу статистику друку."
 
 #: src/widgets/window.blp:368
 msgid "Text _Language"
@@ -418,26 +410,30 @@ msgstr "_Клавіатурні скорочення"
 msgid "_About Keypunch"
 msgstr "_Про Keypunch"
 
-#: src/widgets/window.rs:196
+#: src/widgets/window.rs:195
+msgid "Donate"
+msgstr "Підтримати фінансово"
+
+#: src/widgets/window.rs:198
 msgid "Orthography by"
 msgstr "Правопис від"
 
 #. Translators: Replace "translator-credits" with your names, one name per line
-#: src/widgets/window.rs:214
+#: src/widgets/window.rs:216
 msgid "translator-credits"
 msgstr "Yevhen Popok"
 
-#: src/widgets/window.rs:219
+#: src/widgets/window.rs:221
 msgid "Special thanks to"
 msgstr "Окрема подяка"
 
 #. Translators: Metainfo for the app Fretboard. <https://github.com/bragefuglseth/fretboard>
-#: src/widgets/window.rs:226
+#: src/widgets/window.rs:228
 msgid "Fretboard"
 msgstr "Fretboard"
 
 #. Translators: Metainfo for the app Fretboard. <https://github.com/bragefuglseth/fretboard>
-#: src/widgets/window.rs:228
+#: src/widgets/window.rs:230
 msgid "Look up guitar chords"
 msgstr "Шукайте акорди для гітари"
 
