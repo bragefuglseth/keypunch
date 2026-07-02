@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: keypunch\n"
 "Report-Msgid-Bugs-To: https://github.com/bragefuglseth/keypunch/issues\n"
-"POT-Creation-Date: 2026-06-28 13:01+0000\n"
-"PO-Revision-Date: 2026-06-30 22:50+0200\n"
+"POT-Creation-Date: 2026-06-30 23:18+0000\n"
+"PO-Revision-Date: 2026-07-02 18:02+0200\n"
 "Last-Translator: Brage <bragefuglseth@gnome.org>\n"
 "Language-Team: \n"
 "Language: nb\n"
@@ -186,8 +186,9 @@ msgid "General"
 msgstr "Generelt"
 
 #: data/resources/shortcuts-dialog.ui:9
+msgctxt "shortcut dialog"
 msgid "Open Menu"
-msgstr "Hovedmeny"
+msgstr "Åpne hovedmeny"
 
 #: data/resources/shortcuts-dialog.ui:15 data/resources/shortcuts-dialog.ui:39
 msgctxt "shortcut dialog"
@@ -402,26 +403,30 @@ msgstr "_Tastatursnarveier"
 msgid "_About Keypunch"
 msgstr "_Om Keypunch"
 
-#: src/widgets/window.rs:196
+#: src/widgets/window.rs:195
+msgid "Donate"
+msgstr "Doner"
+
+#: src/widgets/window.rs:198
 msgid "Orthography by"
 msgstr "Korrekturlest av"
 
 #. Translators: Replace "translator-credits" with your names, one name per line
-#: src/widgets/window.rs:214
+#: src/widgets/window.rs:216
 msgid "translator-credits"
 msgstr "Brage Fuglseth https://bragefuglseth.dev"
 
-#: src/widgets/window.rs:219
+#: src/widgets/window.rs:221
 msgid "Special thanks to"
 msgstr "Takk til"
 
 #. Translators: Metainfo for the app Fretboard. <https://github.com/bragefuglseth/fretboard>
-#: src/widgets/window.rs:226
+#: src/widgets/window.rs:228
 msgid "Fretboard"
 msgstr "Fretboard"
 
 #. Translators: Metainfo for the app Fretboard. <https://github.com/bragefuglseth/fretboard>
-#: src/widgets/window.rs:228
+#: src/widgets/window.rs:230
 msgid "Look up guitar chords"
 msgstr "Finn gitarakkorder"
 
