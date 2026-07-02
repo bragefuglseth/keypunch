@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Keypunch main\n"
 "Report-Msgid-Bugs-To: https://github.com/bragefuglseth/keypunch/issues\n"
-"POT-Creation-Date: 2026-06-28 13:01+0000\n"
-"PO-Revision-Date: 2026-06-29 07:49+0800\n"
+"POT-Creation-Date: 2026-06-30 23:18+0000\n"
+"PO-Revision-Date: 2026-07-02 09:32+0800\n"
 "Last-Translator: lumingzh <lumingzh@qq.com>\n"
 "Language-Team: Chinese (China) <i18n-zh@googlegroups.com>\n"
 "Language: zh_CN\n"
@@ -127,7 +127,7 @@ msgstr "基于时间的课程时长"
 #. Translators: Insert the language code of your language here, for example "nb" for Norwegian Bokmaal. Do not remove the quotation marks. It's doesn't matter if there isn't a word list for the language in `data/word_lists` right now, the app will fall back to English in that case and start using the list if it becomes available in the future.
 #: data/dev.bragefuglseth.Keypunch.gschema.xml:41
 msgid "\"en\""
-msgstr "\"cn\""
+msgstr "\"zh_CN\""
 
 #: data/dev.bragefuglseth.Keypunch.gschema.xml:42
 #: src/widgets/results_view.blp:127 src/widgets/text_language_dialog.blp:24
@@ -178,6 +178,7 @@ msgid "General"
 msgstr "常规"
 
 #: data/resources/shortcuts-dialog.ui:9
+msgctxt "shortcut dialog"
 msgid "Open Menu"
 msgstr "打开菜单"
 
@@ -389,26 +390,30 @@ msgstr "键盘快捷键(_K)"
 msgid "_About Keypunch"
 msgstr "关于 Keypunch(_A)"
 
-#: src/widgets/window.rs:196
+#: src/widgets/window.rs:195
+msgid "Donate"
+msgstr "捐助"
+
+#: src/widgets/window.rs:198
 msgid "Orthography by"
 msgstr "校正"
 
 #. Translators: Replace "translator-credits" with your names, one name per line
-#: src/widgets/window.rs:214
+#: src/widgets/window.rs:216
 msgid "translator-credits"
 msgstr "lumingzh <lumingzh@qq.com>, 2025-2026"
 
-#: src/widgets/window.rs:219
+#: src/widgets/window.rs:221
 msgid "Special thanks to"
 msgstr "特别感谢"
 
 #. Translators: Metainfo for the app Fretboard. <https://github.com/bragefuglseth/fretboard>
-#: src/widgets/window.rs:226
+#: src/widgets/window.rs:228
 msgid "Fretboard"
 msgstr "Fretboard"
 
 #. Translators: Metainfo for the app Fretboard. <https://github.com/bragefuglseth/fretboard>
-#: src/widgets/window.rs:228
+#: src/widgets/window.rs:230
 msgid "Look up guitar chords"
 msgstr "查找吉他和弦"
 
