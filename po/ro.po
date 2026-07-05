@@ -2,14 +2,14 @@
 # This file is distributed under the same license as the keypunch package.
 #
 # Flavian Stavarache <FlavianStavarache@outlook.com>, 2024.
-# Antonio Marin <gnmer.6qxyg@slmail.me>, 2025.
+# Antonio Marin <gnmer.6qxyg@slmail.me>, 2025-2026.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: keypunch\n"
 "Report-Msgid-Bugs-To: https://github.com/bragefuglseth/keypunch/issues\n"
-"POT-Creation-Date: 2025-04-07 07:53+0000\n"
-"PO-Revision-Date: 2025-07-05 11:37+0200\n"
+"POT-Creation-Date: 2026-06-30 23:18+0000\n"
+"PO-Revision-Date: 2026-07-05 10:49+0200\n"
 "Last-Translator: Antonio Marin <gnmer.6qxyg@slmail.me>\n"
 "Language-Team: Romanian <gnomero-list@lists.sourceforge.net>\n"
 "Language: ro\n"
@@ -18,26 +18,24 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < "
 "20)) ? 1 : 2);\n"
-"X-Generator: Gtranslator 48.0\n"
+"X-Generator: Gtranslator 50.0\n"
 
-#: data/dev.bragefuglseth.Keypunch.desktop.in.in:3
+#: data/dev.bragefuglseth.Keypunch.desktop.in.in:2
 #: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:7
 #: src/widgets/window.blp:24
 msgid "Keypunch"
 msgstr "Keypunch"
 
-#: data/dev.bragefuglseth.Keypunch.desktop.in.in:4
+#: data/dev.bragefuglseth.Keypunch.desktop.in.in:3
 #: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:8
 msgid "Practice your typing skills"
 msgstr "Antrenează-ți abilitatea de a tasta rapid"
 
-#: data/dev.bragefuglseth.Keypunch.desktop.in.in:10
+#: data/dev.bragefuglseth.Keypunch.desktop.in.in:9
 msgid ""
 "typing;trainer;touch typing;keyboard;speed;wpm;words per "
 "minute;accuracy;test;"
-msgstr ""
-"typing;keyboard;tastare;antrenor;dictilografie;tastatură;viteză;wpm;cuvinte "
-"pe minut;precizie;test;"
+msgstr "typing;keyboard;tastare;antrenare;dactilografie;tastatură;viteză;scrie;precizie;test;"
 
 #: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:13
 msgid ""
@@ -57,7 +55,7 @@ msgid ""
 "some time, you will observe a noticeable increase in both the speed and the "
 "accuracy of which your thoughts and ideas are put into words on the screen."
 msgstr ""
-"Keypunch îți oferă șansa de a-ți antrena viteza de tastare. Datorită "
+"Keypunch îți oferă posibilitatea de a-ți antrena viteza de tastare. Datorită "
 "sesiunilor rapide, cu reacție instantanee și a multitudinii de limbi "
 "disponibile, procesul de învățare este simplu și interactiv. Cu puțină "
 "determinare și o tehnică corectă, vei observa o îmbunătățire a vitezei și "
@@ -70,12 +68,12 @@ msgid ""
 "out as fast as you can."
 msgstr ""
 "Dacă ești deja expert în utilizarea tastaturii, Keypunch are ceva în plus "
-"pentru tine. Încearcă să exersezi cu numere și semne de punctuație, sau "
-"alege-ți propriul text pe care să-l tastezi cât mai repede posibil."
+"pentru tine. Exersează cu numere și semne de punctuație sau folosește "
+"propriul text pe care să-l tastezi cât mai repede posibil."
 
 #: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:30
 msgid "Get ready to accelerate your typing!"
-msgstr "Pregatește-te să-ți îmbunătățești viteza de tastare!"
+msgstr "Îmbunătățește viteza de tastare!"
 
 #: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:33
 msgid ""
@@ -85,7 +83,7 @@ msgid ""
 msgstr ""
 "Keypunch face parte din GNOME Circle, o inițiativă care promovează "
 "programele excelente disponibile pentru platforma GNOME. Pentru mai multe "
-"informații, se poate vizita situl GNOME Circle."
+"informații, se poate vizita situl web GNOME Circle."
 
 #: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:39
 msgid "In the middle of a session"
@@ -183,39 +181,39 @@ msgstr ""
 "Cele mai multe cuvinte tastate pe minut pentru fiecare tip de sesiune / "
 "durata și limba"
 
-#: data/resources/gtk/help-overlay.ui:11
-msgctxt "shortcut window"
+#: data/resources/shortcuts-dialog.ui:6
+msgctxt "shortcut dialog"
 msgid "General"
 msgstr "Generale"
 
-#: data/resources/gtk/help-overlay.ui:14
-msgctxt "shortcut window"
+#: data/resources/shortcuts-dialog.ui:9
+msgctxt "shortcut dialog"
+msgid "Open Menu"
+msgstr "Deschide opțiunile"
+
+#: data/resources/shortcuts-dialog.ui:15 data/resources/shortcuts-dialog.ui:39
+msgctxt "shortcut dialog"
 msgid "Text Language"
 msgstr "Limba textului"
 
-#: data/resources/gtk/help-overlay.ui:20
-msgctxt "shortcut window"
-msgid "Cancel Session"
-msgstr "Anulează sesiunea"
+#: data/resources/shortcuts-dialog.ui:21
+msgctxt "shortcut dialog"
+msgid "Cancel Test"
+msgstr "Anulează testul"
 
-#: data/resources/gtk/help-overlay.ui:26
-msgctxt "shortcut window"
+#: data/resources/shortcuts-dialog.ui:27
+msgctxt "shortcut dialog"
 msgid "Keyboard Shortcuts"
 msgstr "Scurtături"
 
-#: data/resources/gtk/help-overlay.ui:32
-msgctxt "shortcut window"
+#: data/resources/shortcuts-dialog.ui:33
+msgctxt "shortcut dialog"
 msgid "Close Window"
 msgstr "Închide fereastra"
 
-#: data/resources/gtk/help-overlay.ui:38
-msgctxt "shortcut window"
-msgid "Quit"
-msgstr "Închide"
-
 #: src/widgets/custom_text_dialog.blp:56
 msgid "Insert custom text…"
-msgstr "Introdu textul perosnalizat…"
+msgstr "Introdu propriul text…"
 
 #: src/widgets/custom_text_dialog.blp:92
 msgid "_Save"
@@ -242,6 +240,7 @@ msgid "Test Duration"
 msgstr "Durata testului"
 
 #: src/widgets/results_view.rs:165
+#, rust-format
 msgid "{}%"
 msgstr "{}%"
 
@@ -260,12 +259,14 @@ msgstr "Avansat"
 #. Translators: The `{}` blocks will be replaced with the number of minutes
 #. and seconds. Do not translate them!
 #: src/widgets/results_view.rs:200
+#, rust-format
 msgid "{}m {}s"
 msgstr "{}m {}s"
 
 #. Translators: The `{}` block will be replaced with the number of minutes.
 #. Do not translate it!
 #: src/widgets/results_view.rs:204
+#, rust-format
 msgid "{} minute"
 msgid_plural "{} minutes"
 msgstr[0] "{} minut"
@@ -275,6 +276,7 @@ msgstr[2] "{} de minute"
 #. Translators: The `{}` block will be replaced with the number of seconds.
 #. Do not translate it!
 #: src/widgets/results_view.rs:208
+#, rust-format
 msgid "{} second"
 msgid_plural "{} seconds"
 msgstr[0] "{} secundă"
@@ -308,11 +310,11 @@ msgstr "Rezultate"
 
 #: src/widgets/text_language_dialog.blp:159
 msgid "No Matches"
-msgstr "Niciun rezultat disponibil"
+msgstr "Nicio potrivire"
 
 #: src/widgets/text_language_dialog.blp:167
 msgid "Try a different search"
-msgstr "Încearcă un alt cuvânt"
+msgstr "Se poate căuta altfel"
 
 #: src/widgets/text_language_dialog.blp:218
 msgid ""
@@ -320,15 +322,15 @@ msgid ""
 "request on GitHub. A GitHub account and some language knowledge is required."
 msgstr ""
 "Poți ajuta la adăugarea unei limbi noi in Keypunch prin crearea unei cereri "
-"peGithub. Sunt necesare un cont de Github și cunoștiințe în acea limbă."
+"pe Github. Sunt necesare un cont de Github și cunoștințe în acea limbă."
 
 #: src/widgets/text_language_dialog.blp:233
 msgid "_Create Request"
-msgstr "_Creează cerere"
+msgstr "_Creează cererea"
 
 #: src/widgets/text_view.blp:28
 msgid "Text View"
-msgstr "Vizualizare text"
+msgstr "Afișare text"
 
 #: src/widgets/window.blp:150
 msgid "Restart"
@@ -375,85 +377,67 @@ msgstr "P_ermite tastarea"
 msgid "Results"
 msgstr "Rezultate"
 
-#: src/widgets/window.blp:298 src/widgets/window.blp:344
+#: src/widgets/window.blp:298 src/widgets/window.blp:334
 msgid "_Continue"
 msgstr "_Continuă"
 
-#. Translators: "Frustration Relief" is the name of the functionality
-#. that automatically cancels a test when random key mashing is detected,
-#. and displays a recommendation to take a break.
+#: src/widgets/window.blp:325
+msgid "Test Cancelled"
+msgstr "Test anulat"
+
 #: src/widgets/window.blp:326
-msgid "Frustration Relief"
-msgstr "Reducerea dezamăgirii"
-
-#: src/widgets/window.blp:332
-msgid "Frustration Detected"
-msgstr "Dezamăgire detectată"
-
-#. Translators: Make sure to convey this as politely and sensitively as possible,
-#. since it is likely to be shown to people while they are in a state of
-#. self-disappointment / anger
-#: src/widgets/window.blp:336
 msgid ""
-"You learn faster in a calm state of mind. Consider taking a break. The test "
-"has been cancelled, and will not affect your typing statistics."
+"The test has been cancelled due to an excessive amount of invalid "
+"keystrokes. This will not affect your typing statistics."
 msgstr ""
-"Se învață mai repede cu o stare de spirit calmă. Poate că trebuie să iei o "
-"pauză. Testul a fost anulat și nu va afecta statisticile de dactilografiere."
+"Testul a fost anulat din cauza unui număr excesiv de apăsări pe taste "
+"greșite. Aceasta nu va afecta propriile statistici de tastare."
 
-#: src/widgets/window.blp:378
+#: src/widgets/window.blp:368
 msgid "Text _Language"
 msgstr "_Limba textului"
 
-#: src/widgets/window.blp:383
+#: src/widgets/window.blp:373
 msgid "_Keyboard Shortcuts"
 msgstr "Scur_tături"
 
-#: src/widgets/window.blp:388
+#: src/widgets/window.blp:378
 msgid "_About Keypunch"
 msgstr "_Despre Keypunch"
 
-#: src/widgets/window.rs:196
+#: src/widgets/window.rs:195
+msgid "Donate"
+msgstr "Donează"
+
+#: src/widgets/window.rs:198
 msgid "Orthography by"
 msgstr "Ortografie realizată de"
 
 #. Translators: Replace "translator-credits" with your names, one name per line
-#: src/widgets/window.rs:214
+#: src/widgets/window.rs:216
 msgid "translator-credits"
 msgstr ""
 "Flavian Stavarache <FlavianStavarache@outlook.com>\n"
-"Antonio Marin <gnmer.6qxyg@slmail.me>, 2025"
+"Antonio Marin <gnmer.6qxyg@slmail.me>"
 
-#: src/widgets/window.rs:219
+#: src/widgets/window.rs:221
 msgid "Special thanks to"
 msgstr "Mulțumiri speciale către"
 
 #. Translators: Metainfo for the app Fretboard. <https://github.com/bragefuglseth/fretboard>
-#: src/widgets/window.rs:226
+#: src/widgets/window.rs:228
 msgid "Fretboard"
 msgstr "Fretboard"
 
 #. Translators: Metainfo for the app Fretboard. <https://github.com/bragefuglseth/fretboard>
-#: src/widgets/window.rs:228
+#: src/widgets/window.rs:230
 msgid "Look up guitar chords"
 msgstr "Caută acorduri de chitară"
-
-#: src/widgets/window/typing_test.rs:163
-msgid "{} ⁄ {}"
-msgstr "{} ⁄ {}"
 
 #. Translators: This is shown as a warning by GNOME Shell before logging out or shutting off the system in the middle of a typing test, alongside Keypunch's name and icon
 #: src/widgets/window/typing_test.rs:336
 msgid "Ongoing typing test"
 msgstr "Test de tastare în curs"
-
-#: src/widgets/window/typing_test.rs:508
-msgid "Changes discarded"
-msgstr "Schimbările au fost anulate"
-
-#: src/widgets/window/typing_test.rs:509
-msgid "Restore"
-msgstr "Restabilește sesiunea"
 
 #. Translators: The format of the timer. The first `{}` block will be replaced
 #. with the minutes passed, and the second one will be replaced with the seconds
@@ -461,5 +445,6 @@ msgstr "Restabilește sesiunea"
 #. Unicode character; if your language doesn't use something completely different,
 #. you should probably copy and paste it from the original string.
 #: src/widgets/window/typing_test.rs:607 src/widgets/window/typing_test.rs:609
+#, rust-format
 msgid "{}∶{}"
 msgstr "{}∶{}"
