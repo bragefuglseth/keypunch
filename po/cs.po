@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: keypunch\n"
 "Report-Msgid-Bugs-To: https://github.com/bragefuglseth/keypunch/issues\n"
-"POT-Creation-Date: 2025-04-26 12:47+0000\n"
-"PO-Revision-Date: 2026-03-25 18:19+0100\n"
+"POT-Creation-Date: 2026-06-30 23:18+0000\n"
+"PO-Revision-Date: 2026-07-04 21:18+0200\n"
 "Last-Translator: Patrik Sivek <sivekpatrik@gmail.com>\n"
 "Language-Team: Czech\n"
 "Language: cs\n"
@@ -29,7 +29,7 @@ msgstr "Keypunch"
 #: data/dev.bragefuglseth.Keypunch.desktop.in.in:3
 #: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:8
 msgid "Practice your typing skills"
-msgstr "Procvičte si své dovednosti psaní na klávesnici"
+msgstr "Procvičte si psaní na klávesnici"
 
 #: data/dev.bragefuglseth.Keypunch.desktop.in.in:9
 msgid ""
@@ -182,35 +182,35 @@ msgstr ""
 "Aktuální nejvyšší počet slov za minutu obdržený pro každý typ sezení / "
 "trvání a jazyk"
 
-#: data/resources/gtk/help-overlay.ui:11
-msgctxt "shortcut window"
+#: data/resources/shortcuts-dialog.ui:6
+msgctxt "shortcut dialog"
 msgid "General"
 msgstr "Obecné"
 
-#: data/resources/gtk/help-overlay.ui:14
-msgctxt "shortcut window"
+#: data/resources/shortcuts-dialog.ui:9
+msgctxt "shortcut dialog"
+msgid "Open Menu"
+msgstr "Otevřít nabídku"
+
+#: data/resources/shortcuts-dialog.ui:15 data/resources/shortcuts-dialog.ui:39
+msgctxt "shortcut dialog"
 msgid "Text Language"
 msgstr "Jazyk textu"
 
-#: data/resources/gtk/help-overlay.ui:20
-msgctxt "shortcut window"
-msgid "Cancel Session"
-msgstr "Přerušit sezení"
+#: data/resources/shortcuts-dialog.ui:21
+msgctxt "shortcut dialog"
+msgid "Cancel Test"
+msgstr "Přerušit trénink"
 
-#: data/resources/gtk/help-overlay.ui:26
-msgctxt "shortcut window"
+#: data/resources/shortcuts-dialog.ui:27
+msgctxt "shortcut dialog"
 msgid "Keyboard Shortcuts"
 msgstr "Klávesové zkratky"
 
-#: data/resources/gtk/help-overlay.ui:32
-msgctxt "shortcut window"
+#: data/resources/shortcuts-dialog.ui:33
+msgctxt "shortcut dialog"
 msgid "Close Window"
 msgstr "Zavřít okno"
-
-#: data/resources/gtk/help-overlay.ui:38
-msgctxt "shortcut window"
-msgid "Quit"
-msgstr "Ukončit"
 
 #: src/widgets/custom_text_dialog.blp:56
 msgid "Insert custom text…"
@@ -234,11 +234,11 @@ msgstr "Přesnost"
 
 #: src/widgets/results_view.blp:101 src/widgets/window.blp:167
 msgid "Test Type"
-msgstr "Typ sezení"
+msgstr "Typ tréninku"
 
 #: src/widgets/results_view.blp:114 src/widgets/window.blp:175
 msgid "Test Duration"
-msgstr "Délka sezení"
+msgstr "Délka tréninku"
 
 #: src/widgets/results_view.rs:165
 #, rust-format
@@ -262,7 +262,7 @@ msgstr "Pokročilý"
 #: src/widgets/results_view.rs:200
 #, rust-format
 msgid "{}m {}s"
-msgstr "{}m {}s"
+msgstr "{} m {} s"
 
 #. Translators: The `{}` block will be replaced with the number of minutes.
 #. Do not translate it!
@@ -378,67 +378,61 @@ msgstr "_Povolit zadávání"
 msgid "Results"
 msgstr "Výsledky"
 
-#: src/widgets/window.blp:298 src/widgets/window.blp:344
+#: src/widgets/window.blp:298 src/widgets/window.blp:334
 msgid "_Continue"
 msgstr "_Pokračovat"
 
-#. Translators: "Frustration Relief" is the name of the functionality
-#. that automatically cancels a test when random key mashing is detected,
-#. and displays a recommendation to take a break.
+#: src/widgets/window.blp:325
+msgid "Test Cancelled"
+msgstr "Trénink byl zrušen"
+
 #: src/widgets/window.blp:326
-msgid "Frustration Relief"
-msgstr "Úleva od frustrace"
-
-#: src/widgets/window.blp:332
-msgid "Frustration Detected"
-msgstr "Zaznamenána frustrace"
-
-#. Translators: Make sure to convey this as politely and sensitively as possible,
-#. since it is likely to be shown to people while they are in a state of
-#. self-disappointment / anger
-#: src/widgets/window.blp:336
 msgid ""
-"You learn faster in a calm state of mind. Consider taking a break. The test "
-"has been cancelled, and will not affect your typing statistics."
+"The test has been cancelled due to an excessive amount of invalid "
+"keystrokes. This will not affect your typing statistics."
 msgstr ""
-"V klidném rozpoložení se budete učit rychleji. Zkuste si dát chvíli pauzu. "
-"Sezení bylo přerušeno a její výsledky nebudou ovlivňovat vaší statistiku "
-"psaní."
+"Trénink byl zrušen kvůli velkému počtu špatných znaků. Toto nijak neovlivní "
+"vaše statistiky."
 
-#: src/widgets/window.blp:378
+#: src/widgets/window.blp:368
 msgid "Text _Language"
 msgstr "_Jazyk textu"
 
-#: src/widgets/window.blp:383
+#: src/widgets/window.blp:373
 msgid "_Keyboard Shortcuts"
 msgstr "_Klávesové zkratky"
 
-#: src/widgets/window.blp:388
+#: src/widgets/window.blp:378
 msgid "_About Keypunch"
 msgstr "_O aplikaci Keypunch"
 
-#: src/widgets/window.rs:196
+#: src/widgets/window.rs:195
+msgid "Donate"
+msgstr "Přispět"
+
+#: src/widgets/window.rs:198
 msgid "Orthography by"
 msgstr "Pravopis podle"
 
 #. Translators: Replace "translator-credits" with your names, one name per line
-#: src/widgets/window.rs:214
+#: src/widgets/window.rs:216
 msgid "translator-credits"
 msgstr ""
 "Amerey <info@amerey.eu>\n"
-"Seja Studio <seja.czstudio@gmail.com>"
+"Seja Studio <seja.czstudio@gmail.com>\n"
+"Patrik Sivek <sivekpatrik@gmail.com>"
 
-#: src/widgets/window.rs:219
+#: src/widgets/window.rs:221
 msgid "Special thanks to"
 msgstr "Zvláštní poděkování"
 
 #. Translators: Metainfo for the app Fretboard. <https://github.com/bragefuglseth/fretboard>
-#: src/widgets/window.rs:226
+#: src/widgets/window.rs:228
 msgid "Fretboard"
 msgstr "Fretboard"
 
 #. Translators: Metainfo for the app Fretboard. <https://github.com/bragefuglseth/fretboard>
-#: src/widgets/window.rs:228
+#: src/widgets/window.rs:230
 msgid "Look up guitar chords"
 msgstr "Najděte kytarové akordy"
 
@@ -456,6 +450,28 @@ msgstr "Probíhá trénink psaní"
 #, rust-format
 msgid "{}∶{}"
 msgstr "{}∶{}"
+
+#~ msgctxt "shortcut window"
+#~ msgid "Text Language"
+#~ msgstr "Jazyk textu"
+
+#~ msgctxt "shortcut window"
+#~ msgid "Quit"
+#~ msgstr "Ukončit"
+
+#~ msgid "Frustration Relief"
+#~ msgstr "Úleva od frustrace"
+
+#~ msgid "Frustration Detected"
+#~ msgstr "Zaznamenána frustrace"
+
+#~ msgid ""
+#~ "You learn faster in a calm state of mind. Consider taking a break. The "
+#~ "test has been cancelled, and will not affect your typing statistics."
+#~ msgstr ""
+#~ "V klidném rozpoložení se budete učit rychleji. Zkuste si dát chvíli "
+#~ "pauzu. Sezení bylo přerušeno a její výsledky nebudou ovlivňovat vaší "
+#~ "statistiku psaní."
 
 #~ msgid "{} ⁄ {}"
 #~ msgstr "{} ⁄ {}"
