@@ -76,6 +76,8 @@ pub enum Language {
     Korean,
     #[strum(message = "नेपाली", to_string = "ne")]
     Nepali,
+    #[strum(message = "മലയാളം", to_string = "ml")]
+    Malayalam,
     #[strum(message = "Norsk bokmål", to_string = "nb")]
     NorwegianBokmaal,
     #[strum(message = "Norsk nynorsk", to_string = "nn")]
