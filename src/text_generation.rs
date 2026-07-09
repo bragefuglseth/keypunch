@@ -100,6 +100,8 @@ pub enum Language {
     Swedish,
     #[strum(message = "Schweizerdeutsch", to_string = "de_CH")]
     SwissGerman,
+    #[strum(message = "தமிழ்", to_string = "ta")]
+    Tamil,
     #[strum(message = "Türkçe", to_string = "tr")]
     Turkish,
     #[strum(message = "Українська", to_string = "uk")]
