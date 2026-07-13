@@ -1,13 +1,13 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the keypunch package.
-# Asier Saratsua Garmendia <asiersarasua@ni.eus>, 2025.
+# Asier Saratsua Garmendia <asiersarasua@ni.eus>, 2025, 2026.
 #
 msgid ""
 msgstr "Project-Id-Version: keypunch\n"
 "Report-Msgid-Bugs-To: https://github.com/bragefuglseth/keypunch/issues\n"
-"POT-Creation-Date: 2025-04-07 07:53+0000\n"
-"PO-Revision-Date: 2024-12-11 21:58+0000\n"
+"POT-Creation-Date: 2026-06-30 23:18+0000\n"
+"PO-Revision-Date: 2026-07-13 21:58+0000\n"
 "Last-Translator: Asier Saratsua Garmendia <asiersarasua@ni.eus>\n"
 "Language-Team: Basque <asiersarasua@ni.eus>\n"
 "Language: eu\n"
@@ -16,21 +16,21 @@ msgstr "Project-Id-Version: keypunch\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
-#: data/dev.bragefuglseth.Keypunch.desktop.in.in:3
+#: data/dev.bragefuglseth.Keypunch.desktop.in.in:2
 #: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:7
 #: src/widgets/window.blp:24
 msgid "Keypunch"
 msgstr "Keypunch"
 
-#: data/dev.bragefuglseth.Keypunch.desktop.in.in:4
+#: data/dev.bragefuglseth.Keypunch.desktop.in.in:3
 #: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:8
 msgid "Practice your typing skills"
 msgstr "Praktikatu zure idazketa-trebetasunak"
 
-#: data/dev.bragefuglseth.Keypunch.desktop.in.in:10
+#: data/dev.bragefuglseth.Keypunch.desktop.in.in:9
 msgid ""
-"typing;trainer;touch typing;keyboard;speed;wpm;words per minute;accuracy;"
-"test;"
+"typing;trainer;touch typing;keyboard;speed;wpm;words per "
+"minute;accuracy;test;"
 msgstr "idazketa;entrenatzailea;ukipen bidezko idazketa;teklatua;abiadura;mh;minutuko hitzak;zehaztasuna;proba;"
 
 #: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:13
@@ -159,35 +159,35 @@ msgid ""
 "and language"
 msgstr "Momentuan jasotako MH kopururik handiena saio mota, iraupen eta hizkuntza bakoitzeko"
 
-#: data/resources/gtk/help-overlay.ui:11
-msgctxt "shortcut window"
+#: data/resources/shortcuts-dialog.ui:6
+msgctxt "shortcut dialog"
 msgid "General"
 msgstr "Orokorra"
 
-#: data/resources/gtk/help-overlay.ui:14
-msgctxt "shortcut window"
+#: data/resources/shortcuts-dialog.ui:9
+msgctxt "shortcut dialog"
+msgid "Open Menu"
+msgstr "Ireki menua"
+
+#: data/resources/shortcuts-dialog.ui:15 data/resources/shortcuts-dialog.ui:39
+msgctxt "shortcut dialog"
 msgid "Text Language"
 msgstr "Testu-hizkuntza"
 
-#: data/resources/gtk/help-overlay.ui:20
-msgctxt "shortcut window"
-msgid "Cancel Session"
-msgstr "Utzi saioa"
+#: data/resources/shortcuts-dialog.ui:21
+msgctxt "shortcut dialog"
+msgid "Cancel Test"
+msgstr "Utzi proba"
 
-#: data/resources/gtk/help-overlay.ui:26
-msgctxt "shortcut window"
+#: data/resources/shortcuts-dialog.ui:27
+msgctxt "shortcut dialog"
 msgid "Keyboard Shortcuts"
 msgstr "Laster-teklak"
 
-#: data/resources/gtk/help-overlay.ui:32
-msgctxt "shortcut window"
+#: data/resources/shortcuts-dialog.ui:33
+msgctxt "shortcut dialog"
 msgid "Close Window"
 msgstr "Itxi leihoa"
-
-#: data/resources/gtk/help-overlay.ui:38
-msgctxt "shortcut window"
-msgid "Quit"
-msgstr "Irten"
 
 #: src/widgets/custom_text_dialog.blp:56
 msgid "Insert custom text…"
@@ -218,6 +218,7 @@ msgid "Test Duration"
 msgstr "Testu-iraupena"
 
 #: src/widgets/results_view.rs:165
+#, rust-format
 msgid "{}%"
 msgstr "%{}"
 
@@ -236,12 +237,14 @@ msgstr "Aurreratua"
 #. Translators: The `{}` blocks will be replaced with the number of minutes
 #. and seconds. Do not translate them!
 #: src/widgets/results_view.rs:200
+#, rust-format
 msgid "{}m {}s"
 msgstr "{}m {}s"
 
 #. Translators: The `{}` block will be replaced with the number of minutes.
 #. Do not translate it!
 #: src/widgets/results_view.rs:204
+#, rust-format
 msgid "{} minute"
 msgid_plural "{} minutes"
 msgstr[0] "Minutu {}"
@@ -250,6 +253,7 @@ msgstr[1] "{} minutu"
 #. Translators: The `{}` block will be replaced with the number of seconds.
 #. Do not translate it!
 #: src/widgets/results_view.rs:208
+#, rust-format
 msgid "{} second"
 msgid_plural "{} seconds"
 msgstr[0] "Segundu {}"
@@ -347,81 +351,63 @@ msgstr "_Gaitu sarrera"
 msgid "Results"
 msgstr "Emaitzak"
 
-#: src/widgets/window.blp:298 src/widgets/window.blp:344
+#: src/widgets/window.blp:298 src/widgets/window.blp:334
 msgid "_Continue"
 msgstr "_Jarraitu"
 
-#. Translators: "Frustration Relief" is the name of the functionality
-#. that automatically cancels a test when random key mashing is detected,
-#. and displays a recommendation to take a break.
+#: src/widgets/window.blp:325
+msgid "Test Cancelled"
+msgstr "Testua bertan behera utzi da"
+
 #: src/widgets/window.blp:326
-msgid "Frustration Relief"
-msgstr "Frustrazioa arintzea"
-
-#: src/widgets/window.blp:332
-msgid "Frustration Detected"
-msgstr "Frustrazioa detektatu da"
-
-#. Translators: Make sure to convey this as politely and sensitively as possible,
-#. since it is likely to be shown to people while they are in a state of
-#. self-disappointment / anger
-#: src/widgets/window.blp:336
 msgid ""
-"You learn faster in a calm state of mind. Consider taking a break. The test "
-"has been cancelled, and will not affect your typing statistics."
-msgstr "Azkarrago ikasiko duzu lasaiago bazaude. Hartu atseden bat. Proba bertan behera geratu da, eta ez du eraginik izango zure idazketa-estatistiketan."
+"The test has been cancelled due to an excessive amount of invalid "
+"keystrokes. This will not affect your typing statistics."
+msgstr "Proba bertan behera geratu da takla-kolpe baliogabe asko izan direlako. Horrek ez du eraginik izango zure idazketa-estatistiketan."
 
-#: src/widgets/window.blp:378
+#: src/widgets/window.blp:368
 msgid "Text _Language"
 msgstr "Testu-_hizkuntza"
 
-#: src/widgets/window.blp:383
+#: src/widgets/window.blp:373
 msgid "_Keyboard Shortcuts"
 msgstr "_Laster-teklak"
 
-#: src/widgets/window.blp:388
+#: src/widgets/window.blp:378
 msgid "_About Keypunch"
 msgstr "Keypunch aplikazioari _buruz"
 
-#: src/widgets/window.rs:196
+#: src/widgets/window.rs:195
+msgid "Donate"
+msgstr "Lagundu diruz"
+
+#: src/widgets/window.rs:198
 msgid "Orthography by"
 msgstr "Ortografia:"
 
 #. Translators: Replace "translator-credits" with your names, one name per line
-#: src/widgets/window.rs:214
+#: src/widgets/window.rs:216
 msgid "translator-credits"
 msgstr "Asier Saratsua Garmendia <asiersarasua@ni.eus>"
 
-#: src/widgets/window.rs:219
+#: src/widgets/window.rs:221
 msgid "Special thanks to"
 msgstr "Esker bereziak"
 
 #. Translators: Metainfo for the app Fretboard. <https://github.com/bragefuglseth/fretboard>
-#: src/widgets/window.rs:226
+#: src/widgets/window.rs:228
 msgid "Fretboard"
 msgstr "Fretboard"
 
 #. Translators: Metainfo for the app Fretboard. <https://github.com/bragefuglseth/fretboard>
-#: src/widgets/window.rs:228
+#: src/widgets/window.rs:230
 msgid "Look up guitar chords"
 msgstr "Kontsultatu gitarra-akordeak"
-
-#: src/widgets/window/typing_test.rs:163
-msgid "{} ⁄ {}"
-msgstr "{} ⁄ {}{} ⁄ {}"
 
 #. Translators: This is shown as a warning by GNOME Shell before logging out or shutting off the system in the middle of a typing test, alongside Keypunch's name and icon
 #: src/widgets/window/typing_test.rs:336
 msgid "Ongoing typing test"
 msgstr "Idaketa-proba abian"
-
-#: src/widgets/window/typing_test.rs:508
-msgid "Changes discarded"
-msgstr "Aldaketak baztertu dira"
-
-#: src/widgets/window/typing_test.rs:509
-msgid "Restore"
-msgstr "Berrezarri"
 
 #. Translators: The format of the timer. The first `{}` block will be replaced
 #. with the minutes passed, and the second one will be replaced with the seconds
@@ -429,8 +415,39 @@ msgstr "Berrezarri"
 #. Unicode character; if your language doesn't use something completely different,
 #. you should probably copy and paste it from the original string.
 #: src/widgets/window/typing_test.rs:607 src/widgets/window/typing_test.rs:609
+#, rust-format
 msgid "{}∶{}"
 msgstr "{}∶{}"
+
+#~ msgctxt "shortcut window"
+#~ msgid "Text Language"
+#~ msgstr "Testu-hizkuntza"
+
+#~ msgctxt "shortcut window"
+#~ msgid "Quit"
+#~ msgstr "Irten"
+
+#~ msgid "Frustration Relief"
+#~ msgstr "Frustrazioa arintzea"
+
+#~ msgid "Frustration Detected"
+#~ msgstr "Frustrazioa detektatu da"
+
+#~ msgid ""
+#~ "You learn faster in a calm state of mind. Consider taking a break. The "
+#~ "test has been cancelled, and will not affect your typing statistics."
+#~ msgstr ""
+#~ "Azkarrago ikasiko duzu lasaiago bazaude. Hartu atseden bat. Proba bertan "
+#~ "behera geratu da, eta ez du eraginik izango zure idazketa-estatistiketan."
+
+#~ msgid "{} ⁄ {}"
+#~ msgstr "{} ⁄ {}{} ⁄ {}"
+
+#~ msgid "Changes discarded"
+#~ msgstr "Aldaketak baztertu dira"
+
+#~ msgid "Restore"
+#~ msgstr "Berrezarri"
 
 #~ msgid "Correctness"
 #~ msgstr "Zuzentasuna"
