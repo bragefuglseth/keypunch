@@ -19,7 +19,7 @@ if desktop_utils.found()
   test('Validate desktop file', desktop_utils, args: [desktop_file])
 endif
 
-run_command('cp', '@0@.metainfo.xml.in.in'.format(base_id), '@0@.metainfo.xml.in'.format(base_id), check: true)
+run_command('cp', '@0@.metainfo.xml.in.in'.format(base_id), '@0@.metainfo.xml.in'.format(app_id), check: true)
 
 # Sed is used as a poor man's `configure_file` here because we need access to it in the src dir
 
@@ -28,11 +28,11 @@ if build_machine.system() in ['freebsd', 'netbsd', 'openbsd', 'dragonfly']
 endif
 
 sed = find_program('gsed', 'sed', required: true) # We should probably still prefer gsed if it exists
-run_command(sed, '-i', 's/@app-id@/' + app_id + '/g', base_id + '.metainfo.xml.in', check: true)
+run_command(sed, '-i', 's/@app-id@/' + app_id + '/g', app_id + '.metainfo.xml.in', check: true)
 
 appstream_file = i18n.merge_file(
-        input: '@0@.metainfo.xml.in'.format(base_id),
-       output: '@0@.metainfo.xml'.format(base_id),
+        input: '@0@.metainfo.xml.in'.format(app_id),
+       output: '@0@.metainfo.xml'.format(app_id),
        po_dir: '../po',
          type: 'xml',
       install: true,
@@ -49,8 +49,8 @@ msgfmt = find_program('msgfmt', required: true)
 run_command(msgfmt,
     '--xml',
     '-d' + meson.project_source_root() / 'po',
-    '--template=@0@.metainfo.xml.in'.format(base_id),
-    '--output-file=' + 'resources' / '@0@.metainfo.xml'.format(base_id),
+    '--template=@0@.metainfo.xml.in'.format(app_id),
+    '--output-file=' + 'resources' / '@0@.metainfo.xml'.format(app_id),
     check: true,
 )
 

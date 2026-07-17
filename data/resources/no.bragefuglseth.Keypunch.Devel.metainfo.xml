@@ -1,0 +1,619 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright 2024 Brage Fuglseth -->
+<component type="desktop-application">
+  <id>no.bragefuglseth.Keypunch.Devel</id>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>GPL-3.0-or-later</project_license>
+  <name>Keypunch</name>
+  <name xml:lang="zh-Hans-CN">Keypunch</name>
+  <name xml:lang="uz-Latn">Keypunch</name>
+  <name xml:lang="uk">Keypunch</name>
+  <name xml:lang="tr">Keypunch</name>
+  <name xml:lang="sv">Keypunch</name>
+  <name xml:lang="sr-Cyrl">Дактилограф</name>
+  <name xml:lang="sl">Tipkarica</name>
+  <name xml:lang="sk">Keypunch</name>
+  <name xml:lang="ru">Keypunch</name>
+  <name xml:lang="ro">Keypunch</name>
+  <name xml:lang="pt-BR">Keypunch</name>
+  <name xml:lang="pl">Keypunch</name>
+  <name xml:lang="oc">Keypunch</name>
+  <name xml:lang="nl">Keypunch</name>
+  <name xml:lang="nb">Keypunch</name>
+  <name xml:lang="kw">Alhwedhen-Toller</name>
+  <name xml:lang="kk-Cyrl">Keypunch</name>
+  <name xml:lang="kab">Keypunch</name>
+  <name xml:lang="ka">Keypunch</name>
+  <name xml:lang="it">Keypunch</name>
+  <name xml:lang="id">Keypunch</name>
+  <name xml:lang="hu">Billentyűző</name>
+  <name xml:lang="hi">कीपंच</name>
+  <name xml:lang="he">הקלדה עיוורת</name>
+  <name xml:lang="fr">Keypunch</name>
+  <name xml:lang="fi">Keypunch</name>
+  <name xml:lang="fa">کلیدزنی</name>
+  <name xml:lang="eu">Keypunch</name>
+  <name xml:lang="es">Keypunch</name>
+  <name xml:lang="eo">Keypunch</name>
+  <name xml:lang="en-GB">Keypunch</name>
+  <name xml:lang="el">Keypunch</name>
+  <name xml:lang="de">Keypunch</name>
+  <name xml:lang="cs">Keypunch</name>
+  <name xml:lang="ca">Keypunch</name>
+  <name xml:lang="bg">Keypunch</name>
+  <summary>Practice your typing skills</summary>
+  <summary xml:lang="zh-Hans-CN">练习您的打字技能</summary>
+  <summary xml:lang="uz-Latn">Matn terish qobiliyatingizni mashq qiling</summary>
+  <summary xml:lang="uk">Практикуйте свої навички друку</summary>
+  <summary xml:lang="tr">Yazma becerilerinizi geliştirin</summary>
+  <summary xml:lang="sv">Öva på din skrivförmåga</summary>
+  <summary xml:lang="sr-Cyrl">Вежбајте своју вештину куцања</summary>
+  <summary xml:lang="sl">Vadite svoje tipkanje</summary>
+  <summary xml:lang="sk">Precvičovanie strojopisu</summary>
+  <summary xml:lang="ru">Практика навыков набора текста</summary>
+  <summary xml:lang="ro">Antrenează-ți abilitatea de a tasta rapid</summary>
+  <summary xml:lang="pt-BR">Pratique sua habilidade de digitação</summary>
+  <summary xml:lang="pl">Ćwicz swoje umiejętności pisania na klawiaturze</summary>
+  <summary xml:lang="oc">Practicatz vòstras competéncias en picada</summary>
+  <summary xml:lang="nl">Oefen uw typvaardigheden</summary>
+  <summary xml:lang="nb">Tren opp skriveferdighetene dine</summary>
+  <summary xml:lang="kw">Omassaya dha sleyneth ow jynnskrifa</summary>
+  <summary xml:lang="kk-Cyrl">Теру дағдыларын жаттықтыру</summary>
+  <summary xml:lang="ka">ივარჯიშეთ კრეფაში</summary>
+  <summary xml:lang="it">Esercita le abilità di battitura</summary>
+  <summary xml:lang="id">Praktikkan ketrampilan mengetik Anda</summary>
+  <summary xml:lang="hu">Gyakorolja gépelési készségét</summary>
+  <summary xml:lang="hi">अपने टाइपिंग कौशल का अभ्यास करें</summary>
+  <summary xml:lang="he">תרגול מיומנות ההקלדה שלך</summary>
+  <summary xml:lang="fr">Entraînez-vous à la dactylographie</summary>
+  <summary xml:lang="fi">Harjoita näppäilytaitojasi</summary>
+  <summary xml:lang="fa">تمرین دادن مهارت نوشتنتان</summary>
+  <summary xml:lang="eu">Praktikatu zure idazketa-trebetasunak</summary>
+  <summary xml:lang="es">Practique su mecanografía</summary>
+  <summary xml:lang="eo">Trejni viajn tajpad-kapablojn</summary>
+  <summary xml:lang="en-GB">Practise your typing skills</summary>
+  <summary xml:lang="el">Εξασκήστε τις δεξιότητές σας στην πληκτρολόγηση</summary>
+  <summary xml:lang="de">Üben Sie Ihre Tippfähigkeiten</summary>
+  <summary xml:lang="cs">Procvičte si psaní na klávesnici</summary>
+  <summary xml:lang="ca">Practiqueu les vostres habilitats d'escriptura</summary>
+  <summary xml:lang="bg">Упражнявайте уменията си по машинопис</summary>
+  <summary xml:lang="ar">تدرب على مهاراتك في الطباعة</summary>
+  <developer id="dev.bragefuglseth">
+    <name translate="no">Brage Fuglseth</name>
+  </developer>
+  <description>
+    <p>
+      There is no doubt that typing on a keyboard is an essential skill in the
+      digital age. Typing fast and accurately gives you more opportunities,
+      more time for what matters to you, and a sense of self-accomplishment.
+    </p>
+    <p xml:lang="zh-Hans-CN">毫无疑问在数字时代用键盘打字是一项必备技能。快速并正确地打字可以给你更多机会，可以腾出更多时间让你做更重要的事情，且会有一种自我成就的感觉。</p>
+    <p xml:lang="uz-Latn">Klaviaturada matn terish raqamli asrda muhim mahorat ekanligiga shubha yoʻq. Tez va toʻgʻri matn terish sizga koʻproq imkoniyatlar beradi. Siz uchun muhim boʻlgan narsalarga koʻproq vaqt va oʻz-oʻzini kamol toptirish hissini beradi.</p>
+    <p xml:lang="uk">Немає сумнівів, що вміння друкувати на клавіатурі є важливим в цифрову епоху. Швидкість і точність друку надає вам більше можливостей, більше часу на те, що важливо для вас, і також відчуття самореалізації.</p>
+    <p xml:lang="tr">Klavye ile yazmak sayısal çağ için önemli bir beceri. Hızlı ve doğru yazmak sizin için önemli olan şeylere daha fazla vakit ayırmanızı sağlar.</p>
+    <p xml:lang="sv">Det är ingen fråga om saken: att kunna skriva på ett tangentbord är en essentiell förmåga i den digitala tidsåldern. Att skriva fort och korrekt ger dig fler möjligheter, mer tid åt det som är viktigt för dig, och en känsla av självförverkligande.</p>
+    <p xml:lang="sr-Cyrl">Нема сумње да је куцање на тастатури суштинска вештина у дигиталном добу. Брзо и тачно куцање пружа вам више могућности, више времена за оно што вам је важно и осећај личног постигнућа.</p>
+    <p xml:lang="sl">Nobenega dvoma ni, da je tipkanje bistvena veščina v digitalni dobi. Hitro in natančno tipkanje vam daje več priložnosti, več časa za tisto, kar vam je pomembno, in občutek samouresničitve.</p>
+    <p xml:lang="sk">Strojopis je v digitálnej dobe nepochybne nutnou zručnosťou. Pri rýchlom a presnom písaní získate viac príležitostí a viac času na všetko, čo je pre vás dôležité, ako aj pocit naplnenia z dosiahnutého úspechu.</p>
+    <p xml:lang="ru">Нет сомнений, что набор текста на клавиатуре - необходимый навык в эпоху цифровых технологий. Быстрый и точный набор текста дает вам чувство самоудовлетворения и больше возможностей, больше времени на то, что для вас важно.</p>
+    <p xml:lang="ro">Astăzi, scrierea la tastatură este o abilitate esențială pentru noi toți. Tastarea rapidă și precisă îți oferă nu doar mai multe oportunități, dar și mai mult timp pentru a face ceea ce îți place.</p>
+    <p xml:lang="pt-BR">Não há dúvidas que digitar num teclado é uma habilidade essencial na era digital. Digitar mais rápido e precisamente te dá mais oportunidades, mais tempo para o que realmente importa, e um sentimento de auto-realização.</p>
+    <p xml:lang="pl">Nie ma wątpliwości, że pisanie na klawiaturze jest postawową umiejętnością w cyfrowej epoce. Pisanie szybko daje Ci więcej możliwości, więcej czasu na to co ważne dla Ciebie i poczucie samozadowolenia.</p>
+    <p xml:lang="oc">I a pas cap de dobte que picar sus un clavièr es una competéncia essenciala dins l'èra numerica. Picar rapidament e amb precision vos dòna mai d'ocasions, mai de temps per çò qu'impòrta per vos, e un sentiment d'auto-realizacion.</p>
+    <p xml:lang="nl">In de digitale wereld is typen op een toetsenbord van het grootste belang. Door snel en juist te typen, creëert u meer kansen, houdt u meer tijd over en bezorgt u zichzelf een goed gevoel.</p>
+    <p xml:lang="nb">Det er ingen tvil om at å skrive på tastatur er en grunnleggende evne i den digitale tidsalderen. Å skrive raskt og presist gir deg flere muligheter, mer tid til det som betyr noe for deg, og mestringsfølelse.</p>
+    <p xml:lang="kw">Yma mar vyth, ow jynnskrifa war'n bysowek yw unn sleyneth a res y'n oos besyel. Ow jynnskrifa snell hag yn kewar ri ty moy spassow, moy termyn rag pyth a vern dhe ty, ha'n klewans a omhedhyans.</p>
+    <p xml:lang="kk-Cyrl">Цифрлық дәуірде пернетақтада теру маңызды дағды екеніне күмән жоқ. Жылдам және дәл теру сізге көбірек мүмкіндіктер, сіз үшін маңызды нәрселерге көбірек уақыт және өзіңізге деген сенімділік береді.</p>
+    <p xml:lang="ka">ეჭვგარეშეა, რომ კლავიატურაზე კრეფა ციფრული ერის ერთ-ერთი უმნიშვნელოვანესი უნარია. სწრაფად და ზუსტად კრეფა უფრო მეტ შესაძლებლობას და დროს გაძლევთ, ისევე, როგორც თვითრწმენას.</p>
+    <p xml:lang="it">Non c'è dubbio che digitare su una tastiera sia un'abilità essenziale nell'era digitale. Digitare velocemente e con precisione offre più opportunità,più tempo per ciò che conta e un senso di realizzazione di sé.</p>
+    <p xml:lang="id">Tidak ada keraguan bahwa mengetik pada suatu papan tik adalah ketrampilan esensial di zaman digital. Mengetik secara cepat dan akurat memberi Anda lebih banyak peluang, lebih banyak waktu untuk hal-hal yang penting bagi Anda, dan rasa keberhasilan.</p>
+    <p xml:lang="hu">Kétségtelen, hogy a billentyűzeten való gépelés elengedhetetlen készség a digitális korban. A gyors és pontos gépelés több lehetőséget, több időt biztosít az Ön számára fontos dolgokra, és önbizalmat ad.</p>
+    <p xml:lang="hi">इसमें कोई संदेह नहीं है कि डिजिटल युग में कीबोर्ड पर टाइप करना एक आवश्यक कौशल है। तेजी से और सटीक टाइपिंग करने से आपको अधिक अवसर मिलते हैं, आपके लिए महत्वपूर्ण कामों के लिए अधिक समय मिलता है और आत्म-उपलब्धि की भावना होती है।</p>
+    <p xml:lang="he">אין ספק שהקלדה עיוורת היא מיומנות חיונית בעידן הדיגיטלי. הקלדה מהירה ומדויקת מרחיבה את מנעד ההזדמנויות שלך, מפנה זמן רב יותר ומגבירה את תחושת המסוגלות.</p>
+    <p xml:lang="fr">Il ne fait aucun doute que taper sur un clavier est une compétence essentielle à l’ère numérique. Écrire rapidement et précisément vous offre davantage d’opportunités, davantage de temps pour ce qui compte pour vous, ainsi qu’un sentiment de fierté.</p>
+    <p xml:lang="fi">Näppäimistöllä kirjoittaminen on digitaalisen ajan perustaito. Tarkkuudella ja nopeudella kirjoittaminen antaa etua monissa tilanteissa, ja tuottaa myös onnistumisen tunteen.</p>
+    <p xml:lang="fa">بدون شک مهارت تایپ کردن سریع با صفحه‌کلید در عصر دیجیتال ضروری است. سریع و دقیق تایپ کردن به شما فرصت‌های بیشتر، زمان بیشتر برای چیزی که مهم‌تر است و احساس خودشکوفایی می‌دهد.</p>
+    <p xml:lang="eu">Dudarik gabe, teklatuan idaztea funtsezkoa da aro digitalean. Azkar eta zehatz idazteak aukera gehiago ematen dizkizu, denbora gehiago beste zeregin batzuetarako eta zerbait ona egin izanaren zentzua.</p>
+    <p xml:lang="es">No cabe duda de que escribir con un teclado es una habilidad esencial en la era digital. Escribir rápido y con precisión le da más oportunidades, más tiempo para lo que le importa y una sensación de realización personal.</p>
+    <p xml:lang="en-GB">There is no doubt that typing on a keyboard is an essential skill in the digital age. Typing fast and accurately gives you more opportunities, more time for what matters to you, and a sense of self-accomplishment.</p>
+    <p xml:lang="el">Δεν υπάρχει αμφιβολία ότι η πληκτρολόγηση σε ένα πληκτρολόγιο είναι μια απαραίτητη δεξιότητα στην ψηφιακή εποχή. Η γρήγορη και ακριβής πληκτρολόγηση σας δίνει περισσότερες ευκαιρίες, περισσότερο χρόνο για ό,τι έχει σημασία για εσάς, και μια αίσθηση αυτο-ολοκλήρωσης.</p>
+    <p xml:lang="de">Es besteht kein Zweifel, dass das Tippen auf einer Tastatur eine wesentliche Fähigkeit im digitalen Zeitalter ist. Wer schnell und präzise tippen kann, hat mehr Möglichkeiten, mehr Zeit für das, was ihm wichtig ist, und ein Gefühl der Selbstverwirklichung.</p>
+    <p xml:lang="cs">Není pochyb o tom, že psaní na klávesnici je v digitálním věku nezbytnou dovedností. Rychlé a přesné psaní vám dává více příležitostí, více času na to, na čem vám záleží, a pocit sebeuspokojení.</p>
+    <p xml:lang="ca">No hi ha dubte que escriure en un teclat és una habilitat essencial en l'era digital. Mecanitzar ràpid i amb precisió us dona més oportunitats, més temps per al que us importa i un sentiment d'autorealització.</p>
+    <p xml:lang="bg">Няма съмнение, че писането на клавиатура е основно умение в цифровата ера. Бързият и точен машинопис ви дава повече възможности, повече време за важните за вас неща и чувство за удовлетворение.</p>
+    <p xml:lang="ar">لا شك أن الطباعة على لوحة المفاتيح مهارة أساسية في العصر الرقمي. فالطباعة بسرعة ودقة تمنحك المزيد من الفرص، والمزيد من الوقت للأشياء التي تهمك، والشعور بالإنجاز الذاتي.</p>
+    <p>
+      Keypunch lets you practice typing. Thanks to fast-paced
+      sessions with instant feedback afterwards and a plethora of available languages,
+      you might even have a little fun doing so. With determination, proper technique
+      and some time, you will observe a noticeable increase in both the speed
+      and the accuracy of which your thoughts and ideas are put into words on the screen.
+    </p>
+    <p xml:lang="zh-Hans-CN">Keypunch 可让您练习打字。得益于具有即时反馈和大量可用语言的快节奏课程，您甚至可能会享受到一些乐趣。拥有决心、合适的技巧和一些时间，在将您的想法和点子变成屏幕上的文字时您将同时在打字速度和精准度上观察到明显的进步。</p>
+    <p xml:lang="uz-Latn">Keypunch sizga matn terishni mashq qilish imkonini beradi. Tezkor sessiyalar va ulardan keyin tezkor fikr-mulohazalar hamda mavjud tillarning koʻpligi tufayli, siz buni bajarishdan biroz zavqlanishingiz mumkin. Qatʼiyat, toʻgʻri texnika va ma’lum vaqt o‘tgach, siz fikrlaringiz va g‘oyalaringizni ekranda so‘zlarga aylantirish tezligi va aniqligining sezilarli darajada oshganini kuzatasiz.</p>
+    <p xml:lang="uk">Keypunch дозволяє практикувати введення тексту. Завдяки швидкому темпу сеансів з миттєвим зворотним звʼязком і великій кількості доступних мов, ці вправи можуть навіть вас дещо розважити. Маючи цілеспрямованість, використовуючи правильну техніку та деякий час, ви помітите суттєве підвищення швидкості та точності перенесення ваших думок та ідей в слова на екрані.</p>
+    <p xml:lang="tr">Keypunch, yazım alıştırması yapmanızı sağlar. Ardına anlık geri bildirim veren hızlı oturum ve var olan birçok dil seçeneği sayesinde biraz eğlenmenizi bile sağlar. Adanmışlık, doğru teknik ve biraz zaman ile hem düşüncelerinizi ve görüşlerinizi ekrana doğruca koyabilmenizi, hem de hızınızı önemli biçimde yükseltmeyi sağladığını göreceksiniz.</p>
+    <p xml:lang="sv">Med Keypunch kan du öva på din skrivförmåga. Tack vare snabba sessioner med direkt återkoppling efter och en uppsjö av tillgängliga språk, kanske det till och med blir kul. Med beslutsamhet, rätt teknik och lite tid kommer du märka en faktisk skillnad på både tiden och korrektheten med vilka dina tankar och idéer blir till ord på skärmen.</p>
+    <p xml:lang="sr-Cyrl">Дактилограф вам омогућава да вежбате куцање. Захваљујући брзим сесијама са тренутним повратним информацијама након тога и мноштву доступних језика, можда ћете се чак и мало забавити док то радите. Уз одлучност, правилну технику и мало времена, приметићете значајно повећање брзине и тачности којом се ваше мисли и идеје претварају у речи на екрану.</p>
+    <p xml:lang="sl">Tipkarica vam omogoča vadbo tipkanja. Zahvaljujoč hitrim sejam s takojšnjimi povratnimi informacijami in številnim razpoložljivim jezikom se boste morda celo malo zabavali. Z odločnostjo, pravilno tehniko in nekaj časa boste opazili opazno povečanje hitrosti in natančnosti, ko se vaše misli in ideje izražajo v besedah na zaslonu.</p>
+    <p xml:lang="sk">V Keypunchi si môžete precvičiť strojopis. Vďaka rýchlym cvičeniam, okamžitej spätnej väzbe a množstvu dostupných jazykov sa pri tom možno aj trochu zabavíte.Pri dostatočnom odhodlaní, správnej technike a troche času si čoskoro všimneteciteľný nárast rýchlosti i presnosti, s akou sa vám myšlienky a nápady meniapod rukami na slová na obrazovke.</p>
+    <p xml:lang="ru">Keypunch позволяет практиковаться в наборе текста. Благодаря быстрым занятиям с мгновенной обратной связью и множеству доступных языков вы сможете даже немного развлечься. При наличии целеустремленности, правильной техники и некоторого времени вы заметите заметный рост как скорости, так и точности, с которой ваши мысли и идеи воплощаются в слова на экране.</p>
+    <p xml:lang="ro">Keypunch îți oferă posibilitatea de a-ți antrena viteza de tastare. Datorită sesiunilor rapide, cu reacție instantanee și a multitudinii de limbi disponibile, procesul de învățare este simplu și interactiv. Cu puțină determinare și o tehnică corectă, vei observa o îmbunătățire a vitezei și preciziei cu care îți transpui gândurile în scris.</p>
+    <p xml:lang="pt-BR">Keypunch te permite praticar a digitação. Graças a sessões rápidas com retorno instantâneo e uma grande diversidade de idiomas, você pode até se divertir enquanto pratica. Com determinação, técnica correta e algum tempo, você vai notar um aumento tanto na velocidade quanto na precisão que suas ideias e pensamentos aparecem na sua tela.</p>
+    <p xml:lang="pl">Keypunch pozwala Ci ćwiczyć pisanie. Dzięki szybkim sesjom z natychmiastowymi wynikami po zakończeniu i wieloma dostępnymi językami, możesz nawet mieć przy tym frajdę. Z determinacją, poprawną techniką i czasem, zaobserwujesz znaczącą poprawę  w szybkości i dokładności z jaką zamieniasz swoje myśli i pomysły w tekst na ekranie.</p>
+    <p xml:lang="oc">Keypunch vos permet de practicar la picada. Mercés a de sessions rapidas amb de retorns instantanèus après e una pletòra de lengas disponiblas, podètz quitament vos divertir un pauc en o far. Amb determinacion, tecnica corrècta e un pauc de temps, observaretz un creis notable de la velocitat e de la precision que vòstras pensadas e idèas son mesas en mots sus l'ecran.</p>
+    <p xml:lang="nl">Met Keypunch kunt u uw typvaardigheden oefenen. De toepassing beschikt over kortdurende sessies, directe feedback en ondersteunt een behoorlijk aantal talen. Wie weet wordt typen op deze manier wel leuk! Met de juiste ingesteldheid, techniek en tijd zult u zien dat u sneller en beter typt, zodat uw gedachten en ideeën sneller op (het digitale) papier staan.</p>
+    <p xml:lang="nb">Keypunch lar deg øve på å skrive. Takket være raske økter med umiddelbar tilbakemelding etterpå, og et stort utvalg av språk, kan det til og med hende at du har det litt gøy underveis. Med motivasjon, god teknikk og litt tålmodighet, vil du oppleve en synlig økning i både farten og nøyaktigheten du uttrykker tankene og idéene dine med.</p>
+    <p xml:lang="kw">Alhwedhen-Toller gasa ty omassaya ow jynnskrifa. Meur ras dhe esedhogow snell gans dasliv desempis a-wosa ha meur a yethow kavadow, martesen ty a wra omlowenhe dres yth. Gans mynnas krev, teknek fytti ha nebes termyn, ty a wra avisya moy tooth ha kewerder rag settya dha tybyansow yn geryow war'n skrin.</p>
+    <p xml:lang="kk-Cyrl">Keypunch теруді жаттықтыруға мүмкіндік береді. Соңынан жедел кері байланыс берілетін қарқынды сеанстар мен көптеген қолжетімді тілдердің арқасында сіз тіпті бұл процестен ләззат ала аласыз. Табандылық, дұрыс техника және біраз уақыт жұмсасаңыз, ойларыңыз бен идеяларыңыздың экранда сөзбен бейнелену жылдамдығы мен дәлдігінің айтарлықтай артқанын байқайсыз.</p>
+    <p xml:lang="ka">Keypunch საშუალებას გაძლევთ ივარჯიშოთ აკრეფა. სწრაფი ტემპით სესიების წყალობით მყისიერი გამოხმაურებით და უამრავი ხელმისაწვდომი ენით, შეიძლება ცოტა სიამოვნებაც კი გქონდეთ. განსაზღვრის, სათანადო ტექნიკისა და გარკვეული დროის განმავლობაში, თქვენ დააკვირდებით როგორც სიჩქარის, ასევე სიზუსტის შესამჩნევი ზრდას, რომლის ეკრანზე თქვენი აზრები და იდეები იდება სიტყვებში.</p>
+    <p xml:lang="it">Keypunch consente di esercitarsi nella digitazione. Grazie a sessioni frenetiche con riscontro immediato e una miriade di lingue disponibili, ci si può pure divertire. Con determinazione, una tecnica adeguata e un po' di tempo, si osserverà un notevole aumento sia della velocità che della precisione con cui i propri pensieri e le proprie idee vengono espressi a parole sullo schermo.</p>
+    <p xml:lang="id">Keypunch memungkinkan Anda berlatih mengetik. Terima kasih ke sesi irama tinggi dengan umpan balik instan setelahnya dan berbagai bahasa yang tersedia, Anda bahkan mungkin merasa senang melakukannya. Dengan determinasi, teknik yang tepat, dan waktu tertentu, Anda akan mengamati peningkatan yang teramati dalam kecepatan dan akurasi pikiran dan ide Anda diwujudkan dalam kata-kata pada layar.</p>
+    <p xml:lang="hu">A Billentyűző segítségével gyakorolhatja a gépelést. A gyors tempójú munkameneteknek, az azonnali visszajelzéseknek és a rengeteg elérhető nyelvnek köszönhetően még élvezni is fogja a gyakorlást. Elszántsággal, megfelelő technikával és egy kis idővel észrevehető javulást fog tapasztalni mind a sebesség, mind a pontosság terén, amellyel gondolatai és ötletei szavakká válnak a képernyőn.</p>
+    <p xml:lang="hi">कीपंच आपको टाइपिंग का अभ्यास करने देता है। इसके बाद तुरंत फीडबैक के साथ तेज़ गति वाले सत्रों और उपलब्ध भाषाओं की अधिकता के कारण, आपको ऐसा करने में थोड़ा मज़ा भी आ सकता है। दृढ़ संकल्प, उचित तकनीक और कुछ समय के साथ, आप स्क्रीन पर अपने विचारों और विचारों को शब्दों में व्यक्त करने की गति और सटीकता दोनों में उल्लेखनीय वृद्धि देखेंगे।</p>
+    <p xml:lang="he">היישום הקלדה עיוורת מאפשר לך לתרגל את ההקלדה שלך. תודות לתרגולים מהירים ולמשוב מיידי ושפע של שפות זמינות, אפשר אפילו ליהנות מזה מעט. עם מספיק נחישות, טכניקה נכונה וקצת זמן, אפשר לצפות לשיפור ניכר הן במהירות והן בדיוק ההקלדה שלך.</p>
+    <p xml:lang="fr">Keypunch vous permet de vous entraîner à la dactylographie. Grâce à des sessions rapides avec un retour d’information immédiat et une pléthore de langues disponibles, le plaisir est au rendez-vous. Avec de la détermination, une bonne technique et un peu de temps, vous observerez une augmentation notable de la vitesse et de la précision avec lesquelles vos pensées et vos idées sont mises en mots sur l’écran.</p>
+    <p xml:lang="fi">Keypunchin avulla voit harjoitella kirjoittamista. Se voi jopa olla hauskaa, sillä nopeatempoiset istunnot, välitön palaute ja lukuisat kielet antavat hyvän lähtökohdan harjoitteluun. Päättäväisyydellä, oikealla tekniikalla ja ajan myötä tulet huomaamaan, kun kirjoittamisesi nopeutuu ja tarkkuus paranee.</p>
+    <p xml:lang="fa">کلیدزنی می‌گذارد نوشتن را تمرین کنید. به لطف نشست‌های سریع با بازخورد فوری پس از آن و انبوهی از زبان‌های موجود، شاید حتا کمی هم سرگرم شوید. با ارادهٔ قوی، فن مناسب و کمی زمان، شاهد افزایش قابل توجهی در سرعت و دقت تبدیل افکار و ایده‌هایتان به کلمات روی صفحه نمایش خواهید بود.</p>
+    <p xml:lang="eu">Keypunch aplikazioak idazketa praktikatzen laguntzen dizu. Erritmo bizkorreko saioei, berehalako feedbackari eta hizkuntza erabilgarri ugari izateari esker, baliteke bitartean gainera ondo pasatzea. Temati, teknika egokiz eta denboraz, zure pentsamendu eta ideiak pantailako hitzetan adierazteko abiadura eta zehaztasunaren handitze nabarmen bat antzemango duzu.</p>
+    <p xml:lang="es">Keypunch le permite practicar mecanografía. Gracias a las sesiones de ritmo rápido con respuesta instantánea posterior y a una plétora de idiomas disponibles, puede que incluso se divierta un poco haciéndolo. Con determinación, una técnica adecuada y algo de tiempo, observará un notable aumento tanto en la velocidad como en la precisión con la que sus pensamientos e ideas se plasman en palabras en la pantalla.</p>
+    <p xml:lang="en-GB">Keypunch lets you practice typing. Thanks to fast-paced sessions with instant feedback afterwards and a plethora of available languages, you might even have a little fun doing so. With determination, proper technique and some time, you will observe a noticeable increase in both the speed and the accuracy of which your thoughts and ideas are put into words on the screen.</p>
+    <p xml:lang="el">Το Keypunch σάς επιτρέπει να εξασκηθείτε στην πληκτρολόγηση. Χάρη στις γρήγορες συνεδρίες με άμεση ανατροφοδότηση στη συνέχεια και μια πληθώρα διαθέσιμων γλωσσών, μπορεί ακόμη και να διασκεδάσετε λίγο κάνοντάς το. Με αποφασιστικότητα, σωστή τεχνική και λίγο χρόνο, θα παρατηρήσετε μια αξιοσημείωτη αύξηση τόσο στην ταχύτητα όσο και στην ακρίβεια με την οποία οι σκέψεις και οι ιδέες σας μετατρέπονται σε λέξεις στην οθόνη.</p>
+    <p xml:lang="de">Mit Keypunch können Sie das Tippen üben. Dank schneller Übungen mit sofortigem Feedback und einer Vielzahl verfügbarer Sprachen werden Sie dabei vielleicht sogar ein wenig Spaß haben. Mit Entschlossenheit, der richtigen Technik und etwas Zeit werden Sie eine spürbare Verbesserung sowohl der Geschwindigkeit, als auch der Genauigkeit feststellen, mit der Ihre Gedanken und Ideen auf dem Bildschirm in Worte gefasst werden.</p>
+    <p xml:lang="cs">Keypunch vám umožní procvičit psaní. Díky rychlým relacím s následnou okamžitou zpětnou vazbou a spoustě dostupných jazyků si při tom možná užijete i trochu legrace. S odhodláním, správnou technikou a trochou času zaznamenáte znatelný nárůst jak rychlosti, tak přesnosti, s jakou jsou vaše myšlenky a nápady vkládány do slov na obrazovce.</p>
+    <p xml:lang="ca">El Keypunch us permet practicar l'escriptura. Gràcies a sessions ràpides amb retroacció posterior instantània i una gran quantitat d'idiomes disponibles, és possible que us divertiu entrenant. Amb determinació, tècnica adequada i algun temps, observareu un augment notable tant en la velocitat com en la precisió amb què els vostres pensaments i idees s'escriuen a la pantalla.</p>
+    <p xml:lang="bg">С „Keypunch“ можете да се упражнява машинописа си. Благодарение на бързите сесии с незабавна обратна връзка след това и множеството налични езици може дори да се забавлявате. С решителност, правилна техника и известно време ще забележите забележимо увеличение както на скоростта, така и на точността, с която вашите мисли и идеи се превръщат в думи на екрана.</p>
+    <p xml:lang="ar">يسمح لك تطبيق Keypunch بممارسة الطباعة. بفضل الجلسات السريعة وردود الفعل الفورية بعدها وتوفر العديد من اللغات، قد تستمتع قليلًا أثناء القيام بذلك. مع العزيمة، التقنية الصحيحة وبعض الوقت، ستلاحظ زيادة ملحوظة في كل من سرعة ودقة تحويل أفكارك إلى كلمات على الشاشة.</p>
+    <p>
+      If you are already a racer at typing, Keypunch still has something for you.
+      Try practicing with numbers and punctuation, or choose your own text to type
+      out as fast as you can.
+    </p>
+    <p xml:lang="zh-Hans-CN">如果您已经是一名打字比赛运动员，Keypunch 仍可为您提供一些帮助。尝试练习带有数字和标点符号的文本，或选择您自己的文本来让您达到更快的打字速度。</p>
+    <p xml:lang="uz-Latn">Agar siz allaqachon matn terishda mohir bo‘lsangiz, Keypunchʼda hali ham siz uchun nimadir bor. Raqamlar va tinish belgilari bilan mashq qiling yoki imkon qadar tezroq yozish uchun o‘z matningizni tanlang.</p>
+    <p xml:lang="uk">Якщо ви вже є пілотом у наборі тексту, Keypunch все одно має дещо для вас. Спробуйте потренуватися з цифрами та розділовими знаками, або ж виберіть власний текст і надрукуйте його якнайшвидше.</p>
+    <p xml:lang="tr">Eğer halihazırda yazım yarışçısıysanız, yine de Keypunch’ın size sunacakları vardır. Sayı ve noktalamalarla alıştırma yapın ya da olabildiğince hızlı yazabilmek için kendi metin türünüzü seçin.</p>
+    <p xml:lang="sv">Om du redan är en mästare på att skriva har Keypunch fortfarande något för dig. Öva på att skriva med siffror och interpunktionstecken, eller välj en egen text att skriva så fort som möjligt.</p>
+    <p xml:lang="sr-Cyrl">Ако сте већ мајстор у куцању, Дактилограф и даље има нешто за вас. Покушајте да вежбате са бројевима и интерпункцијом, или изаберите сопствени текст који ћете откуцати што брже можете.</p>
+    <p xml:lang="sl">Če ste že hitrih prstov pri tipkanju, ima Tipkarica še vedno nekaj za vas. Poskusite vaditi s številkami in ločili ali pa izberite svoje besedilo, ki ga boste natipkali čim hitreje.</p>
+    <p xml:lang="sk">Ak aj máte nacvičené svižné tempo písania, Keypunch vám má stále čo ponúknuť. Skúste si precvičiť čísla a interpunkciu, alebo si vyberte vlastný text, ktorý sa posnažíte prepísať čo najrýchlejšie.</p>
+    <p xml:lang="ru">Если вы уже умеете быстро набирать текст, в Keypunch найдется кое-что для вас. Попробуйте потренироваться с цифрами и пунктуацией или выберите свой собственный текст, чтобы набрать его как можно быстрее.</p>
+    <p xml:lang="ro">Dacă ești deja expert în utilizarea tastaturii, Keypunch are ceva în plus pentru tine. Exersează cu numere și semne de punctuație sau folosește propriul text pe care să-l tastezi cât mai repede posibil.</p>
+    <p xml:lang="pt-BR">Mesmo que você já digite bem, Keypunch ainda tem o que oferecer. Tente praticar com números e pontuações, ou tente digitar um texto escolhido o mais rápido que conseguir.</p>
+    <p xml:lang="pl">Jeśli już umiesz szybko pisać, Keypunch nadal ma coś dla ciebie. Spróbuj poćwiczyć pisanie z liczbami i interpunkcją, lub wybierz swój własny tekst do napisania tak szybko jak potrafisz.</p>
+    <p xml:lang="oc">Se sètz ja un correire de picada, Keypunch a encara quicòm per vos. Ensajatz de practicar amb de chifras e de pontuacion, o causissètz vòstre pròpri tèxte per picar lo mai lèu possible.</p>
+    <p xml:lang="nl">Zelfs als u al een typkampioen bent, biedt Keypunch u iets nieuws. Zo kunt u oefenen met getallen en interpunctie, of uw eigen tekst invoeren en die zo snel mogelijk proberen te typen.</p>
+    <p xml:lang="nb">Hvis du allerede er en mester i å skrive, har Keypunch fortsatt noe du kan bryne deg på. Prøv å skrive så raskt som mulig med tall og tegnsetting, eller øv med egendefinert tekst.</p>
+    <p xml:lang="kw">Mar os jynnskrifer konnyk seulabrys, Alhwedhen-Toller kavos neppyth rag ty hwath. Assaya owth omassaya gans niverow ha poyntyans, po dewis dha tekst rag jynnskrifa es snell es ty a yll.</p>
+    <p xml:lang="kk-Cyrl">Егер сіз теру шебері болсаңыз да, Keypunch-та сіз үшін қызықты нәрселер бар. Сандармен және тыныс белгілерімен жаттығып көріңіз немесе өз мәтініңізді таңдап, оны мүмкіндігінше жылдам теріңіз.</p>
+    <p xml:lang="ka">თუ უკვე სწრაფად კრეფთ, Keypunch-ს თქვენთვის რაღაც ახალი აქვს. სცადეთ, ივარჯიშოთ რიცხვებით და პუნქტუაციით, ან აირჩიეთ საკუთარი ტექსტის ტიპი და აკრიფეთ რაც შეიძლება სწრაფად.</p>
+    <p xml:lang="it">Se si è già campioni nella digitazione, Keypunch può offrire ancora qualcosa. Ci si può esercitare con i numeri e la punteggiatura, oppure scegliere da sé un testo da digitare il più velocemente possibile.</p>
+    <p xml:lang="id">Bila Anda sudah menjadi pembalap ketik, Keypunch masih punya sesuatu untuk Anda. Cobalah berlatih dengan angka dan tanda baca, atau pilih teks Anda sendiri untuk diketik secepat yang Anda mampu.</p>
+    <p xml:lang="hu">Ha Ön már gyors gépelő, a Billentyűző akkor is tartogat Önnek valamit. Próbálja ki a számokkal és írásjelekkel való gyakorlást, vagy válasszon saját szöveget, és gépelje le azt a lehető leggyorsabban.</p>
+    <p xml:lang="hi">अगर आप पहले से ही टाइपिंग में माहिर हैं, तो कीपंच में आपके लिए भी कुछ है। संख्याओं और विराम चिह्नों के साथ अभ्यास करने की कोशिश करें, या जितनी जल्दी हो सके टाइप करने के लिए अपना खुद का पाठ चुनें।</p>
+    <p xml:lang="he">אם כבר רכשת מיומנות בהקלדה עיוורת, ליישום זה עדיין יש מה להציע לך. ניתן לתרגל הקלדה עיוורת עם מספרים, סימני פיסוק ואף להזין טקסט לבחירתך ולבחון את מהירות ההקלדה שלך עליו.</p>
+    <p xml:lang="fr">Si vous êtes déjà un professionnel de la dactylographie, Keypunch a quelque chose pour vous. Essayez de vous entraîner avec des nombres et des ponctuations, ou choisissez votre propre texte pour que vous l’écriviez le plus vite possible.</p>
+    <p xml:lang="fi">Jos olet kilpahenkinen, Keypunch tarjoaa sinulle jotain. Kokeile harjoittelua numeroiden ja välimerkkien kera, tai valitse oma teksti ja kirjoita se niin nopeasti kuin pystyt.</p>
+    <p xml:lang="fa">حتا اگر یک حروف‌چین حرفه‌ای هستید، بازهم کلیدزنی برای شما چیزی دارد. می‌توانید با اعداد و علائم نگارشی تمرین کرده یا متن خود را برای نوشتن هرچه سریع‌تر برگزینید.</p>
+    <p xml:lang="eu">Dagoeneko idazketan aditua bazara, Keypunchek badu oraindik zerbait zuretzat. Saiatu zenbakiekin eta puntuazioarekin, edo aukeratu zure testua ahalik eta azkarren idazteko.</p>
+    <p xml:lang="es">Si ya es un experto en mecanografía, Keypunch todavía tiene algo más. Pruebe a practicar con números y signos de puntuación, o elija su propio texto para teclearlo tan rápido como pueda.</p>
+    <p xml:lang="en-GB">If you are already a racer at typing, Keypunch still has something for you. Try practising with numbers and punctuation, or choose your own text to type out as fast as you can.</p>
+    <p xml:lang="el">Αν είστε ήδη άσος στην πληκτρολόγηση, το Keypunch έχει ακόμα κάτι για εσάς. Δοκιμάστε να εξασκηθείτε με αριθμούς και σημεία στίξης, ή επιλέξτε το δικό σας κείμενο για να το πληκτρολογήσετε όσο πιο γρήγορα μπορείτε.</p>
+    <p xml:lang="de">Wenn Sie bereits ein Profi im Tippen sind, hat Keypunch trotzdem etwas für Sie. Versuchen Sie, mit Zahlen und Satzzeichen zu üben, oder wählen Sie Ihren eigenen Text aus, den Sie so schnell wie möglich abtippen möchten.</p>
+    <p xml:lang="cs">Pokud jste již zběhlí v psaní, Keypunch vám má stále co nabídnout. Zkuste si procvičit čísla a interpunkci nebo si vyberte svůj vlastní text, který budete psát co nejrychleji.</p>
+    <p xml:lang="ca">Si ja escriviu molt ràpid, el Keypunch també us pot ajudar. Proveu de practicar amb números i signes de puntuació, o trieu el vostre propi text per escriure tan ràpid com pugueu.</p>
+    <p xml:lang="bg">Ако вече сте състезател по машинопис, „Keypunch“ все още има нещо за вас. Опитайте да се упражнявате с цифри и препинателни знаци или изберете свой собствен текст, който да напишете възможно най-бързо.</p>
+    <p xml:lang="ar">إذا كنت بالفعل سريعًا في الطباعة، فإن تطبيق Keypunch لا يزال لديه شيء يقدمه لك. حاول ممارسة الطباعة مع الأرقام وعلامات الترقيم، أو اختر النص الذي تود كتابته بأقصى سرعة ممكنة.</p>
+    <p>
+      Get ready to accelerate your typing!
+    </p>
+    <p xml:lang="zh-Hans-CN">准备好加速打字！</p>
+    <p xml:lang="uz-Latn">Yozishni tezlashtirishga tayyorlaning!</p>
+    <p xml:lang="uk">Приготуйтесь до пришвидшення в наборі тексту!</p>
+    <p xml:lang="tr">Yazımınızı hızlandırmaya hazır olun!</p>
+    <p xml:lang="sv">Förbered dig på att accelerera ditt skrivande!</p>
+    <p xml:lang="sr-Cyrl">Спремите се да убрзате своје куцање!</p>
+    <p xml:lang="sl">Pripravite se na pospešitev tipkanja!</p>
+    <p xml:lang="sk">Pripravte sa na zrýchlenie písania!</p>
+    <p xml:lang="ru">Приготовьтесь ускорить набор текста!</p>
+    <p xml:lang="ro">Îmbunătățește viteza de tastare!</p>
+    <p xml:lang="pt-BR">Se prepare para acelerar sua digitação!</p>
+    <p xml:lang="pl">Przygotuj się do przyspieszenia swojego pisania!</p>
+    <p xml:lang="oc">Preparatz-vos a accelerar vòstra picada !</p>
+    <p xml:lang="nl">Gooi alle remmen los en verhoog uw typsnelheid!</p>
+    <p xml:lang="nb">Gjør deg klar til å akselerere skrivingen din!</p>
+    <p xml:lang="kw">Ombareusi dhe uskishe dha ow jynnskrifa!</p>
+    <p xml:lang="kk-Cyrl">Теру жылдамдығын арттыруға дайын болыңыз!</p>
+    <p xml:lang="ka">მოემზადეთ კრეფის ასაჩქარებლად!</p>
+    <p xml:lang="it">Preparati ad accelerare la tua digitazione!</p>
+    <p xml:lang="id">Bersiaplah mengakselerasi pengetikan Anda!</p>
+    <p xml:lang="hu">Készüljön fel a gépelése gyorsítására!</p>
+    <p xml:lang="hi">अपनी टाइपिंग में तेजी लाने के लिए तैयार हो जाइए!</p>
+    <p xml:lang="he">היכונו לשיפור ההקלדה שלכם!</p>
+    <p xml:lang="fr">Soyez prêt à augmenter votre vitesse d’écriture !</p>
+    <p xml:lang="fi">Valmistaudu kirjoitustaitosi kiihdyttämiseen!</p>
+    <p xml:lang="fa">آماده شدن برای شتاب‌دهی به نوشتنتان!</p>
+    <p xml:lang="eu">Presta zaitez idazketa bizkortzeko!</p>
+    <p xml:lang="es">¡Prepárese para acelerar su mecanografía!</p>
+    <p xml:lang="eo">Pretestu por akceli vian tajpadon!</p>
+    <p xml:lang="en-GB">Get ready to accelerate your typing!</p>
+    <p xml:lang="el">Ετοιμαστείτε να επιταχύνετε την πληκτρολόγησή σας!</p>
+    <p xml:lang="de">Bereiten Sie sich darauf vor, Ihr Tippen zu verbessern!</p>
+    <p xml:lang="cs">Připravte se zrychlit své psaní!</p>
+    <p xml:lang="ca">Prepareu-vos per millorar la vostra velocitat de tecleig!</p>
+    <p xml:lang="bg">Пригответе се да ускорите машинописа!</p>
+    <p xml:lang="ar">استعد لتسريع مهاراتك في الطباعة!</p>
+    <p>
+      Keypunch is proudly part of GNOME Circle, an initiative that champions the great software that is available for the GNOME platform. For more information, visit the GNOME Circle website.
+    </p>
+    <p xml:lang="zh-Hans-CN">Keypunch 荣幸的成为 GNOME 生态圈一员，一项拥护适用于 GNOME 平台极佳软件的倡议。要获取更多信息，请访问 GNOME 生态圈网站。</p>
+    <p xml:lang="uz-Latn">Keypunch GNOME platformasi uchun mavjud bo‘lgan ajoyib dasturiy taʼminotni qo‘llab-quvvatlovchi GNOME Circle tashabbusining faxrli qismidir. Batafsil GNOME Circle vebsaytiga kiring.</p>
+    <p xml:lang="uk">«Keypunch» пишається з того, що є частиною Кола GNOME, ініціативи, яка підтримує чудове програмне забезпечення, доступне для платформи GNOME. Для отримання додаткової інформації відвідайте вебсайт Кола GNOME.</p>
+    <p xml:lang="tr">Keypunch, GNOME platformu için harika yazılımları destekleyen GNOME Çevre’nin parçasıdır. Daha çok bilgi için GNOME Çevre web sitesine göz atın.</p>
+    <p xml:lang="sv">Keypunch är stolt att vara en del av GNOME Circle, ett initiativ som kämpar för den fantastiska programvara som finns för GNOME-plattformen. Besök GNOME Circles webbplats för mer information.</p>
+    <p xml:lang="sr-Cyrl">Дактилограф је поносно део Гномовог круга, иницијативе која подржава одличан софтвер доступан за Гномову платформу. За више информација посетите веб страницу Гномовог круга.</p>
+    <p xml:lang="sl">Tipkarica je ponosen del GNOME Circle, pobude, ki zagovarja odlično programsko opremo, ki je na voljo za platformo GNOME. Za več informacij obiščite spletno mesto GNOME Circle.</p>
+    <p xml:lang="ru">Keypunch с гордостью входит в GNOME Circle, инициативу, которая пропагандирует замечательное программное обеспечение, доступное для платформы GNOME. Для получения дополнительной информации посетите веб-сайт GNOME Circle.</p>
+    <p xml:lang="ro">Keypunch face parte din GNOME Circle, o inițiativă care promovează programele excelente disponibile pentru platforma GNOME. Pentru mai multe informații, se poate vizita situl web GNOME Circle.</p>
+    <p xml:lang="pt-BR">O Keypunch tem orgulho de fazer parte do GNOME Circle, uma iniciativa que promove os ótimos programas disponíveis para a plataforma do GNOME. Para mais informações, visite o site do GNOME Circle.</p>
+    <p xml:lang="pl">Keypunch jest dumnie częścią GNOME Circle, inicjatywy, która opowiada się za świetnym oprogramowaniem dostępnym dla platformy GNOME. Po więcej informacji, proszę odwiedzić stronę GNOME Circle.</p>
+    <p xml:lang="oc">Keypunch fa partida amb fiertat de GNOME Circle, una iniciativa que promòu los bons logicials disponibles per la plataforma GNOME. Per ne saber mai, consultatz lo sit web de GNOME Circle.</p>
+    <p xml:lang="nl">Keypunch maakt met trots deel uit van GNOME Circle, een initiatief dat de fantastische software voor het GNOME-platform promoot. Bezoek de website van GNOME Circle voor meer informatie.</p>
+    <p xml:lang="nb">Keypunch er en stolt del av GNOME Circle, et initiativ som fremmer den eksemplariske programvaren som er tilgjengelig for GNOME-plattformen. For mer informasjon, besøk nettstedet til GNOME Circle.</p>
+    <p xml:lang="kw">Alhwedhen-Toller yw darn a GNOME Kylgh yn stout, ragdres ow skoodhya an medhelweyth bryntin kavadow rag an bynk GNOME. Rag moy kedhlow, omweles an gwiasva GNOME Kylgh.</p>
+    <p xml:lang="kk-Cyrl">Keypunch - GNOME платформасына арналған тамаша бағдарламалық қамтаманы қолдайтын GNOME Circle бастамасының мүшесі. Қосымша ақпарат алу үшін GNOME Circle веб-сайтына кіріңіз.</p>
+    <p xml:lang="ka">Keypunch ამაყად აცხადებს, რომ ის GNOME-ის წრის წევრია. ინიციატივის, რომ GNOME-ის პლატფორმაზე გადასარევი პროგრამებია. მეტი ინფორმაციისთვის ეწვიეთ GNOME-ის წრის ვებგვერდს.</p>
+    <p xml:lang="it">Keypunch fa parte con orgoglio del Circolo di GNOME, un'iniziativa che promuove gli ottimi software disponibili per la piattaforma GNOME. Per ulteriori informazioni, consultare il sito web del Circolo di GNOME.</p>
+    <p xml:lang="id">Keypunch bangga menjadi bagian dari GNOME Circle, suatu inisiatif yang menjagokan perangkat lunak hebat yang tersedia bagi platform GNOME. Untuk informasi lebih lanjut, kunjungi situs web GNOME Circle.</p>
+    <p xml:lang="hu">A Billentyűző a GNOME Kör büszke tagja, egy kezdeményezésé, amely a GNOME platformon elérhető nagyszerű szoftvereket támogatja. További információkért keresse fel a GNOME Kör webhelyét.</p>
+    <p xml:lang="he">מיזם „הקלדה עיוורת” גאה להיות חלק מ־GNOME Circle, יוזמה שמרימה לתוכנות המדהימות שזמינות לפלטפורמת GNOME. למידע נוסף, מומלץ לבקר באתר של GNOME Circle .</p>
+    <p xml:lang="fr">Keypunch est fière de faire partie du Cercle de GNOME, une initiative qui promeut les excellents logiciels disponibles pour la plateforme GNOME. Pour plus d’information, faites un tour sur site web du Cercle de GNOME.</p>
+    <p xml:lang="fi">Keypunch on ylpeä saadessaan olla mukana GNOME Circlessä, osana aloitetta jonka myötä GNOME-alustalle valmistuu erinomaisia sovelluksia. Lisätietoja on saatavilla GNOME Circlen verkkosivustolla.</p>
+    <p xml:lang="fa">کلیدزنی با افتحار بخشی از حلقهٔ گنوم است. دیدن پایگاه وب حلقهٔ گنوم برای اطّلاعات بیش‌تر.</p>
+    <p xml:lang="eu">Keypunch GNOMEren zirkuluko aplikazio bat da. GNOME plataformarako software ezin hobea biltzen duen ekimena da GNOMEren zirkulua. Informazio gehiagorako, joan GNOMEren zirkuluaren webgunera.</p>
+    <p xml:lang="es">Keypunch es orgullosamente parte de GNOME Circle, una iniciativa que defiende el gran software disponible para la plataforma GNOME. Para más información, visite la página web de GNOME Circle.</p>
+    <p xml:lang="en-GB">Keypunch is proudly part of GNOME Circle, an initiative that champions the great software that is available for the GNOME platform. For more information, visit the GNOME Circle website.</p>
+    <p xml:lang="el">Το Keypunch είναι με περηφάνια μέρος του GNOME Circle, μιας πρωτοβουλίας που υποστηρίζει το σπουδαίο λογισμικό που είναι διαθέσιμο για την πλατφόρμα GNOME. Για περισσότερες πληροφορίες, επισκεφθείτε την ιστοσελίδα του GNOME Circle.</p>
+    <p xml:lang="de">Keypunch ist stolzes Mitglied von GNOME Circle, einer Initiative, die sich für hervorragende Software für die GNOME-Plattform einsetzt. Um mehr zu erfahren, besuchen Sie die Webseite von GNOME Circle.</p>
+    <p xml:lang="cs">Keypunch je hrdou součástí iniciativy GNOME Circle, která prosazuje skvělý software dostupný pro platformu GNOME. Více informací lze nalézt na stránkách GNOME Circle. </p>
+    <p xml:lang="ca">El Keypunch forma part amb orgull del Cercle del GNOME, una iniciativa que defensa el gran programari disponible per a la plataforma GNOME. Per a més informació, visiteu el lloc web del Cercle del GNOME.</p>
+    <p xml:lang="bg">Keypunch е част от GNOME Circle, инициатива, която подкрепя страхотния софтуер за платформата GNOME. За повече информация, посетете уеб сайта на GNOME Circle.</p>
+  </description>
+  <screenshots>
+    <screenshot type="default">
+      <caption>In the middle of a session</caption>
+      <caption xml:lang="zh-Hans-CN">课程中期</caption>
+      <caption xml:lang="uz-Latn">Mashgʻulot oʻrtasida</caption>
+      <caption xml:lang="uk">Під час сеансу</caption>
+      <caption xml:lang="tr">Oturumun ortasında</caption>
+      <caption xml:lang="sv">Mitt i en session</caption>
+      <caption xml:lang="sr-Cyrl">У току сесије</caption>
+      <caption xml:lang="sl">Sredi seje</caption>
+      <caption xml:lang="sk">Prebieha cvičenie</caption>
+      <caption xml:lang="ru">По среди сеанса</caption>
+      <caption xml:lang="ro">Sesiune în curs</caption>
+      <caption xml:lang="pt-BR">No meio de uma sessão</caption>
+      <caption xml:lang="pl">W trakcie sesji</caption>
+      <caption xml:lang="oc">Al mitan de la session</caption>
+      <caption xml:lang="nl">Actieve sessie</caption>
+      <caption xml:lang="nb">Midt i en økt</caption>
+      <caption xml:lang="kw">Yn-mysk a'n esedhek</caption>
+      <caption xml:lang="kk-Cyrl">Сеанс ортасында</caption>
+      <caption xml:lang="kab">Deg tlemmast n tɣimit</caption>
+      <caption xml:lang="ka">სესიის შუაში</caption>
+      <caption xml:lang="it">Nel mezzo di una sessione</caption>
+      <caption xml:lang="id">Di tengah suatu sesi</caption>
+      <caption xml:lang="hu">Munkamenet közepén</caption>
+      <caption xml:lang="hi">सत्र के मध्य में</caption>
+      <caption xml:lang="he">באמצע ההקלדה</caption>
+      <caption xml:lang="fr">En plein milieu d’une session</caption>
+      <caption xml:lang="fi">Näppäilyistunto kesken</caption>
+      <caption xml:lang="fa">در میان یک نشست</caption>
+      <caption xml:lang="eu">Saio baten erdian</caption>
+      <caption xml:lang="es">En mitad de una sesión</caption>
+      <caption xml:lang="eo">Dum sesio</caption>
+      <caption xml:lang="en-GB">In the middle of a session</caption>
+      <caption xml:lang="el">Στη μέση μιας συνεδρίας</caption>
+      <caption xml:lang="de">Mitten in einer Sitzung</caption>
+      <caption xml:lang="cs">Uprostřed sezení</caption>
+      <caption xml:lang="ca">Al mig d'una sessió</caption>
+      <caption xml:lang="bg">По време на сесия</caption>
+      <caption xml:lang="ar">في منتصف الجلسة</caption>
+      <image>https://raw.githubusercontent.com/bragefuglseth/keypunch/main/data/screenshots/1-session.png</image>
+    </screenshot>
+    <screenshot>
+      <caption>Ready for typing</caption>
+      <caption xml:lang="zh-Hans-CN">准备好打字</caption>
+      <caption xml:lang="uz-Latn">Matn terishga tayyor</caption>
+      <caption xml:lang="uk">Готові до набору тексту</caption>
+      <caption xml:lang="tr">Yazmaya hazır</caption>
+      <caption xml:lang="sv">Redo för skrivning</caption>
+      <caption xml:lang="sr-Cyrl">Спремно за куцање</caption>
+      <caption xml:lang="sl">Pripravljeno za tipkanje</caption>
+      <caption xml:lang="sk">Pripravené na písanie</caption>
+      <caption xml:lang="ru">Готовность к набору текста</caption>
+      <caption xml:lang="ro">Gata de tastare</caption>
+      <caption xml:lang="pt-BR">Pronto para digitar</caption>
+      <caption xml:lang="pl">Gotowy do pisania</caption>
+      <caption xml:lang="oc">Prèst a picar</caption>
+      <caption xml:lang="nl">Klaar om te typen</caption>
+      <caption xml:lang="nb">Klart for skriving</caption>
+      <caption xml:lang="kw">Bysi rag ow jynnskrifa</caption>
+      <caption xml:lang="kk-Cyrl">Теруге дайын</caption>
+      <caption xml:lang="kab">Wejdeɣ i tira</caption>
+      <caption xml:lang="ka">მზად ვარ ასაკრეფად</caption>
+      <caption xml:lang="it">Pronto per la digitazione</caption>
+      <caption xml:lang="id">Siap untuk mengetik</caption>
+      <caption xml:lang="hu">Készen áll a gépelésre</caption>
+      <caption xml:lang="hi">टाइप करने के लिए तैयार</caption>
+      <caption xml:lang="he">מוכן להקלדה</caption>
+      <caption xml:lang="fr">Prêt à écrire</caption>
+      <caption xml:lang="fi">Valmiina kirjoittamaan</caption>
+      <caption xml:lang="fa">آمادهٔ نوشتن</caption>
+      <caption xml:lang="eu">Idazteko prest</caption>
+      <caption xml:lang="es">Listo para teclear</caption>
+      <caption xml:lang="eo">Prety por tajpado</caption>
+      <caption xml:lang="en-GB">Ready for typing</caption>
+      <caption xml:lang="el">Έτοιμο για πληκτρολόγηση</caption>
+      <caption xml:lang="de">Bereit zum Tippen</caption>
+      <caption xml:lang="cs">Připraveno pro psaní</caption>
+      <caption xml:lang="ca">Preparat per escriure</caption>
+      <caption xml:lang="bg">Готови за писане</caption>
+      <caption xml:lang="ar">مستعد للطباعة</caption>
+      <image>https://raw.githubusercontent.com/bragefuglseth/keypunch/main/data/screenshots/2-ready.png</image>
+    </screenshot>
+    <screenshot>
+      <caption>Session results</caption>
+      <caption xml:lang="zh-Hans-CN">课程结果</caption>
+      <caption xml:lang="uz-Latn">Mashgʻulot natijalari</caption>
+      <caption xml:lang="uk">Результати сеансу</caption>
+      <caption xml:lang="tr">Oturum sonuçları</caption>
+      <caption xml:lang="sv">Resultat för sessionen</caption>
+      <caption xml:lang="sr-Cyrl">Резултати сесије</caption>
+      <caption xml:lang="sl">Rezultati seje</caption>
+      <caption xml:lang="sk">Výsledky cvičenia</caption>
+      <caption xml:lang="ru">Результаты сеанса</caption>
+      <caption xml:lang="ro">Rezultatul sesiunii</caption>
+      <caption xml:lang="pt-BR">Resultados da sessão</caption>
+      <caption xml:lang="pl">Wyniki sesji</caption>
+      <caption xml:lang="oc">Resultats de la session</caption>
+      <caption xml:lang="nl">Sessieresultaten</caption>
+      <caption xml:lang="nb">Resultater for økten</caption>
+      <caption xml:lang="kw">Sewyansow esedhek</caption>
+      <caption xml:lang="kk-Cyrl">Сеанс нәтижелері</caption>
+      <caption xml:lang="kab">Igemmaḍ n tɣimit</caption>
+      <caption xml:lang="ka">სესიის შედეგები</caption>
+      <caption xml:lang="it">Risultati della sessione</caption>
+      <caption xml:lang="id">Hasil sesi</caption>
+      <caption xml:lang="hu">Munkamenet eredményei</caption>
+      <caption xml:lang="hi">सत्र परिणाम</caption>
+      <caption xml:lang="he">תוצאות ההקלדה</caption>
+      <caption xml:lang="fr">Résultats de la session</caption>
+      <caption xml:lang="fi">Istunnon tulokset</caption>
+      <caption xml:lang="fa">نتایج نشست</caption>
+      <caption xml:lang="eu">Saioaren emaitzak</caption>
+      <caption xml:lang="es">Resultados de la sesión</caption>
+      <caption xml:lang="eo">Sesiaj rezultoj</caption>
+      <caption xml:lang="en-GB">Session results</caption>
+      <caption xml:lang="el">Αποτελέσματα συνεδρίας</caption>
+      <caption xml:lang="de">Ergebnisse der Sitzung</caption>
+      <caption xml:lang="cs">Výsledky sezení</caption>
+      <caption xml:lang="ca">Resultats de la sessió</caption>
+      <caption xml:lang="bg">Резултати от сесията</caption>
+      <caption xml:lang="ar">نتائج الجلسة</caption>
+      <image>https://raw.githubusercontent.com/bragefuglseth/keypunch/main/data/screenshots/3-results.png</image>
+    </screenshot>
+    <screenshot>
+      <caption>Language selection</caption>
+      <caption xml:lang="zh-Hans-CN">语言选择</caption>
+      <caption xml:lang="uz-Latn">Til tanlash</caption>
+      <caption xml:lang="uk">Вибір мови</caption>
+      <caption xml:lang="tr">Dil seçimi</caption>
+      <caption xml:lang="sv">Val av språk</caption>
+      <caption xml:lang="sr-Cyrl">Избор језика</caption>
+      <caption xml:lang="sl">Izbira jezika</caption>
+      <caption xml:lang="sk">Výber jazyka</caption>
+      <caption xml:lang="ru">Выбор языка</caption>
+      <caption xml:lang="ro">Alege limba</caption>
+      <caption xml:lang="pt-BR">Seleção de idiomas</caption>
+      <caption xml:lang="pl">Wybór języka</caption>
+      <caption xml:lang="oc">Seleccion de lenga</caption>
+      <caption xml:lang="nl">Taalkeuze</caption>
+      <caption xml:lang="nb">Valg av språk</caption>
+      <caption xml:lang="kw">Dewis yeth</caption>
+      <caption xml:lang="kk-Cyrl">Тілді таңдау</caption>
+      <caption xml:lang="kab">Afran n tutlayt</caption>
+      <caption xml:lang="ka">ენის არჩევანი</caption>
+      <caption xml:lang="it">Selezione della lingua</caption>
+      <caption xml:lang="id">Pemilihan bahasa</caption>
+      <caption xml:lang="hu">Nyelvválasztás</caption>
+      <caption xml:lang="hi">भाषा चयन</caption>
+      <caption xml:lang="he">בחירת שפה</caption>
+      <caption xml:lang="fr">Sélection de la langue</caption>
+      <caption xml:lang="fi">Kielivalinta</caption>
+      <caption xml:lang="fa">گزینش زبان</caption>
+      <caption xml:lang="eu">Hizkuntzaren hautapena</caption>
+      <caption xml:lang="es">Selección de idioma</caption>
+      <caption xml:lang="eo">Lingva elekto</caption>
+      <caption xml:lang="en-GB">Language selection</caption>
+      <caption xml:lang="el">Επιλογή γλώσσας</caption>
+      <caption xml:lang="de">Sprachauswahl</caption>
+      <caption xml:lang="cs">Výběr jazyka</caption>
+      <caption xml:lang="ca">Selecció de la llengua</caption>
+      <caption xml:lang="bg">Избор на език</caption>
+      <caption xml:lang="ar">اختيار اللغة</caption>
+      <image>https://raw.githubusercontent.com/bragefuglseth/keypunch/main/data/screenshots/4-languages.png</image>
+    </screenshot>
+    <screenshot>
+      <caption>Custom text entry</caption>
+      <caption xml:lang="zh-Hans-CN">自定义文本输入</caption>
+      <caption xml:lang="uz-Latn">Maxsus matn kiritish</caption>
+      <caption xml:lang="uk">Друк власного тексту</caption>
+      <caption xml:lang="tr">Özel metin girdisi</caption>
+      <caption xml:lang="sv">Anpassad textinmatning</caption>
+      <caption xml:lang="sr-Cyrl">Произвољан унос текста</caption>
+      <caption xml:lang="sl">Vnos besedila po meri</caption>
+      <caption xml:lang="sk">Vkladanie vlastného textu</caption>
+      <caption xml:lang="ru">Ввод своего текста</caption>
+      <caption xml:lang="ro">Personalizează textul</caption>
+      <caption xml:lang="pt-BR">Entrada de texto personalizada</caption>
+      <caption xml:lang="pl">Wpisz własny tekst</caption>
+      <caption xml:lang="oc">Entrada tèxt personalizada</caption>
+      <caption xml:lang="nl">Eigen tekst</caption>
+      <caption xml:lang="nb">Egendefinert tekst</caption>
+      <caption xml:lang="kw">Ynworrans tekst a-vusur</caption>
+      <caption xml:lang="kk-Cyrl">Таңдаулы мәтінді енгізу</caption>
+      <caption xml:lang="kab">Takcemt n uḍris udmawan</caption>
+      <caption xml:lang="ka">მორგებული ტექსტური ჩანაწერი</caption>
+      <caption xml:lang="it">Inserimento di testo personalizzato</caption>
+      <caption xml:lang="id">Entri teks khusus</caption>
+      <caption xml:lang="hu">Egyéni szöveg megadása</caption>
+      <caption xml:lang="hi">तदनुकूल पाठ प्रविष्टि</caption>
+      <caption xml:lang="he">הזנת טקסט מותאם אישית</caption>
+      <caption xml:lang="fr">Texte personnalisable</caption>
+      <caption xml:lang="fi">Mukautettu teksti</caption>
+      <caption xml:lang="fa">ورودی متن سفارشی</caption>
+      <caption xml:lang="eu">Testu-sarrera pertsonalizatua</caption>
+      <caption xml:lang="es">Introducción de texto personalizada</caption>
+      <caption xml:lang="eo">Propra teksta enigo</caption>
+      <caption xml:lang="en-GB">Custom text entry</caption>
+      <caption xml:lang="el">Εισαγωγή προσαρμοσμένου κειμένου</caption>
+      <caption xml:lang="de">Benutzerdefinierter Texteintrag</caption>
+      <caption xml:lang="cs">Vlastní zadávání textu</caption>
+      <caption xml:lang="ca">Entrada de text personalitzada</caption>
+      <caption xml:lang="bg">Друго поле текст</caption>
+      <caption xml:lang="ar">إدخال نص مخصص</caption>
+      <image>https://raw.githubusercontent.com/bragefuglseth/keypunch/main/data/screenshots/5-custom-text.png</image>
+    </screenshot>
+  </screenshots>
+  <branding>
+    <color type="primary" scheme_preference="light">#c879ff</color>
+    <color type="primary" scheme_preference="dark">#9a00d3</color>
+  </branding>
+  <url type="homepage">https://apps.gnome.org/Keypunch</url>
+  <url type="bugtracker">https://github.com/bragefuglseth/keypunch/issues</url>
+  <url type="contribute">https://welcome.gnome.org/app/Keypunch</url>
+  <url type="translate">https://l10n.gnome.org/module/Keypunch</url>
+  <url type="vcs-browser">https://github.com/bragefuglseth/keypunch</url>
+  <url type="contact">https://matrix.to/#/#keypunch:gnome.org</url>
+  <url type="donation">https://bragefuglseth.no/donate.html</url>
+  <update_contact>bragefuglseth_AT_gnome.org</update_contact>
+  <content_rating type="oars-1.1"/>
+  <translation type="gettext">keypunch</translation>
+  <requires>
+    <internet>offline-only</internet>
+    <display_length compare="ge">360</display_length>
+  </requires>
+  <supports>
+    <control>pointing</control>
+    <control>keyboard</control>
+    <control>touch</control>
+  </supports>
+  <launchable type="desktop-id">dev.bragefuglseth.Keypunch.desktop</launchable>
+  <releases>
+    <release date="2025-04-26" version="6.3">
+      <description translate="no">
+        <p>Miscellaneous bug fixes and improvements:</p>
+        <ul>
+          <li>The “Enable Entry” button is now shown whenever it should be</li>
+          <li>Greek tests now use proper Greek punctuation in advanced mode</li>
+          <li>Kabyle tests now use the proper “open E” letter in all cases</li>
+          <li>Updated user interface translations</li>
+        </ul>
+      </description>
+    </release>
+    <release date="2025-04-14" version="6.2">
+      <description translate="no">
+        <p>This update improves the translations of Keypunch into different languages.</p>
+      </description>
+    </release>
+    <release date="2025-04-05" version="6.1">
+      <description translate="no">
+        <p>Fixes a critical bug that causes the app to crash when Keypunch attempts to identify an unknown language.</p>
+      </description>
+    </release>
+    <release date="2025-04-05" version="6.0">
+      <url type="details">https://blogs.gnome.org/bragefuglseth/2025/04/05/keypunch-6.0</url>
+      <description translate="no">
+        <p>Enjoy the spring with this vernal bundle of improvements:</p>
+        <ul>
+          <li>More realistic test results</li>
+          <li>Frustration relief: Helpful break reminders when aggressive key mashing is detected</li>
+          <li>Support for entering non-breaking spaces in the place of regular ones</li>
+          <li>An upgraded technical base taking advantage of the latest platform improvements</li>
+          <li>Text generation for Catalan, Dutch, Estonian, Greek, Indonesian, Slovak, and Persian</li>
+          <li>User interface translations for Catalan, British English, Persian, Finnish, Indonesian, Kabyle, Slovak, Slovenian, and Chinese</li>
+        </ul>
+      </description>
+    </release>
+    <release date="2024-12-28" version="5.1">
+      <description translate="no">
+        <p>Minor user interface translation improvements.</p>
+      </description>
+    </release>
+    <release date="2024-12-23" version="5.0">
+      <description translate="no">
+        <p>As a slightly delayed present, this christmas update contains the following additions and improvements:</p>
+        <ul>
+          <li>A system warning displayed when attempting to log out in the middle of a typing session</li>
+          <li>Integration with your Discord status when using it alongside Keypunch</li>
+          <li>Better utilization of available screen space on small sizes</li>
+          <li>Text generation for Basque, Finnish, Romanian, and Vietnamese</li>
+          <li>Arabic, Basque, Kabyle, Romanian, Russian, and Swedish user interface translations, making Keypunch available in a total of 23 languages</li>
+        </ul>
+        <p>A special thanks goes to the Tamazight teachers of Tizi Ouzou, Algerie, for their linguistic contributions to the Kabyle text generation.</p>
+      </description>
+    </release>
+    <release date="2024-09-18" version="4.0">
+      <description translate="no">
+        <p>GNOME 47 is here! Let’s celebrate:</p>
+        <ul>
+          <li>An upgraded base taking advantage of the latest platform improvements</li>
+          <li>More accurate typing speed calculation</li>
+          <li>Text generation for Portuguese and Turkish</li>
+          <li>Turkish user interface translations, making Keypunch available in a total of 17 languages</li>
+        </ul>
+      </description>
+    </release>
+    <release date="2024-08-16" version="3.1">
+      <description translate="no">
+        <p>Keypunch’s already wide language support has been extended even further!</p>
+        <ul>
+          <li>Text generation support for Czech, Italian, Occitan and Polish</li>
+          <li>User interface translations for Occitan and Polish, making Keypunch available in a total of 16 languages</li>
+        </ul>
+        <p>If you would like for Keypunch to speak your language as well, feel free to reach out!</p>
+      </description>
+    </release>
+    <release date="2024-07-17" version="3.0">
+      <description translate="no">
+        <p>If you appreciate accuracy and legibility, you are going to love this update!</p>
+        <ul>
+          <li>Monospaced font in the main text view</li>
+          <li>Text generation support for Bangla and Hebrew</li>
+          <li>Guillemet quotation marks for the French text generation</li>
+          <li>User interface translations for Hebrew and Italian, making Keypunch available in a total of 14 languages</li>
+        </ul>
+      </description>
+    </release>
+    <release date="2024-07-01" version="2.0">
+      <description translate="no">
+        <p>Bonjour! Szia! 안녕! Get ready to practice typing in many new languages.</p>
+        <ul>
+          <li>Text generation support for Bulgarian, Hindi, Korean, Nepali, Russian, Swiss German, and Ukranian</li>
+          <li>User interface translations for Bulgarian, Czech, Dutch, French, German, Hindi, Hungarian, Spanish and Ukranian</li>
+          <li>More accepted ways to type certain characters, such as “oe” for “œ”</li>
+          <li>Better handling of scripts using intelligent input engines, like Korean Hangul</li>
+          <li>Recognition of Ctrl+Backspace</li>
+          <li>Special accomodations for on-screen keyboards and touch screens</li>
+        </ul>
+        <p>A special thanks to everybody who has contributed orthographic information and tested the text generation and input machinery for their languages. Keypunch’s diverse language support would not be possible without you.</p>
+      </description>
+    </release>
+    <release date="2024-06-01" version="1.0">
+      <description translate="no">
+        <p>This is the initial release of Keypunch! Give it a spin and say what you think.</p>
+      </description>
+    </release>
+  </releases>
+</component>
