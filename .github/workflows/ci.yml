@@ -18,6 +18,6 @@ jobs:
     - uses: flathub-infra/flatpak-github-actions/flatpak-builder@master
       with:
         bundle: keypunch.flatpak
-        manifest-path: build-aux/dev.bragefuglseth.Keypunch.Devel.json
+        manifest-path: build-aux/no.bragefuglseth.Keypunch.Devel.json
         run-tests: true
         cache-key: flatpak-builder-${{ github.sha }}
