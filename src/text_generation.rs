@@ -39,6 +39,8 @@ pub enum Language {
     Bulgarian,
     #[strum(message = "Català", to_string = "ca")]
     Catalan,
+    #[strum(message = "C++", to_string = "cpp")]
+    Cpp,
     #[strum(message = "Čeština", to_string = "cs")]
     Czech,
     #[strum(message = "Dansk", to_string = "da")]
@@ -68,6 +70,8 @@ pub enum Language {
     Indonesian,
     #[strum(message = "Italiano", to_string = "it")]
     Italian,
+    #[strum(message = "JavaScript", to_string = "js")]
+    JavaScript,
     #[strum(message = "Taqbaylit", to_string = "kab")]
     Kabyle,
     #[strum(message = "Kinyarwanda", to_string = "rw")]
@@ -86,10 +90,14 @@ pub enum Language {
     Polish,
     #[strum(message = "Português", to_string = "pt")]
     Portuguese,
+    #[strum(message = "Python", to_string = "py")]
+    Python,
     #[strum(message = "Română", to_string = "ro")]
     Romanian,
     #[strum(message = "Русский", to_string = "ru")]
     Russian,
+    #[strum(message = "Rust", to_string = "rs")]
+    Rust,
     #[strum(message = "Slovenčina", to_string = "sk")]
     Slovak,
     #[strum(message = "Español", to_string = "es")]
@@ -152,6 +160,27 @@ const GENERIC_PUNCTUATION: &'static [Punctuation] = &[
     Punctuation::wrapping("(", ")", false, 0.1),
 ];
 
+const PROGRAMMING_PUNCTUATION_C_LIKE: &'static [Punctuation] = &[
+    Punctuation::suffix(";", false, 1.0),
+    Punctuation::suffix(",", false, 0.6),
+    Punctuation::suffix(":", false, 0.2),
+    Punctuation::wrapping("{ ", " }", false, 0.6),
+    Punctuation::wrapping("(", ")", false, 0.4),
+    Punctuation::wrapping("[", "]", false, 0.2),
+    Punctuation::wrapping("\"", "\"", false, 0.3),
+    Punctuation::wrapping("'", "'", false, 0.2),
+];
+
+const PROGRAMMING_PUNCTUATION_PYTHON: &'static [Punctuation] = &[
+    Punctuation::suffix(",", false, 1.0),
+    Punctuation::suffix(":", false, 0.8),
+    Punctuation::wrapping("(", ")", false, 0.4),
+    Punctuation::wrapping("[", "]", false, 0.2),
+    Punctuation::wrapping("{", "}", false, 0.2),
+    Punctuation::wrapping("\"", "\"", false, 0.3),
+    Punctuation::wrapping("'", "'", false, 0.2),
+];
+
 type Numerals = [&'static str; 10];
 
 const WESTERN_ARABIC_NUMERALS: &'static Numerals =
@@ -171,6 +200,18 @@ pub fn simple(language: Language) -> String {
 // Some capitalized letters, punctuation and numbers
 pub fn advanced(language: Language) -> String {
     match language {
+        Language::Cpp | Language::JavaScript | Language::Rust => advanced_programming(
+            &language.to_string(),
+            " ",
+            PROGRAMMING_PUNCTUATION_C_LIKE,
+            WESTERN_ARABIC_NUMERALS,
+        ),
+        Language::Python => advanced_programming(
+            &language.to_string(),
+            " ",
+            PROGRAMMING_PUNCTUATION_PYTHON,
+            WESTERN_ARABIC_NUMERALS,
+        ),
         // Add special cases here if relevant
         // Arabic has its own set of punctuation and a couple of words with vowel markers
         Language::Arabic => advanced_generic(
@@ -394,6 +435,36 @@ fn advanced_generic(
     {
         if let Some(word) = generated.get_mut(len - 1) {
             *word = insert_punctuation(&word, *end_punctuation);
+        }
+    }
+
+    generated.into_iter().map(|s| s + spacing).collect()
+}
+
+// Similar to advanced_generic, but does not capitalize any letters
+fn advanced_programming(
+    lang_code: &str,
+    spacing: &str,
+    punctuations: &[Punctuation],
+    numerals: &Numerals,
+) -> String {
+    let mut rng = thread_rng();
+
+    let mut generated = random_words_from_lang_code(lang_code, &mut rng);
+
+    // Swaps out some words with numbers
+    let len = generated.len();
+    for i in sample(&mut rng, len, len / 20) {
+        if let Some(word) = generated.get_mut(i) {
+            *word = random_number_weighted(&numerals, &mut rng);
+        }
+    }
+
+    for i in sample(&mut rng, len, len / 4) {
+        if let Some(word) = generated.get_mut(i) {
+            if let Ok(punctuation) = punctuations.choose_weighted(&mut rng, |p| p.weight) {
+                *word = insert_punctuation(&word, *punctuation);
+            }
         }
     }
 
