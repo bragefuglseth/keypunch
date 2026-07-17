@@ -441,6 +441,7 @@ fn advanced_generic(
     generated.into_iter().map(|s| s + spacing).collect()
 }
 
+// Similar to advanced_generic, but does not capitalize any letters
 fn advanced_programming(
     lang_code: &str,
     spacing: &str,
