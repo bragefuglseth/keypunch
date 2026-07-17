@@ -1,4 +1,4 @@
-![icon](/data/artwork/icon/dev.bragefuglseth.Keypunch.svg)
+![icon](/data/artwork/icon/no.bragefuglseth.Keypunch.svg)
 
 # Keypunch
 

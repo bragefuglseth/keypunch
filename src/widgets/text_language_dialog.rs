@@ -18,6 +18,7 @@
  */
 
 use crate::text_generation::Language;
+use crate::config::BASE_PATH;
 use adw::prelude::*;
 use adw::subclass::prelude::*;
 use gtk::{gio, glib};
@@ -243,7 +244,7 @@ mod imp {
 
         #[template_callback]
         pub(super) fn load_language_illustration(picture: &gtk::Picture) {
-            picture.set_resource(Some("/dev/bragefuglseth/Keypunch/assets/multilingual.svg"));
+            picture.set_resource(Some(&format!("{BASE_PATH}assets/multilingual.svg")));
         }
     }
 }

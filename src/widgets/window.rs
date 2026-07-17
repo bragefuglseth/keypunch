@@ -22,7 +22,7 @@ mod inhibit;
 mod typing_test;
 
 use crate::application::KpApplication;
-use crate::config::APP_ID;
+use crate::config::{APP_ID, BASE_ID, BASE_PATH};
 use crate::settings;
 use crate::typing_test_utils::*;
 use crate::widgets::{KpResultsView, KpTextView};
@@ -186,11 +186,11 @@ mod imp {
             }
 
             let about = adw::AboutDialog::from_appdata(
-                "/dev/bragefuglseth/Keypunch/dev.bragefuglseth.Keypunch.metainfo.xml",
+                &format!("{BASE_PATH}{BASE_ID}.metainfo.xml"),
                 Some("6.0"),
             );
 
-            about.set_developers(&["Brage Fuglseth https://bragefuglseth.dev"]);
+            about.set_developers(&["Brage Fuglseth https://bragefuglseth.no"]);
 
             about.add_link(&gettext("Donate"), "https://bragefuglseth.no/donate.html");
 
@@ -223,7 +223,7 @@ mod imp {
             );
 
             about.add_other_app(
-                "dev.bragefuglseth.Fretboard",
+                "no.bragefuglseth.Fretboard",
                 // Translators: Metainfo for the app Fretboard. <https://github.com/bragefuglseth/fretboard>
                 &gettext("Fretboard"),
                 // Translators: Metainfo for the app Fretboard. <https://github.com/bragefuglseth/fretboard>

@@ -17,6 +17,7 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+use crate::config::{APP_ID, BASE_PATH};
 use crate::discord_rpc::RpcWrapper;
 use adw::subclass::prelude::*;
 use gtk::prelude::*;
@@ -45,7 +46,7 @@ mod imp {
         fn constructed(&self) {
             self.parent_constructed();
             let obj = self.obj();
-            obj.set_resource_base_path(Some("/dev/bragefuglseth/Keypunch/"));
+            obj.set_resource_base_path(Some(BASE_PATH));
 
             obj.setup_gactions();
 
@@ -107,10 +108,11 @@ impl KpApplication {
     pub fn settings(&self) -> &gio::Settings {
         self.imp()
             .settings
-            .get_or_init(|| gio::Settings::new("dev.bragefuglseth.Keypunch"))
+            .get_or_init(|| gio::Settings::new(APP_ID))
     }
 
     pub fn discord_rpc(&self) -> &RpcWrapper {
         &self.imp().discord_rpc
     }
 }
+
