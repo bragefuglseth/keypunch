@@ -10,7 +10,9 @@ builddir/
 build-dir/
 src/config.rs
 data/no.bragefuglseth.Keypunch.metainfo.xml.in
+data/no.bragefuglseth.Keypunch.Devel.metainfo.xml.in
 data/resources/no.bragefuglseth.Keypunch.metainfo.xml
+data/resources/no.bragefuglseth.Keypunch.Devel.metainfo.xml
 .flatpak/
 vendor
 .flatpak-builder
