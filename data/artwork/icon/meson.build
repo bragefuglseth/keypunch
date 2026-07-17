@@ -6,6 +6,6 @@ install_data(
 
 symbolic_dir = 'hicolor' / 'symbolic' / 'apps'
 install_data(
-  'dev.bragefuglseth.Keypunch-symbolic.svg',
+  '@0@-symbolic.svg'.format(base_id),
   install_dir: get_option('datadir') / 'icons' / symbolic_dir
 )

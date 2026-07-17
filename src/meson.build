@@ -16,15 +16,6 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-pkgdatadir = get_option('prefix') / get_option('datadir') / meson.project_name()
-
-conf = configuration_data()
-conf.set_quoted('APP_ID', app_id)
-conf.set_quoted('VERSION', meson.project_version())
-conf.set_quoted('GETTEXT_PACKAGE', 'keypunch')
-conf.set_quoted('LOCALEDIR', get_option('prefix') / get_option('localedir'))
-conf.set_quoted('PKGDATADIR', pkgdatadir)
-
 configure_file(
     input: 'config.rs.in',
     output: 'config.rs',

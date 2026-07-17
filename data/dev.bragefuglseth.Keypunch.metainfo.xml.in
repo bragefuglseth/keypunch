@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright 2024 Brage Fuglseth -->
+<component type="desktop-application">
+  <id>dev.bragefuglseth.Keypunch.Devel</id>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>GPL-3.0-or-later</project_license>
+  <name>Keypunch</name>
+  <summary>Practice your typing skills</summary>
+  <developer id="dev.bragefuglseth">
+    <name translate="no">Brage Fuglseth</name>
+  </developer>
+  <description>
+    <p>
+      There is no doubt that typing on a keyboard is an essential skill in the
+      digital age. Typing fast and accurately gives you more opportunities,
+      more time for what matters to you, and a sense of self-accomplishment.
+    </p>
+    <p>
+      Keypunch lets you practice typing. Thanks to fast-paced
+      sessions with instant feedback afterwards and a plethora of available languages,
+      you might even have a little fun doing so. With determination, proper technique
+      and some time, you will observe a noticeable increase in both the speed
+      and the accuracy of which your thoughts and ideas are put into words on the screen.
+    </p>
+    <p>
+      If you are already a racer at typing, Keypunch still has something for you.
+      Try practicing with numbers and punctuation, or choose your own text to type
+      out as fast as you can.
+    </p>
+    <p>
+      Get ready to accelerate your typing!
+    </p>
+    <p>
+      Keypunch is proudly part of GNOME Circle, an initiative that champions the great software that is available for the GNOME platform. For more information, visit the GNOME Circle website.
+    </p>
+  </description>
+  <screenshots>
+    <screenshot type="default">
+      <caption>In the middle of a session</caption>
+      <image>https://raw.githubusercontent.com/bragefuglseth/keypunch/main/data/screenshots/1-session.png</image>
+    </screenshot>
+    <screenshot>
+      <caption>Ready for typing</caption>
+      <image>https://raw.githubusercontent.com/bragefuglseth/keypunch/main/data/screenshots/2-ready.png</image>
+    </screenshot>
+    <screenshot>
+      <caption>Session results</caption>
+      <image>https://raw.githubusercontent.com/bragefuglseth/keypunch/main/data/screenshots/3-results.png</image>
+    </screenshot>
+    <screenshot>
+      <caption>Language selection</caption>
+      <image>https://raw.githubusercontent.com/bragefuglseth/keypunch/main/data/screenshots/4-languages.png</image>
+    </screenshot>
+    <screenshot>
+      <caption>Custom text entry</caption>
+      <image>https://raw.githubusercontent.com/bragefuglseth/keypunch/main/data/screenshots/5-custom-text.png</image>
+    </screenshot>
+  </screenshots>
+  <branding>
+    <color type="primary" scheme_preference="light">#c879ff</color>
+    <color type="primary" scheme_preference="dark">#9a00d3</color>
+  </branding>
+  <url type="homepage">https://apps.gnome.org/Keypunch</url>
+  <url type="bugtracker">https://github.com/bragefuglseth/keypunch/issues</url>
+  <url type="contribute">https://welcome.gnome.org/app/Keypunch</url>
+  <url type="translate">https://l10n.gnome.org/module/Keypunch</url>
+  <url type="vcs-browser">https://github.com/bragefuglseth/keypunch</url>
+  <url type="contact">https://matrix.to/#/#keypunch:gnome.org</url>
+  <url type="donation">https://bragefuglseth.no/donate.html</url>
+  <update_contact>bragefuglseth_AT_gnome.org</update_contact>
+  <content_rating type="oars-1.1"/>
+  <translation type="gettext">keypunch</translation>
+  <requires>
+    <internet>offline-only</internet>
+    <display_length compare="ge">360</display_length>
+  </requires>
+  <supports>
+    <control>pointing</control>
+    <control>keyboard</control>
+    <control>touch</control>
+  </supports>
+  <launchable type="desktop-id">dev.bragefuglseth.Keypunch.desktop</launchable>
+  <releases>
+    <release date="2025-04-26" version="6.3">
+      <description translate="no">
+        <p>Miscellaneous bug fixes and improvements:</p>
+        <ul>
+          <li>The “Enable Entry” button is now shown whenever it should be</li>
+          <li>Greek tests now use proper Greek punctuation in advanced mode</li>
+          <li>Kabyle tests now use the proper “open E” letter in all cases</li>
+          <li>Updated user interface translations</li>
+        </ul>
+      </description>
+    </release>
+    <release date="2025-04-14" version="6.2">
+      <description translate="no">
+        <p>This update improves the translations of Keypunch into different languages.</p>
+      </description>
+    </release>
+    <release date="2025-04-05" version="6.1">
+      <description translate="no">
+        <p>Fixes a critical bug that causes the app to crash when Keypunch attempts to identify an unknown language.</p>
+      </description>
+    </release>
+    <release date="2025-04-05" version="6.0">
+      <url type="details">https://blogs.gnome.org/bragefuglseth/2025/04/05/keypunch-6.0</url>
+      <description translate="no">
+        <p>Enjoy the spring with this vernal bundle of improvements:</p>
+        <ul>
+          <li>More realistic test results</li>
+          <li>Frustration relief: Helpful break reminders when aggressive key mashing is detected</li>
+          <li>Support for entering non-breaking spaces in the place of regular ones</li>
+          <li>An upgraded technical base taking advantage of the latest platform improvements</li>
+          <li>Text generation for Catalan, Dutch, Estonian, Greek, Indonesian, Slovak, and Persian</li>
+          <li>User interface translations for Catalan, British English, Persian, Finnish, Indonesian, Kabyle, Slovak, Slovenian, and Chinese</li>
+        </ul>
+      </description>
+    </release>
+    <release date="2024-12-28" version="5.1">
+      <description translate="no">
+        <p>Minor user interface translation improvements.</p>
+      </description>
+    </release>
+    <release date="2024-12-23" version="5.0">
+      <description translate="no">
+        <p>As a slightly delayed present, this christmas update contains the following additions and improvements:</p>
+        <ul>
+          <li>A system warning displayed when attempting to log out in the middle of a typing session</li>
+          <li>Integration with your Discord status when using it alongside Keypunch</li>
+          <li>Better utilization of available screen space on small sizes</li>
+          <li>Text generation for Basque, Finnish, Romanian, and Vietnamese</li>
+          <li>Arabic, Basque, Kabyle, Romanian, Russian, and Swedish user interface translations, making Keypunch available in a total of 23 languages</li>
+        </ul>
+        <p>A special thanks goes to the Tamazight teachers of Tizi Ouzou, Algerie, for their linguistic contributions to the Kabyle text generation.</p>
+      </description>
+    </release>
+    <release date="2024-09-18" version="4.0">
+      <description translate="no">
+        <p>GNOME 47 is here! Let’s celebrate:</p>
+        <ul>
+          <li>An upgraded base taking advantage of the latest platform improvements</li>
+          <li>More accurate typing speed calculation</li>
+          <li>Text generation for Portuguese and Turkish</li>
+          <li>Turkish user interface translations, making Keypunch available in a total of 17 languages</li>
+        </ul>
+      </description>
+    </release>
+    <release date="2024-08-16" version="3.1">
+      <description translate="no">
+        <p>Keypunch’s already wide language support has been extended even further!</p>
+        <ul>
+          <li>Text generation support for Czech, Italian, Occitan and Polish</li>
+          <li>User interface translations for Occitan and Polish, making Keypunch available in a total of 16 languages</li>
+        </ul>
+        <p>If you would like for Keypunch to speak your language as well, feel free to reach out!</p>
+      </description>
+    </release>
+    <release date="2024-07-17" version="3.0">
+      <description translate="no">
+        <p>If you appreciate accuracy and legibility, you are going to love this update!</p>
+        <ul>
+          <li>Monospaced font in the main text view</li>
+          <li>Text generation support for Bangla and Hebrew</li>
+          <li>Guillemet quotation marks for the French text generation</li>
+          <li>User interface translations for Hebrew and Italian, making Keypunch available in a total of 14 languages</li>
+        </ul>
+      </description>
+    </release>
+    <release date="2024-07-01" version="2.0">
+      <description translate="no">
+        <p>Bonjour! Szia! 안녕! Get ready to practice typing in many new languages.</p>
+        <ul>
+          <li>Text generation support for Bulgarian, Hindi, Korean, Nepali, Russian, Swiss German, and Ukranian</li>
+          <li>User interface translations for Bulgarian, Czech, Dutch, French, German, Hindi, Hungarian, Spanish and Ukranian</li>
+          <li>More accepted ways to type certain characters, such as “oe” for “œ”</li>
+          <li>Better handling of scripts using intelligent input engines, like Korean Hangul</li>
+          <li>Recognition of Ctrl+Backspace</li>
+          <li>Special accomodations for on-screen keyboards and touch screens</li>
+        </ul>
+        <p>A special thanks to everybody who has contributed orthographic information and tested the text generation and input machinery for their languages. Keypunch’s diverse language support would not be possible without you.</p>
+      </description>
+    </release>
+    <release date="2024-06-01" version="1.0">
+      <description translate="no">
+        <p>This is the initial release of Keypunch! Give it a spin and say what you think.</p>
+      </description>
+    </release>
+  </releases>
+</component>
+
+

@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schemalist gettext-domain="keypunch">
-  <enum id="dev.bragefuglseth.Keypunch.SessionType">
+  <enum id="@APP_ID@.SessionType">
     <value nick="Simple" value="0" />
     <value nick="Advanced" value="1" />
     <value nick="Custom" value="2" />
   </enum>
 
-  <enum id="dev.bragefuglseth.Keypunch.SessionDuration">
+  <enum id="@APP_ID@.SessionDuration">
     <value nick="Sec15" value="0" />
     <value nick="Sec30" value="1" />
     <value nick="Min1" value="2" />
@@ -14,7 +14,7 @@
     <value nick="Min10" value="4" />
   </enum>
 
-	<schema id="dev.bragefuglseth.Keypunch" path="/dev/bragefuglseth/Keypunch/">
+	<schema id="@APP_ID@" path="@BASE_PATH@">
 	  <key name="window-width" type="i">
 	    <default>900</default>
 	    <summary>Window Width</summary>
@@ -27,11 +27,11 @@
 	    <default>false</default>
 	    <summary>Window Maximization</summary>
 	  </key>
-	  <key name="session-type" enum = "dev.bragefuglseth.Keypunch.SessionType">
+	  <key name="session-type" enum = "@APP_ID@.SessionType">
 	    <default>"Simple"</default>
 	    <summary>Session Type</summary>
 	  </key>
-	  <key name="session-duration" enum="dev.bragefuglseth.Keypunch.SessionDuration">
+	  <key name="session-duration" enum="@APP_ID@.SessionDuration">
 	    <default>"Sec30"</default>
 	    <summary>Session Duration</summary>
 	    <description>The duration of time-based sessions</description>

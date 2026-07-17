@@ -28,13 +28,10 @@ mod widgets;
 
 use self::application::KpApplication;
 
-use config::{APP_ID, GETTEXT_PACKAGE, LOCALEDIR};
+use config::{APP_ID, GETTEXT_PACKAGE, LOCALEDIR, GRESOURCE_BYTES};
 use gettextrs::{bind_textdomain_codeset, bindtextdomain, textdomain};
 use gtk::prelude::*;
 use gtk::{gio, glib};
-
-static GRESOURCE_BYTES: &[u8] =
-    gvdb_macros::include_gresource_from_dir!("/dev/bragefuglseth/Keypunch", "data/resources");
 
 fn main() -> glib::ExitCode {
     // Set up gettext translations
