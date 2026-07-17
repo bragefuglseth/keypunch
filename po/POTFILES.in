@@ -1,6 +1,6 @@
-data/dev.bragefuglseth.Keypunch.desktop.in.in
-data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in
-data/dev.bragefuglseth.Keypunch.gschema.xml
+data/no.bragefuglseth.Keypunch.desktop.in.in
+data/no.bragefuglseth.Keypunch.metainfo.xml.in.in
+data/no.bragefuglseth.Keypunch.gschema.xml
 data/resources/shortcuts-dialog.ui
 src/widgets/custom_text_dialog.blp
 src/widgets/results_view.blp
