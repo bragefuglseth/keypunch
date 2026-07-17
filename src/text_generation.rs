@@ -164,9 +164,9 @@ const PROGRAMMING_PUNCTUATION_C_LIKE: &'static [Punctuation] = &[
     Punctuation::suffix(";", false, 1.0),
     Punctuation::suffix(",", false, 0.6),
     Punctuation::suffix(":", false, 0.2),
+    Punctuation::wrapping("{ ", " }", false, 0.6),
     Punctuation::wrapping("(", ")", false, 0.4),
     Punctuation::wrapping("[", "]", false, 0.2),
-    Punctuation::wrapping("{", "}", false, 0.2),
     Punctuation::wrapping("\"", "\"", false, 0.3),
     Punctuation::wrapping("'", "'", false, 0.2),
 ];
