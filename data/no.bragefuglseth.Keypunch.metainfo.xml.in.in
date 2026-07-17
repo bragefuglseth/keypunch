@@ -6,7 +6,7 @@
   <project_license>GPL-3.0-or-later</project_license>
   <name>Keypunch</name>
   <summary>Practice your typing skills</summary>
-  <developer id="dev.bragefuglseth">
+  <developer id="no.bragefuglseth">
     <name translate="no">Brage Fuglseth</name>
   </developer>
   <description>
@@ -79,8 +79,26 @@
     <control>keyboard</control>
     <control>touch</control>
   </supports>
-  <launchable type="desktop-id">dev.bragefuglseth.Keypunch.desktop</launchable>
+  <provides>
+    <id>dev.bragefuglseth.Keypunch</id>
+  </provides>
+  <replaces>
+    <id>dev.bragefuglseth.Keypunch</id>
+  </replaces>
+  <launchable type="desktop-id">@app-id@.desktop</launchable>
   <releases>
+    <release date="2026-07-18" version="7.0">
+      <description translate="no">
+        <p>Language additions and various modernizations:</p>
+        <ul>
+          <li>Text generation for programming languages: C++, JavaScript, Python, and Rust</li>
+          <li>New and modern keyboard shortcuts dialog</li>
+          <li>Minor text generation corrections for various languages</li>
+          <li>Basque text generation</li>
+          <li>User interface translations for Cornish, Esperanto, Greek, Kazakh, and Uzbek, making Keypunch available in a total of 38 languages</li>
+        </ul>
+      </description>
+    </release>
     <release date="2025-04-26" version="6.3">
       <description translate="no">
         <p>Miscellaneous bug fixes and improvements:</p>

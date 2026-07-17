@@ -186,8 +186,8 @@ mod imp {
             }
 
             let about = adw::AboutDialog::from_appdata(
-                &format!("{BASE_PATH}{BASE_ID}.metainfo.xml"),
-                Some("6.0"),
+                &format!("{BASE_PATH}{APP_ID}.metainfo.xml"),
+                Some("7.0"),
             );
 
             about.set_developers(&["Brage Fuglseth https://bragefuglseth.no"]);
@@ -215,7 +215,7 @@ mod imp {
             // Translators: Replace "translator-credits" with your names, one name per line
             about.set_translator_credits(&gettext("translator-credits"));
 
-            about.set_copyright("© 2024–2025 Brage Fuglseth");
+            about.set_copyright("© 2024–2026 Brage Fuglseth");
 
             about.add_acknowledgement_section(
                 Some(&gettext("Special thanks to")),
