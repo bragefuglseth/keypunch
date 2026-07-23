@@ -2,6 +2,7 @@ data/no.bragefuglseth.Keypunch.desktop.in.in
 data/no.bragefuglseth.Keypunch.metainfo.xml.in.in
 data/no.bragefuglseth.Keypunch.gschema.xml
 data/resources/shortcuts-dialog.ui
+src/text_generation.rs
 src/widgets/custom_text_dialog.blp
 src/widgets/results_view.blp
 src/widgets/results_view.rs
