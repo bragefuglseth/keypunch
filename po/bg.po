@@ -1,14 +1,14 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) 2024 twlvnn kraftwerk.
+# Bulgarian translation of keypunch po-file. 
+# Copyright (C) 2024, 2026 twlvnn kraftwerk <kraft_werk@tutanota.com>.
 # This file is distributed under the same license as the keypunch package.
-# twlvnn kraftwerk <kraft_werk@tutanota.com>, 2024.
+# twlvnn kraftwerk <kraft_werk@tutanota.com>, 2024, 2026.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: keypunch main\n"
 "Report-Msgid-Bugs-To: https://github.com/bragefuglseth/keypunch/issues\n"
-"POT-Creation-Date: 2025-04-26 12:47+0000\n"
-"PO-Revision-Date: 2026-03-01 16:51+0100\n"
+"POT-Creation-Date: 2026-08-04 09:47+0000\n"
+"PO-Revision-Date: 2026-09-06 12:59+0200\n"
 "Last-Translator: twlvnn kraftwerk <kraft_werk@tutanota.com>\n"
 "Language-Team: Bulgarian <dict-notifications@fsa-bg.org>\n"
 "Language: bg\n"
@@ -16,20 +16,20 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.5\n"
+"X-Generator: Poedit 3.9\n"
 
-#: data/dev.bragefuglseth.Keypunch.desktop.in.in:2
-#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:7
+#: data/no.bragefuglseth.Keypunch.desktop.in.in:2
+#: data/no.bragefuglseth.Keypunch.metainfo.xml.in.in:7
 #: src/widgets/window.blp:24
 msgid "Keypunch"
 msgstr "Keypunch"
 
-#: data/dev.bragefuglseth.Keypunch.desktop.in.in:3
-#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:8
+#: data/no.bragefuglseth.Keypunch.desktop.in.in:3
+#: data/no.bragefuglseth.Keypunch.metainfo.xml.in.in:8
 msgid "Practice your typing skills"
 msgstr "Упражнявайте уменията си по машинопис"
 
-#: data/dev.bragefuglseth.Keypunch.desktop.in.in:9
+#: data/no.bragefuglseth.Keypunch.desktop.in.in:9
 msgid ""
 "typing;trainer;touch typing;keyboard;speed;wpm;words per "
 "minute;accuracy;test;"
@@ -38,7 +38,7 @@ msgstr ""
 "минута;точност;typing;trainer;touch typing;keyboard;speed;wpm;words per "
 "minute;accuracy;test;"
 
-#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:13
+#: data/no.bragefuglseth.Keypunch.metainfo.xml.in.in:13
 msgid ""
 "There is no doubt that typing on a keyboard is an essential skill in the "
 "digital age. Typing fast and accurately gives you more opportunities, more "
@@ -48,7 +48,7 @@ msgstr ""
 "Бързият и точен машинопис ви дава повече възможности, повече време за "
 "важните за вас неща и чувство за удовлетворение."
 
-#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:18
+#: data/no.bragefuglseth.Keypunch.metainfo.xml.in.in:18
 msgid ""
 "Keypunch lets you practice typing. Thanks to fast-paced sessions with "
 "instant feedback afterwards and a plethora of available languages, you might "
@@ -62,7 +62,7 @@ msgstr ""
 "забележите забележимо увеличение както на скоростта, така и на точността, с "
 "която вашите мисли и идеи се превръщат в думи на екрана."
 
-#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:25
+#: data/no.bragefuglseth.Keypunch.metainfo.xml.in.in:25
 msgid ""
 "If you are already a racer at typing, Keypunch still has something for you. "
 "Try practicing with numbers and punctuation, or choose your own text to type "
@@ -72,11 +72,11 @@ msgstr ""
 "Опитайте да се упражнявате с цифри и препинателни знаци или изберете свой "
 "собствен текст, който да напишете възможно най-бързо."
 
-#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:30
+#: data/no.bragefuglseth.Keypunch.metainfo.xml.in.in:30
 msgid "Get ready to accelerate your typing!"
 msgstr "Пригответе се да ускорите машинописа!"
 
-#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:33
+#: data/no.bragefuglseth.Keypunch.metainfo.xml.in.in:33
 msgid ""
 "Keypunch is proudly part of GNOME Circle, an initiative that champions the "
 "great software that is available for the GNOME platform. For more "
@@ -86,94 +86,94 @@ msgstr ""
 "софтуер за платформата GNOME. За повече информация, посетете уеб сайта на "
 "GNOME Circle."
 
-#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:39
+#: data/no.bragefuglseth.Keypunch.metainfo.xml.in.in:39
 msgid "In the middle of a session"
 msgstr "По време на сесия"
 
-#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:43
+#: data/no.bragefuglseth.Keypunch.metainfo.xml.in.in:43
 msgid "Ready for typing"
 msgstr "Готови за писане"
 
-#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:47
+#: data/no.bragefuglseth.Keypunch.metainfo.xml.in.in:47
 msgid "Session results"
 msgstr "Резултати от сесията"
 
-#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:51
+#: data/no.bragefuglseth.Keypunch.metainfo.xml.in.in:51
 msgid "Language selection"
 msgstr "Избор на език"
 
-#: data/dev.bragefuglseth.Keypunch.metainfo.xml.in.in:55
+#: data/no.bragefuglseth.Keypunch.metainfo.xml.in.in:55
 msgid "Custom text entry"
 msgstr "Друго поле текст"
 
-#: data/dev.bragefuglseth.Keypunch.gschema.xml:20
+#: data/no.bragefuglseth.Keypunch.gschema.xml.in:20
 msgid "Window Width"
 msgstr "Широчина на прозореца"
 
-#: data/dev.bragefuglseth.Keypunch.gschema.xml:24
+#: data/no.bragefuglseth.Keypunch.gschema.xml.in:24
 msgid "Window Height"
 msgstr "Височина на прозореца"
 
-#: data/dev.bragefuglseth.Keypunch.gschema.xml:28
+#: data/no.bragefuglseth.Keypunch.gschema.xml.in:28
 msgid "Window Maximization"
 msgstr "Максимизиране на прозореца"
 
-#: data/dev.bragefuglseth.Keypunch.gschema.xml:32
+#: data/no.bragefuglseth.Keypunch.gschema.xml.in:32
 msgid "Session Type"
 msgstr "Вид сесия"
 
-#: data/dev.bragefuglseth.Keypunch.gschema.xml:36
+#: data/no.bragefuglseth.Keypunch.gschema.xml.in:36
 msgid "Session Duration"
 msgstr "Продължителност на сесията"
 
-#: data/dev.bragefuglseth.Keypunch.gschema.xml:37
+#: data/no.bragefuglseth.Keypunch.gschema.xml.in:37
 msgid "The duration of time-based sessions"
 msgstr "Продължителността на сесиите за времето"
 
 #. Translators: Insert the language code of your language here, for example "nb" for Norwegian Bokmaal. Do not remove the quotation marks. It's doesn't matter if there isn't a word list for the language in `data/word_lists` right now, the app will fall back to English in that case and start using the list if it becomes available in the future.
-#: data/dev.bragefuglseth.Keypunch.gschema.xml:41
+#: data/no.bragefuglseth.Keypunch.gschema.xml.in:41
 msgid "\"en\""
 msgstr "\"bg\""
 
-#: data/dev.bragefuglseth.Keypunch.gschema.xml:42
+#: data/no.bragefuglseth.Keypunch.gschema.xml.in:42
 #: src/widgets/results_view.blp:127 src/widgets/text_language_dialog.blp:24
 #: src/widgets/text_language_dialog.blp:32
 #: src/widgets/text_language_dialog.blp:58
 msgid "Text Language"
 msgstr "Език на текста"
 
-#: data/dev.bragefuglseth.Keypunch.gschema.xml:43
+#: data/no.bragefuglseth.Keypunch.gschema.xml.in:43
 msgid "The code of the language used for automatically generated text"
 msgstr "Кодът на езика, използван за автоматично генерирания текст"
 
-#: data/dev.bragefuglseth.Keypunch.gschema.xml:47
+#: data/no.bragefuglseth.Keypunch.gschema.xml.in:47
 msgid "Recent Languages"
 msgstr "Скоро ползвани езици"
 
-#: data/dev.bragefuglseth.Keypunch.gschema.xml:48
+#: data/no.bragefuglseth.Keypunch.gschema.xml.in:48
 msgid "Languages shown in the list of recent ones in the text language dialog"
 msgstr ""
 "Езици, показани в списъка със скорошните в прозореца за езика на текста"
 
 #. Translators: This is the default text for custom typing sessions. Do not translate it literally, and do not remove the quotation marks. Replace it with an appropriate "sample sentence" from your language instead. The original text is an English pangram, so you can e.g. find a pangram in your language: https://clagnut.com/blog/2380
-#: data/dev.bragefuglseth.Keypunch.gschema.xml:52
+#: data/no.bragefuglseth.Keypunch.gschema.xml.in:52
 msgid "\"The quick brown fox jumps over the lazy dog.\""
 msgstr "\"Ах, чудна българска земьо, полюшвай цъфтящи жита!\""
 
-#: data/dev.bragefuglseth.Keypunch.gschema.xml:53
+#: data/no.bragefuglseth.Keypunch.gschema.xml.in:53
 #: src/widgets/custom_text_dialog.blp:24 src/widgets/custom_text_dialog.blp:45
 msgid "Custom Text"
 msgstr "Друг текст"
 
-#: data/dev.bragefuglseth.Keypunch.gschema.xml:54
+#: data/no.bragefuglseth.Keypunch.gschema.xml.in:54
 msgid "Text displayed when “Custom” is chosen from the session menu"
 msgstr "Текст, показван при избор на „Друг“ от менюто на сесията"
 
-#: data/dev.bragefuglseth.Keypunch.gschema.xml:58
+#: data/no.bragefuglseth.Keypunch.gschema.xml.in:58
 msgid "Personal Best"
 msgstr "Най-добър резултат"
 
-#: data/dev.bragefuglseth.Keypunch.gschema.xml:59
+#: data/no.bragefuglseth.Keypunch.gschema.xml.in:59
 msgid ""
 "The current highest amount of WPM received for each session type / duration "
 "and language"
@@ -181,35 +181,35 @@ msgstr ""
 "Текущата най-висока стойност на WPM [думи в минута], получена за всеки вид "
 "сесия, продължителност и език"
 
-#: data/resources/gtk/help-overlay.ui:11
-msgctxt "shortcut window"
+#: data/resources/shortcuts-dialog.ui:6
+msgctxt "shortcut dialog"
 msgid "General"
 msgstr "Общи"
 
-#: data/resources/gtk/help-overlay.ui:14
-msgctxt "shortcut window"
+#: data/resources/shortcuts-dialog.ui:9
+msgctxt "shortcut dialog"
+msgid "Open Menu"
+msgstr "Отваряне на менюто"
+
+#: data/resources/shortcuts-dialog.ui:15 data/resources/shortcuts-dialog.ui:39
+msgctxt "shortcut dialog"
 msgid "Text Language"
 msgstr "Език на текста"
 
-#: data/resources/gtk/help-overlay.ui:20
-msgctxt "shortcut window"
-msgid "Cancel Session"
-msgstr "Спиране на сесията"
+#: data/resources/shortcuts-dialog.ui:21
+msgctxt "shortcut dialog"
+msgid "Cancel Test"
+msgstr "Спиране на теста"
 
-#: data/resources/gtk/help-overlay.ui:26
-msgctxt "shortcut window"
+#: data/resources/shortcuts-dialog.ui:27
+msgctxt "shortcut dialog"
 msgid "Keyboard Shortcuts"
 msgstr "Клавишни комбинации"
 
-#: data/resources/gtk/help-overlay.ui:32
-msgctxt "shortcut window"
+#: data/resources/shortcuts-dialog.ui:33
+msgctxt "shortcut dialog"
 msgid "Close Window"
 msgstr "Затваряне на прозорецa"
-
-#: data/resources/gtk/help-overlay.ui:38
-msgctxt "shortcut window"
-msgid "Quit"
-msgstr "Спиране на програмата"
 
 #: src/widgets/custom_text_dialog.blp:56
 msgid "Insert custom text…"
@@ -376,50 +376,44 @@ msgstr "_Включване на писането"
 msgid "Results"
 msgstr "Резултати"
 
-#: src/widgets/window.blp:298 src/widgets/window.blp:344
+#: src/widgets/window.blp:298 src/widgets/window.blp:334
 msgid "_Continue"
 msgstr "_Продължаване"
 
-#. Translators: "Frustration Relief" is the name of the functionality
-#. that automatically cancels a test when random key mashing is detected,
-#. and displays a recommendation to take a break.
+#: src/widgets/window.blp:325
+msgid "Test Cancelled"
+msgstr "Тестът е прекратен"
+
 #: src/widgets/window.blp:326
-msgid "Frustration Relief"
-msgstr "Освобождаване на напрежението"
-
-#: src/widgets/window.blp:332
-msgid "Frustration Detected"
-msgstr "Засечени са стрес и напрежение"
-
-#. Translators: Make sure to convey this as politely and sensitively as possible,
-#. since it is likely to be shown to people while they are in a state of
-#. self-disappointment / anger
-#: src/widgets/window.blp:336
 msgid ""
-"You learn faster in a calm state of mind. Consider taking a break. The test "
-"has been cancelled, and will not affect your typing statistics."
+"The test has been cancelled due to an excessive amount of invalid "
+"keystrokes. This will not affect your typing statistics."
 msgstr ""
-"Учите по-бързо, ако сте спокойни. Вземете си почивка. Тестът е отменен и "
-"няма да се отрази на статистиката ви за машинопис."
+"Тестът беше отменен поради прекалено голям брой невалидни натискания на "
+"клавиши. Това няма да се отрази на статистиката ви за писане на клавиатура."
 
-#: src/widgets/window.blp:378
+#: src/widgets/window.blp:368
 msgid "Text _Language"
 msgstr "_Език на текста"
 
-#: src/widgets/window.blp:383
+#: src/widgets/window.blp:373
 msgid "_Keyboard Shortcuts"
 msgstr "_Клавишни комбинации"
 
-#: src/widgets/window.blp:388
+#: src/widgets/window.blp:378
 msgid "_About Keypunch"
 msgstr "_Относно „Keypunch“"
 
-#: src/widgets/window.rs:196
+#: src/widgets/window.rs:195
+msgid "Donate"
+msgstr "Дарете"
+
+#: src/widgets/window.rs:198
 msgid "Orthography by"
 msgstr "Правопис от"
 
 #. Translators: Replace "translator-credits" with your names, one name per line
-#: src/widgets/window.rs:214
+#: src/widgets/window.rs:216
 msgid "translator-credits"
 msgstr ""
 "twlvnn kraftwerk &lt;<a "
@@ -432,17 +426,17 @@ msgstr ""
 "Докладвайте за грешки в превода в <a href='https://fsa-bg.org/project/gtp/"
 "newticket'>съответния раздел</a>."
 
-#: src/widgets/window.rs:219
+#: src/widgets/window.rs:221
 msgid "Special thanks to"
 msgstr "Специални благодарности на"
 
 #. Translators: Metainfo for the app Fretboard. <https://github.com/bragefuglseth/fretboard>
-#: src/widgets/window.rs:226
+#: src/widgets/window.rs:228
 msgid "Fretboard"
 msgstr "Fretboard"
 
 #. Translators: Metainfo for the app Fretboard. <https://github.com/bragefuglseth/fretboard>
-#: src/widgets/window.rs:228
+#: src/widgets/window.rs:230
 msgid "Look up guitar chords"
 msgstr "Потърсете акорди за китара"
 
@@ -460,3 +454,24 @@ msgstr "В момента се провежда тест за машинопис
 #, rust-format
 msgid "{}∶{}"
 msgstr "{}∶{}"
+
+#~ msgctxt "shortcut window"
+#~ msgid "Text Language"
+#~ msgstr "Език на текста"
+
+#~ msgctxt "shortcut window"
+#~ msgid "Quit"
+#~ msgstr "Спиране на програмата"
+
+#~ msgid "Frustration Relief"
+#~ msgstr "Освобождаване на напрежението"
+
+#~ msgid "Frustration Detected"
+#~ msgstr "Засечени са стрес и напрежение"
+
+#~ msgid ""
+#~ "You learn faster in a calm state of mind. Consider taking a break. The "
+#~ "test has been cancelled, and will not affect your typing statistics."
+#~ msgstr ""
+#~ "Учите по-бързо, ако сте спокойни. Вземете си почивка. Тестът е отменен и "
+#~ "няма да се отрази на статистиката ви за машинопис."
