@@ -66,7 +66,7 @@ mod imp {
         #[template_child]
         pub bottom_stack_empty: TemplateChild<adw::Bin>,
         #[template_child]
-        pub just_start_typing: TemplateChild<gtk::Label>,
+        pub typing_indicator: TemplateChild<gtk::Box>,
         #[template_child]
         pub focus_button: TemplateChild<gtk::Button>,
         #[template_child]
