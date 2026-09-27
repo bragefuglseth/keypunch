@@ -33,7 +33,7 @@ visit the GNOME Circle website.
 
 ## Contributing
 
-Contributions are extremely welcome. To see how you can help with issue reporting, development, and translations, consult Keypunch's [contribution guide](https://welcome.gnome.org/app/Keypunch). For project-specific documentation, such as how to add a new text language, see [CONTRIBUTING.md](CONTRIBUTING.md).
+Contributions are extremely welcome. To see how you can help with issue reporting, development, and translations, consult Keypunch's [contribution guide](https://welcome.gnome.org/app/Keypunch). For project-specific documentation, such as how to add a new text language, see [CONTRIBUTING.md](CONTRIBUTING.md). Note that Keypunch does not accept LLM-generated contributions.
 
 Please take this into consideration as well:
 
