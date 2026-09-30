@@ -181,8 +181,7 @@ impl KpResultsView {
             TestConfig::Finite => imp.language_box.set_visible(false),
             TestConfig::Generated { language, .. } => {
                 imp.language_box.set_visible(true);
-                imp.language_label
-                    .set_label(&language.get_message().unwrap());
+                imp.language_label.set_label(&language.display_name());
             }
         }
     }
