@@ -112,6 +112,8 @@ pub enum Language {
     Turkish,
     #[strum(message = "Українська", to_string = "uk")]
     Ukranian,
+    #[strum(message = "اُرْدُو", to_string = "ur")]
+    Urdu,
     #[strum(message = "Tiếng Việt", to_string = "vn")]
     Vietnamese,
     #[strum(message = "فارسی", to_string = "fa")]
@@ -360,6 +362,21 @@ pub fn advanced(language: Language) -> String {
             " ",
             &[
                 Punctuation::suffix(".", true, 0.6),
+                Punctuation::suffix("،", false, 1.0),
+                Punctuation::suffix("؛", false, 0.1),
+                Punctuation::suffix(":", false, 0.2),
+                Punctuation::suffix("!", true, 0.3),
+                Punctuation::suffix("؟", true, 0.3),
+                Punctuation::wrapping("\"", "\"", false, 0.0),
+                Punctuation::wrapping("(", ")", false, 0.1),
+            ],
+            PERSIAN_NUMERALS,
+        ),
+        Language::Urdu => advanced_generic(
+            &language.to_string(),
+            " ",
+            &[
+                Punctuation::suffix("۔", true, 0.6),
                 Punctuation::suffix("،", false, 1.0),
                 Punctuation::suffix("؛", false, 0.1),
                 Punctuation::suffix(":", false, 0.2),
