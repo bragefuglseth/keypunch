@@ -36,7 +36,7 @@
         </child>
         <child>
           <object class="AdwShortcutsItem">
-            <property name="title" translatable="yes" context="shortcut dialog">Text Language</property>
+            <property name="title" translatable="yes" context="shortcut dialog">Quit</property>
             <property name="action-name">app.quit</property>
           </object>
         </child>
